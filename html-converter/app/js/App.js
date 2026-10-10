@@ -1364,7 +1364,8 @@ class App {
 			const blob = new Blob([out.content],
 				{
 					type: out.kind === "manifest" ? "text/plain"
-						: out.kind === "reference-template" ? "application/json" : "text/html",
+						: out.kind === "reference-template" ? "application/json"
+							: out.kind === "image" ? (out.mime ?? "application/octet-stream") : "text/html",
 				});
 			const a = document.createElement("a");
 			a.href = URL.createObjectURL(blob);
@@ -1374,7 +1375,8 @@ class App {
 			li.appendChild(a);
 			const kindLabel = out.kind === "manifest" ? "interactives manifest"
 				: out.kind === "reference-template" ? "distilled reference template — send to Gavin"
-					: "page";
+					: out.kind === "image" ? "picture from the Word file (images/)"
+						: "page";
 			li.insertAdjacentHTML("beforeend",
 				` <span class="output-kind">${kindLabel}</span>`);
 			list.appendChild(li);

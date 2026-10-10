@@ -352,6 +352,9 @@ class PageAssembler {
 		if (!cfg || cfg.enabled === false || !cfg.bare_pattern || !Array.isArray(items)) return;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "FMTREQHILITE_OFF"]) return;
 		const reqRe = new RegExp(cfg.bare_pattern, "iu");
+		// the highlighter spellings («[word highlighter]» …) join on their own toggle (highlight_forms.highlighter_pattern; env HILITEREJOIN_OFF)
+		const hlOn = !!cfg.highlighter_pattern && !(typeof process !== "undefined" && process.env && process.env[cfg.env_highlighter || "HILITEREJOIN_OFF"]);
+		const hlRe = hlOn ? new RegExp(cfg.highlighter_pattern, "iu") : null;
 		// the text before may end in the writer's own closing mark («**and** [bold] listen») — the sentence still runs
 		const mb = base.marked_before;
 		const mbOn = !!mb && mb.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[mb.env || "FMTREQMARKED_OFF"]);
@@ -366,7 +369,7 @@ class PageAssembler {
 		const openRe = sbOn && base.bare_request_pattern ? new RegExp(base.bare_request_pattern, "iu") : null;
 		const isReq = (x, i) => {
 			const t = innerOf(x);
-			if (reqRe.test(t)) return true;
+			if (reqRe.test(t) || (hlRe && hlRe.test(t))) return true;
 			if (!sbRes.some((r) => r.test(t))) return false;
 			if (!endRe) return true;
 			// the pair «[bold] words [end bold]» is the later pass's: neither its opener nor its closer joins here
@@ -374,6 +377,36 @@ class PageAssembler {
 			if (!endRe.test(t)) return !(nx && nx.type === "tag" && nx.block === x.block && endRe.test(innerOf(nx)));
 			return !(openRe && pv && pv.type === "tag" && pv.block === x.block && openRe.test(innerOf(pv)));
 		};
+		// THE HIGHLIGHTED WORD IS MARKED (highlight_forms.highlighter_span; env HILITESPAN_OFF). At a highlighter request the marked
+		// word — the writer's ✅ (yellow-highlighted) word right before the tag, else the emphasised run right after it — is
+		// wrapped in a private-use sentinel pair carrying the form and the colour; ListsAndRuns.inlineMarkup turns the pair into
+		// the family's span (the hover definition's own mechanism), so the writer's marks inside it survive the escaping renderer.
+		const hs = cfg.highlighter_span;
+		const hsOn = !!hs && hs.enabled !== false && hs.request_pattern && Array.isArray(hs.forms) && hs.forms.length
+			&& !(typeof process !== "undefined" && process.env && process.env[hs.env || "HILITESPAN_OFF"]);
+		const hsReq = hsOn && hlRe ? hlRe : (hsOn ? new RegExp(hs.request_pattern, "iu") : null);
+		const hsColour = hsOn && hs.colour_pattern ? new RegExp(hs.colour_pattern, "iu") : null;
+		const hsCloser = hsOn && cfg.highlighter_closer_pattern ? new RegExp(cfg.highlighter_closer_pattern, "iu") : null;
+		const hsBefore = hsOn ? new RegExp(hs.marked_before_pattern ?? "✅\\s*([^\\s✅]+?)([.,;:!?)’'\"]*)\\s*$", "u") : null;
+		const hsAfter = hsOn ? new RegExp(hs.marked_after_pattern ?? "^(\\s*)((?:\\*{1,3}|_{1,3})[^*_\\n]+?(?:\\*{1,3}|_{1,3}))", "u") : null;
+		const HL0 = String.fromCharCode(0xE002), HL1 = String.fromCharCode(0xE003), HL2 = String.fromCharCode(0xE004);
+		const hsForm = hsOn ? hs.forms.findIndex((f) => f && f.module_pattern && new RegExp(f.module_pattern).test(String(run?.moduleCode ?? ""))) : -1;
+		// a tick glyph on the marked word (the writer's own ✅, or the parser's answer mark) is the mark itself, never learner text:
+		// it leaves with the span (hs.tick_pattern)
+		const hsTick = new RegExp("^(?:" + (hs?.tick_pattern ?? "[\u2705\u2714\u2713\u2611]\uFE0F?") + ")+\\s*", "u");
+		const hsTickTail = new RegExp("(?:" + (hs?.tick_pattern ?? "[\u2705\u2714\u2713\u2611]\uFE0F?") + ")+\\s*$", "u");
+		const hsWrap = (word, formIdx, colour) => HL0 + formIdx + ":" + colour + HL2 + String(word).replace(hsTick, "") + HL1;
+		const hsColourFor = (reqText, host) => {
+			const f = hs.forms[hsForm];
+			const named = hsColour ? reqText.match(hsColour)?.[1]?.toLowerCase() : null;
+			if (named) return (f.colour_map ?? {})[named] ?? named;
+			if (Array.isArray(f.colour_cycle) && f.colour_cycle.length) {
+				const k = (String(host ?? "").split(HL0).length - 1) % f.colour_cycle.length;   // the paragraph's marked words so far
+				return f.colour_cycle[k];
+			}
+			return f.default_colour ?? "";
+		};
+		let marked = 0;
 		let n = 0;
 		for (let i = 1; i < items.length; i++) {
 			const it = items[i];
@@ -385,16 +418,64 @@ class PageAssembler {
 			const key = prev.type === "black" ? "text" : "blackAfter";
 			const before = String(prev[key] ?? ""), after = String(it.blackAfter ?? "");
 			if (!before.trim() || !beforeRe.test(before) || !afterRe.test(after)) continue;
-			const a = after.replace(/^\s+/, "");
+			let a = after.replace(/^\s+/, "");
+			let bText = before;
+			let openerUnmarked = false;
+			if (hsReq && hsForm >= 0 && hsReq.test(innerOf(it)) && hsCloser && hsCloser.test(innerOf(it)) && prev._hlOpenAt != null && prev._hlOpenAt <= bText.length) {
+				// the CLOSER of an opener / closer pair: the words since the opener are the marked words
+				const from = prev._hlOpenAt;
+				const words = bText.slice(from).trim();
+				delete prev._hlOpenAt;
+				if (words) {
+					const colour = hsColourFor(innerOf(it), bText.slice(0, from));
+					bText = bText.slice(0, from).replace(/\s+$/, "") + " " + hsWrap(words, hsForm, colour);
+					marked++;
+				}
+			} else if (hsReq && hsForm >= 0 && hsReq.test(innerOf(it))) {
+				if (hsCloser && hsCloser.test(innerOf(it))) { /* a closer with no opener: nothing to mark */ } else openerUnmarked = true;
+				// the writer's highlighted word right before the tag: the block's own highlight marks (block.marks, kind «hl» — the
+				// extractor's side-channel; any highlight colour) — the longest mark the text before the tag ends with; the parsed
+				// text's ✅ glyph is the fallback
+				const bTrim = bText.replace(/\s+$/, "");
+				const hlMarks = (it.block?.marks ?? prev.block?.marks ?? []).filter((m) => m && m.kind === "hl" && String(m.text ?? "").trim());
+				const endMark = hlMarks.map((m) => String(m.text).trim()).filter((t) => {
+					if (!bTrim.endsWith(t)) return false;
+					const ch = bTrim.charAt(bTrim.length - t.length - 1);
+					return !ch || !/[\p{L}\p{M}\p{N}]/u.test(ch);                        // a whole word, not a tail of one
+				}).sort((x, y) => y.length - x.length)[0] ?? null;
+				const mb2 = endMark ? null : bText.match(hsBefore);
+				if (endMark) {
+					openerUnmarked = false;
+					const colour = hsColourFor(innerOf(it), bText);
+					bText = bTrim.slice(0, bTrim.length - endMark.length).replace(hsTickTail, "") + hsWrap(endMark, hsForm, colour);
+					marked++;
+				} else if (mb2) {
+					openerUnmarked = false;
+					const colour = hsColourFor(innerOf(it), bText);
+					bText = bText.slice(0, mb2.index).replace(hsTickTail, "") + hsWrap(mb2[1], hsForm, colour) + mb2[2];
+					marked++;
+				} else {
+					const ma = a.match(hsAfter);
+					if (ma) {
+						openerUnmarked = false;
+						const colour = hsColourFor(innerOf(it), bText);
+						a = ma[1] + hsWrap(ma[2], hsForm, colour) + a.slice(ma[0].length);
+						marked++;
+					}
+				}
+			}
 			// «**as**» + «**.** It helps» → «**as.** It helps»: two runs in the same mark meet at a stop
-			const b = before.replace(/\s+$/, ""), mm = mbOn ? /^([*_]+)[.,;:!?)’'"]/.exec(a) : null;
+			const b = bText.replace(/\s+$/, ""), mm = mbOn ? /^([*_]+)[.,;:!?)’'"]/.exec(a) : null;
 			if (mm && b.endsWith(mm[1])) prev[key] = b.slice(0, -mm[1].length) + a.slice(mm[1].length);
 			else prev[key] = b + (/^[.,;:!?)’'"]/.test(a) ? "" : " ") + a;
+			if (openerUnmarked) prev._hlOpenAt = String(prev[key]).length - a.length;   // the closer, if one comes, marks from here
+			else if (hsReq && prev._hlOpenAt != null && hsReq.test(innerOf(it))) delete prev._hlOpenAt;
 			// the request item stays where it stands, its words moved: the scanner and every later pass see the same items
 			it.blackAfter = "";
 			it._sentenceHost = prev;
 			n++;
 		}
+		if (marked) run.AddNote("info", "PageAssembler", `${marked} highlighted word${marked === 1 ? "" : "s"} marked in the family's form at a highlighter request (inline_format_request.highlight_forms.highlighter_span).`);
 		if (n) run.AddNote("info", "PageAssembler", `${n} highlight / formatting request${n === 1 ? "" : "s"} inside a sentence taken out, the sentence kept whole (inline_format_request.highlight_forms / stream_bare).`);
 	}
 
@@ -1071,6 +1152,10 @@ class PageAssembler {
 			content: DocxExtractor.UnderReplace(DocxExtractor.VertReplace(DocxExtractor.MathReplace(ManifestBuilder.Build(run)), true), true),   // equation sentinels → MathML in the hand-off too; sup / sub and underline sentinels stripped to plain text
 			kind: "manifest",
 		});
+
+		// ---- the writer's pasted pictures (Input_Doc_Rules.pasted_pictures) -------
+		// their files, after the pages and the manifest (the manifest indexes the outputs by page position)
+		MediaBuilder.ShipAdmittedPictures(run);
 
 		// ---- the distilled reference template --------------------------------
 		// When the person uploaded reference HTML pages at conversion time (see

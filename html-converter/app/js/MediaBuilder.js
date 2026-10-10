@@ -117,6 +117,15 @@ class MediaBuilder {
 		const tpl = DataService.Data.EmitTemplates.image;
 		const out = [];
 		const gathered = this.gatherFollowing(it, bodyItems, i);
+		// THE WRITER'S PASTED PICTURE (Input_Doc_Rules.pasted_pictures; env PASTEDPIC_OFF): its bytes are in hand, so either image
+		// mode shows the picture itself and its file ships in images/; the words typed under it are its caption as for any image
+		const pasted = this.PastedPicture(String(it.blackAfter ?? "").split("\n")[0], run) ?? this.PastedPicture(it.parse.remainders.join(" "), run);
+		if (pasted) {
+			out.push(this.PastedImg(pasted, run));
+			const cap = this.stripMediaResidue(gathered.split("\n").filter((l) => !this.PastedPicture(l, run)).join("\n").trim());
+			if (cap) out.push(...ListsAndRuns.renderBlackText(cap, run));
+			return out;
+		}
 		const url = this.CanonicalStockUrl(this.ItemOwnLink(it, "image") ?? it.block?.links?.[0]?.target
 			?? (gathered.match(/https?:\/\/[^\s\]\)"<>]+/)?.[0] ?? ""));
 
@@ -247,6 +256,68 @@ class MediaBuilder {
 			s = s.replace(/<img class="img-fluid"(?![^>]*loading=)/g, '<img class="img-fluid" loading="lazy"');
 		}
 		return s;
+	};
+
+	/**
+	 * THE WRITER'S PASTED PICTURE named by an image line's words («pasted:<name>», the extractor's token for a picture pasted
+	 * into the Word file — Input_Doc_Rules.pasted_pictures). Returns the run's registry record { name, bytes, sha, alt } or null.
+	 */
+	static PastedPicture(text, run) {
+		const cfg = DataService.Data.InputDocRules?.pasted_pictures;
+		if (!cfg || cfg.enabled === false || !run?.pastedPictures) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "PASTEDPIC_OFF"]) return null;
+		const m = new RegExp(cfg.token_pattern ?? "^pasted:(\\S+)$", "i").exec(String(text ?? "").trim());
+		if (!m) return null;
+		return run.pastedPictures.get(m[1]) ?? null;
+	};
+
+	/**
+	 * The same picture reached through a widget's derived FILENAME (the builders slug an image line's words into
+	 * «<slug>.jpg» before they render): the record whose token slugs to that filename, or null.
+	 */
+	static PastedBySlug(filename, run) {
+		const cfg = DataService.Data.InputDocRules?.pasted_pictures;
+		if (!cfg || cfg.enabled === false || !run?.pastedPictures || !filename) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "PASTEDPIC_OFF"]) return null;
+		const want = String(filename).toLowerCase();
+		if (want.indexOf("pasted") < 0) return null;
+		for (const rec of run.pastedPictures.values()) {
+			const slug = `${Utils.Slugify("pasted:" + rec.name) || "image"}.jpg`.toLowerCase();
+			if (slug === want) return rec;
+		}
+		return null;
+	};
+
+	/**
+	 * The pasted picture's markup (Emit_Templates.image.pasted — the finished page's <img class="img-fluid" loading="lazy">),
+	 * and its file registered ONCE on the run's outputs as images/<name> (binary bytes; the zip writer and the batch build
+	 * write it as it is).
+	 */
+	static PastedImg(rec, run) {
+		const tpl = DataService.Data.EmitTemplates.image?.pasted;
+		const html = Utils.FillTemplate(tpl?.visible ?? "<img class=\"img-fluid\" loading=\"lazy\" src=\"images/{filename}\" alt=\"{alt}\">",
+			{ filename: rec.name, alt: Utils.EscapeHtml(rec.alt ?? "") });
+		rec.admitted = true;   // the file ships (ShipAdmittedPictures, after the pages — the outputs stay pages-first)
+		return html;
+	};
+
+	/**
+	 * Every ADMITTED pasted picture's file, pushed once onto the run's outputs as images/<name> (binary bytes; the zip writer
+	 * and the batch build write them as they are) — called once the pages and the manifest are on the outputs, because the
+	 * manifest indexes the outputs by page position. A picture inside an un-built widget ships too: the hand-off box names it.
+	 */
+	static ShipAdmittedPictures(run) {
+		if (!run?.pastedPictures || !run.outputs) return 0;
+		run.pastedShipped = run.pastedShipped ?? new Set();
+		let n = 0;
+		for (const rec of run.pastedPictures.values()) {
+			if (!rec.admitted || run.pastedShipped.has(rec.name)) continue;
+			run.pastedShipped.add(rec.name);
+			const mime = { png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", gif: "image/gif", bmp: "image/bmp", svg: "image/svg+xml", webp: "image/webp", tif: "image/tiff", tiff: "image/tiff", emf: "image/emf", wmf: "image/wmf" }[rec.ext] ?? "application/octet-stream";
+			run.outputs.push({ filename: "images/" + rec.name, content: rec.bytes, kind: "image", mime });
+			n++;
+		}
+		return n;
 	};
 
 	/**

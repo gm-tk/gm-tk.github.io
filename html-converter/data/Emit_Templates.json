@@ -160,8 +160,8 @@
 				"env": "REOVIDEOMLROW_OFF"
 			},
 			"dropbox_button": {
-				"_doc": "THE DROPBOX REQUEST IN A BILINGUAL CELL IS THE UPLOAD BUTTON. The writer types the dropbox request as its own « / »-separated cell part — «[Button] [Dropbox]», «[Button] [Add dropbox]», «[Button] [Dropbox Checklist]», a bare «[Dropbox]» — in the English cell after the Kiwi picture; the cell reader stripped its tags and nothing remained, so no Bilingual page carried a button. The KB's universal constraint (an activity that ends in a dropbox button carries the dropbox modifier), the family label «Upload to Dropbox» and the MTK patterns' dropbox placeholder row all name the button; the human pages build it, paired reo / eng, with the D2L quicklink the per-module rcode supplies — a code no Writers Template carries, so the href ships blank under the standing To Do (the Standard path's upload box does the same). The part becomes ONE media element (the reo anchor, the eng anchor, the To Do), emitted once from whichever cell carries it; the words after the tags are the writer's label and are dropped (the KB label stands). Env REODROPBOX_OFF restores the silent drop.",
-				"enabled": false,
+				"_doc": "THE DROPBOX REQUEST IN A BILINGUAL CELL IS THE UPLOAD BUTTON. The writer types the dropbox request as its own « / »-separated cell part — «[Button] [Dropbox]», «[Button] [Add dropbox]», «[Button] [Dropbox Checklist]», a bare «[Dropbox]» — in the English cell after the Kiwi picture; the cell reader stripped its tags and nothing remained, so no Bilingual page carried a button. The KB's universal constraint (an activity that ends in a dropbox button carries the dropbox modifier), the family label «Upload to Dropbox» and the MTK patterns' dropbox placeholder row all name the button; the human pages build it, paired reo / eng on some modules and English-only on others (`pair` chooses; the single English button is the form in use), with the D2L quicklink the per-module rcode supplies — a code no Writers Template carries, so the href ships blank under the standing To Do (the Standard path's upload box does the same). The part becomes ONE media element (the eng anchor — and the reo anchor when `pair` is on — then the To Do), emitted once from whichever cell carries it; the words after the tags are the writer's label and are dropped (the KB label stands). Env REODROPBOX_OFF restores the silent drop.",
+				"enabled": true,
 				"env": "REODROPBOX_OFF",
 				"part_pattern": "^\\s*(?:\\[\\s*(?:add\\s+)?button\\s*\\]\\s*)?\\[\\s*(?:add|insert|go\\s+to|voice\\s+recorder|please\\s+add)?[^\\]]*?drop\\s?box[^\\]]*\\]\\s*(?:\\[[^\\]]*\\]\\s*)*$",
 				"label_eng": "Upload to dropbox",
@@ -1457,7 +1457,39 @@
 				"_doc": "A HIGHLIGHT REQUEST INSIDE A SENTENCE NO LONGER CUTS IT. The writer types a red highlight request in the middle of a sentence — 'Māori perspectives value [highlight text] **mana (personal and collective strength) …** as key aspects of giftedness', 'how to trust your [highlight text] **inner compass** to guide you', '[emphasise / highlight text]', '[highlight / emphasise text]', '[end highlight]', '[text highlighter]' — and the tag item cut the sentence into two paragraphs wherever it stood (the free body, an accordion pane, a flip card's back, an activity box) — '[highlight]' and '[highlight text]' are also the word-select widget's tag names, so the scanner read the request as a widget inside its host's capture. The human keeps the sentence whole; the mark it gives the words differs from page to page (a highlight span, bold or plain), so the request is read like a bare request: PageAssembler takes it out of the item stream before the split and the scanner, the two halves of the sentence are joined and the writer's own marks are kept, no mark is guessed. The word / letter / phrase highlighter quiz widget is not this request and is never matched.",
 				"enabled": true,
 				"env": "FMTREQHILITE_OFF",
-				"bare_pattern": "^\\[\\s*(?:/\\s*highlight|end\\s+(?:text\\s+)?highlight(?:ing|er)?|text\\s+highlighter|(?:(?:emphasi[sz]e|itali[cs]i[sz]e|bold)\\s*(?:/|and)\\s*)?highlight(?:\\s*/\\s*emphasi[sz]e)?(?:\\s+text)?)\\s*\\]?$"
+				"bare_pattern": "^\\[\\s*(?:/\\s*highlight|end\\s+(?:text\\s+)?highlight(?:ing|er)?|text\\s+highlighter|(?:(?:emphasi[sz]e|itali[cs]i[sz]e|bold)\\s*(?:/|and)\\s*)?highlight(?:\\s*/\\s*emphasi[sz]e)?(?:\\s+text)?)\\s*\\]?$",
+				"highlighter_pattern": "^\\[\\s*(?:(?:word|letter|phrase)s?\\s*(?:/\\s*letter\\s*)?highlight(?:er|ing)?(?:\\s+(?:in\\s+)?(?:yellow|pink|cyan|blue|green|orange|purple|red|grey|gray))?(?:\\s+(?:stop|end|close|off))?|highlighter(?:\\s+(?:stop|end|close|off))?)\\s*\\]?$",
+				"highlighter_closer_pattern": "\\b(?:stop|end|close|off)\\s*\\]?\\s*$",
+				"_doc_closer": "THE OPENER / CLOSER PAIR: «for [word highlight] young children [word highlight stop] at the library» — the words between the two tags are the marked words (the opener finds no ✅ or emphasised word, so it remembers where its words begin; the closer, matching highlighter_closer_pattern, marks everything from there). Both tags join the sentence.",
+				"env_highlighter": "HILITEREJOIN_OFF",
+				"_doc_highlighter": "THE HIGHLIGHTER TAG INSIDE A SENTENCE REJOINS IT TOO. The «[word highlighter]» / «[letter highlighter]» / «[phrase highlighter]» spellings (a colour word after them allowed) are the word-select widget's own tag names, so they were left to the scanner — which took the in-sentence tag for a widget and cut the sentence («These words are called ✅homophones [Word highlighter]. Watch …», «*The* [word highlighter] ***excited*** *dog …»). They join the rejoin through highlighter_pattern, on their own toggle: env HILITEREJOIN_OFF restores the cut (and, having nothing to mark, the highlighter_span block below does nothing).",
+				"highlighter_span": {
+					"_doc": "THE HIGHLIGHTED WORD IS MARKED, THE WAY THE KB MARKS IT. At a rejoined highlighter request the marked word is the writer's own: the yellow-highlighted word right before the tag (the extractor's ✅ glyph — «✅homophones [Word highlighter]») or, failing that, the emphasised run right after it («[word highlighter] ***excited***»); nothing is guessed, and a request with neither only rejoins. The form follows the module's family (forms, first module_pattern that matches): in the WJFUN series the designer's static span — `span.highlight` with an inline background colour, #00ffff unless the writer names a colour in the tag («[word highlighter yellow]»), the named colour as given; everywhere else the interactive form — `span.highlightBtn colour=\"primary-N\"` (N cycling 1 → 3 through the paragraph's marked words) inside a `div.wordHighlighter` wrapper around the paragraph. The marked word travels from the rejoin pass to the renderer as a private-use sentinel pair (the same mechanism as the hover definition), so the writer's own bold / italics inside it are kept. Env HILITESPAN_OFF leaves the rejoined sentence unmarked.",
+					"enabled": true,
+					"env": "HILITESPAN_OFF",
+					"request_pattern": "^\\[\\s*(?:word|letter|phrase)s?\\s*(?:/\\s*letter\\s*)?highlight(?:er|ing)?\\b|^\\[\\s*highlighter\\s*\\]?$|^\\[\\s*highlight(?:\\s+text)?\\s*\\]?$",
+					"colour_pattern": "\\b(yellow|pink|cyan|blue|green|orange|purple|red|grey|gray)\\b",
+					"marked_before_pattern": "✅\\s*([^\\s✅]+?)([.,;:!?)’'\"]*)\\s*$",
+					"marked_after_pattern": "^(\\s*)((?:\\*{1,3}|_{1,3})[^*_\\n]+?(?:\\*{1,3}|_{1,3}))",
+					"forms": [
+						{
+							"name": "static",
+							"module_pattern": "^WJFUN",
+							"span": "<span class=\"highlight\" style=\"background-color: {colour};\">{word}</span>",
+							"default_colour": "#00ffff",
+							"colour_map": { "cyan": "#00ffff" }
+						},
+						{
+							"name": "interactive",
+							"module_pattern": ".",
+							"span": "<span class=\"highlightBtn\" colour=\"{colour}\">{word}</span>",
+							"colour_cycle": ["primary-1", "primary-2", "primary-3"],
+							"wrapper_open": "<div class=\"wordHighlighter\">",
+							"wrapper_close": "</div>",
+							"wrapper_marker_pattern": "class=\"highlightBtn\""
+						}
+					]
+				}
 			},
 			"stream_bare": {
 				"_doc": "A BARE BOLD / ITALIC REQUEST INSIDE A SENTENCE NO LONGER CUTS IT, WHEREVER IT STANDS. The bare requests ('[bold]', '[unbold]', '[end italics]', '[emphasise text]' — bare_request_pattern and more_forms.bare_pattern) are rejoined by the pass that runs after the interactive scan, on FREE body items only; in a list run, an activity box or a widget capture the request item still cut the writer's sentence ('The clock went [bold] …' WJFUN113, '• which was carved from wood [end italics] …' WJFUN304, 'Question 1. What did Jeremy [emphasise text] **want**?' XGF9004). The highlight forms' item-stream pass (PageAssembler, before the split and the scanner, the request item kept in place with no words of its own) reads these too — rejoin only, no mark guessed. An opening request followed in the same paragraph by its closing one (more_forms.end_pattern — the pair, which marks its words) and a NAMED request ('[bold the word how]' — request_pattern) are left to the later pass.",
@@ -2308,6 +2340,10 @@
 		"mode_D": {
 			"visible": "<img class=\"img-fluid\" src=\"images/{filename}\" alt=\"\">"
 		},
+		"pasted": {
+			"_doc": "The writer's PASTED picture (Input_Doc_Rules.pasted_pictures): its bytes are in hand, so both image modes show the picture itself — the finished page's form — and the file ships in the download's images/ folder under the document's own name. alt is the picture's description from the Word file when the writer set one, else empty.",
+			"visible": "<img class=\"img-fluid\" loading=\"lazy\" src=\"images/{filename}\" alt=\"{alt}\">"
+		},
 		"stock_button": {
 			"enabled": true,
 			"env": "STOCKBUTTON_OFF",
@@ -2968,6 +3004,24 @@
 			},
 			"modal_sets": {
 				"enabled": true,
+				"as_clickdrop": {
+					"_doc": "THE PICTURE POP-OUTS ARE THE SERIES' CLICK-DROP BOARD. In the module series named by module_pattern (the BLL series — not BLLR), a numbered set of picture + text pop-outs («[Modal 1 Image] same image from BLL110» / «[Modal 1 text] Find things in your house …», the Optional activities set) is the board the series' finished pages carry: every trigger picture as a tile in rows of tiles_per_row columns (img.img-fluid.clickDrop), then one clickDropContent panel per set holding that pop-out's content, paired by position — the KB click-drop form. The pictures stay the writer's (a placeholder named for the referenced module where the writer names another module's picture). Applies only when every set in the widget has a picture trigger; a set triggered by a text label keeps the pop-out form, and every other series keeps the writer's pop-outs. Env MODALCLICKDROP_OFF restores the pop-out form in the series too.",
+					"enabled": true,
+					"env": "MODALCLICKDROP_OFF",
+					"module_pattern": "^BLL\\d",
+					"tiles_per_row": 3,
+					"row_open": "<div class=\"row\">",
+					"row_close": "</div>",
+					"col_open": "<div class=\"col-4\">",
+					"col_close": "</div>",
+					"tile_image_mode_P": "<img class=\"img-fluid clickDrop\" src=\"https://placehold.co/600x400?text={label}\" alt=\"\" loading=\"lazy\">",
+					"tile_image_mode_P_comment": "<!-- <img class=\"img-fluid clickDrop\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\"> -->",
+					"tile_image_mode_D": "<img class=\"img-fluid clickDrop\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\">",
+					"panels_open": "<div class=\"row\">\n<div class=\"col-12\">",
+					"panels_close": "</div>\n</div>",
+					"panel_open": "<div class=\"clickDropContent\">",
+					"panel_close": "</div>"
+				},
 				"image_reference": {
 					"_doc": "ANOTHER MODULE'S PICTURE. The BLL series' 'Optional activities' pop-outs name each trigger picture as another module's ('[Modal 1 Image] same image from BLL110', 'Use the same image from BLL110') — no address, so the set had no trigger and the whole widget, its activity texts and video, stayed a hand-off box (BLL140 / 150 / 160 / 170 / 210), while BLL110 / 120 / 130, written with iStock addresses, build. Such an image sub-tag (pattern) gives its set a placeholder trigger named for the reference (filename, shown by Mode P's label) and ONE red To Do per widget names the module whose pictures to copy (note). OFF = the hand-off box.",
 					"enabled": true,
@@ -4560,6 +4614,19 @@
 			"image_mode_P": "<img class=\"img-fluid\" src=\"https://placehold.co/600x400?text={label}\" alt=\"\" loading=\"lazy\">",
 			"image_mode_P_comment": "<!-- <img class=\"img-fluid\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\"> -->",
 			"filename_istock": "iStock-{id}.jpg",
+			"pair_board": {
+				"_doc": "THE SERIES' CLICK-DROP PAIR BOARD. In the module series named by module_pattern the writer types each pop-out of the «Optional activities» set as a PAIR of tags — «[Clickdrop N Image] same image from BLL110» then «[Clickdrop N text] …» — followed by the pop-out's own members (black lines, «[video]» tags with their addresses, a «[carousel]» of «[video N]» tags) and, after the last pair, an upload button or a quiz trigger. The general composer declines the form (the picture is another module's, not an address; the members are mixed) and the set ships as a hand-off box, where every finished page in the series carries the click-drop BOARD (tiles in rows, then one clickDropContent panel per tile — the form the modal spelling already builds, modal_sets.as_clickdrop). This builder reads the pairs: the tile is the referenced module's placeholder picture (modal.image_reference's naming and its one note per widget) or the pair's own picture address; the panel is the gold's viewer form (panel_open / panel_close) holding the text tag's words and every member up to the next pair — black lines as paragraphs, a video tag (or a bare address line, or the address on the line after the tag) as the site's video embed, a carousel wrapper dropped around its videos; a member that is none of these ends the panels and follows the board as a red Writers Note in the writer's own words (the upload button, the engagement trigger) — never dropped. Two or more pairs (min_sets), every one with a picture, else the builder declines and the hand-off box stands. Env CDPAIRBOARD_OFF.",
+				"enabled": false,
+				"_doc_state": "BUILT AND INERT (enabled false). Measured on the 18 BLL2xx modules carrying the pair spelling: six changed; BLL220 +0.21 and BLL230 +4.23 on the scaffold (42 of 42 panels), BLL240 −0.51 and BLL250 −1.15 with the content overlap up (placement), but BLL260 −3.82 and BLL270 −7.05 with the overlap DOWN — their sets build only in part (12 of 35 and 19 of 24 panels; the rest decline into hand-off boxes beside the built boards). Until the series' other spellings are read (a picture address instead of the referenced module, a designer note or a flip-card request among the members, a set whose text tag precedes its picture), the rule stays off; the shipped corpus is its OFF state.",
+				"env": "CDPAIRBOARD_OFF",
+				"module_pattern": "^BLL\\d",
+				"image_pattern": "^\\[\\s*click\\s*drop\\s*(\\d+)\\s*image\\b",
+				"text_pattern": "^\\[\\s*click\\s*drop\\s*(\\d+)\\s*text\\b",
+				"skip_tag_pattern": "^(?:carousel)$",
+				"min_sets": 2,
+				"panel_open": "<div class=\"col-md-12 col-12 viewer\">\n<div class=\"item\">",
+				"panel_close": "</div>\n</div>"
+			},
 			"image_member": {
 				"enabled": true,
 				"_note": [
@@ -5469,6 +5536,20 @@
 		"rule": "A preconfigured menu/section heading with NO content before the next heading (or the menu end) is OMITTED — human developers almost never render an empty scaffolding heading ('What do I need to get started?' is nearly always filled when kept; Connections/Assessment/Planning your time are never empty). Applies to ALL menu archetypes."
 	},
 	"menu": {
+		"module_overrides": {
+			"_doc": "A MODULE'S OWN MENU RULE. Keyed by module code — the one place in this file that is — because the human build of that one module departs from its family in a way no template or subject rule carries, and the departure was ruled worth keeping: an empty module menu is a failure a learner sees. Each row is its own data flag with its own env toggle; a module without a row is untouched.",
+			"TEFUN07": {
+				"overview_from_alert": {
+					"_doc": "THE OVERVIEW MENU IS THE WRITER'S FRONT-MATTER ALERT. The Writers Template opens with an «[Alert RHS]» block («Ākonga & Whānau» / «Here are a range of activities about … Explore the phases and complete the tasks that best suit your abilities and interests.») and no learning-design block at all; the finished page puts that alert's paragraphs under «Learning intentions» in the module menu's left column, with the right column's «You will show your understanding by:» label standing alone — and keeps the alert in the body too. With this row on, a simplified overview menu that would otherwise be empty takes the first alert block's paragraphs as its left column (li_label above them) and sc_label as its right column's heading. Env MENUALERTCOPY_OFF leaves the menu empty with its To Do.",
+					"enabled": true,
+					"env": "MENUALERTCOPY_OFF",
+					"li_label": "Learning intentions",
+					"sc_label": "You will show your understanding by:",
+					"li_col_class": "col-md-6 offset-md-0 col-12 paddingR",
+					"sc_col_class": "col-md-6 offset-md-0 col-12 paddingL"
+				}
+			}
+		},
 		"inline_links": {
 			"enabled": true,
 			"env": "MENULINKS_OFF",
@@ -5682,6 +5763,11 @@
 		},
 		"_note_section_content": "Module-menu section content is NOT forced to `<ul><li>` items. The human's menu sections are mostly lists, but at the LINE level (where such a rule would operate) a bold-labelled menu line is usually a `<p>` in the human build, and the converter's list share already matches the human's closely; a per-line list rule would overshoot and turn the writer's own prose — which the human keeps as prose — into list items.",
 		"lesson_continuation_inherits": {
+			"dotted_lesson": {
+				"_doc": "A DOTTED LESSON'S OWN CONTINUATIONS. A page whose lesson NUMBER is dotted (N.M — the splitter's lessonNumber, not the label) is keyed by that number: its first page (label N.M) is the source and its sub-pages (N.M.P) inherit; the N.M label is no longer read as lesson N's part M. Env CONTDOT_OFF restores the label reading.",
+				"enabled": true,
+				"env": "CONTDOT_OFF"
+			},
 			"enabled": true,
 			"env": "CONTMENU_OFF",
 			"label_pattern": "^(\\d+)\\.(\\d+)$",
@@ -9018,10 +9104,10 @@
 			"enabled": true,
 			"indent_spaces_per_level": 2,
 			"level_jump": {
-				"enabled": false,
+				"enabled": true,
 				"env": "LISTJUMP_OFF",
 				"form": "paragraphs",
-				"_doc": "A LEVEL JUMP IS NORMALISED (BUILT, SWITCHED OFF — awaiting a decision). The writer's sub-bullets sometimes sit two or more indent levels under their parent ('• Both use metaphor to convey their messages.' at two spaces, then '      • In Firework, Katy Perry uses the metaphor …' at six; 'c. What is a perspective?' at four under a numbered item at none); the renderer nests a deeper run one level under the parent and its loop skips every item deeper than that, so the page ships '<li>Both use metaphor …<ul></ul></li>' — the sub-bullets gone (36 empty nested lists on six pages; the human pages show the words). With this block on, a jump is normalised in `form`: 'nested' (the next nesting), 'sibling' (the parent's own level) or 'paragraphs' (prose after the list); no item is skipped. Every form restores the words and every form costs the structure gate on the one page whose human developer built an accordion of paragraphs from the same lines, so the block ships OFF until the form is decided. Env LISTJUMP_OFF also turns it off."
+				"_doc": "A LEVEL JUMP IS NORMALISED. The writer's sub-bullets sometimes sit two or more indent levels under their parent ('• Both use metaphor to convey their messages.' at two spaces, then '      • In Firework, Katy Perry uses the metaphor …' at six; 'c. What is a perspective?' at four under a numbered item at none); the renderer nests a deeper run one level under the parent and its loop skipped every item deeper than that, so the page shipped '<li>Both use metaphor …<ul></ul></li>' — the sub-bullets gone, where the human pages show the words. With this block on, a jump is normalised in `form`: 'nested' (the next nesting), 'sibling' (the parent's own level) or 'paragraphs' (prose after the list — the form in use: the human pages show these runs as paragraphs or as the body of a widget built from them); no item is skipped. Where a human developer built an accordion from the same lines the restored paragraphs cost that page's structure score — the fix's named cost, the words outranking the number. Env LISTJUMP_OFF restores the silent skip."
 			},
 			"ol_bold_parents": true,
 			"drop_empty_items": true,
@@ -9266,6 +9352,14 @@
 		"implicit_break_sub_page": {
 			"enabled": true,
 			"env": "IMPLSUB_OFF",
+			"dotted_lesson": {
+				"_doc": "AN IMPLICIT BREAK INSIDE A DOTTED LESSON STAYS IN THAT LESSON. When the open lesson is a dotted one (N.M — a tile or sub-lesson the writer numbered «Lesson 4.2»), content that follows an [end page] with no opener of its own is that lesson's next sub-page (N.M.P), never a new top-level lesson: the tile's drafting / assessment / posture sections ran on as pages 10.0, 11.0, 13.0 with empty menus where the human pages are the tile's 6.1 / 7.1. The guard is the integer rule's: the writer's numbering continues later (a later lesson N+1 or a repeat of the dotted number), or — module_precedent — an earlier dotted lesson of the same module already continued across an implicit break, so the last lesson's continuations are its own too. An «N.0» lesson is lesson N: its continuations are N.1, N.2 … (the corpus form); a true N.M lesson's are N.M.P. Env IMPLSUBDOT_OFF restores the top-level numbering.",
+				"enabled": true,
+				"env": "IMPLSUBDOT_OFF",
+				"module_precedent": true,
+				"n0_is_integer": true,
+				"_doc_n0": "An «N.0» opener counts as lesson N in the explicit-lesson list the integer rule consults, so the break inside «[LESSON 5]» with «[LESSON 6.0]» ahead is lesson 5's continuation 5.1 with its menu (the finished page's own form) — not a trailing lesson with a blank menu. A true N.M opener still records no number (it blocks the rule, as before)."
+			},
 			"black_number": {
 				"enabled": true,
 				"env": "IMPLSUBBLACK_OFF",
@@ -9410,6 +9504,11 @@
 				"_doc": "KB 01D (the WT's own [LESSON] / [End page] structure) + constraint 1. THE WRITERS TEMPLATE'S OWN LESSON STUB IS NOT A PAGE BOUNDARY: the template ships each lesson as the red instruction «Insert the content for your lesson here, then follow on with lesson two etc as required.» followed by a bare [LESSON]; a writer who leaves that pair in the middle of a lesson (CEDK501, inside lesson 6) would otherwise get a phantom page holding the second half of the lesson, numbered from the running ordinal, with an empty menu — the human keeps the lesson whole. A bare [LESSON] (no number, no title) whose previous item is the stub instruction is consumed and the lesson continues; the instruction itself still reaches the developer as its Writers Note."
 			},
 			"duplicate_number_merge": true,
+			"duplicate_dotted_after_end_page_subpage": {
+				"_doc": "A REPEATED DOTTED OPENER AFTER [END PAGE] IS THE NEXT SUB-PAGE. The tile dialect re-types the tile's opener on every continuation («[tile expansion for formal debate Lesson 4.1] Formal debating continued» after each [end page]) and repeats the lesson's learning block under it; the duplicate-number merge folded those continuations into the first page, where the human pages are 5.0 and 5.1. A repeated dotted number arriving after an [end page] opens the lesson's next sub-page (N.M.P) with the opener's title; an un-dotted repeat keeps the merge. Env DUPSUBPAGE_OFF.",
+				"enabled": true,
+				"env": "DUPSUBPAGE_OFF"
+			},
 			"instruction_guard": true,
 			"instruction_dominant_min_words": 8,
 			"deny_lead_pattern": "\\b(?:rollover|roll over|hover|mouseover)\\b",

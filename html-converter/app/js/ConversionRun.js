@@ -149,6 +149,10 @@ class ConversionRun {
 		//   { filename: "OSAH401-01.html", content: "<!DOCTYPE ...>", kind: "page" }
 		// kind is "page" for a lesson page, or another label for support files.
 		this.outputs = [];
+		// The Writers Template's pasted pictures (name → { bytes, sha, alt }; Input_Doc_Rules.pasted_pictures) and the names
+		// whose files this run has already registered as images/<name> outputs.
+		this.pastedPictures = null;
+		this.pastedShipped = new Set();
 
 		// --- the tallies the summary panel reports -------------------------
 		this.redFlagCount = 0;        // how many red "RED FLAG" paragraphs we emitted

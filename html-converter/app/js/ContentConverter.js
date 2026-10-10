@@ -892,7 +892,18 @@ class ContentConverter {
 				// the CEDO family is the counter-example: its continuation pages carry NO menu
 				// in the gold (the `exclude_code_prefixes` pattern)
 				&& !(ciCfg.exclude_code_prefixes ?? []).some((p) => String(run?.moduleCode || "").toUpperCase().startsWith(String(p).toUpperCase()));
-			const lm = ciOn ? new RegExp(ciCfg.label_pattern || "^(\\d+)\\.(\\d+)$").exec(String(page.lessonLabel ?? "")) : null;
+			// a DOTTED lesson (the splitter's lessonNumber N.M) is keyed by that number: its label N.M is part 0, N.M.P part P
+			// (lesson_continuation_inherits.dotted_lesson; env CONTDOT_OFF) — never read as lesson N's part M
+			const ciDot = ciCfg?.dotted_lesson;
+			const ciDotOn = ciOn && !!ciDot && ciDot.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ciDot.env ?? "CONTDOT_OFF"]);
+			const lnDot = ciDotOn && /^\d+\.\d+$/.test(String(page.lessonNumber ?? "")) ? String(page.lessonNumber) : null;
+			const label = String(page.lessonLabel ?? "");
+			// a three-part label N.M.P is the dotted lesson N.M's sub-page P; a two-part label keeps its reading (N's part M —
+			// CEDK501's «[LESSON 3.1]» with no block of its own inherits lesson 3's menu, as its gold does)
+			const lm3 = ciDotOn ? /^(\d+\.\d+)\.(\d+)$/.exec(label) : null;
+			const lm = !ciOn ? null : lm3 ? [label, lm3[1], lm3[2]] : new RegExp(ciCfg.label_pattern || "^(\\d+)\\.(\\d+)$").exec(label);
+			// a dotted lesson's first page that carries its OWN block is the source for its sub-pages (stored under N.M; the N key untouched)
+			if (lnDot && label === lnDot && menuItems.length) { run._lessonMenuItems = run._lessonMenuItems || {}; run._lessonMenuItems[lnDot] = menuItems.map((it) => ({ ...it })); }
 			if (lm) {
 				const major = lm[1], part = parseInt(lm[2], 10);
 				run._lessonMenuItems = run._lessonMenuItems || {};
@@ -905,6 +916,8 @@ class ContentConverter {
 				const firstSource = fpOn && part > 0 && menuItems.length > 0 && !Object.prototype.hasOwnProperty.call(run._lessonMenuItems, major);
 				if (part === 0 || page._lessonMenuSource === true || firstSource) {
 					if (menuItems.length) run._lessonMenuItems[major] = menuItems.map((it) => ({ ...it }));
+				} else if (!menuItems.length && lm3 && !(run._lessonMenuItems[major] || []).length && (run._lessonMenuItems[major.split(".")[0]] || []).length) {
+					for (const it of run._lessonMenuItems[major.split(".")[0]]) menuItems.push({ ...it });
 				} else if (!menuItems.length && (run._lessonMenuItems[major] || []).length) {
 					for (const it of run._lessonMenuItems[major]) menuItems.push({ ...it });
 					run.AddNote?.("info", "ContentConverter",

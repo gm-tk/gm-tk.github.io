@@ -38,7 +38,8 @@ class ZipWriter {
 
 		for (const f of files) {
 			const name = encoder.encode(f.filename);
-			const data = encoder.encode(f.content);
+			// a binary output (a pasted picture's bytes) is stored as it is; text is UTF-8 encoded
+			const data = f.content instanceof Uint8Array ? f.content : encoder.encode(f.content);
 			const crc = this.#crc32(data);
 
 			// ---- local file header (30 bytes + name) ---------------------

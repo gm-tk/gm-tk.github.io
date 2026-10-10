@@ -357,6 +357,7 @@ class PageSplitter {
 		let current = null;
 		let lessonOrdinal = 0;      // bare [LESSON] tags number themselves 1,2,3…
 		let pageWithinLesson = 0;   // [PAGE] sub-numbering → labels 3.0, 3.1, …
+		let _dotPrecedent = false;   // an implicit break already read as a dotted lesson's continuation in this module
 		let seenIntro = false;      // AR-1 latch
 		let subDocument = 0;        // AR-4 counter
 
@@ -549,9 +550,15 @@ class PageSplitter {
 		const _ibsBnRe = (_ibsOn && _ibsBn && _ibsBn.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env[_ibsBn.env ?? "IMPLSUBBLACK_OFF"]))
 			? new RegExp(_ibsBn.pattern ?? "^\\s*(\\d+)(?![.\\d])") : null;
-		if (_ibsOn) items.forEach((x, k) => {   // every [LESSON] tag; a bare or dotted one records n = null (it blocks the rule)
+		// an «N.0» opener is lesson N for this list (implicit_break_sub_page.dotted_lesson.n0_is_integer; env IMPLSUBDOT_OFF): the
+		// writer who types «[LESSON 6.0]» after «[LESSON 5]» has numbered lesson 6, so the break inside lesson 5 is its continuation
+		const _ibsDotTop = _ibs?.dotted_lesson;
+		const _ibsN0 = _ibsOn && !!_ibsDotTop && _ibsDotTop.enabled !== false && _ibsDotTop.n0_is_integer !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_ibsDotTop.env ?? "IMPLSUBDOT_OFF"]);
+		if (_ibsOn) items.forEach((x, k) => {   // every [LESSON] tag; a bare or dotted N.M one records n = null (it blocks the rule)
 			if (x.type === "tag" && x.parse?.primary?.tag === "lesson") {
 				let n = x.parse.numbers?.length && /^\d+$/.test(String(x.parse.numbers[0])) ? parseInt(x.parse.numbers[0], 10) : null;
+				if (n === null && _ibsN0 && x.parse.numbers?.length && /^\d+\.0+$/.test(String(x.parse.numbers[0]))) n = parseInt(x.parse.numbers[0], 10);
 				if (n === null && _ibsBnRe && !x.parse.numbers?.length) {
 					const bm = _ibsBnRe.exec(String(x.blackAfter ?? ""));
 					if (bm) n = parseInt(bm[1], 10);
@@ -1261,6 +1268,35 @@ class PageSplitter {
 						closed = false;
 						continue;
 					}
+					// A REPEATED DOTTED OPENER AFTER [END PAGE] IS THE LESSON'S NEXT SUB-PAGE (the tile dialect re-types «… Lesson 4.1»
+					// on every continuation): N.M.P with the opener's title, never a merge into the first page
+					// (lesson_boundary_guard.duplicate_dotted_after_end_page_subpage; env DUPSUBPAGE_OFF)
+					{
+						const _dds = _lbgCfg?.duplicate_dotted_after_end_page_subpage;
+						if (tag === "lesson" && _lbgOn && _dds && _dds.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_dds.env ?? "DUPSUBPAGE_OFF"])
+							&& closed && current && !current.isOverview && current.lessonNumber !== null
+							&& it.parse.numbers.length && /^\d+\.\d+$/.test(String(it.parse.numbers[0]))
+							&& String(it.parse.numbers[0]) === String(current.lessonNumber)) {
+							// a page with its OWN learning block is a lesson in its own right (the tile): its continuation is N.M.P; a dotted
+							// page without one is lesson N's sub-page M, and its continuation the next sub-page N.(M+1)
+							const _ownBlock = current.items.some((x) => x && x.type === "tag" && x.parse?.primary?.tag === "lesson overview");
+							const _mm = /^(\d+)\.(\d+)$/.exec(String(current.lessonNumber));
+							const _nextLabel = _ownBlock || !_mm ? `${current.lessonNumber}.${pageWithinLesson + 1}` : `${_mm[1]}.${parseInt(_mm[2], 10) + 1}`;
+							if (_ownBlock || !_mm) pageWithinLesson++; else pageWithinLesson = 0;
+							open({
+								lessonNumber: _ownBlock || !_mm ? current.lessonNumber : _nextLabel,
+								lessonLabel: _nextLabel,
+								pageTitle: it.blackAfter.trim() || (normaliser ? normaliser.RenderText(it.text) : ""),
+								wtPageStart: it.block.wtPage,
+								openedBy: "dotted-repeat-sub",
+							});
+							run.AddNote("info", "PageSplitter",
+								`[Lesson ${it.parse.numbers[0]}] repeated after [end page] — the lesson's next sub-page ${current.lessonLabel} (duplicate_dotted_after_end_page_subpage).`);
+							closed = false;
+							continue;
+						}
+					}
 					if (tag === "lesson" && _lbgOn && _lbgCfg.duplicate_number_merge !== false
 						&& !(typeof process !== "undefined" && process.env && process.env.LESSONDUP_OFF)
 						&& current && !current.isOverview && current.lessonNumber !== null
@@ -1692,6 +1728,38 @@ class PageSplitter {
 					}
 					return true;
 				};
+				// the same rule for a DOTTED open lesson (N.M — a tile or sub-lesson): the content after an [end page] with no opener is
+				// that lesson's next sub-page N.M.P, never a new top-level lesson (implicit_break_sub_page.dotted_lesson; env IMPLSUBDOT_OFF)
+				const _ibsDot = _ibs?.dotted_lesson;
+				const _ibsDotOn = _ibsOn && !!_ibsDot && _ibsDot.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[_ibsDot.env ?? "IMPLSUBDOT_OFF"]);
+				// (the integer rule's guard, in the dotted lesson's terms: the writer's numbering continues later — a later explicit
+				// lesson N+1, or a later repeat of this dotted number — so this content is not the module's trailing lessons)
+				const _dotNext = _ibsDotOn && /^\d+\.\d+$/.test(_curN)
+					? (_explicitLessonAt.find((e) => e.k > i && (e.n === parseInt(_curN, 10) + 1 || e.n === null))
+						// … or the module's own precedent: an earlier dotted lesson already continued this way (module_precedent),
+						// so the LAST lesson's continuations are not read as trailing lessons the writer never numbered
+						|| (_ibsDot.module_precedent !== false && _dotPrecedent ? { k: items.length, n: null } : null))
+					: null;
+				if (!lm && _bmN == null && _dotNext
+					&& !_segFrontMatter(i, (_explicitLessonAt.find((e) => e.k > i) ?? { k: items.length }).k)) {
+					pageWithinLesson++;
+					// an «N.0» lesson is lesson N: its continuation pages are N.1, N.2 … (the gold's own form); a true N.M lesson's are N.M.P
+					const _dotBase = /^(\d+)\.0+$/.test(_curN) ? _curN.replace(/\.0+$/, "") : _curN;
+					_dotPrecedent = true;
+					open({
+						lessonNumber: _curN,
+						lessonLabel: `${_dotBase}.${pageWithinLesson}`,
+						pageTitle: "",
+						wtPageStart: it.block.wtPage,
+						openedBy: "implicit-sub",
+					});
+					run.AddNote("info", "PageSplitter",
+						`Implicit page break inside the dotted lesson ${_curN} — the page is its continuation ${current.lessonLabel} (implicit_break_sub_page.dotted_lesson).`);
+					closed = false;
+					current.items.push(it);
+					continue;
+				}
 				if (!lm && _bmN == null && _ibsOn && /^\d+$/.test(_curN) && _nextLesson && _nextLesson.n === parseInt(_curN, 10) + 1
 					&& !_segFrontMatter(i, _nextLesson.k)) {
 					pageWithinLesson++;

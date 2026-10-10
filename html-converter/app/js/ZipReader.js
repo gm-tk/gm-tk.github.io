@@ -64,6 +64,28 @@ class ZipReader {
 	 * @throws {Error} when the entry is missing or uses an unknown method
 	 */
 	async ReadText(name) {
+		return new TextDecoder().decode(await this.ReadBytes(name));
+	};
+
+	/**
+	 * Lists the entry names under a folder prefix — e.g. ListEntries("word/media/")
+	 * names every picture the writer pasted into the document.
+	 * @param {string} prefix - folder path inside the zip, with its trailing slash
+	 * @returns {string[]} entry names (archive order)
+	 */
+	ListEntries(prefix) {
+		return [...this.#entries.keys()].filter((n) => n.startsWith(prefix));
+	};
+
+	/**
+	 * Extracts one entry and returns its raw bytes — the form a pasted picture
+	 * (word/media/imageN.png) needs; ReadText decodes these as UTF-8.
+	 *
+	 * @param {string} name - entry path inside the zip
+	 * @returns {Promise<Uint8Array>} the entry's bytes
+	 * @throws {Error} when the entry is missing or uses an unknown method
+	 */
+	async ReadBytes(name) {
 		const entry = this.#entries.get(name);
 		if (!entry) throw new Error(`ZipReader: no entry "${name}" in archive`);
 
@@ -78,8 +100,8 @@ class ZipReader {
 		const dataStart = entry.offset + 30 + nameLen + extraLen;
 		const compressed = this.#bytes.subarray(dataStart, dataStart + entry.compressedSize);
 
-		// --- method 0 = stored (no compression): decode directly
-		if (entry.method === 0) return new TextDecoder().decode(compressed);
+		// --- method 0 = stored (no compression): the bytes as they are
+		if (entry.method === 0) return compressed.slice();
 
 		// --- method 8 = deflate: inflate via the native stream API.
 		// "deflate-raw" because ZIP stores raw deflate data (no zlib wrapper).
@@ -87,7 +109,7 @@ class ZipReader {
 			const stream = new Blob([compressed]).stream()
 				.pipeThrough(new DecompressionStream("deflate-raw"));
 			const buffer = await new Response(stream).arrayBuffer();
-			return new TextDecoder().decode(buffer);
+			return new Uint8Array(buffer);
 		}
 
 		throw new Error(`ZipReader: unsupported compression method ${entry.method} for "${name}"`);

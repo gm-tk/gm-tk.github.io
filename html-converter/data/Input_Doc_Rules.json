@@ -440,6 +440,105 @@
 		"strip_zero_width": true,
 		"rule": "Word documents carry invisible whitespace characters the writer never intended as content: the NON-BREAKING SPACE U+00A0 (autocorrect/paste residue — the developer flagged it as an 'AI marker', as in SCCH302's [TITLE BAR] Te Reo) and the ZERO-WIDTH characters U+200B/U+200C/U+200D/U+FEFF (paste residue from web sources). NBSPs appear in almost every Writers Template, while the gold library carries effectively no literal NBSPs (the human's '&nbsp;' ENTITIES are deliberate layout, not writer residue). When enabled, DocxExtractor normalises each run's decoded w:t text at extraction (the same seam as the soft-break handling): U+00A0 → a plain space (nbsp_to_space), and the zero-width set is deleted (strip_zero_width). GRANULARITY SAFETY: an NBSP-only run stays a non-empty whitespace piece (same trim()/Fold behaviour either way — JS whitespace includes U+00A0), so red-span merging is untouched; a run the zero-width strip EMPTIES drops out exactly like an always-empty run, so tag spans are unchanged. Tag CLASSIFICATION is unaffected by construction either way (Utils.Fold collapses \\s+, and \\s matches U+00A0). Env NBSP_OFF turns off the whole normalisation (NBSPs and zero-width characters flow through to the page)."
 	},
+	"pasted_pictures": {
+		"_doc": "THE WRITER'S PASTED PICTURES REACH THE PAGE. A picture pasted into the Word document (a word/media entry placed by a drawing's r:embed) is read with its bytes. The paragraph carrying it gains an image line «[image] pasted:<name>» — its own block when the paragraph holds nothing else, a following block when it holds words, a line of the cell inside a table — and the image path renders it as the finished page's <img class=\"img-fluid\" loading=\"lazy\" src=\"images/<name>\"> in EITHER image mode (the file is in hand, unlike a stock photo), while the file itself ships in the download's images/ folder: one path for the app and the batch build. THE FILTER, measured first across every module's Word files: only an inline picture (a floating one is the template's decoration or a layout sketch); at least min_px on both sides (bullets, ticks and motif glyphs are smaller); more than min_bytes (the template's blank placeholders are 70-byte PNGs); not one of the template graphics named by SHA-256 in furniture_sha256 (the section maps, the instruction graphic, the sign-off logos, the self-assessment icons — found shared across modules and never on a finished page); and not inside a RED instruction — a paragraph at least red_share_min percent red, or a picture-only paragraph right after one (skip_after_red) — because the template's red is the writer's note to the designer, never learner content. Pictures are read from every document; a document that is not the Writers Template has its picture lines removed again, and the media table never carries one. The finished pages ship a minority of the writer's pictures, by the developer's choice picture by picture; this rule ships every picture that passes the filter — the developer's selection is a named editorial divergence, the picture the faithful fallback where the developer re-typed a worked example. Env PASTEDPIC_OFF.",
+		"enabled": false,
+		"_doc_state": "BUILT AND INERT (enabled false) until the page-placement scope is decided. Measured on the whole corpus with the rule on: 5,854 pictures shipped across 420 modules and 331 modules' pages changed, while the finished pages carry a Word picture in 20 modules (210 slots) — the developer ships a minority of the writer's pictures, picture by picture, and no measurable feature (red context, a tag, size, a table) separates the shipped from the rest; the scaffold gate fell (−0.01, 405 pages down) and the token still reached 502 pages as text through the widget builders' own member rendering. The reader, the registry, the image path, the kept-cell path, the binary download and the batch folder are complete and toggle on by setting enabled true; the env toggle still turns the whole rule off.",
+		"env": "PASTEDPIC_OFF",
+		"token": "[image] pasted:{name}",
+		"token_pattern": "^pasted:(\\S+)$",
+		"inline_only": true,
+		"min_px": 48,
+		"min_bytes": 200,
+		"red_share_min": 50,
+		"skip_after_red": true,
+		"red_colours": [
+			"FF0000",
+			"C00000",
+			"FF3333",
+			"E36C09",
+			"FF0066"
+		],
+		"alt_from_description": true,
+		"furniture_sha256": [
+			{
+				"sha256": "bb1ff02ab239ec635969e4d21e01d9233b062e9697af44b96972ec3652920455",
+				"_what": "the Writers Template's «When writing, please don't attempt to add to, or change …» instruction graphic (155×124; in ≈ 300 templates)"
+			},
+			{
+				"sha256": "48a95ad2d1114d78f69af8a20f089acde9546f845396918957d2b89d2fb15ad9",
+				"_what": "the same instruction graphic, a second encoding (155×124)"
+			},
+			{
+				"sha256": "b9d161e3cc5cea722733f337f7613bc89c5b9f71b109023d215d1d8586d4423b",
+				"_what": "the same instruction graphic, the bilingual template's encoding (108×113)"
+			},
+			{
+				"sha256": "942543c39ef9e94495ea37adc3b8f9a9926da30c5ff79754b0f56c152430f185",
+				"_what": "the same instruction graphic, a third encoding (107×111)"
+			},
+			{
+				"sha256": "262457466ab65ef66c7fe076e6a34d9e173c15ae95f2b86078384d6da7cad9d5",
+				"_what": "the template's «Complete only the sections as indicated in the graphic below» section map (866×500; in ≈ 200 templates)"
+			},
+			{
+				"sha256": "216b3dc61d2126d39c115080173c05a5d87e6da4d7c05907ac5a4c31099e30bf",
+				"_what": "the Fundamentals template's section map (909×524)"
+			},
+			{
+				"sha256": "bc27a46fffb11d57b177a61d8f15503e235a6080cccc5ba014dcc4e1dc90cc2a",
+				"_what": "the Fundamentals template's «Complete this section if you are using content in a module …» banner (624×155)"
+			},
+			{
+				"sha256": "8d4c35487f253301515e2bc274fb3c7765936ae49f76980db9d78570db36c7eb",
+				"_what": "the template's «Support for designing online learning …» banner (624×143)"
+			},
+			{
+				"sha256": "c0b7a232f8fa6fab11ec89625c0427caa9620a740389f6701410074a1f404c70",
+				"_what": "the sign-off logo on the template's completion line (105×44)"
+			},
+			{
+				"sha256": "af6914448ca96d1775bc349510887d75c9e6863f5e0fe5fa4c9468a7af36a687",
+				"_what": "the sign-off logo, a second form (111×27)"
+			},
+			{
+				"sha256": "74e3786ddf598ef2a632a778cfb3dfa5b05e565cb08d63b280c93d014c19c9b7",
+				"_what": "the self-assessment template's «How was this learning for you?» graphic (231×93; repeated in every lesson)"
+			},
+			{
+				"sha256": "69a4b49c3acac5b33b6b4881754c3da948037a2f19f6e07dd0cef465fce85ded",
+				"_what": "the self-assessment template's «Another way we will gather information …» graphic (173×78)"
+			},
+			{
+				"sha256": "f7257728007e86f0ba366cd89cd41e4319479fc9e9850df4a388c1d514a432e3",
+				"_what": "the self-assessment template's «an icon that looks like this» sample (90×102)"
+			},
+			{
+				"sha256": "62877c9811d2bc83aa1384dd9caa0d6e36042b3347d19abb89cc17d2d1bc961d",
+				"_what": "the sliding-scale self-assessment's face icon (96×96)"
+			},
+			{
+				"sha256": "647d59904f514b38cdc7a185dc08a9c6f1101edf7f3ca704cf498a2c3bac0882",
+				"_what": "the sliding-scale self-assessment's face icon (96×96)"
+			},
+			{
+				"sha256": "9d99a3bd50254cc34d6d55658c9c1a3a258424d819e7a1ff17103d5cfd4b7c57",
+				"_what": "the sliding-scale self-assessment's face icon (96×96)"
+			},
+			{
+				"sha256": "4818e3e48c5e11e1e7e0f2050756fde9c257e3f1e4111e1c4be820f98ddd3844",
+				"_what": "the «Share your Te Whare Tapa Whā journey» template graphic (310×158; repeated in every lesson)"
+			},
+			{
+				"sha256": "c36df19837730739ebed7a4063210b952c96a86dbd13bd952af855d7af551741",
+				"_what": "the «Remove 3-2-1 Reflect and checklist» template instruction graphic (480×120)"
+			},
+			{
+				"sha256": "f900196c1301833fb18440d49fee1659a96aa257e40b6226986b413e3b407a45",
+				"_what": "the «Create a chart like this one» example graphic of the reader family (446×436)"
+			}
+		]
+	},
 	"answer_marks": {
 		"enabled": true,
 		"green_hex_values": [

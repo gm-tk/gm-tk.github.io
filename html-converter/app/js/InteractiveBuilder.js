@@ -8507,8 +8507,44 @@ class InteractiveBuilder {
 	 *
 	 * @returns {string[]|null} one trigger+modal pair per set, or null to decline
 	 */
+	/**
+	 * THE PICTURE POP-OUTS AS THE SERIES' CLICK-DROP BOARD (modal_sets.as_clickdrop; env MODALCLICKDROP_OFF). In the
+	 * module series the data names (module_pattern), a numbered set of picture + text pop-outs is the board the series'
+	 * finished pages carry: every tile picture in rows of tiles_per_row columns, then one clickDropContent panel per set,
+	 * paired by position (the KB click-drop form). Applies only when every set has a picture trigger — a set triggered by a
+	 * text label keeps the pop-out form — and only in that series. Returns the as_clickdrop block, or null.
+	 */
+	static #modalAsClickDrop(cfg, run, sets) {
+		const ac = cfg?.as_clickdrop;
+		if (!ac || ac.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[ac.env ?? "MODALCLICKDROP_OFF"]) return null;
+		if (!ac.module_pattern || !new RegExp(ac.module_pattern).test(String(run?.moduleCode ?? ""))) return null;
+		if (!sets?.length || !sets.every((s) => s.filename)) return null;
+		return ac;
+	}
+
+	/** The board itself: the tile rows (each tile the set's picture, Mode P/D through the shared asset-image templates), then
+	 *  the panel column holding one clickDropContent per set — the Nth tile opens the Nth panel. */
+	static #modalBoardHtml(boards, ac, run) {
+		const per = Math.max(1, ac.tiles_per_row ?? 3);
+		const tileTpl = { image_mode_P: ac.tile_image_mode_P, image_mode_P_comment: ac.tile_image_mode_P_comment, image_mode_D: ac.tile_image_mode_D };
+		const nl = "\n";
+		const rows = [];
+		for (let i = 0; i < boards.length; i += per) {
+			const cols = boards.slice(i, i + per).map((b) => (ac.col_open ?? "<div class=\"col-4\">") + nl
+				+ this.#assetImage(b.filename, tileTpl, run) + nl + (ac.col_close ?? "</div>"));
+			rows.push((ac.row_open ?? "<div class=\"row\">") + nl + cols.join(nl) + nl + (ac.row_close ?? "</div>"));
+		}
+		const panels = boards.map((b) => (ac.panel_open ?? "<div class=\"clickDropContent\">") + nl + b.content + nl + (ac.panel_close ?? "</div>"));
+		return [...rows, ac.panels_open ?? "<div class=\"row\">" + nl + "<div class=\"col-12\">", ...panels, ac.panels_close ?? "</div>" + nl + "</div>"].join(nl);
+	}
+
 	static #modalRenderSets(sets, { tpl, cfg, inline, run, renderBlock, renderNested, size = null }) {
 		const out = [];
+		// the series' click-drop board form (modal_sets.as_clickdrop): the sets' pictures and contents are gathered and emitted
+		// as tiles + panels instead of trigger + pop-out pairs
+		const ac = this.#modalAsClickDrop(cfg, run, sets);
+		const boards = [];
 		// a TILE STRIP is laid out the way its human developer lays it out:
 		// all the tiles together in one row of columns, then the pop-outs after it (the
 		// site pairs the Nth trigger with the Nth pop-out, so the order is what matters,
@@ -8542,6 +8578,7 @@ class InteractiveBuilder {
 			}
 			const content = chunks.join("");
 			if (!content.trim()) return null;                      // a pop-out that renders to nothing
+			if (ac) { boards.push({ filename: s.filename, content }); continue; }
 			const trigger = s.filename
 				? this.#assetImage(s.filename, cfg, run)
 				: Utils.FillTemplate(cfg.trigger_button ?? "<div class=\"button TKmodalButton\">{label}</div>",
@@ -8552,6 +8589,7 @@ class InteractiveBuilder {
 			if (tiles) { tiles.push(trigger); out.push(modal); continue; }
 			out.push(trigger + "\n" + modal);
 		}
+		if (ac) return boards.length ? [this.#modalBoardHtml(boards, ac, run)] : null;
 		if (tiles && tiles.length) {
 			const mt = cfg.media_tiles ?? {};
 			const cls = (mt.col_by_count ?? {})[String(tiles.length)] ?? mt.col_default ?? "col-md-4 col-12 paddingLR";
@@ -12393,6 +12431,107 @@ class InteractiveBuilder {
 		return { open: tpl.open, close: tpl.close };
 	}
 
+	/**
+	 * THE SERIES' CLICK-DROP PAIR BOARD (clickDrop.pair_board; env CDPAIRBOARD_OFF): «[Clickdrop N Image] same image from
+	 * BLL110» / «[Clickdrop N text] …» pairs, each text followed by its members (black lines, video tags and their addresses,
+	 * a carousel of video tags), then the set's trailing lines (an upload button, a quiz trigger). The tiles are the referenced
+	 * module's placeholder pictures (modal.image_reference) or the pair's own picture address; the panels hold the words and
+	 * the video embeds in the finished page's viewer form; the trailing lines follow the board as red Writers Notes. Returns
+	 * the board's markup, or null when the bundle is not this form (the hand-off box then stands).
+	 */
+	static #clickDropPairBoard({ bundle, tpl, run, renderBlock }) {
+		const cfg = tpl?.pair_board;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "CDPAIRBOARD_OFF"]) return null;
+		if (!cfg.module_pattern || !new RegExp(cfg.module_pattern).test(String(run?.moduleCode ?? ""))) return null;
+		const mcfg = DataService.Data.EmitTemplates.interactive_builders?.modal?.modal_sets;
+		const ac = mcfg?.as_clickdrop;
+		if (!ac || ac.enabled === false || typeof renderBlock !== "function") return null;
+		const members = bundle?.memberItems ?? [];
+		if (!members.length) return null;
+		const imgRe = new RegExp(cfg.image_pattern ?? "^\\[\\s*click\\s*drop\\s*(\\d+)\\s*image\\b", "i");
+		const txtRe = new RegExp(cfg.text_pattern ?? "^\\[\\s*click\\s*drop\\s*(\\d+)\\s*text\\b", "i");
+		const skipRe = new RegExp(cfg.skip_tag_pattern ?? "^(?:carousel)$", "i");
+		const ytRe = new RegExp(DataService.Data.AcksFormats?.extraction_regexes?.youtube_id ?? "[?&]v=([\\w-]{11})|youtu\\.be\\/([\\w-]{11})", "i");
+		const vt = DataService.Data.EmitTemplates.video?.youtube;
+		const ir = mcfg.image_reference;
+		const irOn = !!ir && ir.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ir.env ?? "MODALIMGREF_OFF"]);
+		const idOf = (x) => { const m = String(x ?? "").match(ytRe); return m ? (m[1] ?? m[2] ?? m[3] ?? null) : null; };
+		const embed = (id) => (id && vt ? Utils.FillTemplate(vt, { videoId: id, params: "" }) : null);
+		const sets = [], tail = [], notes = [];
+		let cur = null, pendingVideo = false;
+		for (const m of members) {
+			if (!m) continue;
+			const isTag = m.type === "tag";
+			const tag = isTag ? String(m.parse?.primary?.tag ?? "") : null;
+			const tagText = isTag ? String(m.text ?? "").trim() : "";
+			const after = String(m.blackAfter ?? "").trim();
+			let mm;
+			if (isTag && (mm = imgRe.exec(tagText))) {
+				if (tail.length) return null;   // a picture after the set's trailing lines: not this form
+				if (cur) sets.push(cur);
+				cur = { num: mm[1], filename: null, chunks: [] };
+				pendingVideo = false;
+				const own = `${tagText} ${after}`;
+				const url = (m.block?.links ?? []).map((l) => String(l?.target ?? "")).find((t) => /^https?:\/\//i.test(t)) ?? (own.match(/https?:\/\/\S+/)?.[0] ?? null);
+				if (url) {
+					const fn = this.#accImageFilename(url, mcfg, mcfg);
+					if (!fn) return null;
+					cur.filename = fn;
+				} else {
+					const rm = irOn ? own.match(new RegExp(ir.pattern, "i")) : null;
+					if (!rm) return null;
+					cur.filename = Utils.FillTemplate(ir.filename, { code: rm[1].toLowerCase(), n: mm[1] });
+					const note = Utils.FillTemplate(ir.note, { code: rm[1].toUpperCase() });
+					if (!notes.includes(note)) notes.push(note);
+				}
+				continue;
+			}
+			if (!cur) return null;   // words before the first pair: not this form
+			if (isTag && (mm = txtRe.exec(tagText))) {
+				if (mm[1] !== cur.num) return null;
+				if (after) cur.chunks.push(...renderBlock(after));
+				continue;
+			}
+			if (tail.length) { tail.push(m); continue; }
+			if (m.type === "black") {
+				const text = String(m.text ?? "").trim();
+				if (!text) continue;
+				const bare = /^\(?\s*https?:\/\/\S+\s*\)?$/.test(text.replace(/\s+/g, " "));
+				if (pendingVideo || bare) {
+					const e = embed(idOf(text));
+					if (e) { cur.chunks.push(e); pendingVideo = false; continue; }
+					if (bare) return null;   // an address this builder cannot embed: the hand-off box keeps it
+				}
+				cur.chunks.push(...renderBlock(text));
+				continue;
+			}
+			if (tag === "video") {
+				const e = embed(idOf(after) ?? idOf((m.block?.links ?? []).map((l) => l?.target ?? "").join(" ")));
+				if (e) { cur.chunks.push(e); pendingVideo = false; } else pendingVideo = true;   // the address on the next line
+				continue;
+			}
+			if (tag && skipRe.test(tag)) continue;
+			if (isTag && /^[()\[\]\s]*$/.test(tagText)) {   // a bracket piece the extractor split off an address line
+				if (!after) continue;
+				const e = embed(idOf(after));
+				if (e) { cur.chunks.push(e); pendingVideo = false; continue; }
+				if (/^https?:\/\//i.test(after)) return null;
+			}
+			tail.push(m);   // anything else (the upload button, the quiz trigger) ends the panels and follows the board
+		}
+		if (cur) sets.push(cur);
+		if (sets.length < (cfg.min_sets ?? 2) || !sets.every((s) => s.filename)) return null;
+		const nl = "\n";
+		const boards = sets.map((s) => ({ filename: s.filename, content: (cfg.panel_open ?? "") + nl + s.chunks.join(nl) + nl + (cfg.panel_close ?? "") }));
+		const out = [this.#modalBoardHtml(boards, ac, run)];
+		for (const n of notes) out.push(NotesAndComments.redFlag(n, run, "cs"));
+		for (const t of tail) {
+			const words = (t.type === "tag" ? `${String(t.text ?? "").trim()} ${String(t.blackAfter ?? "").trim()}` : String(t.text ?? "")).replace(/\s+/g, " ").trim();
+			if (words) out.push(NotesAndComments.redFlag(words, run, "cs"));
+		}
+		return out.join(nl);
+	}
 	// =======================================================================
 	// THE GENERAL clickDrop COMPOSER
 	// =======================================================================
@@ -12402,6 +12541,10 @@ class InteractiveBuilder {
 	 * works — env CLICKDROPS_OFF).
 	 */
 	static #clickDropEntry({ bundle, tpl, renderInline, run, renderBlock, renderTable, renderNested }) {
+		// the series' PAIR spelling («[Clickdrop N Image] …» / «[Clickdrop N text] …») builds the click-drop board first
+		// (clickDrop.pair_board; env CDPAIRBOARD_OFF) — the narrow walk and the general composer are untouched after it
+		const board = this.#clickDropPairBoard({ bundle, tpl, run, renderBlock });
+		if (board) return board;
 		const narrow = this.#clickDrop({ bundle, tpl, renderInline, run });
 		if (narrow) return narrow;
 		return this.#clickDropItems({ bundle, tpl, renderInline, run, renderBlock, renderTable, renderNested });
@@ -15020,6 +15163,9 @@ class InteractiveBuilder {
 	 * @param {object} run      - run context (run.imageMode is "P" or "D")
 	 */
 	static #assetImage(filename, tpl, run) {
+		// the writer's pasted picture (Input_Doc_Rules.pasted_pictures): the file is in hand, so the widget shows it in either mode
+		const pasted = MediaBuilder.PastedBySlug(filename, run);
+		if (pasted) return MediaBuilder.PastedImg(pasted, run);
 		// widget-INTERNAL images join the alt/lazy rule via MediaBuilder.FinishImg.
 		// The title authority here is the VERIFIED iStock API map only (run.istockAcks,
 		// keyed by the id read from the filename); there is no URL at this seam so the

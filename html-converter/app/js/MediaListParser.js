@@ -121,7 +121,7 @@ class MediaListParser {
 		const rowLinks = block.rowLinks ?? [];
 
 		for (let r = 1; r < block.rows.length; r++) {   // r=0 is the header
-			const cells = block.rows[r];
+			const cells = DocxExtractor.StripPastedCells(block.rows[r]);   // a pasted thumbnail's line is never an item's words
 
 			// --- discard: merged/spanning reminder rows + reminder text ---
 			if (cells.length <= 1) continue;

@@ -406,8 +406,10 @@ class ModuleResolver {
 			// other document, so the load-bearing
 			// order below is untouched. Env ROWMARKER_OFF switches it off.
 			d.doc.blocks = DocxExtractor.PromoteTableRowMarkers(d.doc.blocks, normaliser, run);
-			const mediaTable = MediaListParser.FindMediaTable(d.doc.blocks);
 			const isWt = DocxExtractor.LooksLikeWritersTemplate(d.doc.blocks, normaliser);
+			// a document that is not the Writers Template keeps none of its pasted-picture lines (Input_Doc_Rules.pasted_pictures)
+			if (!isWt) DocxExtractor.StripPastedTokens(d.doc.blocks);
+			const mediaTable = MediaListParser.FindMediaTable(d.doc.blocks);
 			if (isWt && !wt) wt = d;
 			if (mediaTable && !mediaSource) mediaSource = { ...d, mediaTable };
 		}
@@ -580,6 +582,8 @@ class ModuleResolver {
 		// WT pagination trustworthy? (drives acks evidence rule 2)
 		run.pageRecordsUsable = Math.max(...wt.doc.blocks.map((b) => b.wtPage ?? 1))
 			>= DataService.Data.InputDocRules.wt_page_tracking.min_pages_for_trust;
+		// the Writers Template's pasted pictures (name → { bytes, sha, alt }) — the image path reads them by the picture line's name
+		run.pastedPictures = wt.doc.pictures ?? null;
 
 		// ---- trim front-matter; exclude an embedded media table --------------
 		// In a COMBINED docx the media table's PREAMBLE (the red

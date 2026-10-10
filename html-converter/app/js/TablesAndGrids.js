@@ -182,6 +182,10 @@ class TablesAndGrids {
 						let work = P0 ? P0.join(SEP) : c, changed = false;
 						const ir = irCfg ? this.cellImageRefs(work, run, irCfg, norm, links, P0 ? SEP : null) : null;
 						if (ir) { irImgs = ir.imgs; work = ir.text; changed = true; }
+						// THE WRITER'S PASTED PICTURE IN A KEPT CELL (Input_Doc_Rules.pasted_pictures): its token line renders as the
+						// picture in place through the same sentinels (cellPastedPictures); a hand-off box keeps the raw line.
+						const pz = this.cellPastedPictures(work, run, P0 ? SEP : null, irImgs ? irImgs.length : 0);
+						if (pz) { irImgs = (irImgs ?? []).concat(pz.imgs); work = pz.text; changed = true; }
 						const rq = this.cellRedRequests(work, run, norm, P0 ? SEP : null, links);
 						if (rq) { rqNotes = rq.notes; rqLinks = rq.links ?? []; work = rq.text; changed = true; }
 						if (changed) {
@@ -947,6 +951,33 @@ class TablesAndGrids {
 		if (!hits.length) return null;
 		let text = "", at = 0;
 		hits.forEach((h, i) => { text += s.slice(at, h.start) + `⟦CV2IMG${i}⟧`; at = h.end; });
+		text += s.slice(at);
+		return { text, imgs: hits.map((h) => h.img) };
+	};
+
+	/**
+	 * THE WRITER'S PASTED PICTURES IN A KEPT CELL (Input_Doc_Rules.pasted_pictures; env PASTEDPIC_OFF): every picture token
+	 * line of the cell («[image] pasted:<name>», its bracket in the red-span form or plain) becomes an image sentinel
+	 * (⟦CV2IMGn⟧, numbered after any cellImageRefs images — the `offset`) that fillImageRefs puts back as the picture's
+	 * own <img>; the file is registered on the run. Returns { text, imgs } or null when the cell holds no token.
+	 */
+	static cellPastedPictures(cell, run, sep = null, offset = 0) {
+		const s = String(cell ?? "");
+		if (s.indexOf("pasted:") < 0 || !run?.pastedPictures) return null;
+		const cfg = DataService.Data.InputDocRules?.pasted_pictures;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "PASTEDPIC_OFF"]) return null;
+		const bracket = (String(cfg.token ?? "[image] pasted:{name}").match(/^\[[^\]]*\]/)?.[0] ?? "[image]").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+		const re = new RegExp(`(?:\\u{1f534}\\[RED TEXT\\] ?)?${bracket}(?: ?\\[\\/RED TEXT\\]\\u{1f534})? ?(pasted:\\S+)`, "giu");
+		const hits = [];
+		for (const m of s.matchAll(re)) {
+			const rec = MediaBuilder.PastedPicture(m[1], run);
+			if (!rec) continue;
+			hits.push({ start: m.index, end: m.index + m[0].length, img: MediaBuilder.PastedImg(rec, run) });
+		}
+		if (!hits.length) return null;
+		let text = "", at = 0;
+		hits.forEach((h, i) => { text += s.slice(at, h.start) + `⟦CV2IMG${offset + i}⟧`; at = h.end; });
 		text += s.slice(at);
 		return { text, imgs: hits.map((h) => h.img) };
 	};

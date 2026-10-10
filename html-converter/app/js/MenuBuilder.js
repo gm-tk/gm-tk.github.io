@@ -265,6 +265,21 @@ class MenuBuilder {
 					tab1: "", tab2: "", content: "", left: "", right: "" };
 			}
 		}
+		// A MODULE'S OWN OVERVIEW COPY (menu.module_overrides.<code>.overview_from_alert; env MENUALERTCOPY_OFF): a simplified
+		// overview menu that would otherwise be empty takes the writer's front-matter alert block as its left column, under
+		// the row's label, with the row's right-column label standing alone — the one module whose finished page does that.
+		// Keyed by module code BY RULING, the one such key in the menu data; rendered through the fundamentals_li two-column shell.
+		{
+			const mo = DataService.Data.EmitTemplates.menu?.module_overrides?.[String(run?.moduleCode ?? "")]?.overview_from_alert;
+			if (mo && mo.enabled !== false && page?.isOverview && !menuItems.length && menuType === "simplified"
+				&& !(typeof process !== "undefined" && process.env && process.env[mo.env ?? "MENUALERTCOPY_OFF"])) {
+				const cols = this.#alertCopyColumns(page, mo);
+				if (cols) {
+					run.AddNote("info", "MenuBuilder", "Overview menu composed from the writer's front-matter alert block (menu.module_overrides." + run.moduleCode + ".overview_from_alert).");
+					return { kind: menuType, archetype: "fundamentals_li", funLiCols: cols, tab1: "", tab2: "", content: "", left: "", right: "" };
+				}
+			}
+		}
 		if (menuType === "none" || !menuItems.length) {
 			// An Inquiry overview with nothing to put in the menu ships NO menu (ENGFUN02) — menuTypeFor's
 			// none_becomes only serves a page that has menu content; an empty shell is never emitted.
@@ -1868,6 +1883,25 @@ class MenuBuilder {
 	 *   either lead line missing, or either column ending up with no real
 	 *   content (we never ship a visibly empty column)
 	 */
+	/** The front-matter alert block's paragraphs as the menu's two columns (menu.module_overrides.<code>.overview_from_alert):
+	 *  the first alert tag on the page and the black lines that follow it, each a <p>; null when the page has none. */
+	static #alertCopyColumns(page, mo) {
+		const items = page?.items ?? [];
+		const i = items.findIndex((it) => it && it.type === "tag" && it.parse?.primary?.tag === "alert");
+		if (i < 0) return null;
+		const lines = [];
+		const own = String(items[i].blackAfter ?? "").trim();
+		if (own) lines.push(...own.split("\n"));
+		for (let j = i + 1; j < items.length && items[j] && items[j].type === "black"; j++) lines.push(...String(items[j].text ?? "").split("\n"));
+		// the alert's own line and the black lines after it can repeat one paragraph (the tag's trailing text and the block it opens): one copy
+		const seen = new Set();
+		const paras = lines.map((l) => l.trim()).filter(Boolean).map((l) => "<p>" + ListsAndRuns.inlineMarkup(l) + "</p>")
+			.filter((h) => !seen.has(h) && seen.add(h));   // deduped on the RENDERED paragraph (the raw lines can differ by a mark the renderer drops)
+		if (!paras.length) return null;
+		const li = "<h5>" + Utils.EscapeHtml(mo.li_label ?? "Learning intentions") + "</h5>\n" + paras.join("\n");
+		const sc = "<h5>" + Utils.EscapeHtml(mo.sc_label ?? "") + "</h5>";
+		return [{ cls: mo.li_col_class ?? "col-md-6 offset-md-0 col-12 paddingR", html: li }, { cls: mo.sc_col_class ?? "col-md-6 offset-md-0 col-12 paddingL", html: sc }];
+	}
 	static #fundamentalsOverviewLi(menuItems, run, page, norm, cfg, menuType) {
 		if (!page.isOverview || this.isReoModule(run)) return null;
 		const row = this.fundamentalsLiRow(run, cfg, menuType);

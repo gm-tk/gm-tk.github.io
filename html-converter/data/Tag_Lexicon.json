@@ -18,6 +18,12 @@
 		"extension_rule": "New writer phrasing for an existing tag = append ONE alias here. New tag = add ONE entry here. Never a code change.",
 		"toggled_aliases": [
 			{
+				"_doc": "THE TILE EXPANSION IS A LESSON. A writer who continues a lesson as tiles opens each with «[tile expansion for formal debate Lesson 4.1]» / «[tile expansion for persuasive speech Lesson 4.2]» and gives it its own «[Lesson Overview] We are learning: / I can:» block; «tile» is a shape alias, so the opener resolved to the shape sub-tag, the pages it opens were bare [end page] splits with no lesson of their own, and their learning block reached no menu. As a lesson alias the opener is the page boundary of lesson 4.1 / 4.2 (the number the writer typed), its block the lesson menu, its continuation pages the lesson's. Env TILELESSON_OFF restores the shape reading.",
+				"tag": "lesson",
+				"aliases": ["tile expansion"],
+				"env": "TILELESSON_OFF"
+			},
+			{
 				"_doc": "Writers' spellings of existing widget tags that the alias lists lack — red brackets that would otherwise resolve to NO tag — merged into the alias map by TagNormaliser's constructor unless SPELLALIAS_OFF is set (a toggled group, so it can be switched off as a unit; the extension rule above is unchanged for untoggled additions). `[type and check]` (MXEO201, MXEX302, MXFL203, MXFUN01–03, SSCI205 — the gold builds typing quizzes there); `[click drops]` / `[clickdrops]`; `[radioquiz]`; `[carrousel]`. `[checkboxes]` is NOT here: the gold builds multiChoiceQuiz or selectionBox for it, no single target.",
 				"tag": "typing quiz",
 				"aliases": ["type and check"],

@@ -543,7 +543,15 @@ class ListsAndRuns {
 		let i = 0;
 		while (i < nodes.length) {
 			if (nodes[i].kind === "p") {
-				out.push(Utils.FillTemplate(tpl.elements.paragraph.form, { content: this.inlineMarkup(nodes[i].content, links, stitch) }));
+				{
+					let _ph = Utils.FillTemplate(tpl.elements.paragraph.form, { content: this.inlineMarkup(nodes[i].content, links, stitch) });
+					// a paragraph holding the interactive highlighter's span sits in its wrapper (highlighter_span.forms[].wrapper_open —
+					// the KB's `div.wordHighlighter`, the container the span's click handler needs)
+					const _hsf = (tpl.elements.inline_format_request?.highlight_forms?.highlighter_span?.forms ?? [])
+						.find((f) => f && f.wrapper_open && f.wrapper_marker_pattern && new RegExp(f.wrapper_marker_pattern).test(_ph));
+					if (_hsf) _ph = _hsf.wrapper_open + "\n" + _ph + "\n" + (_hsf.wrapper_close ?? "</div>");
+					out.push(_ph);
+				}
 				i++;
 			} else {
 				const [html, ni] = renderList(i, nodes[i].level);
@@ -598,6 +606,19 @@ class ListsAndRuns {
 		// token is NOT a clear bold/italic anchor, the anchor span is non-derivable, so the sentinel is
 		// dropped → plain text (the hover deferred). The sentinel never occurs in ordinary text, so
 		// non-infoTrigger lines are untouched.
+		// THE HIGHLIGHTED WORD'S SPAN (inline_format_request.highlight_forms.highlighter_span): the rejoin pass wrapped the marked word
+		// in U+E002 <form>:<colour> U+E004 word U+E003; the pair becomes the form's span here, after the escaping and the bold /
+		// italic conversion, so the writer's marks inside the word survive. An unknown form index drops the pair (plain text).
+		const _hl0 = String.fromCharCode(0xE002), _hl1 = String.fromCharCode(0xE003), _hl2 = String.fromCharCode(0xE004);
+		if (s.includes(_hl0)) {
+			const _hs = DataService.Data.EmitTemplates.elements?.inline_format_request?.highlight_forms?.highlighter_span;
+			s = s.replace(new RegExp(`${_hl0}(\\d+):([^${_hl2}]*)${_hl2}([^${_hl1}]*)${_hl1}`, "g"), (m, fi, colour, word) => {
+				const f = _hs?.forms?.[+fi];
+				// the span IS the mark: an answer-mark tick the earlier pass put on the word (✅who) leaves with it
+				const w = word.replace(/^(?:[✅✔✓☑]️?)+s*/u, "");
+				return f && f.span ? Utils.FillTemplate(f.span, { colour, word: w }) : w;
+			});
+		}
 		const _it0 = String.fromCharCode(0xE000), _it1 = String.fromCharCode(0xE001);
 		// THE HOVER DEFINITION'S OWN TEXT, at emission: every weave path hands its definition
 		// over in the sentinel, and some keep the writer's separator (`: the number of seeds that germinate`, `– prayer/chant`)

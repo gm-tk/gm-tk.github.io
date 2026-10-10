@@ -534,6 +534,10 @@ class DocxExtractor {
 			? await zip.ReadText("word/comments.xml") : "";
 
 		const rels = this.#parseRels(relsXml);
+		// THE WRITER'S PASTED PICTURES (Input_Doc_Rules.pasted_pictures; env PASTEDPIC_OFF): every word/media entry's bytes and
+		// SHA-256, and this document's rId → media name map, read once and carried on the rels map for the paragraph walk
+		const pictures = await this.#readPictures(zip, relsXml, rules);
+		if (pictures) Object.defineProperty(rels, "pictures", { value: pictures, enumerable: false });
 		const numFormats = this.#parseNumbering(numberingXml);
 		const comments = this.#parseComments(commentsXml);
 		const blocks = this.#parseDocument(documentXml, rels, numFormats, rules, comments);
@@ -562,7 +566,7 @@ class DocxExtractor {
 		// title later (front_matter_metadata data rule)
 		const metadata = this.#extractMetadata(blocks, rules);
 
-		return { blocks, rels, mtkFlag, hasContentStart, metadata };
+		return { blocks, rels, mtkFlag, hasContentStart, metadata, pictures: pictures ? pictures.byName : null };
 	};
 
 	/**
@@ -1815,6 +1819,148 @@ class DocxExtractor {
 	};
 
 	/**
+	 * THE WRITER'S PASTED PICTURES, read once per document (Input_Doc_Rules.pasted_pictures; env PASTEDPIC_OFF): every
+	 * word/media entry's bytes and SHA-256, and the document's rId → media-name map from the rels part (the internal
+	 * relationships #parseRels leaves out). Returns null when the rule is off or the document holds no media.
+	 * @returns {Promise<{cfg:Object, byId:Map<string,string>, byName:Map<string,Object>, furniture:Set<string>}|null>}
+	 */
+	static async #readPictures(zip, relsXml, rules) {
+		const cfg = rules.pasted_pictures;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "PASTEDPIC_OFF"]) return null;
+		const names = typeof zip.ListEntries === "function" ? zip.ListEntries("word/media/") : [];
+		if (!names.length) return null;
+		const byId = new Map();
+		for (const m of String(relsXml).matchAll(/<Relationship\b[^>]*>/g)) {
+			const tag = m[0];
+			if (/TargetMode="External"/.test(tag)) continue;
+			const id = tag.match(/\bId="([^"]+)"/)?.[1];
+			const target = tag.match(/\bTarget="([^"]+)"/)?.[1];
+			if (id && target && /(?:^|\/)media\//.test(target)) byId.set(id, this.#decodeXml(target).replace(/^.*?media\//, ""));
+		}
+		const subtle = (typeof globalThis !== "undefined" && globalThis.crypto && globalThis.crypto.subtle) ? globalThis.crypto.subtle : null;
+		const byName = new Map();
+		for (const entry of names) {
+			const name = entry.slice("word/media/".length);
+			if (!name || name.includes("/")) continue;
+			let bytes;
+			try { bytes = await zip.ReadBytes(entry); } catch { continue; }
+			let sha = null;
+			if (subtle) {
+				try { sha = Array.from(new Uint8Array(await subtle.digest("SHA-256", bytes))).map((b) => b.toString(16).padStart(2, "0")).join(""); } catch { sha = null; }
+			}
+			byName.set(name, { name, bytes, sha, ext: (name.match(/\.([a-z0-9]+)$/i)?.[1] ?? "").toLowerCase(), alt: "" });
+		}
+		return { cfg, byId, byName, furniture: new Set((cfg.furniture_sha256 ?? []).map((f) => String(f.sha256 ?? f).toLowerCase())) };
+	};
+
+	/**
+	 * One run's pasted picture, admitted by the filter: inline (not floating), at least min_px on both sides, more than
+	 * min_bytes, not a template graphic. Returns { name, w, h } (the alt is recorded on the registry record) or null.
+	 */
+	static #pastedPicture(runXml, pp) {
+		const cfg = pp.cfg;
+		let rId = null, w = null, h = null, floating = false, descr = "";
+		const d = runXml.match(/<w:drawing>([\s\S]*?)<\/w:drawing>/);
+		if (d) {
+			rId = d[1].match(/<a:blip\b[^>]*\br:embed="([^"]+)"/)?.[1] ?? null;
+			const ext = d[1].match(/<wp:extent\b[^>]*\bcx="(\d+)"[^>]*\bcy="(\d+)"/);
+			if (ext) { w = Math.round(parseInt(ext[1], 10) / 9525); h = Math.round(parseInt(ext[2], 10) / 9525); }
+			floating = /<wp:anchor\b/.test(d[1]);
+			descr = d[1].match(/<wp:docPr\b[^>]*\bdescr="([^"]*)"/)?.[1] ?? "";
+		} else {
+			const v = runXml.match(/<w:pict\b[\s\S]*?<\/w:pict>/);
+			if (!v) return null;
+			rId = v[0].match(/<v:imagedata\b[^>]*\br:id="([^"]+)"/)?.[1] ?? null;
+			const st = v[0].match(/style="([^"]*)"/)?.[1] ?? "";
+			const sw = st.match(/width:([\d.]+)pt/), sh = st.match(/height:([\d.]+)pt/);
+			if (sw) w = Math.round(parseFloat(sw[1]) * 96 / 72);
+			if (sh) h = Math.round(parseFloat(sh[1]) * 96 / 72);
+			floating = /position:\s*absolute/.test(st);
+		}
+		if (!rId) return null;
+		const name = pp.byId.get(rId);
+		const rec = name ? pp.byName.get(name) : null;
+		if (!rec) return null;
+		if (cfg.inline_only !== false && floating) return null;
+		const minPx = cfg.min_px ?? 48;
+		if (w !== null && h !== null && (w < minPx || h < minPx)) return null;
+		if (rec.bytes.length <= (cfg.min_bytes ?? 200)) return null;
+		if (rec.sha && pp.furniture.has(rec.sha)) return null;
+		if (cfg.alt_from_description !== false && descr && !rec.alt) rec.alt = this.#decodeXml(descr).trim();
+		return { name, w, h };
+	};
+
+	/** The picture-line test for one line of text (the data's token with its name as a wildcard); test it on #pastedPlain(line). */
+	static #pastedLineRe(cfg) {
+		const tok = String(cfg?.token ?? "[image] pasted:{name}").replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace("\\{name\\}", "\\S+");
+		return new RegExp("^" + tok + "$", "i");
+	};
+
+	/** A line with the red-span markers removed and its spacing settled — the form #pastedLineRe tests. */
+	static #pastedPlain(line) {
+		return String(line ?? "").replace(/\u{1f534}\[RED TEXT\] ?| ?\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+	};
+
+	/**
+	 * Places a parsed top-level paragraph: the block itself, then one block per picture line it carried (a paragraph with
+	 * words puts its pictures after the words — the finished page's order). With skip_after_red, a picture-only block
+	 * right after a mostly red paragraph is left out (the picture belongs to the writer's instruction).
+	 */
+	static #pushWithPictures(blocks, block, rels, rules = null, state = null) {
+		const pp = rels?.pictures;
+		if (!pp) { blocks.push(block); return; }
+		const cfg = pp.cfg;
+		const lineRe = this.#pastedLineRe(cfg);
+		const prev = blocks.length ? blocks[blocks.length - 1] : null;
+		const prevRed = !!prev && prev.kind === "para" && typeof prev.redShare === "number" && prev.redShare >= (cfg.red_share_min ?? 50);
+		const onlyPictures = block.text.split("\n").every((l) => !l.trim() || lineRe.test(this.#pastedPlain(l)));
+		// no picture before the module's content start: the template's front matter carries the writer's cover and
+		// checklist pictures, and a picture block there would itself read as the content start (every lesson folds away)
+		const before = !!state && !state.seen;
+		if (onlyPictures && (before || (cfg.skip_after_red !== false && prevRed))) return;
+		const extra = block.pictures ?? null;
+		if (extra) delete block.pictures;
+		blocks.push(block);
+		if (state && !state.seen && rules && this.IsContentStart(block, null, rules)) state.seen = true;
+		if (extra && !before && !(block.redShare !== null && block.redShare >= (cfg.red_share_min ?? 50))) {
+			for (const t of extra) blocks.push({ kind: "para", text: t, links: [], wtPage: block.wtPage, list: "", listLevel: 0 });
+		}
+	};
+
+	/**
+	 * Removes the pasted-picture lines from a document that is NOT the Writers Template (a separate Media List, a
+	 * reference document): their pictures never reach a page. Edits the blocks in place and returns them.
+	 */
+	static StripPastedTokens(blocks) {
+		const cfg = DataService.Data.InputDocRules?.pasted_pictures;
+		if (!cfg || cfg.enabled === false || !Array.isArray(blocks)) return blocks;
+		const lineRe = this.#pastedLineRe(cfg);
+		const marker = DataService.Data.InputDocRules.table_markers?.in_cell_line_break ?? " / ";
+		for (let i = blocks.length - 1; i >= 0; i--) {
+			const b = blocks[i];
+			if (!b) continue;
+			if (b.kind === "para" && typeof b.text === "string" && b.text.indexOf("pasted:") >= 0 && b.text.split("\n").some((l) => lineRe.test(this.#pastedPlain(l)))) {
+				const kept = b.text.split("\n").filter((l) => !lineRe.test(this.#pastedPlain(l)));
+				if (kept.join("").trim()) b.text = kept.join("\n"); else blocks.splice(i, 1);
+			} else if (b.kind === "table" && Array.isArray(b.rows)) {
+				b.rows = b.rows.map((row) => this.StripPastedCells(row, marker));
+			}
+		}
+		return blocks;
+	};
+
+	/** The same for one table row's cell strings (the cell's lines are joined by the in-cell marker). */
+	static StripPastedCells(cells, marker) {
+		const cfg = DataService.Data.InputDocRules?.pasted_pictures;
+		if (!cfg || cfg.enabled === false || !Array.isArray(cells)) return cells;
+		const lineRe = this.#pastedLineRe(cfg);
+		const sep = marker ?? (DataService.Data.InputDocRules.table_markers?.in_cell_line_break ?? " / ");
+		return cells.map((c) => typeof c === "string" && c.indexOf("pasted:") >= 0
+			? c.split(sep).filter((l) => !lineRe.test(this.#pastedPlain(l))).join(sep) : c);
+	};
+
+	/**
 	 * Reads word/numbering.xml just deeply enough to answer one question
 	 * per numId: bullet list or numbered list?
 	 *
@@ -2031,6 +2177,7 @@ class DocxExtractor {
 		// walk top-level elements: tables first (they contain paragraphs,
 		// so we must not double-read their inner w:p as body paragraphs)
 		let pos = 0;
+		const _pstate = { seen: false };   // the module's content start seen — no picture block before it (the template's front-matter pictures)
 		while (pos < body.length) {
 			const nextP = body.indexOf("<w:p ", pos);
 			const nextP2 = body.indexOf("<w:p>", pos);
@@ -2076,7 +2223,7 @@ class DocxExtractor {
 					const all = pendingComments.length ? [...pendingComments, ...found] : found;
 					pendingComments = [];
 					if (all.length) block.comments = all;
-					blocks.push(block);
+					this.#pushWithPictures(blocks, block, rels, rules, _pstate);
 				} else if (found.length) {
 					// anchor sits in an empty (e.g. image-only) paragraph that is dropped —
 					// carry its comments to the next kept block (nearest real element after).
@@ -2317,6 +2464,7 @@ class DocxExtractor {
 		const links = [];
 		// pieces: [{ text, red, bold, italic }] in order — grouped later
 		const pieces = [];
+		const picsHere = [];   // the writer's pasted pictures in this paragraph (Input_Doc_Rules.pasted_pictures)
 		// The near-red BRACKET DEPTH left open by earlier near-red runs of this
 		// paragraph — a bracket-less near-red run INSIDE an open tag (Word split the tag
 		// across runs) stays red, exactly as a standard-red run would; a black run with
@@ -2361,6 +2509,11 @@ class DocxExtractor {
 			// runs inside this segment
 			for (const rm of seg.matchAll(/<w:r\b[\s\S]*?<\/w:r>/g)) {
 				const run = rm[0];
+				// a pasted picture inside this run (a drawing's r:embed, or the older VML picture) — kept when the filter admits it
+				if (rels?.pictures && (run.indexOf("<w:drawing>") >= 0 || run.indexOf("<w:pict") >= 0)) {
+					const pic = this.#pastedPicture(run, rels.pictures);
+					if (pic) picsHere.push(pic);
+				}
 				// run text: all w:t contents + tabs as spaces — PLUS soft line breaks.
 				// THE SOFT LINE BREAK. When a writer presses Shift+Enter, Word stores a
 				// <w:br/> INSIDE the paragraph; a w:t-only extraction would silently delete
@@ -2856,6 +3009,29 @@ class DocxExtractor {
 
 		const blk = { kind: "para", text: out, links, wtPage: page.current, list, listLevel };
 		if (marks.length) blk.marks = marks;
+		// the share of this paragraph's characters typed in red (the template's instruction colour) — a side-channel the
+		// pasted-picture rule reads (a picture inside a red instruction, or right after one, is the writer's note, not content)
+		{
+			const all = pieces.reduce((n, p) => n + p.text.length, 0);
+			blk.redShare = all ? Math.round(100 * pieces.filter((p) => p.red).reduce((n, p) => n + p.text.length, 0) / all) : null;
+		}
+		if (picsHere.length) {
+			const cfg = rels.pictures.cfg;
+			if (!(blk.redShare !== null && blk.redShare >= (cfg.red_share_min ?? 50))) {
+				// the token's bracket is emitted as a RED span (the template's tag colour, the extractor's own marker form), so the
+				// normaliser reads «[image]» as the tag and the name as the words after it; the registry record is marked admitted
+				const mo = rules.red_runs?.marker_open ?? "\u{1f534}[RED TEXT] ", mc = rules.red_runs?.marker_close ?? " [/RED TEXT]\u{1f534}";
+				const toks = picsHere.map((p) => {
+					const rec = rels.pictures.byName.get(p.name);
+					if (rec) rec.admitted = true;
+					const tok = Utils.FillTemplate(cfg.token ?? "[image] pasted:{name}", { name: p.name });
+					const m = /^(\[[^\]]*\])(.*)$/s.exec(tok);
+					return m ? mo + m[1] + mc + m[2] : tok;
+				});
+				if (!blk.text.trim()) blk.text = toks.join("\n");   // a picture-only paragraph IS the image line(s)
+				else blk.pictures = toks;                            // a paragraph with words: the lines follow it (the caller places them)
+			}
+		}
 		// A paragraph whose tag span came from a HYPERLINKED run is
 		// marked on a side-channel (never in the text, so red-span granularity and every
 		// downstream byte are identical by construction): MediaBuilder.media reads it to
@@ -2930,6 +3106,7 @@ class DocxExtractor {
 					// is its paragraphs joined) — computed before this paragraph joins them
 					const before = paras.join(rules.table_markers.in_cell_line_break);
 					if (block.text.trim()) paras.push(block.text.trim());
+					if (block.pictures) { paras.push(...block.pictures); delete block.pictures; }   // the writer's pasted pictures: lines of the cell
 					const nid = numFormats ? pm[0].match(/<w:numId w:val="(\d+)"/)?.[1] : null;
 					const nlv = parseInt(pm[0].match(/<w:ilvl w:val="(\d+)"/)?.[1] ?? "0", 10);
 					const nkind = nid ? (this.#levelKind(numFormats, nid, nlv, rules) ?? numFormats.get(nid)) : null;
