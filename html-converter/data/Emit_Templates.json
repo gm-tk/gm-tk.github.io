@@ -478,6 +478,13 @@
 				"body_shift": 1,
 				"min_tag": "h2",
 				"max_tag": "h5",
+				"writer_digit_prefixes": {
+					"_doc": "THE SERIES THAT KEEP THE WRITER'S DIGIT. In most series the finished page re-bases its body outline from h3 (the body shift above and the page re-leveller), but in the series listed here the developers keep the writer's own heading digit — «[H2]» stays an h2, «[H3]» an h3 — on the page's free-body headings (measured on the typed headings found on both pages: PES keeps the h2 on 48 of 77, WJFUN 19 of 30, HPFUN 10 of 16, CEDT 30 of 47, each ≥ 0.60, their H3 / H4 kept 0.77 – 1.00). For a module whose code's letter prefix is one of these, the body shift is 0 and the page re-leveller leaves the page alone; every other series keeps the shift and the re-level. Env HEADDIGIT_OFF.",
+					"enabled": false,
+					"_doc_state": "DECLINED ON MEASUREMENT (enabled false; the shipped corpus is its OFF state). Built and measured on the four series (55 modules regenerated, 47 changed): the skeleton fell −0.01 pp with 42 pages up and 36 down, 33 of the dips real (PES1003 9.0 −8.79, CEDT501 2.0 −5.86 / 5.0 −5.75, PES1004 5.0 −4.72) — the series' 0.62 – 0.64 «keep» share is an average of per-module habits (the modules that shift the ladder lose what the modules that keep it gain), and the page re-leveller's ladder was doing more of the gold's work than the series share showed. A per-module key is not a rule (DATA OVER CODE); the block stays as the record of the measurement.",
+					"env": "HEADDIGIT_OFF",
+					"prefixes": ["PES", "WJFUN", "HPFUN", "CEDT"]
+				},
 				"relevel_headroom": 6,
 				"_relevel_headroom_note": "The body emission normally clamps to h5, but when #relevelHeadings is active it RANKS the page's distinct heading levels back into h3..max_level — so the emission is allowed ONE extra intermediate level (h6) for a writer [H5]. Without it [H4]->h5 and [H5]->h5 collapse before the re-leveller sees them, so a genuine 3-level [H3]/[H4]/[H5] page (e.g. OSAI401-04: human h3 'Data, data, data' > h4 'How AI uses data' > h5 'Data collection'…) would lose its third level. With the headroom the re-leveller sees {h4,h5,h6}->{h3,h4,h5} and reproduces the human's hierarchy. The h6 is intermediate only — the re-leveller always normalises it into base..max_level; when re-levelling is disabled the ceiling stays h5 so no h6 reaches the output.",
 				"lesson_first_h2": "Becomes the page's body <h3> with any leading 'Lesson N' / 'Lesson N:' prefix stripped (the lesson number already lives in the header/module-code).",
@@ -961,6 +968,14 @@
 				"env": "VIDTIMEUPTO_OFF",
 				"pattern": "\\b(?:up\\s*to|until)\\s*:?\\s*(\\d{1,2})[:.](\\d{2})",
 				"_doc": "'(up to 1:38)', 'until 3:16' is an end time too, read when end_pattern finds none."
+			},
+			"next_line": {
+				"enabled": true,
+				"env": "VIDTIMELINE_OFF",
+				"request_pattern": "^[\\[(]?\\s*(?:please\\s+)?crop\\b",
+				"from_start_pattern": "\\b(?:from\\s+)?the\\s+beginning\\b|\\bstart(?:s|ing)?\\s+(?:at\\s+the\\s+)?beginning\\b",
+				"to_end_pattern": "\\bto\\s*:?\\s*(\\d{1,2})[:.](\\d{2})",
+				"_doc": "THE CROP REQUEST ON THE LINE AFTER THE VIDEO. The writer types the crop as its own red bracket on the next line — «[Please crop this video from the beginning to 2.41]», «[Crop: start beginning, end at 0:11]» — and the video's own line holds no crop: the request is read for the embed (request_pattern names it; «from the beginning» / «start beginning» is start 0 — from_start_pattern; a bare «to M.SS» after it is the end — to_end_pattern, read when end_pattern finds none) and the line is consumed, so it no longer ships as a Writers Note beside an uncropped frame. A next line that is anything else (a parsed tag, learner text, a second video) leaves the embed as before."
 			},
 			"next_spans": {
 				"enabled": true,
@@ -1568,10 +1583,17 @@
 			"kinds": ["video"],
 			"item_pattern": "\\[\\s*(?:insert\\s+)?(?:media\\s+)?item\\s*(\\d*)\\s*\\]",
 			"row_type_pattern": "video",
-			"kind_words": ["video", "videos", "youtube", "you", "tube", "vimeo", "animation", "movie", "clip", "link", "insert", "embed", "mp4", "mov", "item"],
+			"kind_words": ["video", "videos", "youtube", "you", "tube", "vimeo", "animation", "movie", "clip", "link", "insert", "embed", "mp4", "mov", "item", "interactive"],
 			"min_word_chars": 2,
 			"same_page_weight": 10,
 			"used_penalty": 5,
+			"title_only": {
+				"_doc": "THE VIDEO NAMED BY ITS TITLE ALONE TAKES ITS MEDIA LIST ROW. A video request with no address and no «[Item N]» — «[Interactive: Video: Sustainable Development Goals]», «[interactive: video – Biomass Energy]», «[Insert video: contemporary dance – how to get started]» — names its Media List row by the words in its brackets; the row carries the address and the finished page embeds it, where the page shipped the missing-source flag. The words reading above runs for such a tag when its title words (the kind words removed) number at least min_words and the unique best row shares at least min_score of them; a title-less tag, a tie or a one-word share still leaves the flag.",
+				"enabled": true,
+				"env": "MLTITLEROW_OFF",
+				"min_words": 2,
+				"min_score": 2
+			},
 			"unwrap_pattern": "^https?://[^/]*safelinks\\.protection\\.outlook\\.com/\\?url=([^&\\s]+)",
 			"embed_host_pattern": "youtu\\.?be|youtube\\.com|vimeo\\.com",
 			"not_embeddable_flag": "{label} — the Media List address is not one the page can embed; re-host the video: {url}",
@@ -4616,16 +4638,42 @@
 			"filename_istock": "iStock-{id}.jpg",
 			"pair_board": {
 				"_doc": "THE SERIES' CLICK-DROP PAIR BOARD. In the module series named by module_pattern the writer types each pop-out of the «Optional activities» set as a PAIR of tags — «[Clickdrop N Image] same image from BLL110» then «[Clickdrop N text] …» — followed by the pop-out's own members (black lines, «[video]» tags with their addresses, a «[carousel]» of «[video N]» tags) and, after the last pair, an upload button or a quiz trigger. The general composer declines the form (the picture is another module's, not an address; the members are mixed) and the set ships as a hand-off box, where every finished page in the series carries the click-drop BOARD (tiles in rows, then one clickDropContent panel per tile — the form the modal spelling already builds, modal_sets.as_clickdrop). This builder reads the pairs: the tile is the referenced module's placeholder picture (modal.image_reference's naming and its one note per widget) or the pair's own picture address; the panel is the gold's viewer form (panel_open / panel_close) holding the text tag's words and every member up to the next pair — black lines as paragraphs, a video tag (or a bare address line, or the address on the line after the tag) as the site's video embed, a carousel wrapper dropped around its videos; a member that is none of these ends the panels and follows the board as a red Writers Note in the writer's own words (the upload button, the engagement trigger) — never dropped. Two or more pairs (min_sets), every one with a picture, else the builder declines and the hand-off box stands. Env CDPAIRBOARD_OFF.",
-				"enabled": false,
-				"_doc_state": "BUILT AND INERT (enabled false). Measured on the 18 BLL2xx modules carrying the pair spelling: six changed; BLL220 +0.21 and BLL230 +4.23 on the scaffold (42 of 42 panels), BLL240 −0.51 and BLL250 −1.15 with the content overlap up (placement), but BLL260 −3.82 and BLL270 −7.05 with the overlap DOWN — their sets build only in part (12 of 35 and 19 of 24 panels; the rest decline into hand-off boxes beside the built boards). Until the series' other spellings are read (a picture address instead of the referenced module, a designer note or a flip-card request among the members, a set whose text tag precedes its picture), the rule stays off; the shipped corpus is its OFF state.",
+				"enabled": true,
+				"_doc_spellings": "THE SERIES' OTHER SPELLINGS, each behind its own key. black_tags: a pair tag typed in black (underlined, carrying its address as a hyperlink) counts — as a member, and (lead_picture) as the activity's lead line when the capture starts at the first TEXT tag: the lead's trailing lines from that black «[Clickdrop 1 Image]» on are read for the first set's picture (never re-rendered — the lead stream keeps them). address_line: a tag with no address and no module reference takes the address from the member after it — a bare address, or the writer's cross-reference («same image and button BLL260, activity 1F») + address, whose words become one red Writers Note per wording; an empty bracket piece between them is skipped. The split «[» / «Clickdrop 5 Image» / «] …» reads as the tag (image_pattern tolerates a missing bracket; a leading «]» is stripped). empty_line_pattern: a black line that is only a bullet glyph is skipped. no_picture_filename: a set whose picture never came gets a placeholder tile under this name (one note per board). info_trigger: an «[Info trigger: DEF]» member mid-sentence is woven onto the word before it (the inline hover's own sentinel), and the «]» piece's words continue the sentence. modal_member: a «[modal] Title» member inside a set, with its [body] lines and table, becomes the finished page's text button + pop-out inside the panel (the modal set's own modal_open / modal_close, the size below); a pop-out with no title keeps its words in the panel. A [body] member's words inside a set are a paragraph; a table member is the panel's table.",
 				"env": "CDPAIRBOARD_OFF",
 				"module_pattern": "^BLL\\d",
-				"image_pattern": "^\\[\\s*click\\s*drop\\s*(\\d+)\\s*image\\b",
-				"text_pattern": "^\\[\\s*click\\s*drop\\s*(\\d+)\\s*text\\b",
+				"image_pattern": "^\\[?\\s*(?:click\\s*drop|modal)\\s*(\\d+)\\s*image\\b",
+				"text_pattern": "^\\[?\\s*(?:click\\s*drop|modal)\\s*(\\d+)\\s*text\\b",
+				"pair_tags": ["click drop", "modal"],
+				"_doc_mixed": "THE MIXED SET. Some documents in the series spell one set's pop-outs both ways — «[Modal 1 Image]» … «[Modal 4 text]» then «[Clickdrop 5 Image]» / «[Clickdrop 6 text]» in the same «Optional activities» set — so the capture is a modal bundle holding click-drop pairs (or the reverse), which neither composer reads whole: the modal set's board declines the foreign tags and the set falls to a hand-off box. image_pattern / text_pattern and pair_tags accept both spellings as the same pair; from_modal_mixed lets the modal builder hand such a MIXED bundle (at least one pair tag of each spelling) to this board before its own forms — a bundle spelled one way throughout keeps its own builder (the modal set's board, with that family's panel wrapper).",
+				"from_modal_mixed": true,
 				"skip_tag_pattern": "^(?:carousel)$",
+				"black_tags": true,
+				"lead_picture": true,
+				"address_line": true,
+				"empty_line_pattern": "^[•·\\-–*]?\\s*$|^[.,;:!?]$",
+				"_doc_members": "WHAT ENDS THE PANELS AND WHAT STAYS IN THEM. Only a tag in tail_tags (the set's upload button, the engagement trigger) ends the panels and follows the board as a red Writers Note. Inside a set: a link_tags member («[Link + audio]» with its hyperlink) is a link paragraph (the link template; a link whose address comes on the next piece waits for it); a bare address the panel cannot embed (a SharePoint or Drive document) and any other red request («Can you please work some magic …») are red Writers Notes INSIDE the panel, the developer's as on every page — never dropped, never a reason to decline the board.",
+				"tail_tags": ["button", "engagement quiz button"],
+				"link_tags": ["external link"],
+				"link": "<p><a href=\"{url}\" target=\"_blank\">{words}</a></p>",
+				"no_picture_filename": "click-drop-{n}-picture.png",
+				"no_picture_note": "the click-drop tiles the writer named no picture for — supply one per numbered tile",
+				"info_trigger": {
+					"enabled": true,
+					"tag": "info trigger"
+				},
+				"modal_member": {
+					"enabled": true,
+					"button": "<div class=\"button TKmodalButton\">{title}</div>",
+					"size": "L"
+				},
+				"_doc_panels": "THE PANELS FOLLOW THE TILE ROWS BARE. The pages that carry the pair spelling put every clickDropContent straight after the tile rows (no row / column around them), where the modal spelling's pages wrap them in a row and a col-12 (modal_sets.as_clickdrop's panels_open) — so this board passes its own empty wrappers to the shared board renderer.",
+				"panels_open": "",
+				"panels_close": "",
 				"min_sets": 2,
-				"panel_open": "<div class=\"col-md-12 col-12 viewer\">\n<div class=\"item\">",
-				"panel_close": "</div>\n</div>"
+				"_doc_panel": "THE PANEL'S INSIDE IS BARE TOO. Three of the eight pages carrying the pair spelling wrap each panel's words in a viewer column and an item box (the developer's own habit — BLL220, BLL230, BLL240); the other five put the words straight inside the clickDropContent, the series' majority form, so panel_open / panel_close are empty here (a page's own viewer habit is the human's, recorded, not chased).",
+				"panel_open": "",
+				"panel_close": ""
 			},
 			"image_member": {
 				"enabled": true,

@@ -7535,6 +7535,15 @@ class InteractiveBuilder {
 	 */
 	static #modal({ bundle, tpl, renderInline, renderBlock, renderNested, renderTable, renderImage, run }) {
 		if (!tpl || tpl.enabled === false) return null;
+		// THE MIXED SET — modal pairs and click-drop pairs in one bundle («[Modal 1 Image]» … «[Clickdrop 5 Image]») — is the series'
+		// click-drop board (clickDrop.pair_board.from_modal_mixed; env CDPAIRBOARD_OFF): a set spelled one way throughout keeps the
+		// forms below, so every modal those forms build is unchanged
+		const cdTpl = DataService.Data.EmitTemplates.interactive_builders?.clickDrop;
+		const pb = cdTpl?.pair_board;
+		if (pb && pb.enabled !== false && pb.from_modal_mixed && this.#pairBoardMixed(bundle, pb)) {
+			const board = this.#clickDropPairBoard({ bundle, tpl: cdTpl, run, renderBlock, renderTable, renderInline });
+			if (board) return board;
+		}
 		// The IMAGE-PAIR form (the WRITER'S modal) is tried FIRST — repeated
 		// "[modal][image] <iStock URL>" triggers each followed by its [body]/black content
 		// (OSOH501-01's six ergonomics modals; the writer's CS note asks for exactly this).
@@ -8536,7 +8545,8 @@ class InteractiveBuilder {
 			rows.push((ac.row_open ?? "<div class=\"row\">") + nl + cols.join(nl) + nl + (ac.row_close ?? "</div>"));
 		}
 		const panels = boards.map((b) => (ac.panel_open ?? "<div class=\"clickDropContent\">") + nl + b.content + nl + (ac.panel_close ?? "</div>"));
-		return [...rows, ac.panels_open ?? "<div class=\"row\">" + nl + "<div class=\"col-12\">", ...panels, ac.panels_close ?? "</div>" + nl + "</div>"].join(nl);
+		// an empty wrapper (a board whose pages put the panels bare after the tile rows) adds no line
+		return [...rows, ac.panels_open ?? "<div class=\"row\">" + nl + "<div class=\"col-12\">", ...panels, ac.panels_close ?? "</div>" + nl + "</div>"].filter((x) => x !== "").join(nl);
 	}
 
 	static #modalRenderSets(sets, { tpl, cfg, inline, run, renderBlock, renderNested, size = null }) {
@@ -12431,6 +12441,22 @@ class InteractiveBuilder {
 		return { open: tpl.open, close: tpl.close };
 	}
 
+	/** True when a bundle's members carry pair tags of BOTH spellings (a «[Modal N Image/text]» and a «[Clickdrop N Image/text]»),
+	 *  read with the pair board's own image / text patterns — the mixed set the modal builder hands to the board. */
+	static #pairBoardMixed(bundle, pb) {
+		const img = pb.image_pattern ?? "^\\[?\\s*(?:click\\s*drop|modal)\\s*(\\d+)\\s*image\\b";
+		const txt = pb.text_pattern ?? "^\\[?\\s*(?:click\\s*drop|modal)\\s*(\\d+)\\s*text\\b";
+		const re = new RegExp(`(?:${img})|(?:${txt})`, "i");
+		const kinds = new Set();
+		for (const m of bundle?.memberItems ?? []) {
+			if (!m || m.type !== "tag") continue;
+			const t = String(m.parse?.primary?.tag ?? "").toLowerCase();
+			if (t !== "modal" && t !== "click drop") continue;
+			if (re.test(String(m.text ?? "").replace(/^[\s\[\]]+/, "").trim())) kinds.add(t);
+		}
+		return kinds.size >= 2;
+	}
+
 	/**
 	 * THE SERIES' CLICK-DROP PAIR BOARD (clickDrop.pair_board; env CDPAIRBOARD_OFF): «[Clickdrop N Image] same image from
 	 * BLL110» / «[Clickdrop N text] …» pairs, each text followed by its members (black lines, video tags and their addresses,
@@ -12439,7 +12465,7 @@ class InteractiveBuilder {
 	 * the video embeds in the finished page's viewer form; the trailing lines follow the board as red Writers Notes. Returns
 	 * the board's markup, or null when the bundle is not this form (the hand-off box then stands).
 	 */
-	static #clickDropPairBoard({ bundle, tpl, run, renderBlock }) {
+	static #clickDropPairBoard({ bundle, tpl, run, renderBlock, renderTable, renderInline }) {
 		const cfg = tpl?.pair_board;
 		if (!cfg || cfg.enabled === false) return null;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "CDPAIRBOARD_OFF"]) return null;
@@ -12447,84 +12473,232 @@ class InteractiveBuilder {
 		const mcfg = DataService.Data.EmitTemplates.interactive_builders?.modal?.modal_sets;
 		const ac = mcfg?.as_clickdrop;
 		if (!ac || ac.enabled === false || typeof renderBlock !== "function") return null;
-		const members = bundle?.memberItems ?? [];
+		let members = (bundle?.memberItems ?? []).filter(Boolean);
 		if (!members.length) return null;
-		const imgRe = new RegExp(cfg.image_pattern ?? "^\\[\\s*click\\s*drop\\s*(\\d+)\\s*image\\b", "i");
-		const txtRe = new RegExp(cfg.text_pattern ?? "^\\[\\s*click\\s*drop\\s*(\\d+)\\s*text\\b", "i");
+		const imgRe = new RegExp(cfg.image_pattern ?? "^\\[?\\s*click\\s*drop\\s*(\\d+)\\s*image\\b", "i");
+		const txtRe = new RegExp(cfg.text_pattern ?? "^\\[?\\s*click\\s*drop\\s*(\\d+)\\s*text\\b", "i");
 		const skipRe = new RegExp(cfg.skip_tag_pattern ?? "^(?:carousel)$", "i");
+		const emptyRe = cfg.empty_line_pattern ? new RegExp(cfg.empty_line_pattern, "u") : null;
+		const blackTags = cfg.black_tags !== false;           // the pair tag typed in black (underlined, a hyperlink) counts
+		const addressLine = cfg.address_line !== false;       // the picture's address on the member after its tag
+		const itCfg = cfg.info_trigger, itOn = !!itCfg && itCfg.enabled !== false;
+		const itTag = String(itCfg?.tag ?? "info trigger").toLowerCase();
+		const mmCfg = cfg.modal_member, mmOn = !!mmCfg && mmCfg.enabled !== false && typeof renderTable === "function" && !!mcfg.modal_open;
+		const tailTags = new Set((cfg.tail_tags ?? ["button", "engagement quiz button"]).map((t) => String(t).toLowerCase()));
+		const linkTags = new Set((cfg.link_tags ?? []).map((t) => String(t).toLowerCase()));
+		const linkTpl = cfg.link ?? null;
+		const IT0 = String.fromCharCode(0xE000), IT1 = String.fromCharCode(0xE001);
 		const ytRe = new RegExp(DataService.Data.AcksFormats?.extraction_regexes?.youtube_id ?? "[?&]v=([\\w-]{11})|youtu\\.be\\/([\\w-]{11})", "i");
 		const vt = DataService.Data.EmitTemplates.video?.youtube;
 		const ir = mcfg.image_reference;
 		const irOn = !!ir && ir.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ir.env ?? "MODALIMGREF_OFF"]);
 		const idOf = (x) => { const m = String(x ?? "").match(ytRe); return m ? (m[1] ?? m[2] ?? m[3] ?? null) : null; };
 		const embed = (id) => (id && vt ? Utils.FillTemplate(vt, { videoId: id, params: "" }) : null);
+		const textOf = (m) => String(m.text ?? "").trim();
+		const afterOf = (m) => String(m.blackAfter ?? "").trim();
+		const combOf = (m) => `${textOf(m)} ${afterOf(m)}`.replace(/\s+/g, " ").trim();
+		const stripBr = (s) => String(s ?? "").replace(/^[\s\[\]]+/, "").trim();   // «] same image …» → «same image …»
+		const urlOf = (m) => (m.block?.links ?? []).map((l) => String(l?.target ?? "")).find((t) => /^https?:\/\//i.test(t))
+			?? (combOf(m).match(/https?:\/\/\S+/)?.[0] ?? null);
+		const tagOf = (m) => (m.type === "tag" ? String(m.parse?.primary?.tag ?? "").toLowerCase() : null);
+		// a decline leaves its reason in the run's notes (the hand-off box stands), so a set this builder cannot read is named
+		const decline = (why, m) => { run?.AddNote?.("info", "InteractiveBuilder", `click-drop pair board declined — ${why}${m ? `: «${combOf(m).slice(0, 80)}»` : ""}`); return null; };
+		// a pair tag: the red «[Clickdrop N Image]» / «[Clickdrop N text]» (or the set's other spelling, pair_tags), the same words typed in
+		// black, or the split «[» / «Clickdrop N Image»
+		const pairTags = new Set((cfg.pair_tags ?? ["click drop"]).map((t) => String(t).toLowerCase()));
+		const pairMatch = (m, re) => {
+			if (m.type !== "tag" && !(blackTags && m.type === "black")) return null;
+			const t = tagOf(m);
+			if (m.type === "tag" && t && !pairTags.has(t)) return null;
+			return re.exec(stripBr(combOf(m)));
+		};
+		// THE FIRST SET'S PICTURE IN THE ACTIVITY'S LEAD: a black-typed «[Clickdrop 1 Image]» line (and its address line) sits before the
+		// first red tag, so the capture starts at the text tag; the lead's trailing lines from that tag on are read here (never re-rendered —
+		// the lead stream keeps them)
+		if (cfg.lead_picture !== false && pairMatch(members[0], txtRe) && !pairMatch(members[0], imgRe)) {
+			const lead = (bundle?.activityLeadItems ?? []).filter(Boolean);
+			let at = -1;
+			for (let i = lead.length - 1; i >= 0; i--) if (pairMatch(lead[i], imgRe)) { at = i; break; }
+			if (at >= 0) members = [...lead.slice(at), ...members];
+		}
 		const sets = [], tail = [], notes = [];
-		let cur = null, pendingVideo = false;
+		const addNote = (n) => { if (n && !notes.includes(n)) notes.push(n); };
+		let cur = null, pendingVideo = false, modal = null;
+		const flushPara = () => { if (cur && cur.para != null) { const p = cur.para.trim(); cur.para = null; cur.itOpen = false; if (p) cur.chunks.push(...renderBlock(p)); } };
+		const closeModal = () => {
+			if (!modal) return;
+			const body = modal.chunks.join("\n");
+			if (modal.title && body) {
+				cur.chunks.push(Utils.FillTemplate(mmCfg.button, { title: modal.title }));
+				cur.chunks.push(Utils.FillTemplate(mcfg.modal_open, { size: mmCfg.size ?? mcfg.default_size ?? "M" }) + "\n" + body + "\n" + (mcfg.modal_close ?? "</div>"));
+			} else if (body) cur.chunks.push(body);   // a pop-out the writer gave no title: its words stay in the panel
+			modal = null;
+		};
+		const pushText = (text) => { flushPara(); cur.chunks.push(...renderBlock(text)); };
 		for (const m of members) {
-			if (!m) continue;
-			const isTag = m.type === "tag";
-			const tag = isTag ? String(m.parse?.primary?.tag ?? "") : null;
-			const tagText = isTag ? String(m.text ?? "").trim() : "";
-			const after = String(m.blackAfter ?? "").trim();
+			const tag = tagOf(m), after = afterOf(m), text = textOf(m);
 			let mm;
-			if (isTag && (mm = imgRe.exec(tagText))) {
-				if (tail.length) return null;   // a picture after the set's trailing lines: not this form
+			if ((mm = pairMatch(m, imgRe))) {
+				if (tail.length) return decline("a picture after the set's trailing lines", m);   // not this form
+				flushPara(); closeModal();
 				if (cur) sets.push(cur);
-				cur = { num: mm[1], filename: null, chunks: [] };
+				cur = { num: mm[1], filename: null, chunks: [], para: null, itOpen: false, open: addressLine };
 				pendingVideo = false;
-				const own = `${tagText} ${after}`;
-				const url = (m.block?.links ?? []).map((l) => String(l?.target ?? "")).find((t) => /^https?:\/\//i.test(t)) ?? (own.match(/https?:\/\/\S+/)?.[0] ?? null);
+				const url = urlOf(m);
 				if (url) {
 					const fn = this.#accImageFilename(url, mcfg, mcfg);
-					if (!fn) return null;
+					if (!fn) return decline("the picture's address is not an asset", m);
 					cur.filename = fn;
 				} else {
-					const rm = irOn ? own.match(new RegExp(ir.pattern, "i")) : null;
-					if (!rm) return null;
-					cur.filename = Utils.FillTemplate(ir.filename, { code: rm[1].toLowerCase(), n: mm[1] });
-					const note = Utils.FillTemplate(ir.note, { code: rm[1].toUpperCase() });
-					if (!notes.includes(note)) notes.push(note);
+					const rm = irOn ? combOf(m).match(new RegExp(ir.pattern, "i")) : null;
+					if (rm) {
+						cur.filename = Utils.FillTemplate(ir.filename, { code: rm[1].toLowerCase(), n: mm[1] });
+						addNote(Utils.FillTemplate(ir.note, { code: rm[1].toUpperCase() }));
+					} else if (!addressLine) return decline("a picture with no address", m);
 				}
 				continue;
 			}
-			if (!cur) return null;   // words before the first pair: not this form
-			if (isTag && (mm = txtRe.exec(tagText))) {
-				if (mm[1] !== cur.num) return null;
-				if (after) cur.chunks.push(...renderBlock(after));
+			if (!cur) return decline("words before the first pair", m);   // not this form
+			if ((mm = pairMatch(m, txtRe))) {
+				if (mm[1] !== cur.num) return decline("the text tag's number is not its picture's", m);
+				flushPara(); closeModal();
+				cur.open = false;
+				cur.para = after;   // held as words until the next member, so an inline trigger can weave into it
+				// the writer's red words on the text tag's own line («[click drop 1 text] Please insert story and audio …») are a request
+				// to the developer: the panel's red note, never the learner's text
+				const rest = stripBr(combOf(m)).replace(txtRe, "").replace(/^\]?\s*/, "").trim();
+				if (!after && rest) cur.chunks.push(NotesAndComments.redFlag(rest, run, "cs"));
 				continue;
 			}
+			if (cur.open) {   // between the picture tag and its text tag: the address line — a bare address, the writer's cross-reference («same image and
+				// button …») + address, the address the tag's own hyperlink already gave, or the module reference in its own red span — or an empty bracket piece
+				const url = urlOf(m);
+				const rm = !url && irOn ? combOf(m).match(new RegExp(ir.pattern, "i")) : null;
+				if (url || rm) {
+					if (!cur.filename) {
+						if (url) {
+							const fn = this.#accImageFilename(url, mcfg, mcfg);
+							if (!fn) return decline("the picture's address is not an asset", m);
+							cur.filename = fn;
+						} else cur.filename = Utils.FillTemplate(ir.filename, { code: rm[1].toLowerCase(), n: cur.num });
+					}
+					if (rm) addNote(Utils.FillTemplate(ir.note, { code: rm[1].toUpperCase() }));
+					else { const words = stripBr(combOf(m).replace(/https?:\/\/\S+/g, "")).replace(/\s+/g, " ").trim(); if (words) addNote(words); }
+					continue;
+				}
+				if (m.type === "tag" && (!tag || /^[()\[\]\s]*$/.test(text)) && !after) continue;   // an empty bracket piece
+				cur.open = false;   // no address line: a set still without a picture falls to no_picture_filename below
+			}
 			if (tail.length) { tail.push(m); continue; }
+			if (m.type === "table") {
+				flushPara();
+				const t = renderTable(m);
+				if (!t) return decline("a table the panel cannot render", m);
+				(modal ? modal.chunks : cur.chunks).push(t);
+				continue;
+			}
+			// a red note INSIDE the panel (a bare document address, the writer's request to the developer): the developer's, never dropped
+			const panelNote = (words) => { flushPara(); (modal ? modal.chunks : cur.chunks).push(NotesAndComments.redFlag(words, run, "cs")); };
+			// a link paragraph in the panel («[Link + audio]» + its hyperlink); a link still waiting for its address takes the next piece's
+			const panelLink = (words, url) => { flushPara(); (modal ? modal.chunks : cur.chunks).push(Utils.FillTemplate(linkTpl, { words, url })); };
+			// a bare address in the panel: a video embeds, a picture address is the picture (the modal set's content-image templates), a document
+			// address the panel cannot embed stays as the developer's red note — and a link waiting for its address takes it
+			const panelAddress = (url) => {
+				const u = String(url).replace(/^[(\s]+|[)\s]+$/g, "").split(/\s+/)[0];
+				if (cur.linkWords && linkTpl) { panelLink(cur.linkWords, u); cur.linkWords = null; return; }
+				const e = embed(idOf(u));
+				if (e) { flushPara(); (modal ? modal.chunks : cur.chunks).push(e); pendingVideo = false; return; }
+				const fn = this.#accImageFilename(u, mcfg, mcfg);
+				if (fn) { flushPara(); (modal ? modal.chunks : cur.chunks).push(this.#assetImage(fn, mcfg.content_image ?? mcfg, run)); return; }
+				panelNote(u);
+			};
 			if (m.type === "black") {
-				const text = String(m.text ?? "").trim();
-				if (!text) continue;
+				if (!text || (emptyRe && emptyRe.test(text))) continue;
 				const bare = /^\(?\s*https?:\/\/\S+\s*\)?$/.test(text.replace(/\s+/g, " "));
 				if (pendingVideo || bare) {
 					const e = embed(idOf(text));
-					if (e) { cur.chunks.push(e); pendingVideo = false; continue; }
-					if (bare) return null;   // an address this builder cannot embed: the hand-off box keeps it
+					if (e) { flushPara(); cur.chunks.push(e); pendingVideo = false; continue; }
+					if (bare) { panelAddress(text); continue; }
 				}
-				cur.chunks.push(...renderBlock(text));
+				if (modal) { modal.chunks.push(...renderBlock(text)); continue; }
+				pushText(text);
+				continue;
+			}
+			if (tag && /^h[1-6]$/.test(tag) && typeof renderInline === "function") {   // a heading typed inside a set is the panel's heading
+				if (!after) continue;
+				flushPara();
+				(modal ? modal.chunks : cur.chunks).push(`<${tag}>${renderInline(after)}</${tag}>`);
+				continue;
+			}
+			if (tag === "image") {   // a picture typed inside a set
+				const u = urlOf(m);
+				if (u) { panelAddress(u); continue; }
+				panelNote(combOf(m)); continue;
+			}
+			if (linkTpl && tag && linkTags.has(tag)) {   // «[Link + audio]»: the words link to the member's own hyperlink, or to the address on the next piece
+				const words = after || stripBr(text).replace(/^link\s*\+?\s*/i, "").trim();
+				const url = urlOf(m);
+				if (url) panelLink(words || url, url); else cur.linkWords = words;
 				continue;
 			}
 			if (tag === "video") {
+				flushPara();
 				const e = embed(idOf(after) ?? idOf((m.block?.links ?? []).map((l) => l?.target ?? "").join(" ")));
 				if (e) { cur.chunks.push(e); pendingVideo = false; } else pendingVideo = true;   // the address on the next line
 				continue;
 			}
 			if (tag && skipRe.test(tag)) continue;
-			if (isTag && /^[()\[\]\s]*$/.test(tagText)) {   // a bracket piece the extractor split off an address line
-				if (!after) continue;
-				const e = embed(idOf(after));
-				if (e) { cur.chunks.push(e); pendingVideo = false; continue; }
-				if (/^https?:\/\//i.test(after)) return null;
+			if (itOn && tag === itTag && cur.para != null) {   // «[Info trigger: DEF]» mid-sentence: the hover rides the word before it
+				cur.para = cur.para.replace(/\s+$/, "") + IT0 + after + IT1;
+				cur.itOpen = true;
+				continue;
 			}
-			tail.push(m);   // anything else (the upload button, the quiz trigger) ends the panels and follows the board
+			if (tag === "body") {   // the writer's [body] inside a set (or inside its pop-out)
+				if (!after) continue;
+				if (modal) { modal.chunks.push(...renderBlock(after)); continue; }
+				pushText(after);
+				continue;
+			}
+			if (mmOn && tag === "modal") {   // «[modal] Title» inside a set: its [body] and table become the panel's pop-out
+				flushPara(); closeModal();
+				modal = { title: after, chunks: [] };
+				continue;
+			}
+			if (m.type === "tag" && /^[()\[\]\s]*$/.test(text)) {   // a bracket piece the extractor split off a line
+				if (!after) continue;
+				if (cur.itOpen) { cur.para += (/^[.,;:!?]/.test(after) ? "" : " ") + after; cur.itOpen = false; continue; }   // the sentence goes on after the trigger's «]»
+				const e = embed(idOf(after));
+				if (e) { flushPara(); cur.chunks.push(e); pendingVideo = false; continue; }
+				if (/^https?:\/\//i.test(after)) { panelAddress(after); continue; }
+				pushText(after);
+				continue;
+			}
+			if (m.type === "tag" && tag && tailTags.has(tag)) { flushPara(); closeModal(); tail.push(m); continue; }   // the set's upload button / quiz trigger end the panels
+			if (m.type === "tag") {   // any other red line inside a set (the writer's request to the developer) is a red note in its panel
+				const words = combOf(m);
+				if (words) panelNote(words);
+				continue;
+			}
+			flushPara(); closeModal();
+			tail.push(m);   // anything else ends the panels and follows the board
 		}
+		flushPara(); closeModal();
 		if (cur) sets.push(cur);
-		if (sets.length < (cfg.min_sets ?? 2) || !sets.every((s) => s.filename)) return null;
+		if (sets.length < (cfg.min_sets ?? 2)) return decline(`${sets.length} set(s), under min_sets`);
+		// a panel that would hold nothing but the developer's notes is no panel: the board never half-builds (the hand-off box keeps the set)
+		for (const s of sets) if (!s.chunks.some((c) => !/class="cv2-note"/.test(c))) return decline(`set ${s.num} has no content for its panel`);
+		for (const s of sets) {
+			if (s.filename) continue;
+			if (!cfg.no_picture_filename) return decline(`set ${s.num} has no picture`);
+			s.filename = Utils.FillTemplate(cfg.no_picture_filename, { n: s.num });
+			addNote(cfg.no_picture_note);
+		}
 		const nl = "\n";
 		const boards = sets.map((s) => ({ filename: s.filename, content: (cfg.panel_open ?? "") + nl + s.chunks.join(nl) + nl + (cfg.panel_close ?? "") }));
-		const out = [this.#modalBoardHtml(boards, ac, run)];
+		// the pair spelling's pages put the panels straight after the tile rows: this board's own (empty) wrappers override the shared ones
+		const bc = { ...ac };
+		for (const k of ["panels_open", "panels_close"]) if (cfg[k] !== undefined) bc[k] = cfg[k];
+		const out = [this.#modalBoardHtml(boards, bc, run)];
 		for (const n of notes) out.push(NotesAndComments.redFlag(n, run, "cs"));
 		for (const t of tail) {
 			const words = (t.type === "tag" ? `${String(t.text ?? "").trim()} ${String(t.blackAfter ?? "").trim()}` : String(t.text ?? "")).replace(/\s+/g, " ").trim();
@@ -12543,7 +12717,7 @@ class InteractiveBuilder {
 	static #clickDropEntry({ bundle, tpl, renderInline, run, renderBlock, renderTable, renderNested }) {
 		// the series' PAIR spelling («[Clickdrop N Image] …» / «[Clickdrop N text] …») builds the click-drop board first
 		// (clickDrop.pair_board; env CDPAIRBOARD_OFF) — the narrow walk and the general composer are untouched after it
-		const board = this.#clickDropPairBoard({ bundle, tpl, run, renderBlock });
+		const board = this.#clickDropPairBoard({ bundle, tpl, run, renderBlock, renderTable, renderInline });
 		if (board) return board;
 		const narrow = this.#clickDrop({ bundle, tpl, renderInline, run });
 		if (narrow) return narrow;

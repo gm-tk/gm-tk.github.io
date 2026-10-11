@@ -670,6 +670,14 @@ class MediaBuilder {
 		}
 		const read = (words) => this.#readCrop(words, c);
 		let got = read(raw);
+		// the crop request on the LINE AFTER the video («[Please crop this video from the beginning to 2.41]», «[Crop: start
+		// beginning, end at 0:11]»), when the line itself holds no crop — next_line; env VIDTIMELINE_OFF; the line is consumed
+		const nl = c.next_line;
+		if (got === null && nl && nl.enabled !== false && Array.isArray(bodyItems) && Number.isInteger(i)
+			&& !(typeof process !== "undefined" && process.env && process.env[nl.env ?? "VIDTIMELINE_OFF"])) {
+			const hit = this.#nextLineCrop(bodyItems, i, nl, c);
+			if (hit) { got = hit.crop; hit.item._consumed = true; }
+		}
 		// the video's Media List row(s), when the line itself holds no crop — media_list_row; env VIDTIMEML_OFF
 		const ml = c.media_list_row;
 		if (got === null && videoId && ml && ml.enabled !== false && Array.isArray(run?.mediaItems)
@@ -683,6 +691,39 @@ class MediaBuilder {
 			if (seen.size === 1) got = [...seen.values()][0];
 		}
 		return this.#cropQuery(got);
+	}
+
+	/**
+	 * The crop request on the line after a video: the next body item (blank lines skipped) that is a red line with no parsed
+	 * tag whose words open with the request pattern («[Please crop this video from the beginning to 2.41]»). Returns
+	 * { item, crop } — the crop read with #readCrop plus the next-line forms («from the beginning» = start 0; a bare
+	 * «to M.SS» = the end) — or null. Data elements.video_time_range.next_line.
+	 */
+	static #nextLineCrop(bodyItems, i, nl, c) {
+		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+		const reqRe = new RegExp(nl.request_pattern ?? "^\\[?\\s*(?:please\\s+)?crop\\b", "i");
+		for (let j = i + 1; j < bodyItems.length; j++) {
+			const nx = bodyItems[j];
+			if (!nx) return null;
+			if (nx._consumed || nx.consumedBy !== undefined) continue;
+			if (nx.type === "black" && !String(nx.text ?? "").trim()) continue;
+			if (nx.type !== "tag") return null;
+			if (String(nx.blackAfter ?? "").replace(/[\s()[\]]+/g, "")) return null;   // learner words after it: not a bare request
+			const words = String(nx.text ?? "").replace(RED, " ").trim();
+			// the request's own words decide, however the lexicon parsed the bracket («[Crop: …]» resolves to a closer and vanished)
+			if (!reqRe.test(words)) return null;
+			let crop = this.#readCrop(words, c);
+			if (crop === "multi") return null;
+			const fromStart = nl.from_start_pattern && new RegExp(nl.from_start_pattern, "i").test(words);
+			if (fromStart) {
+				const start = crop && crop.start !== null ? crop.start : 0;
+				let end = crop ? crop.end : null;
+				if (end === null && nl.to_end_pattern) { const m = words.match(new RegExp(nl.to_end_pattern, "i")); if (m) end = Number(m[1]) * 60 + Number(m[2]); }
+				crop = end === null && start === 0 ? null : { start, end };
+			}
+			return crop ? { item: nx, crop } : null;
+		}
+		return null;
 	}
 
 	/**
@@ -846,8 +887,12 @@ class MediaBuilder {
 		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
 		const own = `${String(it?.text ?? "")} ${String(it?.blackAfter ?? "")}`.replace(RED, " ");
 		const ref = own.match(new RegExp(c.item_pattern ?? "\\[\\s*(?:insert\\s+)?(?:media\\s+)?item\\s*(\\d*)\\s*\\]", "i"));
-		if (!ref) return undefined;
-		const n = parseInt(ref[1], 10);
+		// a tag with no «[Item N]» names its row by title alone (title_only; env MLTITLEROW_OFF) — the words reading below, held to
+		// its own floors (min_words title words, a unique best sharing min_score of them)
+		const to = c.title_only;
+		const titleOnly = !ref && !!to && to.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[to.env ?? "MLTITLEROW_OFF"]);
+		if (!ref && !titleOnly) return undefined;
+		const n = ref ? parseInt(ref[1], 10) : NaN;
 		const num = (s) => parseInt(String(s ?? "").replace(/\D/g, ""), 10);
 		const items = run.mediaItems;
 		// a mail-safety wrapper around the address («…safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.youtube…»)
@@ -874,7 +919,10 @@ class MediaBuilder {
 			.replace(/[*_]/g, "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 		const kindWords = new Set(c.kind_words ?? []);
 		const minLen = c.min_word_chars ?? 2;
-		const title = new Set(fold(own.replace(/\[[^[\]]*\]/g, " ")).split(" ").filter((w) => w.length >= minLen && !kindWords.has(w)));
+		// the numbered form's title sits outside its brackets («[Item 1] [Video] Youtube Matike Maranga»); the title-only form's
+		// inside them («[Interactive: Video: Sustainable Development Goals]») — the brackets themselves are the only mark removed
+		const titleSrc = titleOnly ? own.replace(/[[\]]/g, " ") : own.replace(/\[[^[\]]*\]/g, " ");
+		const title = new Set(fold(titleSrc).split(" ").filter((w) => w.length >= minLen && !kindWords.has(w)));
 		const typeRe = new RegExp(c.row_type_pattern ?? "video", "i");
 		const page = run.pageRecordsUsable && Number.isInteger(it?.block?.wtPage) ? it.block.wtPage : null;
 		const weight = c.same_page_weight ?? 10;
@@ -889,9 +937,12 @@ class MediaBuilder {
 			if (s > 0) scored.push({ m, s });
 		}
 		if (!title.size && !(page !== null)) return undefined;
+		if (titleOnly && title.size < (to.min_words ?? 2)) return undefined;
 		scored.sort((a, b) => b.s - a.s);
 		if (!scored.length || (scored.length > 1 && scored[0].s === scored[1].s)) return undefined;
 		if (!title.size && scored[0].s < weight) return undefined;
+		// the title-only form: the shared words alone must reach min_score (the same-page weight is not a word)
+		if (titleOnly && (scored[0].s - (page !== null && scored[0].m.wtPage === page ? weight : 0)) < (to.min_score ?? 2)) return undefined;
 		return take(scored[0].m);
 	}
 

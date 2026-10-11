@@ -5292,7 +5292,7 @@ class ContentConverter {
 		// modifier) has run, so the page's consecutive numbering is settled last.
 		const bodyHtml = this.#titleIdEcho(this.#boldMarkerResidue(this.#softBreakLead(this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
 			this.#journalPlaceholderFill(this.#pageNumberNormalise(this.#emptyActivityDrop(this.#freeDropboxBox(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), page, run), page, run), page, run), page, run),   // #journalPlaceholderFill, #emptyActivityDrop, #freeDropboxBox, #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n"), run), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), page, run), page, run), page, run), page, run),   // #journalPlaceholderFill, #emptyActivityDrop, #freeDropboxBox, #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// the level-pages dialect's nav/tile labels + registry row
@@ -5713,10 +5713,21 @@ class ContentConverter {
 	 * Data flag: body_region.heading_relevel.enabled
 	 * Env toggle: RELEVEL_OFF (for A/B comparison)
 	 */
-	static #relevelHeadings(html) {
+	/** True for a module whose code's letter prefix is one of the series that keep the writer's heading digit
+	 *  (elements.heading.logical_to_element.writer_digit_prefixes; env HEADDIGIT_OFF). */
+	static #writerDigitSeries(run) {
+		const c = DataService.Data.EmitTemplates.elements?.heading?.logical_to_element?.writer_digit_prefixes;
+		if (!c || c.enabled === false || !Array.isArray(c.prefixes) || !c.prefixes.length) return false;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "HEADDIGIT_OFF"]) return false;
+		const letters = String(run?.moduleCode ?? "").match(/^[A-Za-z]+/)?.[0]?.toUpperCase() ?? "";
+		return !!letters && c.prefixes.some((p) => String(p).toUpperCase() === letters);
+	}
+
+	static #relevelHeadings(html, run) {
 		const cfg = DataService.Data.EmitTemplates.body_region?.heading_relevel;
 		if (!cfg || cfg.enabled === false) return html;
 		if (typeof process !== "undefined" && process.env && process.env.RELEVEL_OFF) return html;
+		if (this.#writerDigitSeries(run)) return html;   // the series keeps the writer's digits: no page re-levelling
 		const base = cfg.base_level ?? 3;
 		const maxL = cfg.max_level ?? 5;
 		const skip = new Set(cfg.skip_classes ?? []);
@@ -11543,7 +11554,11 @@ class ContentConverter {
 			const l2e = tpl.elements.heading.logical_to_element;
 			const reOn = (tpl.body_region?.heading_relevel?.enabled !== false)
 				&& !(typeof process !== "undefined" && process.env && process.env.RELEVEL_OFF);
-			const shifted = Math.min(Math.max(digit + l2e.body_shift, 2), reOn ? (l2e.relevel_headroom ?? 6) : 5);
+			// the series that keep the writer's digit (logical_to_element.writer_digit_prefixes; env HEADDIGIT_OFF): no body shift,
+			// and #relevelHeadings leaves their pages alone
+			const shifted = this.#writerDigitSeries(run)
+				? Math.min(Math.max(digit, 2), 5)
+				: Math.min(Math.max(digit + l2e.body_shift, 2), reOn ? (l2e.relevel_headroom ?? 6) : 5);
 
 			// content: embedded payload first (ORIGINAL case via RenderText —
 			// "[Insert H3: Emotion]" → "Emotion"), then the following text
