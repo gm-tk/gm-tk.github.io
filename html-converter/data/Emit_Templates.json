@@ -297,6 +297,12 @@
 				"min_items": 2,
 				"max_words": 6
 			},
+			"tick_label": {
+				"enabled": true,
+				"env": "REOTICKLABEL_OFF",
+				"_doc": "THE TEMPLATE'S TICK BOX BEFORE AN ACTIVITY LABEL. The Bilingual (TRR) content table opens each activity with a pair of cells «☐ Activity 1I:» / «☐ Ngohe 1I:» (bold, the box ticked or empty) — the template's own progress box, not words the writer wants the learner to see. Rendered as typed, the learner read a check box in front of every activity label; the finished pages carry the label (or its title as the activity heading) without the box. BilingualBuilder.bilingualSplit removes the box (and the bold markers that wrapped only the box) from a cell part that opens with a box and then an Activity / Ngohe / Mahi label; the label and the words after it are untouched. A tick-box list (tick_list) is not this: its parts carry no activity label. Env REOTICKLABEL_OFF.",
+				"pattern": "^(\\*\\*)?\\s*[\\u2610\\u2611\\u2612]\\s*(\\*\\*)?\\s*(?=(?:\\*\\*)?\\s*(?:Ngohe|Activity|Mahi)\\b)"
+			},
 			"carousel_tag": {
 				"enabled": true,
 				"env": "REOCAROUSEL_OFF",

@@ -1286,7 +1286,10 @@ class BilingualBuilder {
 		const wlLabel = wlOn ? new RegExp(wl.label_pattern, "i") : null;
 		// the writer's ticked list keeps its ticked lines as list items (dual_language.tick_list; env REOTICKLIST_OFF)
 		const tlc = this.#tickListCfg();
-		const parts = tlc ? this.#tickListParts(TablesAndGrids.cellParts(cell), tlc) : TablesAndGrids.cellParts(cell);
+		// the template's tick box before an activity label is not the learner's (dual_language.tick_label; env REOTICKLABEL_OFF)
+		const tbc = this.#tickLabelCfg();
+		const cellParts0 = tbc ? this.#tickLabelParts(TablesAndGrids.cellParts(cell), tbc) : TablesAndGrids.cellParts(cell);
+		const parts = tlc ? this.#tickListParts(cellParts0, tlc) : cellParts0;
 		// the same parts with the writer's red markers still on them (cellParts strips them): a part that is wholly red
 		// prose is the writer's note, read below (dual_language.red_prose_note); when the two splits disagree in
 		// count the raw parts are not read
@@ -1632,6 +1635,25 @@ class BilingualBuilder {
 			i = j - 1;
 		}
 		return out;
+	};
+
+	/** The template's tick box before an activity label (data dual_language.tick_label; env REOTICKLABEL_OFF), compiled, or null when it is off. */
+	static #tickLabelCfg() {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.tick_label;
+		if (!c || c.enabled === false || !c.pattern
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOTICKLABEL_OFF"])) return null;
+		return { re: new RegExp(c.pattern, "u") };
+	};
+
+	/**
+	 * A cell's parts with the tick box taken off each activity label part («**☐ Ngohe 1I:**» → «**Ngohe 1I:**»); a box wrapped in
+	 * its own bold markers goes with them. Every other part, and the label's own words, are returned untouched.
+	 * @param {string[]} parts - the cell's parts (TablesAndGrids.cellParts)
+	 * @param {object} tb - #tickLabelCfg()
+	 * @returns {string[]} the parts to render
+	 */
+	static #tickLabelParts(parts, tb) {
+		return parts.map((p) => String(p).replace(tb.re, (m, lead, trail) => (lead && trail ? "" : (lead ?? ""))));
 	};
 
 	/**
