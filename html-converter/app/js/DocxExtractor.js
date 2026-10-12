@@ -1826,8 +1826,8 @@ class DocxExtractor {
 	 */
 	static async #readPictures(zip, relsXml, rules) {
 		const cfg = rules.pasted_pictures;
-		if (!cfg || cfg.enabled === false) return null;
-		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "PASTEDPIC_OFF"]) return null;
+		const mode = this.#pictureMode(cfg);
+		if (!mode) return null;
 		const names = typeof zip.ListEntries === "function" ? zip.ListEntries("word/media/") : [];
 		if (!names.length) return null;
 		const byId = new Map();
@@ -1851,7 +1851,53 @@ class DocxExtractor {
 			}
 			byName.set(name, { name, bytes, sha, ext: (name.match(/\.([a-z0-9]+)$/i)?.[1] ?? "").toLowerCase(), alt: "" });
 		}
-		return { cfg, byId, byName, furniture: new Set((cfg.furniture_sha256 ?? []).map((f) => String(f.sha256 ?? f).toLowerCase())) };
+		return { cfg, mode, pending: [], byId, byName, furniture: new Set((cfg.furniture_sha256 ?? []).map((f) => String(f.sha256 ?? f).toLowerCase())) };
+	};
+
+	/**
+	 * How the pasted-picture rule runs: "page" (the picture lines reach the pages; pasted_pictures.enabled), "files" (the
+	 * pictures ship as files and are listed in the interactives file, no line is created; pasted_pictures.files_only) or null
+	 * (off). PASTEDPIC_OFF turns the whole rule off; PASTEDFILES_OFF turns the files-only form off.
+	 */
+	static #pictureMode(cfg) {
+		if (!cfg) return null;
+		const envOn = (name) => typeof process !== "undefined" && process.env && process.env[name];
+		if (envOn(cfg.env ?? "PASTEDPIC_OFF")) return null;
+		if (cfg.enabled !== false) return "page";
+		const fo = cfg.files_only;
+		if (fo && fo.enabled !== false && !envOn(fo.env ?? "PASTEDFILES_OFF")) return "files";
+		return null;
+	};
+
+	/** The words a pasted picture follows, for the interactives file: the paragraph text with the red-span markers, bold markers, equations (their sentinels) and addresses taken out, 80 characters. */
+	static #pastedContext(text) {
+		return this.#pastedPlain(text).replace(/[\s\S]*?/g, " ").replace(/[-]/g, "").replace(/https?:\/\/\S+/gi, " ").replace(/\*\*/g, "").replace(/\s+/g, " ").trim().slice(0, 80);
+	};
+
+	/**
+	 * FILES-ONLY mode: admits the pictures the last top-level element collected (rels.pictures.pending), by the same
+	 * conditions the picture lines obey — none before the module's content start, none in a picture-only paragraph right
+	 * after a mostly red one — and a table's pictures from the content start on. Nothing is added to or removed from the
+	 * blocks: an admitted picture is only marked on the registry (it ships; its place is recorded for the interactives file).
+	 */
+	static #admitPastedFiles(pp, block, blocks, state, isTable = false) {
+		if (!pp || pp.mode !== "files") return;
+		const pics = pp.pending.splice(0);
+		if (!pics.length || !state) return;
+		const cfg = pp.cfg;
+		if (!state.seen) return;
+		if (!isTable && !block.text.trim()) {
+			const prev = blocks.length ? blocks[blocks.length - 1] : null;
+			const prevRed = !state.picBlock && !!prev && prev.kind === "para" && typeof prev.redShare === "number" && prev.redShare >= (cfg.red_share_min ?? 50);
+			if (cfg.skip_after_red !== false && prevRed) return;
+			state.picBlock = true;
+		}
+		for (const p of pics) {
+			const rec = pp.byName.get(p.name);
+			if (!rec) continue;
+			rec.admitted = true;
+			if (!rec.where) { rec.w = p.w; rec.h = p.h; rec.order = pp.nextOrder = (pp.nextOrder ?? 0) + 1; rec.where = { page: state.lastPage ?? null, after: state.lastText ?? "" }; }
+		}
 	};
 
 	/**
@@ -1910,6 +1956,20 @@ class DocxExtractor {
 	static #pushWithPictures(blocks, block, rels, rules = null, state = null) {
 		const pp = rels?.pictures;
 		if (!pp) { blocks.push(block); return; }
+		if (pp.mode === "files") {
+			// files only: the block goes in as it is; the pictures it carried are admitted on the registry (the words they follow noted)
+			if (state) {
+				state.lastText = this.#pastedContext(block.text);
+				state.lastPage = block.wtPage ?? state.lastPage ?? null;
+			}
+			this.#admitPastedFiles(pp, block, blocks, state);
+			blocks.push(block);
+			if (state) {
+				if (!state.seen && rules && this.IsContentStart(block, null, rules)) state.seen = true;
+				state.picBlock = false;
+			}
+			return;
+		}
 		const cfg = pp.cfg;
 		const lineRe = this.#pastedLineRe(cfg);
 		const prev = blocks.length ? blocks[blocks.length - 1] : null;
@@ -2210,6 +2270,7 @@ class DocxExtractor {
 				const all = pendingComments.length ? [...pendingComments, ...found] : found;
 				pendingComments = [];
 				if (all.length) tblBlock.comments = all;
+				this.#admitPastedFiles(rels?.pictures, tblBlock, blocks, _pstate, true);
 				blocks.push(tblBlock);
 				pos = end;
 			} else {
@@ -2224,7 +2285,10 @@ class DocxExtractor {
 					pendingComments = [];
 					if (all.length) block.comments = all;
 					this.#pushWithPictures(blocks, block, rels, rules, _pstate);
-				} else if (found.length) {
+				} else {
+					this.#admitPastedFiles(rels?.pictures, block, blocks, _pstate);   // files only: a picture-only paragraph is dropped as before; its pictures are admitted
+				}
+				if (!block.text.trim() && found.length) {
 					// anchor sits in an empty (e.g. image-only) paragraph that is dropped —
 					// carry its comments to the next kept block (nearest real element after).
 					pendingComments.push(...found);
@@ -3017,7 +3081,10 @@ class DocxExtractor {
 		}
 		if (picsHere.length) {
 			const cfg = rels.pictures.cfg;
-			if (!(blk.redShare !== null && blk.redShare >= (cfg.red_share_min ?? 50))) {
+			if (rels.pictures.mode === "files") {
+				// files only: no picture line is made; the pictures wait on the registry's pending list for the caller's admission
+				if (!(blk.redShare !== null && blk.redShare >= (cfg.red_share_min ?? 50))) rels.pictures.pending.push(...picsHere);
+			} else if (!(blk.redShare !== null && blk.redShare >= (cfg.red_share_min ?? 50))) {
 				// the token's bracket is emitted as a RED span (the template's tag colour, the extractor's own marker form), so the
 				// normaliser reads «[image]» as the tag and the name as the words after it; the registry record is marked admitted
 				const mo = rules.red_runs?.marker_open ?? "\u{1f534}[RED TEXT] ", mc = rules.red_runs?.marker_close ?? " [/RED TEXT]\u{1f534}";

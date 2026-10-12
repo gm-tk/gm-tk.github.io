@@ -2192,6 +2192,15 @@
 			"writer_digit_over_dedupe": true,
 			"synthetic_unnumbered": false
 		},
+		"owner_body_lead": {
+			"_doc": "A WRITER'S [BODY] INSTRUCTION IS NOT THE BOX'S TITLE. An interactive-owned activity box takes the first line of its lead as the <h3> title (the human opens a box with a short title). When that first lead item was typed as a [Body] paragraph — `[Activity] 2A` then `[body] Answer some questions on fake news by choosing the correct option:` then the widget — the sentence is the instruction, not a title: the human keeps it a paragraph (the gold has the sentence as text on 29 of the 32 sites where it carries the words at all). It renders as the box's first paragraph and no title heading is made from it; a heading, a title in the opener or any other lead item still takes the title as before. Env OWNERBODYLEAD_OFF restores the promotion.",
+			"enabled": true,
+			"env": "OWNERBODYLEAD_OFF",
+			"tags": ["body"],
+			"_doc_address": "Only a sentence that addresses the learner is the instruction the human keeps as a paragraph: it opens with an imperative or a lead-in word (first_words) or speaks to the learner (second_person). A statement or a question about the topic («Technology can be meaningful to us for many reasons.») is the human's own heading in the golds that carry it, and stays the box title.",
+			"first_words": ["read", "listen", "watch", "answer", "match", "drag", "click", "think", "use", "using", "test", "review", "choose", "complete", "go", "look", "sort", "select", "fill", "find", "picture", "support", "now", "once", "after", "before", "write", "draw", "discuss", "share", "talk", "take", "check", "scroll", "play", "try", "decide", "put", "order", "type", "read", "record", "upload", "plan", "make", "create", "practise", "practice", "identify", "explain", "describe", "compare", "list", "tick", "circle", "colour", "label", "name", "say", "sing", "tap", "press", "open", "visit", "explore", "complete", "finish", "start", "first", "next", "then"],
+			"second_person": "\\b(?:you|your|yourself)\\b"
+		},
 		"lead_free_after_tag": {
 			"_doc": "THE LEAD PROSE AFTER THE WIDGET TAG RENDERS FREE INSIDE THE BOX. A writer types the widget tag, then the instruction paragraph(s), then the widget's table — `[Interactive]` / `Drag and drop the products into the correct category.` / TABLE. The scanner walks that black run into the bundle as a MEMBER, so an un-built capture would show it inside the dashed box; the human keeps it FREE in the activity box (h3 + p + the widget) for some widget types — dragAndDrop, dropDown, reorder, typing, unclassified standalone, modal, radioQuiz — while carousel, flipCard, accordion, selfCheck, clickDrop, multiChoiceQuiz and tabs fold the lead INTO the widget. Hence the scoped sets types_standalone / types_owned below; Social Science and Arts are excluded by code prefix (the human keeps the lead inside there). With this on, ContentConverter renders the consecutive black members after the opener tag (before the first table / list / tag) as free paragraphs inside the box and removes them from bundle.memberItems before #interactivePlaceholder builds the capture; at least one non-black member must remain (require_remaining_member) or nothing moves; never on bilingual (reoMode) pages or the MTK quiz shell. OFF (env LEADFREE_OFF) turns it off.",
 			"enabled": true,
@@ -2527,6 +2536,12 @@
 			"note_pattern": "media item|merged item|trigger|applicable|insert",
 			"button_words_pattern": "\\b(?:add|insert)?\\s*buttons?\\b(?:\\s+title\\s*:)?"
 		},
+		"label_file_name": {
+			"_doc": "A FILE NAME IS NOT A BUTTON LABEL. A writer pastes a SharePoint document link whose display text is the file's own name (`Kia Mahitahi – Response sheet (Lesson 6) A TEAM TASK.docx`, `Template Greek theatre mask template.pdf`, a trailing `(sharepoint.com)` from Word's link preview), and the label shipped with the extension. The human's buttons never show one. The trailing extension (and the preview suffix) goes; the writer's words stay. Nothing left = the label unchanged.",
+			"enabled": true,
+			"env": "BTNFILE_OFF",
+			"strip_pattern": "\\s*\\.(?:docx?|xlsx?|pptx?|pdf)(?:\\s*\\([a-z0-9.]+\\))?\\s*$"
+		},
 		"canonical_labels": {
 			"_doc": "KB constraint 55's LABEL half + CL-0038 / constraint 65 + 14.11 / 14D. A submission button keeps its full 'Go to' label: the writer's bare noun — `[Button] Portfolio`, `[Add button] Quiz button`, `[Add button] Quiz`, `[Button] Dropbox` — is the label the KB says never ships bare ('the leading Go to is never dropped to a bare Dropbox / Portfolio'; the quiz button reads 'Go to quiz'), and the human ships 'Go to quiz' / 'Go to portfolio'. The first rule whose label_match hits the resolved, trimmed label supplies the canonical label; a rule's family_labels row wins for a module whose code prefix is listed (14.11: the BLL / LS / HPE families label the dropbox button 'Upload to Dropbox'). A bare 'journal' label has no KB label rule and is untouched. Applied at the generic [button] seam after the trailing-stop trim and before the anchor wrap, so the anchor's quiz href and To Do wording key on the canonical label. Env BTNLABEL_OFF turns it off.",
 			"enabled": true,
@@ -2719,7 +2734,17 @@
 			"env": "EMBEDBTN_OFF"
 		},
 		"iframe": "<div class=\"ratio ratio-16x9\">\n<iframe src=\"{url}\" loading=\"lazy\" frameborder=\"0\" allowfullscreen></iframe>\n</div>",
-		"text_box": "<textarea class=\"form-control\" rows=\"4\" placeholder=\"{placeholder}\"></textarea>"
+		"text_box": "<textarea class=\"form-control\" rows=\"4\" placeholder=\"{placeholder}\"></textarea>",
+		"text_box_content": {
+			"_doc": "A [TEXT BOX] THAT HOLDS THE WRITER'S OWN SENTENCES SHOWS THEM. The text box is an input (a textarea whose placeholder is a short prompt) — but a writer who types a text box and then whole sentences after it (`[text box 1] Early Māori and Pacific peoples observed the position and movement of stars…`) is describing a box that DISPLAYS that text; the human boxes the words visibly (alert solid / alertActivity), where the placeholder form hid them from the learner the moment they typed. A tail of at least min_words words renders as the writer's paragraph(s); a shorter tail stays the placeholder. Env TEXTBOXCONTENT_OFF restores the placeholder.",
+			"enabled": true,
+			"env": "TEXTBOXCONTENT_OFF",
+			"min_words": 5,
+			"max_tag_words": 4,
+			"box_open": "<div class=\"alert solid\">",
+			"box_close": "</div>",
+			"_doc_tag": "Only a tag that is the text box itself (`[text box 1]`, `[text box centered]`: at most max_tag_words words) takes its tail as the box's content; a long instruction that merely names a text box (`[insert writing model- in text box with shading] [insert MP3 recording]`) keeps the tail as it was — there it is a picture link's title."
+		}
 	},
 	"interactive_placeholder": {
 		"capture_free_request": {
@@ -4374,7 +4399,13 @@
 					"_doc": "THE LABELLED LIST BANNER — tried only where the banner has no table. The writer lists the pictures under the opener as red labels, each followed by its one stock address: '[Insert rotating banner]' 'Image #1: https://www.istockphoto.com/…' … 'Image #5: …' (the HPFUN series; the human builds the same div.rotateBanner strip). One bannerItem per label in the writer's order, the standard picture placeholder (the iStock id from a 'gm…' or a '/id/…/' iStock address; another host keeps the banner's own name for it). Any other member, a label (label_pattern) with no address or with words beside it, a video, or fewer than min_items pictures keeps the hand-off box.",
 					"enabled": true,
 					"env": "ROTBANNERLIST_OFF",
-					"label_pattern": "^(?:image|photo|picture)\\s*#?\\s*\\d+\\s*:?$"
+					"label_pattern": "^(?:image|photo|picture)\\s*#?\\s*\\d+\\s*:?$",
+					"forms": {
+						"_doc": "THE OTHER LIST FORMS OF THE SAME BANNER (HPFUN101 / 201 / 301 / 401): the picture label may be «[Insert media item N]» / «[media item N]», its address may sit on the next line, and a list may be bare address lines with no label at all. The same one-bannerItem-per-picture build; a member that is neither a matching label nor a bare address keeps the hand-off box. Env ROTBANNERFORMS_OFF.",
+						"enabled": true,
+						"env": "ROTBANNERFORMS_OFF",
+						"label_pattern": "^\\[?\\s*(?:insert\\s+)?media\\s*item\\s*#?\\s*\\d+\\s*:?\\s*\\]?$"
+					}
 				}
 			},
 			"item_image_caption": "<div class=\"item image\">\n{image}\n<div class=\"carousel-caption\">\n{caption}\n</div>\n</div>",
@@ -4409,6 +4440,12 @@
 					"other_hosts": true,
 					"drop_bare_url_lines": true,
 					"deny_extensions": "\\.(pdf|docx?|pptx?|xlsx?|jpe?g|png|gif|svg|webp|mp3|wav|m4a|ogg|zip)(\\?|#|$)",
+					"deny_stock_hosts": {
+						"_doc": "A STOCK-PHOTO PAGE IS NOT A VIDEO. An address on a stock-photo site (an iStock / Shutterstock / Getty / Unsplash photo page) carries no document or image extension, so it passed for an embeddable video and the slide shipped a «Video player» iframe on a page that refuses to be framed; the writer typed «Image» (or a Media List image row) and the human builds a picture. Such an address is never a video source; the slide takes the image path. Env CARSTOCKVID_OFF.",
+						"enabled": true,
+						"env": "CARSTOCKVID_OFF",
+						"pattern": "^https?://(?:[\\w-]+\\.)*(?:istockphoto|shutterstock|gettyimages|unsplash|pexels|pixabay|alamy|depositphotos|dreamstime)\\.[a-z.]+/|^https?://stock\\.adobe\\.com/"
+					},
 					"_note": [
 						"VIDEO URL RECOVERY. The dominant dialect is the BLL phonics video list — the writer puts the",
 						"video's TITLE on the [video] tag and the bare URL on the FOLLOWING line, but colours that line",
@@ -8851,6 +8888,31 @@
 			"_skip_doc": "A summary whose column goes on to the end-of-module dropbox button is that box's content: HIS1006's last page — the gold's activity dropbox holds the Lesson summary heading, its paragraphs and the upload button (the only such page; −13.25 unguarded).",
 			"box_open": "<div class=\"alert\">\n<div class=\"row\">\n<div class=\"col-12\">",
 			"box_close": "</div>\n</div>\n</div>"
+		},
+		"caption_label_word": {
+			"_doc": "A CAROUSEL CAPTION IS NEVER JUST THE MEDIA LABEL. A slide the writer typed as «Slide 1 / Inadequate sleep / Image https://…» carries the red label word «Image» beside its address; the cell's lines became the slide's caption, so the label shipped as its own caption paragraph under the picture. A paragraph inside a carousel caption whose whole text is a media label word is dropped, and a caption left empty is dropped with it. Env CAPLABEL_OFF.",
+			"enabled": true,
+			"env": "CAPLABEL_OFF",
+			"pattern": "(?:image|photo|picture|video|audio)"
+		},
+		"dev_instruction_paren": {
+			"_doc": "A DEVELOPER'S INSTRUCTION IS A NOTE, NOT BODY TEXT. A writer sometimes types a request to the developer in black, inside parentheses, as its own paragraph or table cell — «(please create clock images showing the given times)», «(Insert list of days of week in English and Māori, …)», «(use the ‘eat breakfast’ picture)», «(layout like in P1 …)» — and it shipped as learner text; the human's pages carry none. A paragraph, cell or block that OPENS with such a parenthesis (its first word one of lead_pattern; the closing bracket may be missing) becomes the red Writers Note, the rest of the line staying as text. Ordinary parenthetical prose («(Please) don't worry», «(Use google maps …)») does not start with a request lead and is untouched.",
+			"enabled": true,
+			"env": "DEVPAREN_OFF",
+			"lead_pattern": "(?:please\\s+(?:create|make|find|add|insert|source|use)\\b|add\\s+(?:text|a|an|the)\\b|insert\\s+(?:list|image|picture|photo|a|an|the)\\b|layout\\s+like\\b|clock\\s+image\\b|use\\s+the\\s+[‘'“\"][^’'”\"<]{1,60}[’'”\"]\\s+(?:picture|image|photo)\\b)",
+			"note_form": "<p class=\"cv2-note\" style=\"color: red; font-weight: bold;\">Writers Note: {text}</p>"
+		},
+		"spent_format_note": {
+			"_doc": "A NOTE THAT IS ONLY A SPENT FORMATTING REQUEST IS NOT SHOWN. The writer types «[bold]» before and «[unbold]» after words that are already bold in the document («The rabbit was [bold] **as fast as** [unbold] a race car.» — the similes of the Fundamentals writing modules); the bold is applied, the sentence rejoined and the opening request consumed, but the closing «[unbold]» (or «[end bold]») stays a tag item of its own and shipped as a red Writers Note after the paragraph that says nothing more than a formatting instruction already followed. A note whose whole text is such closing requests is dropped from the page. Env SPENTFMTNOTE_OFF.",
+			"enabled": true,
+			"env": "SPENTFMTNOTE_OFF",
+			"note_prefix": "Writers Note: ",
+			"request_pattern": "\\[\\s*(?:un-?bold|end\\s+bold|un-?itali[cs]s?|end\\s+itali[cs]s?)\\s*\\]"
+		},
+		"adjacent_list_merge": {
+			"_doc": "ONE BULLETED LIST STAYS ONE LIST. Bullets the writer typed as separate paragraphs inside a speech bubble, a modal or another container were rendered one <ul> per bullet — `</ul><ul>` back to back, each list with its own spacing — where the human builds one list (adjacent lists are almost never the human form). A page post-pass joins a plain `</ul>` directly followed (whitespace only) by a plain `<ul>`; a numbered list is never touched (its start attribute is the writer's continuation). Env ADJLISTMERGE_OFF leaves the lists as built.",
+			"enabled": true,
+			"env": "ADJLISTMERGE_OFF"
 		},
 		"alert_title_heading": {
 			"enabled": true,

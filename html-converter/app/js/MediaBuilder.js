@@ -302,6 +302,20 @@ class MediaBuilder {
 	};
 
 	/**
+	 * FILES-ONLY mode (Input_Doc_Rules.pasted_pictures.files_only; env PASTEDFILES_OFF): the admitted pictures, in the order the
+	 * document holds them, for the interactives file's list — [] when the picture lines are placed on the pages (they are the
+	 * list) or the rule is off.
+	 */
+	static PastedFilesList(run) {
+		const cfg = DataService.Data.InputDocRules?.pasted_pictures;
+		const fo = cfg?.files_only;
+		if (!cfg || cfg.enabled !== false || !fo || fo.enabled === false || !run?.pastedPictures) return [];
+		const envOn = (name) => typeof process !== "undefined" && process.env && process.env[name];
+		if (envOn(cfg.env ?? "PASTEDPIC_OFF") || envOn(fo.env ?? "PASTEDFILES_OFF")) return [];
+		return [...run.pastedPictures.values()].filter((r) => r.admitted).sort((x, y) => (x.order ?? 0) - (y.order ?? 0));
+	};
+
+	/**
 	 * Every ADMITTED pasted picture's file, pushed once onto the run's outputs as images/<name> (binary bytes; the zip writer
 	 * and the batch build write them as they are) — called once the pages and the manifest are on the outputs, because the
 	 * manifest indexes the outputs by page position. A picture inside an un-built widget ships too: the hand-off box names it.

@@ -11626,6 +11626,10 @@ class InteractiveBuilder {
 		const u = String(url ?? "");
 		if (!/^https?:\/\//i.test(u)) return false;
 		if (/youtu\.?be|youtube\.com/i.test(u)) return true;
+		// a stock-photo page is a picture, never a video (video_url_recovery.deny_stock_hosts; env CARSTOCKVID_OFF)
+		const sh = cfg?.video_url_recovery?.deny_stock_hosts;
+		if (sh && sh.enabled !== false && sh.pattern && !(typeof process !== "undefined" && process.env && process.env[sh.env || "CARSTOCKVID_OFF"])
+			&& new RegExp(sh.pattern, "i").test(u)) return false;
 		const deny = new RegExp(cfg?.video_url_recovery?.deny_extensions
 			?? "\\.(pdf|docx?|pptx?|xlsx?|jpe?g|png|gif|svg|webp|mp3|wav|m4a|ogg|zip)(\\?|#|$)", "i");
 		return !deny.test(u);
@@ -11733,22 +11737,36 @@ class InteractiveBuilder {
 		if (typeof process !== "undefined" && process.env && process.env[ll.env || "ROTBANNERLIST_OFF"]) return null;
 		if ((bundle?.media ?? []).some((m) => /youtu\.?be|youtube\.com|vimeo/i.test(String(m?.url ?? "")))) return null;
 		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
-		const labelRe = new RegExp(ll.label_pattern, "i");
+		// the other ways the writers list the pictures (ll.forms; env ROTBANNERFORMS_OFF): a «media item N» label, the address on the
+		// label's next line, or bare address lines with no label
+		const fm = ll.forms;
+		const forms = !!fm && fm.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[fm.env || "ROTBANNERFORMS_OFF"]);
+		const labelRe = new RegExp(forms && fm.label_pattern ? "(?:" + ll.label_pattern + ")|(?:" + fm.label_pattern + ")" : ll.label_pattern, "i");
 		const members = bundle?.memberItems ?? [];
 		const items = [];
+		let wantUrl = false;
 		for (let k = 0; k < members.length; k++) {
 			const m = members[k];
-			if (!m || m.type !== "tag") return null;
-			const label = String(m.text ?? "").replace(RED, " ").replace(/\s+/g, " ").trim();
-			const after = String(m.blackAfter ?? "").trim();
-			if (k === 0 && !after) continue;                                   // the opener
-			const url = /^https?:\/\/\S+$/.exec(after)?.[0];
-			if (!labelRe.test(label) || !url || /youtu\.?be|youtube\.com|vimeo/i.test(url)) return null;
+			if (!m) return null;
+			let url = null;
+			if (m.type === "tag") {
+				const label = String(m.text ?? "").replace(RED, " ").replace(/\s+/g, " ").trim();
+				const after = String(m.blackAfter ?? "").trim();
+				if (k === 0 && !after) continue;                                   // the opener
+				if (!labelRe.test(label)) return null;
+				if (!after && forms) { wantUrl = true; continue; }
+				url = /^https?:\/\/\S+$/.exec(after)?.[0];
+			} else if (forms && m.type === "black") {
+				url = /^https?:\/\/\S+$/.exec(String(m.text ?? "").replace(RED, " ").trim())?.[0];
+				wantUrl = false;
+			} else return null;
+			if (!url || /youtu\.?be|youtube\.com|vimeo/i.test(url)) return null;
 			// an iStock picture's id: «…-gm498031385-…» or «media.istockphoto.com/id/513371390/…» (another host keeps its own name)
 			const id = /istockphoto\.com/i.test(url) ? (/gm-?(\d{6,10})/.exec(url)?.[1] ?? /\/id\/(\d{6,10})\//.exec(url)?.[1] ?? null) : null;
 			const filename = id ? Utils.FillTemplate(tpl.filename_istock ?? "iStock-{id}.jpg", { id }) : this.#bannerImageFilename(url, tpl);
 			items.push(Utils.FillTemplate(cfg.item, { image: this.#assetImage(filename, tpl, run) }));
 		}
+		if (wantUrl) return null;
 		if (items.length < (cfg.min_items ?? 2)) return null;
 		return [cfg.open, ...items, cfg.close].join("\n");
 	}

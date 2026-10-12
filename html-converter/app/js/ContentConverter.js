@@ -3113,6 +3113,9 @@ class ContentConverter {
 						// holds. Everything else keeps the normal path's rule (the first heading / text
 						// line is the title — MXDI101 1A's plain-text «Counting in twos»).
 						const _ulTitleOnly = !!bundle._unclassLead;
+						const _blCfg = tpl.activity_wrapper?.owner_body_lead;
+						const _blOn = !!_blCfg && _blCfg.enabled !== false && Array.isArray(_blCfg.tags)
+							&& !(typeof process !== "undefined" && process.env && process.env[_blCfg.env || "OWNERBODYLEAD_OFF"]);
 						const _ulMediaTail = (lp) => !!lp && /^(?:image|video|audio|button|link|embed|iframe|file)$/i.test(String(lp.tag || ""));
 						const _ulUrlLike = (t) => /^\s*(?:\[?\s*link\b|https?:\/\/|www\.)/i.test(String(t || ""));
 						// THE WRITER'S INSTRUCTION IN AN ACTIVITY'S LEAD. A primary-less red instruction with an
@@ -3183,6 +3186,10 @@ class ContentConverter {
 							} else if (lead.blackAfter?.trim()) {
 								if (_ulTitleOnly && !titleDone && (_ulMediaTail(lp) || _ulUrlLike(lead.blackAfter))) { leadBuf.push(lead.blackAfter.trim()); continue; }
 								if (_ulTitleOnly && !titleDone && leadBuf.length) flushLead();
+								// a [Body] instruction typed as the box's first lead is prose, not its title (activity_wrapper.owner_body_lead)
+								if (_blOn && !titleDone && lp && _blCfg.tags.includes(String(lp.tag).toLowerCase()) && this.#addressesLearner(lead.blackAfter, _blCfg)) {
+									titleDone = true; leadBuf.push(lead.blackAfter.trim()); continue;
+								}
 								addLead(lead.blackAfter);
 							}
 						}
@@ -5290,7 +5297,7 @@ class ContentConverter {
 		// #pageNumberNormalise runs OUTSIDE #cdTilePair and the dropbox / interactive
 		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
 		// modifier) has run, so the page's consecutive numbering is settled last.
-		const bodyHtml = this.#titleIdEcho(this.#boldMarkerResidue(this.#softBreakLead(this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
+		const bodyHtml0 = this.#titleIdEcho(this.#boldMarkerResidue(this.#softBreakLead(this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
 			this.#journalPlaceholderFill(this.#pageNumberNormalise(this.#emptyActivityDrop(this.#freeDropboxBox(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
 				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n"), run), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), page, run), page, run), page, run), page, run),   // #journalPlaceholderFill, #emptyActivityDrop, #freeDropboxBox, #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
@@ -5298,6 +5305,8 @@ class ContentConverter {
 				// the level-pages dialect's nav/tile labels + registry row
 				// (fundamentals_panels.level_pages; env LEVELPAGE_OFF)
 				levelRow: lvInfo?.row, levelLabels: lvInfo?.labels })), run), run), run);   // "run" is passed through for the newTabNav registry lookup; #titleIdEcho runs outermost, after the numbering
+		// one bulleted list stays one list (body_region.adjacent_list_merge; env ADJLISTMERGE_OFF)
+		const bodyHtml = this.#devInstructionParen(this.#captionLabelWord(this.#spentFormatNote(this.#adjacentListMerge(bodyHtml0))));
 		// INQUIRY-mode wrapping also runs OUTERMOST: it turns the assembled body into
 		// "div.crumbs" + "div.inquiryPanel" elements at each "[Tab N]" sentinel position.
 		// inquiryActive then tells SkeletonBuilder whether to emit the inquiry page's body
@@ -5637,6 +5646,73 @@ class ContentConverter {
 	 * Data flag: body_region.alert_title_heading
 	 * Env toggle: ALERTH_OFF
 	 */
+	/**
+	 * ONE BULLETED LIST STAYS ONE LIST. A writer's bullets typed as separate paragraphs inside a speech bubble, a modal or another
+	 * container reached the page as one <ul> per bullet — `</ul><ul>` back to back — where the human builds a single list (adjacent
+	 * lists are almost never the human form). A plain `</ul>` directly followed (whitespace only) by a
+	 * plain `<ul>` is joined; a numbered list is never touched (its `start` attribute is the writer's continuation).
+	 * Data: body_region.adjacent_list_merge   Env toggle: ADJLISTMERGE_OFF
+	 */
+	/**
+	 * A NOTE THAT IS ONLY A SPENT FORMATTING REQUEST IS NOT SHOWN. The red Writers Note whose whole text is one or more closing
+	 * formatting requests («[unbold]», «[end bold]») — left over from a «[bold] words [unbold]» pair whose bold the document
+	 * already carries — says nothing a learner or developer can act on and is removed.
+	 * Data: body_region.spent_format_note   Env toggle: SPENTFMTNOTE_OFF
+	 */
+	/**
+	 * A CAROUSEL CAPTION IS NEVER JUST THE MEDIA LABEL. Inside every `div.carousel-caption`, a paragraph whose whole text is a
+	 * media label word («Image», «Video» — the writer's red label beside the slide's address) is dropped; a caption left with no
+	 * content is dropped with it.
+	 * Data: body_region.caption_label_word   Env toggle: CAPLABEL_OFF
+	 */
+	static #captionLabelWord(html) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.caption_label_word;
+		if (!cfg || cfg.enabled === false || !cfg.pattern) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "CAPLABEL_OFF"]) return html;
+		const lab = new RegExp(`[ \\t]*<p>${cfg.pattern}</p>\\n?`, "gi");
+		return html.replace(/([ \t]*)<div class="carousel-caption">((?:(?!<\/?div\b)[\s\S])*)<\/div>\n?/g, (full, ind, inner) => {
+			const cleaned = inner.replace(lab, "");
+			if (cleaned === inner) return full;
+			return cleaned.trim() === "" ? "" : `${ind}<div class="carousel-caption">${cleaned}</div>\n`;
+		});
+	};
+
+	/**
+	 * A DEVELOPER'S INSTRUCTION IS A NOTE, NOT BODY TEXT. A paragraph, cell or block that opens with a parenthesised request to
+	 * the developer («(please create clock images …)», «(Insert list of days …)», «(use the ‘eat breakfast’ picture)») becomes
+	 * the red Writers Note; the rest of the line stays as text.
+	 * Data: body_region.dev_instruction_paren   Env toggle: DEVPAREN_OFF
+	 */
+	static #devInstructionParen(html) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.dev_instruction_paren;
+		if (!cfg || cfg.enabled === false || !cfg.lead_pattern || !cfg.note_form) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "DEVPAREN_OFF"]) return html;
+		const re = new RegExp(`<(p|td|div)>\\s*(\\(\\s*${cfg.lead_pattern}[^<)]*\\)?)([^<]*)`, "gi");
+		return html.replace(re, (full, tag, par, rest) => {
+			const note = cfg.note_form.replace("{text}", par.trim());
+			const tail = rest.trim();
+			if (tag.toLowerCase() === "p") return tail ? `${note}<p>${tail}` : note.replace(/<\/p>$/, "");
+			return `<${tag}>${note}${tail}`;
+		});
+	};
+
+	static #spentFormatNote(html) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.spent_format_note;
+		if (!cfg || cfg.enabled === false || !cfg.request_pattern) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "SPENTFMTNOTE_OFF"]) return html;
+		const req = cfg.request_pattern;
+		const prefix = String(cfg.note_prefix ?? "Writers Note: ").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+		const re = new RegExp(`[ \\t]*<p class="cv2-note"[^>]*>${prefix}(?:${req}(?:<br />)?)+</p>\\n?`, "gi");
+		return html.replace(re, "");
+	};
+
+	static #adjacentListMerge(html) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.adjacent_list_merge;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "ADJLISTMERGE_OFF"]) return html;
+		return html.replace(/<\/ul>\s*<ul>/g, "");
+	};
+
 	static #alertTitleHeading(html) {
 		const cfg = DataService.Data.EmitTemplates.body_region?.alert_title_heading;
 		if (!cfg || cfg.enabled === false) return html;
@@ -10999,6 +11075,18 @@ class ContentConverter {
 		return NotesAndComments.redFlag(String(it.text ?? "").trim(), run, "cs");
 	}
 
+	/**
+	 * Whether a [Body] lead sentence addresses the learner — opens with an imperative or lead-in word or speaks to "you"
+	 * (activity_wrapper.owner_body_lead.first_words / second_person): the instruction the human keeps as a paragraph.
+	 */
+	static #addressesLearner(text, cfg) {
+		const t = String(text ?? "").replace(/[*_]/g, "").trim();
+		if (!t) return false;
+		const first = (t.match(/^[\p{L}]+/u)?.[0] ?? "").toLowerCase();
+		if ((cfg.first_words ?? []).includes(first)) return true;
+		try { return !!cfg.second_person && new RegExp(cfg.second_person, "i").test(t); } catch { return false; }
+	}
+
 	static #embeddedOpenerTitle(it, tpl) {
 		const th = tpl?.activity_wrapper?.standalone_title_heading;
 		const cfg = th?.embedded_free_text;
@@ -11093,6 +11181,17 @@ class ContentConverter {
 		} else out = tidy(s);
 		out = unpark(out);
 		return out && /[A-Za-zĀ-ſ0-9]/.test(out) ? out : label;
+	}
+
+	/** A file name is not a button label: the trailing document extension (and a link-preview suffix) is dropped.
+	 *  Data buttons.label_file_name; env BTNFILE_OFF. */
+	static #buttonLabelFileName(label, tpl) {
+		const cfg = tpl?.buttons?.label_file_name;
+		if (!cfg || cfg.enabled === false || !label) return label;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "BTNFILE_OFF"]) return label;
+		const re = new RegExp(cfg.strip_pattern ?? "\\s*\\.(?:docx?|xlsx?|pptx?|pdf)\\s*$", "i");
+		const out = String(label).replace(re, "").trim();
+		return /[A-Za-zĀ-ſ0-9]/.test(out) ? out : label;
 	}
 
 	static #buttonLabelTrim(label, tpl) {
@@ -12134,6 +12233,8 @@ class ContentConverter {
 			}
 			// KB constraint 5: a writer's bracket fragment is not part of the label
 			label = this.#buttonLabelBrackets(label, tpl);
+			// a file name is not a label: the document extension goes (buttons.label_file_name; env BTNFILE_OFF)
+			label = this.#buttonLabelFileName(label, tpl);
 			// KB row 55: the writer's sentence full stop is not part of the label
 			label = this.#buttonLabelTrim(label, tpl);
 			// the writer's REQUEST to the developer is not a download button's label: «insert button for response sheet
@@ -12249,6 +12350,16 @@ class ContentConverter {
 		}
 		if (tag === "text box") {
 			const placeholder = (it.blackAfter || "").replace(/\*/g, "").trim();
+			// a text box that carries the writer's own sentences shows them (embeds.text_box_content); a short prompt stays the placeholder
+			const _tbc = tpl.embeds?.text_box_content;
+			if (_tbc && _tbc.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[_tbc.env || "TEXTBOXCONTENT_OFF"])
+				&& placeholder.split(/\s+/).filter(Boolean).length >= (_tbc.min_words ?? 5)
+				&& String(it.text ?? "").replace(/[\[\]]/g, " ").split(/\s+/).filter(Boolean).length <= (_tbc.max_tag_words ?? 4)) {
+				if (_tbc.box_open) out.push(_tbc.box_open);
+				out.push(...ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links));
+				if (_tbc.box_close) out.push(_tbc.box_close);
+				return out;
+			}
 			out.push(Utils.FillTemplate(tpl.embeds.text_box, { placeholder: Utils.EscapeHtml(placeholder) }));
 			return out;
 		}

@@ -280,6 +280,29 @@ class ManifestBuilder {
 			});
 		}
 
+		// The writer's pasted pictures shipped as files in images/ and placed on no page (Input_Doc_Rules.pasted_pictures.files_only;
+		// env PASTEDFILES_OFF): one entry per picture — its file, size, alt text, the Writers Template page and the words it follows.
+		const pics = MediaBuilder.PastedFilesList(run);
+		if (pics.length) {
+			const fo = DataService.Data.InputDocRules.pasted_pictures.files_only;
+			out.push("");
+			out.push("=====================================");
+			out.push(Utils.FillTemplate(fo.manifest_heading ?? "PASTED PICTURES — {count} file(s) in images/", { count: pics.length }));
+			out.push("=====================================");
+			if (fo.manifest_note) out.push(fo.manifest_note);
+			pics.forEach((r, idx) => {
+				out.push("");
+				out.push(`PICTURE ${idx + 1} of ${pics.length}`);
+				out.push("-------------------------------------");
+				out.push(`File: images/${r.name}`);
+				if (r.w && r.h) out.push(`Size: ${r.w} x ${r.h} px`);
+				if (r.alt) out.push(`Alt text (from the Word file): ${r.alt}`);
+				if (r.where?.page) out.push(`Writers Template page: ${r.where.page}`);
+				if (r.where?.after) out.push(`After the writer's text: "${r.where.after}"`);
+				out.push("-------------------------------------");
+			});
+		}
+
 		return out.join("\n");
 	};
 
