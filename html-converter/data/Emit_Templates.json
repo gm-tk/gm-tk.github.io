@@ -793,6 +793,12 @@
 		},
 		"hover_definition_inline": {
 			"enabled": true,
+			"table_cells": {
+				"_doc": "THE HOVER DEFINITIONS IN A TABLE. A table whose only bracket tags are the writer's hover definitions, each carrying its own words («aquifers [hover definition: lakes and streams beneath the ground that transport and hold water]», «exterior [hover definition: outside]») is content, not an infoTrigger hand-off box over the whole table: the scanner leaves it to the table renderer, whose cell markup weaves each definition onto the word before it (span.infoTrigger info=…), as the paragraph weave does and as the human builds it. Any other bracket in the table (a heading, an alert, a picture, a widget, a bare «[Hinfo trigger]» without its words) keeps the box. Env TABLEHOVERDEF_OFF.",
+				"enabled": false,
+				"env": "TABLEHOVERDEF_OFF",
+				"pattern": "^\\[\\s*(?:hover|roll\\s*-?\\s*over|mouse\\s*-?\\s*over)\\s*(?:definition|def|text|info)?\\s*:\\s*[^\\]]*[\\p{L}\\p{N}][^\\]]*\\]$"
+			},
 			"named_anchor": {
 				"enabled": true,
 				"env": "HOVERNAMED_OFF",
@@ -3062,6 +3068,32 @@
 				"env": "WIDGETIMGBUILD_OFF"
 			}
 		},
+		"_cell_marker_vocabulary": {
+			"_doc": "THE WRITER'S RED MARKS INSIDE A WIDGET TABLE'S CELLS ARE READ, NOT REFUSED. A table builder refuses a whole table the moment any cell holds red text, but most of the red a writer types inside a widget table is the answer key or the structure, not an instruction: «perform ║ [correct] Do or carry out.», «String [correct answer] ║ Three [correct answer]», «[Q1 correct]», «[H3] …», «[Body] …». For the types in applies_to, when the widget declines on the cells as captured, it is built once more with each cell's red spans classed — ANSWER (answer_pattern: the mark is the key the table already gives by its position) removed in every row; STRUCTURE (structure_pattern: a heading or body tag) removed below the first row, the cell's words kept; NOTE (a bracketed phrase that is no answer / structure / picture tag, or red words carrying note_cue_pattern of note_min_words or more) removed below the first row and carried out as the red Writers Note after the widget; a PICTURE tag (picture_pattern) or the learner's own red words left in place (the builders' own readings decide those). Adjacent red runs split across Word runs («[correct answer» + «]») are read as one. The cells are restored when the build ends, so a widget that still declines keeps the hand-off box exactly as captured.",
+			"enabled": true,
+			"env": "CELLMARK_OFF",
+			"applies_to": ["dragAndDrop"],
+			"answer_pattern": "^(?:[✅✓✔☑]|\\(?\\s*correct\\s*\\)?|\\[\\s*(?:q(?:uestion)?\\s*\\d+\\s*[-–:]?\\s*)?(?:correct(?:\\s+answers?)?|correct\\s+option|right\\s+answer|answers?(?:\\s*(?:q(?:uestion)?\\s*)?\\d+)?|show\\s+answers?|tick)\\s*(?:q(?:uestion)?\\s*\\d+)?\\s*\\])$",
+			"structure_pattern": "^\\[\\s*(?:h[1-6]|body(?:\\s+text)?|q(?:uestion)?\\s*\\d+|col(?:umn)?\\s*\\d+|title|heading|label|text)\\s*\\]$",
+			"picture_pattern": "^\\[\\s*(?:insert\\s+(?:an?\\s+)?)?(?:images?|pictures?|photos?|img|item|media(?:\\s+list)?\\s+(?:item|image)|thumbnail|illustration|icon|audio|video)\\b[^\\]]*\\]$",
+			"note_cue_pattern": "\\b(?:please|developer|dev|mix|jumble|random(?:ise|ize)?|shuffle|scramble|answers?\\s+(?:are|is|in)|in\\s+(?:green|red|yellow)|autocheck|auto[\\s-]check)\\b",
+			"note_min_words": 3,
+			"note_bracket_min_words": 4,
+			"_note_bracket_doc": "A bracketed phrase that is no answer / structure / picture tag is a NOTE only when it carries note_cue_pattern or runs to note_bracket_min_words words: a short bracketed word is the writer's own key («“The rain is good for the crops.” [Farmer]» names the quote's partner) and stays in place, so the box keeps it.",
+			"reject_empty_members": true,
+			"column_marker_first_row": true,
+			"_column_marker_doc": "A STRUCTURE tag that stands in EVERY row of a column, the first included («[Body] Happy birthday!» down a caption column), marks the column, not a header row: it is lifted in the first row as well. Env CELLMARKCOL_OFF.",
+			"row_keyed_decline": true,
+			"question_number_pattern": "\\[\\s*q(?:uestion)?\\s*(\\d+)\\b[^\\]]*\\]",
+			"_row_keyed_doc": "Question-numbered marks that change down a column and agree along a row («Cash [Q1] ║ Tui [Q1 who correct] ║ … [Q1 how correct]») key a matching GRID row by row, which no table builder reads: the second build is not tried and the hand-off box stays. Marks numbered by column («[Q1 correct]» down the first column) are a sort key and read as usual.",
+			"_reject_empty_members_doc": "A widget built from the read cells that shows an EMPTY member — a question, a drag or a paragraph with no words (a cell that held only the writer's picture request, or emoji the page strips) — is not the writer's widget: the hand-off box stays.",
+			"unmarked_header": {
+				"_doc": "THE UNMARKED LABEL ROW over answer-marked rows: when every row but the first carries an ANSWER mark in one same column («Taylor is observant. ║ [correct] “Taylor could see …”») and the first row is short black labels with none («Idea ║ Best evidence»), that first row is the table's header — left out of the second build (the human's matching set has no «Idea» question). min_rows rows or more; max_words words a label at most.",
+				"enabled": true,
+				"min_rows": 3,
+				"max_words": 4
+			}
+		},
 		"_members_rule": {
 			"enabled": true,
 			"consumption": "read",
@@ -3401,7 +3433,20 @@
 				"label_max_words": 3,
 				"blank_pattern": "_{3,}",
 				"decline_identity": true,
+				"caps_header": {
+					"_doc": "THE ALL-CAPS HEADER ROW: a first row of short ALL-CAPS labels («HOPES ║ REALITIES», at most max_words words a cell, no red) over min_rows or more rows with ordinary lower-case words is the table's header — dropped, never built as a matching pair. Env DDCAPSHEAD_OFF.",
+					"enabled": true,
+					"env": "DDCAPSHEAD_OFF",
+					"min_rows": 3,
+					"max_words": 3
+				},
 				"_guards_doc": "Under a dropped label row only (every standard-form build is untouched): a drawn blank in a label (blank_pattern — BLL266 'My brother ____ played …', the human's FIB) and a table whose every label equals its answer (decline_identity — BLLR201–203 'cartoonist ║ cartoonist') keep the hand-off box. category_pattern also reads the UNBRACKETED 'Static Heading:' (OSAI201 2.0 — the human's column sort)."
+			},
+			"list_cells_decline": {
+				"_doc": "THE LIST LAID OUT IN COLUMNS: when every cell on both sides of the pair table opens with a list mark (mark_pattern — «1. 1200 ÷ 10 = ║ 2. 1200 ÷ 100», a Word-numbered list read as «• »), the table is numbered questions set side by side, not label / answer pairs: the standard form declines (the hand-off box keeps them). Env DDLISTCELLS_OFF.",
+				"enabled": true,
+				"env": "DDLISTCELLS_OFF",
+				"mark_pattern": "^\\s*(?:[•·▪◦]|\\d{1,2}[.)])\\s+"
 			},
 			"standard_decline_opener": {
 				"_doc": "The standard pair reading takes any 2-column table as [label | answer]; when the writer's OPENER says the items go INTO coloured squares / zones / categories / groups / columns, the table is the drop TARGETS of a category sort, not the pairs — HPFUN101 1A: '[Interactive] Drag and drop, drop the statements into the relevant coloured square' over a 2×2 table of four zones (Blue / Green / Yellow / Red, each with its feelings), the statements typed after it; the pair reading would build nonsense pairs from the zone cells. The standard form declines (the hand-off box keeps the writer's content); the images and column forms are not affected. Tested on the bundle's red TAG items only (the span that names the widget is the first member when an activity box owns the opener), never the black body text. Env DDSORTOPENER_OFF.",
@@ -3440,6 +3485,19 @@
 					"_doc": "A MEMBER'S PROSE OF SEVERAL PARAGRAPHS SHIPS WITHOUT A STRAY COMMA. The prose renderer returns an array of <p>/<ul> chunks; pushed whole, an array of two or more chunks was written out with a ',' between them — a comma the learner saw between the writer's activity title and its instruction. Each member's chunks are joined by a line break instead. Toggle OFF = the comma as before."
 				},
 				"note_cue_pattern": "^(?:cs|dev|developer|designer|note|nb)\\s*[:\\-\\u2013\\u2014]",
+				"empty_button": {
+					"_doc": "AN EMPTY [BUTTON] ASKS FOR THE ACTIVITY'S BUTTONS: the writer types «[Button]» / «[insert button]» with no label (often twice — check and reset) under a drag-and-drop, and the members rule refused the built widget as an unknown member. With no words after it, the tag is the KB button row the build already emits; a black line right after it that is only a button label (label_pattern — «Check answers», «Reset») goes with it. Env DDEMPTYBTN_OFF.",
+					"enabled": true,
+					"env": "DDEMPTYBTN_OFF",
+					"label_pattern": "^(?:check(?:\\s+(?:my\\s+)?answers?)?|reset|undo|submit|show\\s+(?:the\\s+)?answers?|try\\s+again)\\s*[.!]?$"
+				},
+				"answer_key_note": {
+					"_doc": "THE WRITER'S ANSWER-KEY NOTE: a red line about the table's answers — «[Correct answers are highlighted in yellow, please mix these up]», «[correct answer grid in green, developer please mix these up]» — parses as an answer tag (tag_pattern), so the members rule refused the built widget as an unknown member. A tag member with no black words after it, whose tag is an answer word and whose text carries cue_pattern, is the developer's note about the table: once the build stands it is carried out as the red Writers Note. Env DDANSKEYNOTE_OFF.",
+					"enabled": true,
+					"env": "DDANSKEYNOTE_OFF",
+					"tag_pattern": "^(?:correct(?:\\s+answers?)?|answers?|correct\\s+option)$",
+					"cue_pattern": "\\b(?:please|developer|dev|mix|jumble|random(?:ise|ize)?|shuffle|scramble|highlighted|in\\s+(?:green|red|yellow|bold))\\b"
+				},
 				"note": "THE MEMBERS RULE for every built dragAndDrop (the text form, the image form, the column form): a built widget REPLACES the whole captured bundle and the forms only read the TABLE, so every other member the scanner swallowed — the writer's sentence before the table, the 'Go to journal' line after it, a [button], a [body] paragraph, a cloze passage — would silently vanish (the human keeps such prose as <p>: AGH1001 2.0, AGH1005 6.0, TEFUN06, TWHK902, ENGC301, CEDR203, OSGM101). Walked over the members in order: the table = the widget; a black paragraph renders in place through the free-body paragraph emitter (render_black), before or after the widget as the writer placed it; a [body] tag with words is a paragraph (body_tag_as_prose); an instruction-class tag is already the red Writers Note (skipped); a [button] whose label is one of the 03B button row's own (button_row_labels — SSOG301's [insert button] Undo / Check Answer / Reset) is satisfied by the row the build emits; the words riding the invocation tag's OWN line (PHE1005 2.0 '[activity - drag and drop] Match the Māori with the English…' = the human's <h3>) render as a paragraph BEFORE the widget (tag_words_as_prose — the safe content-preserving form; the activity's h3 is the title-level mechanism's business); a [body] or tag-line text opening with a developer cue (note_cue_pattern — OSGM101 '[body] CS: scramble the saying') is a note, not learner prose → decline; ANYTHING ELSE — a [button] with another label, [answer], [audio], [image], [activity], a nested widget — cannot be rendered from inside the widget seam, so the build is DECLINED and the hand-off box keeps every member (never half-build). DDMEMBERS_OFF=1 turns the rule off (members are silently replaced)."
 			},
 			"images": {
@@ -3509,6 +3567,23 @@
 					"red_label": true,
 					"echo_consumed": true,
 					"_echo_consumed_doc": "Under a marked sort only: a black bundle line that merely repeats a drag item (the writer's `* I share your perspective.` list above the table — CEDT501 6.1; the gold shows the instruction line only) is consumed by #ddWithMembers, not rendered as a paragraph."
+				},
+				"bold_header": {
+					"_doc": "THE BOLD HEADER ROW OF A CATEGORY SORT: the writer types the sort's category labels as a BOLD first row (`**Ends with –ing** ║ **Does not end with –ing**`, `**Soft c sound** ║ **Strong c sound**`) and names the sort in the widget's tag (`[Drag and drop column autocheck]`, «… in the right column») — the human builds the 03B column form. A first row whose every non-empty cell is wholly bold, in a bundle whose tag text matches sort_cue_pattern, is a marked header: a 2-column table allowed, the writer's bold kept on the labels and items (the human keeps it), and a cell's lines split into items like its ` / ` list (split_lines). The standard pair form declines such a table (standard_declines), so the header never becomes a matching pair. Env DDCOLBOLD_OFF.",
+					"enabled": true,
+					"env": "DDCOLBOLD_OFF",
+					"sort_cue_pattern": "\\b(?:columns?|sort(?:ing)?|categor\\w*|groups?)\\b",
+					"pair_header_pattern": "\\b(?:questions?|answers?|definitions?|meanings?|descriptions?|translations?|sentences?|words?)\\b",
+					"_pair_header_doc": "A bold header that names the PAIR roles («English meaning ║ French sentence», «Word ║ Definition») is a matching table, never a sort — the human builds those as one drop per prompt.",
+					"split_lines": true,
+					"standard_declines": true
+				},
+				"same_column_repeat": {
+					"_doc": "AN ITEM REPEATED IN ONE COLUMN IS NOT AN AMBIGUOUS KEY: the column form refuses a repeated item because two copies under different headings would have no single answer; copies that all stand in ONE column share their answer (`Three` twice under «Does not end with –ing»), so they are kept as separate drags. Env DDCOLREPEAT_OFF.",
+					"enabled": true,
+					"env": "DDCOLREPEAT_OFF",
+					"marked_only": true,
+					"_marked_only_doc": "Only a MARKED sort (a red or bold header, or red items): in an unmarked wide table a repeated item is more often a grid whose rows belong together (a poem excerpt beside its source) than a sort."
 				},
 				"note": "The writer's CLEAN CATEGORY-SORT table — one table of 3+ columns whose first row is a row of plain category labels (Past | Present | Future, ai | ay | a_e, Noun | Verb | Adjective) and whose data cells are the items that belong under each column (a ' / ' or bullet list in a cell = several items) — builds the KB 03B 'Column Layout': a row.dropContainer with one ddColumn per category (<p>heading</p> + one drop option=c per item in that column, c = the 1-based column index = the answer key), a row.dragContainer whose FIRST ddColumn holds every drag option=c in column order, padded with EMPTY ddColumns to the drop-column count (03B: 'Empty ddColumn pads to match drop column count', as the human mostly does), then the button_row. No blanks attribute, no autoCheck / noBG / hoverBoxes (the developer's editorial modifiers — no writer signal). Tried ONLY where the text form and the image form both returned null. NEVER HALF-BUILDS (null = the hand-off box): a second table, an extraType, a harvested media item, width < min_columns, fewer than min_rows rows, a header cell that is empty / red / a URL / a [tag] / matches header_reject_pattern (a blank run = a FIB, an image word = the image column-sort) / longer than header_max_words (MXFU402's question headers = a match), any data cell that is red / a URL / a [tag], items in fewer than 2 columns (a pooled cell = no answer key), fewer than min_items items, a repeated item (an ambiguous key); the bundle's OTHER members are the shared members rule's business (interactive_builders.dragAndDrop.members). The human mostly builds these tables as the column form. DDCOLUMN_OFF=1 turns it off."
 			},
@@ -5032,6 +5107,51 @@
 			"enabled": true,
 			"_doc": "The writer's «[checkbox]» / «[checklist]» widget. KB 01D maps «checkbox» to the multi-choice quiz (the survey variant when nothing is marked). Built only where the capture is the question-block form with ONE marked answer per question (interactive_builders.multiChoiceQuiz.question_blocks — the gold's multiChoiceQuiz, WJFUN307 2A / 2B); every other checklist keeps its hand-off box."
 		},
+		"memoryGame": {
+			"_doc": "THE MEMORY GAME (KB 03E «Memory Game»): the writer's «[Memory Game]» over a table of PAIRS builds the KB form — `memoryGame memCardSize=\"lg\"`, two `memCard match=\"N\"` per pair (the face-down `cardFace` «?», the `cardHidden` text card `p.memText.writeFont` — constraint 93), the clearDiv and the Reset button inside the container. The pairs: a two-column table, one pair a row (a first row of column labels — role_header_pattern — dropped); a four-column table, two pairs a row, only where both partner columns (2 and 4) are wholly the writer's red — the grid is otherwise not positional (a synonym grid). Text cards only: a cell with an address, a picture request or a bracketed tag keeps the hand-off box — except a stock picture on its own, the picture card (picture_cards). min_pairs to max_pairs pairs. Env MEMGAME_OFF.",
+			"enabled": true,
+			"env": "MEMGAME_OFF",
+			"open": "<div class=\"memoryGame\" memCardSize=\"lg\">",
+			"card": "<div class=\"memCard\" match=\"{n}\">\n<div class=\"cardFace\"><h3>?</h3></div>\n<div class=\"cardHidden\">\n<p class=\"memText writeFont\">{text}</p>\n</div>\n</div>",
+			"close": "<div class=\"clearDiv\"></div>\n<div class=\"activityButton memGameReset\">Reset</div>\n</div>",
+			"min_pairs": 3,
+			"max_pairs": 12,
+			"max_card_words": 25,
+			"role_header_pattern": "^(?:english|french|german|japanese|chinese|spanish|māori|maori|te\\s+reo(?:\\s+māori)?|word|words|meaning|meanings|term|terms|definition|definitions|question|answer|picture|image|symbol|name|match|pair|card\\s*[ab12]?|.*\\b(?:cards?|expressions?|definitions?|ideas?|words?|terms?|meanings?|phrases?|translations?|matches|match|answers?|questions?))$",
+			"_header_doc": "The first row is the column labels — dropped — when every non-empty cell matches role_header_pattern (a language name, a role word, or a label ending in one: «Whole word card», «Correct simple idea», «French expressions») or is wholly bold.",
+			"picture_cards": {
+				"_doc": "THE PICTURE CARD (KB 03E «Image cards»: `<img class=\"img-fluid\" src=\"…\" alt=\"…\" />` inside `.cardHidden`, no loading=lazy — constraint 83). A pair cell holding only a stock-picture address — host_pattern — beside, at most, its bracketed media tag («[Insert media item 7]», «[Image 5]») and a picture label (label_pattern: «image», «picture») is a picture card, its partner the text card. The picture is named as the other widgets name stock pictures: an iStock address (page or image-file form) → filename_istock, any other picture host → the address-slug filename; the alt is the verified acks title, else the address-slug title (the FinishImg rider); the lazy-host pass strips loading=lazy inside the game. A cell with words beside its address, or a pair of two pictures (nothing to read), keeps the hand-off box. Env MEMGAMEPIC_OFF.",
+				"enabled": true,
+				"env": "MEMGAMEPIC_OFF",
+				"host_pattern": "istockphoto\\.com|shutterstock\\.com|unsplash\\.com|pixabay\\.com|gettyimages\\.",
+				"label_pattern": "^(?:(?:image|picture|photo|pic|match)\\s*)+$",
+				"card": "<div class=\"memCard\" match=\"{n}\">\n<div class=\"cardFace\"><h3>?</h3></div>\n<div class=\"cardHidden\">\n{image}\n</div>\n</div>",
+				"filename_istock": "iStock-{id}.jpg",
+				"image_mode_P": "<img class=\"img-fluid\" src=\"https://placehold.co/600x400?text={label}\" alt=\"\" />",
+				"image_mode_P_comment": "<!-- <img class=\"img-fluid\" src=\"images/{filename}\" alt=\"\" /> -->",
+				"image_mode_D": "<img class=\"img-fluid\" src=\"images/{filename}\" alt=\"\" />"
+			}
+		},
+		"slider": {
+			"_doc": "THE SLIDER (KB COMP_06 «Slider (Scale/Survey)»): the writer's «[slider]» names the slider's two ends — red after the tag («[Slider 1] Strongly Agree, Strongly Disagree», «[Slider] easy – very hard (no correct answer)»), inside it («[slider style: Agree- Disagree]», bracket_pole_pattern) or as a line of dashes between them, black on the tag's line or red on its own line («It is not important ------ It is very important», pole_line_separator) — and asks a question on the tag's own line or lists the statements to rate under it (list_pattern; a bullet dropped, a number kept). Each question or statement is one slideContainer (the slideQuestion, the KB range input 0–100 at 50, the two slidePoints in the writer's order); a pole line alone is one slider with no question; several slider tags in one bundle are one div.slider. The poles are exactly two labels of at most max_pole_words words (the separators tried in order; a writer's «(no correct answer)» — pole_noise_pattern — dropped). Prose after the slider stays prose (the members rule); a red request after it («[Show answer] CS can this please appear …») is the Writers Note; a heading, a table, a picture, another widget, a request on the tag's line, a scale of three, a chart or a first-then sequence keep the hand-off box. Env SLIDER_OFF.",
+			"enabled": true,
+			"env": "SLIDER_OFF",
+			"open": "<div class=\"slider\">",
+			"container": "<div class=\"slideContainer\">\n{question}<input class=\"slide\" type=\"range\" min=\"0\" max=\"100\" value=\"50\">\n<div class=\"slidePoints\">\n{points}\n</div>\n</div>",
+			"question": "<p class=\"slideQuestion\">{text}</p>\n",
+			"point": "<p>{text}</p>",
+			"close": "</div>",
+			"pole_line_separator": "\\s*[-_\u2013\u2014]{3,}\\s*",
+			"pole_separators": ["\\s*[-_\u2013\u2014]{3,}\\s*", "\\s*,\\s*", "\\s+[\u2013\u2014-]\\s+|\\s*[\u2013\u2014]\\s*|-\\s+", "\\s*/\\s*"],
+			"pole_noise_pattern": "\\((?:[^)]*\\b(?:no\\s+(?:correct|right)|answers?)\\b[^)]*)\\)",
+			"bracket_pole_pattern": "\\[\\s*slider\\s+style\\s*:\\s*([^\\]]+)\\]",
+			"max_pole_words": 6,
+			"max_question_words": 40,
+			"list_pattern": "^\\s*(?:[\u2022\u00b7\u25aa\u25e6*]|\\d+[.)])\\s+",
+			"bullet_pattern": "^\\s*[\u2022\u00b7\u25aa\u25e6*]\\s+",
+			"tail_button_pattern": "^\\W*go\\s+to\\s+(?:your\\s+)?(?:journal|portfolio)\\b",
+			"note_pattern": "^(?:cs|dev|developer|designer|note|nb)\\b|\\b(?:can|could)\\s+(?:this|there|we|you|it)\\b|\\bplease\\b"
+		},
 		"multiChoiceQuiz": {
 			"question_blocks": {
 				"enabled": true,
@@ -5081,6 +5201,23 @@
 			"list_marker_pattern": "^\\s*(?:\\*\\*)?\\s*(?:[A-Za-z][\\)\\.]|\\d+[\\)\\.]|[\u2022\u25cf\u25aa\u2023\u25e6\u2610\u2611\u2612])\\s*",
 			"checkbox_only_pattern": "^[\\s\u2610\u2611\u2612\u25a1\u2022\u25cf\u2013\u2014\\-\\.\\)\\(]*$",
 			"question_end_pattern": "\\?\\s*(?:\\*\\*)?\\s*$",
+			"answer_guide": {
+				"_doc": "THE ANSWER GUIDE: the writer closes the quiz with its key on one line — «[Answer guide] 1. a 2. a 3. a 4. b», «Answers: 1 b, 2 c» — each pair the question's position (the writer's own numbering may repeat a number) and the option's letter. The line is set aside (never an option); once the questions stand, each pair marks its option — only where the writer marked nothing else, every pair lands on a real option and every question is marked exactly once; otherwise the hand-off box stays. Env MCQGUIDE_OFF.",
+				"enabled": true,
+				"env": "MCQGUIDE_OFF",
+				"line_pattern": "^\\[?\\s*answers?\\s*(?:guide|key)?\\s*\\]?\\s*:?\\s*((?:\\d{1,2}\\s*[.):]?\\s*[a-h]\\b[\\s,;.]*)+)$",
+				"pair_pattern": "(\\d{1,2})\\s*[.):]?\\s*([a-h])\\b"
+			},
+			"question_indent": {
+				"_doc": "THE QUESTIONS TOLD BY INDENT: the writer numbers the questions AND the options («1. The characters begin helping …» / «  1. They are still unhappy.») and tells them apart only by indentation. Where the numbered lines stand at exactly two indents, each holding two or more lines, the outer numbered line opens a question, the inner ones are its options, and an unnumbered line before the question's first option joins the question («Original sequence: AATGGTC»). Never with the writer's [Question N] tags, nor where an outer numbered line ends in «?» (the question-mark reading tells those apart). Env MCQINDENT_OFF.",
+				"enabled": true,
+				"env": "MCQINDENT_OFF"
+			},
+			"mark_before": {
+				"_doc": "THE MARK TYPED BEFORE ITS OPTION: «2.» left bare on its line, then «[correct] They are starting to adapt to island life.» — the words after the mark ARE the marked option (the reader otherwise marks the option before the tag, here the bare number, and declines). Taken only where the option before the mark is a bare list number or the question has no option yet, so the mark-after reading (CEDO202 — the writer's [correct] after the option it marks) stands everywhere else. Env MCQMARKBEFORE_OFF.",
+				"enabled": true,
+				"env": "MCQMARKBEFORE_OFF"
+			},
 			"non_options": {
 				"hint_line": { "enabled": true, "env": "MCQHINTLINE_OFF", "pattern": "^\\s*(?:\\*\\*)?\\s*hint\\s*:\\s*(?:\\*\\*)?\\s*(.+)$" },
 				"button_label": { "enabled": true, "env": "MCQBUTTON_OFF", "tags": ["button"] },
@@ -5171,6 +5308,14 @@
 				"table_close": "</table>\n</div>",
 				"close": "</div>",
 				"selfcheck_opener_pattern": "\\btyp(?:e|ing)\\b",
+				"selfcheck_red_key": {
+					"_doc": "THE WRITER'S ANSWER KEY ADMITS A SELF-CHECK TABLE. A selfCheck bundle whose opener says the red runs ARE the answers («[self check] Correct answers are in red», «[Self Check - correct answer in red]», «[Self Check] Answers are in red») is read by this table form exactly as a «[Type and check]» one: the KB «Self Check» (03E) is the free-text widget with a model answer shown after typing, while a table of exact red answers is the KB 03D type-and-check, and the human builds div.typing on those pages. Every guard of the table form still applies (deny_pattern — a request for drag, tiles, pictures, colour or highlighting — label answers, tag answers, max_answer_words, an all-red row); the key alone admits only a table of min_columns or more columns — a one-cell poem whose red words the writer calls the answers is the human's word highlighter, not a typing quiz; and only a regular grid of one-line cells — a merged cell (a short row) or a cell of two lines (line_break_pattern, the parser's « / ») is a layout the form cannot carry, so the box stays. Env TYPTABLERED_OFF.",
+					"enabled": true,
+					"env": "TYPTABLERED_OFF",
+					"min_columns": 2,
+					"line_break_pattern": "\\s\\/\\s",
+					"pattern": "\\b(?:correct\\s+)?answers?\\s+(?:(?:are|is|have\\s+been|has\\s+been)\\s+)?(?:(?:given|shown|written|typed|marked)\\s+)?in\\s+red\\b"
+				},
 				"deny_pattern": "\\b(?:drag|drop|dragged|dropped|tiles?|multi\\s*-?\\s*choice|drop\\s*-?\\s*down|dropdown|outside\\s+(?:of\\s+)?(?:the\\s+)?(?:table|box)|images?|pictures?|photos?|graph|highlight(?:ed)?|circle|colou?r(?:ed)?)\\b",
 				"label_row_pattern": "^(?:questions?|answers?|statements?|sentences?|words?|working|solutions?|q|a)\\s*:?$",
 				"label_answer_pattern": "^\\(?\\s*(?:(?:in)?correct(?:\\s+answers?)?|answers?|example|e\\.?g\\.?|questions?\\s*\\d*|q\\s*\\d+|tick|x)\\s*\\)?\\s*[:.]?$",

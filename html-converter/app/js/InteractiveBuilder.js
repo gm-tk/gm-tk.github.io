@@ -157,6 +157,12 @@ class InteractiveBuilder {
 					html = this.#mcqQuestionBlocks({ bundle, templates, renderInline, run })
 						?? this.#multiChoiceQuiz({ bundle, tpl, renderInline });
 					break;
+				case "memoryGame":     // the writer's table of pairs → the KB 03E memory game (text and picture cards)
+					html = this.#memoryGame({ bundle, tpl, renderInline, run });
+					break;
+				case "slider":         // the writer's poles (+ a question or a statement list) → the KB COMP_06 slider
+					html = this.#slider({ bundle, tpl, renderInline });
+					break;
 				case "selectionBox":   // «[checkbox – Auto Check]» typed as question blocks, one marked answer each (KB 01D)
 					html = this.#mcqQuestionBlocks({ bundle, templates, renderInline, run });
 					break;
@@ -253,6 +259,8 @@ class InteractiveBuilder {
 			return html;
 			};
 			html = this.#dispatchWithRelink(bundle, dispatch, relink);
+			// the writer's red marks in the table cells read as the answer key / structure / a note (#dispatchWithCellMarks)
+			if (html === null) html = this.#dispatchWithCellMarks(bundle, type, templates, dispatch);
 			} finally { track?.restore(); relink?.restore(); }
 			if (html && relink?.used) html = relink.clean(html);
 
@@ -791,6 +799,133 @@ class InteractiveBuilder {
 	static #bundleRestore(bundle, d) {
 		for (const k of Object.keys(Object.getOwnPropertyDescriptors(bundle))) if (!(k in d)) delete bundle[k];
 		for (const [k, desc] of Object.entries(d)) Object.defineProperty(bundle, k, Array.isArray(desc.value) ? { ...desc, value: desc.value.slice() } : desc);
+	}
+
+	/**
+	 * THE WRITER'S RED MARKS INSIDE A WIDGET TABLE'S CELLS ARE READ, NOT REFUSED. Every table builder refuses a table whose
+	 * cell holds red text, yet most red a writer types inside a widget table is the answer key («perform ║ [correct] Do or
+	 * carry out.») or the structure («[H3] …», «[Body] …»), not an instruction. For a type the data lists, when the widget
+	 * declined on the cells as captured, it is built once more with each cell's red spans classed: an ANSWER mark removed
+	 * (every row — the table's own positions are the key), a STRUCTURE tag removed and a NOTE lifted out below the first row
+	 * (the first row stays as typed: the header readers own it), a picture tag and the learner's own red words left in place.
+	 * The lifted notes become the red Writers Note after the widget. The cells are restored whatever the result, and the
+	 * bundle's own properties are put back when the second build declines, so the hand-off box keeps everything as captured.
+	 * Data interactive_builders._cell_marker_vocabulary; env CELLMARK_OFF.
+	 * @returns {string|null} the widget built from the read cells, or null
+	 */
+	static #dispatchWithCellMarks(bundle, type, templates, dispatch) {
+		const cfg = templates?._cell_marker_vocabulary;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "CELLMARK_OFF"]) return null;
+		if (!(cfg.applies_to ?? []).includes(type)) return null;
+		const blocks = new Set();
+		for (const m of (bundle?.memberItems ?? [])) { const p = this.#peekMember(m); if (p && p.type === "table" && p.block && Array.isArray(p.block.rows)) blocks.add(p.block); }
+		for (const t of (bundle?.tables ?? [])) if (t && Array.isArray(t.rows)) blocks.add(t);
+		if (!blocks.size) return null;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const answerRe = new RegExp(cfg.answer_pattern, "iu"), structRe = new RegExp(cfg.structure_pattern, "i");
+		const pictRe = new RegExp(cfg.picture_pattern, "i"), cueRe = new RegExp(cfg.note_cue_pattern, "i");
+		const minWords = cfg.note_min_words ?? 3;
+		// a bracketed phrase that is no answer / structure / picture tag is a developer NOTE only when it carries an instruction
+		// cue or runs to note_bracket_min_words words — a short bracketed word is the writer's own key («… [Farmer]» names a
+		// quote's partner) and stays
+		const bracketKind = (x) => (answerRe.test(x) ? "ANSWER" : structRe.test(x) ? "STRUCTURE" : pictRe.test(x) ? "PICTURE"
+			: (cueRe.test(x) || x.replace(/[\[\]]/g, " ").trim().split(/\s+/).length >= (cfg.note_bracket_min_words ?? 4)) ? "NOTE" : "CONTENT");
+		const classOf = (inner) => {
+			const t = String(inner).replace(/\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+			if (!t) return "EMPTY";
+			if (answerRe.test(t)) return "ANSWER";
+			if (structRe.test(t)) return "STRUCTURE";
+			if (pictRe.test(t)) return "PICTURE";
+			const toks = t.match(/\[[^\]]*\]|[✅✓✔☑]/gu) ?? [];
+			if (toks.length && !t.replace(/\[[^\]]*\]|[✅✓✔☑]/gu, " ").trim()) {
+				const ks = toks.map(bracketKind);
+				if (ks.includes("PICTURE")) return "PICTURE";
+				if (ks.includes("CONTENT")) return "CONTENT";
+				if (ks.every((k) => k === "ANSWER" || k === "STRUCTURE")) return ks.includes("ANSWER") ? "ANSWER" : "STRUCTURE";
+				return "NOTE";
+			}
+			if (/^\[[^\[\]]*\]$/.test(t)) return bracketKind(t);
+			if (cueRe.test(t) && t.split(/\s+/).length >= minWords) return "NOTE";
+			return "CONTENT";
+		};
+		const edits = [], notes = [], dropHead = [];
+		const hd = cfg.unmarked_header;
+		// THE ROW-KEYED MARKS: question-numbered marks that change down a column and agree along a row («Cash [Q1] ║ Tui [Q1 who
+		// correct] ║ … [Q1 how correct]») key a matching GRID row by row — no table builder reads that; the box stays (data
+		// row_keyed_decline). Marks numbered by COLUMN («[Q1 correct]» down the first column) are a sort's key and read as usual.
+		if (cfg.row_keyed_decline !== false) {
+			const qRe = new RegExp(cfg.question_number_pattern ?? "\\[\\s*q(?:uestion)?\\s*(\\d+)\\b[^\\]]*\\]", "i");
+			for (const b of blocks) {
+				const q = b.rows.slice(1).map((row) => (Array.isArray(row) ? row : []).map((cell) => { const m = qRe.exec(String(cell ?? "")); return m ? m[1] : null; }));
+				const keyed = q.filter((r) => r.filter(Boolean).length >= 2);
+				if (keyed.length >= 2 && keyed.every((r) => new Set(r.filter(Boolean)).size === 1)
+					&& new Set(keyed.map((r) => r.find(Boolean))).size === keyed.length) return null;
+			}
+		}
+		for (const b of blocks) {
+			// THE UNMARKED LABEL ROW: every row but the first carries an ANSWER mark in one same column and the first row is
+			// short black labels («Idea ║ Best evidence») — that row is the header, left out of the build (data unmarked_header)
+			if (hd && hd.enabled !== false && b.rows.length >= (hd.min_rows ?? 3) && Array.isArray(b.rows[0])) {
+				const marks = b.rows.map((row) => new Set((Array.isArray(row) ? row : []).map((cell, c) => (typeof cell === "string"
+					&& [...cell.replace(/\[\/RED TEXT\]\u{1f534}(\s*)\u{1f534}\[RED TEXT\]/gu, "$1").matchAll(RED)].some((m) => classOf(m[1]) === "ANSWER") ? c : -1)).filter((c) => c >= 0)));
+				const head = b.rows[0].map((c) => this.#cellText(c).replace(/\s+/g, " ").trim());
+				const shared = [...marks[1]].filter((c) => marks.slice(1).every((s) => s.has(c)));
+				if (!marks[0].size && shared.length && !b.rows[0].some((c) => this.#hasRedText(c))
+					&& head.every((t) => t && t.split(" ").length <= (hd.max_words ?? 4) && !/https?:\/\//.test(t))
+					&& !dropHead.some((x) => x.rows === b.rows)) dropHead.push(b);   // one rows array is shifted once
+			}
+			// a STRUCTURE tag standing in EVERY row of a column, the first included («[Body] Happy birthday!» down the caption
+			// column), marks the column, not a header: it is lifted in the first row too (data column_marker_first_row)
+			const colStruct = new Set();
+			if (cfg.column_marker_first_row !== false && b.rows.length >= 2
+				&& !(typeof process !== "undefined" && process.env && process.env.CELLMARKCOL_OFF)) {
+				const w = Math.max(0, ...b.rows.map((row) => (Array.isArray(row) ? row.length : 0)));
+				for (let c = 0; c < w; c++) if (b.rows.every((row) => Array.isArray(row) && typeof row[c] === "string"
+					&& [...row[c].replace(/\[\/RED TEXT\]\u{1f534}(\s*)\u{1f534}\[RED TEXT\]/gu, "$1").matchAll(RED)].some((m) => classOf(m[1]) === "STRUCTURE"))) colStruct.add(c);
+			}
+			b.rows.forEach((row, r) => {
+				if (!Array.isArray(row)) return;
+				for (let c = 0; c < row.length; c++) {
+					const cell = row[c];
+					if (typeof cell !== "string" || !/\[RED TEXT\]/.test(cell)) continue;
+					// a red run Word split in two («[correct answer» + «]») is one span
+					const merged = cell.replace(/\[\/RED TEXT\]\u{1f534}(\s*)\u{1f534}\[RED TEXT\]/gu, "$1");
+					const found = [];
+					const out = merged.replace(RED, (m, inner) => {
+						const k = classOf(inner);
+						if (k === "EMPTY" || k === "ANSWER" || ((r > 0 || colStruct.has(c)) && k === "STRUCTURE")) return " ";
+						if (r > 0 && k === "NOTE") { found.push(String(inner).replace(/\u{1f534}/gu, "").replace(/\s+/g, " ").trim()); return " "; }
+						return m;
+					}).replace(/[ \t]{2,}/g, " ").replace(/^[ \t]+|[ \t]+$/gm, "");
+					if (out !== cell) { edits.push([row, c, cell, out]); notes.push(...found); }
+				}
+			});
+		}
+		if (!edits.length) return null;
+		const s0 = this.#bundleState(bundle);
+		const undo = [];
+		for (const [row, c, from, to] of edits) if (row[c] === from) { undo.push([row, c, from]); row[c] = to; }
+		const heads = dropHead.map((b) => [b, b.rows.shift()]);
+		let html = null;
+		try { html = dispatch(); } finally {
+			for (const [b, row] of heads.reverse()) b.rows.unshift(row);
+			for (const [row, c, v] of undo.reverse()) row[c] = v;
+		}
+		// a build from the read cells with an EMPTY member (a question, a drag or a paragraph with no words — a cell that held
+		// only a picture request or an emoji) is not the writer's widget: never half-build (data reject_empty_members)
+		if (html !== null && cfg.reject_empty_members !== false) {
+			const wordless = (inner) => !/<img\b/i.test(inner) && !/[\p{L}\p{N}]/u.test(inner.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " "));
+			if ([...html.matchAll(/<div class="(?:question|drag)"[^>]*>([\s\S]*?)<\/div>/g)].some((m) => wordless(m[1]))
+				|| [...html.matchAll(/<p>([\s\S]*?)<\/p>/g)].some((m) => wordless(m[1]))) html = null;
+		}
+		if (html === null) { this.#bundleRestore(bundle, s0); return null; }
+		if (notes.length) {
+			const kept = [...(bundle.instructions ?? [])];
+			for (const n of notes) if (n && !kept.includes(n)) kept.push(n);
+			bundle.instructions = kept;
+		}
+		return html;
 	}
 
 	/** The read tracker's untracked accessor (#trackMembers); #peekMember(m) is the member itself, its reads not recorded. */
@@ -1422,6 +1557,8 @@ class InteractiveBuilder {
 		const tables = bundle?.tables ?? [];
 		if (tables.length !== 1) return null;
 		const srcRows = tables[0].rows ?? [];
+		// a bold header row naming a sort's categories is the column form's (data column.bold_header.standard_declines): never a pair
+		if (tpl.column?.bold_header?.standard_declines && this.#ddBoldSortHeader(bundle, srcRows[0], tpl.column)) return null;
 		const width = Math.max(0, ...srcRows.map((r) => (r ?? []).length));
 		// THE RED ANSWER COLUMN. The writer types the
 		// ANSWER column red (`• Sarah spent $12 … ║ «3x = 12»` — MXEO301 5.1; `3² ║ «3 × 3» ║ 3^6 ║ «3 × 3 × …»` — two pair sets
@@ -1463,6 +1600,17 @@ class InteractiveBuilder {
 				if (lr.decline_identity !== false && pair.length && pair.every(([l, a]) => l.replace(/\s+/g, " ") === a.replace(/\s+/g, " "))) return null;
 			}
 		}
+		// THE ALL-CAPS HEADER ROW: a first row of short ALL-CAPS labels («HOPES ║ REALITIES») over ordinary rows is the table's
+		// header, never a pair (data label_row.caps_header; env DDCAPSHEAD_OFF)
+		{
+			const ch = lr?.caps_header;
+			if (ch && ch.enabled !== false && !labelNotes.length && !(typeof process !== "undefined" && process.env && process.env[ch.env || "DDCAPSHEAD_OFF"])
+				&& rows.length >= (ch.min_rows ?? 3) && !this.#hasRedText(rows[0][0]) && !this.#hasRedText(rows[0][1])) {
+				const h = rows[0].map((c) => this.#cellText(c).replace(/\*\*|__/g, "").trim());
+				if (h.every((t) => t && /^[\p{Lu}\s&/'’-]+$/u.test(t) && /\p{Lu}{2}/u.test(t) && t.split(/\s+/).length <= (ch.max_words ?? 3))
+					&& rows.slice(1).some((r) => /\p{Ll}/u.test(this.#cellText(r[0])))) rows = rows.slice(1);
+			}
+		}
 		if (!raPairs && rows.length < (tpl.min_rows ?? 2)) return null;
 		const inline = renderInline ?? ((s) => s);
 		const labels = [], answers = [];
@@ -1480,6 +1628,15 @@ class InteractiveBuilder {
 		}
 		// DISTINCT answers ⇒ a 1:1 MATCHING set; a repeat ⇒ categorisation (different structure) → bail.
 		if (new Set(answers.map((a) => a.toLowerCase())).size !== answers.length) return null;
+		// THE LIST LAID OUT IN COLUMNS: every cell on both sides opens with a list mark («1. 1200 ÷ 10 = ║ 2. 1200 ÷ 100») —
+		// numbered questions set side by side, not pairs (data list_cells_decline; env DDLISTCELLS_OFF)
+		{
+			const lc = tpl.list_cells_decline;
+			if (lc && lc.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[lc.env || "DDLISTCELLS_OFF"])) {
+				const mark = new RegExp(lc.mark_pattern ?? "^\\s*(?:[•·▪◦]|\\d{1,2}[.)])\\s+", "u");
+				if (labels.every((l) => mark.test(l)) && answers.every((a) => mark.test(a))) return null;
+			}
+		}
 		const out = [tpl.open];
 		for (const l of labels) out.push(Utils.FillTemplate(tpl.question, { label: inline(l) }));
 		out.push(tpl.mid);
@@ -1950,8 +2107,10 @@ class InteractiveBuilder {
 		// marked (a marked header OR every item red) may be 2 columns wide. An unmarked table reads exactly as the plain column form.
 		const mk = cfg.marked && cfg.marked.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env[cfg.marked.env || "DDCOLMARK_OFF"]) ? cfg.marked : null;
+		// THE BOLD HEADER ROW: a wholly-bold first row in a bundle whose tag names a sort (data column.bold_header) is a marked header
+		const boldHead = this.#ddBoldSortHeader(bundle, srcRows[0], cfg);
 		const wide = width >= (cfg.min_columns ?? 3);
-		if (!wide && !(mk && width >= (mk.min_columns ?? 2))) return null;
+		if (!wide && !(mk && width >= (mk.min_columns ?? 2)) && !boldHead) return null;
 		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
 		const markerRe = mk ? new RegExp(mk.header_marker_pattern ?? "^\\[\\s*(?:h[1-6]|static(?:\\s+heading)?|column\\s+(?:heading|title))\\s*\\]$", "i") : null;
 		const inline = renderInline ?? ((s) => s);
@@ -1973,12 +2132,14 @@ class InteractiveBuilder {
 				else return null;
 				marked = true;
 			} else t = this.#cellText(c).trim();
+			if (boldHead) marked = true;                                          // the writer's bold stays (the gold keeps it)
 			if (!t || urlRe.test(t) || tagRe.test(t) || reject.test(t)) return null;
 			if (t.split(/\s+/).length > (cfg.header_max_words ?? 8)) return null;
 			headings.push(t);
 		}
-		// the data rows: every non-empty cell is one item or a ` / ` / bullet list of items belonging to its column
-		const split = new RegExp(cfg.item_split_pattern ?? "\\s/\\s|\\u2022");
+		// the data rows: every non-empty cell is one item or a ` / ` / bullet list of items belonging to its column (under a
+		// bold header also one item per line)
+		const split = new RegExp((cfg.item_split_pattern ?? "\\s/\\s|\\u2022") + (boldHead && boldHead.split_lines !== false ? "|\\n" : ""));
 		const cols = headings.map(() => []);
 		let redItems = 0, blackItems = 0;
 		for (const r of srcRows.slice(1)) {
@@ -2002,7 +2163,18 @@ class InteractiveBuilder {
 		const all = cols.flat();
 		if (all.length < (cfg.min_items ?? 3)) return null;
 		if (cols.filter((c) => c.length).length < 2) return null;                       // a pooled cell = no answer key
-		if (new Set(all.map((x) => x.toLowerCase())).size !== all.length) return null;    // a repeated item = an ambiguous key
+		// a repeated item = an ambiguous key — unless every copy stands in ONE column (data column.same_column_repeat)
+		const rep = cfg.same_column_repeat;
+		const repOk = rep && rep.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[rep.env || "DDCOLREPEAT_OFF"])
+			&& (rep.marked_only === false || marked || redItems > 0);
+		if (repOk) {
+			const home = new Map();
+			for (let c = 0; c < cols.length; c++) for (const x of cols[c]) {
+				const k = x.toLowerCase();
+				if (home.has(k) && home.get(k) !== c) return null;
+				home.set(k, c);
+			}
+		} else if (new Set(all.map((x) => x.toLowerCase())).size !== all.length) return null;
 		if (marked || redItems || !wide) bundle._ddMarkedItems = all.slice();             // #ddWithMembers' echo test
 		const out = [cfg.open];
 		for (let c = 0; c < cols.length; c++) {
@@ -2020,6 +2192,25 @@ class InteractiveBuilder {
 		if (br && br.enabled !== false && !btnOff) out.push(br.html);
 		out.push(cfg.close);
 		return out.join("\n");
+	}
+
+	/**
+	 * THE BOLD HEADER ROW OF A CATEGORY SORT (data dragAndDrop.column.bold_header; env DDCOLBOLD_OFF): the first row's every
+	 * non-empty cell (two or more) is wholly bold and red-free, and the bundle's tag text names a sort (sort_cue_pattern —
+	 * «[Drag and drop column autocheck]», «… currently in the right column»). Returns the data block, or null.
+	 */
+	static #ddBoldSortHeader(bundle, row0, colCfg) {
+		const bh = colCfg?.bold_header;
+		if (!bh || bh.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[bh.env || "DDCOLBOLD_OFF"]) return null;
+		if (!Array.isArray(row0) || !row0.length || row0.some((c) => this.#hasRedText(c))) return null;
+		const filled = row0.map((c) => this.#cellText(c).replace(/\s+/g, " ").trim()).filter(Boolean);
+		if (filled.length < 2 || !filled.every((t) => /^\*\*[^*]+\*\*$/.test(t))) return null;
+		// a header that names the PAIR roles («English meaning ║ French sentence», «Word ║ Definition») is a matching table
+		if (bh.pair_header_pattern && new RegExp(bh.pair_header_pattern, "i").test(filled.join(" | "))) return null;
+		const said = [...(bundle?.openerItems ?? []), ...(bundle?.memberItems ?? [])].map((m) => this.#peekMember(m))
+			.filter((m) => m?.type === "tag").map((m) => this.#cellText(m.text)).join(" ");
+		return new RegExp(bh.sort_cue_pattern, "i").test(said) ? bh : null;
 	}
 
 	/**
@@ -2293,6 +2484,18 @@ class InteractiveBuilder {
 		const btnRe = new RegExp(cfg.button_row_labels ?? "^(?:undo|check(?:\\s+answers?)?|reset)\\.?$", "i");
 		const bodyRe = new RegExp(cfg.body_tag_pattern ?? "^\\[\\s*body(?:\\s+text)?\\s*\\]$", "i");
 		const noteRe = new RegExp(cfg.note_cue_pattern ?? "^(?:cs|dev|developer|designer|note|nb)\\s*[:\\-\u2013\u2014]", "i");
+		// the writer's answer-key note (\u00ab[Correct answers are highlighted in yellow, please mix these up]\u00bb) parses as an answer
+		// tag: it is the developer's note about the table, carried out as the Writers Note once the build stands
+		const ak = cfg.answer_key_note;
+		const akOn = !!ak && ak.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ak.env ?? "DDANSKEYNOTE_OFF"]);
+		const akTag = akOn ? new RegExp(ak.tag_pattern, "i") : null, akCue = akOn ? new RegExp(ak.cue_pattern, "i") : null;
+		const akNotes = [];
+		// an EMPTY «[Button]» (no label after it) asks for the activity's buttons: the KB button row the build emits; a black
+		// button label typed on the next line («Check answers») goes with it (members.empty_button)
+		const eb = cfg.empty_button;
+		const ebOn = !!eb && eb.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[eb.env ?? "DDEMPTYBTN_OFF"]);
+		const ebLabel = ebOn ? new RegExp(eb.label_pattern, "i") : null;
+		let ebOpen = false;
 		const before = [], after = []; let seenTable = false;
 		const pairLines = this.#DD_PAIR_LINES.get(bundle);   // the pair-list form's own line(s): the widget's place, not prose
 		for (let k = 0; k < members.length; k++) {
@@ -2304,6 +2507,9 @@ class InteractiveBuilder {
 			if (m.type === "black") {
 				const t = String(m.text ?? "").trim();
 				if (!t) continue;
+				// the label of an empty [Button] typed on its own line («Check answers») is the button row's
+				if (ebOpen && ebLabel.test(this.#cellText(t).replace(/\*\*|__/g, "").trim())) continue;
+				ebOpen = false;
 				if (cfg.render_black === false) return null;
 				// under a MARKED sort only (bundle._ddMarkedItems): a black line that merely repeats one of the drag
 				// items (the writer's `* I share your perspective.` list above the table — CEDT501 6.1; the gold shows the
@@ -2327,13 +2533,24 @@ class InteractiveBuilder {
 			if (parse && (parse.class === "instruction" || parse.instructionFragment)) continue;   // already the Writers Note
 			const tag = String(prim?.tag ?? m.tag ?? "").toLowerCase();
 			if (tag === "button" && btnRe.test(this.#cellText(words).trim())) continue;     // the KB button row covers it
+			if (ebOn && tag === "button" && !this.#cellText(words).trim()) { ebOpen = true; continue; }   // an empty [Button]: the row too
+			ebOpen = false;
 			if (tag === "body" || bodyRe.test(String(m.text ?? "").trim())) {
 				const w = this.#cellText(words).trim();
 				if (!w) continue;                                                         // an empty [body] marker carries nothing
 				if (cfg.body_tag_as_prose === false || noteRe.test(w)) return null;
 				const r = block(m.blackAfter); if (!r) return null; side.push(r); continue;
 			}
+			if (akOn && akTag.test(tag) && !this.#cellText(words).trim()) {
+				const t = this.#cellText(String(m.text ?? "")).replace(/\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+				if (akCue.test(t)) { akNotes.push(t); continue; }
+			}
 			return null;
+		}
+		if (akNotes.length) {
+			const kept = [...(bundle.instructions ?? [])];
+			for (const n of akNotes) if (!kept.includes(n)) kept.push(n);
+			bundle.instructions = kept;
 		}
 		return [...before, html, ...after].join("\n");
 	}
@@ -15887,6 +16104,180 @@ class InteractiveBuilder {
 		return html;
 	}
 
+	/**
+	 * THE MEMORY GAME (KB 03E «Memory Game»; data interactive_builders.memoryGame; env MEMGAME_OFF). The writer's «[Memory
+	 * Game]» over one table of PAIRS: a two-column table, one pair a row («Quel âge as-tu? ║ How old are you?»; a first row of
+	 * column labels — role_header_pattern — dropped), or a four-column table, two pairs a row, only where both partner columns
+	 * (2 and 4) are wholly the writer's red (MXFL301 7A «60 seconds ║ «1 minute» ║ 12 months ║ «1 year»») — otherwise the grid
+	 * is not positional (a synonym grid) and the box stays. A cell with an address, a picture request or a bracketed tag
+	 * declines — except a stock picture on its own (beside only its media tag), the KB image card (picture_cards). Emits the
+	 * KB form: two `memCard match="N"` per pair, the `cardFace` «?», `p.memText.writeFont` or the `img.img-fluid`.
+	 * @returns {string|null} the built memory game, or null for the hand-off box
+	 */
+	static #memoryGame({ bundle, tpl, renderInline, run }) {
+		if (!tpl || tpl.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[tpl.env || "MEMGAME_OFF"]) return null;
+		if (bundle?.extraTypes?.length || (bundle?.media ?? []).length) return null;
+		const tables = bundle?.tables ?? [];
+		if (tables.length !== 1) return null;
+		const inline = renderInline ?? ((s) => s);
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		// a cell's own line breaks (« / ») become spaces — never the slashes of an address
+		const plain = (c) => this.#cellText(String(c ?? "")).replace(/\s+\/\s+/g, " ").replace(/\s+/g, " ").trim();
+		// THE PICTURE CARD (data picture_cards; env MEMGAMEPIC_OFF): a cell holding only a stock-picture address — beside its
+		// bracketed tag («[Insert media item 7] https://www.istockphoto.com/…») and nothing else — is a KB image card, the picture
+		// named as the other widgets name stock pictures; an address with words beside it still keeps the box
+		const pc = tpl.picture_cards;
+		const picOn = !!pc && pc.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[pc.env || "MEMGAMEPIC_OFF"]);
+		const picUrl = (c) => {
+			const s = this.#cellText(String(c ?? ""));
+			const m = /https?:\/\/[^\s"'<>]+/.exec(s);
+			if (!m || !new RegExp(pc.host_pattern, "i").test(m[0])) return null;
+			const rest = s.replace(m[0], " ").replace(/\[[^\]]*\]/g, " ").replace(/\s+\/\s+/g, " ").replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+			return rest && !new RegExp(pc.label_pattern ?? "^$", "i").test(rest) ? null : MediaBuilder.CanonicalStockUrl(m[0]);
+		};
+		const wholeRed = (c) => { const s = String(c ?? ""); return /\[RED TEXT\]/.test(s) && !this.#cellText(s.replace(RED, " ")).trim(); };
+		const okCard = (c) => {
+			const raw = String(c ?? ""), t = plain(c);
+			if (picOn && picUrl(c)) return true;   // a picture card (data picture_cards)
+			return !!t && !/https?:|www\.|\.(?:jpe?g|png|gif)\b/i.test(raw) && !/\[[^\]]*\]/.test(t) && t.split(" ").length <= (tpl.max_card_words ?? 25);
+		};
+		let rows = (tables[0].rows ?? []).filter((r) => Array.isArray(r) && r.some((c) => plain(c)));
+		if (!rows.length) return null;
+		const width = Math.max(...rows.map((r) => r.length));
+		const head = new RegExp(tpl.role_header_pattern ?? "^$", "i");
+		// the first row is the column labels when every cell is a role label or wholly bold («**French expressions**»)
+		if (rows.length > 1 && rows[0].every((c) => !plain(c) || head.test(plain(c).replace(/\*\*/g, "").trim()) || /^\*\*[^*]+\*\*$/.test(plain(c)))) rows = rows.slice(1);
+		const pairs = [];
+		if (width === 2) {
+			for (const r of rows) {
+				if (r.length !== 2) return null;
+				// a red cell is the writer's partner only when the whole cell is red; red mixed into black words is a note
+				if (r.some((c) => /\[RED TEXT\]/.test(String(c ?? "")) && !wholeRed(c) && !(picOn && picUrl(c)))) return null;
+				if (!okCard(r[0]) || !okCard(r[1])) return null;
+				pairs.push([r[0], r[1]]);
+			}
+		} else if (width === 4) {
+			for (const r of rows) {
+				if (r.length !== 4) return null;
+				for (const [a, b] of [[0, 1], [2, 3]]) {
+					if (!plain(r[a]) && !plain(r[b])) continue;
+					if (/\[RED TEXT\]/.test(String(r[a] ?? "")) || !wholeRed(r[b])) return null;   // the partner column is the marked one
+					if (!okCard(r[a]) || !okCard(r[b])) return null;
+					pairs.push([r[a], r[b]]);
+				}
+			}
+		} else return null;
+		if (pairs.length < (tpl.min_pairs ?? 3) || pairs.length > (tpl.max_pairs ?? 12)) return null;
+		// a pair of two pictures is never a card set the learner can read (no words to match by)
+		if (picOn && pairs.some(([a, b]) => picUrl(a) && picUrl(b))) return null;
+		const cardOf = (c, n) => {
+			const u = picOn ? picUrl(c) : null;
+			if (!u) return Utils.FillTemplate(tpl.card, { n, text: inline(plain(c)) });
+			const filename = this.#accImageFilename(u, pc, pc);
+			if (!filename) return null;
+			return Utils.FillTemplate(pc.card, { n, image: this.#ddImage({ url: u, filename }, pc, run) });
+		};
+		const out = [tpl.open];
+		for (let k = 0; k < pairs.length; k++) {
+			const a = cardOf(pairs[k][0], k + 1), b = cardOf(pairs[k][1], k + 1);
+			if (!a || !b) return null;
+			out.push(a, b);
+		}
+		out.push(tpl.close);
+		return out.join("\n");
+	}
+
+	/**
+	 * THE SLIDER (KB COMP_06 «Slider (Scale/Survey)»; data interactive_builders.slider; env SLIDER_OFF). The writer names the
+	 * slider's two ends — after the tag («[Slider 1] Strongly Agree, Strongly Disagree», «[Slider] easy – very hard»), inside it
+	 * («[slider style: Agree- Disagree]») or as a line of dashes between them («It is not important ------ It is very
+	 * important») — and asks a question on the tag's own line, or lists the statements to rate under it. Each question or
+	 * statement is one `slideContainer` (its `slideQuestion`, the KB range input, the two `slidePoints`); a pole line alone is one
+	 * slider with no question. Several slider tags in one bundle are one `div.slider`. Prose after the slider stays prose (the
+	 * members rule); a red request after it is the Writers Note; a heading, a table, a picture, another widget, poles that are
+	 * not two short labels (a scale of three, a chart, a first-then sequence) keep the hand-off box.
+	 * @returns {string|null} the built slider, or null for the hand-off box
+	 */
+	static #slider({ bundle, tpl, renderInline }) {
+		if (!tpl || tpl.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[tpl.env || "SLIDER_OFF"]) return null;
+		if ((bundle?.tables ?? []).length || (bundle?.media ?? []).length) return null;
+		if ((bundle?.extraTypes ?? []).some((t) => t !== "slider")) return null;
+		const inline = renderInline ?? ((s) => s);
+		const txt = (s) => this.#cellText(String(s ?? "")).replace(/\s+/g, " ").trim();
+		const nWords = (s) => s.split(" ").filter(Boolean).length;
+		const noise = new RegExp(tpl.pole_noise_pattern ?? "$^", "gi");
+		const lineSep = new RegExp(tpl.pole_line_separator);
+		const edge = /^[\s,;:.'‘’"“”–—-]+|[\s,;:.'‘’"“”–—-]+$/g;
+		// the writer's two poles from one piece of text, or null; `lineOnly` accepts only the dash-line form
+		const poles = (s, lineOnly) => {
+			const t = txt(s).replace(noise, " ").replace(/\s+/g, " ").trim();
+			if (!t) return null;
+			for (const sep of lineOnly ? [tpl.pole_line_separator] : tpl.pole_separators) {
+				const parts = t.split(new RegExp(sep)).map((x) => x.replace(edge, "").trim()).filter(Boolean);
+				if (parts.length === 1) continue;
+				if (parts.length !== 2 || parts.some((p) => nWords(p) > (tpl.max_pole_words ?? 6) || /[[\]]|https?:/.test(p))) return null;
+				return parts;
+			}
+			return null;
+		};
+		const listRe = new RegExp(tpl.list_pattern), bulletRe = new RegExp(tpl.bullet_pattern);
+		const tailBtn = new RegExp(tpl.tail_button_pattern ?? "$^", "i"), noteRe = new RegExp(tpl.note_pattern ?? "$^", "i");
+		const members = bundle?.memberItems ?? [];
+		const sliders = [], notes = [];
+		let cur = null, tail = false;
+		for (const m of members) {
+			const pm = this.#peekMember(m);
+			const tag = String(pm?.parse?.primary?.tag ?? pm?.tag ?? "").toLowerCase();
+			if (pm?.type === "tag" && tag === "slider") {
+				if (tail) return null;                                   // a slider after prose: not one widget
+				const red = String(m.text ?? ""), after = txt(m.blackAfter);
+				const inside = new RegExp(tpl.bracket_pole_pattern, "i").exec(this.#cellText(red))?.[1];
+				const rest = txt(red).replace(/\[[^\]]*\]/g, " ").replace(/\s+/g, " ").trim();
+				let p = null, q = after;
+				if (rest) { p = poles(rest); if (!p) return null; }      // red words after the tag are the poles, or a request
+				else if (inside) { p = poles(inside); if (!p) return null; }
+				else if (after && (p = poles(after, true))) q = "";      // the pole line typed in black on the tag's line
+				cur = { poles: p, question: q && nWords(q) <= (tpl.max_question_words ?? 40) ? q : (q ? null : ""), items: [] };
+				if (cur.question === null) return null;
+				sliders.push(cur);
+				continue;
+			}
+			if (!cur) return null;
+			if (pm?.type === "black") {
+				const t = txt(pm.text);
+				if (!tail && cur.poles && listRe.test(t) && nWords(t) <= (tpl.max_question_words ?? 40)) { cur.items.push(txt(m.text).replace(bulletRe, "")); continue; }
+				tail = true; continue;                                    // prose: the members rule keeps it after the slider
+			}
+			if (pm?.type === "tag") {
+				if (pm.parse && (pm.parse.class === "instruction" || pm.parse.instructionFragment)) continue;
+				const redWords = txt(pm.text).replace(/\[[^\]]*\]/g, " ").replace(/\s+/g, " ").trim(), after = txt(pm.blackAfter);
+				// a red line of its own between the tag and its statements: the pole line («I mostly follow ----- I am not able»)
+				if (!tail && !tag && !after && !cur.poles && !cur.items.length && poles(redWords, true)) { cur.poles = poles(txt(m.text), true); continue; }
+				if (tag === "body" && !redWords && after) { tail = true; continue; }   // a [Body] paragraph: prose
+				if (tag === "button" && tailBtn.test(after)) { tail = true; continue; }
+				// a red request («[Show answer] CS can this please appear …»): the Writers Note
+				if (redWords && !after && (!tag || tag === "body" || noteRe.test(redWords))) { notes.push(txt(m.text)); tail = true; continue; }
+			}
+			return null;                                                  // a heading, a picture, a table, another widget
+		}
+		if (!sliders.length || sliders.some((s) => !s.poles)) return null;
+		const boxes = [];
+		for (const s of sliders) {
+			const qs = s.items.length ? s.items : [s.question];
+			if (s.items.length && s.question) return null;               // a question AND a list: which is rated is unclear
+			for (const q of qs) {
+				boxes.push(Utils.FillTemplate(tpl.container, {
+					question: q ? Utils.FillTemplate(tpl.question, { text: inline(q) }) : "",
+					points: s.poles.map((p) => Utils.FillTemplate(tpl.point, { text: inline(p) })).join("\n")
+				}));
+			}
+		}
+		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
+		return [tpl.open, ...boxes, tpl.close].join("\n");
+	}
+
 	static #multiChoiceQuiz({ bundle, tpl, renderInline }) {
 		if (!tpl || tpl.enabled === false) return null;
 		if (typeof process !== "undefined" && process.env && process.env.MCQ_OFF) return null;
@@ -15950,6 +16341,26 @@ class InteractiveBuilder {
 		const btnTags = noOn(no.button_label, "MCQBUTTON_OFF") ? (no.button_label.tags ?? ["button"]) : [];
 		const bodyTags = noOn(no.body_after, "MCQBODYEND_OFF") ? (no.body_after.tags ?? ["body"]) : [];
 		const trailing = [];
+		// THE ANSWER GUIDE (data answer_guide; env MCQGUIDE_OFF): the writer closes the quiz with its key on one line — «[Answer
+		// guide] 1. a 2. a 3. a 4. b» — each pair the question's position and its option's letter; the line is set aside and
+		// read once the questions stand, every question marked exactly once or the box stays
+		const ag = tpl.answer_guide;
+		const agOn = !!ag && ag.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ag.env || "MCQGUIDE_OFF"]);
+		const agLine = agOn ? new RegExp(ag.line_pattern, "i") : null;
+		let guide = null;
+		const readGuide = (t) => {
+			const m = agLine.exec(stripped(t));
+			if (!m) return false;
+			const pairs = [...m[1].matchAll(new RegExp(ag.pair_pattern, "gi"))].map((p) => [Number(p[1]), p[2].toLowerCase().charCodeAt(0) - 97]);
+			if (pairs.length < 1) return false;
+			guide = pairs;
+			return true;
+		};
+		// THE MARK TYPED BEFORE ITS OPTION (data mark_before; env MCQMARKBEFORE_OFF): «2.» left bare, then «[correct] They are
+		// starting to adapt …» — the words after the mark ARE the marked option; taken only where the option before the mark is a
+		// bare list number or the question has no option yet (the mark-after reading stands everywhere else)
+		const mb = tpl.mark_before;
+		const mbOn = !!mb && mb.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[mb.env || "MCQMARKBEFORE_OFF"]);
 		if (!qs) {
 		/* --- the member stream, flattened to ordered STEPS ---------------- */
 		const steps = [];
@@ -15959,7 +16370,7 @@ class InteractiveBuilder {
 			if (m.type === "table" || m.type === "nested") return null;
 			if (m.type === "black") {
 				for (const ln of ticked(m, m.text).split(/\n+/))
-					if (stripped(ln.split(TICK).join(""))) steps.push(tickLine(ln));
+					if (stripped(ln.split(TICK).join("")) && !(agOn && readGuide(ln))) steps.push(tickLine(ln));
 				continue;
 			}
 			const p = m.parse?.primary;
@@ -15976,6 +16387,8 @@ class InteractiveBuilder {
 				if (stripped(raw).split(/\s+/).filter(Boolean).length > (tpl.opener_note_min_words ?? 3)) notes.push(raw);
 				continue;
 			}
+			// the answer guide typed as a tag line («[Answer guide] 1. a 2. a …»): set aside for the marking
+			if (agOn && readGuide(`${raw} ${m.blackAfter ?? ""}`)) continue;
 			if (tag && deny.includes(tag)) return null;            // a foreign widget — not ours to place
 			// A FORMATTING/marker bracket ("[bold the words direct sunlight]", CEDO202) is an
 			// instruction to the designer, not an option — but the black text that follows it
@@ -16004,6 +16417,18 @@ class InteractiveBuilder {
 					|| (x.type === "tag" && (bodyTags.includes(x.parse?.primary?.tag) || (!x.parse?.primary && (x.parse?.class === "instruction" || x.parse?.class === "noise")))));
 				if (tail) { steps.push({ k: "after", t: String(m.blackAfter ?? "") }); continue; }
 			}
+			if (reCorrect.test(raw) && mbOn) {
+				// the mark typed BEFORE its option: the option before it is a bare list number, or none since the last question
+				const after = ticked(m, m.blackAfter).split(/\n+/).filter((ln) => stripped(ln.split(TICK).join("")));
+				let prev = null;
+				for (let j = steps.length - 1; j >= 0; j--) { if (steps[j].k === "line" || steps[j].k === "q") { prev = steps[j]; break; } }
+				const bare = prev && prev.k === "line" && !optText(prev.t) && reList.test(String(prev.t));
+				if (after.length && (bare || !prev || prev.k === "q")) {
+					steps.push({ k: "line", t: after[0], self: true });
+					for (const ln of after.slice(1)) steps.push(tickLine(ln));
+					continue;
+				}
+			}
 			if (reCorrect.test(raw)) { steps.push({ k: "mark" }); }
 			else if (reIncorrect.test(raw)) { steps.push({ k: "unmark" }); }
 			else if (m.parse?.class === "instruction" || m.parse?.class === "noise") {
@@ -16025,7 +16450,7 @@ class InteractiveBuilder {
 			if (yt.no_answers_pattern && new RegExp(yt.no_answers_pattern, "i").test(said)) return null;                       // guard (c)
 			if (yt.d2l_button_pattern && new RegExp(yt.d2l_button_pattern, "i").test(String(bundle?.prevItemText ?? ""))) return null;   // guard (b)
 		}
-		if (!steps.some((s) => s.k === "mark") && !tickMode) return null;       // an answer is never invented
+		if (!steps.some((s) => s.k === "mark" || s.self) && !tickMode && !guide) return null;       // an answer is never invented
 
 		/* --- questions ---------------------------------------------------- */
 		const tagged = steps.some((s) => s.k === "q");
@@ -16048,10 +16473,31 @@ class InteractiveBuilder {
 			return null;
 		};
 		const headWords = ql?.max_heading_words ?? 8;
+		// THE QUESTIONS TOLD BY INDENT (data question_indent; env MCQINDENT_OFF): the writer numbers the questions AND the options
+		// («1. The characters begin …» / «  1. They are still unhappy.») and tells them apart only by indentation — with exactly two
+		// indents among the numbered lines, each holding two or more, the outer numbered line opens a question, the inner ones are
+		// its options, and an unnumbered line before its first option joins the question
+		const qi = tpl.question_indent;
+		const numRe = /^(\s*)(?:\*\*)?\s*\d{1,2}[.)]\s/;
+		let outerIndent = null;
+		if (!tagged && qi && qi.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[qi.env || "MCQINDENT_OFF"])) {
+			const ind = steps.filter((x) => x.k === "line" && numRe.test(String(x.t))).map((x) => numRe.exec(String(x.t))[1].replace(/\t/g, "    ").length);
+			const lv = [...new Set(ind)].sort((a, b) => a - b);
+			// …and only where no outer numbered line ends in «?» — the question-mark reading already tells those quizzes apart
+			const outerQ = steps.some((x) => x.k === "line" && numRe.test(String(x.t)) && numRe.exec(String(x.t))[1].replace(/\t/g, "    ").length === lv[0]
+				&& reQEnd.test(stripped(x.t)));
+			if (lv.length === 2 && !outerQ && ind.filter((v) => v === lv[0]).length >= 2 && ind.filter((v) => v === lv[1]).length >= 2) outerIndent = lv[0];
+		}
 		for (let si = 0; si < steps.length; si++) {
 			const s = steps[si];
 			if (s.k === "after") { trailing.push(s.t); continue; }   // the page's text after the quiz (non_options.body_after)
 			if (s.k === "q") { startQ(s.t); continue; }
+			if (outerIndent !== null && s.k === "line" && !s.self) {
+				const nm = numRe.exec(String(s.t));
+				const t0 = optText(s.t);
+				if (nm && nm[1].replace(/\t/g, "    ").length === outerIndent) { if (t0) startQ(t0); continue; }
+				if (!nm && cur && !cur.opts.length && t0) { cur.text = `${cur.text}\n${t0}`; continue; }
+			}
 			if (s.k === "mark" || s.k === "unmark") {
 				if (!cur || !cur.opts.length) return null;         // a mark with nothing to mark
 				const last = cur.opts[cur.opts.length - 1];
@@ -16083,11 +16529,21 @@ class InteractiveBuilder {
 				continue;
 			}
 			if (leadOn) { const li = reList.test(String(s.t)); cur.listed = cur.opts.length ? (cur.listed && li) : li; }
-			cur.opts.push({ text: txt, correct: !!(tickMode && s.tick) });
+			cur.opts.push({ text: txt, correct: !!(tickMode && s.tick) || !!s.self });
 		}
 		if (qs.length < (tpl.min_questions ?? 1)) return null;
 		// guard (a): with the yellow ticks as the answer source, EVERY question has exactly one ticked option
 		if (tickMode && qs.some((q) => q.opts.filter((o) => o.correct).length !== 1)) return null;
+		// the answer guide marks the option it names (by the question's position and the option's letter) — only where the
+		// writer marked nothing else, every pair lands on a real option and every question is marked exactly once
+		if (guide && !qs.some((q) => q.opts.some((o) => o.correct))) {
+			for (const [n, k] of guide) {
+				const o = qs[n - 1]?.opts?.[k];
+				if (!o) return null;
+				o.correct = true;
+			}
+			if (guide.length !== qs.length || qs.some((q) => q.opts.filter((o) => o.correct).length !== 1)) return null;
+		}
 		}
 
 		/* --- the guards --------------------------------------------------- */
@@ -16700,7 +17156,22 @@ class InteractiveBuilder {
 		if (tables.length !== 1) return null;
 		const said = [...(bundle?.openerItems ?? []), ...members].filter((m) => m?.type === "tag")
 			.map((m) => `${unRed(m.text)} ${m.blackAfter ?? ""}`).join(" ").replace(/\s+/g, " ");
-		if (!typed && !new RegExp(cfg.selfcheck_opener_pattern ?? "\\btyp(?:e|ing)\\b", "i").test(said)) return null;
+		// a selfCheck bundle is read when the writer's opener says type / typing — or says the red runs ARE the answer key
+		// («[self check] Correct answers are in red»: exact answers to check, not the KB free-text self check; data
+		// table_form.selfcheck_red_key, env TYPTABLERED_OFF)
+		const rk = cfg.selfcheck_red_key;
+		const redKey = !!rk && rk.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[rk.env || "TYPTABLERED_OFF"])
+			&& new RegExp(rk.pattern, "i").test(said);
+		const typeSaid = new RegExp(cfg.selfcheck_opener_pattern ?? "\\btyp(?:e|ing)\\b", "i").test(said);
+		if (!typed && !typeSaid && !redKey) return null;
+		// the answer key alone admits only a grid (a one-cell poem with red words is a word-highlighter reading)
+		if (!typed && !typeSaid) {
+			const kr = (tables[0].block?.rows ?? []).filter((r) => Array.isArray(r) && r.length);
+			const kw = Math.max(0, ...kr.map((r) => r.length));
+			if (kw < (rk.min_columns ?? 2)) return null;
+			// a merged cell (a short row) or a cell of two lines is a layout this form cannot carry — the box stays
+			if (kr.some((r) => r.length !== kw) || kr.some((r) => r.some((c) => new RegExp(rk.line_break_pattern ?? "$^").test(String(typeof c === "string" ? c : c?.text ?? ""))))) return null;
+		}
 		if (cfg.deny_pattern && new RegExp(cfg.deny_pattern, "i").test(said)) return null;
 		const btnRe = new RegExp(cfg.button_label_pattern ?? "^(?:check(?:\\s+(?:your\\s+)?answers?)?|reset|undo|show(?:\\s+answers?)?)\\.?$", "i");
 		const leads = [];

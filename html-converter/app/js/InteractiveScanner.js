@@ -345,6 +345,13 @@ class InteractiveScanner {
 						if (_rtBlock && _ualCfg.reading_table.first_row_data !== false) _rtBlock.firstRowData = true;
 						run?.AddNote?.("info", "InteractiveScanner",
 							`[Activity ${bundle.activityId ?? ""}] asks the learner to read a plain table — shown as a table, not handed off.`);
+					// AN UNTYPED CAPTURED TABLE IS PAGE CONTENT: no word of the span names a widget idea or asks for a build, no
+					// cell carries an answer mark, no member is an interactive tag — the activity renders as content (its red
+					// lines the Writers Notes), as the human build shows it. Data: unclassified_activity_lead.untyped_table
+					// Env: UNTYPEDTABLE_OFF
+					} else if (this.#isUntypedContentTable(bundle, items, _ualCfg?.untyped_table, run)) {
+						run?.AddNote?.("info", "InteractiveScanner",
+							`[Activity ${bundle.activityId ?? ""}] holds a table with no widget named — shown as page content, not handed off.`);
 					} else {
 					for (let k = bundle.startIndex; k < bundle.endIndex; k++) {
 						items[k].consumedBy = bundles.length;
@@ -388,6 +395,11 @@ class InteractiveScanner {
 				// table stays content and is NOT captured. Data dual_language.content_table_guard.headerless_sections;
 				// env REOSECTIONTABLE_OFF.
 				if (cellType && !personaType && _ctgOn && InteractiveScanner.#headerlessSectionTable(it.block, cellType.type)) cellType = null;
+				// THE HOVER DEFINITIONS IN A TABLE: a table whose only bracket tags are the writer's hover definitions
+				// («aquifers [hover definition: lakes and streams beneath the ground …]») is content — the cell renderer
+				// weaves each definition onto its word (span.infoTrigger), as in a paragraph — not one infoTrigger box
+				// over the whole table. Data elements.hover_definition_inline.table_cells; env TABLEHOVERDEF_OFF.
+				if (cellType && cellType.type === "infoTrigger" && InteractiveScanner.#onlyHoverDefinitions(it.block)) cellType = null;
 				if (cellType) {
 					const bankEntry2 = bank.interactives[cellType.type] ?? null;
 					const tableBundle = {
@@ -1163,6 +1175,18 @@ class InteractiveScanner {
 	 * @param {string} type - the widget type #interactiveInTable would assign
 	 * @returns {boolean}
 	 */
+	/** True when every bracket tag in the table is a hover definition carrying its own words (data table_cells). */
+	static #onlyHoverDefinitions(block) {
+		const cfg = DataService.Data.EmitTemplates?.elements?.hover_definition_inline?.table_cells;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "TABLEHOVERDEF_OFF"]) return false;
+		const text = (block?.rows ?? []).flat().map((c) => String(typeof c === "string" ? c : c?.text ?? "")).join(" ")
+			.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "");
+		const tags = text.match(/\[[^\]]*\]/g) ?? [];
+		const ok = new RegExp(cfg.pattern, "i");
+		return tags.length > 0 && tags.every((t) => ok.test(t));
+	}
+
 	static #headerlessSectionTable(block, type) {
 		const cfg = DataService.Data.EmitTemplates?.elements?.dual_language?.content_table_guard?.headerless_sections;
 		if (!cfg || cfg.enabled === false
@@ -4536,6 +4560,41 @@ class InteractiveScanner {
 			.map((x) => (x.type === "black" ? (x.text ?? "") : `${x.blackAfter ?? ""} ${(x.parse?.remainders ?? []).join(" ")}`))
 			.join(" ");
 		return new RegExp(cfg.read_pattern, "i").test(words) && !new RegExp(cfg.widget_pattern, "i").test(words);
+	}
+
+	/** The untyped-table test (BoundaryBank._meta.opener_rule.unclassified_activity_lead.untyped_table): the captured span
+	 *  holds a table; no member is an interactive tag; no cell carries an answer mark (cell_deny_pattern); and no word of the
+	 *  span — black text, a tag's own text and words, every word inside a cell — names a widget idea (widget_pattern) or asks
+	 *  for a build (request_pattern). */
+	static #isUntypedContentTable(bundle, items, cfg, run) {
+		if (!cfg || cfg.enabled === false || bundle.type !== "unclassified") return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "UNTYPEDTABLE_OFF"]) return false;
+		// only the module families whose human builds show such a table as content (code_pattern; the others build a widget)
+		if (cfg.code_pattern && !new RegExp(cfg.code_pattern, "i").test(String(run?.moduleCode ?? ""))) return false;
+		const span = items.slice(bundle.startIndex, bundle.endIndex);
+		const tables = span.filter((x) => x.type === "table");
+		if (!tables.length) return false;
+		if (span.some((x) => x.type === "tag" && x.parse?.primary?.directive === "INTERACTIVE")) return false;
+		const cells = tables.flatMap((t) => (t.block?.rows ?? []).flat().map((c) => String(c ?? "")));
+		if (cells.some((c) => new RegExp(cfg.cell_deny_pattern, "iu").test(c))) return false;
+		// red WORDS in a cell are the writer's note or answer key («Correct answer is 20») — shown as table text they would reach
+		// the learner: only a bracketed heading / body / picture tag (cell_red_allowed_pattern) may stand in a cell read as content
+		if (cfg.cell_red_allowed_pattern) {
+			const ok = new RegExp(cfg.cell_red_allowed_pattern, "i");
+			for (const c of cells) for (const m of c.matchAll(/\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]/g)) {
+				const t = m[1].replace(/\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+				if (t && !ok.test(t)) return false;
+			}
+		}
+		// every word of the cells counts too, black and red: a bilingual activity types its instruction INSIDE the table
+		// («[Body] Click on the word that is spelt …» in a reo / English row)
+		const cellWords = cells.map((c) => c.replace(/\u{1f534}?\[\/?RED TEXT\]\u{1f534}?/gu, " ")).join(" ");
+		const words = span.filter((x) => x.type !== "table")
+			.map((x) => (x.type === "black" ? (x.text ?? "") : `${x.text ?? ""} ${x.blackAfter ?? ""} ${(x.parse?.remainders ?? []).join(" ")}`))
+			.join(" ") + " " + cellWords;
+		// a table of the developer's own material (a merge brief) stays in the box, never shown to the learner (developer_pattern)
+		if (cfg.developer_pattern && new RegExp(cfg.developer_pattern, "i").test(words)) return false;
+		return !new RegExp(cfg.widget_pattern, "i").test(words) && !new RegExp(cfg.request_pattern, "i").test(words);
 	}
 
 	static #collectMember(bundle, item, run) {
