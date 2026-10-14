@@ -438,6 +438,13 @@
 		"enabled": true,
 		"nbsp_to_space": true,
 		"strip_zero_width": true,
+		"dead_field_codes": {
+			"enabled": true,
+			"env": "FIELDCODE_OFF",
+			"pattern": "\\bHYPERLINK\\s+[\"“]([^\"”]*)[\"”]\\s?",
+			"replacement": "$1 ",
+			"_doc": "A DEAD FIELD CODE IS NOT CONTENT. A document exported from another editor can carry Word's field instruction as plain run text — «HYPERLINK \"https://phet.colorado.edu/…\" from» — and the page showed the instruction, quotes and all, as the activity's heading or a paragraph (PES1003, PES1007, EXIP901), the gold none. The instruction is replaced at extraction by its own quoted address (replacement), so the address survives as the link it was — the hyperlink run after it carries no address of its own — and an empty instruction («HYPERLINK \"\"») leaves nothing."
+		},
 		"rule": "Word documents carry invisible whitespace characters the writer never intended as content: the NON-BREAKING SPACE U+00A0 (autocorrect/paste residue — the developer flagged it as an 'AI marker', as in SCCH302's [TITLE BAR] Te Reo) and the ZERO-WIDTH characters U+200B/U+200C/U+200D/U+FEFF (paste residue from web sources). NBSPs appear in almost every Writers Template, while the gold library carries effectively no literal NBSPs (the human's '&nbsp;' ENTITIES are deliberate layout, not writer residue). When enabled, DocxExtractor normalises each run's decoded w:t text at extraction (the same seam as the soft-break handling): U+00A0 → a plain space (nbsp_to_space), and the zero-width set is deleted (strip_zero_width). GRANULARITY SAFETY: an NBSP-only run stays a non-empty whitespace piece (same trim()/Fold behaviour either way — JS whitespace includes U+00A0), so red-span merging is untouched; a run the zero-width strip EMPTIES drops out exactly like an always-empty run, so tag spans are unchanged. Tag CLASSIFICATION is unaffected by construction either way (Utils.Fold collapses \\s+, and \\s matches U+00A0). Env NBSP_OFF turns off the whole normalisation (NBSPs and zero-width characters flow through to the page)."
 	},
 	"pasted_pictures": {
@@ -565,6 +572,11 @@
 	},
 	"emoji_strip": {
 		"enabled": true,
+		"word_gap": {
+			"_doc": "AN EMOJI TYPED AS A WORD GAP LEAVES THE GAP. Writers sometimes put an emoji between two words with no space ('Keep your devices safe🧽clean and🔋charged', 'WARNING⚠️Only', 'Listening👂to'); the strip removed the emoji and fused the words ('safeclean', 'andcharged'). A removed emoji between two Latin-script letters or digits now leaves one space; an emoji beside a space or punctuation, inside Chinese / Japanese text, and the exempt ticks and crosses (the parser's highlight tick included) are untouched. OFF = the words fused as before.",
+			"enabled": true,
+			"env": "EMOJIGAP_OFF"
+		},
 		"exempt": [
 			"✅",
 			"✓",
@@ -592,6 +604,13 @@
 		},
 		"list_runs": true,
 		"drop_emptied": true,
+		"note_outside_widgets": {
+			"enabled": true,
+			"env": "EMOJINOTEWIDGET_OFF",
+			"widget_classes": ["speechBubble", "flipCardsContainer", "flipCard", "carousel", "dragAndDrop", "clickDropContent", "tabs", "accordion", "hintSlider", "TKmodal", "memoryGame", "rotateBanner", "selfCheck", "selectionBox", "multiChoiceQuiz", "dropQuiz", "mcq"],
+			"lead_sibling": { "clickDropContent": "clickDrop" },
+			"_doc": "THE DISCLOSURE NOTE STAYS OUT OF THE LEARNER'S WIDGET. The note goes in at the first removal's outermost flow element; when that element sits inside a widget the writer's tag built (a bubble, a flip-card face, a carousel caption, a drag-and-drop question, a click-drop panel, a tab pane, an accordion panel) the red note shipped inside the widget. With this on it goes in just before the OUTERMOST widget holding that point (widget_classes); a widget whose trigger is the sibling before it (lead_sibling: the click-drop panel's button) is entered at that sibling. An activity box and the free body are not widgets."
+		},
 		"disclosure": "Emoji have been removed from this content per the no-emoji rule. Ticks and crosses are retained.",
 		"rule": "Change Ledger CL-0051 (the first CL-0001/constraint-1 exception permitting deletion of writer characters). Emoji are stripped from rendered writer content: ListsAndRuns.EmojiStrip runs as a FULL-PAGE POST-PASS (after OmitPlaceholderResidue + TidyDeveloperNotes, before LinkTextDisplay/Indent, stopping at the acks block), so every emitter is covered uniformly and NO pre-render machinery can be disturbed: tag classification, the ✅-glued [TITLE BAR] fences (OSSC301), the ✅[Tile] delimiters, the title splits and the 🔴 red-run sentinels all operate on block text long before this pass — post-pass placement makes them untouchable BY CONSTRUCTION. SCOPE = Unicode Extended_Pictographic grapheme CLUSTERS (base + VS15/16, skin tones U+1F3FB-FF, ZWJ sequences, keycap marks; regional-indicator flag pairs; a keycap digit keeps its digit and loses only the dressing), matched cluster-whole so a VS16 is NEVER orphan-stripped off a kept tick. 'exempt' = the ledger's ticks & crosses VERBATIM (✓✗✘ are not Extended_Pictographic and could never match anyway — listed for fidelity). 'exempt_extensions.maths_operators' = the ONE extension (✖➗➕➖ — meaning-bearing operators in maths content; the gold keeps ✖; ✖ is a cross by form, and the ledger's own ☑ inclusion shows heavy/box variants count). 'arrow_map' = EP arrow emoji become PLAIN arrows instead of deletions (gold's own treatment — TEDC402 ships the writer's 'input🡪process🡪output' as 'input→process→output'; meaning kept, emoji removed). OUT OF SCOPE by the Unicode property: the checkbox/ballot family ☐☒□🗹 (bilingual checklists + printable tick-sheets; the checklist→bullet conversion stays with the reo-menu machinery), 🖵 phonics sound-boxes (BLL147), 🡪 (TEDC401 gold keeps it), plain →←, typographic ►●◦, private-use chars — none are emoji per Extended_Pictographic. CLAUSES: a run of 2+ consecutive PLAIN <p> lines each PREFIXED by a would-be-deleted cluster becomes ONE <ul> of <li> (the lead cluster dropped; as in CEDT104 '🎵Sing/🎵Do/🎵Feel', ARFUN02's instrument list; an exempt-led line like '✅ I did it.' never joins a run and stays a <p>); a LONE prefixed line stays a <p>; in-prose clusters are removed with spacing normalised (doubled spaces collapsed, space-before-punctuation healed — 'earn a star ⭐️.' → 'earn a star.'); a plain <p> the strip EMPTIED is dropped whole (drop_emptied — as in ARFUN02's <p><b>🤔</b></p>, which the gold never keeps; a PRE-EXISTING empty <p> is never touched). DISCLOSURE: ONE visible note per affected page at the first removal, ledger wording verbatim in 'disclosure', emitted through NotesAndComments.redFlag (kind diagnostic → 'Red Flag:' prefix, red+bold, class cv2-note; NOTESCHEME_OFF legacy form applies to it like any note); a first removal inside the header/menu relocates the note to the top of the body (the no-comments-in-menu rule). CONTAINMENTS: cv2-interactive placeholder subtrees (the developer's verbatim hand-off), cv2-note/cv2-comment payloads (writer quotes stay verbatim), the acks block (gold keeps oEmbed video titles verbatim + the converter's own ❗ ack-todo markers are functional chrome), <script>/<style>, tag ATTRIBUTES, the {CODE}_interactives.txt hand-off (not HTML, untouched by construction), self-reflection emoji IMAGES (<img> assets — a text-level pass cannot touch them). NAMED CHANGE-LEDGER OVERRIDE deltas (the gold keeps, the rule strips — captured in Subject_Global_Parameters._universal_conventions.cl0051_no_emoji): TEDC402's five feelings-scale faces in built tabs panes, OSBY301-class scattered keeps, TRR109/110+XGF9001+BLL120/252+XDLS908 singles; MXDI201/ENGS102's emoji-as-CONTENT vocab cards sit inside cv2 hand-off boxes (unaffected) and need care if those widgets are ever built. Env EMOJISTRIP_OFF (or enabled:false) turns off the whole pass: no strip, no list conversion, no disclosure note."
 	},

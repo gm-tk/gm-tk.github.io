@@ -14,6 +14,11 @@
 			"env": "NOTEWORDS_OFF",
 			"conjunction_end_pattern": "(?:^|\\s)(?:and|or|with|plus|&|\\+)\\s*$"
 		},
+		"note_words_case": {
+			"_doc": "THE WRITER'S LETTERS IN A TAG'S NOTE. A tag's note («<tag> note: <words>») is built from the tag normaliser's remainder words, which are lower-cased and macron-folded, so «[Matching: Te Kahu Farms]» read «matching : te kahu farms» and «Māori» read «maori». Each word is matched, in order, to the writer's own token in the item's text (the same letters once folded) and that token is used; a word with no such token stays as it is.",
+			"enabled": true,
+			"env": "NOTECASE_OFF"
+		},
 		"form": "<p class=\"cv2-note\" style=\"color: red; font-weight: bold;\">Red Flag: {text}</p>",
 		"cs_form": "<p class=\"cv2-note\" style=\"color: red; font-weight: bold;\">Writers Note: {text}</p>",
 		"todo_form": "<p class=\"cv2-note\" style=\"color: red; font-weight: bold;\">Designer/Developer To Do: {text}</p>",
@@ -154,6 +159,12 @@
 				"env": "REOVIDEONOURL_OFF",
 				"flag": "{label} with no URL found — add the video source."
 			},
+			"video_part_link": {
+				"_doc": "THE VIDEO PART'S OWN HYPERLINK IS ITS ADDRESS. A bilingual cell's '[Item N] [Video] <title>' part whose title words carry the writer's hyperlink ('__Pukapuka - whitu__' linked to the SharePoint video) had no address in its text — a table block keeps its links apart from the cell text — so it shipped the missing-source flag '… with no URL found' though the address sat on the words. When no Media List row decides (video_media_list_row), the block's link whose words (at least min_text_chars) stand inside the part gives the address: a login-wall host (SharePoint) keeps the empty frame under the flag that names the line and the address (elements.video_login_wall); any other video host builds the body path's embed. OFF = the missing-source flag and the empty frame.",
+				"enabled": true,
+				"env": "REOVIDEOLINK_OFF",
+				"min_text_chars": 3
+			},
 			"video_media_list_row": {
 				"_doc": "THE NUMBERED VIDEO PART TAKES ITS MEDIA LIST ROW. A bilingual cell's '[Item N] [Video] <title>' part never carries an address (none of the family's video parts does); its Media List row holds it. The frame shipped empty with the flag before it while the acknowledgements, pairing the same row by its page number, credited the video on the page. The row is read by elements.media_list_item_row (the writer's number, else the title's words plus the table's own page), and a video host's address builds the body path's embed in the frame's place — the YouTube frame (TRR102 0.0, TRR103 1.0, TRR203 3.0, PNR101 0.0, TRR110 4.0 match the human build); an address the page cannot embed (SharePoint) keeps the empty frame under the red flag that names the writer's line AND the address (media_list_item_row.not_embeddable_flag — the human pages keep a red designer note there). No row, a tie or a part without an item reference keeps the empty frame and its flag. Env REOVIDEOMLROW_OFF.",
 				"enabled": true,
@@ -206,6 +217,12 @@
 					"enabled": true,
 					"env": "REOLESSONLABEL_OFF",
 					"label_pattern": "^[\\s:;,.–-]*(?:ingoa\\s+akoranga|lesson\\s+title)\\s*:\\s*"
+				},
+				"activity_labels": {
+					"_doc": "The same template's ACTIVITY field labels: «[H3] Activity Title: Going camping» / «[H3] Ingoa Ngohe: Te noho hōpuni» shipped the label inside the heading; the human ships the bare title. Applied after label_pattern, on its own toggle; a heading left with no words passes to the cell's next text part («[H3] Activity Title: / The Hungry Children»).",
+					"enabled": true,
+					"env": "REOACTLABEL_OFF",
+					"label_pattern": "^[\\s:;,.–-]*(?:ingoa\\s+ngohe|activity\\s+title)\\s*:\\s*"
 				}
 			},
 			"_doc": "Bilingual reoTranslate body unfold: a reoTranslate module's English|Māori content table -> interleaved <tag reo>{Māori}</tag><tag eng>{English}</tag> in ONE row>col-md-8 wrapper; media (image/audio/video) emitted ONCE, un-paired. Env REOTRANSLATE_OFF.",
@@ -965,9 +982,23 @@
 				"_doc": "'[Video starting at 0:07, to 0:22]' (CEDR101 / CEDR401): a comma before the range's 'to', read as a range when range_pattern finds none."
 			},
 			"widget_postpass": {
+				"link_cell": {
+					"_doc": "A ROW OF TWO OR MORE LINKED VIDEOS CROPS EACH IN ITS OWN CELL. A table row that types several videos as hyperlinked titles, one per cell ('__How to play with your dog__ ║ __How to play with your cat__ ║ __Roni Sagi and rhythm inspire__ [Dev team cut at 2:15]'), carries the links apart from the cell text, so the post-pass read the whole row for each video and gave every one of them the crop the writer typed beside one. When the row's links name two or more YouTube videos, each video reads only the cells whose longest link words (at least min_text_chars) are its own; a row with one video, or a link no cell holds, keeps the whole-row reading. OFF = every linked video in the row takes the row's crop.",
+					"enabled": true,
+					"env": "VIDTIMELINKCELL_OFF",
+					"min_text_chars": 3
+				},
 				"enabled": true,
 				"env": "VIDTIMEWIDGET_OFF",
 				"_doc": "THE CROP OF A VIDEO BUILT INSIDE A WIDGET. A carousel slide's, a tab's or an accordion panel's YouTube embed is built by its widget builder from the video id alone, so the crop the writer typed beside it ('[Video starting at 0:07, to 0:22] <address>' CEDR101 / CEDR401; a Media List row's '<address> (Please start video at 1:00)' BLL240 / 250 / 270, '<address> / (1.05-1.50)' CEDK501) never reached it, while the gold crops the video. MediaBuilder.videoTimePostpass (the page's final-body chain, beside the icon post-pass): a YouTube embed with no query whose id the media builder never handled takes the ONE crop written beside that id in the Writers Template — the paragraph that holds it, or its table cell (else its row) — or in its Media List row; two different crops give none."
+			},
+			"dialects": {
+				"_doc": "THE WRITERS' OTHER CROP SPELLINGS. The start and end patterns accept a colon after their word; writers also type a semicolon («Start: 5.03 Finish; 6.38», «Start; 1.36 … Finish; 2.27»), «thru to» / «through» / «till» for the end («Start at 3:08 thru to 4:09», «play till 1.55mins») and «approx.» inside a range — so the embed kept its start and lost its end (ARFUN04, ENGC102, OSAH301; the gold crops both). Read only where the standing patterns left the start or the end unread; a dialect range is read only when neither was.",
+				"enabled": true,
+				"env": "VIDTIMEDIALECT_OFF",
+				"start_pattern": "\\b(?:start(?:s|ing)?|begin(?:s|ning)?)(?:\\s+(?:at|from))?\\s*[;:]?\\s*(?:approx(?:imately)?\\.?\\s*)?(\\d{1,2})[:.](\\d{2})",
+				"end_pattern": "\\b(?:finish(?:es|ing)?|end(?:s|ing)?|stop(?:s|ping)?|thru|through|till)(?:\\s+(?:to|at|approx(?:imately)?\\.?))*\\s*[;:]?\\s*(\\d{1,2})[:.](\\d{2})",
+				"range_pattern": "(\\d{1,2})[:.](\\d{2})\\s*(?:min(?:ute)?s?|secs?|seconds)?\\s*(?:approx(?:imately)?\\.?)?\\s*(?:[-\\u2013\\u2014]|to)\\s*(\\d{1,2})[:.](\\d{2})"
 			},
 			"up_to": {
 				"enabled": true,
@@ -1060,6 +1091,13 @@
 			"_doc": "KB constraint 64 / CL-0037, 05A 'Creative Services Videos (Vimeo)': 'any video produced by Creative Services … e.g. an animated intro …' is the Vimeo videoSection scaffold with the ID PENDING and a visible Designer/Developer To Do note; the scaffold is emitted exactly as the design team supplies it, its two time-placeholder comments included — the KB's narrow comment exception. The generic `[Audiovisual item N]` marker is mostly audio and is not covered; the writers' `[Insert animated character]` marker (the BLL blended-literacy family) asks for an in-house animation, and the human page carries a Vimeo player for it. Its red span becomes the To Do + scaffold (the writer's request in the same span rides in the note); the `Animation Script` link line that follows joins the To Do (the human page never shows it). Env CSVIDEO_OFF.",
 			"enabled": true,
 			"env": "CSVIDEO_OFF",
+			"ai_dialect": {
+				"_doc": "THE AI ANIMATED CHARACTER IS THE SAME CREATIVE SERVICES VIDEO. The later phonics modules type '[Insert AI audio animated character]' (or '[insert AI animated character]') and, on the next line, '__AI Animation Script__' / '__[AI audio]__' / '__AI Animated Script__' / '__Link to AI Script__' / '__Link to AI audiovisual script__' linked to the script document. The word 'audio' parses the marker as an audio tag, so the page shipped an empty audio player and the script's title as learner words with its address lost; the human pages carry the Vimeo avatar or nothing. KB constraint 64 / CL-0037: the Vimeo scaffold with the To-Do naming the script. The marker_pattern here is read even when the line parsed as a tag; script_line_pattern widens the next-line test.",
+				"enabled": true,
+				"env": "CSVIDEOAI_OFF",
+				"marker_pattern": "^\\[\\s*insert\\s+(?:an?\\s+)?ai\\s+(?:audio\\s+)?animated\\s+character\\s*\\]\\s*([\\s\\S]*)$",
+				"script_line_pattern": "^[\\s_*\\[]*(?:link\\s+to\\s+)?(?:ai\\s+(?:(?:animat\\w*|audiovisual|audio)\\s+)*|animat\\w*\\s+(?:audio\\s+)?)script(?![a-z])|^[\\s_*]*\\[\\s*ai\\s+audio\\s*\\]"
+			},
 			"marker_pattern": "^\\[\\s*insert\\s+(?:an?\\s+)?animated\\s+character\\s*\\]\\s*([\\s\\S]*)$",
 			"note": "add vimeo embed for the animated character",
 			"rest_suffix": " — {rest}",
@@ -1116,6 +1154,14 @@
 				"enabled": true,
 				"_doc": "THE BLACK-LINE RIDER. A writer can make the bracket the ANCHOR TEXT of a hyperlink to the asset (BLLR201 '[Audiovisual item 1]', '[audiovisual item 4]'), so the block carries NO red span at all — it is a BLACK item, never reaches the orphan branch, and would print as a visible <p>[Audiovisual item 1]</p>. This rule catches it: a BLACK item whose ENTIRE text is one of the three families' brackets becomes the same todo note, with any hyperlink target carried in the note text. [Item N] markers inside BILINGUAL TABLE CELLS (TRR102/TRR106/TRR109) are rendered by the table path and are not touched. Env TODOBLACK_OFF turns off the rider alone.",
 				"whole_line": true
+			},
+			"resource_link_line": {
+				"_doc": "THE WRITER'S LINK TO THE AUDIO FILES IS THE DEVELOPER'S NOTE. The phonics writers end an activity with a line that is only a label linked to where the recordings are kept — '__Audios__ [LINK: https://drive.google.com/…/folders/…]', '__Audio Script__', '__Audio - Words Mod 1 Set 1 SATPIN__'. The page showed the label as learner text ('<p>Audios</p>', inside the side alert when one was open) and lost the address; the human pages show neither. A black line whose words are only such a label (label_pattern) and whose one hyperlink points to Google Drive / Docs or SharePoint (host_pattern) becomes the Designer/Developer To Do naming the label and the address. OFF = the label as learner text, the address lost.",
+				"enabled": true,
+				"env": "RESOURCELINK_OFF",
+				"label_pattern": "^audios?(?:\\s+scripts?)?(?:\\s*[-–:]\\s*\\S.{0,60})?$",
+				"host_pattern": "^https?://(?:[\\w-]+\\.)*(?:drive\\.google\\.com|docs\\.google\\.com|sharepoint\\.com)/",
+				"note": "add the recordings the writer links («{label}»): {url}"
 			}
 		},
 		"orphan_instruction_reclass": {
@@ -1620,6 +1666,27 @@
 			},
 			"_doc": "A VIDEO ON A LOGIN WALL IS THE DEVELOPER'S RECORD, NOT A LEARNER FRAME. The writer types '[Video 1] https://mytekuraschool.sharepoint.com/:v:/s/…' — the audiovisual team's SharePoint draft of a video not yet produced or re-hosted; the generic frame on that address shows the learner a sign-in wall. The human pages never frame it: a red developer note over an empty frame shell ('Designer/Developer To Do: Embed the … animation (Audiovisual item 105 … not yet produced)' over an empty Vimeo shell, FRFUN06), the re-hosted Vimeo (MXFU401), or a red note alone (MXFUN01, MXFU302). MediaBuilder.media, the video branch: a resolved address matching `host_pattern` ships the red flag `flag` naming the writer's line and the address, then `shell` — the empty frame in its place — instead of the generic frame; nothing was embedded, so the line's own words stay as before. Video kind only; the Media List row's address already takes this form through media_list_item_row. Env VIDLOGINWALL_OFF."
 		},
+		"nz_map_intro": {
+			"_doc": "KB 14.10 (MiW — My Te Kura Writing, module codes beginning WJ): 'Each intro page of the FUNs and the modules carries an image of New Zealand on the right-hand side, with a star and road sign placed at the town being learned about', in the supplied imageLabel map markup; 'where the town's coordinates are not given in the source, emit the pattern with the supplied values and a Designer/Developer To Do note to position the star/road sign for the named town'. The writers type '[image] [RHS] New Zealand map as per the global parameters with a star and road sign on Taupo' (21 WJFUN modules); the page showed a placeholder picture and the request as a Writers Note, the human pages build the map in a right-hand col-4 beside the intro text (21 of 21; col-4 paddingLR on 17). The writer's red request span (request_pattern; never a body, heading or alert tag — deny_tags) builds the column with the KB markup, the town the writer names after 'sign on' (place_pattern) as the label, and the To-Do; it is held as the right-hand column of the row it sits in. Scope: code_prefixes. OFF = the placeholder and the Writers Note.",
+			"enabled": true,
+			"env": "NZMAPINTRO_OFF",
+			"code_prefixes": ["WJ"],
+			"deny_tags": ["body", "h1", "h2", "h3", "h4", "h5", "h6", "heading", "activity heading", "title bar", "alert", "side alert"],
+			"request_pattern": "new\\s+zealand\\s+map|map\\s+of\\s+new\\s+zealand|\\bnz\\s+map\\b",
+			"place_pattern": "(?:sign|signs|post)\\s+on\\s+(?:the\\s+)?(.+?)(?:\\s+(?:as\\s+per|on\\s+the)\\b.*)?[\\s\\]).,]*$",
+			"place_default": "Placename",
+			"column": "<div class=\"col-4 paddingLR\">\n{map}\n{todo}\n</div>",
+			"markup": "<div class=\"imageLabel\" layout=\"map\">\n<img class=\"img-fluid imageCentral imgLabel\" src=\"New Zealand/iStock-1454804075.png\" alt=\"New zealand map\">\n<div class=\"label\" direction=\"horizontal\" top=\"20%\" left=\"20%\" pointTop=\"50%\" pointLeft=\"50%\"><p>{place}</p></div>\n</div>",
+			"todo": "position the star and road sign on the New Zealand map for {place} (the top / left / pointTop / pointLeft values are the knowledge base's reference example)"
+		},
+		"production_doc_link": {
+			"_doc": "A PRODUCTION DOCUMENT IS THE DEVELOPER'S NOTE, NOT A LEARNER LINK. Writers link the documents the production team works from — the audiovisual request ('Audiovisual Request Template FUN06 Pronunciation.docx'), the audio or animation script ('Audio-Script template - Lesson 3 …', 'AI Animation Audio-Script template …'), the Creative Services audio list ('CS Audio - BLL144 Set 4 Mod 4.docx') — on the school's SharePoint or Google Drive. A paragraph (or list item) that is only such a link showed the learner a link to a sign-in page; the human pages never show these documents. A page post-pass turns it into the Designer/Developer To Do naming the document and its address. Hand-off boxes, the red notes and a link inside a sentence are left as they are. OFF = the learner link.",
+			"enabled": true,
+			"env": "PRODDOCLINK_OFF",
+			"word_pattern": "audio\\s*visual\\s+request|audiovisual\\s+item|audio[\\s-]*script|animation\\s+(?:audio[\\s-]*)?script|creative\\s+services\\s+audio|\\bcs\\s+audio\\b|request\\s+template",
+			"host_pattern": "^https?://(?:[\\w-]+\\.)*(?:sharepoint\\.com|drive\\.google\\.com|docs\\.google\\.com)/",
+			"note": "the writer's production document «{label}», not for the learner: {url}"
+		},
 		"media_free_note": {
 			"enabled": true,
 			"env": "MEDIAFREENOTE_OFF",
@@ -2079,6 +2146,13 @@
 		"standalone_title_heading": {
 			"enabled": true,
 			"level": 3,
+			"instruction_tail": {
+				"enabled": true,
+				"env": "ACTTITLETAIL_OFF",
+				"pattern": "\\s*[-–—]?\\s*\\b(?:copy|merge)\\s+(?:it\\s+)?from\\b[\\s\\S]*$",
+				"max_title_words": 8,
+				"_doc": "THE WRITER'S MERGE INSTRUCTION IS NOT THE TITLE. An activity opener whose title line ends in the writer's instruction to the developer — «[Activity] 3A Flow of Heat - *copy from* *PHO1051 Heat on the move > Lesson 7.0 – Convection Activity 7B …*» (PES1003, PES1007) — shipped the instruction inside the learner's <h3>; the human's title is «Flow of heat». The tail from «copy / merge … from» to the end of the line leaves the title and surfaces as the red Writers Note after it — only the imperative form after a short title (at most max_title_words words before it): an activity line that is the writer's instruction from its first word («Copy Activity 2A of ECO1004 … Answers to be copied from the module …») is not a title with a tail, and cutting it would split the sentence. OFF = the whole line in the heading."
+			},
 			"embedded_free_text": {
 				"enabled": true,
 				"env": "EMBTITLE_OFF",
@@ -2696,6 +2770,11 @@
 			"label": "Go to your journal",
 			"absorb_into_activity": true,
 			"absorb_suppresses_own_render": true,
+			"lead_button": {
+				"_doc": "THE JOURNAL BUTTON IN AN ACTIVITY'S LEAD IS THE GO-TO-JOURNAL HEADING. A writer's '[button] Go to journal' typed between an activity's title and its widget falls into the activity's lead, whose loop renders a tag item's words as lead text — so the page showed the plain words 'Go to journal' where every other journal button ships the templated heading (the decided form). A no-address button whose label is the journal label (label_match) in the lead flushes the lead and emits the heading (form). OFF = the plain words.",
+				"enabled": true,
+				"env": "GJLEAD_OFF"
+			},
 			"member_branch_yields_to_builder": true,
 			"handoff_tail": {
 				"enabled": true,
@@ -2732,6 +2811,14 @@
 			"_doc": "AN [embed] OF AN EXTERNAL WEB PAGE IS THE KB'S externalButton, NEVER A BARE IFRAME. The [embed link] / [link to PDF of: …] / [Embed audio] / [Please embed these slides …] route would wrap any non-video URL in `div.ratio.ratio-16x9 > iframe`, a form the human never uses for these: it either drops the URL (kindergartenworksheets / twinkl / tahurangi worksheet and PDF pages the developer re-sourced or dropped) or keeps it as a LINK (a button / externalButton or a plain <a>). KB 05D: an external destination is `<a href target=_blank><div class=externalButton>Go to website</div></a>` (constraint 75's default label) — the buttons.external_destination form, label and internal-host list, reused here; a URL on an internal host (Google Docs / Drive / SharePoint, whose embed genuinely frames) keeps the iframe; a video host never reaches this branch (it takes the videoSection above). OFF (env EMBEDBTN_OFF) = the bare iframe.",
 			"enabled": true,
 			"env": "EMBEDBTN_OFF"
+		},
+		"login_wall": {
+			"_doc": "A DOCUMENT ON A LOGIN WALL IS THE DEVELOPER'S RECORD, NOT A LEARNER FRAME. The writer asks for a document to be embedded ('[pdf] __Tally Chart Display Poster.pdf__', '[PDF embed] __Ākonga 16 Years Old+ Online User Agreement.docx__', '[embed this doc as a pdf] …', a Media List row's PDF) and links it to the school's SharePoint ('…sharepoint.com/:b:/…', ':w:', ':p:'); the embed route kept SharePoint as an internal host that frames, but a SharePoint share link frames only a sign-in page — the learner sees a login wall where the document should be. The human pages re-host the file (a PDF in the module's files, embedded or behind a download button) or drop it; the address never reaches the learner. The red flag names the writer's line and the address, over the empty frame shell where the embed goes (the video login-wall convention, elements.video_login_wall). OFF = the SharePoint address framed as before.",
+			"enabled": true,
+			"env": "EMBEDLOGINWALL_OFF",
+			"host_pattern": "^https?://(?:[\\w-]+\\.)*sharepoint\\.com/",
+			"flag": "{label} — the file's address is on a login wall the page cannot embed; re-host the file in the module's files and embed it: {url}",
+			"shell": "<div class=\"ratio ratio-16x9\">\n<iframe></iframe>\n</div>"
 		},
 		"iframe": "<div class=\"ratio ratio-16x9\">\n<iframe src=\"{url}\" loading=\"lazy\" frameborder=\"0\" allowfullscreen></iframe>\n</div>",
 		"text_box": "<textarea class=\"form-control\" rows=\"4\" placeholder=\"{placeholder}\"></textarea>",
@@ -3110,6 +3197,18 @@
 				"stray_marker_tags": ["tab n", "engagement quiz button"],
 				"prose_tags": ["external link"],
 				"opener_leading_numberless": true,
+				"label_caption": {
+					"enabled": true,
+					"env": "MODALLABELCAP_OFF",
+					"html": "<div class=\"captionImage\">\n<div class=\"captionTrigger\">\n{image}\n<div class=\"caption\" type=\"dark\">\n<p>{label}</p>\n</div>\n</div>\n</div>",
+					"_doc": "THE TILE KEEPS THE WRITER'S LABEL. A tile set typed «[Click modal 1] Māra kai – food garden» names both a picture (the tile's image) and a label; the picture became the trigger and the label was dropped from the page. The human builds the picture with the label as its caption (captionImage > captionTrigger + caption, EXPFUN05). A set with both a picture and a label takes that form."
+				},
+				"opener_description": {
+					"enabled": true,
+					"env": "MODALOPENERDESC_OFF",
+					"min_words": 8,
+					"_doc": "THE SET'S DESCRIPTION IS ITS OPENER EVEN WITH A NUMBER IN IT. A leading marker that arrives before the first set, with no text after it, is the widget's opener; one typed as a description that counts its tiles («[3 Click modal XL with a graphic on the front of the tile. On click, modal pops out …]») carried a digit, so it opened an empty «set 3» ahead of set 1 and the finished widget had a set with no trigger and no content — the whole build declined. A leading marker whose own bracket runs to min_words words or more is read as the opener, numbered or not."
+				},
 				"bold_lead_label": true,
 				"media_tiles": {
 					"enabled": true,
@@ -3677,6 +3776,11 @@
 			"rich": {
 				"enabled": true,
 				"plain_cell_bubbles": true,
+				"list_body_wrapper": {
+					"enabled": true,
+					"env": "SBRICHLISTWRAP_OFF",
+					"_doc": "A BULLETED BUBBLE IS MULTI-BLOCK CONTENT. The KB's speech-bubble constraint wraps multi-paragraph content in ONE <div> inside the bubble. The composer counted its parts, and a single bulleted line ('intro / • a / • b') is one part that renders as <p> + <ul> — so it shipped with no wrapper while the narrow builder wraps the same body. With this on the body is wrapped whenever it holds more than one block (<p> or <ul>), however many parts made it."
+				},
 				"avatar_thought_layout": {
 					"enabled": true,
 					"env": "SBRICHTHOUGHT_OFF",
@@ -3821,6 +3925,9 @@
 					"image_col": "<div class=\"col-3\"><img class=\"img-fluid bubble-img\" alt=\"\" loading=\"lazy\" src=\"https://placehold.co/200x200?text=Character\"></div>",
 					"col_open": "<div class=\"col-md-9 col-sm-8\">",
 					"bubble": "<div class=\"bubble-right no-hover\">{text}</div>",
+					"bubble_wrapped": "<div class=\"bubble-basic no-hover bubble-right\">{text}</div>",
+					"bubble_wrapped_env": "SBPHWRAPBASIC_OFF",
+					"_bubble_wrapped_note": "A WRAPPED BODY TAKES THE BASIC FORM. A placeholder bubble whose body is more than one block carries the KB's inner <div>; with it the text div takes 'bubble-basic no-hover bubble-right', the form the narrow builder's multi_wrapper gives the same body and the one the TEDC pages use (the gold's wrapped bubbles are bubble-basic 107 of 121). A one-paragraph body keeps 'bubble'.",
 					"todo": "add this speech bubble's character picture in place of the grey 'Character' placeholder — the Writers Template names none, and the Online Safety / TEDC bubbles carry their character (Chris's D13-9).",
 					"_doc": "In the OS* and TEDC* families only (the Online Safety / TEDC bubbles carry their character), a TEXT-ONLY bubble (no image, no table, no media) whose writer named NO picture — no picture word (picture_named_re) on its own tag line, where the tag-words note would carry 'avatar Tina … iStock' — takes the avatar form (the narrow builder's col-3 image column + col-md-9 col-sm-8 bubble-right) with the KB 04C placeholder image (never imageCentral), and ONE red Designer/Developer To Do follows the bubble group. Env SBPLACEHOLDER_OFF keeps the plain text-only form."
 				},
@@ -4315,6 +4422,15 @@
 					"enabled": true,
 					"env": "CARIMGLINK_OFF",
 					"min_text_chars": 3
+				},
+				"video_cell_link": {
+					"_doc": "A CAROUSEL VIDEO CELL TAKES THE ADDRESS ON ITS OWN WORDS. Under '[insert carousel – videos]' the writer types each slide as the video's title with its address as a hyperlink on the words ('__Bedtime stretch routine__' linked to the YouTube video, one cell per slide); a table block carries its hyperlinks apart from the cell text, so the cell reached the slide builder with no address and shipped a caption-only slide — the video and its address gone (the human builds the YouTube frames). For a cell with no address in its text, no media marker or a video / embed one, the block's hyperlink whose words (at least min_text_chars) stand inside the cell and whose address is a video host (host_pattern) gives the slide its address: the YouTube frame with the words as its caption, a login-wall host (SharePoint) the developer's flag naming the words and the address (carousel.login_wall). A link to any other host leaves the cell as it was. Where the cell holds several links' words the longest is its own ('Autistic special interests' stands inside 'Autistic special interests with ADHD' too), and with row_single_owner a video one cell of the slide row has taken is not taken again by a sibling cell whose prose repeats the title ('__False confidence__ ║ False confidence is about …' — one video, its caption beside it). With flag_plain_words the login-wall flag of such a slide names the writer's words without their bold / underline marks ('**Monday** / **Lundi_Emily_animation.m4v**' → 'Monday / Lundi_Emily_animation.m4v'). OFF = the caption-only slide.",
+					"enabled": true,
+					"env": "CARVIDLINK_OFF",
+					"min_text_chars": 3,
+					"row_single_owner": true,
+					"flag_plain_words": true,
+					"host_pattern": "^https?://(?:[\\w-]+\\.)*(?:youtube\\.com|youtu\\.be|vimeo\\.com)/|^https?://(?:[\\w-]+\\.)*sharepoint\\.com/:v:"
 				},
 				"image_brief": {
 					"_doc": "THE PICTURE BRIEF IS NOT THE CAPTION. A slide row '[image] types of leaves ║ Can you see a leaf?' — the image cell's words name the picture for the designer (often with the stock address as a hyperlink on them), the other cell is the learner's caption. The human build puts the brief in the picture's alt and shows the caption only. In a row of two or more cells, an [image] cell that yields its picture plus a short line (at most max_words words) beside another cell that yields prose keeps the picture and drops the line from the caption.",

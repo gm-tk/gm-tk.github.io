@@ -334,12 +334,25 @@ class InteractiveScanner {
 							/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
 						}
 					}
+					// THE READING TABLE STAYS ON THE PAGE: an activity whose title and lead ask the learner to READ over
+					// ONE plain table (no red text, tag or address in a cell; nothing captured after it) is a table of
+					// words to read, not a widget's data — the box is declined and the activity renders as ordinary
+					// content, exactly as an activity with no table ahead. Data: unclassified_activity_lead.reading_table
+					// Env: READTABLE_OFF
+					if (this.#isReadingTable(bundle, items, _ualCfg?.reading_table)) {
+						// a word list's first row is a row of words, not column labels (first_row_data)
+						const _rtBlock = items[bundle.endIndex - 1].block;
+						if (_rtBlock && _ualCfg.reading_table.first_row_data !== false) _rtBlock.firstRowData = true;
+						run?.AddNote?.("info", "InteractiveScanner",
+							`[Activity ${bundle.activityId ?? ""}] asks the learner to read a plain table — shown as a table, not handed off.`);
+					} else {
 					for (let k = bundle.startIndex; k < bundle.endIndex; k++) {
 						items[k].consumedBy = bundles.length;
 					}
 					bundles.push(bundle);
 					i = bundle.endIndex - 1;
 					continue;
+					}
 				}
 			}
 
@@ -2520,10 +2533,16 @@ class InteractiveScanner {
 				const excludeInvocation = (_mrB.face_excludes_invocation ?? true)
 					&& !(typeof process !== "undefined" && process.env && process.env.FACEINVOKE_OFF)
 					&& _entryF?.uses_data_table === true;
+				// a modal's tile picture («[image – front of tile] <address>») reads a face word but is no face: in a modal
+				// bundle a media member is never counted (modal_gathering.tile_media_not_face; env MODTILEFACE_OFF)
+				const _mgF = _mrB.modal_gathering;
+				const tileNotFace = !!_mgF && _mgF.tile_media_not_face === true && (_mgF.types ?? ["modal"]).includes(bundle.type)
+					&& !(typeof process !== "undefined" && process.env && process.env[_mgF.tile_media_not_face_env ?? "MODTILEFACE_OFF"]);
 				// find the MOST-RECENT captured face member
 				let recentFace = null;
 				for (let k = bundle.memberItems.length - 1; k >= 0; k--) {
 					const m = bundle.memberItems[k];
+					if (tileNotFace && m.type === "tag" && ["image", "video", "audio"].includes(m.parse?.primary?.tag)) continue;
 					if (m.type === "tag" && !(excludeInvocation && m.parse?.primary?.directive === "INTERACTIVE")
 						&& m.parse?.tags?.some((t) => faceTags.includes(t.tag))) { recentFace = m; break; }
 				}
@@ -3049,6 +3068,14 @@ class InteractiveScanner {
 							j++;   // the closer stays INSIDE the consumed range — it opens nothing
 							break;
 						}
+						// the tile set's pop-out marker («[modal that pops out when tile is clicked]») names the open modal
+						// again: a no-op member, and the walk goes on to its content (modal_gathering.popout_marker_pattern;
+						// env MODPOPMARK_OFF)
+						if (mgC.popout_marker_pattern && new RegExp(mgC.popout_marker_pattern, "i").test(foldC)
+							&& !String(next.blackAfter ?? "").trim()
+							&& !(typeof process !== "undefined" && process.env && process.env[mgC.popout_marker_env ?? "MODPOPMARK_OFF"])) {
+							continue;
+						}
 					}
 				}
 				// INLINE MARKERS ([highlight text] → wordSelect/wordHighlighter) are NOT
@@ -3424,6 +3451,29 @@ class InteractiveScanner {
 		const nx = items[k];
 		if (nx && nx.type === "tag" && nx.parse?.primary?.directive === "INTERACTIVE"
 			&& nx.parse.primary.tag === bundle.canonTag) return false;
+		// (b0) ARM-N FORWARD: in a numbered series whose NEXT numbered marker, or the series' end closer, lies ahead before
+		// any hard stop, every heading up to it is the open set's content — the number is the writer's forward guarantee
+		// (a tile set's pop-out carries several [H5] sections). Data modal_gathering.numbered_forward; env MODNUMFWD_OFF.
+		const nf = mg.numbered_forward;
+		if (nf && nf.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[nf.env ?? "MODNUMFWD_OFF"])
+			&& this.#modalHasNumberedMember(bundle, closerRe)) {
+			const numRe = new RegExp(mg.numbered_pattern ?? "\\[(?=[^\\]]*modal)(?=[^\\]]*\\d)[^\\]]*\\]", "i");
+			const endRe = mg.closer_close_pattern ? new RegExp(mg.closer_close_pattern, "i") : null;
+			const capF = Math.min(items.length, j + 1 + (nf.lookahead ?? mg.lookahead ?? 40));
+			for (let a = j + 1; a < capF; a++) {
+				const itA = items[a];
+				if (!itA || itA.consumedBy || itA.type !== "tag") continue;
+				const pa = itA.parse?.primary;
+				if (!pa) continue;
+				const fa = String(itA.parse?.folded ?? "");
+				if (pa.directive === "INTERACTIVE" && pa.tag === bundle.canonTag && numRe.test(fa)) return true;
+				if (pa.directive === "CONTAINER_CLOSE" && endRe && endRe.test(fa)) return true;
+				if (absolute && absolute.has(pa.tag)) break;
+				if (pa.tag === "activity" || itA.parse?.tags?.some((t) => t.tag === "activity")) break;
+				if (pa.directive === "INTERACTIVE" && pa.tag !== bundle.canonTag) break;
+				if (pa.directive === "PAGE_BOUNDARY" || pa.directive === "CONTAINER_OPEN" || pa.directive === "SECTION_MARKER") break;
+			}
+		}
 		// (b) ARM-N — numbered series, one heading per set
 		if (this.#modalHasNumberedMember(bundle, closerRe)) {
 			for (let m = (bundle.memberItems ?? []).length - 1; m >= 0; m--) {
@@ -4466,6 +4516,28 @@ class InteractiveScanner {
 	 * instructions (they are BOTH bundled and red-flagged — §4 of the
 	 * boundary rules: surface now, build later).
 	 */
+	/** The reading-table test (BoundaryBank._meta.opener_rule.unclassified_activity_lead.reading_table): the captured
+	 *  span holds exactly one table, as its last item; every cell is plain (cell_deny_pattern finds nothing); the
+	 *  title and lead words match read_pattern and not widget_pattern. */
+	static #isReadingTable(bundle, items, cfg) {
+		if (!cfg || cfg.enabled === false || bundle.type !== "unclassified") return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "READTABLE_OFF"]) return false;
+		const span = items.slice(bundle.startIndex, bundle.endIndex);
+		const tables = span.filter((x) => x.type === "table");
+		if (tables.length !== 1 || span[span.length - 1] !== tables[0]) return false;
+		const deny = new RegExp(cfg.cell_deny_pattern || "🔴|\\[|https?://", "u");
+		const cells = (tables[0].block?.rows ?? []).flat().map((c) => String(c ?? ""));
+		if (cells.filter((c) => c.trim()).length < 2 || cells.some((c) => deny.test(c))) return false;
+		// a first row holding a choice column (Correct / Incorrect, True / False …) frames a quiz
+		const choice = cfg.choice_header_pattern ? new RegExp(cfg.choice_header_pattern, "i") : null;
+		const firstRow = (tables[0].block?.rows?.[0] ?? []).map((c) => String(c ?? "").replace(/\*\*|__/g, "").trim());
+		if (choice && firstRow.filter((c) => choice.test(c)).length >= (cfg.choice_header_min ?? 2)) return false;
+		const words = span.filter((x) => x.type !== "table")
+			.map((x) => (x.type === "black" ? (x.text ?? "") : `${x.blackAfter ?? ""} ${(x.parse?.remainders ?? []).join(" ")}`))
+			.join(" ");
+		return new RegExp(cfg.read_pattern, "i").test(words) && !new RegExp(cfg.widget_pattern, "i").test(words);
+	}
+
 	static #collectMember(bundle, item, run) {
 		bundle.memberItems.push(item);
 		this.#harvestMedia(bundle, item);

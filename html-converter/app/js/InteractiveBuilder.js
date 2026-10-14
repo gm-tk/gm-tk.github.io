@@ -5195,6 +5195,18 @@ class InteractiveBuilder {
 	 * names NO picture — no nameable iStock image in its media, no same-block image, and no picture word
 	 * (picture_named_re) on any of its INTERACTIVE tag lines (the "[Image] avatar Tina … iStock" dialect). Else null.
 	 */
+	/**
+	 * The placeholder-character bubble's text div. A WRAPPED body (the multi-block <div> of the KB's speech-bubble
+	 * constraint) takes the bubble-basic form the narrow builder's wrapper uses; a one-paragraph body keeps the plain
+	 * form. Data text_only.placeholder_character.bubble_wrapped; env SBPHWRAPBASIC_OFF. A character row with no
+	 * bubble_wrapped (the Kea series rows) keeps its own bubble.
+	 */
+	static #phBubble(ph, text) {
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		const wrapped = /^s*<div>/.test(String(text ?? ""));
+		return (wrapped && ph.bubble_wrapped && !env[ph.bubble_wrapped_env ?? "SBPHWRAPBASIC_OFF"]) ? ph.bubble_wrapped : ph.bubble;
+	}
+
 	static #sbPlaceholder(bundle, tpl, run) {
 		const ph = tpl?.text_only?.placeholder_character;
 		if (!ph || ph.enabled === false || !bundle) return null;
@@ -5297,7 +5309,7 @@ class InteractiveBuilder {
 			return [
 				Utils.FillTemplate(cfg.open ?? tpl.open, { layout }),
 				...(phOn ? [ph.image_col, ph.col_open] : [cfg.col_open]),
-				Utils.FillTemplate(phOn ? ph.bubble : cfg.bubble, { text }),
+				Utils.FillTemplate(phOn ? this.#phBubble(ph, text) : cfg.bubble, { text }),
 				cfg.col_close,
 				cfg.close ?? tpl.close,
 			].join("\n");
@@ -5864,14 +5876,18 @@ class InteractiveBuilder {
 				if (/[•·]/.test(t)) {                       // a bulleted bubble → the list body
 					if (open) { ps.push(open); open = null; }
 					const html = this.#bubbleBody(t, inline);
-					if (html) ps.push({ block: html });
+					if (html) ps.push({ block: html, n: (html.match(/<(?:p|ul)>/g) || []).length });
 					continue;
 				}
 				if (open) open += `<br>${inline(t)}`; else ps.push(inline(t));
 			}
 			if (open) ps.push(open);
 			const html = ps.map((p) => (p && p.block) ? p.block : `<p>${p}</p>`).join("\n");
-			return ps.length > 1 ? `<div>\n${html}\n</div>` : html;
+			// a list body is <p> + <ul> in ONE part: it counts by its blocks (rich.list_body_wrapper; env SBRICHLISTWRAP_OFF)
+			const lbw = cfg.list_body_wrapper;
+			const byBlocks = !!lbw && lbw.enabled !== false && !env[lbw.env ?? "SBRICHLISTWRAP_OFF"];
+			const blocks = byBlocks ? ps.reduce((n, p) => n + ((p && p.block) ? Math.max(1, p.n ?? 1) : 1), 0) : ps.length;
+			return blocks > 1 ? `<div>\n${html}\n</div>` : html;
 		};
 		const out = [];
 		// a cast row is emitted once the bubbles it follows have been passed,
@@ -5916,7 +5932,7 @@ class InteractiveBuilder {
 				out.push([
 					Utils.FillTemplate(to.open ?? tpl.open, { layout: b.thought ? (to.layout_thought ?? "thought") : (tpl.layout_attr ?? "speech") }),
 					...(ph ? [ph.image_col, ph.col_open] : [to.col_open ?? "<div class=\"col-12\">"]),
-					Utils.FillTemplate(ph ? ph.bubble : (to.bubble ?? "<div class=\"bubble-basic no-hover bubble-top\">{text}</div>"), { text }),
+					Utils.FillTemplate(ph ? this.#phBubble(ph, text) : (to.bubble ?? "<div class=\"bubble-basic no-hover bubble-top\">{text}</div>"), { text }),
 					to.col_close ?? "</div>",
 					to.close ?? tpl.close,
 				].join("\n"));
@@ -7946,7 +7962,7 @@ class InteractiveBuilder {
 				const sub = imgSub.test(own) ? "image" : (txtSub.test(own) ? "text" : "open");
 				const part = {
 					role: "modal", num: numM ? parseInt(numM[1], 10) : null,
-					sub, text, block: m.block, red: this.#hasRedText(raw),
+					sub, text, block: m.block, red: this.#hasRedText(raw), ownWords: String(m.parse?.folded ?? own).split(/\s+/).filter(Boolean).length,
 				};
 				// An IMAGE sub-tag's URL sits either on its own line ("[Modal 1 Image] <url>",
 				// BLL120) or on the NEXT black line ("[Modal image 1]" then the bare url,
@@ -8181,6 +8197,12 @@ class InteractiveBuilder {
 				if (p.role === "modal") {
 					if (p.red) return null;                         // a writer instruction on the tag
 					if (openerRule && !cur && p.num == null && !String(p.text ?? "").trim() && !p.imgUrl) continue;
+					// a leading DESCRIPTION («[3 Click modal XL with a graphic …]») is the opener even with a digit in it
+					// (modal_sets.opener_description; env MODALOPENERDESC_OFF)
+					const od = cfg.opener_description;
+					if (openerRule && !cur && od && od.enabled !== false && (p.ownWords ?? 0) >= (od.min_words ?? 8)
+						&& !String(p.text ?? "").trim() && !p.imgUrl
+						&& !(typeof process !== "undefined" && process.env && process.env[od.env ?? "MODALOPENERDESC_OFF"])) continue;
 					// a NEW number opens a new set; the same number continues the current one
 					if (!cur || (p.num != null && p.num !== cur.num)) {
 						cur = { num: p.num, label: "", filename: null, parts: [] };
@@ -8589,10 +8611,17 @@ class InteractiveBuilder {
 			const content = chunks.join("");
 			if (!content.trim()) return null;                      // a pop-out that renders to nothing
 			if (ac) { boards.push({ filename: s.filename, content }); continue; }
-			const trigger = s.filename
+			let trigger = s.filename
 				? this.#assetImage(s.filename, cfg, run)
 				: Utils.FillTemplate(cfg.trigger_button ?? "<div class=\"button TKmodalButton\">{label}</div>",
 					{ label: inline(String(s.label).replace(/\*+/g, "").trim()) });
+			// a picture tile that also carries the writer's label shows the label as the tile's caption (modal_sets.label_caption;
+			// env MODALLABELCAP_OFF)
+			const lc = cfg.label_caption;
+			if (s.filename && s.label && lc && lc.enabled !== false && lc.html
+				&& !(typeof process !== "undefined" && process.env && process.env[lc.env ?? "MODALLABELCAP_OFF"])) {
+				trigger = Utils.FillTemplate(lc.html, { image: trigger, label: inline(String(s.label).replace(/\*+/g, "").trim()) });
+			}
 			const modal = Utils.FillTemplate(cfg.modal_open ?? "<div class=\"TKmodal\" size=\"{size}\">",
 				{ size: size ?? cfg.default_size ?? "M" })
 				+ "\n" + content + "\n" + (cfg.modal_close ?? "</div>");
@@ -11264,10 +11293,13 @@ class InteractiveBuilder {
 			// env CARIMGBRIEF_OFF.
 			const ib = cfg.image_brief;
 			const ibOn = !!ib && ib.enabled !== false && !env[ib.env ?? "CARIMGBRIEF_OFF"];
+			// the videos a slide row's cells have taken (a single-row table's cells share one row)
+			const rowOne = data.length === 1 ? new Set() : null;
 			for (const cells of groups) {
 				const parts = [], perCell = [];
+				const owned = rowOne ?? new Set();
 				for (const cell of cells) {
-					const got = this.#carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe, inline, links: item.block?.links, run });
+					const got = this.#carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe, inline, links: item.block?.links, run, owned });
 					if (got === null) return null;                   // red instruction / unreadable cell
 					perCell.push(got);
 				}
@@ -11372,7 +11404,7 @@ class InteractiveBuilder {
 	 * @param {object} ctx - bundle / tpl / cfg / mv / rich / idRe / inline
 	 * @returns {Array<object>|null} the parts, or null to decline the whole build
 	 */
-	static #carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe, links, run }) {
+	static #carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe, links, run, owned }) {
 		let raw = String(cell ?? "");
 		if (!raw.trim()) return [];
 		// RED TEXT IN A CELL IS NOT AUTOMATICALLY AN INSTRUCTION. In this dialect the
@@ -11422,6 +11454,29 @@ class InteractiveBuilder {
 			});
 			if (hit) url = String(hit.target).trim();
 		}
+		// A CAROUSEL VIDEO CELL TAKES THE ADDRESS ON ITS OWN WORDS: a cell with no address and no media marker (or a video
+		// one) whose words carry a video host's hyperlink — «__Bedtime stretch routine__» under «[insert carousel – videos]»
+		// — is the video slide, not a caption. The longest link words the cell holds own it («Autistic special interests»
+		// stands inside «Autistic special interests with ADHD» too), and a video one cell of the slide row has taken is not
+		// taken again by its caption cell («False confidence is about …»). Data table_slides.video_cell_link; env CARVIDLINK_OFF.
+		const vcl = cfg.video_cell_link;
+		const vclOn = !!vcl && vcl.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[vcl.env ?? "CARVIDLINK_OFF"]);
+		const ownKey = (u) => String(u).match(idRe)?.[1] ?? String(u).trim();
+		if (!url && (!kind || /video|embed/i.test(kind)) && vclOn && vcl.host_pattern
+			&& Array.isArray(links) && links.length) {
+			const words = this.#cellText(raw).replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+			const hostRe = new RegExp(vcl.host_pattern, "i");
+			const bare = (l) => String(l?.text ?? "").replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+			const hit = links.filter((l) => {
+				const t = bare(l);
+				const tg = String(l?.target ?? "").trim();
+				return t.length >= (vcl.min_text_chars ?? 3) && /^https?:\/\//i.test(tg) && hostRe.test(tg) && words.includes(t)
+					&& !(vcl.row_single_owner !== false && owned?.has(ownKey(tg)));
+			}).sort((a, z) => bare(z).length - bare(a).length)[0];
+			if (hit) url = String(hit.target).trim();
+		}
+		if (url && vclOn && owned) owned.add(ownKey(url));
 		const isVideo = url && (idRe.test(url) || this.#carouselVideoUrlOk(url, rich));
 		// EVERY bracketed marker comes out of the visible text, not just the media one:
 		// the writer brackets media-list references beside it ("[Item 64] [Image] lamp",
@@ -11447,7 +11502,9 @@ class InteractiveBuilder {
 		if (isVideo && (!kind || /video|embed/i.test(kind) || !text)) {
 			const id = String(url).match(idRe)?.[1];
 			const embed = id ? { video: id } : (() => {
-				const alt = this.#carouselVideoEmbed(url, tpl, rich, run, text);
+				// the developer's flag names the writer's words, not their bold / underline marks (video_cell_link.flag_plain_words)
+				const label = vclOn && vcl.flag_plain_words !== false ? text.replace(/\*\*|__/g, "") : text;
+				const alt = this.#carouselVideoEmbed(url, tpl, rich, run, label);
 				return alt ? { html: alt } : null;
 			})();
 			if (!embed) { this.#carNoteAssetRequest(bundle, null, raw, mv); return []; }

@@ -2637,6 +2637,14 @@ class DocxExtractor {
 					&& !(typeof process !== "undefined" && process.env && process.env.NBSP_OFF)) {
 					if (tn.nbsp_to_space !== false) text = text.replace(/\u00A0/g, " ");
 					if (tn.strip_zero_width !== false) text = text.replace(/[\u200B\u200C\u200D\uFEFF]/g, "");
+					// a dead Word field instruction exported as text (\u00ABHYPERLINK "<url>" from \u2026\u00BB) is no content: replaced by its
+					// own address, an empty one by nothing (text_normalise.dead_field_codes; env FIELDCODE_OFF)
+					const dfc = tn.dead_field_codes;
+					if (dfc && dfc.enabled !== false && dfc.pattern
+						&& !(typeof process !== "undefined" && process.env && process.env[dfc.env ?? "FIELDCODE_OFF"])) {
+						text = text.replace(new RegExp(dfc.pattern, "g"), (m, addr) => (addr && addr.trim()
+							? String(dfc.replacement ?? "$1 ").replace("$1", addr.trim()) : ""));
+					}
 				}
 				if (!text) continue;
 

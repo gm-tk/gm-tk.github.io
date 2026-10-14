@@ -142,6 +142,19 @@
 					"headings_too": false,
 					"widget_ahead_keeps": true,
 					"_doc_cuts": "Two cases are excluded: a [Body] BETWEEN two data tables is the widget's own instruction and the second table its data (BLL175 1B), and a widget INVOCATION ahead ([hint slider] / [flip card] after the instruction) is the activity's next widget, not resumed free body (ENGS201 4C / XLP03 2A — splitting it out would turn the gold's one widget into two). So the walk looks ahead to its natural end and resumes only when NO table and (widget_ahead_keeps) NO widget invocation follow."
+				},
+				"reading_table": {
+					"_doc": "THE READING TABLE STAYS ON THE PAGE. An `[Activity N]` whose title and lead prose ask the learner to READ («Read through a list of words below», «Look at the words», «Practising heart words») over ONE plain table — no red text, no tag, no address in any cell, nothing captured after it — is a table of words to read, not a widget's data: the human build shows it as a plain table (45 of the 49 such tables; two show the words another way, two leave them out). Captured as an unclassified hand-off box, the words sat collapsed inside it and the learner saw none. The scanner declines the box for exactly that shape and the activity renders as ordinary content (its title, prose and the writer's table). A widget verb anywhere in the title or lead (drag, click, match, select, type, listen, spell, write …) keeps the box — there the plain table is usually the widget's word list (the human builds a word-drag or a quiz from it).",
+					"enabled": true,
+					"env": "READTABLE_OFF",
+					"read_pattern": "\\b(?:read|look\\s+at|say|practi[sc]e)\\w*",
+					"widget_pattern": "\\b(?:drag|drop|click|match|select|type|typing|flip|sort|choose|tick|circle|fill|order|highlight|tap|listen|make\\s+the|build|spell|write)\\w*",
+					"cell_deny_pattern": "🔴|\\[[^\\]]{1,40}\\]|https?://|┌",
+					"choice_header_pattern": "^(?:correct|incorrect|true|false|yes|no|right|wrong|agree|disagree|fact|opinion)$",
+					"choice_header_min": 2,
+					"_doc_choice": "A first row holding a PAIR of choice columns («Sentences ║ Correct ║ Incorrect», «True ║ False») is a quiz's frame, not a word list — the box stays (the human build makes a radio quiz of it). Two are required: a word list may hold one such word («arm ║ yes ║ her»).",
+					"first_row_data": true,
+					"_doc_first_row": "The kept table's first row renders as a DATA row (td), not the KB 05D column-label row: it is the first line of words to read (the human build: td on 42 of the 45 matched tables; th on 3). A first row the writer bolded whole stays th (the table builder's own header cue)."
 				}
 			},
 			"_opener_tags_note": "Tags the activity-ownership LOOK-BACK (InteractiveScanner) crosses when walking from a widget back to its owning [Activity N]: the activity's own lead content (title/heading/body/button/image/list) sits between the [Activity] tag and the widget and must not stop the walk. 'list' is included because of cases like OSAI501-02's Activity 2A, which puts an [unsorted list] (the 'Benefit/Risk/Managing the risk' instructions) before its reorder; without 'list' the look-back would stop at the list, the reorder would not be owned by 2A, and the activity would render as an EMPTY box with its title/list spilled outside. A list in an activity lead is activity content, so crossing it is correct (same basis as [body] being an opener)."
@@ -636,7 +649,19 @@
 				"numbered_pattern": "\\[(?=[^\\]]*(?:modal|pop\\s*-?\\s*out|popout))(?=[^\\]]*\\d)[^\\]]*\\]",
 				"numbered_pattern_note": "The numbered-series test: a digit INSIDE THE SAME BRACKET as the modal word (a lookahead pair, so '[3 Click modal XL…]' counts with the digit before the word). A bare /\\d/ over the whole fold would read the '4' in a co-tag '[Modal] [H4]' (ENGI202) and the '2' in '(same as in FUNdamental phase 2)' (ENFUN07) as series evidence; this pattern prevents both.",
 				"lookahead": 40,
-				"one_heading_per_set": true
+				"one_heading_per_set": true,
+				"popout_marker_pattern": "\\bmodal\\s+that\\s+pops?\\s+out\\b|\\bpops?\\s+out\\s+when\\s+(?:the\\s+)?tile\\b",
+				"popout_marker_env": "MODPOPMARK_OFF",
+				"tile_media_not_face": true,
+				"tile_media_not_face_env": "MODTILEFACE_OFF",
+				"_tile_media_not_face_note": "A modal's tile picture typed «[image – front of tile] <address>» parses with a face word (front) beside the image, so body_terminates_after_face ended the tile's walk at the pop-out's first [body]. In a modal bundle a media member (image / video / audio) is never counted as a face.",
+				"numbered_forward": {
+					"enabled": true,
+					"env": "MODNUMFWD_OFF",
+					"lookahead": 60,
+					"_doc": "THE NUMBER IS A FORWARD GUARANTEE. In a numbered modal series with no closer per set («[Click modal 1] … [Click modal 2] … [end click modal]»), a pop-out holds several [H5] sections (learning goal, intentions, success criteria) and the one-heading-per-set arm ended the set at its second heading, spilling the rest onto the page. A heading is the open set's content while the next numbered same-type marker or the series' end closer lies ahead within the lookahead, before any absolute terminator, activity, other widget or page boundary; otherwise the one-heading arm decides as before."
+				},
+				"_popout_marker_note": "THE POP-OUT MARKER IS NOT A SECOND MODAL. A tile-modal set typed «[Click modal N] / [image – front of tile] <address> / [modal that pops out when tile is clicked] / <the pop-out's content> … [end click modal]» names the modal twice per tile: the marker carries the modal word and no number, so mid-walk it ended the numbered tile's walk — the tile alone declined to a link button and the content ran as plain body. Inside an open modal walk a same-type tag matching popout_marker_pattern is consumed as a no-op member and the walk goes on to the content."
 			},
 			"same_block_label_absorb": {
 				"enabled": true,

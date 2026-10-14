@@ -768,8 +768,20 @@ class MediaBuilder {
 		const u = !e && ut && ut.enabled !== false && ut.pattern
 			&& !(typeof process !== "undefined" && process.env && process.env[ut.env ?? "VIDTIMEUPTO_OFF"])
 			? text.match(new RegExp(ut.pattern, "i")) : null;
-		const start = s ? sec(s[1], s[2]) : (ss ? Number(ss[1] ?? ss[2]) : null);
-		const end = e ? sec(e[1], e[2]) : (u ? sec(u[1], u[2]) : null);
+		let start = s ? sec(s[1], s[2]) : (ss ? Number(ss[1] ?? ss[2]) : null);
+		let end = e ? sec(e[1], e[2]) : (u ? sec(u[1], u[2]) : null);
+		// the writers' other spellings — «Start; 1.36», «Finish; 6.38», «thru to 4:09», «play till 1.55», «0.37 approx. - 1.10» —
+		// read only where the patterns above left the start or the end unread (dialects; env VIDTIMEDIALECT_OFF)
+		const dl = c.dialects;
+		if (dl && dl.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[dl.env ?? "VIDTIMEDIALECT_OFF"])) {
+			if (start === null && end === null && dl.range_pattern) {
+				const r = [...text.matchAll(new RegExp(dl.range_pattern, "gi"))];
+				if (r.length > 1) return "multi";
+				if (r.length === 1) return { start: sec(r[0][1], r[0][2]), end: sec(r[0][3], r[0][4]) };
+			}
+			if (start === null && dl.start_pattern) { const m = text.match(new RegExp(dl.start_pattern, "i")); if (m) start = sec(m[1], m[2]); }
+			if (end === null && dl.end_pattern) { const m = text.match(new RegExp(dl.end_pattern, "i")); if (m) end = sec(m[1], m[2]); }
+		}
 		return start === null && end === null ? null : { start, end };
 	}
 
@@ -845,6 +857,57 @@ class MediaBuilder {
 		});
 	}
 
+	/**
+	 * A PRODUCTION DOCUMENT IS THE DEVELOPER'S NOTE, NOT A LEARNER LINK. The writer links the documents the production team
+	 * works from — the audiovisual request («Audiovisual Request Template FUN06 Pronunciation.docx»), the audio or animation
+	 * script, the Creative Services audio list — on the school's SharePoint / Drive; a paragraph that is only such a link
+	 * showed the learner a link to a sign-in page. This page post-pass turns that paragraph (or list item) into the
+	 * Designer/Developer To Do naming the document and its address (removed outright when the red note just before it already
+	 * names that address); hand-off boxes, notes and links inside a sentence are
+	 * left as they are. Data elements.production_doc_link {word_pattern, host_pattern, note}; env PRODDOCLINK_OFF.
+	 * @param {string} bodyHtml - the page body
+	 * @param {ConversionRun} run - the run
+	 * @returns {string} the body
+	 */
+	static productionDocPostpass(bodyHtml, run) {
+		const c = DataService.Data.EmitTemplates.elements?.production_doc_link;
+		if (!c || c.enabled === false || !c.word_pattern || !c.host_pattern || !c.note) return bodyHtml;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "PRODDOCLINK_OFF"]) return bodyHtml;
+		const src = String(bodyHtml ?? "");
+		if (src.indexOf("<a href=") < 0) return bodyHtml;
+		const wordRe = new RegExp(c.word_pattern, "i"), hostRe = new RegExp(c.host_pattern, "i");
+		const todo = DataService.Data.EmitTemplates.red_flag?.todo_form
+			?? "<p class=\"cv2-note\" style=\"color: red; font-weight: bold;\">Designer/Developer To Do: {text}</p>";
+		const one = (seg) => seg.replace(/<(p|li)>\s*(?:<(b|i|strong|em)>\s*)?<a href="([^"]+)"[^>]*>([^<]{2,200})<\/a>(?:\s*<\/\2>)?\s*<\/\1>/g,
+			(whole, el, _w, href, words, off, str) => {
+				const url = href.replace(/&amp;/g, "&");
+				if (!hostRe.test(url) || !wordRe.test(words)) return whole;
+				// the red note just before it already names the address (the audiovisual item's own To Do): nothing to add
+				const prev = str.slice(Math.max(0, off - 1200), off);
+				const lastNote = prev.lastIndexOf('class="cv2-note"');
+				const noteEnd = lastNote >= 0 ? prev.indexOf("</p>", lastNote) : -1;
+				if (noteEnd >= 0 && !/<(?:p|li|h\d|div|img|audio|iframe)\b/.test(prev.slice(noteEnd + 4))
+					&& prev.slice(lastNote, noteEnd).includes(href)) return "";
+				const note = Utils.FillTemplate(todo, { text: Utils.FillTemplate(c.note, { label: words.trim(), url: href }) });
+				return el === "li" ? `<li>${note}</li>` : note;
+			});
+		// the hand-off boxes (the developer's raw copy of the writer's lines) are copied through untouched
+		let out = "", i = 0;
+		const open = /<div class="cv2-interactive/g;
+		let m;
+		while ((m = open.exec(src))) {
+			if (m.index < i) continue;
+			out += one(src.slice(i, m.index));
+			const r = /<div\b|<\/div>/g;
+			r.lastIndex = m.index;
+			let depth = 0, mm, end = src.length;
+			while ((mm = r.exec(src))) { depth += mm[0] === "</div>" ? -1 : 1; if (depth === 0) { end = r.lastIndex; break; } }
+			out += src.slice(m.index, end);
+			i = end; open.lastIndex = end;
+		}
+		return out + one(src.slice(i));
+	}
+
 	/** The one crop written beside a video id in the run's Writers Template blocks and Media List rows, as a query. */
 	static #cropFor(id, run, c) {
 		const seen = new Map();
@@ -854,14 +917,40 @@ class MediaBuilder {
 			else if (r) seen.set(JSON.stringify(r), r);
 		};
 		const has = (s) => String(s ?? "").includes(id);
+		// A ROW OF TWO OR MORE LINKED VIDEOS CROPS EACH IN ITS OWN CELL: «__How to play with your dog__ ║ … ║ __Roni Sagi
+		// and rhythm inspire__ [Dev team cut at 2:15]» — the crop typed beside one video is that video's, not the row's. A
+		// cell belongs to the longest of the row's link words it holds. Data video_time_range.widget_postpass.link_cell;
+		// env VIDTIMELINKCELL_OFF.
+		const lc = c.widget_postpass?.link_cell;
+		const lcOn = !!lc && lc.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[lc.env ?? "VIDTIMELINKCELL_OFF"]);
+		const lw = (s) => String(s ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/[*_]/g, "")
+			.replace(/\s+/g, " ").trim().toLowerCase();
+		const idOf = (t) => String(t ?? "").match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/)?.[1] ?? null;
+		const ownCells = (cells, links) => {
+			const vids = new Set(links.map((l) => idOf(l?.target)).filter(Boolean));
+			if (vids.size < 2) return null;
+			const named = links.filter((l) => lw(l?.text).length >= (lc.min_text_chars ?? 3));
+			const out = (cells ?? []).filter((x) => {
+				const cw = lw(x);
+				const own = named.filter((l) => cw.includes(lw(l.text))).sort((a, z) => lw(z.text).length - lw(a.text).length)[0];
+				return own && has(own.target);
+			});
+			return out.length ? out : null;
+		};
 		for (const b of (run?.wtBlocks ?? [])) {
 			if (b?.kind === "para") {
 				if (has(b.text) || (b.links ?? []).some((l) => has(l?.target))) add(b.text);
 			} else if (b?.kind === "table" && Array.isArray(b.rows)) {
 				b.rows.forEach((cells, r) => {
 					const inCells = (cells ?? []).filter((x) => has(x));
+					const rl = b.rowLinks?.[r] ?? [];
 					if (inCells.length) inCells.forEach(add);
-					else if ((b.rowLinks?.[r] ?? []).some((l) => has(l?.target))) add((cells ?? []).join(" ║ "));
+					else if (rl.some((l) => has(l?.target))) {
+						const own = lcOn ? ownCells(cells, rl) : null;
+						if (own) own.forEach(add);
+						else add((cells ?? []).join(" ║ "));
+					}
 				});
 			}
 		}

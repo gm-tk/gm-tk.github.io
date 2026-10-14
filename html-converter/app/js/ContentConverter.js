@@ -872,6 +872,7 @@ class ContentConverter {
 		this.#requestContinuationPrepass(menuItems, tpl, run);   // a mid-sentence link / media request — the same seam
 		this.#requestContinuationPrepass(bodyItems, tpl, run);
 		this.#assetTodoPrepass(bodyItems, tpl);
+		this.#resourceLinkPrepass(bodyItems, tpl);
 		this.#csVideoPrepass(bodyItems, tpl);   // KB c64, before the coalesce for the same reason
 		ListsAndRuns.coalesceBlackRuns(menuItems);
 		ListsAndRuns.coalesceBlackRuns(bodyItems);
@@ -2213,7 +2214,9 @@ class ContentConverter {
 						&& !pendingSideAlert && !(typeof process !== "undefined" && process.env && process.env[sar.env || "SIDERESUME_OFF"])) {
 						const k0 = bodyItems.indexOf(it);
 						let k = k0 + 1;
-						while (k < bodyItems.length && bodyItems[k].type === "black" && bodyItems[k].consumedBy === undefined) k++;
+						// (a resource-link To-Do sits where its line stood: as transparent to the scan as the line was)
+						while (k < bodyItems.length && (bodyItems[k].type === "black" || bodyItems[k]._resourceLink)
+							&& bodyItems[k].consumedBy === undefined) k++;
 						const nx = k0 >= 0 ? bodyItems[k] : null;
 						const nt = nx && nx.type === "tag" ? nx.parse?.primary?.tag : null;
 						if (nt && (sar.resume_tags ?? []).includes(nt)) { hit = false; it._sideHold = true; }
@@ -3139,6 +3142,9 @@ class ContentConverter {
 						const _aliasSpan = !!_alCfg && _alCfg.enabled !== false && bundle.activityOwner?._aliasElementOwner
 							&& !(typeof process !== "undefined" && process.env && process.env[_alCfg.env || "ALIASLEAD_OFF"])
 							? (bundle.activityLeadItems ?? [])[0] ?? null : null;
+						const _gjCfgL = tpl.buttons?.go_journal;
+						const _gjLeadOn = !!_gjCfgL && _gjCfgL.enabled !== false && !!_gjCfgL.lead_button && _gjCfgL.lead_button.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && (process.env.GOJOURNAL_OFF || process.env[_gjCfgL.lead_button.env || "GJLEAD_OFF"]));
 						for (const lead of leadStream) {
 							if (lead.type === "table") { flushLead(); emit(TablesAndGrids.contentTable(lead.block, run, false, this.#norm)); titleDone = true; actProse = true; continue; }
 							if (lead.type === "black") {
@@ -3171,6 +3177,21 @@ class ContentConverter {
 								emit(...this.#element(lead, bodyItems, bodyItems.indexOf(lead), stack, run).filter(Boolean));
 								actProse = true;
 								continue;
+							}
+							// THE JOURNAL BUTTON IN THE LEAD IS THE GO-TO-JOURNAL HEADING: «[button] Go to journal» typed between the
+							// activity's title and its widget would otherwise join the lead as the plain words «Go to journal».
+							// The buttons branch's own test (no address; the journal label). Data buttons.go_journal.lead_button;
+							// env GJLEAD_OFF.
+							if (lp && lp.tag === "button" && _gjLeadOn) {
+								const _gjUrl = lead.block?.links?.[0]?.target ?? (String(lead.blackAfter ?? "").match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
+								const _gjLbl = (this.#norm.RenderText(lead.text) || "").replace(/\*/g, "").trim()
+									|| String(lead.blackAfter ?? "").replace(/\*/g, "").trim();
+								if (!_gjUrl && _gjLbl && new RegExp(_gjCfgL.label_match, "i").test(_gjLbl)) {
+									flushLead();
+									emit(Utils.FillTemplate(_gjCfgL.form, { label: Utils.EscapeHtml(_gjCfgL.label ?? "Go to your journal") }));
+									actProse = true;
+									continue;
+								}
 							}
 							if (lp && ["h1", "h2", "h3", "h4", "h5", "heading", "activity heading"].includes(lp.tag)) {
 								if (_ulTitleOnly && !titleDone && leadBuf.length) flushLead();
@@ -3643,6 +3664,20 @@ class ContentConverter {
 			// ---- tag item: dispatch by directive class --------------------
 			const parse = it.parse;
 			const primary = parse.primary;
+			// KB 14.10 (MiW): THE NZ MAP ON THE WRITING INTRO PAGE. The writer's red request «[image] [RHS] New Zealand map as
+			// per the global parameters with a star and road sign on Taupo» (or «[insert map of New Zealand on RHS …]», «[RHS]
+			// [New Zealand map …]») builds the KB's map block, labelled with the writer's town, HELD as the right-hand column of the
+			// row it sits in (the pendingSideAlert pairing). Data elements.nz_map_intro; env NZMAPINTRO_OFF.
+			if (!pendingSideAlert && !stack.length) {
+				const _nzMap = this.#nzMapColumn(it, run);
+				if (_nzMap) {
+					pendingSideAlert = _nzMap; sideAlertSawMedia = true;
+					while (bodyItems[i + 1]?._consumed) i++;
+					run.AddNote("info", "ContentConverter", `KB 14.10: the New Zealand map request → the map block in the intro row's right-hand column (nz_map_intro).`);
+					if (String(it.blackAfter ?? "").trim()) { emit(...actDeBold(ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links))); markContent(); }
+					continue;
+				}
+			}
 
 			// whole-span writer instruction (§5.16) — the entire red span is
 			// the developer note; any black text after it is real content.
@@ -5346,7 +5381,7 @@ class ContentConverter {
 		// an empty bullet is dropped, and a list it left empty (#dropEmptyListItems — outermost).
 		// the multi-file levels overview (#levelOverview — the overview page only, outermost: it wraps the finished body).
 		const finalBody = ContentConverter.#levelOverview(ContentConverter.#dropEmptyListItems(ContentConverter.#liftVisibleTags(ContentConverter.#tagOnlyParagraphNote(ContentConverter.#redundantBold(ContentConverter.#unwrapLonePunct(ContentConverter.#mergeSplitRuns(ContentConverter.#familyRowPerBlock(ContentConverter.#familyQuoteParagraphs(
-			MediaBuilder.stockButtonPostpass(MediaBuilder.videoTimePostpass(MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(finalBody0, run), run), run), run), run), run), run), run), run), run), run), run), page, run);
+			MediaBuilder.productionDocPostpass(MediaBuilder.stockButtonPostpass(MediaBuilder.videoTimePostpass(MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(finalBody0, run), run), run), run), run), run), run), run), run), run), run), run), run), page, run);
 		// a fallback-shell page that built its panels is an inquiry page too (the body class and
 		// the inquiry footer class follow, as for every other mode; its footer LINKS stay the registry's own).
 		const inquiryActive = (inquiryMode || cedInquiryMode || secInquiryMode || inqFallbackMode) && finalBody0 !== bodyHtml;
@@ -8574,11 +8609,19 @@ class ContentConverter {
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "CSVIDEO_OFF"]) return;
 		const re = new RegExp(cfg.marker_pattern, "i");
 		const scriptRe = cfg.script_line_pattern ? new RegExp(cfg.script_line_pattern, "i") : null;
+		// THE AI ANIMATED CHARACTER: «[Insert AI audio animated character]» is the same Creative Services video, though its word
+		// «audio» parses it as an audio tag; its script line is typed «AI Animation Script» / «Link to AI Script».
+		// Data cs_video_marker.ai_dialect; env CSVIDEOAI_OFF.
+		const ad = cfg.ai_dialect;
+		const adOn = !!ad && ad.enabled !== false && !!ad.marker_pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[ad.env || "CSVIDEOAI_OFF"]);
+		const adRe = adOn ? new RegExp(ad.marker_pattern, "i") : null;
+		const adScriptRe = adOn && ad.script_line_pattern ? new RegExp(ad.script_line_pattern, "i") : null;
 		for (let i = 0; i < bodyItems.length; i++) {
 			const it = bodyItems[i];
-			if (!it || it.type !== "tag" || it.consumedBy !== undefined || it._consumed || it.parse?.primary) continue;
+			if (!it || it.type !== "tag" || it.consumedBy !== undefined || it._consumed) continue;
 			const raw = String(it.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/\s+/g, " ").trim();
-			const m = raw.match(re);
+			const m = (!it.parse?.primary ? raw.match(re) : null) ?? (adRe ? raw.match(adRe) : null);
 			if (!m) continue;
 			let note = String(cfg.note ?? "add vimeo embed for the animated character");
 			const rest = String(m[1] ?? "").trim();
@@ -8587,7 +8630,8 @@ class ContentConverter {
 				let j = i + 1;
 				while (j < bodyItems.length && bodyItems[j] && bodyItems[j].type === "black" && !String(bodyItems[j].text ?? "").trim()) j++;
 				const nx = bodyItems[j];
-				if (nx && nx.type === "black" && nx.consumedBy === undefined && !nx._consumed && scriptRe.test(String(nx.text ?? ""))) {
+				if (nx && nx.type === "black" && nx.consumedBy === undefined && !nx._consumed
+					&& (scriptRe.test(String(nx.text ?? "")) || (adScriptRe && adScriptRe.test(String(nx.text ?? ""))))) {
 					const url = (nx.block?.links ?? []).map((l) => l && l.target).find((t) => t);
 					note += Utils.FillTemplate(url ? (cfg.script_suffix ?? " (Animation Script: {url})") : (cfg.script_suffix_nourl ?? " (Animation Script supplied)"), { url: url ?? "" });
 					nx.text = ""; nx._consumed = true;
@@ -8612,6 +8656,27 @@ class ContentConverter {
 			if (!note) continue;
 			it.type = "assettodo";
 			it.note = note;
+		}
+	}
+
+	// THE WRITER'S LINK TO THE AUDIO FILES IS THE DEVELOPER'S NOTE: a line that is only «__Audios__» (or «Audio Script»,
+	// «Audio - Words Mod 1 …») linked to a Drive folder / Docs / SharePoint names where the recordings are — never learner
+	// text, and its address is the developer's only record. Data elements.asset_todo_notes.resource_link_line; env
+	// RESOURCELINK_OFF.
+	static #resourceLinkPrepass(bodyItems, tpl) {
+		const c = tpl.elements?.asset_todo_notes?.resource_link_line;
+		if (!c || c.enabled === false || !c.label_pattern || !c.host_pattern || !c.note) return;
+		if (typeof process !== "undefined" && process.env && (process.env.TODONOTE_OFF || process.env[c.env ?? "RESOURCELINK_OFF"])) return;
+		const lre = new RegExp(c.label_pattern, "iu"), hre = new RegExp(c.host_pattern, "i");
+		for (const it of bodyItems) {
+			if (!it || it.type !== "black" || it.consumedBy !== undefined || it._consumed) continue;
+			const words = String(it.text ?? "").replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, " ")
+				.replace(/\[LINK:[^\]]*\]/g, " ").replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+			if (!words || !lre.test(words)) continue;
+			const links = (it.block?.links ?? []).filter((l) => l && l.target);
+			if (links.length !== 1 || !hre.test(String(links[0].target))) continue;
+			it.type = "assettodo"; it._resourceLink = true;
+			it.note = Utils.FillTemplate(c.note, { label: words, url: String(links[0].target).trim() });
 		}
 	}
 
@@ -12345,6 +12410,19 @@ class ContentConverter {
 					return out;
 				}
 			}
+			// A DOCUMENT ON A LOGIN WALL IS THE DEVELOPER'S RECORD, NOT A LEARNER FRAME: «[pdf] __Tally Chart Display
+			// Poster.pdf__» linked to the school's SharePoint frames a sign-in page, never the document. The red flag names
+			// the writer's line and the address over the empty frame. Data elements.embeds.login_wall; env EMBEDLOGINWALL_OFF.
+			const _elw = tpl.embeds?.login_wall;
+			if (_elw && _elw.enabled !== false && _elw.host_pattern
+				&& !(typeof process !== "undefined" && process.env && process.env[_elw.env || "EMBEDLOGINWALL_OFF"])
+				&& new RegExp(_elw.host_pattern, "i").test(String(url))) {
+				const _lbl = `${it.text ?? ""} ${it.blackAfter ?? ""}`.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ")
+					.replace(/\[LINK:[^\]]*\]/g, " ").replace(/https?:\/\/\S+/g, " ").replace(/\*\*|__/g, "").replace(/\s+/g, " ").trim();
+				out.push(MediaBuilder.MediaListRowFlag(it, run, url, _lbl, _elw.flag));
+				out.push(_elw.shell ?? "<div class=\"ratio ratio-16x9\">\n<iframe></iframe>\n</div>");
+				return out;
+			}
 			out.push(Utils.FillTemplate(tpl.embeds.iframe, { url: Utils.EscapeHtml(url) }));
 			return out;
 		}
@@ -12665,6 +12743,38 @@ class ContentConverter {
 		for (const [pre, v] of Object.entries(c.variant_by_prefix ?? {})) if (code.startsWith(pre)) { cls = v; break; }
 		if (!cls) cls = (c.minsec_pattern && new RegExp(c.minsec_pattern, "iu").test(t)) ? c.variant_minsec : c.variant_default;
 		return { cls, side: Utils.FillTemplate(c.side_column, { cls }), inline: Utils.FillTemplate(c.inline, { cls }) };
+	}
+
+	/**
+	 * KB 14.10 (MiW) — the New Zealand map with the star and road sign at the town the module is about: the right-hand
+	 * column holding the KB's supplied imageLabel map block, labelled with the town the writer names, and the To-Do to
+	 * position the star (the source gives no coordinates). Null when the module is out of scope or the item is not the
+	 * map request. Data elements.nz_map_intro; env NZMAPINTRO_OFF.
+	 * @param {Object} it - the image tag item
+	 * @param {ConversionRun} run - the current conversion run
+	 * @returns {string|null} the column HTML
+	 */
+	static #nzMapColumn(it, run) {
+		const c = DataService.Data.EmitTemplates.elements?.nz_map_intro;
+		if (!c || c.enabled === false || !c.request_pattern || !c.column || !c.markup) return null;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "NZMAPINTRO_OFF"]) return null;
+		const code = String(run?.moduleCode ?? "").toUpperCase();
+		if (!(c.code_prefixes ?? []).some((p) => code.startsWith(String(p).toUpperCase()))) return null;
+		// the request is the writer's red tag span (never black body words that mention a map, never a body / heading tag)
+		if (!it || it.type !== "tag") return null;
+		const ptag = String(it.parse?.primary?.tag ?? "");
+		if ((c.deny_tags ?? []).includes(ptag)) return null;
+		const raw = String(it.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ")
+			.replace(/https?:\/\/\S+/g, " ").replace(/\s+/g, " ").trim();
+		if (!new RegExp(c.request_pattern, "i").test(raw)) return null;
+		const place = ((raw.match(new RegExp(c.place_pattern ?? "$^", "i")) ?? [])[1] ?? "").replace(/[\s\[\]().,]+$/g, "").trim()
+			|| (c.place_default ?? "Placename");
+		const todo = DataService.Data.EmitTemplates.red_flag?.todo_form
+			?? "<p class=\"cv2-note\" style=\"color: red; font-weight: bold;\">Designer/Developer To Do: {text}</p>";
+		return Utils.FillTemplate(c.column, {
+			map: Utils.FillTemplate(c.markup, { place: Utils.EscapeHtml(place) }),
+			todo: Utils.FillTemplate(todo, { text: Utils.EscapeHtml(Utils.FillTemplate(c.todo ?? "position the star and road sign for {place}", { place })) }),
+		});
 	}
 
 	static #sideAlertCol(it, bodyItems, i, run, def, pre = [], tagged = null) {

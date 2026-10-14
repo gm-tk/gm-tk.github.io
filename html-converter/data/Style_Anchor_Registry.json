@@ -35,6 +35,17 @@
 			],
 			"min_evidence": 1
 		},
+		"pattern_field_merge": {
+			"enabled": true,
+			"env": "PATTERNMERGE_OFF",
+			"fields": [
+				"footer_links"
+			],
+			"tiers": [
+				"level"
+			],
+			"_doc": "A LEVEL delta names only the keys where the level differs from its base: the XOTPB0 / XOTPG0 / XOTPO0 deltas say footer_links {lesson: next+home} and nothing about the final page. Overlaid as a whole object, such a delta erased the base's final: prev+home, so the module's last page took the lesson pattern and shipped a Next button with no Previous (KB 01B: the FINAL page carries prev-lesson + home-nav; the human builds agree on all twelve). The listed fields merge PER KEY on the listed tiers in ModuleResolver's overlay: a key the delta does not name keeps the base's value. Subject and base rows still overlay whole — a base pattern with no final form is the miner's mixed evidence (the human's last page keeps Next on about half of those modules), so the defaults' final form is not pulled under it. A tier holding an unknown literal is still skipped whole (the universal-field rule)."
+		},
 		"template_deltas": {
 			"enabled": true,
 			"env": "TMPLDELTA_OFF",

@@ -195,7 +195,7 @@ class ModuleResolver {
 			skippedUnknown += this.#overlayRules(rules, base.base_rules, ufOn ? uf : null);
 			path.push(`base ${baseName}`);
 			if (level) {
-				skippedUnknown += this.#overlayRules(rules, level.delta, ufOn ? uf : null);
+				skippedUnknown += this.#overlayRules(rules, level.delta, ufOn ? uf : null, "level");
 				path.push(`level ${levelName}`);
 			}
 			if (!exactMember) {
@@ -739,15 +739,25 @@ class ModuleResolver {
 	 * @param {Object|null} uf - _meta.universal_fields, or null to disable
 	 * @returns {number} how many fields were skipped as unknown literals
 	 */
-	static #overlayRules(target, block, uf) {
+	static #overlayRules(target, block, uf, tierName = "") {
 		const src = structuredClone(block ?? {});
-		if (!uf) { Object.assign(target, src); return 0; }
+		// A PATTERN field listed in _meta.pattern_field_merge merges per key on the listed tiers: a level delta
+		// names only the keys where the level differs from its base, so {lesson: …} keeps the base's final-page
+		// form instead of erasing it. Every other field and tier overlays whole. Env PATTERNMERGE_OFF.
+		const pm = DataService.Data.StyleRegistry?._meta?.pattern_field_merge;
+		const pmOn = pm && pm.enabled !== false && (pm.tiers ?? []).includes(tierName)
+			&& !(typeof process !== "undefined" && process.env && process.env[pm.env || "PATTERNMERGE_OFF"]);
+		const isObj = (x) => x && typeof x === "object" && !Array.isArray(x);
+		const put = (k, v) => {
+			target[k] = pmOn && (pm.fields ?? []).includes(k) && isObj(v) && isObj(target[k]) ? { ...target[k], ...v } : v;
+		};
+		if (!uf) { for (const [k, v] of Object.entries(src)) put(k, v); return 0; }
 		const isU = this.#unknownTester(uf);
 		let skipped = 0;
 		for (const [k, v] of Object.entries(src)) {
 			if (isU(v) || (v && typeof v === "object" && !Array.isArray(v)
 				&& Object.values(v).some(isU))) { skipped++; continue; }
-			target[k] = v;
+			put(k, v);
 		}
 		return skipped;
 	};

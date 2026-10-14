@@ -291,8 +291,39 @@ class ActivitiesBuilder {
 			else leftover.push(word);
 		}
 		const flags = leftover.length >= 2
-			? [NotesAndComments.redFlag(`${it.parse.primary.tag} note: ${this.#noteWords(it, leftover, map)}`, run, "cs")] : [];
+			? [NotesAndComments.redFlag(`${it.parse.primary.tag} note: ${this.#asTyped(this.#noteWords(it, leftover, map), it)}`, run, "cs")] : [];
 		return { modifiers, flags };
+	};
+
+	/**
+	 * THE WRITER'S LETTERS IN A TAG'S NOTE. The note's words come from the tag normaliser, which lower-cases them and folds
+	 * their macrons, so «[Matching: Te Kahu Farms]» read «matching : te kahu farms» and «Māori» read «maori». Each word is
+	 * matched, in order, to the writer's own token in the item's text (the same letters once folded) and that token is used;
+	 * a word with no such token is kept as it is. Data red_flag.note_words_case; env NOTECASE_OFF.
+	 * @param {string} words - the note's words
+	 * @param {object} it - the item the tag came from (its text is the writer's line)
+	 * @returns {string} the words with the writer's capitals and macrons
+	 */
+	static #asTyped(words, it) {
+		const c = DataService.Data.EmitTemplates.red_flag?.note_words_case;
+		if (!c || c.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "NOTECASE_OFF"])) return words;
+		const fold = (x) => String(x).normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\u2018\u2019]/g, "'").toLowerCase();
+		// a token's letter core: the run from its first to its last letter or digit
+		const strip = (x) => (String(x).match(/[\p{L}\p{N}](?:.*[\p{L}\p{N}])?/u) ?? [""])[0];
+		const text = String(it?.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/[*_]+/g, "");
+		const toks = text.split(/[\s\[\]]+/).filter(Boolean);
+		let k = 0;
+		return String(words).split(/(\s+)/).map((w) => {
+			if (!w.trim() || !/[\p{L}]/u.test(w)) return w;
+			const f = fold(strip(w));
+			if (!f) return w;
+			for (let j = k; j < toks.length; j++) {
+				const t = strip(toks[j]);
+				if (fold(t) === f) { k = j + 1; return w.replace(strip(w), t); }
+			}
+			return w;
+		}).join("");
 	};
 
 	/**
@@ -603,9 +634,23 @@ class ActivitiesBuilder {
 				&& !(typeof process !== "undefined" && process.env && process.env.ACTTITLE_OFF);
 			const raw = it.blackAfter.trim();
 			const nl = raw.search(/\n/);
-			const title = titleOn ? (nl >= 0 ? raw.slice(0, nl) : raw).replace(/\*/g, "").trim() : "";
+			let title = titleOn ? (nl >= 0 ? raw.slice(0, nl) : raw).replace(/\*/g, "").trim() : "";
+			// the writer's merge instruction ending the title line («… - copy from PHO1051 …») is a note, not the title
+			// (standalone_title_heading.instruction_tail; env ACTTITLETAIL_OFF)
+			let tailNote = null;
+			const itl = th?.instruction_tail;
+			if (title && itl && itl.enabled !== false && itl.pattern
+				&& !(typeof process !== "undefined" && process.env && process.env[itl.env ?? "ACTTITLETAIL_OFF"])) {
+				const mt = title.match(new RegExp(itl.pattern, "i"));
+				const lead = mt ? title.slice(0, mt.index).trim().split(/\s+/).filter(Boolean).length : 0;
+				if (mt && mt.index > 0 && lead <= (itl.max_title_words ?? 8)) {
+					tailNote = mt[0].replace(/^\s*[-–—]?\s*/, "").replace(/\s+/g, " ").trim();
+					title = title.slice(0, mt.index).replace(/[\s\-–—:]+$/, "").trim();
+				}
+			}
 			if (titleOn && title) {
 				out.push(`<h${th.level}>${ListsAndRuns.inlineMarkup(title)}</h${th.level}>`);
+				if (tailNote) { const fl = NotesAndComments.redFlag(tailNote, run, "cs"); if (fl) out.push(fl); }
 				const rest = nl >= 0 ? raw.slice(nl + 1).trim() : "";
 				if (rest) out.push(...ListsAndRuns.renderBlackText(rest, run, it.block?.links));
 			} else {

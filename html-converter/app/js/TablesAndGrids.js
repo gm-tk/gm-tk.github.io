@@ -132,10 +132,14 @@ class TablesAndGrids {
 		// (the placeholder containment — a developer reference, not page content).
 		// A first row LED by the writer's red [word] beside its word (a dictionary row, cell_audio_word) is a data row.
 		const awCfg = insidePlaceholder ? null : this.cellAudioWordConfig();
+		// A READING TABLE (the scanner's unclassified_activity_lead.reading_table — a list of words the learner reads) marks
+		// its block firstRowData: its first row is words, not labels, unless the writer bolded the whole row.
+		const boldRow = rows.length && rows[0].filter((c) => plainOf(c)).every((c) => wholeBold(c)) && rows[0].some((c) => plainOf(c));
 		const firstIsHeader = (insidePlaceholder || !frhOn || !rows.length
-			|| rows[0].filter((c) => plainOf(c)).every((c) => wholeBold(c)) && rows[0].some((c) => plainOf(c))
+			|| boldRow
 			|| !rows[0].some((c) => wordsOf(c) >= (frh.data_row_min_words ?? 9)))
-			&& !(awCfg && rows.length && this.cellAudioWord(rows[0], 0, awCfg));
+			&& !(awCfg && rows.length && this.cellAudioWord(rows[0], 0, awCfg))
+			&& !(!insidePlaceholder && block?.firstRowData && !boldRow);
 		// MERGED CELLS: the writer's Word merges (the extractor's cellSpans side-channel) — a cell merged across
 		// columns carries colspan, a cell merged down rows carries rowspan and its EMPTY continuation cells are
 		// omitted. FREE-BODY tables only; null (the plain form) when the side-channel does not line up with these rows.

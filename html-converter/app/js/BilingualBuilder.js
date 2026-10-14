@@ -254,8 +254,8 @@ class BilingualBuilder {
 				if (box) { out.push(...box); r++; continue; }
 			}
 			const reoCell = rows[r][1], engCell = rows[r][0];   // col-2 = Māori, col-1 = English
-			const R = this.bilingualSplit(reoCell, run, norm, block?.wtPage);
-			const E = this.bilingualSplit(engCell, run, norm, block?.wtPage);
+			const R = this.bilingualSplit(reoCell, run, norm, block?.wtPage, block?.links);
+			const E = this.bilingualSplit(engCell, run, norm, block?.wtPage, block?.links);
 			if (interleave) {
 				// KB 07B: the writer's BARE SECTION-ID heading (`[H1] 1.1`) is the
 				// section's activity NUMBER, never a heading — the gold never ships a bare-id
@@ -835,7 +835,7 @@ class BilingualBuilder {
 		if (!def || !def.open) return null;
 		const out = [];
 		for (let r = 0; r < rows.length; r++) {
-			const R = this.bilingualSplit(rows[r][1], run, norm, block?.wtPage), E = this.bilingualSplit(rows[r][0], run, norm, block?.wtPage);
+			const R = this.bilingualSplit(rows[r][1], run, norm, block?.wtPage, block?.links), E = this.bilingualSplit(rows[r][0], run, norm, block?.wtPage, block?.links);
 			for (const p of R.text) out.push(this.langAttr(p, "reo"));
 			for (const p of E.text) out.push(this.langAttr(p, "eng"));
 			for (const m of (R.media.length ? R.media : E.media)) out.push(m);
@@ -997,6 +997,40 @@ class BilingualBuilder {
 		const ml = TablesAndGrids.redLeadNote(rawPart, c.mixed_lead);
 		if (!ml) return null;
 		return { note: NotesAndComments.redFlag(ml.note, run, "cs") || "", rest: ml.rest };
+	};
+
+	/**
+	 * THE VIDEO PART'S OWN HYPERLINK IS ITS ADDRESS. A bilingual cell's «[Item N] [Video] <title>» part whose title words
+	 * carry the writer's hyperlink (a table block keeps its links apart from the cell text) had no address in its text and
+	 * shipped the missing-source flag — «… with no URL found» — though the address sat on the words. The block's link
+	 * whose words stand inside the part gives the address: a login-wall host (SharePoint) keeps the empty frame under the
+	 * flag that names the line and the address (MediaBuilder.LoginWallFrame); any other video host builds the body path's
+	 * embed. Null when no link decides. Data dual_language.video_part_link; env REOVIDEOLINK_OFF.
+	 * @param {string} part - the cell part
+	 * @param {Array<{text:string,target:string}>|null} links - the table block's hyperlinks
+	 * @param {ConversionRun} run - the run
+	 * @param {TagNormaliser} norm - the run's normaliser
+	 * @returns {string|null} the frame's HTML, or null
+	 */
+	static #videoPartLink(part, links, run, norm) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.video_part_link;
+		if (!c || c.enabled === false || !Array.isArray(links) || !links.length
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOVIDEOLINK_OFF"])) return null;
+		const norm1 = (x) => String(x ?? "").replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+		const label = norm1(this.#stripRed(part));
+		const words = norm1(label.replace(/\[[^\]]*\]/g, " "));
+		if (!words) return null;
+		const hit = links.find((l) => {
+			const t = norm1(l?.text);
+			return t.length >= (c.min_text_chars ?? 3) && /^https?:\/\//i.test(String(l?.target ?? "").trim()) && words.includes(t);
+		});
+		if (!hit) return null;
+		const url = String(hit.target).trim();
+		const wall = MediaBuilder.LoginWallFrame(url, label, run);
+		if (wall) return wall;
+		const it = { type: "tag", text: label, blackAfter: "", block: { links: [] }, _mediaUrl: url };
+		const frags = MediaBuilder.media(it, [it], 0, "video", run, norm);
+		return frags.length ? frags.join("\n") : null;
 	};
 
 	static #videoNoSourceFlag(part, run) {
@@ -1241,7 +1275,7 @@ class BilingualBuilder {
 	 * @param {TagNormaliser} norm - resolves any `[Tag]` markers found in the cell
 	 * @returns {{text: string[], media: string[]}} the rendered text elements and media embeds, each in source order
 	 */
-	static bilingualSplit(cell, run, norm, wtPage = null) {
+	static bilingualSplit(cell, run, norm, wtPage = null, links = null) {
 		const text = [], media = [], buf = [];
 		// Each media embed remembers how many text elements preceded it in the
 		// cell (mediaPos), so bilingualRows can put it back IN PLACE between the paragraphs
@@ -1278,6 +1312,12 @@ class BilingualBuilder {
 		const tlLRe = tl && tl.enabled !== false && tlL && tlL.enabled !== false && tlL.label_pattern
 			&& !(typeof process !== "undefined" && process.env && (process.env[tl.env || "REOLABEL_OFF"] || process.env[tlL.env || "REOLESSONLABEL_OFF"]))
 			? new RegExp(tlL.label_pattern, "iu") : null;
+		// the ACTIVITY field labels («Ingoa Ngohe:», «Activity Title:») on their own toggle
+		// (dual_language.template_labels.activity_labels; env REOACTLABEL_OFF)
+		const tlA = tl?.activity_labels;
+		const tlARe = tl && tl.enabled !== false && tlA && tlA.enabled !== false && tlA.label_pattern
+			&& !(typeof process !== "undefined" && process.env && (process.env[tl.env || "REOLABEL_OFF"] || process.env[tlA.env || "REOACTLABEL_OFF"]))
+			? new RegExp(tlA.label_pattern, "iu") : null;
 		let headCarry = 0;
 		const wl = DataService.Data.EmitTemplates?.elements?.dual_language?.widget_label_drop;
 		const wlOn = !!wl && wl.enabled !== false && wl.lead_tag_pattern && wl.label_pattern
@@ -1364,6 +1404,10 @@ class BilingualBuilder {
 				// (dual_language.video_media_list_row; env REOVIDEOMLROW_OFF)
 				const ve = this.#videoRowEmbed(part, run, norm, wtPage);
 				if (ve) { flush(); pushM(ve); continue; }
+				// the writer's own hyperlink on the part's words gives the frame its address when no row does
+				// (dual_language.video_part_link; env REOVIDEOLINK_OFF)
+				const vl = this.#videoPartLink(part, links, run, norm);
+				if (vl) { flush(); pushM(vl); continue; }
 				// the frame keeps its place; the red missing-source flag naming the writer's own line goes before it
 				// (dual_language.video_no_source; env REOVIDEONOURL_OFF)
 				const vf = this.#videoNoSourceFlag(part, run);
@@ -1382,6 +1426,10 @@ class BilingualBuilder {
 				}
 				if (tlLRe && tlLRe.test(t)) {
 					t = t.replace(tlLRe, "").trim();
+					if (!t) { headCarry = lvl; continue; }
+				}
+				if (tlARe && tlARe.test(t)) {
+					t = t.replace(tlARe, "").trim();
 					if (!t) { headCarry = lvl; continue; }
 				}
 				if (t) text.push(`<h${lvl}>${ListsAndRuns.inlineMarkup(t)}</h${lvl}>`);

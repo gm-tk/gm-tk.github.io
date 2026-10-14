@@ -855,6 +855,46 @@ class ListsAndRuns {
 	};
 
 	/**
+	 * The insertion point for a page-level note that would land inside a built widget: the start of the OUTERMOST
+	 * open <div> at `at` whose class is one of nw.widget_classes, or — for a widget entered by the sibling before it
+	 * (nw.lead_sibling, the click-drop panel after its button) — the start of that sibling. `at` unchanged when no
+	 * such widget holds it.
+	 *
+	 * @param {string} html - the page so far
+	 * @param {number} at - the proposed insertion index
+	 * @param {object} nw - emoji_strip.note_outside_widgets
+	 * @returns {number} the insertion index
+	 */
+	static #outsideWidget(html, at, nw) {
+		const classes = new Set(nw.widget_classes ?? []);
+		const re = /<(\/?)div\b([^>]*)>/g;
+		const open = []; let m;
+		while ((m = re.exec(html)) && m.index < at) {
+			if (m[1]) open.pop();
+			else open.push({ start: m.index, cls: ((m[2].match(/class="([^"]*)"/) || [])[1] || "").split(/\s+/) });
+		}
+		const w = open.find((d) => d.cls.some((c) => classes.has(c)));
+		if (!w) return at;
+		let start = w.start;
+		const lead = (nw.lead_sibling ?? {})[w.cls.find((c) => classes.has(c))];
+		const before = html.slice(0, start).replace(/\s+$/, "");
+		if (lead && before.endsWith("</div>")) {
+			// walk back over the sibling element that closes right before the widget
+			const tags = []; const r2 = /<(\/?)div\b[^>]*>/g; let t;
+			while ((t = r2.exec(before))) tags.push({ i: t.index, close: !!t[1], tag: t[0] });
+			let depth = 0;
+			for (let j = tags.length - 1; j >= 0; j--) {
+				depth += tags[j].close ? 1 : -1;
+				if (depth === 0) {
+					if (new RegExp("class=\"[^\"]*\\b" + lead + "\\b(?!-)").test(tags[j].tag)) start = tags[j].i;
+					break;
+				}
+			}
+		}
+		return start;
+	}
+
+	/**
 	 * NO-EMOJI RULE (Change Ledger CL-0051, an exception to CL-0001
 	 * permitting deletion of writer characters). Strips emoji from
 	 * the rendered page as a FULL-PAGE post-pass (the LinkTextDisplay seam:
@@ -902,15 +942,25 @@ class ListsAndRuns {
 		const leadRe = new RegExp("^" + CL, "u");
 		const SENT = "\uE0EE";                       // one-shot anchor mark (PUA)
 
+		// AN EMOJI TYPED AS A WORD GAP LEAVES THE GAP: «safe🧽clean and🔋charged» keeps «safe clean and charged», not
+		// «safeclean andcharged» — a removed emoji between two Latin-script letters or digits becomes one space.
+		// Data emoji_strip.word_gap; env EMOJIGAP_OFF.
+		const wg = cfg.word_gap;
+		const wgOn = !!wg && wg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[wg.env ?? "EMOJIGAP_OFF"]);
+		const wordEnd = /[\p{Script=Latin}\p{N}]$/u, wordStart = /^[\p{Script=Latin}\p{N}]/u;
+
 		let removed = false;
 		const stripSeg = (seg) => {                  // one inter-tag text segment
 			let hit = false;
-			let s = seg.replace(clusterRe(), (cl) => {
+			let s = seg.replace(clusterRe(), (cl, off, str) => {
 				const base = cl.codePointAt(0);
 				if (exempt.has(base)) return cl;         // ticks & crosses kept whole
 				hit = true;
 				if (/^[0-9#*]/.test(cl)) return cl[0];   // keycap: the digit survives
-				return arrows[base] ?? "";               // arrow → plain form; else gone
+				if (arrows[base] !== undefined) return arrows[base];   // arrow → plain form
+				if (wgOn && wordEnd.test(str.slice(0, off)) && wordStart.test(str.slice(off + cl.length))) return " ";
+				return "";                               // else gone
 			});
 			if (hit) {
 				removed = true;
@@ -1057,6 +1107,12 @@ class ListsAndRuns {
 			const bodyIn = bodyAt < 0 ? 0 : out.indexOf(">", bodyAt) + 1;
 			let at = anchor >= 0 ? anchor : bodyIn;
 			if (bodyAt >= 0 && at <= bodyAt) at = bodyIn;
+			// a first removal inside a built widget puts the note before that widget (emoji_strip.note_outside_widgets;
+			// env EMOJINOTEWIDGET_OFF)
+			const nw = cfg.note_outside_widgets;
+			if (nw && nw.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[nw.env ?? "EMOJINOTEWIDGET_OFF"])) {
+				at = ListsAndRuns.#outsideWidget(out, at, nw);
+			}
 			out = out.slice(0, at) + "\n" + note + "\n" + out.slice(at);
 		}
 		return out;
