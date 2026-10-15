@@ -6864,6 +6864,12 @@ class InteractiveBuilder {
 			if (trans !== null) return trans;
 		}
 
+		// a header row that names each column's face (flipCard.header_roles; env FLIPHEADROLES_OFF)
+		if (tpl.header_roles && width >= (tpl.header_roles.min_width ?? 3)) {
+			const hr = this.#flipCardHeaderRoles(allRows, width, tpl, run, renderInline ?? ((s) => s));
+			if (hr !== null) return hr;
+		}
+
 		if (width !== 2) return null;                       // strictly front | back
 
 		// keep the genuine two-cell rows; drop a leading column-label header row.
@@ -6880,6 +6886,63 @@ class InteractiveBuilder {
 			cards.push(Utils.FillTemplate(tpl.card, { front, back }));
 		}
 		return [tpl.container_open, ...this.#flipCardsByCount(tpl, cards, run), tpl.container_close].join("\n");
+	}
+
+	/**
+	 * THE HEADER ROW NAMES EACH COLUMN'S FACE. A table whose first row labels its columns by face
+	 * («  ║ Sound on the front ║ Image on the back ║ Word on the back», «Card no. ║ Image (front) ║ Text (back side)»)
+	 * is one card per following row: the front columns' cells make the front, the back columns' cells (in order) the
+	 * back. A label that names no face takes the face of the column before it; a blank or «Card no.» column whose cells
+	 * are only card markers is skipped. Every card cell must read through #flipCell (a picture or plain words), every
+	 * card needs a front and a back, or null keeps the hand-off box. All-picture fronts take the image-front card.
+	 *
+	 * Env FLIPHEADROLES_OFF. Data interactive_builders.flipCard.header_roles.
+	 */
+	static #flipCardHeaderRoles(allRows, width, tpl, run, inline) {
+		const cfg = tpl.header_roles;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "FLIPHEADROLES_OFF"]) return null;
+		if (allRows.length < 2) return null;
+		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+		const words = (c) => this.#cellText(String(c ?? "").replace(RED, " ")).replace(/[*_]/g, " ").replace(/\s+/g, " ").trim().toLowerCase();
+		const head = (allRows[0] ?? []).map(words);
+		const frontRe = new RegExp(cfg.front_pattern, "i"), backRe = new RegExp(cfg.back_pattern, "i");
+		const mkHead = new RegExp(cfg.marker_header_pattern, "i"), mkCell = new RegExp(cfg.marker_cell_pattern, "i");
+		const data = allRows.slice(1).filter((r) => (r ?? []).some((c) => words(c) || /https?:\/\//.test(String(c ?? ""))));
+		if (!data.length) return null;
+		const roles = [];
+		let last = null;
+		for (let c = 0; c < width; c++) {
+			const h = head[c] ?? "";
+			if (h.split(/\s+/).filter(Boolean).length > (cfg.header_max_words ?? 8)) return null;
+			const f = frontRe.test(h), b = backRe.test(h);
+			if (f && b) return null;
+			if (f || b) { roles.push(f ? "front" : "back"); last = roles[c]; continue; }
+			if (mkHead.test(h) && data.every((r) => mkCell.test(words((r ?? [])[c])))) { roles.push("marker"); continue; }
+			if (!h || !last) return null;
+			roles.push(last);
+		}
+		const nFront = roles.filter((x) => x === "front").length;
+		if (!nFront || nFront > (cfg.max_front_columns ?? 1) || !roles.includes("back")) return null;
+		const cards = [];
+		let allPicFront = true;
+		for (const r of data) {
+			const fr = [], bk = [];
+			for (let c = 0; c < width; c++) {
+				if (roles[c] === "marker") continue;
+				const cell = (r ?? [])[c];
+				if (!words(cell) && !/https?:\/\//.test(String(cell ?? ""))) continue;
+				const h = this.#flipCell(cell, tpl, run, inline);
+				if (h === null) return null;
+				(roles[c] === "front" ? fr : bk).push(h);
+			}
+			if (!fr.length || !bk.length) return null;
+			if (!(fr.length === 1 && /<img\b/i.test(fr[0]))) allPicFront = false;
+			cards.push({ front: fr.join("\n"), back: bk.join("\n") });
+		}
+		const cardTpl = allPicFront && tpl.card_image_front ? tpl.card_image_front : tpl.card;
+		const html = cards.map((k) => Utils.FillTemplate(cardTpl, k));
+		return [tpl.container_open, ...this.#flipCardsByCount(tpl, html, run), tpl.container_close].join("\n");
 	}
 
 	/**
@@ -8261,7 +8324,13 @@ class InteractiveBuilder {
 				}
 				const fn = this.#accImageFilename(url, cfg, cfg);
 				if (!fn) return null;
-				parts.push({ role: "img", filename: fn });
+				const imgPart = { role: "img", filename: fn };
+				// a picture whose own tag names it the tile's front is the set's tile (modal_sets.tile_front; env MODALTILEFRONT_OFF)
+				const tf = cfg.tile_front;
+				if (tf && tf.enabled !== false && tf.pattern
+					&& !(typeof process !== "undefined" && process.env && process.env[tf.env ?? "MODALTILEFRONT_OFF"])
+					&& new RegExp(tf.pattern, "i").test(String(m.text ?? ""))) imgPart.tileFront = true;
+				parts.push(imgPart);
 				const residual = text.replace(/^\s*\[[^\]]*\]\s*/, "")
 					.replace(/https?:\/\/\S+/g, "").replace(/\S*gm-?\d{6,10}\S*/g, "")
 					.replace(/[/|]/g, " ").trim();
@@ -8473,6 +8542,11 @@ class InteractiveBuilder {
 				// INSIDE the pop-out is never stolen — and only a NAMEABLE image address
 				// counts (#accImageFilename), so a document link still falls through to
 				// the document button or to content.
+				// the tile's front picture is the trigger even beside a label — the label becomes its caption
+				if (p.role === "img" && p.filename && p.tileFront && !cur.filename
+					&& cur.parts.every((x) => x.role === "head")) {
+					cur.filename = p.filename; cur.tileFront = true; continue;
+				}
 				if (cfg.gathered_members !== false
 					&& !(typeof process !== "undefined" && process.env && process.env.MODGATHERBUILD_OFF)
 					&& !cur.filename && !cur.label
@@ -8489,6 +8563,7 @@ class InteractiveBuilder {
 				if (!this.#modalPushPart(cur.parts, p)) return null;
 			}
 			this.#modalMediaTiles(sets, lead, cfg, run);
+			this.#modalTileFrontStrip(sets, cfg);
 			return this.#modalFinishSets(sets, cfg);
 		}
 
@@ -8653,6 +8728,23 @@ class InteractiveBuilder {
 			names.push(fn);
 		}
 		sets.forEach((s, i) => { s.filename = names[i]; s.tile = true; });
+	}
+
+	/**
+	 * THE FRONT-OF-TILE STRIP. A numbered group whose writer names each set's picture as the front
+	 * of its tile («[image – front of tile] <address>») is a row of tiles, not a run of trigger and
+	 * pop-out pairs: when every set is picture-triggered and at least one picture is a tile front,
+	 * the group takes the media-tile layout (one row of columns, then the pop-outs).
+	 *
+	 * Env MODALTILEFRONT_OFF. Data interactive_builders.modal.modal_sets.tile_front.
+	 */
+	static #modalTileFrontStrip(sets, cfg) {
+		const tf = cfg?.tile_front;
+		if (!tf || tf.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env[tf.env ?? "MODALTILEFRONT_OFF"]) return;
+		if (sets.length < (tf.min_sets ?? 2) || sets.some((s) => s.tile)) return;
+		if (!sets.every((s) => s.filename) || !sets.some((s) => s.tileFront)) return;
+		sets.forEach((s) => { s.tile = true; });
 	}
 
 	/**

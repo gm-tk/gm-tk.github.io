@@ -860,8 +860,14 @@ class PanelsBuilder {
 			return crumbs.join("\n") + "\n" + panels.join("\n");
 		}
 		const crumbs = [cfg.crumbs_open, Utils.FillTemplate(cfg.crumb_intro, { label: cfg.intro_label || "Introduction" })];
+		// a list that opens with its own introduction entry names the intro panel there, so the panels read it from the second
+		// entry on (inquiry_tabs.intro_list_entry; env INQLISTINTRO_OFF)
+		const ile = cfg.intro_list_entry || {};
+		const _listMax = Math.max(0, ...Object.keys(lab).filter((k) => /^\d+$/.test(k)).map(Number));
+		const _off = (ile.enabled !== false && ile.pattern && !(typeof process !== "undefined" && process.env && process.env[ile.env || "INQLISTINTRO_OFF"])
+			&& lab[1] && new RegExp(ile.pattern, "i").test(String(lab[1]).replace(/\*/g, "").trim()) && _listMax === panelSegs.length + 1) ? 1 : 0;
 		for (let i = 0; i < panelSegs.length; i++)
-			crumbs.push(Utils.FillTemplate(cfg.crumb_item, { n: String(i + 1), label: lab[i + 1] || (_foldOn ? _firstTitle(panelSegs[i]) : "") }));   // an empty crumb takes its panel's first title heading
+			crumbs.push(Utils.FillTemplate(cfg.crumb_item, { n: String(i + 1), label: lab[i + 1 + _off] || (_foldOn ? _firstTitle(panelSegs[i]) : "") }));   // an empty crumb takes its panel's first title heading
 		crumbs.push(cfg.crumbs_close);
 		const panels = [cfg.panel_intro_open + "\n" + intro + "\n" + cfg.panel_close];
 		for (let i = 0; i < panelSegs.length; i++)

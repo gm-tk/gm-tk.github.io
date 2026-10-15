@@ -668,6 +668,63 @@ class ContentConverter {
 			const wl = cfg.title_writer_level ?? 1;
 			out.push({ type: "tag", text: `[H${wl}]`, parse: this.#norm.Parse(`[H${wl}] `), blackAfter: text, block: it.block });
 		};
+		// THE MODULE OVERVIEW TYPED AS UNTAGGED LABEL LINES («Year 3 Knowledge» + bullets … «Success Criteria» + «I can:» +
+		// bullets): an untagged label line opens its block up to the next label line — Learning Intentions / Success Criteria fill
+		// the Overview pane, Knowledge / Practice(s) become tabs of their own. Harvested from the menu region and from the body
+		// before the first tile. Data fundamentals_panels.tile_pages.untagged_overview_labels; env TILEOVLABEL_OFF.
+		const uol = cfg.untagged_overview_labels;
+		const _uolOn = !!uol && uol.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[uol.env || "TILEOVLABEL_OFF"]);
+		const uolLi = _uolOn ? new RegExp(uol.li_pattern, "i") : null, uolSc = _uolOn ? new RegExp(uol.sc_pattern, "i") : null;
+		const uolEx = _uolOn ? new RegExp(uol.extra_pattern, "i") : null, uolPre = _uolOn ? new RegExp(uol.prefix_pattern, "i") : null;
+		const uolKind = (t) => !_uolOn ? null : uolLi.test(t) ? "li" : uolSc.test(t) ? "sc" : uolEx.test(t) ? "extra" : null;
+		const uolBucket = (label, lines) => {
+			const bucket = { label, lead: "", bullets: [], tail: [] };
+			let seenBullet = false;
+			for (const ln of lines) {
+				const t = ln.trim();
+				if (!t) continue;
+				const bare = t.replace(/^[•◦▪]\s*/, "");
+				if (bare !== t) { seenBullet = true; bucket.bullets.push(this.#levelBullet(bare)); }
+				else if (seenBullet) bucket.tail.push(stripMd(bare));
+				else if (!bucket.lead) bucket.lead = stripMd(bare);
+				else bucket.bullets.push(this.#levelBullet(bare));
+			}
+			return bucket;
+		};
+		const uolConsumed = new Set();
+		const uolLabel = (ln) => stripMd(ln).replace(/[.:]$/, "");
+		const uolHarvest = (items, stopAt) => {
+			for (let k = 0; k < items.length && k < stopAt; k++) {
+				const x = items[k];
+				if (x.type !== "black" || !free(x)) continue;
+				// the run of consecutive free black items from k, as lines; it must open with a label line
+				const lines = [];
+				let j = k;
+				for (; j < items.length && j < stopAt && items[j].type === "black" && free(items[j]); j++) lines.push(...String(items[j].text || "").split("\n"));
+				const first = lines.find((ln) => stripMd(ln));
+				if (!first || !uolKind(uolLabel(first))) { k = j - 1; continue; }
+				// one block per label line, up to the next
+				const segs = [];
+				for (const ln of lines) {
+					const lab = uolLabel(ln), kind = uolKind(lab);
+					if (kind) segs.push({ kind, bare: lab.replace(uolPre, "").trim(), lines: [] });
+					else if (segs.length) segs[segs.length - 1].lines.push(ln);
+				}
+				for (const sg of segs) {
+					if (sg.kind === "extra") {
+						(moduleMenu.extra ??= []).push({ label: (uol.extra_labels ?? {})[sg.bare.toLowerCase()] || sg.bare, bucket: uolBucket(sg.bare, sg.lines) });
+					} else if (!moduleMenu[sg.kind]) moduleMenu[sg.kind] = uolBucket(sg.bare, sg.lines);
+				}
+				for (let q = k; q < j; q++) uolConsumed.add(items[q]);
+				k = j - 1;
+			}
+		};
+		if (_uolOn) {
+			if (Array.isArray(menuItems)) uolHarvest(menuItems, menuItems.length);
+			const firstTile = bodyItems.findIndex((x) => x.type === "tag" && free(x) && (isMarker(x) || isLessonMark(x)));
+			uolHarvest(bodyItems, firstTile < 0 ? 0 : firstTile);
+			if (uolConsumed.size) run.AddNote("info", "ContentConverter", `The module overview's untagged label blocks → the menu (${[moduleMenu.li && "Learning Intentions", moduleMenu.sc && "Success Criteria", ...(moduleMenu.extra ?? []).map((e) => e.label)].filter(Boolean).join(", ")}) (tile_pages.untagged_overview_labels).`);
+		}
 		// the FIRST tile's LI/SC block may already sit in the MENU items (the page's first
 		// `[Lesson Overview]` region is routed there by #partitionItems) — harvest it
 		if (Array.isArray(menuItems)) {
@@ -682,6 +739,7 @@ class ContentConverter {
 		}
 		for (let i = 0; i < bodyItems.length; i++) {
 			const it = bodyItems[i];
+			if (uolConsumed.has(it)) continue;   // an untagged overview block, already in the menu
 			const f = it.type === "tag" && free(it) ? folded(it) : null;
 			// ---- "[Tile N content]" — a tile opens ------------------------------
 			if (f !== null && isMarker(it)) {
@@ -1352,6 +1410,7 @@ class ContentConverter {
 		// Data flag: body_region.inquiry_tabs   Env toggle: INQUIRYTABS_OFF
 		const inqCfg = tpl.body_region.inquiry_tabs;
 		const inquiryLabels = {};
+		const _listLabelKeys = new Set();   // the crumb-list numbers captured before any panel opened
 		const isTabItem = (it) => it.type === "tag"
 			&& (/^\s*tab\s*\d/i.test(String(it.text || "")) || /\btab\b/i.test(it.parse?.primary?.tag || ""));
 		// FIRE when ≥2 orphan top-level `[Tab N]` (widget `[tabs]` members are consumed by
@@ -4930,7 +4989,19 @@ class ContentConverter {
 							}
 							break;
 						}
-						if (label) { if (n) inquiryLabels[n] = label; break; }
+						if (label) {
+							// the writer's crumb list (labels captured before any panel opened) keeps its entry when a labelled
+							// tab in the body carries the same number (inquiry_tabs.intro_list_entry.keep_list_labels; env INQLISTKEEP_OFF)
+							const _ile = inqCfg.intro_list_entry || {};
+							const _keepOn = _ile.enabled !== false && _ile.keep_list_labels === true
+								&& !(typeof process !== "undefined" && process.env && process.env[_ile.keep_env || "INQLISTKEEP_OFF"]);
+							const _opened = parts.includes(INQ_SENTINEL);
+							const _same = (a, b) => String(a || "").toLowerCase().replace(/[‘’'"“”*]/g, "").replace(/\s+/g, " ").trim()
+								=== String(b || "").toLowerCase().replace(/[‘’'"“”*]/g, "").replace(/\s+/g, " ").trim();
+							if (n && _keepOn && _opened && _listLabelKeys.has(String(n)) && !_same(inquiryLabels[n], label)) break;
+							if (n) { inquiryLabels[n] = label; if (!_opened) _listLabelKeys.add(String(n)); }
+							break;
+						}
 						// SYMMETRIC de-duplication for the BLL hybrid `[Tab N]`/`[page N]` boundary
 						// (modules BLL210 and BLL130): writers order the pair EITHER as
 						// `[Tab N][page N]` (BLL210's order) OR as `[page N][Tab N]` (BLL130's
@@ -10143,8 +10214,98 @@ class ContentConverter {
 		const cfg = DataService.Data.EmitTemplates.body_region?.empty_callout_heading_box;
 		if (!cfg || cfg.enabled === false || !html) return html;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "CALLOUTHEADBOX_OFF"]) return html;
+		return this.#emptyCalloutBodyRun(this.#emptyCalloutHeadingRow(html, run, cfg), run, cfg);
+	}
+
+	/** The sub-rules' switches: notes_beside / writer_close / body_run, each with its own env. */
+	static #emptyCalloutSub(cfg, key, env) {
+		const s = cfg?.[key];
+		return !!s && s.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[s.env || env]);
+	}
+
+	/** The writer's closer after a box's run: the index of the block that is the spent «[close alert …]» note, when every
+	 *  block from `from` up to it is a heading, a plain paragraph, a list or a note; else -1 (writer_close). */
+	static #emptyCalloutCloser(seg, bl, from, cfg) {
+		if (!this.#emptyCalloutSub(cfg, "writer_close", "CALLOUTCLOSE_OFF")) return -1;
+		const re = new RegExp(cfg.writer_close.note_pattern, "i");
+		for (let x = from; x < bl.length; x++) {
+			const b = bl[x], isNote = b.name === "p" && /\bcv2-note\b/.test(b.cls);
+			if (isNote && re.test(seg.slice(b.start, b.end).trim())) return x;
+			if ((b.name === "p" && (!b.cls || isNote)) || b.name === "ul" || b.name === "ol" || /^h[2-6]$/.test(b.name)) continue;
+			return -1;
+		}
+		return -1;
+	}
+
+	/** The top-level elements of an html fragment: {name, cls, start, end} each (comments skipped). */
+	static #calloutBlocksOf(s) {
+		const out = []; let i = 0;
+		while (i < s.length) {
+			const lt = s.indexOf("<", i);
+			if (lt < 0) break;
+			if (s.startsWith("<!--", lt)) { const e = s.indexOf("-->", lt); i = e < 0 ? s.length : e + 3; continue; }
+			const tm = /^<([a-zA-Z][a-zA-Z0-9]*)\b([^>]*)>/.exec(s.slice(lt));
+			if (!tm) { i = lt + 1; continue; }
+			const name = tm[1].toLowerCase(), attrs = tm[2];
+			let end;
+			if (/^(?:img|br|hr|input|source)$/.test(name) || /\/\s*$/.test(attrs)) end = lt + tm[0].length;
+			else {
+				const r2 = new RegExp(`<(/?)${name}\\b[^>]*>`, "gi"); r2.lastIndex = lt; let dd = 0, x;
+				while ((x = r2.exec(s)) !== null) { dd += x[1] ? -1 : 1; if (dd === 0) break; }
+				end = x ? x.index + x[0].length : s.length;
+			}
+			out.push({ name, cls: (/class="([^"]*)"/.exec(attrs) ?? [])[1] ?? "", start: lt, end });
+			i = end;
+		}
+		return out;
+	}
+
+	/** FORM B — THE EMPTY BOX TAKES THE WRITER'S TAGGED LINES (body_run; env CALLOUTBODYRUN_OFF). An empty box («Red Flag:
+	 *  Empty [alert]») followed in its own column by plain paragraphs / lists takes that run (notes travel with their line)
+	 *  up to the next heading or other block, or up to the writer's closer (writer_close, the spent note dropped). */
+	static #emptyCalloutBodyRun(html, run, cfg) {
+		if (!html || !this.#emptyCalloutSub(cfg, "body_run", "CALLOUTBODYRUN_OFF")) return html;
+		const box = new RegExp(`<div class="(alert\\b[^"]*)">\\s*<div class="row">\\s*<div class="col-12">\\s*`
+			+ `<p class="cv2-note"[^>]*>${cfg.flag_pattern ?? "Red Flag: Empty \\[(?:alert|important)\\]"}[^<]*<\\/p>\\s*<\\/div>\\s*<\\/div>\\s*<\\/div>`, "gi");
+		const hits = [];
+		let m;
+		while ((m = box.exec(html)) !== null) {
+			const from = m.index + m[0].length;
+			// the column the box sits in ends at the first unmatched </div>
+			const re = /<(\/?)div\b[^>]*>/gi; re.lastIndex = from; let d = 0, c;
+			while ((c = re.exec(html)) !== null) { if (c[1]) { if (d === 0) break; d--; } else d++; }
+			if (!c) continue;
+			const seg = html.slice(from, c.index), bl = this.#calloutBlocksOf(seg);
+			const plainP = (b) => b && b.name === "p" && !b.cls, list = (b) => b && (b.name === "ul" || b.name === "ol");
+			const note = (b) => b && b.name === "p" && /\bcv2-note\b/.test(b.cls);
+			if (!plainP(bl[0]) && !list(bl[0])) continue;   // the run must open with the writer's line, not a note or a block
+			let k = 0;
+			while (plainP(bl[k]) || list(bl[k]) || note(bl[k])) k++;
+			const closeAt = this.#emptyCalloutCloser(seg, bl, 0, cfg);
+			// a run that leads into a button is that button's lead-in (the dropbox pass boxes them together later), not the box's
+			if (closeAt <= 0 && bl[k] && bl[k].name === "a") continue;
+			const cut = closeAt > 0 ? bl[closeAt].start : bl[k - 1].end;
+			const restFrom = closeAt > 0 ? bl[closeAt].end : bl[k - 1].end;
+			hits.push({ start: m.index, end: from, boxCls: m[1], body: seg.slice(0, cut), restAt: from + restFrom });
+		}
+		if (!hits.length) return html;
+		let out = html;
+		for (const h of hits.slice().reverse()) {
+			const built = `<div class="${h.boxCls}">\n<div class="row">\n<div class="col-12">\n${h.body.trim()}\n</div>\n</div>\n</div>`;
+			out = out.slice(0, h.start) + built + out.slice(h.restAt);
+		}
+		if (run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `${hits.length} empty callout${hits.length > 1 ? "s" : ""} took the writer's following lines (empty_callout_heading_box.body_run).`);
+		return out;
+	}
+
+	/** FORM A (see #emptyCalloutHeadingBox): the empty box alone in its row (a writer's note beside it allowed —
+	 *  notes_beside), the next row opening with a heading. */
+	static #emptyCalloutHeadingRow(html, run, cfg) {
+		const notesOn = this.#emptyCalloutSub(cfg, "notes_beside", "CALLOUTNOTES_OFF");
 		const emptyRow = new RegExp(`<div class="row">\\s*<div class="[^"]*\\bcol-[^"]*">\\s*<div class="(alert\\b[^"]*)">\\s*<div class="row">\\s*<div class="col-12">\\s*`
-			+ `<p class="cv2-note"[^>]*>${cfg.flag_pattern ?? "Red Flag: Empty \\[(?:alert|important)\\]"}[^<]*<\\/p>\\s*<\\/div>\\s*<\\/div>\\s*<\\/div>\\s*<\\/div>\\s*<\\/div>`, "gi");
+			+ `<p class="cv2-note"[^>]*>${cfg.flag_pattern ?? "Red Flag: Empty \\[(?:alert|important)\\]"}[^<]*<\\/p>\\s*<\\/div>\\s*<\\/div>\\s*<\\/div>`
+			+ `(${notesOn ? `(?:\\s*<p class="cv2-note"[^>]*>(?:(?!<\\/p>)[\\s\\S])*<\\/p>)*` : ""})\\s*<\\/div>\\s*<\\/div>`, "gi");
 		const levels = (cfg.heading_levels ?? [2, 3, 4, 5]).join("");
 		const next = new RegExp(`\\s*(<div class="row">\\s*<div class="([^"]*\\bcol-[^"]*)">)\\s*<h([${levels}])\\b[^>]*>[\\s\\S]*?<\\/h\\3>`, "y");
 		const hits = [];
@@ -10158,7 +10319,7 @@ class ContentConverter {
 			const re = /<(\/?)div\b[^>]*>/gi; re.lastIndex = colStart; let d = 1, c;
 			while ((c = re.exec(html)) !== null) { d += c[1] ? -1 : 1; if (d === 0) break; }
 			if (!c) continue;
-			hits.push({ start: m.index, rowOpenAt: n.index + n[0].indexOf(n[1]), rowOpen: n[1], colCls: n[2], hStart, hEnd, colEnd: c.index, boxCls: m[1] });
+			hits.push({ start: m.index, rowOpenAt: n.index + n[0].indexOf(n[1]), rowOpen: n[1], colCls: n[2], hStart, hEnd, colEnd: c.index, boxCls: m[1], notes: (m[2] ?? "").trim() });
 		}
 		if (!hits.length) return html;
 		const blocksOf = (s) => {
@@ -10196,7 +10357,7 @@ class ContentConverter {
 		const plainH = (s) => String(s).replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim().replace(/[\s:?.!…]+$/, "");
 		let out = html, n = 0;
 		for (const h of hits.slice().reverse()) {
-			if (shaRes.some((re) => re.test(plainH(out.slice(h.hStart, h.hEnd))))) {
+			if (!h.notes && shaRes.some((re) => re.test(plainH(out.slice(h.hStart, h.hEnd))))) {
 				out = out.slice(0, h.start) + out.slice(h.rowOpenAt); n++;
 				continue;
 			}
@@ -10216,13 +10377,18 @@ class ContentConverter {
 				if (k > k0 && k0 > 0 && plainP(bl[k])) k++;
 				if (k === 0) while (list(bl[k])) k++;
 			}
+			// the writer's closer later in the column ends the box there; the spent note goes (writer_close; env CALLOUTCLOSE_OFF)
+			const closeAt = this.#emptyCalloutCloser(seg, bl, 0, cfg);
+			if (closeAt > 0) k = closeAt;
 			if (k < (cfg.min_blocks ?? 1)) continue;
-			const cut = bl[k - 1].end, rest = seg.slice(cut);
+			const cut = closeAt > 0 ? bl[closeAt].start : bl[k - 1].end, rest = seg.slice(closeAt > 0 ? bl[closeAt].end : cut);
 			const box = `<div class="${h.boxCls}">\n<div class="row">\n<div class="col-12">\n` + out.slice(h.hStart, h.hEnd) + seg.slice(0, cut) + `\n</div>\n</div>\n</div>`;
-			const tail = rest.replace(/<!--[\s\S]*?-->/g, "").trim()
+			// a box the writer closed keeps the column's rest after it in the same column (writer_close.rest_same_column)
+			const sameCol = closeAt > 0 && cfg.writer_close?.rest_same_column === true;
+			const tail = rest.replace(/<!--[\s\S]*?-->/g, "").trim() && !sameCol
 				? `\n</div>\n</div>\n<div class="row">\n<div class="${h.colCls}">${rest.replace(/\s+$/, "")}\n`
 				: `${rest.replace(/\s+$/, "")}\n`;
-			out = out.slice(0, h.start) + h.rowOpen + "\n" + box + tail + out.slice(h.colEnd);
+			out = out.slice(0, h.start) + h.rowOpen + "\n" + (h.notes ? h.notes + "\n" : "") + box + tail + out.slice(h.colEnd);
 			n++;
 		}
 		if (!n) return html;

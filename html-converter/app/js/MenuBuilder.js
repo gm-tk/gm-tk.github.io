@@ -2545,6 +2545,16 @@ class MenuBuilder {
 			&& !(typeof process !== "undefined" && process.env && process.env[(cfg.level_menu_tabs && cfg.level_menu_tabs.env) || "LEVELMENUTABS_OFF"]);
 		let nav = omitOv ? "" : navItem(mc.overview_label || "Overview");
 		let panes = omitOv ? "" : pane(mod.li, mod.sc, ovCols);
+		// the module overview's own Knowledge / Practices blocks, each a one-column tab after Overview
+		// (tile_pages.untagged_overview_labels; the pre-pass fills mod.extra only when that rule is on)
+		for (const ex of (mod.extra ?? [])) {
+			if (!hasContent(ex.bucket)) continue;
+			const exCls = (cfg.untagged_overview_labels && cfg.untagged_overview_labels.extra_col) || "col-md-8 col-12";
+			nav += navItem(ex.label);
+			panes += (mc.pane_open || "\n<div class=\"tab-pane\">\n<div class=\"row\">") + "\n"
+				+ Utils.FillTemplate(colT, { cls: exCls, content: colHtml(ex.bucket, ex.label) })
+				+ (mc.pane_close || "\n</div>\n</div>");
+		}
 		for (const l of levels) {
 			nav += navItem(l.label);
 			panes += levelPane(l.li, l.sc, cols);

@@ -3261,6 +3261,13 @@
 					"_doc": "THE SET'S DESCRIPTION IS ITS OPENER EVEN WITH A NUMBER IN IT. A leading marker that arrives before the first set, with no text after it, is the widget's opener; one typed as a description that counts its tiles («[3 Click modal XL with a graphic on the front of the tile. On click, modal pops out …]») carried a digit, so it opened an empty «set 3» ahead of set 1 and the finished widget had a set with no trigger and no content — the whole build declined. A leading marker whose own bracket runs to min_words words or more is read as the opener, numbered or not."
 				},
 				"bold_lead_label": true,
+				"tile_front": {
+					"enabled": true,
+					"env": "MODALTILEFRONT_OFF",
+					"pattern": "\\bfront\\s+of\\s+(?:the\\s+)?tiles?\\b",
+					"min_sets": 2,
+					"_doc": "THE TILE'S FRONT PICTURE IS THE TILE. A tile-modal set typed «[Click modal 1] Making kites / [image – front of tile] <address> / [modal that pops out when tile is clicked] / …» names its picture as the front of the tile: that picture is the set's trigger even when the set also carries a label (the label then shows as the tile's caption through label_caption), never the first thing inside the pop-out. A numbered group of min_sets or more sets, every one picture-triggered and at least one by a front-of-tile picture, is laid out the way its human developer lays it out: one row of tiles (the media_tiles row and column classes), then the pop-outs."
+				},
 				"media_tiles": {
 					"enabled": true,
 					"reference_pattern": "\\b(?:media\\s+)?item\\s*(\\d+)\\b",
@@ -4194,6 +4201,18 @@
 				"_doc": "THE BUILT FLIP CARD NEVER DROPS THE WRITER'S WORDS (e.g. CEDO502-5.0: a 2 x 2 table of whole-card cells that could be read as a header row + two picture-only cells — one card with eight sentences lost, where the human builds four). Every learner PART of the captured table (a cell split at ' / ' and line breaks; red spans, [tags], [LINK:] and URLs removed; >= min_words words) must be in the build's visible text; a part carrying a picture reference is the picture's label and a first row of short (<= header_max_words) keyword labels is the column header — both exempt. A lossy DIALECT build falls through to the general card composer; a lossy COMPOSER build keeps the hand-off box (never half-build). Env FLIPTEXTGUARD_OFF turns the guard off."
 			},
 			"transposed": true,
+			"header_roles": {
+				"enabled": true,
+				"env": "FLIPHEADROLES_OFF",
+				"min_width": 3,
+				"max_front_columns": 1,
+				"header_max_words": 8,
+				"front_pattern": "\\bfront\\b",
+				"back_pattern": "\\b(?:back|reverse|flipped|flip side)\\b",
+				"marker_header_pattern": "^(?:card\\s*(?:no\\.?|number|#)?|no\\.?|#)?$",
+				"marker_cell_pattern": "^(?:\\[?\\s*flip\\s*-?\\s*cards?\\s*\\d+\\s*\\]?|card\\s*\\d+|\\d+\\.?)?$",
+				"_doc": "THE HEADER ROW NAMES EACH COLUMN'S FACE. A flip-card table of min_width or more columns whose first row labels the columns by face («  ║ Sound on the front ║ Image on the back ║ Word on the back», «Card no. ║ Image (front) ║ Text (back side)») is one card per following row: the cells of the front columns make the front, the back columns (in order) the back. A column whose label names no face takes the face of the column before it («Word underneath» after «Image on the back»); a column with a blank or «Card no.» label whose cells are only card markers («[flipcard 3]», «3») is skipped. One front column (max_front_columns — the alternating «Front ║ Back ║ Front ║ Back» forms, two cards to a row, keep their own readers) and at least one back column; every card cell must read as a picture or plain words, or the hand-off box stays."
+			},
 			"_transposed_note": "The TRANSPOSED multi-column form (as in OSBY201-02): a 2-ROW table whose COLUMNS are the cards (row 0 = the fronts '[front] / label / [image] url', row 1 = the backs '[back] / text'). Builds N image-front (placeholder image + <h4>label</h4>) / text-back cards via #flipCardTransposed, reusing #flipImageFront/#flipBack with the leading [front]/[back] face directive stripped. CONSERVATIVE (never half-build): exactly 2 rows, width>=2 (the 2-col front|back-per-row form is untouched), row 0 ALL fronts + row 1 ALL backs (either order), every card builds cleanly. Env FLIPTRANS_OFF.",
 			"_alternating_note": "The 'Flip card image' VARIANT (the alternating multi-column form, OSAI/OSBY/OSGM/OSOH/XGF/ENFUN/ENGI): a header row of Front|Back|Front|Back… labels over a SINGLE data row of 2N columns, each column-PAIR a card. Front cell is RICH ('Step N: title / [image] / url' → <img> + <h4>title</h4>, image first); back cell is '/'-split paragraphs (**bold** kept). Conservative (never half-build → orange placeholder): built only when the header is a clean alternating Front/Back label set (#looksLikeFlipHeader), there are exactly 2 rows (header + data), every FRONT carries BOTH an image part AND a heading-text part, and no non-image red instruction survives in any cell. The 2-column front|back-per-row form is UNCHANGED (CEDO102/MXDB302/TRR114/XMES201). The OSAI201 two-<h4> 'Step N:'/title split is a NON-DERIVABLE editorial choice left as a single <h4>. Env FLIPALT_OFF.",
 			"header_contains_keywords": [
@@ -8466,6 +8485,17 @@
 			"tile_pages": {
 				"enabled": true,
 				"env": "TILEPAGE_OFF",
+				"untagged_overview_labels": {
+					"enabled": true,
+					"env": "TILEOVLABEL_OFF",
+					"li_pattern": "^(?:(?:year|level)\\s*\\d+\\s+)?learning\\s+intentions?\\s*:?$",
+					"sc_pattern": "^(?:(?:year|level)\\s*\\d+\\s+)?success\\s+criteria\\s*:?$",
+					"extra_pattern": "^(?:year|level)\\s*\\d+\\s+(knowledge|practices?)\\s*:?$",
+					"prefix_pattern": "^(?:year|level)\\s*\\d+\\s+",
+					"extra_labels": { "knowledge": "Knowledge", "practice": "Practices", "practices": "Practices" },
+					"extra_col": "col-md-8 col-12",
+					"_doc": "THE MODULE OVERVIEW TYPED AS UNTAGGED LABEL LINES. Some writers type the module's overview blocks as plain label lines — «Year 3 Knowledge» + bullets, «Year 3 Practice» + bullets, «Year 3 Learning Intentions» + «We are learning:» + bullets, «Success Criteria» + «I can:» + bullets (WJFUN112 / 115 / 116) — where the family's other modules type «[H3] Knowledge Year N». The pre-pass read only the tagged form, so these blocks reached no page and the menu's Overview pane shipped its two headings empty. An untagged label line (in the menu region, or in the body before the first tile) opens its block up to the next label line: Learning Intentions / Success Criteria fill the Overview pane's two columns (the year prefix dropped from the heading), Knowledge / Practice(s) each become a tab of their own after Overview (one extra_col column) — the gold's form on these modules."
+				},
 				"li_run_any": true,
 				"_doc_li_run_any": "A tile's FIRST We-are-learning run is its menu pane's LI / SC whatever introduces it — a label line (Year 3 Learning Intention), a red [Learning Intentions] tag, a red lead, [H3] Learning intentions + [body], a writer instruction — so the pane is not left with only the h5 (as in several WJFUN modules). Env TILELIRUN_OFF.",
 				"_doc": "THE TILE-PAGE fundamentals dialect (the WJFUN 'My Te Kura Writing' FUNdamentals family): the writer authors ONE single-file module whose lessons are TILES — `[Tile N content]` (or `[Tile N]`) opens each, `[Tile N content ENDS]` closes it; inside a tile `[H1] <title>` names it, `[Overview]` + `[Learning intention for tile]` (a 'We are learning:' lead + bullets) + `[Success criteria for tile]` ('I can:' + bullets) carry its menu pane, `[Lesson content]` opens the body; before the tiles the module's `[Overview]` holds the `[H3] Knowledge Year N` / `[H3] Practices Year N` bullet blocks (the menu's Overview pane, two columns), the `[Introduction content]` prose, an `[Insert links/buttons to the individual tile sections …]` tile table (rendered by the tile row, so consumed) and the `[RHS side tab navigation: for all pages/tiles]` list of `Tab N <label>` lines (the phases nav's labels, consumed). The count of distinct `[Tile N …]` markers (and the `Tab N` list) matches the human's fundamentalsPanel count (exceptions: WJFUN105's developer split one tile in two, WJFUN112's nav lists a 'Test' phase without a panel). The human form: `div.phases` nav labelled with the tab labels, `div.introduction` ending in a `row phaseContainer` of `col-md-3 col-6` phaseLink tiles (h3 label + phaseImg), one `fundamentalsPanel phase=N` per tile opening with the tile title as `<h2>`, and a tabs menu Overview + one pane per tile (ONE `col-md-8 col-12` column: `<h5>Learning Intentions</h5><p>We are learning:</p><ul>…</ul><p>I can:</p><ul>…</ul>`). Rides the level-pages machinery: the pre-pass pushes a phasebreak per tile, synthesizes the tile title as a writer heading (title_writer_level), fills run._levelMenu (PanelsBuilder.#levelPagesNav builds nav + tiles from the registry row; MenuBuilder.#levelTabs composes the panes — menu.pane_form 'single_col' puts LI + SC in one column). Registry-gated (WJFUN|1-3 / 4-6 / 7-8) + fundamentals body class + single-file; a module with fewer than min_markers distinct tile markers is left as it is. Env TILEPAGE_OFF turns off the whole dialect.",
@@ -8743,6 +8773,15 @@
 				"_doc_labelled_body": "`labelled_body_opens` — by POSITION. The BLL branch reads EVERY digit-labelled `[Tab N] label` as a crumb-LIST entry (the label captured, nothing opened); the writer's list is the labelled run BEFORE the first true (empty, non-closer) opener, so a labelled tab that comes AFTER it is a body opener carrying its own label (TWHA902's `[Tab 4] Body language` … `[Tab 9] Know your audience`, released by opener_stops_capture). Scoped to the HEADING-LABEL family (the crumb derives from the panel's first heading), where the human opens the panel with `<h3>label</h3>` (TWHA902 crumb 4 + h3 'Body language'): the branch closes any open activity, pushes the sentinel and emits the label as the panel's h3. The mode tests (`_bllInquiry` / `_headingLabelOn` / `_pageDelimited`) count the LIST tabs (before the first true opener) so the released openers do not flip the family's mode. Guard: a labelled tab whose previous or next item is a `[page N]` boundary is the hybrid form's twin (BLL130 `[page 6]` + `[Tab 6] The letter b`, BLL240) and stays a label. Env INQOPENER2_OFF.",
 				"_doc_nodigit": "`nodigit_labelled_opens` — in the BLL body branch a LABELLED tab whose bracket carries no number is an OPENER, not a crumb-list entry: `[New tab] 2` (TWHK907 — the index typed outside the bracket; a bare number is no label, the panel's heading decides) and `[New side tab] Values` (TWHR907 — the panel takes that label, inquiryLabels[<panel index>]). Read as labels with no index (inquiryLabels[n] needs a digit) they would open nothing. Same env INQCONSUMED_OFF.",
 				"_doc": "KB 06 lines 169 / 171. Counting EVERY `tab n` item on the page would let a `[Tabs]` WIDGET's consumed `[Tab]` members (TWHR907, TWHK907) count as EMPTY panel openers, so the BLL mode would fire on a page whose real openers are labelled `[New side tab] Values` / `[New tab] 2` items with no digit — which it reads as labels with no index, opening nothing. With this flag `_tabItems` (and so `_labeledTabs` / `_emptyOpeners` / `_trueOpeners`) counts UNCONSUMED tab items only — a widget's members are the widget's; the mode does not fire on those pages and the template_fallback takes them (its tab_opener_patterns accept `[New side tab]` / `[New tab]`). Env INQCONSUMED_OFF counts every tab item."
+			},
+			"intro_list_entry": {
+				"enabled": true,
+				"env": "INQLISTINTRO_OFF",
+				"pattern": "^(?:module\\s+)?intro(?:duction)?$",
+				"keep_list_labels": true,
+				"keep_env": "INQLISTKEEP_OFF",
+				"_doc_keep": "THE LIST KEEPS ITS LABELS. A labelled «[Tab N] <words>» typed in the body, after a panel has opened, does not replace the label the writer's crumb list already gave tab N: the body's numbering can drift from the list's («[Page 3]» typed twice, then «[Tab 5] Letter team ‘ear’» for the sixth tab), and the human's crumbs follow the list. A body label that only re-types the list's entry (the same words, its quote marks or letter case aside) still replaces it, as before.",
+				"_doc": "THE LIST'S OWN INTRODUCTION ENTRY NAMES THE INTRO PANEL. When the writer's crumb list opens with its own entry for the introduction («[tab 1] Introduction», «[Tab 2] wh» … «[Tab 8] eer») and the build keeps its synthetic intro panel (the lead segment holds content), that first entry is the intro crumb's, not panel 1's: the panels take the list from its second entry on, so «Introduction» shows once and each crumb names its own panel. It applies only when the list holds one entry more than there are panels."
 			},
 			"empty_intro_folds": {
 				"enabled": true,
@@ -9126,7 +9165,24 @@
 				"run_rule": "summary_form"
 			},
 			"_summary_handoff_doc": "summary_handoff: true = a heading the summary_heading_alert rule matches (Lesson Summary, Key points …) keeps that rule's box and this rule drops only the empty row. Left false: this rule's own box fits the human build better on those pages (HIS, SSOG).",
-			"flag_pattern": "Red Flag: Empty \\[(?:alert|important)\\]"
+			"flag_pattern": "Red Flag: Empty \\[(?:alert|important)\\]",
+			"notes_beside": {
+				"enabled": true,
+				"env": "CALLOUTNOTES_OFF",
+				"_doc": "A writer's note typed right after the bare box tag («[alert box solid]» then «Position bookworm avatar on right …», BLLR202) renders as a red note beside the empty box in its column; the note no longer stops the box taking the heading row after it — the note stays, just before the box."
+			},
+			"writer_close": {
+				"enabled": true,
+				"env": "CALLOUTCLOSE_OFF",
+				"rest_same_column": true,
+				"note_pattern": "^<p class=\"cv2-note\"[^>]*>Writers Note: \\[\\s*(?:close|end)(?:\\s+of)?(?:\\s+the)?\\s+(?:alert|important)\\b[^\\]]{0,30}\\]\\s*</p>$",
+				"_doc": "THE WRITER'S CLOSER ENDS THE BOX. The writer's «[close alert box]» / «[close important box]» renders as a red note (the tag closes nothing in the strict build). When it follows the box's run in the same column, with only headings, paragraphs, lists and notes between, the box takes everything up to it and the spent closer note goes: BLL254 «[H5] Bought and brought … [H5] A trick … [close alert box]» is one box, as the gold builds it; what the column holds after the closer stays in the same column after the box (rest_same_column — BLL252's «For each of the words below …» follows its alert in the gold's column)."
+			},
+			"body_run": {
+				"enabled": true,
+				"env": "CALLOUTBODYRUN_OFF",
+				"_doc": "THE EMPTY BOX TAKES THE WRITER'S TAGGED LINES. The writer types the box tag alone and its content under a [body] tag after it («[Important – can you put a box around this “you will”?]» then «[Body] You will:» + bullets, ENG1004; «[alert/summary box]» then «[body] Ka pai, well done …», ENGS301): the strict box gathers only untagged text, so it ships EMPTY with the red flag and the lines follow it in the column. The box takes the column's following run of plain paragraphs and lists (notes travel with their line) up to the next heading or other block — or up to the writer's closer (writer_close) — and the flag goes."
+			}
 		},
 		"summary_heading_alert": {
 			"_doc": "THE SUMMARY HEADING'S ALERT BOX. A lesson's closing summary heading typed as a plain heading (no [Alert] before it) would render bare in the content column; the human boxes the heading and what follows it to the column's end as div.alert > div.row > div.col-12. KB 14.8 (HPE) names the 'Lesson summary alert' ([alert] → [H3] Lesson Summary → [body] Ka pai! … → [Hint Button] Need help?); KB 05B gives the 'Key points' alert its <h4>Key points</h4> label. The human's form per family: Lesson Summary in HIS, HPRE, SSCI, SSOG, SSEA, CEDK (XGF and TEDC keep theirs bare — not listed); Key points in PES (<h4>); Summary in SSFUN (<h4>; not HIS); What have we learned in BLLR (<h5>; XGF a tie, not listed; XGF's Key questions is a bare div.alert > h4 + ul with no inner row — a different box, not listed) — a per-group rule (§1d exception 2) keyed by the module code's family prefix. A heading that is a column's direct child, outside every exclude_ancestor_pattern container, whose plain text (trailing : ? . stripped) matches a rule for the module's family opens the box; the rule's level re-levels it. The box holds what the human's holds (HIS a paragraph, PES a list, SSOG p ol p / p ul p, SSCI / SSEA a paragraph with the hint right AFTER the box, HPRE p ol / p p.hint p): one plain paragraph, any lists, one closing paragraph after a list, and the hint only where the rule says hint_inside (KB 14.8's HPE sequence); the rest of the column moves to a new row in a column of the same class. Env SUMALERT_OFF.",
