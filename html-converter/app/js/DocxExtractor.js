@@ -1419,7 +1419,15 @@ class DocxExtractor {
 		const REDSPAN = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
 		// red markers and the extractor's **bold** / *italic* / __link__ markers are
 		// not words — "**SUBMISSION CHECKLIST**" must read as "submission checklist"
-		const folded = (b) => Utils.Fold(String(b.text ?? "").replace(RED, " ").replace(/[*_]+/g, ""));
+		// a stray writer tag typed before the template's heading («[Body] MEDIA LIST») is not part of it
+		// (heading_lead_tag; env MLLEADTAG_OFF)
+		const leadTag = cfg.heading_lead_tag !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.MLLEADTAG_OFF);
+		const folded = (b) => {
+			let s = String(b.text ?? "").replace(RED, " ").replace(/[*_]+/g, "");
+			if (leadTag) s = s.replace(/^\s*(?:\[[^\]\n]{1,20}\]\s*)+(?=\S)/, "");
+			return Utils.Fold(s);
+		};
 		const isPhrase = (b) => {
 			if (b.kind !== "para") return false;
 			const t = folded(b);
@@ -1869,6 +1877,13 @@ class DocxExtractor {
 		return null;
 	};
 
+	/** FILES-ONLY mode: a picture-only paragraph right after the writer's red instruction ships as a file too, marked as such (files_only.include_after_red; env PASTEDAFTERRED_OFF). */
+	static #filesAfterRed(cfg) {
+		const ar = cfg?.files_only?.include_after_red;
+		if (!ar || ar.enabled === false) return false;
+		return !(typeof process !== "undefined" && process.env && process.env[ar.env ?? "PASTEDAFTERRED_OFF"]);
+	};
+
 	/** The words a pasted picture follows, for the interactives file: the paragraph text with the red-span markers, bold markers, equations (their sentinels) and addresses taken out, 80 characters. */
 	static #pastedContext(text) {
 		return this.#pastedPlain(text).replace(/[\s\S]*?/g, " ").replace(/[-]/g, "").replace(/https?:\/\/\S+/gi, " ").replace(/\*\*/g, "").replace(/\s+/g, " ").trim().slice(0, 80);
@@ -1886,15 +1901,18 @@ class DocxExtractor {
 		if (!pics.length || !state) return;
 		const cfg = pp.cfg;
 		if (!state.seen) return;
+		let afterRed = false;
 		if (!isTable && !block.text.trim()) {
 			const prev = blocks.length ? blocks[blocks.length - 1] : null;
 			const prevRed = !state.picBlock && !!prev && prev.kind === "para" && typeof prev.redShare === "number" && prev.redShare >= (cfg.red_share_min ?? 50);
-			if (cfg.skip_after_red !== false && prevRed) return;
+			if (cfg.skip_after_red !== false && prevRed && !this.#filesAfterRed(cfg)) return;
 			state.picBlock = true;
+			afterRed = cfg.skip_after_red !== false && prevRed;
 		}
 		for (const p of pics) {
 			const rec = pp.byName.get(p.name);
 			if (!rec) continue;
+			if (!rec.admitted && afterRed) rec.afterRed = true;
 			rec.admitted = true;
 			if (!rec.where) { rec.w = p.w; rec.h = p.h; rec.order = pp.nextOrder = (pp.nextOrder ?? 0) + 1; rec.where = { page: state.lastPage ?? null, after: state.lastText ?? "" }; }
 		}

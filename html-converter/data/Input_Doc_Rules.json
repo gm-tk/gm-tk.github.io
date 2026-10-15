@@ -457,7 +457,13 @@
 			"env": "PASTEDFILES_OFF",
 			"_doc": "THE PASTED PICTURES AS FILES, NOTHING ON THE PAGE. While the picture lines are not placed on the pages (enabled false above), every picture the writer pasted that passes the same filter (inline, at least min_px on both sides, more than min_bytes, not a template graphic, not inside a red instruction or right after one, not before the module's content start; a picture inside a table only from the content start on) is read with its bytes and shipped as images/<name> in the download — the same path for the app and the batch build — and is listed in the module's interactives file with its size, its alt text, the Writers Template page and the words it follows, so the developer who places it can find it. No picture line is ever created, so no page, widget or hand-off box changes by a single byte. Env PASTEDFILES_OFF turns the files and the list off; PASTEDPIC_OFF turns the whole rule off.",
 			"manifest_heading": "PASTED PICTURES — {count} file(s) in images/ (none is placed on a page)",
-			"manifest_note": "The writer pasted these pictures into the Writers Template. Each is a file in the download's images/ folder under the document's own name; none appears on a page. Place each where the writer's text around it puts it."
+			"manifest_note": "The writer pasted these pictures into the Writers Template. Each is a file in the download's images/ folder under the document's own name; none appears on a page. Place each where the writer's text around it puts it.",
+			"include_after_red": {
+				"_doc": "THE PICTURES AFTER A RED INSTRUCTION JOIN THE FILES. A picture-only paragraph right after a mostly red one (skip_after_red keeps it off the page — it often illustrates the writer's request to the developer, not the learner's page) still ships as images/<name> and is listed with the rest, with the line below so the developer knows it followed an instruction. Nothing reaches a page. Env PASTEDAFTERRED_OFF.",
+				"enabled": true,
+				"env": "PASTEDAFTERRED_OFF",
+				"manifest_line": "Follows the writer's red instruction: it may show what the writer is asking for rather than a picture for the page."
+			}
 		},
 		"token": "[image] pasted:{name}",
 		"token_pattern": "^pasted:(\\S+)$",
@@ -867,6 +873,8 @@
 			"phrases": ["how to complete the media list"]
 		},
 		"no_table_heading": true,
+		"heading_lead_tag": true,
+		"_heading_lead_tag_note": "A stray writer tag typed before a template line of this section («[Body] MEDIA LIST») is not part of it: the phrase tests read the line without its leading bracket tags (up to 20 characters each), so the section and its tail are still found. Env MLLEADTAG_OFF.",
 		"label_max_words": 3,
 		"tail_extra_media_tables": true,
 		"_forms_note": "Three shapes: (1) the table in THIS document — the walk goes backwards from it; (2) no_table_heading — the WT carries the template's 'MEDIA LIST' heading + its instructions but the table is in a separate Media List docx (CHFUN01/04/05/06/07): the run is taken FORWARD from the heading and needs at least one contains-phrase after it; (3) label_max_words — a short plain label the writer puts on the table ('Phase 1', MXFUN03) is passed over between the preamble and the table (never above the preamble), and tail_extra_media_tables drops a SECOND media table that follows the first with only labels / blanks between (the same column test MediaListParser uses).",

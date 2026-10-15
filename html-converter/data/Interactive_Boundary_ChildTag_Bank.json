@@ -323,6 +323,13 @@
 				"drop",
 				"answer"
 			],
+			"face_body_combined": {
+				"_doc": "A [Body] that carries its OWN face tag on the same marker («[back] [body] <the card's back text>») is that face's content, not the writer resuming free body: body_terminates_after_face does not end the widget on it, and the flip-card member reader takes it as the card's back. Without it, every card's front was boxed alone and its back spilled onto the page as loose paragraphs. Env FACEBACKBODY_OFF.",
+				"enabled": true,
+				"env": "FACEBACKBODY_OFF",
+				"types": ["flipCard"],
+				"marker_pattern": "^\\[\\s*back\\s*\\]\\s*\\[\\s*body\\s*\\]$"
+			},
 			"face_excludes_invocation": true,
 			"face_excludes_invocation_note": "(As in OSBY201-01.) For a DATA-TABLE widget (uses_data_table:true), body_terminates_after_face counts a face tag only on a genuine captured face MEMBER (a [front]/[back]/[drop]/[answer], which parses as a SUBTAG), NOT on the widget's OWN invocation whose MODIFIER words can coincide with a face word: [reorder – show answer] parses to tags [reorder, answer]; [Multichoice – correct answers are in red] -> [mcq, answer]; [click and drop on answers] -> [click drop, answer]. Counting the invocation would make the FIRST following [body] falsely terminate the bundle, so the data-table widget would capture NOTHING and its data table would leak outside the activity (OSBY201-01 1B reorder: 'no content captured' + a leaked <table>). The invocation is INTERACTIVE; genuine face members are SUBTAG — so InteractiveScanner.#swallowMembers skips INTERACTIVE-directive members in the sawFace test. SCOPED to uses_data_table widgets: for those a following table is unambiguously the widget's data (post-table body-termination is body_terminates_after_table), so suppressing the false face-terminator cannot over-capture free body; the true FACE/REVEAL widgets (flipCard/clickDrop/speechBubble) keep the plain face rule, and non-table pop-ups (modal 'Pop up with answer') are not covered. Env FACEINVOKE_OFF counts the invocation.",
 			"face_empty_keeps_body": true,

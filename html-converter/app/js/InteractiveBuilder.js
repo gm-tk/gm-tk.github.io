@@ -6956,7 +6956,16 @@ class InteractiveBuilder {
 			}
 			// FACE markers — may carry inline content (shape A) or be empty markers (shape B)
 			if (tags.includes("front") || p?.tag === "front") { face = "front"; const t = this.#cellText(m.blackAfter ?? ""); if (t) cur.title += (cur.title ? " " : "") + t; continue; }
-			if (p?.tag === "back") { face = "back"; const t = this.#cellText(m.blackAfter ?? ""); if (t) cur.back += (cur.back ? " / " : "") + t; continue; }
+			// «[back] [body] text» — the back typed with the paragraph tag on the same marker (member_rule.face_body_combined)
+			const _fbc = DataService.Data.BoundaryBank?._meta?.member_rule?.face_body_combined;
+			const backBody = p?.tag === "body" && tags.includes("back") && !!_fbc && _fbc.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_fbc.env ?? "FACEBACKBODY_OFF"])
+				&& new RegExp(_fbc.marker_pattern ?? "^\\[\\s*back\\s*\\]\\s*\\[\\s*body\\s*\\]$", "i")
+					.test(String(m.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/\s+/g, " ").trim());
+			if (p?.tag === "back" || backBody) {
+				if (backBody && this.#hasRedText(m.blackAfter ?? "")) return null;
+				face = "back"; const t = this.#cellText(m.blackAfter ?? ""); if (t) cur.back += (cur.back ? " / " : "") + t; continue;
+			}
 			if (p?.tag === "image") { cur.img += " " + String(m.blackAfter ?? ""); continue; }
 			// a HEADING is the front title (shape B: [Front] then [H5] title)
 			if (p && headingTags.has(p.tag)) {
@@ -17283,6 +17292,12 @@ class InteractiveBuilder {
 		const markRe = rest ? new RegExp(rest.marker_tag_pattern ?? "^correct$", "i") : null;
 		const symRe = rest ? new RegExp(rest.symbol_answer_pattern ?? "^[<>≤≥=]$", "u") : null;
 		const btnTagRe = rest ? new RegExp(rest.button_label_pattern ?? "^(?:undo|check(?:\\s+answers?)?|reset)\\.?$", "i") : null;
+		// the writer's red «[correct]» LABEL before a BLACK answer («invent → [correct] inventor», «an old [correct] fort
+		// where …») — data typing.correct_label, env CORRECTLABEL_OFF
+		const lab = tpl.correct_label && tpl.correct_label.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[tpl.correct_label.env ?? "CORRECTLABEL_OFF"]) ? tpl.correct_label : null;
+		const labRe = lab ? new RegExp(lab.tag_pattern ?? "^correct$", "i") : null;
+		let labelForm = false;
 
 		/* --- members → lines (one per source paragraph) of text / answer / note segments --- */
 		const lines = [];
@@ -17320,6 +17335,11 @@ class InteractiveBuilder {
 				if (String(m.blackAfter ?? "").trim()) lineOf(m).segs.push({ k: "t", t: m.blackAfter });
 				continue;
 			}
+			if (lab && p && labRe.test(String(p.tag ?? "")) && !unRed(m.text).split("[")[0].trim() && String(m.blackAfter ?? "").trim()) {
+				lineOf(m).segs.push({ k: "la", t: String(m.blackAfter) });   // resolved per line below
+				labelForm = true;
+				continue;
+			}
 			if (rest && p && markRe.test(String(p.tag ?? ""))) {    // `[correct answer]`: the writer's answer marker
 				const L = lineOf(m);
 				const lead = unRed(m.text).split("[")[0].replace(/\s+/g, " ").trim();   // 'weather [correct answer]' in one red run
@@ -17329,6 +17349,40 @@ class InteractiveBuilder {
 			}
 			if (rest && p?.tag === "button" && btnTagRe.test(String(m.blackAfter ?? "").replace(/\s+/g, " ").trim())) continue;   // the KB button row covers it
 			return null;                                           // any other tag — not ours to place
+		}
+
+		/* --- the label form's answers: the black words after each «[correct]» ------------------- */
+		// A line whose labels' words are each a short answer running to the line's end is a question row: the words after
+		// the label are the answer (two labels in a row = the writer's alternatives, KB 03D `answer="a||b"`). Otherwise the
+		// labels sit inside running prose (a passage): each label's FIRST word is the answer, its punctuation and the
+		// words after it stay sentence text.
+		if (labelForm) {
+			const maxW = tpl.max_answer_words ?? 6;
+			const deny = lab.answer_deny_pattern ? new RegExp(lab.answer_deny_pattern) : null;
+			const nWords = (t) => t.trim().split(/\s+/).filter(Boolean).length;
+			for (const L of lines) {
+				const idx = L.segs.map((s, i) => (s.k === "la" ? i : -1)).filter((i) => i >= 0);
+				if (!idx.length) continue;
+				const adjacent = idx.every((i, j) => j === 0 || idx[j - 1] === i - 1);
+				const toEnd = L.segs.slice(idx[idx.length - 1] + 1).every((s) => s.k === "t" && !s.t.trim());
+				const prompt = L.segs.slice(0, idx[0]).some((s) => s.k === "t" && s.t.replace(/\*/g, "").trim());
+				if (adjacent && toEnd && prompt && idx.every((i) => nWords(L.segs[i].t) <= maxW)) {
+					const alts = idx.map((i) => L.segs[i].t.replace(/\s+/g, " ").trim());
+					if (deny && alts.some((a) => deny.test(a))) return null;
+					if (fib && alts.length > 1) return null;          // one drop takes one answer
+					L.segs.splice(idx[0], idx.length, { k: "a", t: alts.join("||"), pre: true, post: false });
+					continue;
+				}
+				const segs = [];
+				for (const s of L.segs) {
+					if (s.k !== "la") { segs.push(s); continue; }
+					const w = /^(\s*)([^\s.,;:!?]+)([\s\S]*)$/.exec(s.t);
+					if (!w) return null;
+					segs.push({ k: "a", t: w[2], pre: true, post: false });
+					if (w[3]) segs.push({ k: "t", t: w[3] });
+				}
+				L.segs = segs;
+			}
 		}
 
 		/* --- lines → lead / questions / notes -------------------------------------------- */
@@ -17350,6 +17404,8 @@ class InteractiveBuilder {
 				if (!hasText(L)) continue;
 				// (fib mode) prose the capture ran on into AFTER the questions renders after the widget
 				if (rows.length && rest?.trailing_prose) { trail.push(L); continue; }
+				// a label-form bundle's prose between its question rows («This suffix means happening now.») is a text row
+				if (rows.length && labelForm && !fib && lab.interleaved_text) { rows.push(L); continue; }
 				if (rows.length) return null;                        // an answer-less line after the questions
 			}
 			if (trail.length) return null;                           // a question after that prose: not ours
@@ -17471,7 +17527,11 @@ class InteractiveBuilder {
 		const html = [];
 		for (const L of lead) html.push(Utils.FillTemplate(tpl.lead, { text: lineHtml(L) }));
 		html.push(Utils.FillTemplate(tpl.group_open, { autocheck: this.#typingAutocheck(bundle, tpl) }));
-		for (const L of rows) html.push(Utils.FillTemplate(tpl.row, { text: lineHtml(L) }));
+		for (const L of rows) {
+			// a label-form bundle's prose line between its questions stays a paragraph inside the container, not a question row
+			const prose = labelForm && !hasAns(L);
+			html.push(Utils.FillTemplate(prose ? (lab.text_row ?? "<p>{text}</p>") : tpl.row, { text: lineHtml(L) }));
+		}
 		html.push(tpl.container_close);
 		html.push(tpl.buttons);
 		html.push(tpl.group_close);

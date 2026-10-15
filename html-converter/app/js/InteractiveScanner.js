@@ -395,11 +395,6 @@ class InteractiveScanner {
 				// table stays content and is NOT captured. Data dual_language.content_table_guard.headerless_sections;
 				// env REOSECTIONTABLE_OFF.
 				if (cellType && !personaType && _ctgOn && InteractiveScanner.#headerlessSectionTable(it.block, cellType.type)) cellType = null;
-				// THE HOVER DEFINITIONS IN A TABLE: a table whose only bracket tags are the writer's hover definitions
-				// («aquifers [hover definition: lakes and streams beneath the ground …]») is content — the cell renderer
-				// weaves each definition onto its word (span.infoTrigger), as in a paragraph — not one infoTrigger box
-				// over the whole table. Data elements.hover_definition_inline.table_cells; env TABLEHOVERDEF_OFF.
-				if (cellType && cellType.type === "infoTrigger" && InteractiveScanner.#onlyHoverDefinitions(it.block)) cellType = null;
 				if (cellType) {
 					const bankEntry2 = bank.interactives[cellType.type] ?? null;
 					const tableBundle = {
@@ -1175,18 +1170,6 @@ class InteractiveScanner {
 	 * @param {string} type - the widget type #interactiveInTable would assign
 	 * @returns {boolean}
 	 */
-	/** True when every bracket tag in the table is a hover definition carrying its own words (data table_cells). */
-	static #onlyHoverDefinitions(block) {
-		const cfg = DataService.Data.EmitTemplates?.elements?.hover_definition_inline?.table_cells;
-		if (!cfg || cfg.enabled === false) return false;
-		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "TABLEHOVERDEF_OFF"]) return false;
-		const text = (block?.rows ?? []).flat().map((c) => String(typeof c === "string" ? c : c?.text ?? "")).join(" ")
-			.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "");
-		const tags = text.match(/\[[^\]]*\]/g) ?? [];
-		const ok = new RegExp(cfg.pattern, "i");
-		return tags.length > 0 && tags.every((t) => ok.test(t));
-	}
-
 	static #headerlessSectionTable(block, type) {
 		const cfg = DataService.Data.EmitTemplates?.elements?.dual_language?.content_table_guard?.headerless_sections;
 		if (!cfg || cfg.enabled === false
@@ -2537,7 +2520,15 @@ class InteractiveScanner {
 			// clickDrop's FRONT/DROP reveal form (whose signature does not formally list front/back).
 			// A [Body]-BASED form with NO face/reveal member ever captures one → never trips → its
 			// [body] members stay content. Data: member_rule.face_member_tags.
-			if (_mrB.body_terminates_after_face && p?.tag === "body" && p?.directive !== "INTERACTIVE") {
+			// A [Body] that carries its OWN face tag («[back] [body] <the card's back text>») is that face's content, not free
+			// body resuming: the flip card's back typed with the paragraph tag. Data member_rule.face_body_combined;
+			// env FACEBACKBODY_OFF.
+			const _fbc = _mrB.face_body_combined;
+			const ownFace = !!_fbc && _fbc.enabled !== false && (_fbc.types ?? ["flipCard"]).includes(bundle.type)
+				&& !(typeof process !== "undefined" && process.env && process.env[_fbc.env ?? "FACEBACKBODY_OFF"])
+				&& new RegExp(_fbc.marker_pattern ?? "^\\[\\s*back\\s*\\]\\s*\\[\\s*body\\s*\\]$", "i")
+					.test(String(next.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/\s+/g, " ").trim());
+			if (_mrB.body_terminates_after_face && p?.tag === "body" && p?.directive !== "INTERACTIVE" && !ownFace) {
 				const faceTags = _mrB.face_member_tags ?? ["front", "back", "drop", "answer"];
 				// For a DATA-TABLE widget, count a face tag only on a genuine captured face MEMBER
 				// (a [front]/[back]/[drop]/[answer], which is a SUBTAG), NOT on the widget's OWN

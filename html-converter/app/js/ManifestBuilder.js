@@ -299,6 +299,7 @@ class ManifestBuilder {
 				if (r.alt) out.push(`Alt text (from the Word file): ${r.alt}`);
 				if (r.where?.page) out.push(`Writers Template page: ${r.where.page}`);
 				if (r.where?.after) out.push(`After the writer's text: "${r.where.after}"`);
+				if (r.afterRed && fo.include_after_red?.manifest_line) out.push(fo.include_after_red.manifest_line);
 				out.push("-------------------------------------");
 			});
 		}

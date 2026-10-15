@@ -793,12 +793,6 @@
 		},
 		"hover_definition_inline": {
 			"enabled": true,
-			"table_cells": {
-				"_doc": "THE HOVER DEFINITIONS IN A TABLE. A table whose only bracket tags are the writer's hover definitions, each carrying its own words («aquifers [hover definition: lakes and streams beneath the ground that transport and hold water]», «exterior [hover definition: outside]») is content, not an infoTrigger hand-off box over the whole table: the scanner leaves it to the table renderer, whose cell markup weaves each definition onto the word before it (span.infoTrigger info=…), as the paragraph weave does and as the human builds it. Any other bracket in the table (a heading, an alert, a picture, a widget, a bare «[Hinfo trigger]» without its words) keeps the box. Env TABLEHOVERDEF_OFF.",
-				"enabled": false,
-				"env": "TABLEHOVERDEF_OFF",
-				"pattern": "^\\[\\s*(?:hover|roll\\s*-?\\s*over|mouse\\s*-?\\s*over)\\s*(?:definition|def|text|info)?\\s*:\\s*[^\\]]*[\\p{L}\\p{N}][^\\]]*\\]$"
-			},
 			"named_anchor": {
 				"enabled": true,
 				"env": "HOVERNAMED_OFF",
@@ -1269,6 +1263,31 @@
 			"skip_when_url": true,
 			"_skip_when_url_note": "A tag-only line that carries a URL (`[Video https://…]` XDLS902, `[Image https://unsplash…]` DTC1005) is a MEDIA REQUEST with a usable link the human builds as the embed / image, so it is skipped here rather than turned into a note.",
 			"tag_pattern": "\\[\\s*(?:H[1-6]|Body|Image|front|back|drop|answer|Activity\\b|carousel|slide\\b|accordion|tab\\b|tabs|click ?drop|speech ?bubble|hint ?slider|flip ?card|word ?select|word ?highlight|hover ?trigger|roll ?over|memory ?game|drag ?and ?drop|sub ?head|H\\d)\\b|\\[\\s*(?:(?:insert|embed)\\b|items?\\s*:?\\s*\\d|media\\s+items?\\b|merged\\s+(?:item|source)\\b|audio\\s*visual\\s+item\\b|audio|video\\b|videos\\b|photo\\b|picture\\b|gif\\b|animation\\b|slide\\s*show\\b|lesson\\s*\\d|end\\s+page\\b|new\\s+(?:page|tab)\\b|title\\s*bar\\b|hover\\b|on\\s+(?:hover|click)\\b|hover\\s*bubble|click\\s+information\\b|highlight|/\\s*highlight|phrase\\s+highlighter\\b|options\\s+for\\s+drop|drop\\s*-?\\s*down\\b|dropdown\\b|text\\s*box\\b|learning\\s+journal\\b|journal\\b|button\\b|link\\b|caption\\b|dev\\b|\\?\\s*\\])"
+		},
+		"carried_tag_note": {
+			"_doc": "THE CARRIED-OUT TAG IS NO LONGER A DESIGNER'S NOTE. A red Writers Note whose text is only bracket tags stays on the page while the request is the developer's to do (KB c4 / c37: a designer's note is never hidden) — but where the element right before or right after it is the tag's BUILT form (forms: the tag, then what its built form looks like in the page markup), the converter has carried the request out and the note only repeats the tag; it is dropped. A note holding any word that is not a tag, a tag with no built form beside it, and anything inside a hand-off box are untouched. Env CARRIEDNOTE_OFF.",
+			"enabled": true,
+			"env": "CARRIEDNOTE_OFF",
+			"note_prefix": "Writers Note:",
+			"window": 450,
+			"forms": [
+				{ "tag": "^(?:insert\\s+)?(?:image|img|picture|photo|graphic|illustration)s?(?:\\s*\\d+)?$", "built": "<img\\b|image goes here" },
+				{ "tag": "^(?:insert\\s+|embed\\s+)?video(?:\\s*\\d+)?$", "built": "<iframe\\b|videoSection|<video\\b" },
+				{ "tag": "^(?:insert\\s+)?audio(?:\\s+button)?\\s*\\d*$", "built": "audioButton|<audio\\b" },
+				{ "tag": "^(?:interactive|interactive\\s+(?:tool|activity))$", "built": "cv2-interactive|class=\"(?:dragAndDrop|dropDown|multiChoiceQuiz|flipCard|accordion|carousel|clickDrop|tabs|typing|reorder|modal|memoryGame|slider)\\b" },
+				{ "tag": "^hover(?:\\s+definition)?$", "built": "infoTrigger" }
+			]
+		},
+		"body_heading_casing": {
+			"_doc": "THE ALL-CAPS BODY HEADING IN SENTENCE CASE. The KB's title-casing rule (01A, c1's permitted normalisation) names the header TITLE; by decision it reaches the body headings too: a heading of a listed level whose words are all capitals and number at least min_words («THE MĀORI ECONOMY», «WHAT IS AN ORGANISATION?») is set in sentence case — the first letter capital, the rest lower, a token with a digit («COVID-19») kept as typed — and every keep_words phrase is restored to its own capitals. The human re-cases 93 of the 96 such headings (sentence 70 / title 23). A heading with markup inside or already in mixed case is untouched; never inside a hand-off box. Env BODYHEADCASE_OFF.",
+			"enabled": true,
+			"env": "BODYHEADCASE_OFF",
+			"tags": ["h2", "h3", "h4", "h5"],
+			"min_words": 2,
+			"skip_code_prefixes": ["CHI", "GER", "JPN", "SAM", "SPA", "CHFUN", "FRFUN", "JPFUN", "FRNO", "GENO", "CHWHA", "GEWHA", "FR", "GEFUN"],
+			"_skip_note": "The Languages modules (the confirmed Languages prefixes of the subject map, plus their FR / GEFUN siblings) keep their capitals: a German noun is written with a capital («Ich packe meinen Koffer»), so sentence case would be wrong there — the human keeps the language's own casing.",
+			"page_proper_nouns": true,
+			"keep_words": ["Māori", "Aotearoa", "New Zealand", "Pākehā", "Pasifika", "Pacific", "Te Tiriti o Waitangi", "Te Tiriti", "Waitangi", "Te Kura", "English", "NZ", "NCEA", "GDP", "COVID"]
 		},
 		"lone_punct_unwrap": {
 			"_doc": "THE LONE STYLED PUNCTUATION MARK. A Word run that styled only the mark after a word would render as its own element — `eagles<b>.</b>`, `elements of<b>:</b>`, `pin <b>,</b>`, `confidently <i>–</i>`; the human build leaves a lone sentence mark or dash plain. Math operators, blanks, arrows and a mark alone in a cell are not touched. A bare <b> / <i> holding only sentence punctuation or a dash (spaces allowed), directly after a word character, a closing quote or bracket (at most one space between), is unwrapped — the mark stays. Runs after merge_split_runs. Env LONEPUNCT_OFF.",
@@ -5297,6 +5316,15 @@
 			"min_answers": 2,
 			"max_answer_words": 6,
 			"opener_note_min_words": 3,
+			"correct_label": {
+				"_doc": "THE «[correct]» LABEL BEFORE A BLACK ANSWER. Some writers mark the answer with a red «[correct]» LABEL and type the answer itself in black after it («invent → [correct] inventor», «What is the suffix? [correct] ing», «explored an old [correct] fort where warriors once [correct] fought …»). The black words after the label are the answer: on a question line whose label words are a short answer running to the line's end, the whole of them (two labels in a row are the writer's alternatives, KB 03D answer=\"a||b\" — «invents things. [correct] invents.»); inside running prose, the label's first word (its punctuation and the words after it stay sentence text). Answer-less prose lines between the question rows of such a bundle render as text rows (interleaved_text). Read by the typing form and by the drag-and-drop FIB form that shares it (a FIB drop takes one answer, so alternatives decline there). An answer with brackets («B (allow b as correct too)») declines to the hand-off box. Env CORRECTLABEL_OFF.",
+				"enabled": true,
+				"env": "CORRECTLABEL_OFF",
+				"tag_pattern": "^correct$",
+				"answer_deny_pattern": "[()\\[\\]]",
+				"interleaved_text": true,
+				"text_row": "<p>{text}</p>"
+			},
 			"table_form": {
 				"_doc": "THE TYPING QUIZ'S TABLE FORM, built only where the writer marked the answer (the red-answer reading): one captured table whose RED runs are the writer's answers ('Answers are in red') — `[Type and check]` + `| 6 + 3 x 2 | 🔴12🔴 |` or a grid `| 673 | 🔴670🔴 | 🔴700🔴 |` — builds the human's `div.typing layout=\"standard\"` > `div.table-responsive` > the writer's table, each red run an input (answer=), black text kept, a first row of bold labels a <th> row, a red 'Question | Answer' label row dropped (MXFUN01's tables). Declines to the hand-off box on media, on deny_pattern in the writer's words (another widget, images to recreate, words outside the table), on an all-red body row (letter tiles), on an answer over max_answer_words / answer_reject_pattern, below min_answers. A selfCheck-typed bundle (the alias word 'check' folds `[Type and check]` to selfCheck) is read only when its own opener says type / typing (selfcheck_opener_pattern). Env TYPTABLE_OFF.",
 				"enabled": true,
@@ -9180,8 +9208,8 @@
 			"level": 4,
 			"max_title_chars": 45,
 			"no_cross_p": {
-				"_doc": "The title paragraph may not CONTAIN a `</p>`: the lazy `<p>([\\s\\S]*?)</p>(\\s*<[^/])` runs past a paragraph closed by `</div>` (an alert whose only paragraph is its body, or an empty red-flag alert) into the NEXT alert, takes that alert's first paragraph, and leaves its short title a <p>. Promotion rules unchanged (max_title_chars, a following block tag). Built and held OFF: 7 pages / 5 modules, under the body floor on its own. Env ALERTHCROSS_OFF = the lazy match.",
-				"enabled": false,
+				"_doc": "The title paragraph may not CONTAIN a `</p>`: the lazy `<p>([\\s\\S]*?)</p>(\\s*<[^/])` runs past a paragraph closed by `</div>` (an alert whose only paragraph is its body, or an empty red-flag alert) into the NEXT alert, takes that alert's first paragraph, and leaves its short title a <p>. Promotion rules unchanged (max_title_chars, a following block tag). Env ALERTHCROSS_OFF = the lazy match.",
+				"enabled": true,
 				"env": "ALERTHCROSS_OFF"
 			},
 			"_note": "An [alert] callout whose FIRST content line is a SHORT TITLE ('Safety message', 'Key points from today's lesson:') followed by body is rendered by the human as a HEADING inside the alert (<h4>, as in OSAI201-03 'Safety message'), not a <p>. A post-pass (run AFTER re-levelling, like named_headings, so the h4 is not re-levelled) promotes the FIRST <p> inside a .alert to <h{level}> when its text is <= max_title_chars AND a following block exists (a single-block alert is body, untouched). With <=45 chars and >=2 blocks the human uses a heading far more often than a <p>, and the heading-first level is mostly h4, so level 4 is the default. A <p>->h4 tag change never alters the row/col/activity wrapper chain. Env ALERTH_OFF turns it off."

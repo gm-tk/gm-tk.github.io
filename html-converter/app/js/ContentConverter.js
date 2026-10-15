@@ -5380,8 +5380,10 @@ class ContentConverter {
 		// a writer tag left beside learner words is lifted into a Writers Note (#liftVisibleTags — after #tagOnlyParagraphNote).
 		// an empty bullet is dropped, and a list it left empty (#dropEmptyListItems — outermost).
 		// the multi-file levels overview (#levelOverview — the overview page only, outermost: it wraps the finished body).
-		const finalBody = ContentConverter.#levelOverview(ContentConverter.#dropEmptyListItems(ContentConverter.#liftVisibleTags(ContentConverter.#tagOnlyParagraphNote(ContentConverter.#redundantBold(ContentConverter.#unwrapLonePunct(ContentConverter.#mergeSplitRuns(ContentConverter.#familyRowPerBlock(ContentConverter.#familyQuoteParagraphs(
-			MediaBuilder.productionDocPostpass(MediaBuilder.stockButtonPostpass(MediaBuilder.videoTimePostpass(MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(finalBody0, run), run), run), run), run), run), run), run), run), run), run), run), run), page, run);
+		// a Writers Note that is only the tag(s) the converter has already built beside it is dropped (#carriedTagNote).
+		// an ALL-CAPS multi-word body heading is set in sentence case (#bodyHeadingCase).
+		const finalBody = ContentConverter.#levelOverview(ContentConverter.#bodyHeadingCase(ContentConverter.#carriedTagNote(ContentConverter.#dropEmptyListItems(ContentConverter.#liftVisibleTags(ContentConverter.#tagOnlyParagraphNote(ContentConverter.#redundantBold(ContentConverter.#unwrapLonePunct(ContentConverter.#mergeSplitRuns(ContentConverter.#familyRowPerBlock(ContentConverter.#familyQuoteParagraphs(
+			MediaBuilder.productionDocPostpass(MediaBuilder.stockButtonPostpass(MediaBuilder.videoTimePostpass(MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(finalBody0, run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), page, run);
 		// a fallback-shell page that built its panels is an inquiry page too (the body class and
 		// the inquiry footer class follow, as for every other mode; its footer LINKS stay the registry's own).
 		const inquiryActive = (inquiryMode || cedInquiryMode || secInquiryMode || inqFallbackMode) && finalBody0 !== bodyHtml;
@@ -9444,6 +9446,98 @@ class ContentConverter {
 		});
 		if (n && run && typeof run.AddNote === "function")
 			run.AddNote("info", "ContentConverter", `${n} writer tag${n === 1 ? "" : "s"} alone on ${n === 1 ? "its line" : "their lines"} shipped as a Writers Note (tag_only_paragraph_note).`);
+		return n ? out : html;
+	}
+
+	/** THE CARRIED-OUT TAG IS NO LONGER A DESIGNER'S NOTE (KB c4 / c37 read with the converter's own work). A red Writers Note
+	 *  whose text is ONLY bracket tags («[Image]», «[video 1]», «[interactive tool]») stays on the page when the request is still
+	 *  the developer's to do — but where the element right before or right after it is the tag's BUILT form (the picture, the
+	 *  video frame, the widget box, the hover span), the converter has carried the request out and the note only repeats it.
+	 *  Such a note is dropped. Never inside a hand-off box. Data elements.carried_tag_note {forms [{tag, built}]}; env CARRIEDNOTE_OFF. */
+	static #carriedTagNote(html, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.carried_tag_note;
+		if (!cfg || cfg.enabled === false || !html || !html.includes("cv2-note")) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "CARRIEDNOTE_OFF"]) return html;
+		let forms;
+		try { forms = (cfg.forms ?? []).map((f) => [new RegExp(f.tag, "iu"), new RegExp(f.built, "i")]); } catch { return html; }
+		const prefix = cfg.note_prefix ?? "Writers Note:";
+		const win = cfg.window ?? 450;
+		const boxes = ContentConverter.#handOffSpans(html);
+		const inBox = (i) => boxes.some(([a, b]) => i >= a && i < b);
+		const noteRe = /<p class="cv2-note"[^>]*>((?:(?!<\/p>)[\s\S])*?)<\/p>/g;
+		const drop = [];
+		for (const m of html.matchAll(noteRe)) {
+			if (inBox(m.index)) continue;
+			const text = m[1].replace(/<br\s*\/?>/g, " ").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
+			if (!text.startsWith(prefix)) continue;
+			const body = text.slice(prefix.length).trim();
+			const toks = body.match(/\[[^[\]]*\]/g);
+			if (!toks || body.replace(/\[[^[\]]*\]/g, "").replace(/[\s\-–:.,]/g, "") !== "") continue;
+			const form = forms.find(([tagRe]) => tagRe.test(toks[0].slice(1, -1).trim()));
+			if (!form || !toks.every((t) => form[0].test(t.slice(1, -1).trim()) || /^(?:media\s+item|image|audiovisual\s+item)\s*\d*$/i.test(t.slice(1, -1).trim()))) continue;
+			const before = html.slice(Math.max(0, m.index - win), m.index);
+			const after = html.slice(m.index + m[0].length).split(/<\/(?:p|div|table|ul|ol|h\d)>/).slice(0, 2).join(" ").slice(0, win);
+			if (form[1].test(before) || form[1].test(after)) drop.push([m.index, m.index + m[0].length]);
+		}
+		if (!drop.length) return html;
+		let out = "", last = 0;
+		for (const [a, b] of drop) { out += html.slice(last, a); last = b; }
+		out += html.slice(last);
+		if (run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `${drop.length} Writers Note${drop.length === 1 ? "" : "s"} that only repeated a tag the page already carries out dropped (carried_tag_note).`);
+		return out;
+	}
+
+	/** THE ALL-CAPS BODY HEADING IN SENTENCE CASE (the KB's title-casing rule, 01A, carried to the body headings by decision). A
+	 *  body heading of a listed level whose words are all capitals and number at least min_words («THE MĀORI ECONOMY») is set in
+	 *  sentence case — the first letter capital, the rest lower (a token with a digit, «COVID-19», kept as typed) — and every
+	 *  keep_words phrase («Māori», «New Zealand») is restored to its own capitals. A heading with markup inside, or one already in
+	 *  mixed case, is untouched; never inside a hand-off box. Data elements.body_heading_casing; env BODYHEADCASE_OFF. */
+	static #bodyHeadingCase(html, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.body_heading_casing;
+		if (!cfg || cfg.enabled === false || !html) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "BODYHEADCASE_OFF"]) return html;
+		const code = String(run?.moduleCode || "").toUpperCase();
+		if ((cfg.skip_code_prefixes ?? []).some((p) => new RegExp(`^${String(p).toUpperCase()}(?:\\d|$)`).test(code))) return html;
+		const tags = (cfg.tags ?? ["h2", "h3", "h4", "h5"]).filter((t) => /^h[1-6]$/.test(String(t))).join("|");
+		const boxes = ContentConverter.#handOffSpans(html);
+		const inBox = (i) => boxes.some(([a, b]) => i >= a && i < b);
+		const keep = (cfg.keep_words ?? []).map((w) => [new RegExp(`(?<![\\p{L}])${String(w).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![\\p{L}])`, "giu"), w]);
+		// the page's own proper nouns and acronyms: a word the page's prose writes with a capital in mid-sentence («in the
+		// Waikato»), or in capitals beside lower-case words («the FIFA Women's World Cup»), keeps that form in the heading
+		const proper = new Map();
+		if (cfg.page_proper_nouns !== false) {
+			const prose = html.replace(new RegExp(`<(${tags}|h1|h6)\\b[^>]*>[\\s\\S]*?</\\1>`, "g"), "\n").replace(/<(?:b|i|em|strong|span|a)\b[^>]*>|<\/(?:b|i|em|strong|span|a)>/g, "")
+				.replace(/<[^>]+>/g, "\n").replace(/&[a-z#0-9]+;/gi, " ");
+			const lowerSeen = new Set((prose.match(/(?<![\p{L}])\p{Ll}[\p{L}’'-]*/gu) ?? []).map((w) => w.toLowerCase()));
+			// mid-sentence only: a lower-case word or a comma, one space, then the capital — inside one paragraph
+			for (const m of prose.matchAll(/(?<=[\p{Ll},;] )(\p{Lu}[\p{L}’'-]*)/gu)) {
+				const w = m[1], k = w.toLowerCase();
+				if (w.length > 1 && !lowerSeen.has(k) && !proper.has(k)) proper.set(k, w);
+			}
+		}
+		let n = 0;
+		const re = new RegExp(`<(${tags})(\\b[^>]*)>([^<>]+)</\\1>`, "g");
+		const out = html.replace(re, (whole, t, attrs, inner, off) => {
+			if (inBox(off)) return whole;
+			const tokens = inner.split(/\s+/).filter(Boolean);
+			const lettered = tokens.filter((w) => /\p{L}/u.test(w) && !/&[a-z#0-9]+;/i.test(w));
+			const words = lettered.filter((w) => !/\d/.test(w));
+			if (lettered.length < (cfg.min_words ?? 2) || !words.length) return whole;
+			if (!lettered.every((w) => w === w.toUpperCase())) return whole;
+			if (!words.every((w) => w === w.toUpperCase() && w !== w.toLowerCase())) return whole;
+			if (!words.some((w) => w.replace(/[^\p{L}]/gu, "").length > 1)) return whole;
+			// a code before an activity number («HPWHA 1D») is a reference, kept as typed
+			let s = inner.replace(/\S+(?=(\s+\d+[A-Z]?\b)?)/g, (w, num) => (/\d/.test(w) || /&[a-z#0-9]+;/i.test(w) || (num && /^\p{Lu}{2,6}$/u.test(w))) ? w : w.toLowerCase());
+			s = s.replace(/[\p{L}’'-]+/gu, (w) => proper.get(w) ?? w);
+			s = s.replace(/\p{L}/u, (ch) => ch.toUpperCase());
+			for (const [kre, w] of keep) s = s.replace(kre, w);
+			if (s === inner) return whole;
+			n++;
+			return `<${t}${attrs}>${s}</${t}>`;
+		});
+		if (n && run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `${n} ALL-CAPS body heading${n === 1 ? "" : "s"} set in sentence case (body_heading_casing).`);
 		return n ? out : html;
 	}
 
