@@ -12,7 +12,17 @@
 			"_doc": "THE WRITER'S REQUEST KEEPS ITS WORDS. The tag normaliser splits a bracket at every alias it finds, so a second tag's alias inside the writer's sentence went missing from the red note built from it. (1) The container note ('<tag> note: …', ActivitiesBuilder.containerModifiers) took the per-tag remainders: '[Alert box centre of page]' read 'alert note: centre of', '[typing quiz - self-marking the quiz]' 'typing quiz note: - self-marking the'; the words of the bracket holding the primary tag's alias are now that bracket's own text with the alias removed once. (2) The tag-words note (InteractiveBuilder.#tagWordsNote) dropped any alias at the bracket's edge, so '[kea speech bubble and audio]' read '… kea speech bubble and'; an edge alias after a conjunction (conjunction_end_pattern) is the last item of the writer's own list and stays. OFF = the earlier notes.",
 			"enabled": true,
 			"env": "NOTEWORDS_OFF",
-			"conjunction_end_pattern": "(?:^|\\s)(?:and|or|with|plus|&|\\+)\\s*$"
+			"conjunction_end_pattern": "(?:^|\\s)(?:and|or|with|plus|&|\\+)\\s*$",
+			"folded_match": {
+				"enabled": true,
+				"env": "NOTEWORDSFOLD_OFF",
+				"_doc": "THE FOLDED MATCH. (1) The container note's leftover words come from the tag normaliser folded — straight apostrophes, no macrons — and were compared with the writer's bracket as typed, so a bracket with a curly apostrophe or a macron failed the comparison and the note fell back to the split remainders, losing the second tag's alias: TWHA903's «[Alert: Try gathering someone else’s opinion … Do you think their answers will be the same as yours?]» read «… their will be …», a CEDT104 request lost «box» beside «ākonga». Both sides are now folded alike. (2) When the note's words sit in a bracket of the span other than the primary tag's own («[Activity 1B] [Words in red are to be dragged into place. Include the answers under each sentence …]», HPFUN303), that bracket is tried next. The same guards hold: every leftover word must be in the bracket, and every word it adds must belong to another tag's alias found in it. OFF = the bracket holding the primary alias, compared unfolded."
+			},
+			"sentence_words": {
+				"enabled": true,
+				"env": "NOTEWORDSSENT_OFF",
+				"_doc": "THE WRITER'S REQUEST SENTENCE (read with folded_match). A bracket whose primary tag word sits mid-sentence — words before it — is the writer's request, not a tag head, so the note keeps it whole: ART1005 «[Please create a mix and match activity 1 entitled “Elements of a Composition”]» read «… mix and match entitled …», BLL147 «[Below is the activity I created for BLL123 activity 1C …]» read «Below is the I created for bll .», ENGC206 «numbered from 1-5» read «numbered from -», ENGS302 «[Numeracy – put this is an alert box on the right - Activity 6D]» read «… an on the right -». The tag word and the actioned modifier words stay in such a note (the modifier classes are still actioned), and the guard admits the primary tag's alias, the modifier words and every word carrying a digit (the tag normaliser de-numbers the remainders) beside the other tags' aliases. A bracket the tag word heads («[Alert: Try …]», «[Activity individual - full width …]») keeps the earlier note. OFF = the folded_match note."
+			}
 		},
 		"note_words_case": {
 			"_doc": "THE WRITER'S LETTERS IN A TAG'S NOTE. A tag's note («<tag> note: <words>») is built from the tag normaliser's remainder words, which are lower-cased and macron-folded, so «[Matching: Te Kahu Farms]» read «matching : te kahu farms» and «Māori» read «maori». Each word is matched, in order, to the writer's own token in the item's text (the same letters once folded) and that token is used; a word with no such token stays as it is.",
@@ -775,6 +785,11 @@
 			"_closer_host_skip_empty_doc": "THE BACK-TO-BACK SPLIT TRIGGER. The split-bracket form (`[HInfo trigger: ] def ]`, the def in black between a red opener and a red `]` closer) anchors on the preceding item; when two triggers follow each other (`…such as who [HInfo trigger: ] asks about a character ] , what [HInfo trigger: ] asks about a thing or idea ] , where …`, BLL243) that item is the closer the first trigger emptied, so the second one's sentinel would start a bare line — its definition dropped and the sentence broken into `<p> , where</p>` paragraphs. The host is therefore the nearest preceding item of the same paragraph that still carries text — the self-closed branch's and the hover weave's own rule. Env TRIGHOST_OFF."
 		},
 		"info_trigger_anchor": {
+			"info_markup_clean": {
+				"enabled": true,
+				"env": "INFOTAGCLEAN_OFF",
+				"_doc": "THE HOVER DEFINITION CARRIES ITS WORDS, NOT THE SURROUNDING RUN’S TAGS. A definition the writer typed in the same bold run as its term («**First Act – exposition** [hover info ‘exposition’: **Setting up the story.**]», ENGJ403; «**decimal point (**definition: …», MXDI301) reached the weave as «</b>Setting up the story.<b>» — the run closing and re-opening around it — so the info attribute held unbalanced tags (the gold: info=\"Setting up the story.\"); a definition holding a link (SSFUN07 «dishonest» linked inside the definition) carried «<a href=\"…\">», whose quotes ended the attribute early and broke the page’s markup. At every info fill the leading closing tags and the trailing opening tags (the run’s own) leave the value, a link keeps its words without its tags, and a quote left in the value is escaped; a balanced tag inside («<br>», «<b>…</b>» — the gold uses «<br>» in info) stays. OFF = the definition as woven."
+			},
 			"_doc": "THE HOVER'S ANCHOR IS THE WRITER'S WHOLE TERM, WHERE THE WRITER SHOWS IT. A non-bold hover anchor is the last word before the definition, and the gold anchors the writer's whole term (721 anchors equal the gold's; 132 in 67 modules are the last word of the gold's term — most of them an English modifier the source does not mark, which stays as it is). A shape the writer's words DO show is read here, at the anchor (ListsAndRuns.inlineMarkup).",
 			"reo_lead": {
 				"_doc": "A TE REO TERM'S LEAD WORD BINDS TO THE ANCHOR. 'Hoa ako [hover] (learning partner)' anchored 'ako' where the gold anchors 'hoa ako' (XDLS902 / 905 / 908 / 901 / 909 ×39); likewise te reo, te taiao, Te Whakaminenga, Mātauranga / Kaupapa Māori, tino rangatiratanga, Ngāti Tūwharetoa, Ngāi Tahu, tangata whenua, mahinga kai, mahi tahi, papa kāinga, Huinga Ako, Oranga Tamariki, Kāinga Ora, Manatū Hauora. The words are the ones measured before a short anchor and before none of the anchors that already equal the gold's.",
@@ -844,6 +859,11 @@
 			"def_clean": {
 				"enabled": true,
 				"env": "HOVERDEFCLEAN_OFF",
+				"own_brackets": {
+					"enabled": true,
+					"env": "HOVERDEFBRACKET_OFF",
+					"_doc": "THE DEFINITION TYPED IN ITS OWN BRACKETS. A writer sometimes gives the definition a bracket pair of its own after the tag («modes [Hover info] [A mode is a way of communicating …]», «[hover definition] [piece of writing]»): the tooltip showed the brackets, and a sentence mark typed after the pair («… meaning ].») went into the tooltip, leaving the sentence without it. A definition wrapped whole in one bracket pair loses the pair; sentence marks after it go back after the span. The gold's info carries the bare definition. Env HOVERDEFBRACKET_OFF keeps the brackets."
+				},
 				"lead_pattern": "[\\s:;,=\\-–—]+",
 				"weave_separators": true,
 				"weave_separators_env": "WEAVESEP_OFF",
@@ -1166,6 +1186,11 @@
 		},
 		"orphan_instruction_reclass": {
 			"enabled": true,
+			"joined_request_silent": {
+				"enabled": true,
+				"env": "JOINEDFLAG_OFF",
+				"_doc": "A REQUEST JOINED INTO ITS SENTENCE IS NOT AN ORPHAN. The sentence pass (inline_format_request.highlight_forms) takes a highlight / formatting request typed mid-sentence out and joins the two halves — the request item stays in place with its words moved — but a request the tag normaliser reads as a sub-tag («[word highlighting]» → data marker) still reached the orphan branch and printed «Red Flag: Orphan sub-tag [data marker] outside an interactive — content kept below; check the source structure.» under the sentence (WJFUN116, WJFUN115): the request was actioned and nothing is kept below it. An item the pass joined (it has a sentence host and no words of its own) raises no orphan flag. OFF = the flag returns."
+			},
 			"_doc": "THE MIS-CLASSIFICATION GUARD. Some writer spans that reach the orphan sub-tag branch are not structural markers at all: they are INSTRUCTIONS TO THE DESIGN TEAM whose bracket happens to contain a `data marker` alias buried in the prose (\"[Please put the Maths Minute activities in a box in the right column]\" matches on `column`; \"[This recording has all 5 sounds please snip …]\" on `word`). Rather than \"Red Flag: Orphan sub-tag [data marker] outside an interactive\", which is wrong and useless, they print the ledger scheme's \"Writers Note:\" (kind \"cs\") carrying the writer's own raw span text verbatim — the SAME form used for every span the resolver classifies as an instruction in the first place. The content below the marker is unchanged. NOTHING IS BUILT and no writer word is lost; only the prefix and the body change.",
 			"note_kind": "cs",
 			"scope_tags": ["data marker", "shape n", "answer", "correct", "question", "option", "drop"],
@@ -1563,6 +1588,18 @@
 					"colour_pattern": "\\b(yellow|pink|cyan|blue|green|orange|purple|red|grey|gray)\\b",
 					"marked_before_pattern": "✅\\s*([^\\s✅]+?)([.,;:!?)’'\"]*)\\s*$",
 					"marked_after_pattern": "^(\\s*)((?:\\*{1,3}|_{1,3})[^*_\\n]+?(?:\\*{1,3}|_{1,3}))",
+					"balanced_after": {
+						"enabled": true,
+						"env": "HILITEBAL_OFF",
+						"pattern": "^(\\s*)((\\*{1,3}|_{1,3})[^*_\\n]+?\\3)",
+						"_doc": "THE MARKED RUN CLOSES WITH ITS OWN MARKERS. marked_after_pattern takes the emphasised run after a highlighter request with any closing count, so «[word highlighter] **loudly***.*» — a bold word, then an italic full stop — took «**loudly***»: the stray asterisk opened an italic INSIDE the highlight span that closed outside it (`<b>loudly</b><i></span>.</i>`, WJFUN115 18 crossings, WJFUN116 8; a browser repairs it its own way and the gate parsers lose the rest of the page). The run now closes with the markers it opened with («**loudly**»), the italic stop staying outside the span (groups 1 and 2 as marked_after_pattern's). OFF = marked_after_pattern."
+					},
+					"end_closer": {
+						"enabled": true,
+						"env": "HILITEENDCLOSE_OFF",
+						"pattern": "^\\[\\s*(?:/\\s*highlight(?:ing|er)?|end\\s+(?:text\\s+)?highlight(?:ing|er)?)\\s*\\]?$",
+						"_doc": "THE «[end highlighting]» CLOSER. The opener / closer pair above reads a closer spelled with its stop word AFTER the request («[word highlight stop]»); the writer's other spelling puts the end word first — «[word highlighting] ***bright****,* ***blue*** [end highlighting]*glass bird …*» (WJFUN116), «[end highlight]», «[/highlight]» — and the opener, finding no closer it knew, marked its first emphasised run alone («bright»; the italic comma after it then broke the markup) while the closer only rejoined. A highlighter opener whose paragraph holds such a closer before any other opener now waits for it, and the closer marks every word between. OFF = the opener marks its first run."
+					},
 					"forms": [
 						{
 							"name": "static",
@@ -5405,6 +5442,17 @@
 				"enabled": true,
 				"env": "DDCOLFOLD_OFF"
 			},
+			"row_choice_lists": {
+				"_doc": "THE ROW'S OWN CHOICE LIST. A two-column table whose every answer cell holds that row's own choices — joined by slashes or one to a line («Yes/No», «1/ 2/ 3/ 4/5/ 6 or more», «Outside/ Inside/ Both») — is not the column form's one-answer-per-row column: read as one, every question offers every row's whole cell as an option and gets an answer the writer never gave. Such a table is never built by the table forms: the bundle stays a hand-off box with the writer's table and lead. A first row whose answer cell is not a choice list is the column head; a cell holding a link or an address is never a choice list (exclude_pattern). Answer keys marked by highlight or colour stay with the announcement fence (colour_marks). Env DDROWCHOICE_OFF restores the column form's reading.",
+				"enabled": true,
+				"env": "DDROWCHOICE_OFF",
+				"split_pattern": "\\s*/\\s*|\\n+",
+				"exclude_pattern": "https?:|www\\.|\\[LINK:|<a\\b",
+				"min_choices": 2,
+				"max_choices": 8,
+				"max_choice_words": 14,
+				"min_rows": 2
+			},
 			"question_blocks": {
 				"enabled": true,
 				"env": "DDQBLOCK_OFF",
@@ -5785,6 +5833,11 @@
 			"env": "TITLECASE_OFF",
 			"min_words": 2,
 			"keep_tokens_with_digits": true,
+			"pronoun_i": {
+				"enabled": true,
+				"env": "TITLECASEI_OFF",
+				"_doc": "THE ENGLISH PRONOUN STAYS A CAPITAL. Sentence case lowercased every word after the first, so CEDT207's «ME, MY SELFIE AND I» headed every page «Me, my selfie and i» (the gold: «Me, my selfie and I»). A standalone «i» — or «i'm» / «i've» / «i'll» / «i'd» — is the pronoun and is restored to «I»; a title that reads as te reo (a macron, or only Māori-alphabet letters — SkeletonBuilder's lone-title test) keeps its lowercase particle «i» («Te whakamahi i ngā hātepe»). OFF = every word after the first lowercase."
+			},
 			"red_flag": "The writer's title is ALL CAPS (\"{original}\") — rendered in sentence case per the KB's title-casing rule; restore any proper-noun or acronym capitals the writer intended."
 		},
 		"title_h1": "<h1><span>{title}</span></h1>",
@@ -8546,6 +8599,8 @@
 					"series": {},
 					"groups": {
 						"WJFUN|1-3": {
+							"bullet_stops": "as_typed",
+							"_doc_bullet_stops": "THE WJFUN MENU KEEPS THE WRITER'S FULL STOPS. The menu panes' bullet form: absent = the CHFUN pane convention (every bullet bare, only the last closing with a full stop — the CHFUN gold); as_typed = each bullet exactly as the writer typed it, its full stop kept (the WJFUN gold keeps the writer's stop on every such bullet). Env MENUSTOPKEEP_OFF reads every row as absent.",
 							"menu_cols": [
 								"col-md-8 col-12"
 							],
@@ -8562,6 +8617,8 @@
 							"tiles_inside_col": false
 						},
 						"WJFUN|4-6": {
+							"bullet_stops": "as_typed",
+							"_doc_bullet_stops": "THE WJFUN MENU KEEPS THE WRITER'S FULL STOPS. The menu panes' bullet form: absent = the CHFUN pane convention (every bullet bare, only the last closing with a full stop — the CHFUN gold); as_typed = each bullet exactly as the writer typed it, its full stop kept (the WJFUN gold keeps the writer's stop on every such bullet). Env MENUSTOPKEEP_OFF reads every row as absent.",
 							"menu_cols": [
 								"col-md-8 col-12"
 							],
@@ -8578,6 +8635,8 @@
 							"tiles_inside_col": false
 						},
 						"WJFUN|7-8": {
+							"bullet_stops": "as_typed",
+							"_doc_bullet_stops": "THE WJFUN MENU KEEPS THE WRITER'S FULL STOPS. The menu panes' bullet form: absent = the CHFUN pane convention (every bullet bare, only the last closing with a full stop — the CHFUN gold); as_typed = each bullet exactly as the writer typed it, its full stop kept (the WJFUN gold keeps the writer's stop on every such bullet). Env MENUSTOPKEEP_OFF reads every row as absent.",
 							"menu_cols": [
 								"col-md-8 col-12"
 							],
@@ -8872,6 +8931,11 @@
 		},
 		"lesson_title_dedup": {
 			"strip_lesson_prefix": true,
+			"label_title_pair": {
+				"enabled": true,
+				"env": "LESSONLABELPAIR_OFF",
+				"_doc": "KB CL-0095 (constraint 1's label-prefix strip, universal; the KB outranks the gold). The writer's «[H2] Lesson 1 Cost of Owning a Pet» — the «Lesson 1» label red, the title black — reached the page as a heading holding only the label and a paragraph holding the title: `<h3>Lesson 1</h3><p><b>Cost of Owning a Pet</b></p>` under the header title «Cost of Owning a Pet» (MXFL202 ×3, ENGFUN02 ×4, HPRE203 ×5, SSCI205 ×2, CBI1008, CBI1009, GEO1005 — 17 pages / 7 modules). The label is stripped; on a lesson page the heading is then the header title and drops (constraint 47's de-dup), so both go; on an overview page the stripped heading is kept, the title words as the heading. Only a heading that is the bare «Lesson N» label followed straight away by a paragraph equal to the page's own title is touched — a bare label with anything else after it (the bilingual «Hei Mahi N / Lesson N» headings) is outside CL-0095's boundary and stays. OFF = the label heading and the title paragraph as built."
+			},
 			"c47": {
 				"_doc": "KB constraint 47 in full, the opening duplicate body heading. On a LESSON page the FIRST RENDERED free-body heading whose text equals the header title once case, punctuation and a `Lesson N` label are ignored is DROPPED — the header already shows it and the lesson NUMBER stays in the #module-code chip (c79: the lesson's own title is the h1, never emptied). Where the human keeps the heading (SCCH301, SCPH301, HIS1001, MXEO202, XDLS903) that is a NAMED override. Refinements of the de-dup TEST: first_rendered_heading — a heading CONSUMED by the de-dup does not spend the first-heading slot (MXEO202_3_0: `[H2] *Lesson 3 Triangles*` consumed as the title repeat, then `[H3] Triangles` — the real opening heading — is still tested). ignore_punctuation — the compare keeps letters and digits only (HIS1001_7_0's curly quotes, ENGR202's italicised `*:*` that would defeat the prefix strip, PES1002's `**` markers + the writer's trailing note). skip_inside_activity — a heading inside an open activity box is the activity's own title (ENGI101 'Being Frank'): never the candidate and never spends the slot (KEPT). exclude_body_class — the Bilingual template (reoTranslate) is excluded: KB 07B governs the MTK section heading, the more specific rule wins (TRR111). The overview page keeps the plain exact de-dup (c47 is strip-only there). Authority: KB level 1 (c47, Universal). Env DEDUPC47_OFF turns it off.",
 				"enabled": true,
@@ -9587,6 +9651,11 @@
 				"_doc": "A CONTINUED NUMBERED LIST KEEPS ITS NUMBERS (KB constraint 42: numbered steps use <ol><li>, with start=\"N\" for continuation across split content). A numbered run whose first item is N > 1 — Word's own number, which the extractor now writes on every numbered paragraph (list_numbering.word_count), or the writer's typed digit — opens <ol start=\"N\">, so steps 1–2, a sentence, then step 3 shows 3, not a second 1. A run that starts at 1 is unchanged, and a bullet list promoted to numbers (ol_bold_parents) never takes a start."
 			},
 			"emphasis_led_bullet": true,
+			"emphasis_glyph_only": {
+				"enabled": true,
+				"env": "EMPHGLYPH_OFF",
+				"_doc": "THE BULLET GLYPH ALONE IN BOLD. A writer bolded only the glyph they typed as the list marker («**•** German is spoken …»): the emphasis-led bullet took the glyph and left the run's closing marker at the head of the item, so the learner saw «** German is spoken …». When the marker that opened before the glyph closes straight after it (followed by a space), both markers go with the glyph; a run that wraps the whole line («*•text*») is read as before. Env EMPHGLYPH_OFF leaves the marker."
+			},
 			"emphasis_led_bullet_note": "A writer typed a literal bullet glyph as the list marker, but WRAPPED it in emphasis ('*•structural features…*'), PRECEDED it with stray emphasis (' *•make independent…'), or separated it with a TAB ('*•\\tdescribe…') — none caught by #renderBlackText's plain ^• test, so the item would show as a <p> instead of a list <li> (ENGS302-00 'I know that:' + '•structural…', 'In my learning…' + '•make…'; the human ships both as <li>, like all the other bullets; also XMES102). #renderBlackText ALSO matches a bullet after a leading run of *,_  emphasis markers and, when the bullet sat inside an emphasis WRAPPER, drops the now-dangling closing marker so the content stays clean. A plain '• text' bullet flows through the unchanged path. env EMPHBULLET_OFF uses the plain ^• test (emphasis-led bullets fall back to a <p>).",
 			"note": "The writer's docx carries list NESTING via w:ilvl (DocxExtractor encodes it as leading 2-space indentation per level); #renderBlackText builds nested <ul>/<ol> from it instead of flattening every bullet to one level. OL-OVERRIDE: a TOP-level bullet list whose every item is BOLD and carries nested sub-points is rendered as a NUMBERED <ol> (the human numbers these 'category + sub-points' lists even though the docx tags them as bullets — OSAI201-02 'What did we learn?': <ol><li><b>Be specific</b><ul><li>Bad prompt…</li><li>Good prompt…</li></ul></li>…). Conservative: top level only, every item bold AND parented, >=2 items, so a plain flat list or a non-bold list is unchanged. indent_spaces_per_level matches the extractor's encoding. env LISTNEST_OFF flattens every list to one level."
 		},
@@ -9878,6 +9947,13 @@
 				"env": "INTROREPEAT_OFF",
 				"title_number_pattern": "^lesson\\s+(\\d+)\\s*$",
 				"_doc": "KB 01D Standard Page Structure (the overview carries the module introduction) + AR-1. A LESSON OPENER WHOSE NUMBER THE NEXT LESSON OPENER REPEATS IS THE INTRODUCTION, NOT THE LESSON: BLL265's writer typed the introduction (a welcome, the module's whakataukī, a video) under '[LESSON] Lesson 1' + '[Lesson content]', closed it with [End page], then opened the real lesson with '[Lesson 1]'. Without this the introduction became lesson page 1.0 (no menu — the BLL lesson pages carry none) and the real lesson 1.1. On the overview, right after its [End page], a [LESSON] whose number (its own, or a bare 'Lesson N' title — title_number_pattern) equals the number of the NEXT lesson opener, with an [End page] between the two, is consumed: the overview continues and holds the introduction (marked as its introduction start), and the next opener opens lesson N as usual."
+			},
+			"untitled_segment": {
+				"enabled": true,
+				"env": "INTROSEG_OFF",
+				"max_lines": 6,
+				"blocking_tags": ["h1", "h2", "h3", "h4", "h5", "h6", "heading", "sub head", "title bar", "module introduction"],
+				"_doc": "KB 01D Standard Page Structure (the overview page carries the module introduction) + AR-1. AN UNTITLED SEGMENT BEFORE THE FIRST LESSON IS THE INTRODUCTION: ENGJ302's writer closed the overview with [End page], typed the introduction as plain learner text with its video and no heading or marker, closed it with a second [End page] and opened [LESSON] 1. The implicit page break made that segment page 1.0 and left the overview body empty; the gold keeps it on 0.0. The rule: on the overview's [end page], when the next item is learner text and the segment up to the next page boundary carries no heading, title bar or introduction marker, no table, at most max_lines lines, and ends with an [end page] the lesson opener follows directly, the [end page] is disregarded and the segment stays on the overview as its introduction (menu_boundary marks its first item). A segment that opens with a tag (an instruction note, an unresolved marker) or carries a heading is left to the implicit page break."
 			},
 			"menu_boundary": true,
 			"_doc_menu_boundary": "KB 01D Standard Page Structure. The item where AR-1 recognised the module introduction (every form above, and [supervisor note]) is marked `_introStart`; with no red [MODULE INTRODUCTION] tag and no mid-document title-bar alias, ContentConverter ends the overview's menu there, so the introduction is the page's body (as in the human build) instead of sitting in #module-menu-content (HIS1002, XFUN02, PES1005, ART1006, MXFL103 …). Env INTROMENU_OFF.",

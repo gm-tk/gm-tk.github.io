@@ -158,6 +158,18 @@
   }
  },
 
+ "non_address_link_plain": {
+  "enabled": true,
+  "env": "ACKSDEADLINK_OFF",
+  "local_file_drop": {
+   "enabled": true,
+   "env": "ACKSLOCALFILE_OFF",
+   "pattern": "^\\s*file:",
+   "_doc": "THE LINK TO A FILE ON THE WRITER’S OWN COMPUTER. A link column holding a local path («file:///C:/Users/<name>/Downloads/…pdf») is neither an address a learner can open nor the writer’s words for the source: the acknowledgement drops that link with the separator before it, and the entry ends at the words before it — the form the human gives these credits. Env ACKSLOCALFILE_OFF keeps the link."
+  },
+  "address_pattern": "^(?:[a-z][a-z0-9+.-]*:\\/\\/|mailto:|www\\.|\\/|\\.\\.?\\/|#|[a-z0-9-]+(?:\\.[a-z0-9-]+)+(?:[\\/?#:]|$))",
+  "_doc": "THE LINK WHOSE ADDRESS IS NOT AN ADDRESS. The Media List link column sometimes holds the writer’s words, not a web address — «N/A», «TBC», «In folder», «CS created», «Microsoft 365 Co-pilot», «URL», a permission note — and every entry template put that into href, so the acknowledgement showed a dead link to a page named «N/A» (215 links on 84 modules). An entry link whose href does not match address_pattern (a scheme://, mailto:, «www.», a site path, or a domain) keeps its words as plain text. OFF = the link as built."
+ },
  "family_credit_flags": {
   "enabled": true,
   "env": "XOTPACKS_OFF",

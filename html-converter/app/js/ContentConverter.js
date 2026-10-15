@@ -5181,7 +5181,14 @@ class ContentConverter {
 					// writer's vocabulary list — so its flag is noise, not a warning.
 					// Its content still renders (carrying the woven infoTrigger).
 					// Env toggle: DEFWORDFLAG_OFF (the flag returns; the weave stays).
-					if (!it._defAnchorUsed) emit(NotesAndComments.redFlag(
+					// AND: a formatting / highlight request the sentence pass joined back into its sentence (its words moved
+					// to the sentence, the item left empty in place) was actioned — no content sits below it, so the flag
+					// would say something false (elements.orphan_instruction_reclass.joined_request_silent; env JOINEDFLAG_OFF)
+					const _jrs = DataService.Data.EmitTemplates.elements?.orphan_instruction_reclass?.joined_request_silent;
+					const _jrsOn = !!_jrs && _jrs.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_jrs.env ?? "JOINEDFLAG_OFF"]);
+					const _joined = _jrsOn && !!it._sentenceHost && !String(it.blackAfter ?? "").trim();
+					if (!it._defAnchorUsed && !_joined) emit(NotesAndComments.redFlag(
 						`Orphan sub-tag [${primary.tag}] outside an interactive — content kept below; check the source structure.`, run));
 					if (it.blackAfter.trim()) emit(...actDeBold(ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links)));
 					break;
@@ -5405,7 +5412,7 @@ class ContentConverter {
 		// modifier) has run, so the page's consecutive numbering is settled last.
 		const bodyHtml0 = this.#titleIdEcho(this.#boldMarkerResidue(this.#softBreakLead(this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
 			this.#journalPlaceholderFill(this.#pageNumberNormalise(this.#emptyActivityDrop(this.#freeDropboxBox(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n"), run), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), page, run), page, run), page, run), page, run),   // #journalPlaceholderFill, #emptyActivityDrop, #freeDropboxBox, #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#lessonLabelTitlePair(this.#relevelHeadings(body.filter(Boolean).join("\n"), run), run), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), page, run), page, run), page, run), page, run),   // #journalPlaceholderFill, #emptyActivityDrop, #freeDropboxBox, #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// the level-pages dialect's nav/tile labels + registry row
@@ -5907,6 +5914,37 @@ class ContentConverter {
 		return !!letters && c.prefixes.some((p) => String(p).toUpperCase() === letters);
 	}
 
+	/**
+	 * KB CL-0095 — THE «Lesson N» LABEL ON A BODY HEADING IS STRIPPED. The writer's «[H2] Lesson 1 Cost of Owning a Pet» —
+	 * the label typed red, the title black — reaches the page as a heading holding only the label and a paragraph holding
+	 * the title: `<h3>Lesson 1</h3><p><b>Cost of Owning a Pet</b></p>`. CL-0095 strips the label; on a lesson page the
+	 * heading is then the header title and drops (constraint 47's de-dup), so both go; on an overview page the stripped
+	 * heading is kept (the title words as the heading). Only a heading that is the bare label, followed straight away by a
+	 * paragraph equal to the page's own title, is touched. Data body_region.lesson_title_dedup.label_title_pair;
+	 * env LESSONLABELPAIR_OFF.
+	 * @param {string} html - the page body
+	 * @param {ConversionRun} run - the current run
+	 * @returns {string} the body
+	 */
+	static #lessonLabelTitlePair(html, run) {
+		const c = DataService.Data.EmitTemplates.body_region?.lesson_title_dedup?.label_title_pair;
+		if (!c || c.enabled === false || !html
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "LESSONLABELPAIR_OFF"])) return html;
+		const title = String(this.#pageLessonTitle ?? "").trim();
+		if (!title) return html;
+		const key = (s) => Utils.Fold(String(s).replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ")).replace(/[^\p{L}\p{N}]+/gu, "");
+		const want = key(title);
+		const re = new RegExp(c.pattern ?? "<(h[2-5])([^>]*)>\\s*(?:<span[^>]*>)?\\s*lesson\\s+\\d+(?:\\.\\d+)?\\s*[:.\\-–—]?\\s*(?:</span>)?\\s*</\\1>\\s*<p[^>]*>([\\s\\S]*?)</p>", "gi");
+		let n = 0;
+		const out = String(html).replace(re, (m, h, attrs, inner) => {
+			if (!want || key(inner) !== want) return m;
+			n++;
+			return this.#pageIsLesson ? "" : `<${h}${attrs}>${String(inner).replace(/<\/?(?:b|strong)>/g, "").trim()}</${h}>`;
+		});
+		if (n) run.AddNote("info", "ContentConverter", `${n} «Lesson N» label heading${n === 1 ? "" : "s"} stripped before the page title (KB CL-0095; lesson_title_dedup.label_title_pair).`);
+		return out;
+	}
+
 	static #relevelHeadings(html, run) {
 		const cfg = DataService.Data.EmitTemplates.body_region?.heading_relevel;
 		if (!cfg || cfg.enabled === false) return html;
@@ -6113,7 +6151,16 @@ class ContentConverter {
 		// not all-caps (or no letters) → leave the writer's casing untouched
 		if (!letters || letters !== letters.toUpperCase()) return t;
 		// all-caps → sentence case: lowercase everything, capitalise the first letter
-		return t.toLowerCase().replace(/[A-Za-zĀĒĪŌŪāēīōū]/, (c) => c.toUpperCase());
+		let out = t.toLowerCase().replace(/[A-Za-zĀĒĪŌŪāēīōū]/, (c) => c.toUpperCase());
+		// the English pronoun stays a capital («ME, MY SELFIE AND I» → «Me, my selfie and I»); a title that reads as te reo
+		// (a macron, or only Māori-alphabet letters) keeps its particle «i». Data header.title_casing.pronoun_i; env TITLECASEI_OFF.
+		const pi = DataService.Data.EmitTemplates?.header?.title_casing?.pronoun_i;
+		const reo = /[ĀĒĪŌŪāēīōū]/.test(t) || !/[bcdfjlqsvxyz]/i.test(t.replace(/[^A-Za-z]/g, ""));
+		if (pi && pi.enabled !== false && !reo
+			&& !(typeof process !== "undefined" && process.env && process.env[pi.env ?? "TITLECASEI_OFF"])) {
+			out = out.replace(/(^|[^\p{L}])i(?=$|[\s,;:!?)"”]|['’](?:m|ve|ll|d)(?![\p{L}]))/gu, "$1I");
+		}
+		return out;
 	};
 
 	/**

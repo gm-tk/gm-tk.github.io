@@ -433,6 +433,14 @@ class SkeletonBuilder {
 		if (!words.some((w) => w.replace(/[^\p{L}]/gu, "").length > 1)) return { text: t, changed: false };
 		let lowered = t.replace(/\S+/g, (w) => (keepDigits && /\d/.test(w)) ? w : w.toLowerCase());
 		lowered = lowered.replace(/\p{L}/u, (ch) => ch.toUpperCase());
+		// the English pronoun stays a capital: «ME, MY SELFIE AND I» is «Me, my selfie and I» (also I'm / I've / I'll / I'd); a
+		// title that reads as te reo keeps its lowercase particle «i» («Te whakamahi i ngā hātepe»).
+		// Data header.title_casing.pronoun_i; env TITLECASEI_OFF.
+		const pi = cfg.pronoun_i;
+		if (pi && pi.enabled !== false && !this.#looksMaori(t)
+			&& !(typeof process !== "undefined" && process.env && process.env[pi.env ?? "TITLECASEI_OFF"])) {
+			lowered = lowered.replace(/(^|[^\p{L}])i(?=$|[\s,;:!?)"”]|['’](?:m|ve|ll|d)(?![\p{L}]))/gu, "$1I");
+		}
 		return { text: lowered, changed: lowered !== t };
 	}
 

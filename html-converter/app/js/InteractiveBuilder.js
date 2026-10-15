@@ -14270,7 +14270,7 @@ class InteractiveBuilder {
 			?? this.#ddCellParagraph(bundle, toks, tpl, inline, ac)
 			?? this.#ddOptList(toks, tpl, inline, ac, kinds)
 			?? this.#ddCellOptions(bundle, toks, tpl, inline, run, ac, kinds);
-		if (!body) return null;
+		if (!body || bundle._ddRowChoiceDecline) return null;   // a column of each row's own choices is never built (row_choice_lists)
 		const built = [...pre, body].join("\n");
 		if (this.#ddLeakGuard(built, tpl)) return null;            // a build must never ADD a leak
 		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
@@ -15479,6 +15479,28 @@ class InteractiveBuilder {
 			}
 			if (units.length < (tpl.min_units ?? 1)) return null;
 			return this.#ddQuestionForm(units, tpl, inline, null, ac);
+		}
+
+		// (c) THE ROW'S OWN CHOICE LIST — tried before (b), which would read each row's choices as ONE answer and pool every
+		// row's cell as the options: a column whose every answer cell is that row's own choices is never built here (the
+		// hand-off box keeps the writer's table and lead). Data dropDown.row_choice_lists; env DDROWCHOICE_OFF.
+		const rc = tpl.row_choice_lists;
+		if (w === 2 && rc && rc.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[rc.env || "DDROWCHOICE_OFF"])) {
+			const split = new RegExp(rc.split_pattern ?? "\\s*/\\s*|\\n+");
+			const notRe = new RegExp(rc.exclude_pattern ?? "https?:|www\\.|\\[LINK:|<a\\b", "i");
+			const minC = rc.min_choices ?? 2, maxC = rc.max_choices ?? 8, maxW = rc.max_choice_words ?? 14;
+			const isChoices = (c) => {
+				const s = this.#cellText(c);
+				if (notRe.test(s)) return false;
+				const parts = s.split(split).map((p) => p.trim()).filter(Boolean);
+				return parts.length >= minC && parts.length <= maxC && parts.every((p) => p.split(/\s+/).length <= maxW);
+			};
+			const qrows = isChoices(rows[0][1] ?? "") ? rows : body;
+			if (qrows.length >= (rc.min_rows ?? 2) && qrows.every((r) => r.length === 2 && isChoices(r[1] ?? ""))) {
+				bundle._ddRowChoiceDecline = true;
+				return null;
+			}
 		}
 
 		// (b) COLUMN — a red header on the answers column, answers beneath it.

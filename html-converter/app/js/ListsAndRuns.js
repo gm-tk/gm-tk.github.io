@@ -354,6 +354,11 @@ class ListsAndRuns {
 		// body_region.list_nesting.emphasis_led_bullet. Env toggle: EMPHBULLET_OFF.
 		const emphBulletOn = (cfg.emphasis_led_bullet ?? true)
 			&& !(typeof process !== "undefined" && process.env && process.env.EMPHBULLET_OFF);
+		// the glyph alone in emphasis («**•** text»): the marker closing straight after the glyph goes with it
+		// (list_nesting.emphasis_glyph_only; env EMPHGLYPH_OFF)
+		const egCfg = cfg.emphasis_glyph_only;
+		const glyphOnlyOn = !!(egCfg && egCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[egCfg.env || "EMPHGLYPH_OFF"]));
 		const out = [];
 		// KEEP leading indentation — it encodes the Word list NESTING level (2 spaces per
 		// w:ilvl, added by DocxExtractor). The extractor emits one block per paragraph,
@@ -425,7 +430,8 @@ class ListsAndRuns {
 			const emphB = emphBulletOn ? line.match(/^([*_]{1,2})[ \t]*•[ \t]*([\s\S]*)$/) : null;
 			if (emphB) {
 				let c = emphB[2];
-				if (c.endsWith(emphB[1])) c = c.slice(0, -emphB[1].length);
+				if (glyphOnlyOn && c.startsWith(emphB[1]) && /^(?:\s|$)/.test(c.slice(emphB[1].length))) c = c.slice(emphB[1].length);
+				else if (c.endsWith(emphB[1])) c = c.slice(0, -emphB[1].length);
 				bullet = [line, c.trim()];
 			} else {
 				bullet = line.match(/^•\s*(.*)$/) ?? (typedBulletRe ? line.match(typedBulletRe) : null)
@@ -635,7 +641,30 @@ class ListsAndRuns {
 				return _it0 + (/[\p{L}\p{N}]/u.test(c) ? c : d) + _it1;
 			});
 		}
+		// a definition typed in its own bracket pair («[Hover info] [A mode is …]») loses the pair, and a sentence mark typed
+		// after the pair goes back after the span (hover_definition_inline.def_clean.own_brackets; env HOVERDEFBRACKET_OFF)
+		const _ob = _dc?.own_brackets;
+		if (_ob && _ob.enabled !== false && s.includes(_it0)
+			&& !(typeof process !== "undefined" && process.env && process.env[_ob.env ?? "HOVERDEFBRACKET_OFF"])) {
+			s = s.replace(new RegExp(`${_it0}\\s*\\[([^\\[\\]${_it0}${_it1}]*\\p{L}[^\\[\\]${_it0}${_it1}]*)\\]\\s*([.,;:!?]*)\\s*${_it1}`, "gu"),
+				(m, d, p) => _it0 + d.trim() + _it1 + p);
+		}
 		const fmtIt = fmt.info_trigger ?? '<span class="infoTrigger" info="{info}">{anchor}</span>';
+		// THE HOVER DEFINITION CARRIES ITS WORDS, NOT THE SURROUNDING RUN'S TAGS. A definition the writer typed in the same
+		// bold run as its term («**exposition** [hover …: **Setting up the story.**]») reaches the weave as «</b>Setting up the
+		// story.<b>» — the run closing and re-opening around it — and a definition holding a link carries «<a href="…">», whose
+		// quotes end the info attribute early. The leading closing tags and the trailing opening tags (the run's own) leave the
+		// value, a link keeps its words, and a quote left in it is escaped; a balanced tag («<br>», «<b>…</b>») stays.
+		// Data elements.info_trigger_anchor.info_markup_clean; env INFOTAGCLEAN_OFF.
+		const _imc = DataService.Data.EmitTemplates.elements?.info_trigger_anchor?.info_markup_clean;
+		const _imcOn = !!_imc && _imc.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_imc.env ?? "INFOTAGCLEAN_OFF"]);
+		const infoOf = (d) => {
+			const v = String(d ?? "").trim();
+			if (!_imcOn) return v;
+			return v.replace(/^(?:\s*<\/(?:b|i|u|strong|em)>)+/, "").replace(/(?:<(?:b|i|u|strong|em)>\s*)+$/, "")
+				.replace(/<a\b[^>]*>|<\/a>/g, "").replace(/"/g, "&quot;").trim();
+		};
 		// A LONG RUN IS NOT THE ANCHOR: a bold / italic run of more than long_run.max_words words, or one that opens with
 		// punctuation («*…across the world. Theories of socialism*», «*, stemming from the teachings of Marxism*»), is the
 		// writer's quotation or sentence, not the term — its last word is the anchor, inside the writer's formatting.
@@ -648,10 +677,10 @@ class ListsAndRuns {
 					const n = inner.trim().split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
 					if (n > (_lr.max_words ?? 12) || (_lr.lead_punct_pattern && new RegExp(_lr.lead_punct_pattern, "u").test(inner))) {
 						const mm = inner.match(/^([\s\S]*?)([\p{L}\p{M}\p{N}][\p{L}\p{M}\p{N}'’\-]*)([^\p{L}\p{M}\p{N}]*)$/u);
-						if (mm && mm[1].trim()) return `<${tag}>${mm[1]}${fmtIt.replace("{info}", def.trim()).replace("{anchor}", mm[2])}${mm[3]}</${tag}>`;
+						if (mm && mm[1].trim()) return `<${tag}>${mm[1]}${fmtIt.replace("{info}", infoOf(def)).replace("{anchor}", mm[2])}${mm[3]}</${tag}>`;
 					}
 				}
-				return fmtIt.replace("{info}", def.trim()).replace("{anchor}", inner);
+				return fmtIt.replace("{info}", infoOf(def)).replace("{anchor}", inner);
 			});
 		// THE HOVER'S ANCHOR IS THE WRITER'S WHOLE TERM: a te reo term's lead word (reo_lead.words: «hoa ako», «te reo»,
 		// «Mātauranga Māori», «tino rangatiratanga», «Ngāti Tūwharetoa» …) binds to the word before the definition.
@@ -663,7 +692,7 @@ class ListsAndRuns {
 			if (rl && rl.enabled !== false && Array.isArray(rl.words) && rl.words.length
 				&& !(typeof process !== "undefined" && process.env && process.env[rl.env ?? "HOVERREOLEAD_OFF"])) {
 				s = s.replace(new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}'’\\-])((?:${rl.words.join("|")})\\s+[\\p{L}\\p{M}\\p{N}]${W}*)${_it0}([^${_it0}${_it1}]*)${_it1}`, "giu"),
-					(m, pre, term, def) => pre + fmtIt.replace("{info}", def.trim()).replace("{anchor}", term));
+					(m, pre, term, def) => pre + fmtIt.replace("{info}", infoOf(def)).replace("{anchor}", term));
 			}
 		}
 		// NON-BOLD anchor: wrap the single WORD immediately before the sentinel. Most of the
@@ -673,7 +702,7 @@ class ListsAndRuns {
 		// include macrons/diacritics, digits, hyphens and apostrophes; a leading non-letter (e.g. a
 		// writer ✅ marker) is left outside the span.
 		s = s.replace(new RegExp(`([\\p{L}\\p{M}\\p{N}][\\p{L}\\p{M}\\p{N}'’\\-]*)${_it0}([^${_it0}${_it1}]*)${_it1}`, "gu"),
-			(m, word, def) => fmtIt.replace("{info}", def.trim()).replace("{anchor}", word));
+			(m, word, def) => fmtIt.replace("{info}", infoOf(def)).replace("{anchor}", word));
 		// THE HOVER DEFINITION AFTER THE FULL STOP. A writer who types the marker after the sentence's punctuation
 		// (`…the addition of organic matter. [hover definition: material that has come from…]`, AGH1002) leaves no word right
 		// before the sentinel, so the definition would be dropped, where the gold builds it.
@@ -688,7 +717,7 @@ class ListsAndRuns {
 			const P = `(${_pa.punct_class ?? "[.?!,;:)]"}{1,2})\\s*${_it0}([^${_it0}${_it1}]*)${_it1}`;
 			const words = (d) => d.replace(/<[^>]+>/g, " ").trim().split(/\s+/).filter(Boolean).length;
 			const okDef = (d, min) => words(d) >= min && /\p{L}/u.test(d) && !(noteRe && noteRe.test(d.replace(/<[^>]+>/g, "").trim()));
-			const wrap = (anchor, def, p) => fmtIt.replace("{info}", def.trim()).replace("{anchor}", anchor) + p;
+			const wrap = (anchor, def, p) => fmtIt.replace("{info}", infoOf(def)).replace("{anchor}", anchor) + p;
 			// the line's FIRST SENTENCE is the term (`setting.` as a list item, `Ka rawe tō mahi! You have now completed…` as a
 			// paragraph): the gold wraps all of it, punctuation inside — `<span …>setting.</span>` (ARFUN05), `<span …>Ka rawe tō
 			// mahi!</span> You have…` (BLL272)
@@ -927,8 +956,12 @@ class ListsAndRuns {
 		if (!cfg || cfg.enabled === false) return html;
 		if (typeof process !== "undefined" && process.env && process.env.EMOJISTRIP_OFF) return html;
 
+		// the legal signs © ® ™ are the writer's typography, not emoji (emoji_strip.legal_signs; env EMOJILEGAL_OFF)
+		const ls = cfg.legal_signs;
+		const legal = ls && ls.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ls.env ?? "EMOJILEGAL_OFF"])
+			? (ls.chars ?? []) : [];
 		const exempt = new Set(
-			[...(cfg.exempt ?? []), ...Object.values(cfg.exempt_extensions ?? {}).flat()]
+			[...(cfg.exempt ?? []), ...Object.values(cfg.exempt_extensions ?? {}).flat(), ...legal]
 				.map((c) => String(c).codePointAt(0)));
 		const arrows = {};
 		for (const [k, v] of Object.entries(cfg.arrow_map ?? {})) arrows[k.codePointAt(0)] = v;

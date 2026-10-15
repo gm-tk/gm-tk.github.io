@@ -2756,6 +2756,22 @@ class InteractiveScanner {
 					&& _lab.test(`${mm.text ?? ""} ${mm.blackAfter ?? ""}`))) break;
 			}
 
+			// THE ONE-STATEMENT WIDGET ENDS AT THE NEXT HEADING. A slider typed as its opener's own statement («[slider] I know
+			// about Te Wheke») plus a red scale note holds no table and no member of its own, so neither the table-data
+			// section break below nor the lone-heading rule (which waits for a captured member, and keeps a heading followed by a
+			// picture) can end it — and the whole next section («[H3] What is Te Wheke?», its picture request, its paragraphs)
+			// went into the un-built widget's box. For a listed type, a heading reached while the bundle holds no table and
+			// nothing but notes ends the capture. Data member_rule.heading_ends_bare_opener {types}; env BAREOPENHEAD_OFF.
+			{
+				const _hbo = _mrB.heading_ends_bare_opener;
+				if (_hbo && _hbo.enabled !== false && p && ["h1", "h2", "h3", "h4", "h5"].includes(p.tag)
+					&& (_hbo.types ?? []).includes(bundle.type) && bundle.tables.length === 0
+					&& !(typeof process !== "undefined" && process.env && process.env[_hbo.env ?? "BAREOPENHEAD_OFF"])
+					&& (bundle.memberItems ?? []).every((m) => m === items[bundle.startIndex]   // the opener's own statement
+						|| (m.type === "black" && !String(m.text ?? "").trim())
+						|| (m.type === "tag" && (m.parse?.primary?.directive === "INSTRUCTION" || m.parse?.class === "instruction" || !m.parse?.primary?.tag)))) break;
+			}
+
 			// TABLE-DATA SECTION-BREAK resumption (OSBY201-02 + OSAI501-01): a [Body] ELEMENT or an
 			// [H2]-[H5] section HEADING that appears AFTER a TABLE-DATA widget (uses_data_table —
 			// typing/dragAndDrop/dropQuiz/memoryGame…) has captured its table is the writer starting

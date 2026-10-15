@@ -593,6 +593,16 @@
 			"❌",
 			"❎"
 		],
+		"legal_signs": {
+			"enabled": true,
+			"env": "EMOJILEGAL_OFF",
+			"chars": [
+				"©",
+				"®",
+				"™"
+			],
+			"_doc": "THE LEGAL SIGNS ARE NOT EMOJI. ©, ® and ™ carry the Extended_Pictographic property, so the strip removed them from the writer's text («ApiNate®» became «ApiNate»). They are typography the writer typed and the gold keeps: they stay, with no disclosure note. Env EMOJILEGAL_OFF strips them again."
+		},
 		"exempt_extensions": {
 			"maths_operators": [
 				"✖",
@@ -895,5 +905,13 @@
 	},
 	"trailing_content": {
 		"rule": "Content after the final [end page] containing no headings and no interactives is writer-form boilerplate (copyright checklist tables etc.) — emit nothing; record one summary note. Trailing empty tables are always discarded."
+	},
+	"hyperlink_targets": {
+		"dead_target_plain": {
+			"enabled": true,
+			"env": "DEADHREF_OFF",
+			"pattern": "^\\s*about:",
+			"_doc": "THE HYPERLINK WITH NO ADDRESS. A Word hyperlink whose relationship target is an «about:» page — «about:blank», left when the writer copied a link out of an empty browser tab — never had a web address: as a link it opens an empty tab. The extractor reads such a run as plain words (no link): the writer's words stay, the dead link goes, and every later reader (the hyperlink weave, the cell weave, the red-run tests) sees an unlinked run. The same reading the acknowledgements give a link column holding words instead of an address (Acks_Formats.non_address_link_plain). A link whose run also carries a real address in its words keeps that address through the bare-URL rule. Env DEADHREF_OFF restores the link."
+		}
 	}
 }

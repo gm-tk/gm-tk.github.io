@@ -388,7 +388,29 @@ class PageAssembler {
 		const hsColour = hsOn && hs.colour_pattern ? new RegExp(hs.colour_pattern, "iu") : null;
 		const hsCloser = hsOn && cfg.highlighter_closer_pattern ? new RegExp(cfg.highlighter_closer_pattern, "iu") : null;
 		const hsBefore = hsOn ? new RegExp(hs.marked_before_pattern ?? "✅\\s*([^\\s✅]+?)([.,;:!?)’'\"]*)\\s*$", "u") : null;
-		const hsAfter = hsOn ? new RegExp(hs.marked_after_pattern ?? "^(\\s*)((?:\\*{1,3}|_{1,3})[^*_\\n]+?(?:\\*{1,3}|_{1,3}))", "u") : null;
+		// the run closes with the markers it opened with: «**loudly***.*» (a bold word, an italic stop) is «**loudly**», never
+		// «**loudly***», whose stray «*» opened an italic inside the highlight that closed outside it
+		// (highlighter_span.balanced_after; env HILITEBAL_OFF)
+		const hba = hs?.balanced_after;
+		const hbaOn = hsOn && !!hba && hba.enabled !== false && !!hba.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[hba.env ?? "HILITEBAL_OFF"]);
+		const hsAfter = hsOn ? new RegExp(hbaOn ? hba.pattern : (hs.marked_after_pattern ?? "^(\\s*)((?:\\*{1,3}|_{1,3})[^*_\\n]+?(?:\\*{1,3}|_{1,3}))"), "u") : null;
+		// THE «[end highlighting]» CLOSER: the end form typed BEFORE the word («[end highlight]», «[end highlighting]»,
+		// «[/highlight]») closes an opener earlier in the same paragraph — the words between are the marked words, so the
+		// opener waits for it instead of marking the first emphasised run alone (highlighter_span.end_closer; env HILITEENDCLOSE_OFF)
+		const hec = hs?.end_closer;
+		const hecRe = hsOn && hec && hec.enabled !== false && hec.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[hec.env ?? "HILITEENDCLOSE_OFF"]) ? new RegExp(hec.pattern, "iu") : null;
+		const closerAhead = (i) => {
+			if (!hecRe) return false;
+			for (let j = i + 1; j < items.length && items[j]?.block === items[i].block; j++) {
+				const x = items[j];
+				if (x.type !== "tag") continue;
+				if (hecRe.test(innerOf(x))) return true;
+				if (hsReq && hsReq.test(innerOf(x))) return false;   // another opener first: not this one's closer
+			}
+			return false;
+		};
 		const HL0 = String.fromCharCode(0xE002), HL1 = String.fromCharCode(0xE003), HL2 = String.fromCharCode(0xE004);
 		const hsForm = hsOn ? hs.forms.findIndex((f) => f && f.module_pattern && new RegExp(f.module_pattern).test(String(run?.moduleCode ?? ""))) : -1;
 		// a tick glyph on the marked word (the writer's own ✅, or the parser's answer mark) is the mark itself, never learner text:
@@ -421,7 +443,8 @@ class PageAssembler {
 			let a = after.replace(/^\s+/, "");
 			let bText = before;
 			let openerUnmarked = false;
-			if (hsReq && hsForm >= 0 && hsReq.test(innerOf(it)) && hsCloser && hsCloser.test(innerOf(it)) && prev._hlOpenAt != null && prev._hlOpenAt <= bText.length) {
+			if (hsForm >= 0 && prev._hlOpenAt != null && prev._hlOpenAt <= bText.length
+				&& ((hsReq && hsReq.test(innerOf(it)) && hsCloser && hsCloser.test(innerOf(it))) || (hecRe && hecRe.test(innerOf(it))))) {
 				// the CLOSER of an opener / closer pair: the words since the opener are the marked words
 				const from = prev._hlOpenAt;
 				const words = bText.slice(from).trim();
@@ -431,6 +454,9 @@ class PageAssembler {
 					bText = bText.slice(0, from).replace(/\s+$/, "") + " " + hsWrap(words, hsForm, colour);
 					marked++;
 				}
+			} else if (hsReq && hsForm >= 0 && hsReq.test(innerOf(it)) && !(hsCloser && hsCloser.test(innerOf(it))) && closerAhead(i)) {
+				// an opener whose «[end highlighting]» closer follows in the paragraph: the closer marks the words between
+				openerUnmarked = true;
 			} else if (hsReq && hsForm >= 0 && hsReq.test(innerOf(it))) {
 				if (hsCloser && hsCloser.test(innerOf(it))) { /* a closer with no opener: nothing to mark */ } else openerUnmarked = true;
 				// the writer's highlighted word right before the tag: the block's own highlight marks (block.marks, kind «hl» — the

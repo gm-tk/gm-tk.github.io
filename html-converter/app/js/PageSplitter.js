@@ -1669,6 +1669,48 @@ class PageSplitter {
 							.test((peek.parse?.folded ?? "").trim());
 						break;   // judge by the FIRST tag span only
 					}
+					// THE UNTITLED INTRODUCTION SEGMENT. Learner text the writer typed between the overview's [end page] and the
+					// first lesson opener, under no heading and no marker of its own, and closed by its own [end page] that the
+					// lesson opener follows directly («Welcome to an exploration …» + its video): the module's introduction,
+					// kept on the overview — not an implicit page 1.0 that leaves the overview body empty. Data
+					// intro_cluster_forms.untitled_segment; env INTROSEG_OFF.
+					let segmentNext = false;
+					const _ius = _icf?.untitled_segment;
+					if (_icfOn && !introNext && !choiceNext && _ius && _ius.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_ius.env ?? "INTROSEG_OFF"])
+						// an overview that already holds an introduction keeps the segment on a page of its own
+						&& !seenIntro && !current._introMerged && !current.items.some((x) => x._introStart)
+						&& it.type === "black" && _icfClean(it.text)) {
+						const _segHeads = new Set(_ius.blocking_tags ?? ["h1", "h2", "h3", "h4", "h5", "h6", "heading", "sub head", "title bar", "module introduction"]);
+						let end = -1, lines = 0, ok = true;
+						for (let q = i; q < items.length && ok; q++) {
+							const x = items[q];
+							if (x.type === "table") { ok = false; break; }
+							if (x.type === "tag") {
+								const p = x.parse?.primary;
+								if (p?.directive === "PAGE_BOUNDARY") { end = q; break; }
+								if (p && _segHeads.has(p.tag)) ok = false;
+								continue;
+							}
+							if (_icfClean(x.text)) lines++;
+						}
+						if (ok && end > i && lines <= (_ius.max_lines ?? 6) && items[end].parse.primary.tag === "end page") {
+							let q = end + 1;
+							while (q < items.length && items[q].type === "black" && !String(items[q].text ?? "").trim()) q++;
+							segmentNext = q < items.length && items[q].type === "tag"
+								&& items[q].parse?.primary?.directive === "PAGE_BOUNDARY" && items[q].parse.primary.tag === "lesson";
+						}
+					}
+					if (segmentNext) {
+						run.AddNote("info", "PageSplitter",
+							"[end page] on the overview disregarded — the untitled learner text before the first lesson is the module introduction (intro_cluster_forms.untitled_segment).");
+						current._introMerged = true;
+						if (_icf?.menu_boundary === true
+							&& !(typeof process !== "undefined" && process.env && process.env.INTROMENU_OFF)) it._introStart = true;
+						closed = false;
+						current.items.push(it);
+						continue;
+					}
 					if (introNext || choiceNext) {
 						run.AddNote("info", "PageSplitter", choiceNext
 							? "[end page] on the overview disregarded — the [LESSON Choice page] tile navigation stays on page 0.0 (choice_page_tiles.merge_into_overview)."

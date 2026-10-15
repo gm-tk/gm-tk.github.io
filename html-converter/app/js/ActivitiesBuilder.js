@@ -348,22 +348,45 @@ class ActivitiesBuilder {
 		const wordRe = (a, g = "") => new RegExp(`(^|[^\\p{L}\\p{N}])${esc(a)}(?=$|[^\\p{L}\\p{N}])`, "iu" + g);
 		const aRe = wordRe(alias);
 		const text = String(it.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ");
-		const br = [...text.matchAll(/\[([^[\]]*)\]?/g)].map((m) => m[1]).find((b) => aRe.test(b));
-		if (br == null) return plain;
-		let own = br.replace(aRe, "$1");
-		for (const w of Object.keys(map ?? {})) if (typeof map[w] === "string" && w.trim()) own = own.replace(wordRe(w.trim(), "g"), "$1");
-		own = own.replace(/\s+/g, " ").replace(/^[\s:;,.\-–—]+/, "").trim();
-		const fold = own.toLowerCase();
-		if (!own || !leftover.every((w) => fold.includes(String(w).toLowerCase()))) return plain;
+		const all = [...text.matchAll(/\[([^[\]]*)\]?/g)].map((m) => m[1]);
+		// THE FOLDED MATCH. The leftover words are folded by the tag normaliser (straight apostrophes, no macrons), so the
+		// writer's bracket is folded the same way before the two are compared («someone else’s», «ākonga» no longer fail it),
+		// and when the words sit in a bracket of the span other than the primary tag's own («[Activity 1B] [Words in red …
+		// Include the answers …]») that bracket is tried next. Data red_flag.note_words_whole.folded_match; env NOTEWORDSFOLD_OFF.
+		const fm = c.folded_match;
+		const fmOn = !!fm && fm.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[fm.env ?? "NOTEWORDSFOLD_OFF"]);
+		const F = fmOn ? (x) => Utils.Fold(String(x)) : (x) => String(x).toLowerCase();
+		const first = all.find((b) => aRe.test(b));
+		const cands = fmOn ? [first, ...all.filter((b) => !aRe.test(b))].filter((b) => b != null) : (first == null ? [] : [first]);
+		// THE WRITER'S REQUEST SENTENCE. A bracket whose primary tag word sits mid-sentence («[Please create a mix and match
+		// activity 1 entitled …]», «[Numeracy – put this in an alert box on the right]») is the writer's sentence, not a tag
+		// head: the note keeps it whole — the tag word and the modifier words stay — and the words the tag normaliser
+		// de-numbers («1C», «1-5», «7.0») are admitted beside the other tags' aliases. Data
+		// red_flag.note_words_whole.sentence_words; env NOTEWORDSSENT_OFF.
+		const sw = c.sentence_words;
+		const swOn = fmOn && !!sw && sw.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[sw.env ?? "NOTEWORDSSENT_OFF"]);
 		// only the words a second tag's alias took away come back: every word the bracket adds to the leftover must belong to
 		// such an alias found in it (an activity number, a capital, a colon — nothing else changes)
-		const words = (s) => String(s).toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [];
+		const words = (s) => F(s).match(/[\p{L}\p{N}]+/gu) ?? [];
 		const have = new Set(words(plain));
-		const extra = words(own).filter((w) => !have.has(w));
-		if (!extra.length) return plain;
-		const aliasWords = new Set(tags.filter((t) => t !== prim).map((t) => String(t.alias ?? "").trim())
-			.filter((a) => a && wordRe(a).test(own)).flatMap(words));
-		return extra.every((w) => aliasWords.has(w)) ? own : plain;
+		for (const br of cands) {
+			const at = aRe.exec(br);
+			const sentence = swOn && !!at && /[\p{L}\p{N}]/u.test(br.slice(0, at.index + at[1].length));
+			let own = sentence ? br : br.replace(aRe, "$1");
+			if (!sentence) for (const w of Object.keys(map ?? {})) if (typeof map[w] === "string" && w.trim()) own = own.replace(wordRe(w.trim(), "g"), "$1");
+			own = own.replace(/\s+/g, " ").replace(/^[\s:;,.\-–—]+/, "").trim();
+			const fold = F(own);
+			if (!own || !leftover.every((w) => fold.includes(F(w)))) continue;
+			const extra = words(own).filter((w) => !have.has(w));
+			if (!extra.length) return plain;
+			const aliasWords = new Set(tags.filter((t) => t !== prim || sentence).map((t) => String(t.alias ?? "").trim())
+				.filter((a) => a && wordRe(a).test(own)).flatMap(words));
+			if (sentence) for (const w of Object.keys(map ?? {})) if (w.trim() && wordRe(w.trim()).test(own)) words(w).forEach((x) => aliasWords.add(x));
+			return extra.every((w) => aliasWords.has(w) || (swOn && /\d/.test(w))) ? own : plain;
+		}
+		return plain;
 	};
 
 	/**

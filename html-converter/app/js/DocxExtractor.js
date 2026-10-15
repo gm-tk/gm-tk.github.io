@@ -2576,6 +2576,12 @@ class DocxExtractor {
 			});
 		}
 		const segments = xml.split(/(<w:hyperlink [^>]*>|<\/w:hyperlink>)/);
+		// a hyperlink whose target is no address («about:blank») reads as plain words (data hyperlink_targets.dead_target_plain;
+		// env DEADHREF_OFF)
+		const dtp = rules.hyperlink_targets?.dead_target_plain;
+		const deadRe = dtp && dtp.enabled !== false && dtp.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[dtp.env || "DEADHREF_OFF"])
+			? new RegExp(dtp.pattern, "i") : null;
 		let currentLink = null;
 		let inHyperlink = false;   // inside any <w:hyperlink> (an anchor link has no r:id) — its runs' underline is the link's own
 		for (const seg of segments) {
@@ -2583,6 +2589,7 @@ class DocxExtractor {
 			if (openLink) {
 				const rId = openLink[1].match(/r:id="([^"]+)"/)?.[1];
 				currentLink = rId ? (rels.get(rId) ?? null) : null;
+				if (deadRe && currentLink && deadRe.test(String(currentLink))) currentLink = null;
 				inHyperlink = true;
 				continue;
 			}

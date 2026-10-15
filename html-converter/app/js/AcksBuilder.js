@@ -155,7 +155,7 @@ class AcksBuilder {
 				if (key && seenLines.has(key)) continue;
 				if (key) seenLines.add(key);
 				if (e.todoComment) html.push(e.todoComment);
-				html.push(e.html);
+				html.push(this.#plainNonAddress(e.html));
 			}
 			html.push(g.group_element_close);
 		}
@@ -1097,6 +1097,26 @@ class AcksBuilder {
 		}
 
 		return groups;
+	};
+
+	static #plainNonAddress(s) {
+		// THE LINK WHOSE ADDRESS IS NOT AN ADDRESS. The Media List's link column sometimes holds the writer's words instead of
+		// a web address — «N/A», «TBC», «In folder», «CS created», «Microsoft 365 Co-pilot», a permission note — and the entry
+		// templates put whatever is there into href, so the acknowledgement showed a dead link to a page named «N/A». A link
+		// whose href is not an address (a scheme, «www.», a domain, or a site path) keeps its words as plain text.
+		// Data Acks_Formats.non_address_link_plain; env ACKSDEADLINK_OFF.
+		const c = DataService.Data.AcksFormats?.non_address_link_plain;
+		if (!c || c.enabled === false || !s
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "ACKSDEADLINK_OFF"])) return s;
+		const addr = new RegExp(c.address_pattern ?? "^(?:[a-z][a-z0-9+.-]*:\\/\\/|mailto:|www\\.|\\/|\\.\\.?\\/|#|[a-z0-9-]+(?:\\.[a-z0-9-]+)+(?:[\\/?#:]|$))", "i");
+		// a link to a file on the writer's own computer («file:///C:/Users/…») is dropped with the separator before it
+		// (non_address_link_plain.local_file_drop; env ACKSLOCALFILE_OFF)
+		const lf = c.local_file_drop;
+		const localRe = lf && lf.enabled !== false && lf.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[lf.env ?? "ACKSLOCALFILE_OFF"])
+			? new RegExp(lf.pattern, "i") : null;
+		if (localRe) s = String(s).replace(/(?:,\s*)?<a href="([^"]*)" target="_blank">[^<]*<\/a>/g, (m, href) => localRe.test(href) ? "" : m);
+		return String(s).replace(/<a href="([^"]*)" target="_blank">([^<]*)<\/a>/g, (m, href, words) => addr.test(href.trim()) ? m : words);
 	};
 
 	/**

@@ -2500,8 +2500,13 @@ class MenuBuilder {
 			if (bucket && bucket.bullets.length) {
 				// bullet punctuation, the human's pane convention: every bullet
 				// bare (its trailing comma/full-stop dropped), only the FINAL
-				// one closing with a full stop
+				// one closing with a full stop — unless the registry row keeps
+				// each bullet as the writer typed it (row.bullet_stops "as_typed";
+				// env MENUSTOPKEEP_OFF)
+				const asTyped = row.bullet_stops === "as_typed"
+					&& !(typeof process !== "undefined" && process.env && process.env.MENUSTOPKEEP_OFF);
 				const bs = bucket.bullets.map((b, i) => {
+					if (asTyped) return String(b).trim();
 					let t = String(b).trim().replace(/[.,]$/, "");
 					if (i === bucket.bullets.length - 1 && /[\p{L}\p{N}]$/u.test(t)) t += ".";
 					return t;
