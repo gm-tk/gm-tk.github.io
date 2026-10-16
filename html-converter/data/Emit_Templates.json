@@ -153,6 +153,16 @@
 		"note": "Ground-truthed canonical form (Tag_Interpretation_Rules.md §4.1): always a block <p>, inline style with no trailing semicolon (the sanctioned inline-CSS exception), fixed greppable prefix. The writer's own DEV: cue stays inside {text}; a leading CS-family cue is folded into the prefix by cs_dedupe to avoid a doubled 'CS: CS …'. Styling is identical across form/cs_form — only the prefix word differs (still BOLD RED on the front-end)."
 	},
 	"elements": {
+		"tail_punct_rejoin": {
+			"enabled": true,
+			"env": "TAILPUNCT_OFF",
+			"punct_pattern": "^\\s*[.!?;:,]+\\s*$",
+			"ends_pattern": "[.!?;:,…)\\]»”\"'’]\\s*$",
+			"bracket_pattern": "^\\s*\\[",
+			"skip_tags": ["format", "data marker"],
+			"skip_bracket_pattern": "^\\s*\\[\\s*(hover|definition|info\\s*trigger|bold|italic|underline|highlight)",
+			"_doc": "THE WRITER'S CLOSING PUNCTUATION AFTER A RED BRACKET STAYS WITH THE SENTENCE. A paragraph that ends in a red bracket followed by the writer's black stop («… Reading and Writing [placeholder link for JPFUN03 Novice].», «… the dance FUNdamentals lesson [link to FUNdamentals].») arrives as the paragraph's text item and then the bracket's own tag item carrying the stop as its trailing text — and a bracket that renders nothing in place took the stop with it. When the bracket is the paragraph's last item, its trailing text is only closing punctuation (punct_pattern) and the paragraph's text does not already end in punctuation (ends_pattern), the punctuation joins the end of the paragraph's text. Only a whole bracket (bracket_pattern): red words and red letters inside the sentence keep their own handling; never a bracket the converter acts on with the words around it (skip_tags: a formatting request, a definition marker; skip_bracket_pattern: hover, definition and formatting requests). Never a widget's member."
+		},
 		"dual_language": {
 			"enabled": true,
 			"audio_word": {
@@ -3184,6 +3194,15 @@
 		"_members_rule": {
 			"enabled": true,
 			"consumption": "read",
+			"read_needs_words": {
+				"enabled": false,
+				"env": "MEMBERSSHOWN_OFF",
+				"applies_to": ["accordion", "clickDrop", "tabs", "modal", "carousel"],
+				"min_words": 6,
+				"ratio": 0.3,
+				"cell_ratio": 0.3,
+				"_doc": "A READ IS NOT A SHOWING. The read tracker counts a member consumed the moment the builder reads its content, so a member the builder looked at and left out vanished with no trace: JPFUN02 1D's absorbed eight-question quiz table inside a built click-drop item, AGH1009's lead bullets and paragraph before an accordion's first heading, BLL255's click-drop word table. With this flag a READ member counts as consumed only when its words are in the build — its visible text, alt / title / info / data attributes and the instruction notes: a line of min_words+ words by its word shingles (ratio), a table by its cells (cell_ratio of its cells of two or more words, each whole or by half its 3-word shingles). A member that fails is classified as an unread one: prose before or after the consumed members renders around the widget, anything else makes the build decline to the hand-off box that keeps every member."
+			},
 			"content_keys": ["text", "blackAfter", "block", "nestedBundle"],
 			"image_member_render": true,
 			"reference_title_pattern": "stock\\s+(?:illustration|photo|vector|image)s?\\b|download\\s+image\\s+now|\\b(?:istock|shutterstock|getty\\s*images|unsplash|pexels)\\b|[\u2013\u2014-]\\s*youtube\\s*\\)?\\s*$",
@@ -4337,7 +4356,7 @@
 		},
 		"tabs": {
 			"button_after_set": {
-				"enabled": false,
+				"enabled": true,
 				"env": "SETJOURNALBTN_OFF",
 				"go_journal_only": true,
 				"_doc": "THE GO-TO-JOURNAL BUTTON CLOSING A BUILT TABS SET IS THE PAGE'S JOURNAL LINK, NOT A NOTE. A run of [button] members after the set's last other member, each a go-to-journal button («[Button] Go to your journal.»), is taken out before any tabs form builds and, when one builds, handed back to the page, which renders it after the set (the go-journal heading); every other button keeps the tabs forms' own handling (a note)."
@@ -4894,7 +4913,7 @@
 					"env": "MODALBTNAFTER_OFF",
 					"_doc": "THE BUTTON AFTER A BUILT CLICK-DROP SET IS THE PAGE'S BUTTON, NOT A NOTE. A [button] member after the last item delimiter (the BLL Inquiry tabs' «[Button] Upload to dropbox» after their «Optional activities» click-drops) is handed back to the page and renders through the body path right after the built set, as the gold builds it; a button among the items stays a note (note_tags). The same toggle reverses the pop-out-set rule (modal_sets.button_after_set).",
 					"go_journal": {
-						"enabled": false,
+						"enabled": true,
 						"env": "SETJOURNALBTN_OFF",
 						"_doc": "A go-to-journal button after the last item delimiter is handed back with the others and renders as the page's go-journal heading; without this it stays a note."
 					}

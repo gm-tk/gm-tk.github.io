@@ -1039,14 +1039,51 @@ class InteractiveBuilder {
 			const us = urlsOf(t); if (!us.length) return null;                      // no url → not a media line
 			return us.every((u) => { const id = vidId(u); return rawHtml.includes(u) || (id && rawHtml.includes(id)) || imgKeys(u).some((k) => lowHtml.includes(k.toLowerCase())); });
 		};
-		const isRead = (m, k) => Boolean(track.touched[k]) || (m.type === "table" && track.tablesRead() && tables.includes(m.block));
+		// a READ is not a showing: a member the build read counts as consumed only when its words are in the build (an
+		// absorbed quiz's table, a lead paragraph the builder looked at and left out) — _members_rule.read_needs_words;
+		// env MEMBERSSHOWN_OFF. The build's words here include the info / data attributes a hover or a widget keeps them in.
+		const rn = cfg.read_needs_words;
+		const penv = (typeof process !== "undefined" && process.env) ? process.env : {};
+		const rnOn = !!rn && rn.enabled !== false && !penv[rn.env ?? "MEMBERSSHOWN_OFF"]
+			&& (!Array.isArray(rn.applies_to) || rn.applies_to.includes(type));
+		const shown = rnOn ? norm(stripped.replace(/<[^>]+>/g, " ") + " "
+			+ [...stripped.matchAll(/\b(?:alt|title|aria-label|info|src|data-[a-z-]+)="([^"]*)"/g)].map((m) => m[1]).join(" ") + " "
+			+ (bundle.instructions ?? []).join(" ")) : "";
+		const shownRatio = (t, k3, r) => {
+			const w = t.split(" ").filter(Boolean);
+			let hit = 0, n = 0;
+			for (let i = 0; i + k3 <= w.length; i++) { n++; if (shown.includes(w.slice(i, i + k3).join(" "))) hit++; }
+			return n ? hit / n >= r : shown.includes(t);
+		};
+		const memberShown = (m) => {
+			if (m.type === "nested") return true;
+			if (m.type === "table") {
+				const cells = (m.block?.rows ?? []).flatMap((r) => (r.cells ?? r ?? []).map((c) => words(typeof c === "string" ? c : c?.text ?? "")))
+					.filter((c) => nWords(c) >= 2);
+				if (!cells.length) return true;
+				return cells.filter((c) => shown.includes(c) || shownRatio(c, 3, 0.5)).length / cells.length >= (rn.cell_ratio ?? 0.3);
+			}
+			// a media member's words are its title (the video's, the picture's), never page text
+			if (m.type === "tag" && mediaTags.has(String(m.parse?.primary?.tag ?? m.tag ?? "").toLowerCase())) return true;
+			const raw = m.type === "tag" ? `${m.text ?? ""} ${m.blackAfter ?? ""}` : String(m.text ?? "");
+			// a media line whose address is in the build is shown (its title is the video's, not the page's)
+			if (mediaConsumed(`${raw} ${(m.block?.links ?? []).map((l) => l?.target ?? "").join(" ")}`) === true) return true;
+			const t = words(raw);
+			if (nWords(t) < (rn.min_words ?? 6)) return true;
+			return shownRatio(t, K, rn.ratio ?? 0.3);
+		};
+		const isRead = (m, k) => {
+			const read = Boolean(track.touched[k]) || (m.type === "table" && track.tablesRead() && tables.includes(m.block));
+			return read && (!rnOn || memberShown(m));
+		};
 		const cls = [];
 		for (let k = 0; k < members.length; k++) {
 			const m = members[k];
 			if (!m) { cls.push({ kind: "skip" }); continue; }
 			if (isRead(m, k)) { cls.push({ kind: "consumed" }); continue; }
-			// a button the builder handed back renders after the widget (modal_sets.button_after_set) — accounted for, not placed
-			if (bundle._afterButtons?.includes(m)) { cls.push({ kind: "skip" }); continue; }
+			// a button the builder handed back renders after the widget (modal_sets.button_after_set) — accounted for, not placed;
+			// the builder held the read tracker's proxy of the member, so the member itself is compared
+			if (bundle._afterButtons?.some((b) => this.#peekMember(b) === this.#peekMember(m))) { cls.push({ kind: "skip" }); continue; }
 			if (m.type === "table") { cls.push({ kind: "decline", why: "a table the build ignored" }); continue; }
 			if (m.type === "nested") { cls.push({ kind: "decline", why: "a nested widget the build did not use" }); continue; }
 			if (m.type === "black") {

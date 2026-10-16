@@ -869,10 +869,51 @@ class ContentConverter {
 	 * @param {TagNormaliser} normaliser - for original-case embedded text
 	 * @returns {Object} { bodyHtml, menu, titleBar }
 	 */
+	/**
+	 * The writer's closing punctuation typed after a red bracket that ends the paragraph («… Reading and Writing
+	 * [placeholder link …].»): the bracket arrives as its own item carrying the stop as its trailing text, and a bracket
+	 * that renders nothing in place took the stop with it. When the bracket is its paragraph's last item and its trailing
+	 * text is only closing punctuation, the punctuation joins the end of the paragraph's text — unless that text already
+	 * ends in punctuation. A widget's member is never touched. Data elements.tail_punct_rejoin; env TAILPUNCT_OFF.
+	 */
+	static #rejoinTailPunct(page, bundles) {
+		const cfg = DataService.Data.EmitTemplates.elements?.tail_punct_rejoin;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (!cfg || cfg.enabled === false || env[cfg.env ?? "TAILPUNCT_OFF"]) return;
+		const items = page?.items ?? [];
+		const inBundle = new Set();
+		for (const b of bundles ?? []) for (const m of [...(b.openerItems ?? []), ...(b.memberItems ?? [])]) inBundle.add(m);
+		const punct = new RegExp(cfg.punct_pattern ?? "^\\s*[.!?;:,]+\\s*$");
+		const ends = new RegExp(cfg.ends_pattern ?? "[.!?;:,)\\]]\\s*$");
+		const bracket = new RegExp(cfg.bracket_pattern ?? "^\\s*\\[");
+		const skipTags = new Set(cfg.skip_tags ?? []);
+		const skipBracket = cfg.skip_bracket_pattern ? new RegExp(cfg.skip_bracket_pattern, "i") : null;
+		const words = (x) => String((x.type === "tag" ? x.blackAfter : x.text) ?? "").trim();
+		for (let k = 0; k < items.length; k++) {
+			const it = items[k];
+			if (!it || it.type !== "tag" || !it.block || inBundle.has(it) || it._consumed) continue;
+			if (!punct.test(String(it.blackAfter ?? ""))) continue;
+			// a whole bracket only — red words / letters keep their own handling — and never one the converter acts on
+			const brk = String(it.text ?? "");
+			if (!bracket.test(brk) || skipTags.has(it.parse?.primary?.tag) || (skipBracket && skipBracket.test(brk))) continue;
+			if (items.slice(k + 1).some((x) => x && x.block === it.block)) continue;    // the bracket closes its paragraph
+			let j = k - 1;
+			while (j >= 0 && items[j] && items[j].block === it.block && !words(items[j])) j--;
+			const host = j >= 0 ? items[j] : null;
+			if (!host || host.block !== it.block || inBundle.has(host) || host._consumed) continue;
+			const field = host.type === "tag" ? "blackAfter" : "text";
+			const txt = String(host[field] ?? "");
+			if (!txt.trim() || ends.test(txt.replace(/[*_]+\s*$/, ""))) continue;
+			host[field] = txt.replace(/\s+$/, "") + String(it.blackAfter).trim();
+			it.blackAfter = "";
+		}
+	}
+
 	static ConvertPage(page, bundles, run, normaliser) {
 		this.#norm = normaliser;
 		run.handoffPage = page;   // the page a hand-off table box registered now belongs to (BilingualBuilder.UnbuiltBox)
 		const tpl = DataService.Data.EmitTemplates;
+		this.#rejoinTailPunct(page, bundles);
 		const menuType = MenuBuilder.menuTypeFor(page, run);
 
 		// ---- split the stream: what feeds the MENU vs the BODY -----------
