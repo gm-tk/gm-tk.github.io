@@ -3350,7 +3350,7 @@ class ContentConverter {
 						// "widget" mode: the shell replaces the widget itself.
 						if (mtkMode === "lead") { emit(...this.#mtkQuizEmit(bundle.activityOwner, run)); markContent(); }
 						if (mtkMode === "widget") emit(...this.#mtkQuizShellPre(bundle, it, run, bodyItems, stack, renderedHeading));
-						else if (!this.#mtkQuizBundleThin(bundle)) emit(this.#interactivePlaceholder(bundle, run));
+						else if (!this.#mtkQuizBundleThin(bundle)) emit(this.#interactivePlaceholder(bundle, run, { reo: reoMode }));
 						// [MTKquiz] markers riding this bundle (captured member or opener co-tag)
 						// ship their button + To Do note here, inside the still-open box
 						// (CL-0038; see #mtkQuizBundleTail).
@@ -3399,7 +3399,7 @@ class ContentConverter {
 						const mtkShellI = this.#mtkQuizShellBundle(bundle, it);   // see the owned site above ("lead" cannot occur inline)
 						if (mtkShellI === "widget") emit(...this.#mtkQuizShellPre(bundle, it, run, bodyItems, stack, renderedHeading));
 						else if (!this.#mtkQuizBundleThin(bundle)) {
-							const _placeholderHtml = this.#interactivePlaceholder(bundle, run);
+							const _placeholderHtml = this.#interactivePlaceholder(bundle, run, { reo: reoMode });
 							// A built widget whose template OWNS its row (interactive_builders.<type>.own_row — the Pathways persona
 							// pair's two side-by-side columns) and whose HTML is a whole grid row is placed at the top level, outside
 							// the section's content column, as the callouts' own_row form is; inside an activity box it flows as usual.
@@ -3526,6 +3526,16 @@ class ContentConverter {
 					}
 					this.#closeSpanWrap(stack, emit, breakRow); continue;
 				}
+				// A ONE-ROW table of a video or an alert cell (a video beside an alert, an alert beside a picture, a lone
+				// alert or video) is the page's own layout: the video embed and the KB alert boxes in their columns, as the
+				// human builds it, not a raw table in a hand-off box. Null for any other table, and for a result that
+				// would still show a tag. Data body_region.alert_table.cell_row; env TABLECELLROW_OFF.
+				if (!reoMode && !stack.length) {
+					const cellRow = this.#cellLayoutRow(it.block, run);
+					if (cellRow && !this.#htmlLeaksResolvedTag(cellRow)) {
+						breakRow(); parts.push(cellRow); markContent(); this.#closeSpanWrap(stack, emit, breakRow); continue;
+					}
+				}
 				// A LAYOUT-TABLE grid IS its own "row > col" structure already, so at the body
 				// top level it is emitted DIRECTLY — not nested inside the default
 				// "row > col-md-8" content wrapper — matching the human-built version's bare
@@ -3546,7 +3556,7 @@ class ContentConverter {
 					// a consumed bundle takes the standard hand-off box (hand-off only, no build) —
 					// section_grouping.bundle_handoff, env BILHANDOFF_OFF.
 					const sec = BilingualBuilder.bilingualSection(bodyItems, i, run, bundles, this.#norm,
-						(b) => this.#interactivePlaceholder(b, run, { handoffOnly: true }));
+						(b) => this.#interactivePlaceholder(b, run, { handoffOnly: true, reo: true }));
 					if (sec) { breakRow(); parts.push(sec.html); markContent(); this.#closeSpanWrap(stack, emit, breakRow); i = sec.next - 1; continue; }
 					// KB 07B "Activity Structure" (a TRR family dialect): the `Activity NX: ║ Ngohe NX:` intro table
 					// + the [Activity: Embedded] marker table after it (+ its spec tables, the gather below's stops) → ONE activity
@@ -14007,7 +14017,7 @@ class ContentConverter {
 		// writer link inside or beside a built widget would lose its href (AGH1009-7.0's "Yara N-Sensor" beside a
 		// carousel).
 		const wl = this.#widgetLinks(bundle);
-		const built = opts?.handoffOnly ? null : InteractiveBuilder.Build({
+		let built = opts?.handoffOnly ? null : InteractiveBuilder.Build({
 			bundle,
 			run,
 			templates: DataService.Data.EmitTemplates.interactive_builders,
@@ -14048,6 +14058,9 @@ class ContentConverter {
 			// Mode P/D placeholder-image and caption conventions as any other body image.
 			renderImage: (imgItem) => MediaBuilder.image(imgItem, [imgItem], 0, run).join("\n"),
 		});
+		// a bilingual module's flip-card bundle whose table names the card faces builds its reo / eng cards (the
+		// bilingual section's bundles included). Data elements.dual_language.face_cards; env REOFACECARD_OFF.
+		if (built === null && opts?.reo) built = BilingualBuilder.FaceCardBundle(bundle, run, this.#norm);
 		// the capture's own writer requests (see #captureFree) — an un-built
 		// widget hands them to its _interactives.txt entry (ManifestBuilder reads bundle.captureFree); a built one shows each
 		// its output does not already carry as a red Writers Note AFTER the widget.
@@ -14072,8 +14085,11 @@ class ContentConverter {
 			// the heading the writer typed on the opener line ("[Flipcards] [h4] <heading>") leads the widget
 			// (interactive_builders._opener_heading; env OPENERHEAD_OFF)
 			const head = this.#openerHeading(bundle, built, run);
+			// a button the builder handed back (a pop-out set's trailing button, modal.button_after_set) renders through the
+			// body path after the widget
+			const after = (bundle._afterButtons ?? []).flatMap((b) => this.#elementCore(b, [b], 0, null, run)).join("\n");
 			const out = (head?.html ?? "") + built + notes.filter((t) => !head || this.CaptureFold(t) !== head.key)
-				.map((t) => NotesAndComments.redFlag(t, run, "cs")).join("");
+				.map((t) => NotesAndComments.redFlag(t, run, "cs")).join("") + (after ? `\n${after}` : "");
 			// a NESTED render (a widget inside a built widget's pane) adds none: the note would sit inside the parent's
 			// pane, where a literal bracket makes the parent decline its build (as on HPRE301's accordion)
 			if (!capFree || !capFree.length || opts?.nested) return out;
@@ -14522,6 +14538,118 @@ class ContentConverter {
 		const colOpen = Utils.FillTemplate(cfg.side_col_open ?? "<div class=\"{colClass}\">\n<div class=\"alert{modifiers}\">", { colClass, modifiers });
 		const col = colOpen + "\n" + inner.join("\n") + "\n" + (cfg.side_col_close ?? "</div>\n</div>");
 		return { html, col, side: positioned && colClass !== (cfg.default_col ?? "col-12") };
+	};
+
+	/**
+	 * THE ONE-ROW TABLE OF A VIDEO OR AN ALERT CELL IS THE PAGE'S OWN LAYOUT. A writer lays a video beside an alert, an
+	 * alert beside a picture, or boxes a lone alert or video, as a one-row table («[Video] <address> ║ [alert right align]
+	 * [image] <address>», «[Alert] You borrow $500 … ║ Image: iStock RHS: …», a one-cell «[Alert] Say: é é é / …», a
+	 * one-cell «[video][media item 12] <address> / [caption] …»). The grid cannot show a video or an alert cell, so the
+	 * table shipped raw. The human's layout, built here:
+	 *  - a video beside an alert (or an alert whose tag names the right): the other cell in main_col, the alert as the
+	 *    KB sidebar box («alert top») in side_col;
+	 *  - an alert beside a picture: the plain «alert» in main_col, the picture in side_col;
+	 *  - a lone alert: «alert» in single_col; a lone video: its embed (and the cell's other lines) in single_col.
+	 * Cells keep the writer's order. A table with an empty cell, a third cell, or any other cell kind returns null (the
+	 * caller's leak check sends a result that still shows a tag back to the hand-off box too).
+	 * Data body_region.alert_table.cell_row; env TABLECELLROW_OFF.
+	 *
+	 * @param {Object} block - the table block (rows, links)
+	 * @param {ConversionRun} run - the current run
+	 * @returns {string|null} the row's HTML, or null
+	 */
+	static #cellLayoutRow(block, run) {
+		const at = DataService.Data.EmitTemplates.body_region?.alert_table;
+		const cfg = at?.cell_row;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "TABLECELLROW_OFF"]) return null;
+		const rows = block?.rows ?? [];
+		if (rows.length !== 1 || !Array.isArray(rows[0])) return null;
+		const cells = rows[0].map((c) => String(c ?? ""));
+		if (!cells.length || cells.length > 2 || cells.some((c) => !c.trim())) return null;
+		const links = block.links ?? null;
+		const videoRe = new RegExp(cfg.video_url_pattern ?? "youtu\\.?be|youtube\\.com|vimeo\\.com", "i");
+		const urlRe = /https?:\/\/[^\s\]\)"<>]+/g;
+		const alertTags = at.alert_tags ?? ["alert", "important"];
+		const canonOf = (bracket) => { try { return this.#norm.Parse(`[${bracket}]`)?.primary?.tag ?? null; } catch { return null; } };
+		const classify = (cell) => {
+			const parts = TablesAndGrids.cellParts(cell);
+			if (!parts.length) return null;
+			const m = parts[0].match(/^\[([^\]]+)\]/);
+			const canon = m ? canonOf(m[1]) : null;
+			if (canon && alertTags.includes(canon)) return { kind: "alert", parts, lead: m[1] };
+			// a video: the video tag (or a link / numbered media tag) whose own line carries a video address — typed, or the
+			// address of a hyperlink whose words are in the line
+			const own = (parts[0].match(urlRe) ?? []).find((u) => videoRe.test(u))
+				?? (links ?? []).find((l) => l?.target && videoRe.test(l.target) && l.text && parts[0].includes(String(l.text).trim()))?.target;
+			if (own && ((cfg.video_tags ?? ["video"]).includes(canon) || (m && (!canon || canon === "external link")))) {
+				return { kind: "video", parts, url: own };
+			}
+			return { kind: "other", parts };
+		};
+		const k = cells.map((c, ci) => { const x = classify(c); return x ? { ...x, ci } : null; });
+		if (k.some((x) => !x)) return null;
+		const alerts = k.filter((x) => x.kind === "alert");
+		// the cell's Word-numbered items keep their <ol> (the grid's own record); a fragment holding several elements is split into lines
+		const renderParts = (parts, ci) => TablesAndGrids.renderCellParts(parts.join(" / "), run, this.#norm, links,
+			TablesAndGrids.gridCellNumbered(block, rows, 0, ci)).filter(Boolean).join("\n").split("\n").filter((h) => h.trim());
+		const renderVideo = (x) => {
+			const p0 = x.parts[0];
+			const lead = (p0.match(/^(?:\s*\[[^\]]+\])+/) ?? [""])[0];
+			const words = p0.slice(lead.length).replace(urlRe, " ").replace(/__/g, "").replace(/\s+/g, " ").trim();
+			// a YouTube Short keeps its square frame (the same shorts_embed the slideshow builds)
+			const sid = cfg.shorts_id_re && cfg.shorts_embed ? x.url.match(new RegExp(cfg.shorts_id_re))?.[1] : null;
+			if (sid) return [Utils.FillTemplate(cfg.shorts_embed, { videoId: sid }), ...renderParts(x.parts.slice(1), x.ci)];
+			const it = { type: "tag", text: lead.trim(), blackAfter: words, block: { links: [] }, _mediaUrl: x.url };
+			const frags = MediaBuilder.media(it, [it], 0, "video", run, this.#norm);
+			return frags.length ? [...frags, ...renderParts(x.parts.slice(1), x.ci)] : null;
+		};
+		const renderAlert = (x, side) => {
+			const p0 = x.parts[0].replace(/^\s*\[[^\]]+\]\s*/, "");
+			const inner = renderParts([p0, ...x.parts.slice(1)].filter((p) => p.trim()), x.ci);
+			if (!inner.length) return null;
+			let mods = side ? (cfg.side_alert_modifiers ?? " top") : "";
+			for (const [kw, cls] of Object.entries(at.extra_modifier_keywords ?? {})) {
+				if (new RegExp(`\\b${kw}\\b`, "i").test(x.lead) && !mods.includes(cls.trim())) mods += cls;
+			}
+			return [`<div class="alert${mods}">`, cfg.inner_open ?? "<div class=\"row\">\n<div class=\"col-12\">", ...inner,
+				cfg.inner_close ?? "</div>\n</div>", "</div>"];
+		};
+		const col = (cls, inner) => `<div class="${cls}">\n${inner.join("\n")}\n</div>`;
+		const row = (cols) => `<div class="row">\n${cols.join("\n")}\n</div>`;
+		if (k.length === 1) {
+			const x = k[0];
+			const inner = x.kind === "alert" ? renderAlert(x, false) : x.kind === "video" ? renderVideo(x) : null;
+			return inner ? row([col(cfg.single_col ?? "col-md-8 col-12", inner)]) : null;
+		}
+		if (alerts.length !== 1) return null;
+		const a = alerts[0], o = k.find((x) => x !== a);
+		const rightRe = new RegExp(cfg.right_pattern ?? "\\b(?:right|rhs|rhc)\\b", "i");
+		let mainInner, sideInner, alertIsSide;
+		if (o.kind === "video" || rightRe.test(a.lead)) {
+			mainInner = o.kind === "video" ? renderVideo(o) : renderParts(o.parts, o.ci);
+			sideInner = renderAlert(a, true);
+			alertIsSide = true;
+		} else {
+			// an alert beside a picture: the picture cell must render as pictures only (no learner text of its own); a cell
+			// typed as a picture label and its address («Image: iStock RHS: <words>: <address>») is the cell picture
+			let pic = renderParts(o.parts, o.ci);
+			const whole = o.parts.join(" ");
+			if (!pic.some((h) => /<img\b/.test(h)) && new RegExp(cfg.picture_label_pattern ?? "^\\s*image\\b", "i").test(whole)
+				&& /https?:\/\//.test(whole)) pic = TablesAndGrids.cellImage(whole, run, links);
+			const visible = pic.filter((h) => !/class="cv2-note"/.test(h)).join(" ").replace(/<!--[\s\S]*?-->/g, " ").replace(/<[^>]+>/g, " ").trim();
+			if (!pic.some((h) => /<img\b/.test(h)) || visible) return null;
+			mainInner = renderAlert(a, false);
+			sideInner = pic;
+			alertIsSide = false;
+		}
+		if (!mainInner?.length || !sideInner?.length) return null;
+		const main = cfg.main_col ?? "col-md-8 col-12", side = cfg.side_col ?? "col-md-4 col-12";
+		const byCell = k.map((x) => {
+			const isSide = (x === a) === alertIsSide;
+			return col(isSide ? side : main, isSide ? sideInner : mainInner);
+		});
+		return row(byCell);
 	};
 
 	/**

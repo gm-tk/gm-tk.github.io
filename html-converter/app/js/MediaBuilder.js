@@ -602,6 +602,28 @@ class MediaBuilder {
 			keepRaw = keepRaw.split("\n").filter((L) => L.trim() !== followLinkLine).join("\n");
 		}
 		const rest = this.stripMediaResidue(keepRaw);
+		// THE LEARNER'S «WATCH …» LINE: a built video's own tag-line words that open with an instruction verb are the
+		// learner's line, not the title — kept as a paragraph BEFORE the embed, the address stripped
+		// (elements.video_embed_title_drop.instruction_keep; env VIDINSTRKEEP_OFF)
+		// Only the tag line's FIRST paragraph is the title: the paragraphs the element's own text carries after a blank line
+		// are the content that follows the video, kept after the embed (instruction_keep.later_paragraphs).
+		const ik = tpl.elements?.video_embed_title_drop?.instruction_keep;
+		if (dropTitleOn && kind === "video" && builtVideoEmbed && ik && ik.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ik.env ?? "VIDINSTRKEEP_OFF"])) {
+			// an emphasis run the writer closed after the address («*Watch this video … https://…*») keeps its closing marker
+			const unlink = (s) => this.stripMediaResidue(String(s).replace(/\s*(https?:\/\/[^\s\]\)"<>]+?)([*_]+)(?=\s|$)/g, "$2"));
+			const paras = String(own).split(/\n[ \t]*\n/);
+			const line = unlink(paras[0]).trim();
+			const plain = line.replace(/[*_]/g, "").replace(/^[\s“"'‘]+/, "");
+			if (plain && new RegExp(ik.pattern ?? "^(?:watch|view)\\b", "i").test(plain)) {
+				out.unshift(...ListsAndRuns.renderBlackText(line, run, it.block?.links));
+			}
+			// a later paragraph that is only the writer's lesson label («**LESSON 2**» before the next lesson) is not page text
+			const skipRe = ik.later_skip_pattern ? new RegExp(ik.later_skip_pattern, "i") : null;
+			const later = ik.later_paragraphs !== false ? paras.slice(1).map((p) => unlink(p).trim())
+				.filter((p) => p && !(skipRe && skipRe.test(p.replace(/[*_]/g, "").trim()))).join("\n\n") : "";
+			if (later) out.push(...ListsAndRuns.renderBlackText(later, run, it.block?.links));
+		}
 		// a gathered line that is wholly a titled video link keeps that link (see WholeLineVideoLinks), so the page's
 		// video-line pass can build its embed
 		const _wl = rest ? this.WholeLineVideoLinks(it._gatheredLinks ?? [], rest) : null;

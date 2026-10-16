@@ -164,7 +164,7 @@ class BilingualBuilder {
 		// content_table_guard.
 		const guard = cfg.content_table_guard;
 		if (guard && guard.enabled !== false
-			&& /\[\s*(?:interactive|flip\s?cards?|carousel|audio\s?hover|drop\s?down|multi(?:ple)?\s?choice|word\s?(?:find|select)|memory\s?game|radio\s?button|sketcher|drag\s?and\s?drop|word\s?drag|reorder|crossword)\b/i.test(block.text || "")) {
+			&& /\[\s*(?:interactive|flip\s?cards?|carousel|audio\s?hover|drop\s?down|multi(?:ple)?\s?choice|word\s?(?:find|select)|memory\s?game|radio\s?button|sketcher|drag\s?and\s?drop|word\s?drag|reorder|crossword)\b/i.test(this.#widgetText(block))) {
 			html += "\n" + this.UnbuiltBox(`<p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) — bilingual widget embedded in the content table; develop from the source table.</p>`,
 				block, run, "a widget the bilingual content table names inline — the table below is its source");
 		}
@@ -245,7 +245,14 @@ class BilingualBuilder {
 			&& !(typeof process !== "undefined" && process.env && process.env.REONEST_OFF);
 		const out = [];
 		const pv = this.#proverbCfg();   // null when off
+		const fc = this.#faceCardCfg();   // null when off
 		for (let r = start; r < rows.length; r++) {
+			// THE CARD TABLE WHOSE HEADER NAMES THE FACES: the header row (with the lone [Flipcard] row before it) and the card
+			// rows under it are one flip-card set, not English | Māori prose. Data dual_language.face_cards; env REOFACECARD_OFF.
+			if (fc) {
+				const set = this.#faceCardSet(rows, r, run, norm, block, fc);
+				if (set) { out.push(set.html); if (block) block._faceCardsBuilt = true; r = set.end; continue; }
+			}
 			// KB 07B "Whakatauki / Proverb": a `[H1] Proverb ║ [H1] Whakataukī` heading row is dropped and the
 			// NEXT row renders as ONE div.whakatauki (proverb + author inside, commentary after). Data
 			// dual_language.proverb_box; env PROVERBBOX_OFF.
@@ -643,7 +650,8 @@ class BilingualBuilder {
 					inner.push(...r);
 					// a content table that REFERENCES an interactive inline → keep a cv2 marker AND box
 					// the section (the human builds that widget inside the div.activity).
-					if (guardOn && this.embeddedWidgetRe.test(nx.block.text || "")) {
+					if (nx.block._faceCardsBuilt) hasWidget = true;   // the built card set is the section's widget
+					if (guardOn && this.embeddedWidgetRe.test(this.#widgetText(nx.block))) {
 						inner.push(this.UnbuiltBox(`<p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) — bilingual widget embedded in the content table; develop from the source table.</p>`,
 							nx.block, run, "a widget the bilingual content table names inline — the table below is its source"));
 						hasWidget = true;
@@ -1392,7 +1400,9 @@ class BilingualBuilder {
 			let canon = null, rest = part;
 			if (m) { try { canon = norm.Parse(`[${m[1]}]`)?.primary?.tag ?? null; } catch { canon = null; } rest = m[2]; }
 			if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?(?:image|photo)\s*\]/.test(low)) {
-				flush(); for (const x of TablesAndGrids.cellImage(part, run)) pushM(x);
+				// the picture is named from the table's link on its words (an iStock picture keeps its id) —
+				// dual_language.cell_image_links; env REOCELLIMGLINK_OFF
+				flush(); for (const x of TablesAndGrids.cellImage(part, run, this.#cellImageLinks(links))) pushM(x);
 			} else if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?audio[^\]]*\]/.test(low)) {
 				flush();
 				// the writer's WORD before the audio marker is the KB's inline audio trigger (dual_language.audio_word;
@@ -1480,6 +1490,141 @@ class BilingualBuilder {
 			return { text, media: media.filter((x, k) => keep[k]), mediaPos: mpos.filter((x, k) => keep[k]) };
 		}
 		return { text, media, mediaPos: mpos };
+	};
+
+	/**
+	 * The data block dual_language.face_cards, or null when it is off (data flag / env REOFACECARD_OFF).
+	 * @returns {Object|null}
+	 */
+	static #faceCardCfg() {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.face_cards;
+		if (!c || c.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOFACECARD_OFF"])) return null;
+		return c;
+	};
+
+	/**
+	 * A FLIP-CARD BUNDLE OF A CARD TABLE WHOSE HEADER NAMES THE FACES (a bilingual module's): the bundle's one face table
+	 * builds the whole set (#faceCardSet, every row of the table); a table that only declares the widget («Activity Type: ║
+	 * [Embedded] [Flipcard]» — no words once its tags and the declaration_pattern words are gone) goes with it. Any other
+	 * member with words, a second set, or a set that leaves rows unread keeps the hand-off box (null).
+	 * Data dual_language.face_cards; env REOFACECARD_OFF.
+	 * @param {Object} bundle - the captured bundle
+	 * @param {ConversionRun} run - the run
+	 * @param {TagNormaliser} norm - the run's normaliser
+	 * @returns {string|null} the card set's HTML, or null
+	 */
+	static FaceCardBundle(bundle, run, norm) {
+		const fc = this.#faceCardCfg();
+		if (!fc || bundle?.type !== "flipCard" || bundle?.extraTypes?.length) return null;
+		const decl = new RegExp(fc.declaration_pattern ?? "^\\s*activity\\s*type\\s*:?\\s*$", "i");
+		const words = (c) => String(c ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\[[^\]]*\]/g, " ")
+			.replace(/\*/g, "").replace(/\s+/g, " ").trim();
+		let html = null;
+		for (const m of (bundle.memberItems ?? [])) {
+			if (m?.type === "table") {
+				const rows = m.block?.rows ?? [];
+				const set = rows.length ? this.#faceCardSet(rows, 0, run, norm, m.block, fc, true) : null;
+				if (set) {
+					if (html !== null || set.end !== rows.length - 1) return null;
+					html = set.html; m.block._faceCardsBuilt = true; continue;
+				}
+				if (rows.flat().map(words).some((w) => w && !decl.test(w))) return null;
+				continue;
+			}
+			if (m?.type === "tag") { if (String(m.blackAfter ?? "").trim()) return null; continue; }
+			if (m?.type === "black") { if (String(m.text ?? "").trim()) return null; continue; }
+			return null;
+		}
+		// the set read every line of the bundle's tables: their red face labels are realised, not notes for the developer
+		if (html !== null) bundle.realisedTables = true;
+		return html;
+	};
+
+	/**
+	 * The table's links a bilingual cell picture is named from, or null when dual_language.cell_image_links is off (data
+	 * flag / env REOCELLIMGLINK_OFF) — the picture then takes its words' slug, as before.
+	 * @param {Array<Object>|null} links - the table block's hyperlinks
+	 * @returns {Array<Object>|null}
+	 */
+	static #cellImageLinks(links) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.cell_image_links;
+		if (!c || c.enabled === false || (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOCELLIMGLINK_OFF"])) return null;
+		return links ?? null;
+	};
+
+	/**
+	 * The words a table's embedded-widget test reads: its text, less the flip-card request whose set was built from it.
+	 * @param {Object} block - a table block
+	 * @returns {string}
+	 */
+	static #widgetText(block) {
+		const t = String(block?.text || "");
+		return block?._faceCardsBuilt ? t.replace(/\[\s*flip\s*-?\s*cards?\s*\]/gi, " ") : t;
+	};
+
+	/**
+	 * THE CARD TABLE WHOSE HEADER NAMES THE FACES. At row r (or at the row after a lone «[Flipcard]» row), a header row
+	 * with an «Image front» column and one «Text back» column — or an English and a Māori «Text back» column — opens a
+	 * flip-card set: one card per following row, the front the row's picture, the back its words as reo then eng (one back
+	 * column: the same words in both languages). The set ends at the first row with no picture on its front or no back
+	 * words. Null when row r opens no set or no card reads.
+	 * @param {Array<Array<string>>} rows - the table's rows
+	 * @param {number} r - the row being read
+	 * @param {ConversionRun} run - the run
+	 * @param {TagNormaliser} norm - the run's normaliser
+	 * @param {Object} block - the table block (its page and links)
+	 * @param {Object} fc - the face_cards data block
+	 * @param {boolean} [inBundle] - read inside a flip-card bundle (a bare «Image» / «Text» header counts)
+	 * @returns {{html: string, end: number}|null} the set and the index of its last row
+	 */
+	static #faceCardSet(rows, r, run, norm, block, fc, inBundle = false) {
+		const plain = (c) => String(c ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\*/g, "").replace(/\s+/g, " ").trim();
+		const cellsOf = (row) => (Array.isArray(row) ? row : []).map(plain);
+		const markerRe = new RegExp(fc.marker_row_pattern ?? "^\\s*\\[\\s*flip\\s*-?\\s*cards?\\s*\\]\\s*$", "i");
+		let h = r;
+		const lead = cellsOf(rows[r]).filter(Boolean);
+		if (lead.length === 1 && markerRe.test(lead[0])) h = r + 1;
+		const head = cellsOf(rows[h]);
+		// inside a flip-card bundle the writer's own tag names the widget, so a bare «Image» / «Text» header names the faces too
+		const either = (a, b) => (inBundle && b ? `(?:${a})|(?:${b})` : a);
+		const frontRe = new RegExp(either(fc.front_pattern ?? "\\bimage\\s*\\(?\\s*front\\b", fc.bundle_front_pattern), "i");
+		const backRe = new RegExp(either(fc.back_pattern ?? "\\btext\\s*\\(?\\s*back\\b", fc.bundle_back_pattern), "i");
+		const fi = head.findIndex((c) => frontRe.test(c));
+		const backs = head.map((c, i) => (backRe.test(c) ? i : -1)).filter((i) => i >= 0);
+		if (fi < 0 || !backs.length) return null;
+		const engRe = new RegExp(fc.english_pattern ?? "\\benglish\\b", "i");
+		const reoRe = new RegExp(fc.maori_pattern ?? "\\bm(?:a|ā|aa)ori\\b", "i");
+		const engCol = backs.find((i) => engRe.test(head[i])), reoCol = backs.find((i) => reoRe.test(head[i]));
+		const pair = engCol !== undefined && reoCol !== undefined;
+		if (!pair && backs.length !== 1) return null;
+		const split = (c) => this.bilingualSplit(c ?? "", run, norm, block?.wtPage, block?.links);
+		const cards = [];
+		let k = h + 1;
+		for (; k < rows.length; k++) {
+			const row = Array.isArray(rows[k]) ? rows[k] : [];
+			const F = split(row[fi]);
+			if (!F.media.some((m) => /<img\b/.test(m))) break;
+			let back;
+			if (pair) {
+				const R = split(row[reoCol]), E = split(row[engCol]);
+				if (!R.text.length || !E.text.length || R.media.length || E.media.length) break;
+				back = [...R.text.map((t) => this.langAttr(t, "reo")), ...E.text.map((t) => this.langAttr(t, "eng"))];
+			} else {
+				const B = split(row[backs[0]]);
+				if (!B.text.length || B.media.length) break;
+				back = [...B.text.map((t) => this.langAttr(t, "reo")), ...B.text.map((t) => this.langAttr(t, "eng"))];
+			}
+			// a front of ONE picture is named from its own words and the table's link on them (TablesAndGrids.cellImage: the
+			// title-anchored address — an iStock picture keeps its iStock id, as the gold names it)
+			const words = plain(row[fi]).replace(/\[[^\]]*\]/g, " ").replace(/_/g, "").replace(/\s+/g, " ").trim();
+			const pictures = F.media.filter((m) => !/^\s*<!--/.test(m));
+			const front = pictures.length === 1 && words ? TablesAndGrids.cellImage(words, run, block?.links ?? null).join("\n") : F.media.join("\n");
+			cards.push(Utils.FillTemplate(fc.card, { front, back: back.join("\n"),
+				backClass: pair ? (fc.pair_back_class ?? "") : (fc.single_back_class ?? "") }));
+		}
+		if (!cards.length) return null;
+		return { html: [fc.container_open ?? "<div class=\"row flipCardsContainer\">", ...cards, fc.container_close ?? "</div>"].join("\n"), end: k - 1 };
 	};
 
 	/**

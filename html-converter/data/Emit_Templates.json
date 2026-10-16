@@ -290,6 +290,29 @@
 				"_data_rows_handoff_doc": "The [Activity: Embedded] table's rows after its marker / [H#] / [Body] / blank rows are the widget's DATA (the nested sentence ║ word ║ picture ║ audio grids, word lists, Note-to-CS lines) → ONE cv2-interactive bilingual-unbuilt hand-off (TablesAndGrids.contentTable, every column kept) inside the activity box, so the picture / audio cells are not lost (a loose-paragraph unfold reads only the first TWO cells). Env ACTDATA_OFF turns off just this hand-off (ACTLABELBOX_OFF turns off both).",
 				"_doc": "KB 07B §7 'Activity Structure' (`| Activity 1A: | Ngohe 1A: |` + `[H2]` title + `[Body]` → ONE div.activity number= holding the reo / eng title + prose; `interactive` when it holds a widget), a §1d FAMILY dialect (code_prefixes). TRR116 / TRR106 write each activity as TWO tables — the bilingual intro (`English ║ Te Reo Māori` / `Activity 4E: ║ Ngohe 4E:` / `[H2] title` / `[Body] …`) and the red `[Activity: Embedded] <type>` table (instructions + the widget's data, often a NESTED table); the human build boxes them TOGETHER, with the title inside div.activity. (A) ContentConverter's reoMode dispatch, BEFORE bilingualTable: a bilingual table whose first content row is a label pair matching label_pattern (bold / red / tags stripped) gathers itself + a following [Activity: Embedded] marker table + its spec tables (the existing gather's stops) into bilingualActivity (label rows skipped, the number read through the bold). (B) data_rows_handoff: in bilingualActivity a MARKER table's rows after its leading marker / heading / body / blank rows are the widget's DATA → ONE cv2-interactive bilingual-unbuilt hand-off (TablesAndGrids.contentTable, every column kept). Env ACTLABELBOX_OFF turns it off."
 			},
+			"cell_image_links": {
+				"enabled": true,
+				"env": "REOCELLIMGLINK_OFF",
+				"_doc": "THE BILINGUAL TABLE PICTURE TAKES ITS LINK. A bilingual table cell's picture («[Item 22] [Image] __Bread and knife__» with the address on the words) was named from its words' slug, the table's hyperlinks never read, so an iStock picture lost its address from every output (the census's F-LINK media-source row) while the gold names it «iStock-<id>». BilingualBuilder.bilingualSplit hands the table's links to TablesAndGrids.cellImage, whose title-anchored match (body_region.cell_image_link_match) names an iStock picture by its id and title; any other address keeps the slug name. Env REOCELLIMGLINK_OFF."
+			},
+			"face_cards": {
+				"enabled": true,
+				"env": "REOFACECARD_OFF",
+				"front_pattern": "\\bimage\\s*\\(?\\s*front\\b",
+				"back_pattern": "\\btext\\s*\\(?\\s*back\\b",
+				"english_pattern": "\\benglish\\b",
+				"maori_pattern": "\\bm(?:a|ā|aa)ori\\b",
+				"marker_row_pattern": "^\\s*\\[\\s*flip\\s*-?\\s*cards?\\s*\\]\\s*$",
+				"declaration_pattern": "^\\s*activity\\s*type\\s*:?\\s*$",
+				"bundle_front_pattern": "^\\s*image\\s*:?\\s*$",
+				"bundle_back_pattern": "^\\s*text\\s*:?\\s*$",
+				"container_open": "<div class=\"row flipCardsContainer\">",
+				"container_close": "</div>",
+				"card": "<div class=\"col-md-4 col-6 paddingLR\">\n<div class=\"flipCard noBG\">\n<div class=\"front\">\n{front}\n</div>\n<div class=\"back{backClass}\">\n{back}\n</div>\n</div>\n</div>",
+				"single_back_class": " center-text",
+				"pair_back_class": "",
+				"_doc": "THE BILINGUAL CARD TABLE WHOSE HEADER NAMES THE FACES IS A FLIP-CARD SET. The PNR writers lay their cards out as a table whose header row names each column's face — «Card no. ║ Image (front) ║ Text (back side)» over «1 ║ [Item 2] [Image] numeral 4 ║ [H3] He tohutau», or «║ Image front ║ Text back English ║ Text back Māori» over «Card 1 ║ [Item 22] [Image] Bread and knife ║ The next time … ║ I te wā …» (after a «[Flipcard]» row in a section table). The English ║ Māori unfold read column 1 as English and column 2 as Māori, so the card number and the picture's label showed as text and every card's back was dropped. The human builds one flip card per row at every such table: the picture on the front; the back's words as reo then eng — one back column (a te reo label) shown in both languages (`h3 reo` + `h3 eng`, 'center-text'), an English and a Māori column as the Māori lines then the English. BilingualBuilder.bilingualRows builds the set at the header row (a lone «[Flipcard]» row before it is the request and goes with it); a row with no picture on its front or no back words ends the set, and a set that reads no card keeps the unfold. The same set builds a bilingual module's flip-card BUNDLE (ContentConverter's widget seam, the bilingual section's hand-off-only bundles included — BilingualBuilder.FaceCardBundle) when its one face table is read whole and every other member is a table that only declares the widget (declaration_pattern, 'Activity Type: ║ [Embedded] [Flipcard]'); anything else keeps the hand-off box. Env REOFACECARD_OFF."
+			},
 			"media_in_place": {
 				"enabled": false,
 				"env": "REOMEDIAPOS_OFF",
@@ -1043,7 +1066,15 @@
 		},
 		"video_embed_title_drop": {
 			"enabled": true,
-			"note": "A [video] whose embed was built (a YouTube id OR a generic iframe URL) DROPS its OWN title line (the [video] element's blackAfter) from the body — that text is the video's NAME, which the AcksBuilder ships as the acknowledgement, so the human renders ONLY the embed (ENGC102 overview '[video] Nonfiction Text Features' and the 'Red Pandas | …' / 'PANDA PANTS …' titles are in the human ACKS, never the body; the human build never shows a video-title <p>). SAFETY: only the element's OWN blackAfter is dropped — genuinely-FOLLOWING separate prose (a later [body]-less paragraph the #gatherFollowing also pulled in, e.g. ENGJ402 'Here is an alternative video…') is KEPT, and AUDIO text is always kept (MXFL301 [audio clip] dialogue 'Hi, I'm John Atkins…' has no external embed → kept). Env VIDTITLE_OFF renders the title as a body <p>."
+			"note": "A [video] whose embed was built (a YouTube id OR a generic iframe URL) DROPS its OWN title line (the [video] element's blackAfter) from the body — that text is the video's NAME, which the AcksBuilder ships as the acknowledgement, so the human renders ONLY the embed (ENGC102 overview '[video] Nonfiction Text Features' and the 'Red Pandas | …' / 'PANDA PANTS …' titles are in the human ACKS, never the body; the human build never shows a video-title <p>). SAFETY: only the element's OWN blackAfter is dropped — genuinely-FOLLOWING separate prose (a later [body]-less paragraph the #gatherFollowing also pulled in, e.g. ENGJ402 'Here is an alternative video…') is KEPT, and AUDIO text is always kept (MXFL301 [audio clip] dialogue 'Hi, I'm John Atkins…' has no external embed → kept). Env VIDTITLE_OFF renders the title as a body <p>.",
+			"instruction_keep": {
+				"enabled": true,
+				"env": "VIDINSTRKEEP_OFF",
+				"pattern": "^(?:watch|view|listen\\s+to|look\\s+at|have\\s+a\\s+look|check\\s+out)\\b",
+				"later_paragraphs": true,
+				"later_skip_pattern": "^lesson\\s+\\d+\\s*:?$",
+				"_doc": "THE LEARNER'S «WATCH …» LINE IS NOT THE VIDEO'S TITLE — and only the tag line's first paragraph is. later_paragraphs: the element's own text can carry the paragraphs after the tag line (joined after a blank line — SSFUN03 «… other kinds of maps. <address>» then «**Activity 2A:** / **Aotearoa New Zealand regional mapping** / **Instructions**: Drag the correct name …»); the title drop discarded them with the title, so the activity's heading and instructions reached no page. They are kept AFTER the embed, where the writer typed them. THE LEARNER'S «WATCH …» LINE IS NOT THE VIDEO'S TITLE. A writer may type the learner's instruction on the video's own tag line — «[insert video] Watch this story about maps. <address>» (SSFUN03), «Watch this video to help you understand this concept:» (BLL124), «Watch “Glaciers don’t lie” a discussion of New Zealand’s glaciers:» (GEO1006). The title drop removed it with the title; the human keeps every such line whose video it builds, as a <p> right BEFORE the embed. A built video's own tag-line words that open with an instruction verb (pattern) are kept there, the address stripped; any other words stay dropped as the title. Env VIDINSTRKEEP_OFF."
+			}
 		},
 		"media_url_paren_strip": {
 			"enabled": true,
@@ -3274,6 +3305,11 @@
 				"image_slug_fallback": true,
 				"asset_request_note": true,
 				"skip_button_members": true,
+				"button_after_set": {
+					"enabled": true,
+					"env": "MODALBTNAFTER_OFF",
+					"_doc": "THE BUTTON AFTER A BUILT POP-OUT SET IS THE PAGE'S BUTTON, NOT A NOTE. The modal builder never places a [button] member inside a pop-out (the gold almost never does) and printed every such member as a red Writers Note after the set, so the BLL Inquiry tabs' «[Button] Upload to dropbox» after their «Optional activities» pop-outs (BLL110 / 130 / 140 / 150 / 160 / 220 / 230 / 240 …) reached the learner as no button, while the gold builds the button right after the set. A [button] member with no pop-out panel after it in the bundle is handed back (bundle._afterButtons) and ContentConverter renders it through the body path after the built widget — the real button, its dropbox wiring note included. A button between two panels stays a note, as before; the go-to-journal button keeps its own rule. Env MODALBTNAFTER_OFF."
+				},
 				"numbered_sets": true,
 				"same_block_label": true,
 				"table_sets": true,
@@ -4300,6 +4336,12 @@
 			"filename_generic": "flipCard-image.jpg"
 		},
 		"tabs": {
+			"button_after_set": {
+				"enabled": false,
+				"env": "SETJOURNALBTN_OFF",
+				"go_journal_only": true,
+				"_doc": "THE GO-TO-JOURNAL BUTTON CLOSING A BUILT TABS SET IS THE PAGE'S JOURNAL LINK, NOT A NOTE. A run of [button] members after the set's last other member, each a go-to-journal button («[Button] Go to your journal.»), is taken out before any tabs form builds and, when one builds, handed back to the page, which renders it after the set (the go-journal heading); every other button keeps the tabs forms' own handling (a note)."
+			},
 			"general_panes": {
 				"enabled": true,
 				"_note": "The general PANE composer, tried LAST so the other tabs forms are unaffected, and deliberately NOT registry-gated (the registry is not what limits these builds; the writer's tag is the target, per the A1 ruling). Panes resolve from an ordered delimiter vocabulary: D1 [Tab N] tags; D2 a table read COLUMN-major (header row = labels, plus a role-labelled first column, and a peeled leading single-cell TITLE row); D3 a table read ROW-major or a one-row table one pane per CELL; D4 a repeating same-level heading run. Following the human build: min_panes 2 because a ONE-pane tab group never occurs; labels are short (almost always ≤ 6 words), so the cap stays 6; labels ship PLAIN. Guards: a wholly-red label row, duplicate labels, an orphan leading '/'. Env TABPANES_OFF.",
@@ -4847,6 +4889,16 @@
 				"item_role_pattern": "^\\[\\s*(?:insert\\s+|link\\s+to\\s+create\\s+)?(?:(?<role1>image|images|photo|picture|video|audio|text|content|answer|answers|body|button|title|heading|label)\\s+(?:for|of)\\s+)?click\\s*[- ]?drop\\s*(?:activity\\s*)?(?:(?<n>\\d+)\\s*[a-z]?)?\\s*(?:[-–—:.]\\s*)?(?:with\\s+|and\\s+|\\+\\s*)?(?:(?<role2>image|images|photo|picture|video|audio|text|content|answer|answers|body|button|title|heading|label)(?:\\s+[a-z]+){0,2})?\\s*\\]$",
 				"asset_request_note": true,
 				"note_tags": ["button", "data marker", "engagement quiz button"],
+				"button_after_set": {
+					"enabled": true,
+					"env": "MODALBTNAFTER_OFF",
+					"_doc": "THE BUTTON AFTER A BUILT CLICK-DROP SET IS THE PAGE'S BUTTON, NOT A NOTE. A [button] member after the last item delimiter (the BLL Inquiry tabs' «[Button] Upload to dropbox» after their «Optional activities» click-drops) is handed back to the page and renders through the body path right after the built set, as the gold builds it; a button among the items stays a note (note_tags). The same toggle reverses the pop-out-set rule (modal_sets.button_after_set).",
+					"go_journal": {
+						"enabled": false,
+						"env": "SETJOURNALBTN_OFF",
+						"_doc": "A go-to-journal button after the last item delimiter is handed back with the others and renders as the page's go-journal heading; without this it stays a note."
+					}
+				},
 				"text_tags": ["external link"],
 				"member_vocabulary": { "head_tags": ["heading"], "note_tags": ["table"] },
 				"head_label": true,
@@ -6027,6 +6079,13 @@
 				"url_text_pattern": "^URL\\s*:?\\s*(https?://\\S+?)\\.?$",
 				"url_label_pattern": "^URL\\s*:?$"
 			}
+		},
+		"drop_tag_words": {
+			"enabled": true,
+			"env": "STICKYPARA_OFF",
+			"tags": ["sticky nav"],
+			"note": "The writer's [Sticky nav] list is the sticky-nav include (js/stickyNav.js), not page content — set it up with these links: {items}.",
+			"_doc": "THE «[Sticky nav]» LIST TYPED AS A PARAGRAPH IS THE DEVELOPER'S NOTE, NOT MENU TEXT. Before the overview heading a writer may type «[Sticky nav] FUNdamentals, Sentence starters PDF from Merged 1, Devices lesson from merged 3, Learning Journal, …» (ENG1007, ENG1004, ENG1005, «[StickyNav] DTCFUN» DTC1004). The tag never emits (its lexicon directive is DROP, the body path drops it), but the module menu rendered every tag's trailing words in place, so the list showed as a paragraph in the Overview tab; the human never shows it — the sticky nav is a js include the build does not emit. MenuBuilder turns the words of a DROP tag named in tags into ONE Designer/Developer To Do note (note, {items} = the words, each linked phrase followed by its address), as the table form already does (body_region.choice_page_tiles.sticky_todo). Env STICKYPARA_OFF."
 		},
 		"strand_heading": {
 			"_doc": "A BOLD STRAND LINE IN THE KNOW / DO MENU IS THE STRAND'S HEADING. The overview menu's Understand / Know / Do panes head each curriculum strand with <h5> in the human build (695 of 735 strand headings, 0.95) — a writer who tagged the strand gets it already; one who typed it as a bold paragraph ('**Ine | Measurement**', '**Te tūhura pūāhua | Investigating situations**', MXDB301) shipped <p><b>Ine | Measurement</b></p>. Inside a pane section whose <h4> heading matches section_pattern, a paragraph whose whole content is one bold run of at most max_words words, not ending a sentence, and followed by more content in the section, becomes <h5>{text}</h5>.",
@@ -9578,6 +9637,23 @@
 			"extra_modifier_keywords": {
 				"solid": " solid",
 				"summary": " summary"
+			},
+			"cell_row": {
+				"enabled": true,
+				"env": "TABLECELLROW_OFF",
+				"main_col": "col-md-8 col-12",
+				"side_col": "col-md-4 col-12",
+				"single_col": "col-md-8 col-12",
+				"side_alert_modifiers": " top",
+				"right_pattern": "\\b(?:right|rhs|rhc)\\b",
+				"video_tags": ["video"],
+				"video_url_pattern": "youtu\\.?be|youtube\\.com|youtube-nocookie\\.com|vimeo\\.com",
+				"picture_label_pattern": "^\\s*image\\b",
+				"shorts_id_re": "youtube\\.com/shorts/([\\w-]{11})",
+				"shorts_embed": "<div class=\"videoSection youtubeShort ratio ratio-1x1\">\n<iframe src=\"https://www.youtube-nocookie.com/embed/{videoId}?rel=0&amp;showinfo=0\" frameborder=\"0\" allowfullscreen></iframe>\n</div>",
+				"inner_open": "<div class=\"row\">\n<div class=\"col-12\">",
+				"inner_close": "</div>\n</div>",
+				"_doc": "THE ONE-ROW TABLE OF A VIDEO OR AN ALERT CELL IS THE PAGE'S OWN LAYOUT. A writer lays a video beside an alert, an alert beside a picture, or boxes a single alert or video, as a ONE-ROW table: '[Video] <address> ║ [alert right align] [image] <address>' (ENGC301), '[video] <address> ║ [alert] Tips …' (ENGR101), '[Alert] You borrow $500 … ║ Image: iStock RHS: …' (CEDO502), a one-cell '[Alert] Say: é é é / …' (FRFUN06), a one-cell '[video][media item 12] <address> / [caption] …' (CHFUN01). The grid cannot show a video or an alert cell, so the table shipped raw in a hand-off box. The human builds the page's own layout at every such site: the video in col-md-8 with the alert as the KB 05B sidebar ('alert top') in col-md-4; an alert beside a picture as the plain 'alert' in col-md-8 with the picture in col-md-4, in the writer's order; a lone alert as 'col-md-8 > alert'; a lone video as its embed (a YouTube Short in the square shorts_embed frame the slideshow uses, as the CHFUN gold ships it). ContentConverter.#cellLayoutRow builds these four shapes (outside a bilingual module and outside an open box) and returns null for any other table, and for a result that would still show a tag, so the box stays the fallback. A one-cell alert whose tag names a position is #alertTable's. The alert's inner content takes the callout's row > col-12 (inner_open / inner_close); the page's alert post-pass gives the box its lead, as for every alert. Env TABLECELLROW_OFF."
 			},
 			"_note_alert_table": "Writers AUTHOR a side alert box as a 1x1 TABLE whose single cell leads with the positional tag '[Alert box on right hand side]' (also '[Alert box to the right]', ENGS302 lesson 2) then [H3] title + [Text] + bullets. Through #layoutTableGrid the [alert] tag would be DROPPED and the title/bullets rendered as PLAIN content in the page's default col — no alert box, no positioning. The human renders <div class=\"col-md-4\"><div class=\"alert top\">{h3 + p + ul}</div></div> (ENGS302_1.0). ContentConverter.#alertTable intercepts a single-cell table whose lead is a POSITIONAL [alert...] tag (positional_only) BEFORE the grid, parses the position/style keywords, and renders the rest of the cell via #renderCellParts wrapped in the alert callout + col. positional_only keeps the scope to this form; plain [alert]/[alert solid]-in-table and FREE-BODY positional alerts ('[Alert box to right]') are not handled here. The pairing with the main content's col-md-8 is side_pair. Env ALERTTBL_OFF uses the plain grid."
 		},

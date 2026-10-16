@@ -1045,6 +1045,8 @@ class InteractiveBuilder {
 			const m = members[k];
 			if (!m) { cls.push({ kind: "skip" }); continue; }
 			if (isRead(m, k)) { cls.push({ kind: "consumed" }); continue; }
+			// a button the builder handed back renders after the widget (modal_sets.button_after_set) — accounted for, not placed
+			if (bundle._afterButtons?.includes(m)) { cls.push({ kind: "skip" }); continue; }
 			if (m.type === "table") { cls.push({ kind: "decline", why: "a table the build ignored" }); continue; }
 			if (m.type === "nested") { cls.push({ kind: "decline", why: "a nested widget the build did not use" }); continue; }
 			if (m.type === "black") {
@@ -4813,6 +4815,38 @@ class InteractiveBuilder {
 		return t;
 	};
 
+	/**
+	 * The [button] members that close a set — the run of buttons after its last other member (a blank line aside) —
+	 * handed back to render after the built set (the set's `button_after_set` data; `go_journal_only` hands back only
+	 * a go-to-journal button and leaves every other button to the set's own handling).
+	 */
+	static #trailingButtons(members, ba) {
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (!ba || ba.enabled === false || env[ba.env ?? "SETJOURNALBTN_OFF"]) return [];
+		const out = [];
+		for (let i = members.length - 1; i >= 0; i--) {
+			const x = this.#peekMember(members[i]);
+			if (!x) continue;
+			if (x.type === "black" && !String(x.text ?? "").trim()) continue;
+			if (x.type !== "tag" || x.parse?.primary?.tag !== "button") break;
+			if (ba.go_journal_only && !this.#accIsGoJournal(x) && !this.#buttonWordsGoJournal(x)) break;
+			out.unshift(members[i]);
+		}
+		return out;
+	}
+
+	// a go-to-journal button whose words ride inside its own tag text («[Button] Go to your journal.» in one red span,
+	// «[Button] [Go to Journal]»): the [button] bracket and the red-text markers set aside, the words are the label
+	static #buttonWordsGoJournal(x) {
+		const gj = DataService.Data.EmitTemplates?.buttons?.go_journal;
+		if (!gj || gj.enabled === false) return false;
+		const words = `${String(x.text ?? "")} ${String(x.blackAfter ?? "")}`;
+		if (/https?:\/\//.test(words)) return false;
+		const label = words.replace(/\u{1f534}?\[\/?RED TEXT\]\u{1f534}?/gu, " ").replace(/\[\s*button\s*\]/i, " ")
+			.replace(/[[\]*]/g, " ").replace(/\s+/g, " ").trim();
+		return !!label && new RegExp(gj.label_match, "i").test(label);
+	}
+
 	static #accIsGoJournal(m) {
 		const gj = DataService.Data.EmitTemplates?.buttons?.go_journal;
 		if (!gj || gj.enabled === false) return false;
@@ -8162,7 +8196,9 @@ class InteractiveBuilder {
 
 		// (1) every member as an ordered {role,…} PART. Classifying by the RESOLVED TAG
 		//     rather than the writer's spelling matters.
-		const parts = this.#modalMemberParts(members, { tpl, cfg, run, renderTable, notes });
+		// a trailing button the parts hand back renders after the built set (modal_sets.button_after_set)
+		bundle._afterButtons = [];
+		const parts = this.#modalMemberParts(members, { tpl, cfg, run, renderTable, notes, afterButtons: bundle._afterButtons });
 		if (!parts) return null;
 
 		// (2) the SETS, from the first delimiter kind that is present.
@@ -8189,7 +8225,7 @@ class InteractiveBuilder {
 	 * when the bracket has one, `sub` is "image" | "text" | "open" read from the bracket's
 	 * wording, `block` is the source paragraph (D2's discriminator).
 	 */
-	static #modalMemberParts(members, { tpl, cfg, run, renderTable, notes }) {
+	static #modalMemberParts(members, { tpl, cfg, run, renderTable, notes, afterButtons = null }) {
 		const parts = [];
 		const idRe = new RegExp(cfg.video_youtube_id_re
 			?? "(?:youtu\\.be/|youtube\\.com/(?:watch\\?v=|embed/))([\\w-]{11})");
@@ -8387,6 +8423,14 @@ class InteractiveBuilder {
 				// as a red note so the developer still sees it (the `button_tail_terminates`
 				// extension does not place it).
 				if (!this.#modalIsGoJournal(m)) {
+					// a button with no pop-out panel after it is the page's own button after the set: handed back for the body
+					// path to render after the built widget (modal.button_after_set; env MODALBTNAFTER_OFF)
+					const ba = cfg.button_after_set;
+					if (afterButtons && ba && ba.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ba.env ?? "MODALBTNAFTER_OFF"])
+						&& !members.slice(i + 1).some((x) => x && x.type === "tag" && x.parse?.primary?.tag === "modal")) {
+						if (!afterButtons.includes(m)) afterButtons.push(m);
+						continue;
+					}
 					const t = this.#cellText(String(m.text ?? "")) + (text ? ` ${text}` : "");
 					if (t.trim()) notes.push(t.trim());
 				}
@@ -8999,7 +9043,25 @@ class InteractiveBuilder {
 	 * @param {function} [args.renderImage] - renders a captured image exactly like the rest of the page
 	 * @returns {string|null} the built tabs HTML, or null to keep the orange placeholder
 	 */
-	static #tabs({ bundle, tpl, renderInline, run, renderBlock, renderTable, renderImage }) {
+	static #tabs(args) {
+		// a go-to-journal [button] closing the set is the page's journal link, not a pane's note: every dialect builds
+		// without it, and a successful build hands it back to render after the set (tabs.button_after_set)
+		const bundle = args.bundle;
+		const afterButtons = this.#trailingButtons(bundle?.memberItems ?? [], args.tpl?.button_after_set);
+		if (!afterButtons.length) return this.#tabsBuild(args);
+		const all = bundle.memberItems;
+		let built;
+		try {
+			bundle.memberItems = all.filter((x) => !afterButtons.includes(x));
+			built = this.#tabsBuild(args);
+		} finally {
+			bundle.memberItems = all;
+		}
+		if (built !== null && built !== undefined) bundle._afterButtons = [...(bundle._afterButtons ?? []), ...afterButtons];
+		return built;
+	}
+
+	static #tabsBuild({ bundle, tpl, renderInline, run, renderBlock, renderTable, renderImage }) {
 		const members = bundle?.memberItems ?? [];
 		if (!members.length) return null;
 		const inline = renderInline ?? ((s) => s);
@@ -13093,7 +13155,14 @@ class InteractiveBuilder {
 		for (const k of ["panels_open", "panels_close"]) if (cfg[k] !== undefined) bc[k] = cfg[k];
 		const out = [this.#modalBoardHtml(boards, bc, run)];
 		for (const n of notes) out.push(NotesAndComments.redFlag(n, run, "cs"));
+		// the set's upload button is the page's own button: handed back to render after the board (modal_sets.button_after_set)
+		const ba = mcfg.button_after_set;
+		const handBack = !!ba && ba.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ba.env ?? "MODALBTNAFTER_OFF"]);
 		for (const t of tail) {
+			if (handBack && t.type === "tag" && String(t.parse?.primary?.tag ?? "").toLowerCase() === "button" && !this.#accIsGoJournal(t)) {
+				bundle._afterButtons = [...(bundle._afterButtons ?? []), t];
+				continue;
+			}
 			const words = (t.type === "tag" ? `${String(t.text ?? "").trim()} ${String(t.blackAfter ?? "").trim()}` : String(t.text ?? "")).replace(/\s+/g, " ").trim();
 			if (words) out.push(NotesAndComments.redFlag(words, run, "cs"));
 		}
@@ -13179,7 +13248,20 @@ class InteractiveBuilder {
 		const memVocab = (cfg.member_vocabulary
 			&& !(typeof process !== "undefined" && process.env && process.env.CDMEMVOCAB_OFF))
 			? cfg.member_vocabulary : null;
-		const parts = this.#accMemberParts(members, {
+		// a [button] after the last item delimiter is the page's own button, not the widget's: it is handed back to render
+		// after the built set (general_items.button_after_set) instead of becoming a note
+		const ba = cfg.button_after_set;
+		let afterButtons = [];
+		if (ba && ba.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ba.env ?? "MODALBTNAFTER_OFF"])) {
+			const delimTags = cfg.delimiter_tags ?? ["click drop"];
+			const tagOf = (x) => (x && x.type === "tag" ? x.parse?.primary?.tag : null);
+			const lastDelim = members.reduce((a, x, i) => (delimTags.includes(tagOf(x)) ? i : a), -1);
+			// a go-to-journal button goes with them when the data allows it (button_after_set.go_journal)
+			const penv = (typeof process !== "undefined" && process.env) ? process.env : {};
+			const gj = ba.go_journal, journal = !!gj && gj.enabled !== false && !penv[gj.env ?? "SETJOURNALBTN_OFF"];
+			afterButtons = members.filter((x, i) => i > lastDelim && tagOf(x) === "button" && (journal || !this.#accIsGoJournal(x)));
+		}
+		const parts = this.#accMemberParts(afterButtons.length ? members.filter((x) => !afterButtons.includes(x)) : members, {
 			tpl, cfg, run, renderTable, notes,
 			delims: {
 				tags: cfg.delimiter_tags ?? ["click drop"],
@@ -13222,6 +13304,7 @@ class InteractiveBuilder {
 		const lead = built.lead.filter((h) => h && String(h).trim());
 		if (lead.length && this.#accLeakGuard(lead.join("\n"), cfg)) return null;
 		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
+		if (afterButtons.length) bundle._afterButtons = [...(bundle._afterButtons ?? []), ...afterButtons];
 		bundle.generalClickDrop = true;                               // detector / affected-set marker
 		return [...lead, html].join("\n");
 	}

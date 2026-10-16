@@ -1032,6 +1032,19 @@ class MenuBuilder {
 				continue;
 			}
 
+			// a DROP tag's own words (the writer's «[Sticky nav] FUNdamentals, …» list) are the developer's set-up, not menu
+			// text: ONE To Do note, each linked phrase followed by its address (menu.drop_tag_words; env STICKYPARA_OFF)
+			const dtw = DataService.Data.EmitTemplates.menu?.drop_tag_words;
+			if (primary?.directive === "DROP" && dtw && dtw.enabled !== false && (dtw.tags ?? []).includes(primary.tag)
+				&& !(typeof process !== "undefined" && process.env && process.env[dtw.env ?? "STICKYPARA_OFF"])) {
+				let words = String(it.blackAfter ?? "").replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+				for (const l of (it.block?.links ?? [])) {
+					const lt = String(l?.text ?? "").replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+					if (l?.target && lt && words.includes(lt) && !words.includes(l.target)) words = words.replace(lt, `${lt} (${l.target})`);
+				}
+				if (words) { flushText(); push(NotesAndComments.redFlag(Utils.FillTemplate(dtw.note, { items: words }), run, "todo")); }
+				continue;
+			}
 			// anything else: render its black content in place
 			const text = it.blackAfter ?? "";
 			if (text.trim()) { textBuf.push(text); bufLinks(it); }
