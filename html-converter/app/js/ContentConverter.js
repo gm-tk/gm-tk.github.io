@@ -10089,6 +10089,35 @@ class ContentConverter {
 		return out;
 	}
 
+	/** THE BARE VIDEO FILE IS THE VIDEO (KB 01E `[video]` → videoSection). A body paragraph whose whole content is one video
+	 *  FILE address on the school's own host («…desire2learn.com/content/…/media/y.mp4» under «Watch this small video …») is
+	 *  the writer's video: outside the un-built hand-off boxes it becomes the videoSection with a playable video instead of
+	 *  the developer's link note. Data elements.bare_file_video_embed {url_pattern, form}; env FILEVIDEO_OFF. */
+	static #bareFileVideoEmbed(html, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.bare_file_video_embed;
+		if (!cfg || cfg.enabled === false || !cfg.url_pattern || !cfg.form || !html || !html.includes(".mp4")) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "FILEVIDEO_OFF"]) return html;
+		const urlRe = new RegExp(cfg.url_pattern, "i");
+		const spans = [];
+		for (const h of html.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
+			const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
+		}
+		const hits = [];
+		for (const m of html.matchAll(this.#bareUrlBlockRe())) {
+			if (spans.some(([a, z]) => m.index >= a && m.index < z)) continue;
+			const url = m[2].replace(/&amp;/g, "&");
+			if (urlRe.test(url)) hits.push({ at: m.index, len: m[0].length, url });
+		}
+		if (!hits.length) return html;
+		let out = html;
+		for (const h of hits.slice().reverse())
+			out = out.slice(0, h.at) + Utils.FillTemplate(cfg.form, { url: Utils.EscapeHtml(h.url) }) + out.slice(h.at + h.len);
+		if (run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `${hits.length} bare video file address${hits.length > 1 ? "es" : ""} embedded as the video (bare_file_video_embed).`);
+		return out;
+	}
+
 	/** THE BARE LINK LINE IS THE DEVELOPER'S. A body paragraph whose whole content is one URL that is neither a stock photo
 	 *  nor a video — a D2L / Te Kura page, a source site, a Google doc — would ship as a visible link; the gold mostly does not
 	 *  show that link, and where it does it is usually an anchor on nearby prose whose words are not derivable. Outside the
@@ -10096,6 +10125,8 @@ class ContentConverter {
 	 *  the link (to anchor, make a button, or credit). Data elements.bare_link_url_note {exclude_host_pattern, todo_text};
 	 *  env BARELINKNOTE_OFF. */
 	static #bareLinkUrlNote(html, run) {
+		// a bare video FILE address is the video, never the developer's note (elements.bare_file_video_embed)
+		html = this.#bareFileVideoEmbed(html, run);
 		const cfg = DataService.Data.EmitTemplates.elements?.bare_link_url_note;
 		if (!cfg || cfg.enabled === false || !html || !html.includes("http")) return html;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "BARELINKNOTE_OFF"]) return html;
@@ -14045,6 +14076,22 @@ class ContentConverter {
 		return Array.isArray(out) && out.length ? { html: out.join("\n"), key } : null;
 	}
 
+	/**
+	 * A host widget that did not build leaves its nested sub-bundles to the hand-off list: one its builder BUILT on the way
+	 * (an accordion pane's drag-and-drop, its speech bubbles) is marked un-built again and given its own reference code
+	 * through the hand-off path, so the developer's list carries it. Data interactive_placeholder.nested_built_handoff;
+	 * env NESTEDHANDOFF_OFF.
+	 */
+	static #nestedBuiltHandoff(bundle, run) {
+		const cfg = DataService.Data.EmitTemplates.interactive_placeholder?.nested_built_handoff;
+		if (!cfg || cfg.enabled === false || (typeof process !== "undefined" && process.env && process.env.NESTEDHANDOFF_OFF)) return;
+		for (const nb of bundle.nestedBundles ?? []) {
+			if (nb?.built !== true) continue;
+			nb.built = false;
+			this.#interactivePlaceholder(nb, run, { nested: true, handoffOnly: true });
+		}
+	}
+
 	static #interactivePlaceholder(bundle, run, opts = null) {
 		// FIRST: can we build this interactive for REAL? The InteractiveBuilder
 		// handles the small set of "easy" widgets we fully understand. It returns
@@ -14138,6 +14185,10 @@ class ContentConverter {
 			const extra = capFree.filter((t) => !this.#captureShown(shown, t));
 			return extra.length ? out + "\n" + extra.map((t) => NotesAndComments.redFlag(t, run, "cs")).join("\n") : out;
 		}
+		// the host did not build: a nested widget its builder built on the way reaches no page (the host's box does not render
+		// nested members), so it goes back to the hand-off list as un-built (interactive_placeholder.nested_built_handoff;
+		// env NESTEDHANDOFF_OFF)
+		this.#nestedBuiltHandoff(bundle, run);
 
 		// EMPTY-BUNDLE GUARD (body-breakdown #2): an interactive invocation that
 		// captured NO content — no member text, no table, no media, no heading —

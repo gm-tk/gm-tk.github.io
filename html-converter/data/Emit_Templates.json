@@ -1394,6 +1394,13 @@
 			"ack_single_bullet_max_words": 8,
 			"_doc_ack_single_bullet": "A one-item bulleted list directly after a quote paragraph (`• Declaration of Independence` — HIS1005_9_0 / HIS1007_3_0) is the quote's attribution: the human ships it as the p.quoteAck. 0 = off; a positive value = the item's word cap."
 		},
+		"bare_file_video_embed": {
+			"enabled": true,
+			"env": "FILEVIDEO_OFF",
+			"url_pattern": "^https?://(?:[\\w-]+\\.)*desire2learn\\.com/content/[^\\s?#]+\\.mp4(?:[?#]\\S*)?$",
+			"form": "<div class=\"videoSection ratio ratio-16x9\">\n<video controls src=\"{url}\"></video>\n</div>",
+			"_doc": "THE BARE VIDEO FILE IS THE VIDEO — KB 01E ([video] → videoSection). The writer's line that is only a video file on the school's own D2L host («https://tekura.desire2learn.com/content/enforced/…/Alphabet-ECH/media/y.mp4» under «Watch this small video to see how we write the letter y», the Blended Literacy handwriting videos) was turned into the developer's link note, so the learner got no video. It becomes the videoSection with a playable <video controls> — the form the BLL113 gold uses (the BLL1x0 golds put the same video in a small side column)."
+		},
 		"bare_link_url_note": {
 			"_doc": "THE BARE LINK LINE IS THE DEVELOPER'S. A body paragraph whose whole content is one URL that is neither a stock photo (bare_stock_url_image) nor a video (bare_video_url_embed) — a D2L / Te Kura page, a source site, a Google doc — is not shown to the learner in the human build (occasionally the link is woven onto nearby prose, but which words is not derivable). Outside the un-built hand-off boxes the paragraph becomes the house To Do note (NotesAndComments.redFlag) — no URL for the learner, the link kept for the developer. Env BARELINKNOTE_OFF.",
 			"enabled": true,
@@ -3000,6 +3007,10 @@
 			"NEVER any comment that hints at correct answers. Answer-carrying members appear only as captured visible data awaiting development — placeholders never ship live.",
 			"Inline interactives (info trigger, hover definition …) use inline_form woven into the paragraph so the sentence still reads."
 		],
+		"nested_built_handoff": {
+			"enabled": true,
+			"_doc": "A host widget that does not build (an accordion that becomes a hand-off box) leaves its nested widgets to the hand-off list: a nested sub-bundle its builder BUILT on the way (a drag-and-drop or speech bubbles inside an accordion pane) reached no page, because the host's box does not render nested members, and no hand-off entry, because it was marked built. It is marked un-built again and given its own reference code, so the developer's list carries it. Env NESTEDHANDOFF_OFF."
+		},
 		"manifest_unbuilt_only": {
 			"enabled": true,
 			"_note": "{CODE}_interactives.txt is the HAND-OFF WORKLIST: an interactive the converter already BUILT into the generated HTML is not work, so its entry is OMITTED and the per-entry list numbers over the un-built only. The summary header KEEPS both counts (useful telemetry) with its NOTE lines worded to match; the per-entry 'Status:' line is DROPPED when this is on (every listed entry is un-built by construction). Env MANIFESTALL_OFF (or enabled:false) lists every entry."
@@ -3015,6 +3026,11 @@
 		"handoff_tables": {
 			"enabled": true,
 			"env": "HANDOFFTABLE_OFF",
+			"collapse": {
+				"enabled": true,
+				"env": "HANDOFFCOLLAPSE_OFF",
+				"_doc": "THE BILINGUAL HAND-OFF TABLE COLLAPSES LIKE EVERY HAND-OFF BOX. A registered bilingual hand-off table (it carries data-cv2-ref) renders inside the extract.collapse wrapper — the reference-code label, the toggle, the raw table collapsed under it — the default rendering for every un-built interactive; until then its raw cells (the writer's [Item N] / [Audio] tags, staff SharePoint addresses, ✔ answer keys) showed open on the page. Its classes stay (cv2-interactive bilingual-unbuilt), and cv2-int-ref joins them, so the Page Stitcher's search-by-code contract reaches it like any hand-off box."
+			},
 			"ref_template": "{code}-{page}-T{n}",
 			"manifest_heading": "UN-BUILT BILINGUAL TABLES — {count} (the writer's table is kept raw in its hand-off box on the page; no widget tag captured it, so it is not among the interactives above)",
 			"_doc": "The hand-off file is the developer's channel and lists every box left to build. A bilingual-section table the converter cannot unfold or build (a word bank, an audio-item list, a section bundle kept raw, the widget a content table names inline) is shown in a `cv2-interactive bilingual-unbuilt` box; each such box carries a reference code (data-cv2-ref, ref_template: the module code, the page's document-order index, T + a module-wide count) and gets its own entry after the interactives in {CODE}_interactives.txt — the page file, the reference, the kind, and the table's rows in the corpus form with the writer's link addresses written in. The box's visible content is unchanged; the Page Stitcher reads only cv2-int-ref markers. Env HANDOFFTABLE_OFF."
@@ -3195,12 +3211,16 @@
 			"enabled": true,
 			"consumption": "read",
 			"read_needs_words": {
-				"enabled": false,
+				"enabled": true,
 				"env": "MEMBERSSHOWN_OFF",
 				"applies_to": ["accordion", "clickDrop", "tabs", "modal", "carousel"],
 				"min_words": 6,
 				"ratio": 0.3,
 				"cell_ratio": 0.3,
+				"red_tag_line_exempt": true,
+				"media_cell_line_pattern": "(?:🔴\\[RED TEXT\\]\\s*)?\\[\\s*(?:insert\\s+)?(?:image|picture|photo|video|audio|embed)\\b[^\\]]*\\][^\\n]*?(?=\\s\\/\\s|\\n|$)",
+				"_media_cell_line_doc": "In a table member's cells, a line that opens with a picture or video request bracket («[Image] woman in supermarket», «[image][Media item 26]») names the media to find, never page text: the line, up to the cell's next line break (« / » in the captured cell), is left out before the cell's words are looked for in the build. The cell's other lines (a [Body] sentence, a caption) still count.",
+				"_red_tag_line_doc": "A tag member with no black words after its bracket is the writer's red instruction to the developer (a picture-board slot's «[Modal 5 image] Use the same image from BLL110», a widget slot label): its words are never learner text, so it needs no showing and the members rule treats it as before.",
 				"_doc": "A READ IS NOT A SHOWING. The read tracker counts a member consumed the moment the builder reads its content, so a member the builder looked at and left out vanished with no trace: JPFUN02 1D's absorbed eight-question quiz table inside a built click-drop item, AGH1009's lead bullets and paragraph before an accordion's first heading, BLL255's click-drop word table. With this flag a READ member counts as consumed only when its words are in the build — its visible text, alt / title / info / data attributes and the instruction notes: a line of min_words+ words by its word shingles (ratio), a table by its cells (cell_ratio of its cells of two or more words, each whole or by half its 3-word shingles). A member that fails is classified as an unread one: prose before or after the consumed members renders around the widget, anything else makes the build decline to the hand-off box that keeps every member."
 			},
 			"content_keys": ["text", "blackAfter", "block", "nestedBundle"],
@@ -5810,7 +5830,15 @@
 		"title_patterns": {
 			"overview": "{code} {englishTitle}",
 			"lesson": "{code} {lesson}",
-			"note": "The human's form varies ('OSAH401 0.0', 'ANZH205_1.0', 'ANZH301 Big City Lights'); the reference shell sets the default. {lesson} renders as the decimal page id, e.g. '1.0'."
+			"note": "The human's form varies ('OSAH401 0.0', 'ANZH205_1.0', 'ANZH301 Big City Lights'); the reference shell sets the default. {lesson} renders as the decimal page id, e.g. '1.0'.",
+			"series": {
+				"enabled": true,
+				"env": "SERIESTITLE_OFF",
+				"rows": [
+					{ "code_pattern": "^BLL\\d", "pattern": "Blended Literacy | {code}" }
+				],
+				"_doc": "A SERIES THAT TITLES ITS PAGES ITS OWN WAY. The Blended Literacy gold titles every page's browser tab «Blended Literacy | BLLxxx», the overview and the lessons alike (≈ 170 of ≈ 185 BLL pages; the BLLR readers keep «BLLR20x N.N»). A module code matching a row's code_pattern takes that row's pattern for every page; the first matching row wins. No other series reaches consensus («Learning Support | CODE» is about half the XDLS pages)."
+			}
 		},
 		"body_open": "<body class=\"{bodyClass}\"{bodyAttrs}>",
 		"body_close": "</body>",
@@ -6924,7 +6952,19 @@
 		"consume_labels_note": "consume_labels apply to EVERY menu archetype — the human menus never repeat the pane/section label heading (BLL155 has no 'Tirohanga Whānui' heading).",
 		"tabs_pane1_curric_split": {
 			"enabled": true,
-			"_doc": "Split a one-line OVERVIEW tabs-menu heading '**Title:** content' into the title heading + a following <p> (as in ENGR202-00), so a content-glued curriculum heading is not removed by dropEmptyHeadings (the same failure the two_col curriculum split prevents, on the tabs path). MenuBuilder.#splitTitleContent; confidence = a colon-terminated bold title OR a two_col_li.left_match curriculum label OR an Overview_Menu_Heading_Lexicon entry >= min_count (env MENUHEADINGLEX_OFF ignores the lexicon); a bilingual title (top-level '|' or an all-bold trailing half) is LEFT to the bilingual reduce; an ambiguous same-line heading is KEPT WHOLE (never dropped). env TABCURRICSPLIT_OFF keeps the content-glued heading. Overview-scoped (#header)."
+			"_doc": "Split a one-line OVERVIEW tabs-menu heading '**Title:** content' into the title heading + a following <p> (as in ENGR202-00), so a content-glued curriculum heading is not removed by dropEmptyHeadings (the same failure the two_col curriculum split prevents, on the tabs path). MenuBuilder.#splitTitleContent; confidence = a colon-terminated bold title OR a two_col_li.left_match curriculum label OR an Overview_Menu_Heading_Lexicon entry >= min_count (env MENUHEADINGLEX_OFF ignores the lexicon); a bilingual title (top-level '|' or an all-bold trailing half) is LEFT to the bilingual reduce; an ambiguous same-line heading is KEPT WHOLE (never dropped). env TABCURRICSPLIT_OFF keeps the content-glued heading. Overview-scoped (#header).",
+			"bilingual_colon_label": {
+				"_doc": "A bilingual label closed by its colon, with the pane's prose after it — «[H2] **Aromatawai | Assessment for Learning :** Complete the self-assessment quiz at the end of the module.» — splits like the English one: the whole bilingual label is the heading (routed and reduced as before), the plain prose after the colon its following paragraph. Without it the line stays one content-glued heading, and a promoted pane holding only that heading is removed by dropEmptyHeadings with the writer's words. The prose carries no '|' (a two-half bilingual title stays whole) and holds at least min_words words.",
+				"enabled": true,
+				"env": "BILABELSPLIT_OFF",
+				"min_words": 4
+			},
+			"red_label_black_prose": {
+				"_doc": "A curriculum label the writer typed RED with its statement after it in black — «[H2] Know:» red, then «show increasing awareness of differences and connections between Chinese (Mandarin) and their first language(s).» — splits like the bold «**Know:** …» line: the red label (its colon stripped) is the heading, the black words its following paragraph. Without it the heading text is the red label alone, the black words are never read, and the label is then removed by dropEmptyHeadings with nothing under it. Needs at least min_words black words after a label ending in a colon.",
+				"enabled": true,
+				"env": "REDLABELPROSE_OFF",
+				"min_words": 4
+			}
 		},
 		"tabs_pane1_two_col": {
 			"move_li_two_col": true,
@@ -7962,6 +8002,12 @@
 			}
 		},
 		"tabs_pane1_col": "<div class=\"{cls}\">\n{content}</div>",
+		"label_prose": {
+			"enabled": true,
+			"env": "LABELPROSE_OFF",
+			"min_words": 4,
+			"_doc": "THE LABEL LINE THAT CARRIES ITS PANE'S PROSE. The writer types the section label and the pane's first sentence on one line — «[H1] **Tirohanga Whānui | Overview:**A module about the ways we can use our special interests …» (CEDK101, the XLP / XTAS Learning Partner modules). The line reads as the section label and was consumed whole, so the sentence reached no page. When the part before the colon is itself a menu label (tab_map.consume_labels) and min_words or more words follow it, the label is consumed as before and the words after the colon render as the pane's first paragraph — where the human puts them."
+		},
 		"overview_banner_h4": {
 			"_note": "OVERVIEW BANNER (as in OSAH401-0.0). On an OVERVIEW page whose module-menu carries NO Understand/Know/Do curriculum block, the human keeps the overview [H1] section label ('Tirohanga Whanui | Overview') as an <h4><span> banner at the TOP of tab 1 (OSAH301/OSAH401/OSOH101/OSOH201/OSSC301). Everywhere else the label is consumed and dropped (isLabel, tab_map.consume_labels). The banner family (two_col_li) re-homes it via bannerLabel; this covers the tabs/simplified overviews. Only OSAH/OSOH/OSSC do this consistently; OSGM/OSBY/CED/SSFUN/XMES/TRR114 do NOT (so 'no U/K/D' alone would over-fire -> scoped by subject). TRR301 (reo) banners it too but via a bilingual <h4 reo>/<h4 eng> split on a different menu path, not covered here. curriculum_labels is the belt-and-suspenders no-U/K/D guard. env OVBANNER_OFF.",
 			"enabled": true,

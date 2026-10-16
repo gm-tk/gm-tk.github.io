@@ -1049,6 +1049,7 @@ class InteractiveBuilder {
 		const shown = rnOn ? norm(stripped.replace(/<[^>]+>/g, " ") + " "
 			+ [...stripped.matchAll(/\b(?:alt|title|aria-label|info|src|data-[a-z-]+)="([^"]*)"/g)].map((m) => m[1]).join(" ") + " "
 			+ (bundle.instructions ?? []).join(" ")) : "";
+		const mediaLineRe = rnOn && rn.media_cell_line_pattern ? new RegExp(rn.media_cell_line_pattern, "giu") : null;
 		const shownRatio = (t, k3, r) => {
 			const w = t.split(" ").filter(Boolean);
 			let hit = 0, n = 0;
@@ -1058,7 +1059,9 @@ class InteractiveBuilder {
 		const memberShown = (m) => {
 			if (m.type === "nested") return true;
 			if (m.type === "table") {
-				const cells = (m.block?.rows ?? []).flatMap((r) => (r.cells ?? r ?? []).map((c) => words(typeof c === "string" ? c : c?.text ?? "")))
+				// a picture or video request line in a cell («[Image] woman in supermarket») names the media, never page text
+				const cellText = (c) => { const s = typeof c === "string" ? c : c?.text ?? ""; return mediaLineRe ? s.replace(mediaLineRe, " ") : s; };
+				const cells = (m.block?.rows ?? []).flatMap((r) => (r.cells ?? r ?? []).map((c) => words(cellText(c))))
 					.filter((c) => nWords(c) >= 2);
 				if (!cells.length) return true;
 				return cells.filter((c) => shown.includes(c) || shownRatio(c, 3, 0.5)).length / cells.length >= (rn.cell_ratio ?? 0.3);
@@ -1068,6 +1071,8 @@ class InteractiveBuilder {
 			const raw = m.type === "tag" ? `${m.text ?? ""} ${m.blackAfter ?? ""}` : String(m.text ?? "");
 			// a media line whose address is in the build is shown (its title is the video's, not the page's)
 			if (mediaConsumed(`${raw} ${(m.block?.links ?? []).map((l) => l?.target ?? "").join(" ")}`) === true) return true;
+			// a tag line with no black words is the writer's red instruction (a picture request, a slot label), never learner text
+			if (m.type === "tag" && rn.red_tag_line_exempt !== false && !words(m.blackAfter ?? "")) return true;
 			const t = words(raw);
 			if (nWords(t) < (rn.min_words ?? 6)) return true;
 			return shownRatio(t, K, rn.ratio ?? 0.3);
@@ -14762,6 +14767,33 @@ class InteractiveBuilder {
 		return this.#ddUploadBoxScan(bundle, ddTpl) !== null;
 	}
 
+	/** The upload box's member test, one member at a time — the same reading as #ddUploadBoxScan's member loop: black text,
+	 *  a [body] line, another dropbox marker, a red span with no tag, the writer's own dropbox [button] and its engagement
+	 *  note pass; a table, any other tag (a heading, a picture, a foreign widget's piece), another button or a genuine
+	 *  dropdown bracket refuses. The scanner's dropbox-opener walk stops at the first refusal. Pure. */
+	static UploadBoxMemberOk(m, ddTpl) {
+		if (!m) return true;
+		if (m.type === "black") return true;
+		if (m.type !== "tag") return false;
+		const cfg = ddTpl?.upload_box ?? {};
+		const delims = ddTpl?.delimiter_tags ?? ["dropdown"];
+		const deny = new RegExp(ddTpl?.opener_deny_pattern ?? "drop\\s*box", "i");
+		const allow = new RegExp(ddTpl?.opener_pattern ?? "drop[\\s-]*down|dropquiz|drop\\s*quiz", "i");
+		const textTags = new Set(cfg.text_member_tags ?? ["body"]);
+		const bm = cfg.button_member;
+		const bmOn = !!bm && bm.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[bm.env ?? "DBXBTNMEMBER_OFF"]);
+		const prim = m.parse?.primary?.tag ?? null;
+		if (prim && bmOn && (bm.button_tags ?? ["button"]).includes(prim)) {
+			const words = (String(m.text ?? "") + " " + String(m.blackAfter ?? "")).replace(/\s+/g, " ").trim();
+			return new RegExp(bm.label_pattern ?? "drop\\s*-?\\s*box", "i").test(words);
+		}
+		if (prim && bmOn && (bm.note_tags ?? []).includes(prim)) return true;
+		if (prim && !delims.includes(prim) && !textTags.has(prim)) return false;
+		if (prim && delims.includes(prim)) { const own = String(m.text ?? ""); return !(allow.test(own) && !deny.test(own)); }
+		return true;
+	}
+
 	/** A STANDALONE dropbox activity: the upload box builds, the writer's dropbox opener is the bundle's
 	 *  first member and the writer's own text stands before the writer's own dropbox [button] (nBefore > 0, set
 	 *  by that button member, not by a second dropbox marker) — the human gives it
@@ -14813,8 +14845,11 @@ class InteractiveBuilder {
 		// The button and the To Do note are safe BY CONSTRUCTION (the note is cv2-note,
 		// developer chrome, and deliberately quotes the writer's bracket).
 		if (this.#ddLeakGuard(content.join("\n"), tpl)) return null;
-		const btn = Utils.FillTemplate(cfg.button_html, { cls: orange ? "buttonD" : "button" });
-		const note = NotesAndComments.redFlag(
+		// a marker whose activity carries the writer's own dropbox [button] further down builds no second button
+		// (the scanner's member_rule.dropbox_never_merges.opener_stops.defer_to_writer_button)
+		const deferred = bundle._dbxDeferred === true;
+		const btn = deferred ? "" : Utils.FillTemplate(cfg.button_html, { cls: orange ? "buttonD" : "button" });
+		const note = deferred ? "" : NotesAndComments.redFlag(
 			Utils.FillTemplate(cfg.todo_note, { spec: spec.join(" · ") || "(bare [dropbox] marker)" }),
 			run, "todo");
 		bundle.uploadBox = true;                              // detector / affected-set marker
@@ -14834,10 +14869,10 @@ class InteractiveBuilder {
 		if (endsOn) {
 			const nb = scan.nBefore > 0 ? scan.nBefore : 0;
 			bundle.uploadAfterText = content.slice(nb);
-			return [...content.slice(0, nb), btn, note].join("\n");
+			return [...content.slice(0, nb), btn, note].filter((x) => x !== "").join("\n");
 		}
-		if (rsOn && scan.nBefore > 0) return [...content.slice(0, scan.nBefore), btn, note, ...content.slice(scan.nBefore)].join("\n");
-		return [btn, note, ...content].join("\n");
+		if (rsOn && scan.nBefore > 0) return [...content.slice(0, scan.nBefore), btn, note, ...content.slice(scan.nBefore)].filter((x) => x !== "").join("\n");
+		return [btn, note, ...content].filter((x) => x !== "").join("\n");
 	}
 
 	/**

@@ -765,6 +765,10 @@ class MenuBuilder {
 				flushText();   // a heading ends the current list run → flush buffered bullets first
 				const folded = Utils.Fold(headingText);
 				if (isLabel(folded)) {
+					// a label line that carries the pane's own prose after its colon («**Tirohanga Whānui | Overview:**A module
+					// about …»): the label is consumed, the words after the colon are the pane's first paragraph
+					// (menu.label_prose; env LABELPROSE_OFF)
+					const labelProse = this.#labelProse(it, tpl, isLabel);
 					// The BANNER family sources its top banner text from this very [H1]
 					// section label (reduced to English if it's bilingual), instead of
 					// using a hardcoded literal string. GUARD: only accept a SHORT title
@@ -788,13 +792,15 @@ class MenuBuilder {
 					// `bannerLabel` rather than rendering it here).
 					if (ovbEnabled && !bannerFamily && !engFamily) {
 						push(Utils.FillTemplate(ovbCfg.element ?? "<h4><span>{heading}</span></h4>",
-							{ heading: Utils.EscapeHtml(headingText) }));
+							{ heading: Utils.EscapeHtml(labelProse ? labelProse.label : headingText) }));
 						run.AddNote("info", "MenuBuilder",
 							`Overview [H1] "${headingText}" kept as the tab-1 <h4> banner (overview_banner_h4).`);
+						if (labelProse) { textBuf.push(labelProse.prose); bufLinks(it); }
 						continue;
 					}
 					run.AddNote("info", "MenuBuilder",
-						`Menu heading "${headingText}" is the section label — consumed (the menu scaffolding names it).`);
+						`Menu heading "${headingText}" is the section label — consumed (the menu scaffolding names it)${labelProse ? "; the words after its colon are the pane's first paragraph" : ""}.`);
+					if (labelProse) { textBuf.push(labelProse.prose); bufLinks(it); }
 					continue;
 				}
 
@@ -1398,6 +1404,26 @@ class MenuBuilder {
 	 * @returns {string|null} a menu.extra_tabs.sections key, or null
 	 */
 	/**
+	 * THE LABEL LINE THAT CARRIES ITS PANE'S PROSE (data menu.label_prose; env LABELPROSE_OFF). A menu label heading typed
+	 * with the pane's own words after its colon — «[H1] **Tirohanga Whānui | Overview:**A module about …» — is still the
+	 * label (consumed), but the words after the colon are the pane's first paragraph, as the human builds it.
+	 * @returns {{label: string, prose: string}|null} the split, or null when the line is a bare label
+	 */
+	static #labelProse(it, tpl, isLabel) {
+		const cfg = tpl.label_prose;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "LABELPROSE_OFF"]) return null;
+		if (it?.type !== "tag") return null;
+		// the label ends at its colon, inside or just outside its bold run; the words after it are the pane's prose
+		const m = /^\s*(\*{0,3})([^:*\n]{1,80}?)\s*:\s*\1\s*(\S[\s\S]*)$/.exec(String(it.blackAfter ?? ""));
+		if (!m) return null;
+		const label = m[2].trim(), prose = m[3].trim();
+		if (!label || !isLabel(Utils.Fold(label))) return null;
+		if (prose.replace(/\*+/g, " ").trim().split(/\s+/).filter(Boolean).length < (cfg.min_words ?? 4)) return null;
+		return { label, prose };
+	}
+
+	/**
 	 * THE WRITER'S BARE TAB MARKERS (a family dialect; data menu.writer_tab_markers.families; env WTABMARK_OFF).
 	 * On a tabbed overview menu of a family with a row, rewrites the item list before the walk:
 	 *  - `[Tab 1] <label>`: the label names the pane and is consumed; an LI label (li_label_pattern) with no heading right
@@ -1573,9 +1599,33 @@ class MenuBuilder {
 		const cfg = tpl.tabs_pane1_curric_split;
 		if (!cfg || cfg.enabled === false
 			|| (typeof process !== "undefined" && process.env && process.env.TABCURRICSPLIT_OFF)) return null;
+		// a label the writer typed RED with its words after it in black («[H2] Know:» red, then «show increasing awareness …»):
+		// the red label is the heading, the black words its paragraph (tabs_pane1_curric_split.red_label_black_prose;
+		// env REDLABELPROSE_OFF) — headingText is then the red label, never the black words
+		const rl = cfg.red_label_black_prose;
+		const blackWords = String(it.blackAfter ?? "").replace(/\*/g, "").trim();
+		if (rl && rl.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[rl.env ?? "REDLABELPROSE_OFF"])
+			&& /:\s*$/.test(headingText) && blackWords && headingText !== blackWords
+			&& !headingText.includes("\n") && blackWords.split(/\s+/).length >= (rl.min_words ?? 4)) {
+			const rLabel = headingText.replace(/:\s*$/, "").trim();
+			const rPieces = rLabel ? ListsAndRuns.renderBlackText(it.blackAfter.trim(), run) : [];
+			if (rPieces.length) return { label: rLabel, pieces: rPieces };
+		}
 		// the RAW black text keeps the ** bold markers (headingText has them stripped)
 		const raw = (it.blackAfter && it.blackAfter.trim()) ? it.blackAfter : headingText;
-		if (raw.includes("|")) return null;                         // bilingual title — the reduce logic elsewhere handles this instead
+		if (raw.includes("|")) {
+			// a bilingual label closed by its colon, the pane's prose after it («**Aromatawai | Assessment for Learning :**
+			// Complete …»): the label is the heading, the prose its paragraph (tabs_pane1_curric_split.bilingual_colon_label;
+			// env BILABELSPLIT_OFF); any other bilingual title is left to the reduce logic elsewhere
+			const bl = cfg.bilingual_colon_label;
+			if (!bl || bl.enabled === false
+				|| (typeof process !== "undefined" && process.env && process.env[bl.env ?? "BILABELSPLIT_OFF"])) return null;
+			const bm = /^\s*(\*{2,3})([^:*|\n]{1,80}\|[^:*|\n]{1,80}?)\s*:\s*\1\s*([^*|\s][^|]*)$/.exec(raw);
+			if (!bm || bm[3].trim().split(/\s+/).length < (bl.min_words ?? 4)) return null;
+			const bPieces = ListsAndRuns.renderBlackText(bm[3].trim(), run);
+			return bPieces.length ? { label: bm[2].trim(), pieces: bPieces } : null;
+		}
 		const mb = raw.match(/^\s*\*\*([^*]+?)\*\*\s*([\s\S]+)$/);   // bold TITLE then trailing content
 		if (!mb) return null;
 		// real NON-bold content after the title? (strip bold runs, pipes, asterisks, whitespace)

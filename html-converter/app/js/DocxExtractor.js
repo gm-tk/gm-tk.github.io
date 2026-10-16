@@ -907,6 +907,21 @@ class DocxExtractor {
 		let overview = [], overviewLinks = [];
 		let lessonNo = 0, bareCount = 0, skipped = 0, activities = 0, pageOpen = false;
 		const breakAfter = ad.page_break?.bare_numbers_break_after ?? 3;
+		// the success criteria typed only in the nested «I can | Yes | No | Sometimes» table under the Quiz row: its
+		// statements, for the overview's «I can:» list (data quiz_i_can_to_overview; env QUIZICAN_OFF)
+		const qc = ad.quiz_i_can_to_overview;
+		const iCan = [];
+		if (qc && qc.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[qc.env || "QUIZICAN_OFF"])) {
+			const hRe = re(qc.header_match ?? "^i can$"), yRe = re(qc.yes_match ?? "^yes$");
+			const q = rows.findIndex((row, i) => i > hdr && (row ?? []).some((c, k) =>
+				hRe.test(fold(lines(c).pop() ?? "")) && yRe.test(fold((row ?? [])[k + 1] ?? ""))));
+			if (q > hdr) for (let i = q + 1; i < rows.length; i++) {
+				const row = (rows[i] ?? []).map((c) => plain(c));
+				if (!row.some(Boolean)) continue;
+				if (!row[0] || row.slice(1).some(Boolean)) break;   // a statement row carries words in its first cell alone
+				iCan.push(row[0]);
+			}
+		}
 		const openLesson = (n, links) => {
 			if (pageOpen) push(TAG("End page"), []);
 			lessonNo = n; pageOpen = true;
@@ -986,6 +1001,8 @@ class DocxExtractor {
 				// `<h3><span>Overview</span></h3>`) — data overview_label_from_cell
 				const lab = ad.overview_label_from_cell !== false ? plain(leftLines[0] ?? "") : "";
 				if (lab && !/^\*\*/.test(String(overview[0] ?? "").trim())) overview.unshift(`**${lab}**`);
+				// an Overview cell with no «I can» list of its own takes the Quiz row's statements as its success criteria
+				if (iCan.length && !overview.some((l) => /^i can\b/.test(fold(plain(l))))) overview.push(qc.label ?? "I can:", ...iCan);
 				// the success-criteria items after an "I can:" label are typed as PLAIN paragraphs in the
 				// cell (no numPr) — the gold lists them (<ul><li>; KB 01B / constraint 23),
 				// so they take the corpus bullet prefix up to the next bold label or the first long prose

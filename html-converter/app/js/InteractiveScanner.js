@@ -2123,9 +2123,50 @@ class InteractiveScanner {
 		const _pbsM = DataService.Data.BoundaryBank?._meta?.opener_rule?.page_boundary_stop;
 		const _pbsMOn = !!_pbsM && _pbsM.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env[_pbsM.env || "OPENERPAGE_OFF"]);
+		// a DROPBOX-opened capture (the student upload area — never a widget) takes only what its upload box can release: the
+		// walk ends at the first member the upload box would refuse (a heading, a table, a picture, another widget, any other
+		// button), so the box builds the upload button and the activity after the marker renders as the page's content
+		// (member_rule.dropbox_never_merges.opener_stops; env DBXSTOP_OFF)
+		let _dbxStop = false, _ddTpl = null;
+		{
+			const os = DataService.Data.BoundaryBank?._meta?.member_rule?.dropbox_never_merges?.opener_stops;
+			if (os && os.enabled !== false && bundle?.type === "dropDown"
+				&& !(typeof process !== "undefined" && process.env && process.env[os.env || "DBXSTOP_OFF"])) {
+				_ddTpl = DataService.Data.EmitTemplates?.interactive_builders?.dropDown ?? {};
+				const delims = _ddTpl.delimiter_tags ?? ["dropdown"];
+				const op = (bundle.memberItems ?? []).find((m) => m?.type === "tag" && delims.includes(m.parse?.primary?.tag));
+				const own = String(op?.text ?? "");
+				// the dropbox marker OPENS the capture (its first member) — an activity-owned capture keeps its walk
+				_dbxStop = !!op && op === (bundle.memberItems ?? []).find(Boolean)
+					&& new RegExp(_ddTpl.opener_deny_pattern ?? "drop\\s*box", "i").test(own)
+					&& !new RegExp(_ddTpl.upload_box?.opener_exclude_pattern ?? "\\balert\\b", "i").test(own)
+					// an opener that also names another widget («[Go to dropbox] [button modal] How to use …») keeps its capture
+					&& !(os.foreign_widget_pattern && new RegExp(os.foreign_widget_pattern, "i").test(own));
+			}
+		}
 		let j = startJ;
 		for (; j < items.length; j++) {
 			const next = items[j];
+			if (_dbxStop && !InteractiveBuilder.UploadBoxMemberOk(next, _ddTpl)) {
+				run?.AddNote?.("info", "InteractiveScanner", `dropbox upload area: the capture ends before «${String(next.blackAfter || next.text || "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim().slice(0, 60)}» — the activity after the marker stays on the page (opener_stops).`);
+				// the writer's own dropbox [button] further down the same activity is the activity's upload button: the marker
+				// builds no second one (opener_stops.defer_to_writer_button)
+				const dw = DataService.Data.BoundaryBank?._meta?.member_rule?.dropbox_never_merges?.opener_stops?.defer_to_writer_button;
+				if (dw && dw.enabled !== false) {
+					const stops = new Set(dw.stop_tags ?? []);
+					const btnRe = new RegExp(dw.button_label_pattern ?? "drop\\s*-?\\s*box", "i");
+					for (let k = j; k < items.length; k++) {
+						const x = items[k];
+						if (!x || x.type !== "tag") continue;
+						const pt = String(x.parse?.primary?.tag ?? ""), dir = x.parse?.primary?.directive;
+						// «[Button] [Dropbox] Upload to lesson dropbox.» — a button bracket naming the dropbox, whichever tag it resolves to
+						const btnShaped = pt === "button" || /\[\s*(?:add\s+)?button\b/i.test(String(x.text ?? ""));
+						if (btnShaped && btnRe.test(`${x.text ?? ""} ${x.blackAfter ?? ""}`)) { bundle._dbxDeferred = true; break; }
+						if (dir === "PAGE_BOUNDARY" || dir === "CONTAINER_CLOSE" || stops.has(pt)) break;
+					}
+				}
+				break;
+			}
 			if (_pbsMOn && next._afterPageBoundary === true && j > startJ) {
 				run?.AddNote?.("info", "InteractiveScanner",
 					`${bundle.activityId ? "Activity " + bundle.activityId : bundle.type}: the capture ends at the page boundary before «${String(next.blackAfter || next.text || "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim().slice(0, 60)}» (opener_rule.page_boundary_stop).`);

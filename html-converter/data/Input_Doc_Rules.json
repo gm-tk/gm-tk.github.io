@@ -808,6 +808,14 @@
 					"stop_min_words": 16,
 					"_note": "The Overview cell's success-criteria items are typed as PLAIN paragraphs (no numPr, no style — as in the docx of XOTPG04 / G01 / O01), so they would reach the two-column item menu as <p> lines; the gold renders them as <ul><li> on every page that has them and the KB fixes the form — 01B_MODULE_MENUS_FOOTER (`<h5>I can:</h5>` + `<ul><li>`), constraint 23. The lines after a label matching label_match (folded) up to the next bold label or the first line of >= stop_min_words words take the corpus bullet prefix, so ListsAndRuns.renderBlackText groups them into ONE <ul>. The B-series Overview cells hold only the external Google-Doc link and never match. Off with the adapter (ACTTABLEADAPT_OFF) or enabled: false."
 				},
+				"quiz_i_can_to_overview": {
+					"_doc": "THE QUIZ ROW'S «I CAN» LIST IS THE MENU'S SUCCESS CRITERIA. Some activity-table modules type their success criteria only in the nested «I can | Yes | No | Sometimes» self-assessment table under the Quiz row (the Overview cell holds an opening line and a Google Doc link); the Quiz row and the rows after it are skipped (the quiz itself is D2L's), so those statements reached no page, while the gold menus list them on every page under the success-criteria label. When no Overview line starts with «I can», the nested table's statements (the rows whose first cell alone carries words) join the overview as `label` + the statements, and overview_list_after_label lists them. A module whose Overview cell has its own «I can:» list is untouched.",
+					"enabled": true,
+					"env": "QUIZICAN_OFF",
+					"header_match": "^i can$",
+					"yes_match": "^yes$",
+					"label": "I can:"
+				},
 				"overview_link_only_todo": {
 					"enabled": true,
 					"env": "XOTPOVERVIEW_OFF",

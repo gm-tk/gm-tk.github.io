@@ -247,7 +247,12 @@ class SkeletonBuilder {
 
 		// ---- <head> ---------------------------------------------------------
 		const code = run.moduleCode ?? "MODULE";
-		const title = pageType === "overview"
+		// a series that titles its pages its own way (skeleton.title_patterns.series; env SERIESTITLE_OFF)
+		const st = tpl.skeleton.title_patterns.series;
+		const seriesRow = st && st.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[st.env ?? "SERIESTITLE_OFF"])
+			? (st.rows ?? []).find((r) => r?.code_pattern && new RegExp(r.code_pattern).test(code)) : null;
+		const title = seriesRow ? Utils.FillTemplate(seriesRow.pattern, { code }).trim() : pageType === "overview"
 			? Utils.FillTemplate(tpl.skeleton.title_patterns.overview, {
 				code, englishTitle: SkeletonBuilder.#englishOf(content.titleBar.english, content.titleBar.teReo, tpl) || run.englishTitle || "",
 			}).trim()

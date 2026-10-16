@@ -110,6 +110,16 @@ class BilingualBuilder {
 		const ref = Utils.FillTemplate(cfg.ref_template ?? "{code}-{page}-T{n}",
 			{ code: run.moduleCode ?? "MODULE", page: Utils.Pad2(pageIdx < 0 ? 0 : pageIdx), n });
 		run.handoffTables.push({ n, ref, kind, block, page });
+		// the box renders like every hand-off box: the reference-code label and its toggle, the raw table collapsed inside
+		// (interactive_placeholder.handoff_tables.collapse — the extract.collapse wrapper; env HANDOFFCOLLAPSE_OFF)
+		const hc = cfg.collapse, col = DataService.Data.EmitTemplates.interactive_placeholder?.extract?.collapse;
+		if (hc && hc.enabled !== false && col && col.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[hc.env || "HANDOFFCOLLAPSE_OFF"])) {
+			const open = Utils.FillTemplate(col.wrapper_open, { index: "", id: ref, ref })
+				.replace('class="cv2-interactive cv2-int-ref"', 'class="cv2-interactive cv2-int-ref bilingual-unbuilt"')
+				.replace(' data-cv2-index=""', "");
+			return [open, Utils.FillTemplate(col.label_row, { label: ref }), col.content_open, inner, col.content_close, col.wrapper_close].join("\n");
+		}
 		return `<div class="cv2-interactive bilingual-unbuilt" data-cv2-ref="${ref}">\n${inner}\n</div>`;
 	}
 
