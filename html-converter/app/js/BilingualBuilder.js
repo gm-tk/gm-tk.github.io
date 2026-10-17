@@ -304,15 +304,17 @@ class BilingualBuilder {
 					before = src.mediaPos.map((p) => (p < kept.length ? kept[p] : c));
 				}
 				// with the general rule off, a carousel built from the cell still goes back where the writer typed it
-				// (dual_language.carousel_tag.in_place; env REOCAROUSELPOS_OFF) — the other embeds stay after the text
+				// (dual_language.carousel_tag.in_place; env REOCAROUSELPOS_OFF), as does an embed its own rule marks
+				// (mediaHere — dual_language.pdf_button.in_place) — the other embeds stay after the text
 				let placed = null;
 				if (!before && src.mediaPos && src.media.length) {
 					const cc = this.#carouselCfg();
-					if (cc && cc.inPlace && src.media.some((m) => String(m).startsWith(cc.open))) {
+					const here = (m, i) => (cc && cc.inPlace && String(m).startsWith(cc.open)) || !!src.mediaHere?.[i];
+					if (src.media.some(here)) {
 						const kept = [];
 						let c = 0;
 						for (const h of src.text) { kept.push(c); if (strip([h]).length) c++; }
-						placed = src.media.map((m, i) => (String(m).startsWith(cc.open)
+						placed = src.media.map((m, i) => (here(m, i)
 							? (src.mediaPos[i] < kept.length ? kept[src.mediaPos[i]] : c) : -1));
 					}
 				}
@@ -1085,6 +1087,42 @@ class BilingualBuilder {
 		return NotesAndComments.redFlag(Utils.FillTemplate(c.flag ?? "{label} with no URL found — add the video source.", { label }), run);
 	};
 
+	/** THE «[Button] [Go to PDF]» PART AND THE DOCUMENT PART AFTER IT ARE ONE BUTTON (data dual_language.pdf_button; env
+	 *  REOPDFBUTTON_OFF): the compiled rule, or null when it is off. */
+	static #pdfButtonCfg() {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.pdf_button;
+		if (!c || c.enabled === false || !c.part_pattern || !c.item_pattern
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOPDFBUTTON_OFF"])) return null;
+		return {
+			re: new RegExp(c.part_pattern, "i"),
+			item: new RegExp(c.item_pattern, "i"),
+			strip: c.label_strip_pattern ? new RegExp(c.label_strip_pattern, "gi") : null,
+			html: c.button_html || "<a href=\"{href}\" target=\"_blank\"><div class=\"button\">{label}</div></a>",
+			todo: c.todo_note || "",
+			inPlace: c.in_place !== false,
+		};
+	};
+
+	/** The document's button for a «[Button] [Go to PDF]» part whose NEXT part names the document, or null (the part is not
+	 *  the request, or no document part follows). The label is the writer's document title; the writer's own link on those
+	 *  words is the To Do's address (a staff folder, never the learner's href), the href left blank as the dropbox's is. */
+	static #pdfButton(part, next, c, links, run) {
+		if (!c.re.test(String(part ?? "")) || !next) return null;
+		const im = String(next).match(c.item);
+		if (!im) return null;
+		let label = String(im[1] ?? "");
+		if (c.strip) label = label.replace(c.strip, " ");
+		label = label.replace(/\s+/g, " ").trim();
+		if (!label) return null;
+		const lk = (links ?? []).find((l) => l && String(l.text ?? "").replace(/\s+/g, " ").trim() && label.includes(String(l.text).replace(/\s+/g, " ").trim()));
+		const out = [Utils.FillTemplate(c.html, { href: "", label: Utils.EscapeHtml(label) })];
+		if (c.todo) {
+			const note = NotesAndComments.redFlag(Utils.FillTemplate(c.todo, { label, link: lk?.target ? ` (the writer's link: ${lk.target})` : "" }), run, "todo");
+			if (note) out.push(note);
+		}
+		return out.join("\n");
+	};
+
 	/** THE DROPBOX REQUEST IN A BILINGUAL CELL IS THE UPLOAD BUTTON (data dual_language.dropbox_button; env REODROPBOX_OFF):
 	 *  the compiled rule — the part pattern, the two labels, the anchor template, the To Do and the section-box half
 	 *  (box_section; env REODBXBOX_OFF) — or null when the rule is off. */
@@ -1323,8 +1361,9 @@ class BilingualBuilder {
 		// Each media embed remembers how many text elements preceded it in the
 		// cell (mediaPos), so bilingualRows can put it back IN PLACE between the paragraphs
 		// (data dual_language.media_in_place; env REOMEDIAPOS_OFF) instead of after them all.
-		const mpos = [];
-		const pushM = (x) => { media.push(x); mpos.push(text.length); };
+		// An embed whose own rule puts it back where the writer typed it even with that rule off records it (mediaHere).
+		const mpos = [], mhere = [];
+		const pushM = (x, here = false) => { media.push(x); mpos.push(text.length); mhere.push(!!here); };
 		const flush = () => { if (buf.length) { for (const h of ListsAndRuns.renderBlackText(buf.join("\n"), run)) text.push(h); buf.length = 0; } };
 		// KB 01E / 04B "Audio Image" (data dual_language.audio_image_tag; env
 		// AUDIOIMGTAG_OFF): the writer's `[Audio Image]` / `[Audio Image Hover]` tag followed by its
@@ -1383,6 +1422,8 @@ class BilingualBuilder {
 		const carRuns = cc ? this.#carouselRuns(parts, cc) : new Map();
 		// the dropbox request part → the upload button (dual_language.dropbox_button; env REODROPBOX_OFF)
 		const dbx = this.#dropboxCfg();
+		// the «[Button] [Go to PDF]» part + its document part → the document's button (dual_language.pdf_button; env REOPDFBUTTON_OFF)
+		const pdfb = this.#pdfButtonCfg();
 		for (let pi = 0; pi < parts.length; pi++) {
 			let part = parts[pi];
 			const cr = carRuns.get(pi);
@@ -1434,6 +1475,10 @@ class BilingualBuilder {
 			const m = part.match(/^\[([^\]]+)\]\s*([\s\S]*)$/);
 			let canon = null, rest = part;
 			if (m) { try { canon = norm.Parse(`[${m[1]}]`)?.primary?.tag ?? null; } catch { canon = null; } rest = m[2]; }
+			// the writer's «[Button] [Go to PDF]» with the document named on the next part («[Item 48][PDF] Ngā Kiwi Pages») is
+			// ONE button labelled with the document's title (dual_language.pdf_button; env REOPDFBUTTON_OFF)
+			const pdfBtn = pdfb ? this.#pdfButton(part, parts[pi + 1], pdfb, links, run) : null;
+			if (pdfBtn) { flush(); pushM(pdfBtn, pdfb.inPlace); pi++; continue; }
 			if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?(?:image|photo)\s*\]/.test(low)) {
 				// the picture is named from the table's link on its words (an iStock picture keeps its id) —
 				// dual_language.cell_image_links; env REOCELLIMGLINK_OFF
@@ -1522,9 +1567,9 @@ class BilingualBuilder {
 				}
 			}
 			const keep = media.map((x) => x !== null);
-			return { text, media: media.filter((x, k) => keep[k]), mediaPos: mpos.filter((x, k) => keep[k]) };
+			return { text, media: media.filter((x, k) => keep[k]), mediaPos: mpos.filter((x, k) => keep[k]), mediaHere: mhere.filter((x, k) => keep[k]) };
 		}
-		return { text, media, mediaPos: mpos };
+		return { text, media, mediaPos: mpos, mediaHere: mhere };
 	};
 
 	/**

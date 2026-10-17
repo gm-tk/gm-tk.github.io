@@ -514,7 +514,11 @@ class DocxExtractor {
 		const rules = DataService.Data.InputDocRules;
 
 		// --- the three parts we read ------------------------------------
-		const documentXml = await zip.ReadText("word/document.xml");
+		// A TRACKED FORMATTING CHANGE keeps the run's (paragraph's, cell's …) PREVIOUS properties inside its own properties
+		// element; every property below is read by matching the element anywhere in the run or paragraph, so those old
+		// properties are removed first — the writer's document is its current formatting.
+		// Data: Input_Doc_Rules.tracked_format_changes   Env toggle: TRACKEDFMT_OFF
+		const documentXml = this.#dropTrackedFormatting(await zip.ReadText("word/document.xml"), rules);
 		// hyperlink targets live in the rels part, NOT the visible text —
 		// the single most important extraction rule for the media list
 		const relsXml = zip.Has("word/_rels/document.xml.rels")
@@ -568,6 +572,59 @@ class DocxExtractor {
 
 		return { blocks, rels, mtkFlag, hasContentStart, metadata, pictures: pictures ? pictures.byName : null };
 	};
+
+	/**
+	 * The document XML with every tracked-change PREVIOUS-properties element (Input_Doc_Rules.tracked_format_changes.elements —
+	 * w:rPrChange, w:pPrChange …) removed with everything inside it. Each such element holds the properties as they were
+	 * before the tracked change and never nests inside another of its own name, so one lazy match per element is exact.
+	 * Unchanged when the rule is off or names nothing.
+	 */
+	static #dropTrackedFormatting(xml, rules) {
+		const tf = rules?.tracked_format_changes;
+		if (!tf || tf.enabled === false || !(tf.elements ?? []).length) return xml;
+		if (typeof process !== "undefined" && process.env && process.env[tf.env || "TRACKEDFMT_OFF"]) return xml;
+		const names = tf.elements.map((n) => String(n).replace(/[^A-Za-z]/g, "")).filter(Boolean).join("|");
+		if (!names) return xml;
+		let out = String(xml ?? "");
+		// A WORD CUT OUT OF A RED PHRASE BY THE CHANGE stays red (tracked_format_changes.red_phrase_slip): a run whose change
+		// took the red off, with red words before it that close no tag and no black text after it before the next red run or
+		// the paragraph's end («[button] Check your » red, «answers» black, «[button] Reset» red), is a slip inside the
+		// writer's instruction — its previous properties are kept (the element renamed, so the removal below passes it by).
+		const sl = tf.red_phrase_slip;
+		if (sl && sl.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[sl.env || "TRACKEDREDSLIP_OFF"])) {
+			const redHex = rules?.red_runs?.red_hex_values ?? [];
+			const isRed = (r) => redHex.includes(r.match(/<w:color w:val="([0-9A-Fa-f]{6})"/)?.[1]?.toLowerCase());
+			const chg = /<w:rPrChange\b[^>]*?(?:\/>|>[\s\S]*?<\/w:rPrChange>)/g;
+			const keepName = sl.kept_element ?? "rPrChangeKept";
+			out = out.replace(/<w:p\b[\s\S]*?<\/w:p>/g, (p) => {
+				if (p.indexOf("<w:rPrChange") < 0) return p;
+				const runs = [];
+				for (const m of p.matchAll(/<w:r\b[\s\S]*?<\/w:r>/g)) {
+					const text = [...m[0].matchAll(/<w:t(?: [^>]*)?>([\s\S]*?)<\/w:t>/g)].map((t) => t[1]).join("");
+					if (!text.trim()) continue;
+					const cur = m[0].replace(chg, "");
+					runs.push({ at: m.index, xml: m[0], text, red: isRed(cur), wasRed: !isRed(cur) && isRed(m[0]) && m[0] !== cur });
+				}
+				const keep = [];
+				runs.forEach((r, i) => {
+					if (!r.wasRed || i === 0) return;
+					const before = runs[i - 1];
+					if (!before.red || /\]\s*$/.test(before.text)) return;
+					const after = runs[i + 1];
+					if (after && !after.red) return;
+					keep.push(r);
+				});
+				if (!keep.length) return p;
+				let s = p;
+				for (const r of keep.reverse()) {
+					const kept = r.xml.replace(/<w:rPrChange\b/g, `<w:${keepName}`).replace(/<\/w:rPrChange>/g, `</w:${keepName}>`);
+					s = s.slice(0, r.at) + kept + s.slice(r.at + r.xml.length);
+				}
+				return s;
+			});
+		}
+		return out.replace(new RegExp(`<w:(${names})\\b[^>]*?(?:\\/>|>[\\s\\S]*?<\\/w:\\1>)`, "g"), "");
+	}
 
 	/**
 	 * Is this block the content-start boundary?

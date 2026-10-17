@@ -506,6 +506,130 @@ class PageAssembler {
 	}
 
 	/**
+	 * THE HIGHLIGHTER TAG ON ITS OWN LINE OVER THE WRITER'S HIGHLIGHTED SENTENCES. «[word highlighter]» typed alone above
+	 * «Stars ✅winked brightly in the night sky.» marks the words the writer highlighted in the plain paragraphs that follow:
+	 * each takes the family's span (the KB's interactive highlightBtn — ListsAndRuns puts the paragraph in div.wordHighlighter —
+	 * or the WJFUN static span), through the same sentinel pair the in-sentence pass uses. The colour follows the highlight
+	 * colour (the form's colour_cycle, in order of first use) unless the tag names one. A word the text does not hold as
+	 * written is left alone. Runs after #highlightRequestInSentence, before the split and the scanner.
+	 * Data: Emit_Templates.elements.inline_format_request.highlight_forms.highlighter_span.standalone   Env toggle: HILITESTANDALONE_OFF
+	 */
+	static #highlighterOverLines(items, run) {
+		const cfg = DataService.Data.EmitTemplates?.elements?.inline_format_request?.highlight_forms;
+		const hs = cfg?.highlighter_span, st = hs?.standalone;
+		if (!st || st.enabled === false || !hs || hs.enabled === false || !cfg.highlighter_pattern || !Array.isArray(hs.forms) || !Array.isArray(items)) return;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (env[st.env || "HILITESTANDALONE_OFF"] || env[hs.env || "HILITESPAN_OFF"] || env[cfg.env_highlighter || "HILITEREJOIN_OFF"]) return;
+		const formIdx = hs.forms.findIndex((f) => f && f.module_pattern && new RegExp(f.module_pattern).test(String(run?.moduleCode ?? "")));
+		if (formIdx < 0) return;
+		const form = hs.forms[formIdx];
+		const hlRe = new RegExp(cfg.highlighter_pattern, "iu");
+		const closeRe = cfg.highlighter_closer_pattern ? new RegExp(cfg.highlighter_closer_pattern, "iu") : null;
+		const colourRe = hs.colour_pattern ? new RegExp(hs.colour_pattern, "iu") : null;
+		const innerOf = (x) => String(x?.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim();
+		const HL0 = String.fromCharCode(0xE002), HL1 = String.fromCharCode(0xE003), HL2 = String.fromCharCode(0xE004);
+		const maxLines = st.max_lines ?? 15;
+		let marked = 0, sites = 0;
+		for (let i = 0; i < items.length; i++) {
+			const it = items[i];
+			if (!it || it.type !== "tag") continue;
+			// the request is the item's leading bracket; red words after it are the writer's note on it («[word highlighting] Two
+			// colours as outlined below», «[word highlighter] (just highlighting the topic sentence)»)
+			const inner = (innerOf(it).match(/^\[[^\]]*\]?/) ?? [""])[0];
+			if (!inner || !hlRe.test(inner) || (closeRe && closeRe.test(inner))) continue;
+			if (String(it.blackAfter ?? "").trim()) continue;                         // words after it: the in-sentence form
+			const prev = items[i - 1];
+			if (prev && prev.block === it.block && String(prev.type === "black" ? prev.text : prev.blackAfter ?? "").trim()) continue;
+			const named = colourRe ? inner.match(colourRe)?.[1]?.toLowerCase() : null;
+			const colours = [];
+			const colourFor = (c) => {
+				if (named) return (form.colour_map ?? {})[named] ?? named;
+				if (Array.isArray(form.colour_cycle) && form.colour_cycle.length) {
+					const key = String(c ?? "");
+					let k = colours.indexOf(key);
+					if (k < 0) { colours.push(key); k = colours.length - 1; }
+					return form.colour_cycle[Math.min(k, form.colour_cycle.length - 1)];
+				}
+				return form.default_colour ?? "";
+			};
+			let siteMarked = 0;
+			for (let j = i + 1, n = 0; j < items.length && n < maxLines; j++) {
+				const x = items[j];
+				if (!x || x.type !== "black" || x.block === it.block) break;
+				if (x.block?.list) break;                                                   // a list item: not a plain paragraph
+				n++;
+				const marks = (x.block?.marks ?? []).filter((m) => m && m.kind === "hl" && String(m.text ?? "").trim());
+				if (!marks.length) continue;
+				if (String(x.text ?? "").includes(HL0)) continue;                        // marked already, by its own in-sentence request
+				// each mark at its own occurrence (the extractor's nth: how many times its words came before it), placed on the
+				// original text and inserted from the right, so a repeated word is marked where the writer marked it
+				const text = String(x.text ?? "");
+				const hits = [];
+				for (const m of marks) {
+					const w = String(m.text).trim();
+					let at = -1;
+					for (let k = 0, p = 0; k <= (m.nth ?? 0); k++) { at = text.indexOf(w, p); if (at < 0) break; p = at + w.length; }
+					if (at < 0) continue;
+					const before = at > 0 ? text.charAt(at - 1) : "", after = text.charAt(at + w.length);
+					// a whole word, never part of one (a mark that opens or closes on punctuation — a speech mark — needs no edge there)
+					if ((/^[\p{L}\p{N}]/u.test(w) && /[\p{L}\p{N}]/u.test(before)) || (/[\p{L}\p{N}]$/u.test(w) && /[\p{L}\p{N}]/u.test(after))) continue;
+					if (hits.some((h) => at < h.at + h.w.length && h.at < at + w.length)) continue;  // overlapping marks: the first
+					hits.push({ at, w, colour: colourFor(m.color) });
+				}
+				if (!hits.length) continue;
+				let out = text;
+				for (const h of hits.slice().sort((a, b) => b.at - a.at)) out = out.slice(0, h.at) + HL0 + formIdx + ":" + h.colour + HL2 + h.w + HL1 + out.slice(h.at + h.w.length);
+				x.text = out;
+				siteMarked += hits.length;
+			}
+			if (siteMarked) { sites++; marked += siteMarked; }
+		}
+		if (sites) run.AddNote("info", "PageAssembler", `${marked} highlighted word${marked === 1 ? "" : "s"} under ${sites} highlighter request${sites === 1 ? "" : "s"} on ${sites === 1 ? "its" : "their"} own line marked in the family's form (highlighter_span.standalone).`);
+	}
+
+	/**
+	 * THE HEADING WHOSE TITLE THE WRITER COLOURED RED. «🔴[H2]🔴 🔴Activity 1A: Agree and Disagreeing🔴»: the tag's own run
+	 * carries only the tag, so the heading had no words («Empty [H2]») and the title — the paragraph's one other run, red,
+	 * no tag — shipped as a Writers Note (an «Activity N» title opening no activity box). Before the split and the scanner,
+	 * a body heading tag with no black words whose paragraph goes on with such runs only (the colour may break the title
+	 * into several), ending there or at a bracketed request on the paragraph's next line, takes their words as its text
+	 * (no bracket, letters, at most max_words words, not opening with an instruction word), and the runs leave the stream.
+	 * Data elements.heading.red_title   Env toggle: HEADREDTITLE_OFF
+	 */
+	static #redTitleHeading(items, run) {
+		const c = DataService.Data.EmitTemplates?.elements?.heading?.red_title;
+		if (!c || c.enabled === false || !Array.isArray(items)) return;
+		if (typeof process !== "undefined" && process.env && process.env[c.env || "HEADREDTITLE_OFF"]) return;
+		const tags = new Set(c.tags ?? ["h2", "h3", "h4", "h5", "h6"]);
+		const deny = c.deny_pattern ? new RegExp(c.deny_pattern, "iu") : null;
+		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+		let n = 0;
+		for (let i = 0; i + 1 < items.length; i++) {
+			const it = items[i];
+			if (it?.type !== "tag" || !tags.has(it.parse?.primary?.tag) || !it.block) continue;
+			if (String(it.blackAfter ?? "").replace(/[\s*_]+/g, "")) continue;               // the heading has its own words
+			if (String(it.text ?? "").replace(RED, "").replace(/\[[^\]]*\]/g, "").trim()) continue;   // words inside the tag's run
+			// the title's red runs (the writer's colour may break it into several: «Fishing» + «by Patrica Grace»), each with no
+			// tag and no black words after it
+			const own = (x) => x?.type === "tag" && !x.parse?.primary && x.block === it.block
+				&& !String(x.blackAfter ?? "").replace(/[\s*_]+/g, "") && !/^\s*\[/.test(String(x.text ?? "").replace(RED, ""));
+			let j = i + 1;
+			while (own(items[j])) j++;
+			if (j === i + 1) continue;
+			// the title ends its paragraph, or a bracketed request follows it on the paragraph's next line («[insert diagram: …]»)
+			const after = items[j];
+			if (after && after.block === it.block && !(after.type === "tag" && /^\s*\[/.test(String(after.text ?? "").replace(RED, "")))) continue;
+			const words = items.slice(i + 1, j).map((x) => String(x.text ?? "").replace(RED, " ")).join(" ").replace(/\s+/g, " ").trim();
+			if (!words || /[[\]]/.test(words) || !/\p{L}/u.test(words)) continue;
+			if (words.split(" ").length > (c.max_words ?? 16) || (deny && deny.test(words))) continue;
+			it.blackAfter = ` ${words}`;
+			items.splice(i + 1, j - i - 1);
+			n++;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} heading${n === 1 ? "" : "s"} whose title the writer coloured red read with that title as ${n === 1 ? "its" : "their"} words.`);
+	}
+
+	/**
 	 * AN AUDIO-ANIMATION REQUEST TYPED IN BLACK IS THE ANIMATION VIDEO. A writer who typed «[Audio Animation 1:» in black
 	 * (bold-underlined, linked to the module's audio-script document) and closed the bracket in a red note left a paragraph
 	 * the red-tag rule (elements.audio_animation) never sees, so the bracket shipped as learner text. Before the split and
@@ -814,6 +938,8 @@ class PageAssembler {
 		PageAssembler.#untaggedProverb(items, run, normaliser);   // UNTAGPROVERB_OFF
 		PageAssembler.#blackDeveloperNote(items, run, normaliser);   // BLACKDEVNOTE_OFF
 		PageAssembler.#highlightRequestInSentence(items, run);   // FMTREQHILITE_OFF — before the scanner reads the request as a widget tag
+		PageAssembler.#highlighterOverLines(items, run);   // HILITESTANDALONE_OFF
+		PageAssembler.#redTitleHeading(items, run);   // HEADREDTITLE_OFF — before the split and the scanner read the heading
 		PageAssembler.#blackAudioAnimation(items, run, normaliser);   // AUDIOANIMBLACK_OFF
 		PageAssembler.#oneCellUnfold(items, run, normaliser);   // ONECELLUNFOLD_OFF — before the split and the scanner
 		PageAssembler.#frontMatterBody(items, run);   // FRONTMATTERBODY_OFF

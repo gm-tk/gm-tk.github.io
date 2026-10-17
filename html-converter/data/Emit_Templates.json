@@ -208,6 +208,17 @@
 					"class": "activity dropbox"
 				}
 			},
+			"pdf_button": {
+				"_doc": "THE «[Button] [Go to PDF]» PART AND THE DOCUMENT NAMED AFTER IT ARE ONE BUTTON. The Bilingual writer types the request as its own cell part and names the document on the next one — «🔴[Button] [Go to PDF]🔴 / 🔴[Item 48][PDF]🔴 Ngā Kiwi Pages» in both the te reo and the English cell — and the button was never built: the request part vanished and the title printed as a te reo / English paragraph pair. The two parts are one button labelled with the document's title (label_strip_pattern removes the writer's «(N/A)»), built once for the pair as the cell's media and put back where the writer typed it (in_place — before the paragraph pair at its position, as a carousel is, the other embeds keeping their place after the text); the href is blank — the writer's link is a staff folder (or none), so a To Do names it — as the dropbox button's is. Env REOPDFBUTTON_OFF.",
+				"enabled": true,
+				"env": "REOPDFBUTTON_OFF",
+				"part_pattern": "^\\s*\\[\\s*(?:add\\s+)?button\\s*\\]\\s*\\[\\s*go\\s+to\\s+(?:the\\s+)?pdf\\s*\\]\\s*$",
+				"item_pattern": "^\\s*\\[\\s*item\\b[^\\]]*\\]\\s*\\[\\s*pdf\\s*\\]\\s*(\\S[\\s\\S]*)$",
+				"label_strip_pattern": "\\(\\s*n\\s*/?\\s*a\\s*\\)|\\[[^\\]]*\\]",
+				"button_html": "<a href=\"{href}\" target=\"_blank\"><div class=\"button\">{label}</div></a>",
+				"todo_note": "Wire this button to the document «{label}»{link} (the href is intentionally blank — the learner's address is in no Writers Template).",
+				"in_place": true
+			},
 			"red_prose_note": {
 				"enabled": true,
 				"env": "REOREDNOTE_OFF",
@@ -567,6 +578,14 @@
 				],
 				"exclude_reo": true,
 				"_note": "The human ships BODY headings PLAIN (every template, almost every subject), so a whole-heading *italic* the writer typed (a section heading like '[H3] *What is online harassment or abuse?*') is stripped rather than rendered as <h3><i>…</i></h3>. The exception is the ENGLISH-READING families (ENGS / ENGC / ENGR / ENGJ / ENGI), where a kept italic is a NAMED WORK (book/story title, e.g. 'The Three Billy Goats Gruff') with no derivable difference from a section heading -> excluded by subject prefix; reo/bilingual modules are excluded via MenuBuilder.isReoModule (never mtkFlag). Strips via MenuBuilder.stripTextItalic (FA icons guarded). env HEADITALIC_OFF turns it off."
+			},
+			"red_title": {
+				"_doc": "THE HEADING WHOSE TITLE THE WRITER COLOURED RED. «🔴[H2]🔴 🔴Activity 1A: Agree and Disagreeing🔴» / «🔴[H2]🔴 🔴Lesson 10: Reviewing concepts🔴»: the tag's own run carries only the tag and the paragraph's one other run — red, no tag — is the title, so the heading shipped «Empty [H2]» and its words a Writers Note (and an «Activity N» heading opened no activity box). PageAssembler.#redTitleHeading, before the page split and the scanner: a body heading tag (tags) with no black words after it whose paragraph goes on with red runs only — no tag, no bracket (the colour may break the title into several: «Fishing» + «by Patrica Grace») — ending there or at a bracketed request on the paragraph's next line («[insert diagram: …]»), with letters and at most max_words words, takes those words as its text; a run that opens with an instruction word (deny_pattern) stays a note. A page title ([H1]) is the splitter's. Env HEADREDTITLE_OFF.",
+				"enabled": true,
+				"env": "HEADREDTITLE_OFF",
+				"tags": ["h2", "h3", "h4", "h5", "h6"],
+				"max_words": 16,
+				"deny_pattern": "^\\s*\\(|^\\s*(?:please|insert|add|can\\s+you|could\\s+you|note|dev|cs|designer|developer|link|image|video|audio|tbc|todo)\\b"
 			}
 		},
 		"paragraph": {
@@ -1658,6 +1677,12 @@
 						"env": "HILITEENDCLOSE_OFF",
 						"pattern": "^\\[\\s*(?:/\\s*highlight(?:ing|er)?|end\\s+(?:text\\s+)?highlight(?:ing|er)?)\\s*\\]?$",
 						"_doc": "THE «[end highlighting]» CLOSER. The opener / closer pair above reads a closer spelled with its stop word AFTER the request («[word highlight stop]»); the writer's other spelling puts the end word first — «[word highlighting] ***bright****,* ***blue*** [end highlighting]*glass bird …*» (WJFUN116), «[end highlight]», «[/highlight]» — and the opener, finding no closer it knew, marked its first emphasised run alone («bright»; the italic comma after it then broke the markup) while the closer only rejoined. A highlighter opener whose paragraph holds such a closer before any other opener now waits for it, and the closer marks every word between. OFF = the opener marks its first run."
+					},
+					"standalone": {
+						"_doc": "THE HIGHLIGHTER TAG ON ITS OWN LINE OVER THE WRITER'S HIGHLIGHTED SENTENCES. The writer types the request alone above the lines it covers — «[word highlighter]» over «Stars ✅winked brightly in the night sky.» / «Mountains ✅stood proudly, ✅watching …» — and highlights the answers in Word. Read as an in-sentence request with no sentence around it, the tag left nothing behind: no widget, no hand-off box, the highlights gone. A highlighter request (highlighter_pattern, a closer excepted) that is alone in its paragraph marks the writer's highlighted words (the extractor's highlight marks, any highlight colour) in each plain paragraph that follows, up to max_lines, stopping at the first item that is not a plain paragraph (a tag, a table, a list item): each marked word takes the family's span (forms — the KB's interactive highlightBtn inside div.wordHighlighter, or the WJFUN static span), the colour by highlight colour in order of first use (the form's colour_cycle; a colour the tag names wins). A word the paragraph's text does not hold as written is left alone, never guessed; paragraphs with no highlighted word are left as they are.",
+						"enabled": true,
+						"env": "HILITESTANDALONE_OFF",
+						"max_lines": 15
 					},
 					"forms": [
 						{
@@ -3342,6 +3367,13 @@
 					"panel_open": "<div class=\"clickDropContent\">",
 					"panel_close": "</div>"
 				},
+				"image_request": {
+					"_doc": "THE POP-OUT PICTURE THE WRITER ASKS FOR AND NAMES NOWHERE. «[Modal 1 Image] / [H3] Threading Beads / [Body] Thread some beads …» ×3: the numbered image sub-tag carries no address, the next line none, and no other module is named (image_reference), so the set had no trigger and the whole widget stayed a hand-off box. A numbered set whose own image sub-tag asked for a picture, and that ends with neither a picture nor a label, takes a placeholder picture named for its number as its trigger (filename), and one note per widget asks for the pictures (note) — the click-drop board's no-picture form. The writer's pop-outs everywhere; the BLL series' board (as_clickdrop) then applies there as before. Env MODALIMGREQ_OFF.",
+					"enabled": true,
+					"env": "MODALIMGREQ_OFF",
+					"filename": "modal-{n}-picture.png",
+					"note": "the pop-out pictures the writer asked for and named none — supply one per numbered tile"
+				},
 				"image_reference": {
 					"_doc": "ANOTHER MODULE'S PICTURE. The BLL series' 'Optional activities' pop-outs name each trigger picture as another module's ('[Modal 1 Image] same image from BLL110', 'Use the same image from BLL110') — no address, so the set had no trigger and the whole widget, its activity texts and video, stayed a hand-off box (BLL140 / 150 / 160 / 170 / 210), while BLL110 / 120 / 130, written with iStock addresses, build. Such an image sub-tag (pattern) gives its set a placeholder trigger named for the reference (filename, shown by Mode P's label) and ONE red To Do per widget names the module whose pictures to copy (note). OFF = the hand-off box.",
 					"enabled": true,
@@ -4247,6 +4279,20 @@
 				"face_front_pattern": "^(?:front|facing|face|side\\s*a|front\\s+(?:of|side\\s+of)\\s+(?:the\\s+)?(?:card|flip\\s*card))$",
 				"face_back_pattern": "^(?:back|reverse|on\\s+flip|flip(?:ped)?\\s+side|side\\s*b|other\\s+side|back\\s+(?:of|side\\s+of)\\s+(?:the\\s+)?(?:card|flip\\s*card))$",
 				"face_cotag_pattern": "^(?:h[1-6]|body|image|text|heading|caption)$",
+				"column_face_labels": {
+					"_doc": "T0c, FACE LABELS PER COLUMN, ONE CARD PER ROW: «🔴Phase 1 and 2🔴 ║ 🔴Facing:🔴 toy organisation / [image] ║ 🔴Reverse:🔴 Organise your toys …» (HPFUN901), «🔴Flip card 1🔴 ║ 🔴Facing:🔴 verbal [image] ║ 🔴Reverse:🔴 …» (HPRE203), «🔴Facing:🔴 … ║ 🔴Reverse:🔴 … ║ 🔴Facing:🔴 … ║ 🔴Reverse:🔴 …» (two cards a row). Every non-empty cell of a column opens with the writer's red front label, every cell of the next labelled column with the red back label (the face vocabulary of cell_face_split: face_front_pattern / face_back_pattern), and every other column is wholly red — the writer's ordinal or group label, markup. Each front / back column pair is one card in every row, the labels dropped; any other column shape, a face that renders empty or a face that declines keeps the other readings — and so does a face showing a picture address's pieces (residue_pattern: the writer's line break cut the address, «…/id/» + «2241954407/vector/…», so the face would show «c=52GU…» as text and a picture named «id»). Env FLIPCOLFACE_OFF.",
+					"enabled": true,
+					"env": "FLIPCOLFACE_OFF",
+					"residue_pattern": "text=id\"|\\d{6,}\\/(?:vector|photo|illustration)|\\bc=[\\w-]{10,}|[?&](?:s|w|k)=\\d"
+				},
+				"red_label_column": {
+					"_doc": "THE WRITER'S RED ROW LABELS IN THE FIRST COLUMN OF A TWO-ROW FLIP-CARD TABLE ARE MARKUP. «🔴Link for image (these were made by me in Canva)🔴 ║ <picture> ║ <picture> ║ <picture>» / «🔴Flip🔴 ║ Shows the end of a sentence. ║ …» (ENFUN05), «🔴Phase one and two🔴» / «🔴Phase three and four🔴» (HPFUN903): the first column names the rows, every other column is one card — the first row its front, the second its back. The column-per-card reading took the label column for a card (its front the writer's note to the developer). When both first cells are wholly red, carry words of their own (min_label_words words of min_word_letters letters) and are not face words (the face-marker column reads those), and every other column has content in both rows with none of it wholly red and none opening with its own face label (that is the per-column reading), the label column is dropped and each other column is a card. A face that declines, renders empty, shows a cut picture address (column_face_labels.residue_pattern) or shows the writer's link label instead of its picture (face_text_deny_pattern — «Link to Harry Potter image», «Chronicles of Narnia link») keeps the table's other readings. Env FLIPREDLABELCOL_OFF.",
+					"enabled": true,
+					"env": "FLIPREDLABELCOL_OFF",
+					"min_label_words": 1,
+					"min_word_letters": 3,
+					"face_text_deny_pattern": "^\\s*link\\b|\\b(?:image|picture|photo|link)\\s*$"
+				},
 				"cell_face_split": {
 					"enabled": true,
 					"_note": "T0, ONE CARD PER CELL with the faces marked INSIDE it: each cell is a whole card (ENGR102-3.0 '[H4] ai / [Image] Paint / [Body] paint / Back Try reading these words…', XGF9004-17.0 '[Front] … / [Back] …', CEDW501-5.0 '**Physical impacts** / [Reverse] …'). EVERY non-empty cell must split into a non-empty front and a non-empty back, so a table where only some cells carry a marker is a different shape and keeps its box. The marker may be a red span, a plain bracket, or the bare word, and may carry structural CO-TAGS ('[Back] [H3]') which are dropped. Env FLIPCELLFACES_OFF."
@@ -4983,6 +5029,11 @@
 				"item_role_pattern": "^\\[\\s*(?:insert\\s+|link\\s+to\\s+create\\s+)?(?:(?<role1>image|images|photo|picture|video|audio|text|content|answer|answers|body|button|title|heading|label)\\s+(?:for|of)\\s+)?click\\s*[- ]?drop\\s*(?:activity\\s*)?(?:(?<n>\\d+)\\s*[a-z]?)?\\s*(?:[-–—:.]\\s*)?(?:with\\s+|and\\s+|\\+\\s*)?(?:(?<role2>image|images|photo|picture|video|audio|text|content|answer|answers|body|button|title|heading|label)(?:\\s+[a-z]+){0,2})?\\s*\\]$",
 				"asset_request_note": true,
 				"note_tags": ["button", "data marker", "engagement quiz button"],
+				"content_face_marker": {
+					"_doc": "THE WRITER'S RED FACE MARKER OPENING A CONTENT CELL IS MARKUP. A click-drop table whose first row names the buttons («Sentence ║ Simple sentence ║ Compound sentence») and whose second row holds each panel opens every panel cell with the writer's red «drop» — the face word, not the panel's first line. A content cell whose FIRST red span is wholly a face marker (face_marker_pattern, the same words the header-row and face-column readings use) has that span (and the line break after it) removed before the panel is read; any other red opening is left as it is. Env CDCONTENTFACE_OFF.",
+					"enabled": true,
+					"env": "CDCONTENTFACE_OFF"
+				},
 				"button_after_set": {
 					"enabled": true,
 					"env": "MODALBTNAFTER_OFF",
@@ -5700,7 +5751,12 @@
 					"_doc": "THE WRITER'S OWN DROPBOX BUTTON. The writer often closes the upload activity with `[Button] Go to dropbox` (MXDB102, MXDI103, MXFL202, MXEX202, MXDB202, ENGI101) and decorates it with `[Engagement trigger]`; the human renders the body text and then the house 'Upload to dropbox' button exactly where that button stood. A member whose primary tag is in button_tags and whose own words (bracket + black line) match label_pattern IS the button this box builds: its words join the To Do note, its label is never released as prose, and the box's button takes its place (text before it stays before the button, text after it goes after). A note_tags member (the engagement-trigger decoration) joins the note. Any other button — 'Go to journal', a download link — still declines (the box cannot render it). Env DBXBTNMEMBER_OFF."
 				},
 				"button_html": "<a href=\"\" target=\"_blank\"><div class=\"{cls}\">Upload to dropbox</div></a>",
-				"todo_note": "Wire this button's D2L dropbox quicklink (the href is intentionally blank — the per-module rcode is in no Writers Template). Writer: {spec}"
+				"todo_note": "Wire this button's D2L dropbox quicklink (the href is intentionally blank — the per-module rcode is in no Writers Template). Writer: {spec}",
+				"released_note_once": {
+					"enabled": true,
+					"env": "DBXNOTEONCE_OFF",
+					"_doc": "THE WRITER'S SENTENCE THE UPLOAD BOX RELEASES IS SHOWN ONCE. «🔴[Dropbox]🔴 Upload your document or an image of your handwritten example to the dropbox»: the box releases the black sentence as the learner's text (before or after the button) and the built widget's retained instruction notes repeated the same words as a red Writers Note beside it. #ddUploadBox records the pieces it released on the bundle (uploadReleased); a retained note whose folded words equal one of them is not shown again. Env DBXNOTEONCE_OFF."
+				}
 			},
 			"container_open": "<div class=\"dropQuiz{autocheck}\">",
 			"container_close": "</div>",

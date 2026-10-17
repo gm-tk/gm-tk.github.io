@@ -14200,6 +14200,14 @@ class ContentConverter {
 			// widget the caller emits this return value BEFORE the activity close, so the
 			// notes land bottom-but-inside the activity container — exactly the house rule.
 			const notes = this.#bundleInstructions(bundle);
+			// a sentence the upload box released as the learner's text is shown once, as that text — never again as a
+			// Writers Note beside it (interactive_builders.dropDown.upload_box.released_note_once; env DBXNOTEONCE_OFF)
+			const relOnce = DataService.Data.EmitTemplates.interactive_builders?.dropDown?.upload_box?.released_note_once;
+			if (relOnce && relOnce.enabled !== false && Array.isArray(bundle.uploadReleased) && bundle.uploadReleased.length
+				&& !(typeof process !== "undefined" && process.env && process.env[relOnce.env ?? "DBXNOTEONCE_OFF"])) {
+				const rel = new Set(bundle.uploadReleased.map((h) => this.CaptureFold(h)).filter(Boolean));
+				for (let k = notes.length - 1; k >= 0; k--) if (rel.has(this.CaptureFold(notes[k]))) notes.splice(k, 1);
+			}
 			// the heading the writer typed on the opener line ("[Flipcards] [h4] <heading>") leads the widget
 			// (interactive_builders._opener_heading; env OPENERHEAD_OFF)
 			const head = this.#openerHeading(bundle, built, run);

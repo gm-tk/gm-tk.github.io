@@ -7423,6 +7423,56 @@ class InteractiveBuilder {
 			}
 		}
 
+		// ---- T0c: FACE LABELS PER COLUMN, one card per ROW -----------------------
+		// «🔴Phase 1 and 2🔴 ║ 🔴Facing:🔴 toy organisation / [image] ║ 🔴Reverse:🔴 Organise your toys …» (HPFUN901): every
+		// non-empty cell of one column opens with the writer's red FRONT label and every cell of the next labelled column with
+		// the red BACK label; any other column is wholly red (the writer's own ordinal or group label — markup, never a face).
+		// Each front / back column pair is a card in every row; #flipFaceHtml drops the leading label.
+		// Data flipCard.general_cards.column_face_labels; env FLIPCOLFACE_OFF.
+		const cfl = ctx.cfg.column_face_labels;
+		if (cfl && cfl.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[cfl.env || "FLIPCOLFACE_OFF"])) {
+			const w0 = Math.max(0, ...rows.map((r) => r.length));
+			const has = (c) => this.#cellText(c).trim() || /https?:\/\//.test(String(c ?? ""));
+			const roles = [];
+			for (let c = 0; c < w0; c++) {
+				const cells = rows.map((r) => r[c]).filter((x) => x !== undefined && has(x));
+				if (!cells.length) { roles.push("-"); continue; }
+				const faces = cells.map((x) => this.#flipCellFacePrefix(x, ctx.cfg));
+				if (faces.every((f) => f === "front")) roles.push("F");
+				else if (faces.every((f) => f === "back")) roles.push("B");
+				else if (cells.every((x) => this.#isFullyRed(x))) roles.push("L");
+				else roles.push("?");
+			}
+			// the labelled columns in order must alternate front, back, front, back … (a front column with no back after it, or
+			// a column that is neither a face nor wholly red, is another shape)
+			const pairs = [];
+			let open = -1, shape = !roles.includes("?");
+			for (let c = 0; shape && c < roles.length; c++) {
+				if (roles[c] === "F") { if (open >= 0) shape = false; else open = c; }
+				else if (roles[c] === "B") { if (open < 0) shape = false; else { pairs.push([open, c]); open = -1; } }
+			}
+			if (open >= 0) shape = false;
+			if (shape && pairs.length) {
+				const cards = [];
+				let ok = true;
+				// a face showing a picture address's pieces (an address the writer's line break cut — «…/id/» + «2241954407/vector/…»)
+				// is not a card: the table keeps its other readings (column_face_labels.residue_pattern)
+				const residue = cfl.residue_pattern ? new RegExp(cfl.residue_pattern, "i") : null;
+				const leaks = (h) => !!residue && residue.test(String(h ?? ""));
+				for (const r of rows) {
+					for (const [fc, bc] of pairs) {
+						if (!has(r[fc] ?? "") && !has(r[bc] ?? "")) continue;
+						const front = this.#flipFaceHtml(r[fc] ?? "", ctx, "front");
+						const back = this.#flipFaceHtml(r[bc] ?? "", ctx, "back");
+						if (front === null || back === null || !front || !back || leaks(front) || leaks(back)) { ok = false; break; }
+						cards.push({ front, back });
+					}
+					if (!ok) break;
+				}
+				if (ok && cards.length >= minExp) return cards;
+			}
+		}
+
 		// ---- T1b: a leading FACE-MARKER COLUMN (the T1 convention turned 90°) -----
 		// Column 0 holds the red "Front"/"Back" labels and every other column is a card.
 		// Drop it, remember the per-ROW faces, and let T1/T2 read what is left.
@@ -7435,6 +7485,24 @@ class InteractiveBuilder {
 				rowFaces = col0;
 				rows = rows.map((r) => r.slice(1));
 				if (!rows.some((r) => r.some((c) => this.#cellText(c).trim()))) return null;
+			} else if (this.#flipRedLabelColumn(rows, ctx.cfg)) {
+				// the writer's own red ROW LABELS in the first column of a two-row table («🔴Link for image (these were made by me
+				// in Canva)🔴» / «🔴Flip🔴», «🔴Phase one and two🔴» / «🔴Phase three and four🔴»): markup, never a card — the first row
+				// holds the fronts, the second the backs (flipCard.general_cards.red_label_column; env FLIPREDLABELCOL_OFF). A face
+				// that declines, renders empty, or shows the writer's link label or a cut address keeps the other readings.
+				const rl = ctx.cfg.red_label_column;
+				const deny = rl.face_text_deny_pattern ? new RegExp(rl.face_text_deny_pattern, "i") : null;
+				const residue = ctx.cfg.column_face_labels?.residue_pattern ? new RegExp(ctx.cfg.column_face_labels.residue_pattern, "i") : null;
+				const bad = (h) => !h || (residue && residue.test(h)) || (deny && deny.test(String(h).replace(/<!--[\s\S]*?-->/g, " ").replace(/<[^>]+>/g, " ")));
+				const cards = [];
+				let ok = true;
+				for (let c = 1; ok && c < Math.max(...rows.map((r) => r.length)); c++) {
+					const front = this.#flipFaceHtml(rows[0][c] ?? "", ctx, "front");
+					const back = this.#flipFaceHtml(rows[1][c] ?? "", ctx, "back");
+					if (front === null || back === null || bad(front) || bad(back)) ok = false;
+					else cards.push({ front, back });
+				}
+				if (ok && cards.length >= minExp) return cards;
 			}
 		}
 		const width = Math.max(0, ...rows.map((r) => r.length));
@@ -7551,6 +7619,33 @@ class InteractiveBuilder {
 	 * wholly-red rule in the mirror — a red marker followed by BLACK content is a real face WITH
 	 * content, not a delimiter row, so it must not be mistaken for one.
 	 */
+	/** Is the first column of this two-row table the writer's red row labels (every first cell wholly red with words of its
+	 *  own, no face word — the face-marker column reads those), while every other column holds a card's content in both rows
+	 *  and none of it is wholly red? Data flipCard.general_cards.red_label_column; env FLIPREDLABELCOL_OFF. */
+	static #flipRedLabelColumn(rows, cfg) {
+		const rl = cfg?.red_label_column;
+		if (!rl || rl.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[rl.env || "FLIPREDLABELCOL_OFF"]) return false;
+		if (rows.length !== 2 || rows.some((r) => r.length < 2)) return false;
+		const minWords = rl.min_label_words ?? 1, minLetters = rl.min_word_letters ?? 3;
+		for (const r of rows) {
+			if (!this.#isFullyRed(r[0])) return false;
+			const lab = this.#cellText(r[0]).replace(/[[\]]/g, " ").trim();
+			if (this.#flipCellFace(r[0])) return false;
+			if (lab.split(/\s+/).filter((w) => w.replace(/[^\p{L}]/gu, "").length >= minLetters).length < minWords) return false;
+		}
+		const width = Math.max(...rows.map((r) => r.length));
+		for (let c = 1; c < width; c++) {
+			const a = rows[0][c] ?? "", b = rows[1][c] ?? "";
+			const has = (x) => this.#cellText(x).trim() || /https?:\/\//.test(String(x));
+			if (!has(a) || !has(b)) return false;
+			if (this.#isFullyRed(a) || this.#isFullyRed(b)) return false;
+			// a content cell that opens with its own face label is another shape: the faces run across the row (column_face_labels)
+			if (this.#flipCellFacePrefix(a, cfg) || this.#flipCellFacePrefix(b, cfg)) return false;
+		}
+		return true;
+	}
+
 	static #flipCellFace(cell) {
 		if (!this.#isFullyRed(cell)) return null;
 		const t = this.#cellText(cell).replace(/^\[|\]$/g, "").trim().toLowerCase();
@@ -8329,6 +8424,8 @@ class InteractiveBuilder {
 		// (2) the SETS, from the first delimiter kind that is present.
 		const sets = this.#modalResolveSets(parts, cfg, tpl, run);
 		if (!sets || sets.length < (cfg.min_modals ?? 1)) return null;
+		// a placeholder picture stands for a picture the writer asked for: one note asks for them (modal_sets.image_request)
+		if (sets.some((s) => s.imgPlaceholder) && cfg.image_request?.note && !notes.includes(cfg.image_request.note)) notes.push(cfg.image_request.note);
 
 		// (3) render through the shared set renderer.
 		const built = this.#modalRenderSets(sets, { tpl, cfg, inline, run, renderBlock, renderNested, size: this.#modalSize(bundle, tpl, cfg) });
@@ -8437,6 +8534,9 @@ class InteractiveBuilder {
 							if (!notes.includes(note)) notes.push(note);
 						}
 					}
+					// a picture asked for and named nowhere: the set's trigger may fall back to a placeholder named for it
+					// (modal.modal_sets.image_request; env MODALIMGREQ_OFF)
+					if (!url && !part.imgRef) part.imgAsk = true;
 				}
 				parts.push(part);
 				continue;
@@ -8681,6 +8781,8 @@ class InteractiveBuilder {
 							// another module's picture: a placeholder trigger named for the reference (the note says which)
 							cur.filename = cur.filename ?? Utils.FillTemplate(cfg.image_reference.filename,
 								{ code: p.imgRef.toLowerCase(), n: String(p.num ?? sets.length) });
+						} else if (p.imgAsk) {
+							cur.imgAsk = true;                     // a picture asked for: the placeholder, once the set has no trigger
 						}
 						// an image sub-tag with no URL is an asset request; the set falls back
 						// to its text label (and declines below if it has neither)
@@ -8733,6 +8835,16 @@ class InteractiveBuilder {
 			}
 			this.#modalMediaTiles(sets, lead, cfg, run);
 			this.#modalTileFrontStrip(sets, cfg);
+			// the set whose own image sub-tag asked for a picture and that ends with no trigger: the placeholder picture
+			// named for its number (modal.modal_sets.image_request; env MODALIMGREQ_OFF)
+			const iq = cfg.image_request;
+			if (iq && iq.enabled !== false && iq.filename
+				&& !(typeof process !== "undefined" && process.env && process.env[iq.env ?? "MODALIMGREQ_OFF"]))
+				sets.forEach((s, i) => {
+					if (!s.imgAsk || s.filename || s.label) return;
+					s.filename = Utils.FillTemplate(iq.filename, { n: String(s.num ?? i + 1) });
+					s.imgPlaceholder = true;                   // the note asks for the pictures (the builder adds it once)
+				});
 			return this.#modalFinishSets(sets, cfg);
 		}
 
@@ -14177,6 +14289,14 @@ class InteractiveBuilder {
 	 * image|caption rows; the gold often ships an <img> inside a button).
 	 */
 	static #cdRowItem(labCell, conCell, cfg, tpl) {
+		// the writer's RED face marker opening a content cell («drop» / «reveal» over the panel's words) names the face, it
+		// is not the panel's first line (clickDrop.general_items.content_face_marker; env CDCONTENTFACE_OFF)
+		const cfm = cfg.content_face_marker;
+		if (cfm && cfm.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[cfm.env || "CDCONTENTFACE_OFF"])) {
+			const faceRe = new RegExp(cfg.face_marker_pattern ?? "^\\[?\\s*(front|drop|back|reveal)\\s*\\]?$", "i");
+			conCell = String(conCell ?? "").replace(/^\s*\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}\s*(?:\/\s*)?/u,
+				(m, inner) => (faceRe.test(String(inner).trim()) ? "" : m));
+		}
 		const conText = this.#cellText(conCell).trim();
 		const url = this.#cellMediaUrl(labCell) || this.#cellMediaUrl(conCell);
 		const labText = this.#cellText(labCell).trim();
@@ -15062,6 +15182,7 @@ class InteractiveBuilder {
 			Utils.FillTemplate(cfg.todo_note, { spec: spec.join(" · ") || "(bare [dropbox] marker)" }),
 			run, "todo");
 		bundle.uploadBox = true;                              // detector / affected-set marker
+		bundle.uploadReleased = content.slice();              // the learner text the box releases (upload_box.released_note_once)
 		// the writer's order around the button: text captured before the
 		// marker renders before it, text after the marker after it (in the gold the button
 		// is usually the box's last child). Data upload_box.release_split; env DBXORDER_OFF.
