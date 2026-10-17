@@ -818,6 +818,12 @@
 			"_closer_host_skip_empty_doc": "THE BACK-TO-BACK SPLIT TRIGGER. The split-bracket form (`[HInfo trigger: ] def ]`, the def in black between a red opener and a red `]` closer) anchors on the preceding item; when two triggers follow each other (`…such as who [HInfo trigger: ] asks about a character ] , what [HInfo trigger: ] asks about a thing or idea ] , where …`, BLL243) that item is the closer the first trigger emptied, so the second one's sentinel would start a bare line — its definition dropped and the sentence broken into `<p> , where</p>` paragraphs. The host is therefore the nearest preceding item of the same paragraph that still carries text — the self-closed branch's and the hover weave's own rule. Env TRIGHOST_OFF."
 		},
 		"info_trigger_anchor": {
+			"highlight_phrase": {
+				"_doc": "THE HOVER'S ANCHOR IS THE WRITER'S HIGHLIGHTED PHRASE. The writer highlights the words a hover trigger annotates («Kia kaha, kia māia [HInfo trigger: be strong, be confident]» with «Kia kaha, kia māia» highlighted) and the human's infoTrigger span covers that whole phrase; the anchor rule took only the last word («māia»). The extractor records each highlighted phrase of a paragraph (block.marks, kind hl); when the hover's anchor text ENDS with one such phrase of two to max_words words, typed plain, the whole phrase is the span's anchor (a phrase the writer also bolded or italicised is the bold-run rule's anchor already). A one-word highlight is already the last word, so it is left alone.",
+				"enabled": true,
+				"env": "HOVERHLPHRASE_OFF",
+				"max_words": 6
+			},
 			"info_markup_clean": {
 				"enabled": true,
 				"env": "INFOTAGCLEAN_OFF",
@@ -1102,6 +1108,11 @@
 		"media_hyperlinked_lead": {
 			"enabled": true,
 			"env": "MEDIALEAD_OFF",
+			"red_tail_note": {
+				"_doc": "THE WRITER'S RED WORDS AFTER A LINKED TAG. The phonics writer links only the bracket — «__[audio]__ [LINK …]» — and types the words after it in RED («may, say, bay, pay, day, hay», «lemons, apples, onions, bread, eggs», «snip accordingly into two different recordings …»): the line's link text is the tag alone, so the words are the writer's red words, not linked content, and the gold shows none of them. They go to the Writers Note instead of the caption paragraph; a line whose link text carries words beyond the tag («[audio button] / j /») keeps the fold. Env MEDIAREDTAIL_OFF.",
+				"enabled": true,
+				"env": "MEDIAREDTAIL_OFF"
+			},
 			"_note": "A hyperlink is not a red instruction span: when the BLL phonics writer hyperlinks the WHOLE line '[audio] snail, paint, trail, stain, faint, train' to its sound file, only the bracket is the tag and the words after it are the writer's CONTENT — exactly what a black run after a red '[audio 1]' is (BLL146, rendered as the caption <p>). So on a block the extractor marked hyperTag (Input_Doc_Rules red_runs.hyperlinked_tag_runs), MediaBuilder.media folds the element's embedded lead (RenderText of its own span) in FRONT of its black-after text and the ordinary rules apply: a built video drops it as its title (video_embed_title_drop), audio / an un-built element keep it as the caption. For the phonics lists the human usually builds per-word audioButton / word widgets (an un-derivable developer form), so the fold is scoped to the hyperlinked class ONLY, where the alternative is losing the words; the lead of a RED-span tag stays dropped, as the human mostly drops it. Env MEDIALEAD_OFF turns it off (the words are then lost). Sibling rule: buttons[\"audio button\"].label_default (env BTNLABELDEF_OFF)."
 		},
 		"media_url_in_text": {
@@ -1870,6 +1881,12 @@
 			"retag_as": "[Whakatauki]"
 		},
 		"rule":"One container algorithm serves every callout — only the class differs (a lookup, not logic). Modifier keywords append their class.",
+		"side_alert_table_body": {
+			"_doc": "THE BILINGUAL SIDE ALERT WHOSE WORDS ARE THE TABLE AFTER IT. The TRR writer types «[Side Alert]» alone on its line and the box's reo / English pair (and its picture) in the table on the next line; the side-alert builder gathers only the black lines after the tag, so the box shipped empty and the pair rendered as an ordinary row beside it. In a bilingual module, a side alert of a listed tag with no words of its own takes the table that follows it as its content — rendered by the bilingual table renderer (an English | Māori header row read as the header, otherwise every row a pair), its row wrapper dropped — and the table is consumed. The human puts the table's words inside the alert on 13 of the 16 sites the measure decides.",
+			"enabled": true,
+			"env": "SIDEALERTTABLE_OFF",
+			"tags": ["side alert"]
+		},
 		"side_column_backward_pair": true,
 		"side_column_backward_pair_note": "A side_column callout ([Side alert] → alertActivity) is the RIGHT sibling of the immediately-preceding col-md-8 main-content column, in ONE shared <div class=\"row\"> — the human convention across the [side alert] modules (BLL160's single own-row box is an editorial exception). ContentConverter's callout emit site detects that rowFor(\"section\") has just closed the preceding content row (parts ends with content_row_close = close col-md-8 + close row), un-closes it, appends #sideAlertCol as the right-sibling col, and re-closes the row. The col-md-8 default content col already matches the human; the EXACT side width (col-md-4 vs col-md-3, both common) stays editorial. Falls back to the own-row form when there is no preceding content row (page-start / consecutive alerts). General + data-described: any future side_column callout pairs the same way. Env SIDEPAIR_OFF renders own-row (independent of SIDEALERT_OFF, which turns off the class entirely).",
 		"flowing_tags": [
@@ -3204,7 +3221,12 @@
 				"_doc": "THE UNMARKED LABEL ROW over answer-marked rows: when every row but the first carries an ANSWER mark in one same column («Taylor is observant. ║ [correct] “Taylor could see …”») and the first row is short black labels with none («Idea ║ Best evidence»), that first row is the table's header — left out of the second build (the human's matching set has no «Idea» question). min_rows rows or more; max_words words a label at most.",
 				"enabled": true,
 				"min_rows": 3,
-				"max_words": 4
+				"max_words": 4,
+				"marks_one_column": {
+					"_doc": "The label row is left out only when the answer marks below it sit in ONE column (a matching table: «Idea ║ Best evidence» over «… ║ [correct] …»). Marks spread over several columns key a COLUMN SORT («Ending with have ║ Ending with would ║ Ending with will» over «[correct] I’ve ║ [correct] I’d ║ [correct] I’ll»), whose first row names the columns and stays in the build.",
+					"enabled": true,
+					"env": "CELLMARKHEADONE_OFF"
+				}
 			}
 		},
 		"_members_rule": {
@@ -3578,6 +3600,15 @@
 					"min_rows": 3,
 					"max_words": 3
 				},
+				"bold_header": {
+					"_doc": "THE BOLD HEADER ROW OF A MATCHING TABLE: a first row whose two cells are wholly bold, red-free labels («**Gesture** ║ **Meaning**», «**Person** ║ **Nickname**», «**Interview challenges** ║ **Remedies**») over min_rows or more rows that are not is the table's header — never a question / drag pair (the heading shown as a draggable tile). It shows as the human's heading row above the pairs (heading_row / heading_cell — the gold's h5.center-text, FRNO901, CEDR501). A bold header that names a sort with its cue in the tag (column.bold_header) is the column form's, as before. Env DDBOLDHEAD_OFF.",
+					"enabled": true,
+					"env": "DDBOLDHEAD_OFF",
+					"min_rows": 2,
+					"max_words": 8,
+					"heading_row": "<div class=\"row\">\n{cells}\n</div>",
+					"heading_cell": "<div class=\"col-6\">\n<h5 class=\"center-text\">{text}</h5>\n</div>"
+				},
 				"_guards_doc": "Under a dropped label row only (every standard-form build is untouched): a drawn blank in a label (blank_pattern — BLL266 'My brother ____ played …', the human's FIB) and a table whose every label equals its answer (decline_identity — BLLR201–203 'cartoonist ║ cartoonist') keep the hand-off box. category_pattern also reads the UNBRACKETED 'Static Heading:' (OSAI201 2.0 — the human's column sort)."
 			},
 			"list_cells_decline": {
@@ -3713,8 +3744,20 @@
 					"sort_cue_pattern": "\\b(?:columns?|sort(?:ing)?|categor\\w*|groups?)\\b",
 					"pair_header_pattern": "\\b(?:questions?|answers?|definitions?|meanings?|descriptions?|translations?|sentences?|words?)\\b",
 					"_pair_header_doc": "A bold header that names the PAIR roles («English meaning ║ French sentence», «Word ║ Definition») is a matching table, never a sort — the human builds those as one drop per prompt.",
+					"pair_header_whole": {
+						"_doc": "THE PAIR ROLE IS THE WHOLE LABEL. pair_header_pattern is read cell by cell: a header cell names a pair role only when the role word is the label itself, with at most one qualifier (max_words — «Word», «Meaning», «English meaning», «French sentence»); a category label that merely holds the word («**Words with a prefix** ║ **Words with a suffix**», a sort the gold builds as columns) is not a pair role, so the sort cue decides. Env DDPAIRWHOLE_OFF.",
+						"enabled": true,
+						"env": "DDPAIRWHOLE_OFF",
+						"max_words": 2
+					},
 					"split_lines": true,
-					"standard_declines": true
+					"standard_declines": true,
+					"prev_line_cue": {
+						"_doc": "THE SORT NAMED IN THE LINE ABOVE THE WIDGET: the writer often names the sort in the instruction line right above the drag-and-drop tag, not in the tag («[Body] … drag it to the correct column to show if it has a silent ‘e’ or not.» over «[drag and drop] the words are currently in the correct place», «Sort these characteristics.» over «[Drag and drop interactive. Please scramble …]») — the human builds the 03B column form. bundle.prevItemText (the nearest item above the opener) is read for sort_cue_pattern beside the tag words, only when every item of the table is a short label of at most max_item_words words (never a picture’s page title). Env DDCOLPREV_OFF.",
+						"enabled": true,
+						"env": "DDCOLPREV_OFF",
+						"max_item_words": 8
+					}
 				},
 				"same_column_repeat": {
 					"_doc": "AN ITEM REPEATED IN ONE COLUMN IS NOT AN AMBIGUOUS KEY: the column form refuses a repeated item because two copies under different headings would have no single answer; copies that all stand in ONE column share their answer (`Three` twice under «Does not end with –ing»), so they are kept as separate drags. Env DDCOLREPEAT_OFF.",
@@ -4607,6 +4650,18 @@
 						"CEDT"
 					],
 					"_comment": "The ROW-per-tab TABLE form — the column-form sibling (as in OSOH501-01 READYSAFE): a [tabs] bundle capturing ONE table where each ROW's label cell carries [tab N] (label = the cell's remaining text, ** stripped) and the OTHER cell is the pane ([image] URL / [H4] heading / [body] text segments, slash-separated). Only a few modules author it (OSOH501, OSOH201, CEDT501) and the human builds a tabs nav on all of them — subjects gates it to those prefixes (the gold-choice discipline). Panes ship img + <h4> + <p> in segment order (the human's OSOH501-01 pane shape). NEVER half-builds: !=1 table, a lead member, <min_rows tab rows, a label that is empty/long/bracket-residue, a non-iStock image, an unknown segment tag, or an extraTypes merge all return null (the honest placeholder). env TABROWS_OFF."
+				},
+				"marked_table": {
+					"_doc": "THE TABS TYPED AS A TABLE WHOSE LABEL CELLS THE WRITER MARKED. The writer lays the whole tab set out as ONE table and types their own marker in EVERY label cell, so the labels are the writer’s and no gold-choice registry is needed: (L1) a label row over the pane rows — «[Tab] [H4]» Mon ║ «[Tab] [H4]» Ma ║ «[Tab] [H4]» Mes over • mon père / • mon frère ║ …, «[Title]» Conversation 1 ║ …; (L2) one row, a panel per cell — «[Title Tab 1]» **Prénom / First name** / Antoine / Nicolas ║ «[Title Tab 2]» **Surnom / Nickname** / … (the label is the cell's opening bold run). A pane line may open with a «[Body]» tag (dropped) or be a video the writer asked for with no address — «[Video] [Audiovisual item 33 (Luc)]», «[Audiovisual item 32]», the two words in separate red runs — which shows the standard no-address flag and the empty video frame, the body's own form. Tried AFTER every other tabs form, so no tabs build changes. NEVER half-builds: a second table, any member but the bare [tabs] opener, a label cell without its marker, an empty or long label, any other red in a pane, a bracket left in pane text, or an empty pane all return null (the hand-off box). env TABMARKED_OFF.",
+					"enabled": true,
+					"env": "TABMARKED_OFF",
+					"label_marker_pattern": "^\\[\\s*(?:tab(?:\\s*\\d+)?(?:\\s*title)?(?:\\s*\\d+)?|title(?:\\s*tab)?(?:\\s*\\d+)?|h[2-6]|heading)\\s*\\]$",
+					"body_tag_pattern": "^\\[\\s*body(?:\\s*text)?\\s*\\]$",
+					"video_request_pattern": "^(?:\\[\\s*video\\s*\\]\\s*)?\\[\\s*audio\\s*-?\\s*visual(?:\\s+item)?\\s*\\d+[^\\]]*\\]$|^\\[\\s*video\\s*\\]$",
+					"video_request_flag": "{label} with no URL found — add the video source.",
+					"video_request_shell": "<div class=\"videoSection ratio ratio-16x9\">\n<iframe></iframe>\n</div>",
+					"max_label_words": 8,
+					"min_cols": 2
 				}
 			},
 			"open": "<div class=\"tabs col-md-8 col-12\">",
@@ -5177,6 +5232,19 @@
 		},
 		"radioQuiz": {
 			"enabled": true,
+			"line_form": {
+				"_doc": "THE RADIO QUIZ TYPED AS LINES. The writer types each statement on its own line and its answer right after it in RED — «100% means one completed set» + «true», «Move faster?» + «[yes]», «… vehicles.» + «[correct answer Yes]» — or numbers the pairs «[Q1] Stars are balls of hot rock.» / «[Q1 answer] F». Every statement carries ONE answer and every answer comes from one two-value set (yes / no, or true / false, the single letters included): the build is the table form's radioQuiz — the two options as its headings (Yes / No or True / False), one radioButtons row per statement, true = the first option. A lead line before the first statement that ends with a colon («When you added thermal energy, did the particles:») is the quiz's description heading (the human's p.description; «Description» otherwise), and the writer's [body] line renders as a paragraph before the quiz; a leading list number on a statement is dropped. Never half-built: a statement without its answer, an answer outside the set or two sets mixed, a table, media, any other tag → the hand-off box.",
+				"enabled": true,
+				"env": "RADIOLINES_OFF",
+				"answer_pattern": "^\\[?\\s*(?:correct\\s+answers?\\s*:?\\s*)?(yes|no|true|false|y|n|t|f)\\s*\\]?\\.?$",
+				"answer_head_pattern": "^\\[?\\s*correct\\s+answers?\\s*:?$",
+				"question_tag_pattern": "^\\[\\s*q(?:uestion)?\\s*(\\d+)\\s*\\]$",
+				"answer_tag_pattern": "^\\[\\s*q(?:uestion)?\\s*(\\d+)\\s*answer\\s*\\]$",
+				"strip_number_pattern": "^\\s*\\d{1,2}[.)]\\s+",
+				"button_label_pattern": "^(?:undo|reset|check(?:\\s+(?:your\\s+)?answers?)?)\\.?$",
+				"text_tags": ["body", "body text", "paragraph"],
+				"min_rows": 3
+			},
 			"_doc": "THE RADIO QUIZ (KB 03D COMP_02 'Radio Quiz'): container radioQuiz with the autoCheck comment directly inside, a 'row headings' carrying the two option labels (p.true / p.false) and the statement label (p.description), one row per statement — its radioButtons column (answer=\"true\" = the first option, \"false\" = the second) then the statement — and the Reset / Check row. Built only from a table whose answers the writer marked (an answer only where the writer marked it); every other radio-quiz bundle keeps the hand-off box.",
 			"table_form": {
 				"_doc": "THE MARKED TABLE. (A) a label row over three columns — the statement column and two option columns ('Scenario ║ Formal ║ Informal', 'T ║ F ║ Question') — each data row with a mark in exactly one option cell: a pasted tick picture ('[IMAGE: image1.png]'), a red 'tick', a tick symbol (mark_pattern); (B) two columns — the statement and its answer, one of two values: true / false words (true_words / false_words) or the two options a label row names ('True / False', '[Options: Open Closed]' — the first named is the true column). The statements keep the writer's words; a statement carrying a picture, an address or a red word, a row without its single mark, a ragged or wider table declines the build.",
@@ -5202,6 +5270,14 @@
 		},
 		"unclassified": {
 			"enabled": true,
+			"answer_key_table": {
+				"_doc": "THE UNTAGGED TABLE THAT CARRIES THE WRITER'S ANSWER KEY. An activity with no widget keyword whose ONE captured table carries the writer's ANSWER mark (the _cell_marker_vocabulary answer_pattern — «[correct]», «[correct answer]», ✅) in every row — an unmarked first row being the header — and whose lead says what the learner does with it («Match the definition to each word», «Drag the contractions to the correct column») is the matching / sorting drag-and-drop the writer describes: the build is tried as as_type, through that type's own builders with the cell marks read. Where that build declines (a column of audio links, pictures) the untagged box stays as captured. Only the activity's own title and lead are read for the action (action_pattern).",
+				"enabled": true,
+				"env": "UNTAGGEDKEY_OFF",
+				"as_type": "dragAndDrop",
+				"action_pattern": "\\b(?:match(?:es|ed|ing)?|drag(?:s|ged|ging)?|sort(?:s|ed|ing)?|pair(?:s|ed|ing)?)\\b",
+				"min_rows": 3
+			},
 			"_doc": "An [Activity] capture with no widget keyword. Built only by the readings named here — the timed flip cards the writer asks for in a red line of the activity's lead (flipCard.word_grid.requested); every other unclassified capture keeps the hand-off box."
 		},
 		"wordDrag": {
@@ -5237,7 +5313,24 @@
 		},
 		"reorder": {
 			"enabled": true,
-			"_doc": "THE REORDER (KB 03F COMP_05): the items listed in their CORRECT order in the source, the page script shuffles them. Built ONLY where the writer says the typed order is the answer (an answer is never invented). The table form below is the one shape built.",
+			"_doc": "THE REORDER (KB 03F COMP_05): the items listed in their CORRECT order in the source, the page script shuffles them. Built ONLY where the writer says the typed order is the answer (an answer is never invented). The line form and the table form below are the shapes built.",
+			"line_form": {
+				"_doc": "THE REORDER TYPED AS A LIST OF LINES, IN ORDER. The opener, a [body] instruction or two, then one item per black line — «[reorder] The sentences are currently in the correct order. Please jumble them.» over the story's sentences, «[reorder interactive] [Correct order shown]» over the steps. Built only where the writer SAYS the typed order is the answer: the table form's answer_mark_pattern or order_said_pattern («correct order / answer shown», a request to jumble / shuffle / muddle the lines). A dialogue whose parts the learner puts together is NOT read as in order on its own (the order would be inferred, not said). The KB 03F re-standard list, the items in the typed order; a dash or bullet before an item is dropped (item_strip_pattern), the [body] lines lead the widget, the writer's «[button] Check answer» / «Reset» are the KB button row, «autocheck» on the opener adds autoCheck. NEVER half-builds: a table, a red span in an item, an item of word tiles («我wǒ / 的de / 老师lǎoshī», words spaced into columns — a per-line sentence reorder, tile_pattern), anything after the items but those buttons, or fewer than min_items / more than max_items keeps the hand-off box. env REORDERLINES_OFF.",
+				"enabled": true,
+				"env": "REORDERLINES_OFF",
+				"order_said_pattern": "correct\\s+(?:answers?|order)\\s+(?:is\\s+|are\\s+)?shown|\\b(?:please\\s+)?(?:jumble|shuffle|muddle|scramble)(?:\\s+(?:them|it|up|these|the\\s+(?:order|sentences|lines|items)))?\\b",
+				"text_tags": [
+					"body"
+				],
+				"button_label_pattern": "^(?:reset|check(?:\\s+(?:my\\s+)?answers?)?|undo)\\.?$",
+				"tile_pattern": "\\S\\s*\\/\\s*\\S[^/]*\\/|\\S {3,}\\S",
+				"item_strip_pattern": "^(?:\\*\\*)?[—–•·-](?:\\*\\*)?\\s+",
+				"min_items": 3,
+				"max_items": 20,
+				"open": "<div class=\"reorder row{autocheck}\" layout=\"re-standard\">",
+				"autocheck_class": " autoCheck",
+				"autocheck_pattern": "auto\\s*-?\\s*check"
+			},
 			"table_form": {
 				"enabled": true,
 				"env": "REORDERTABLE_OFF",
@@ -5499,6 +5592,11 @@
 				"_tag_answer_note": "A red cell that is a TAG word — GEWHA / PWY1002's layout tables (`Body`, `Table`, `Typing self check`, `[MTK Quiz Questionnaire] [engagement trigger]`, `select option Y/N`) — means the table describes a layout, not a quiz: the whole table declines. Any answer still bracketed after the single-bracket unwrap declines too, and so does a built table that would still show a writer bracket (MXFU202's `[image] 117 - 71.jpg` cells).",
 				"_alt_split_note": "The writer's alternative answers in one red run — `23.30 or 23.3` (MXFU202) — become the KB 03D multiple-answer form answer=\"a||b\" when there are 2–3 alternatives of ≤ 3 words each.",
 				"_label_answer_note":"A red run that is a LABEL — `correct` beside the black answer (BLLR203), `(Question 1)` (SSCI205), `Example` — means red is not the answer in that table: the whole table declines to the hand-off box.",
+				"correct_label_cell": {
+					"_doc": "THE «[correct]» LABEL INSIDE A CELL. A writer who marks each answer with a red «[correct]» LABEL and types the answer itself in black after it in the same cell («monkey ║ [correct] mon / key») means the black words are the answer, exactly as typing.correct_label reads the label on a question line: the label is dropped and the black words up to the next red run (or the cell's end) become the input's answer=. A label with no black words after it, an answer over max_answer_words or one that answer_deny_pattern refuses declines the whole table. A row with no label (the writer's worked example, «donkey ║ don / key») stays text. The label words are typing.correct_label.tag_pattern.",
+					"enabled": true,
+					"env": "TYPTABLELABEL_OFF"
+				},
 				"button_label_pattern": "^(?:check(?:\\s+(?:your\\s+)?answers?)?|reset|undo|show(?:\\s+answers?)?)\\.?$"
 			}
 		},

@@ -3036,7 +3036,10 @@ class ContentConverter {
 						const mtkShellEarly = this.#mtkQuizShellBundle(bundle, it);
 						const mtkPlainBox = mtkShellEarly === "widget" && mtkCfg && mtkCfg.shell_box_plain !== false;
 						// the standalone dropbox box is the gold's plain `activity dropbox`, never `interactive`
-						const forceInt = actOwner !== dbOwner && (!mtkPlainBox && [bundle.type, ...(bundle.extraTypes ?? [])]
+						// (an untagged activity whose table carries the writer's answer key under a «match / drag» lead is the
+						// widget that lead describes — InteractiveBuilder.AnswerKeyType, interactive_builders.unclassified.answer_key_table)
+						const forceInt = actOwner !== dbOwner && (!mtkPlainBox && [bundle.type, ...(bundle.extraTypes ?? []),
+							InteractiveBuilder.AnswerKeyType(bundle, tpl.interactive_builders)]
 							.some((t) => interactiveTypes.has(t))
 							// a SYNTHETIC standalone box is `activity interactive` by
 							// construction — the box only exists because of the widget it wraps
@@ -13166,6 +13169,16 @@ class ContentConverter {
 		});
 	}
 
+	/** Is this run a bilingual (reoTranslate) module — the page loop's reoMode test, read from the run (the MTK-header trigger,
+	 * opt-in there, is left out)? */
+	static #reoModule(run) {
+		const dl = DataService.Data.EmitTemplates.elements?.dual_language;
+		if (!dl || dl.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env.REOTRANSLATE_OFF) return false;
+		return /reoTranslate/i.test(run?.resolvedRules?.body_class || "")
+			|| (dl.code_prefixes || []).some((p) => String(run?.moduleCode || "").toUpperCase().startsWith(String(p).toUpperCase()));
+	}
+
 	static #sideAlertCol(it, bodyItems, i, run, def, pre = [], tagged = null) {
 		const inner = [];
 		// `tagged` = the box's content typed under its own tags on the following lines ({lead, text} —
@@ -13190,6 +13203,23 @@ class ContentConverter {
 			if (lead) inner.push(...deBold([`<${leadEl}>${ListsAndRuns.inlineMarkup(lead)}</${leadEl}>`]));
 		}
 		if (_txt) inner.push(...deBold(ListsAndRuns.renderBlackText(_txt, run, it.block?.links)));
+		// the bilingual side alert whose words are the TABLE right after its tag (TRR's «[Side Alert]» + the reo / English pair
+		// table): that table is the box's content, its row wrapper dropped (callouts.side_alert_table_body; env SIDEALERTTABLE_OFF)
+		if (!tagged && !inner.length) {
+			const tb = DataService.Data.EmitTemplates.callouts?.side_alert_table_body;
+			const nx = bodyItems[i + 1];
+			if (tb && tb.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[tb.env ?? "SIDEALERTTABLE_OFF"])
+				&& (tb.tags ?? []).includes(String(it.parse?.primary?.tag ?? "")) && this.#reoModule(run)
+				&& nx?.type === "table" && nx.consumedBy === undefined && !nx._consumed) {
+				const bil = BilingualBuilder.bilingualTable(nx.block, run, this.#norm, !BilingualBuilder.bilingualHeader(nx.block));
+				const m = bil && /^\s*<div class="row">\s*<div class="col-[^"]*">\s*([\s\S]*?)\s*<\/div>\s*<\/div>\s*$/.exec(bil);
+				if (m && m[1].replace(/<[^>]+>/g, " ").trim()) {
+					inner.push(...deBold([m[1]]));
+					nx._consumed = true;
+					run.AddNote("info", "ContentConverter", `[${it.parse.primary.tag}] with no words of its own takes the table after it as its content (callouts.side_alert_table_body).`);
+				}
+			}
+		}
 		const box = `${def.open}\n${inner.join("\n")}\n${def.close}`;
 		// The side column's CLASS follows the module's subject where the gold's form is solid — the
 		// alert-top side column is `col-md-4 offset-md-0 col-12 paddingL` in NCEA1, Mathematics and TMoA;

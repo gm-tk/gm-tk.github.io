@@ -665,6 +665,15 @@ class ListsAndRuns {
 			return v.replace(/^(?:\s*<\/(?:b|i|u|strong|em)>)+/, "").replace(/(?:<(?:b|i|u|strong|em)>\s*)+$/, "")
 				.replace(/<a\b[^>]*>|<\/a>/g, "").replace(/"/g, "&quot;").trim();
 		};
+		// THE WRITER'S HIGHLIGHTED PHRASE IS THE ANCHOR: the scanner wrapped it in U+E005 … U+E006 right before the sentinel
+		// (elements.info_trigger_anchor.highlight_phrase; env HOVERHLPHRASE_OFF) — the whole phrase is the span's anchor, its own
+		// bold / italic kept inside; a pair left without a sentinel is dropped
+		const _hk0 = String.fromCharCode(0xE005), _hk1 = String.fromCharCode(0xE006);
+		if (s.includes(_hk0) || s.includes(_hk1)) {
+			s = s.replace(new RegExp(`${_hk0}([^${_hk0}${_hk1}]*)${_hk1}${_it0}([^${_it0}${_it1}]*)${_it1}`, "g"),
+				(m, a, def) => fmtIt.replace("{info}", infoOf(def)).replace("{anchor}", a));
+			s = s.replace(new RegExp(`[${_hk0}${_hk1}]`, "g"), "");
+		}
 		// A LONG RUN IS NOT THE ANCHOR: a bold / italic run of more than long_run.max_words words, or one that opens with
 		// punctuation («*…across the world. Theories of socialism*», «*, stemming from the teachings of Marxism*»), is the
 		// writer's quotation or sentence, not the term — its last word is the anchor, inside the writer's formatting.

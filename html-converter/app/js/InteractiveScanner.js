@@ -678,10 +678,12 @@ class InteractiveScanner {
 								h--;
 							}
 							if (host && host.type === "black") {
+								InteractiveScanner.#markHighlightAnchor(host, "text");   // the writer's highlighted phrase is the anchor
 								host.text = String(host.text ?? "").replace(/\s+$/, "") + sentinel
 									+ (continuation ? ` ${continuation}` : "");
 								it.type = "black"; it.text = ""; it.blackAfter = ""; continue;
 							} else if (host) {
+								InteractiveScanner.#markHighlightAnchor(host, "blackAfter");
 								host.blackAfter = String(host.blackAfter ?? "").replace(/\s+$/, "") + sentinel
 									+ (continuation ? ` ${continuation}` : "");
 								it.type = "black"; it.text = ""; it.blackAfter = ""; continue;
@@ -719,7 +721,8 @@ class InteractiveScanner {
 									}
 									if (hostN) {
 										const key = hostN.type === "black" ? "text" : "blackAfter";
-										hostN[key] = String(hostN[key] ?? "").replace(/\s+$/, "") + IT0 + defN + IT1
+										InteractiveScanner.#markHighlightAnchor(hostN, key);   // the writer's highlighted phrase is the anchor
+										hostN[key] =String(hostN[key] ?? "").replace(/\s+$/, "") + IT0 + defN + IT1
 											+ (contN ? (/^[,.;:!?)]/.test(contN) ? "" : " ") + contN : "");
 										it.type = "black"; it.text = ""; it.blackAfter = "";
 										for (const x of spans) { x.type = "black"; x.text = ""; x.blackAfter = ""; }
@@ -769,6 +772,7 @@ class InteractiveScanner {
 							}
 						}
 						const anchorPrefix = inMarkerAnchor ? ` ${inMarkerAnchor}` : "";   // recovered in-marker term sits right before the sentinel
+						if (host && !inMarkerAnchor) InteractiveScanner.#markHighlightAnchor(host, host.type === "black" ? "text" : "blackAfter");   // the writer's highlighted phrase is the anchor
 						if (host && host.type === "black") {
 							host.text = String(host.text ?? "").replace(/\s+$/, "") + anchorPrefix + tail;
 							it.type = "black"; it.text = ""; it.blackAfter = "";
@@ -4127,6 +4131,35 @@ class InteractiveScanner {
 			&& !(typeof process !== "undefined" && process.env && process.env[dq.env || "HOVERDEVQ_OFF"])
 			&& new RegExp(dq.pattern, "i").test(String(def ?? "").trim())) return true;
 		return false;
+	}
+
+	/**
+	 * THE HOVER'S ANCHOR IS THE WRITER'S HIGHLIGHTED PHRASE (data elements.info_trigger_anchor.highlight_phrase; env
+	 * HOVERHLPHRASE_OFF). When the anchor host's text ends with one of its paragraph's highlighted phrases (block.marks, kind
+	 * hl) of two to max_words words, typed plain (a bold / italic phrase is the bold-run rule's anchor already), it is wrapped in the
+	 * U+E005 … U+E006 pair, which ListsAndRuns.inlineMarkup reads as the infoTrigger span's whole anchor (the sentinel is
+	 * appended right after it). Leaves the host untouched otherwise.
+	 * @param {Object} host - the item that takes the hover's sentinel
+	 * @param {string} key - "text" or "blackAfter", the host field the sentinel is appended to
+	 */
+	static #markHighlightAnchor(host, key) {
+		const cfg = DataService.Data.EmitTemplates.elements?.info_trigger_anchor?.highlight_phrase;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "HOVERHLPHRASE_OFF"]) return;
+		const marks = (host?.block?.marks ?? []).filter((m) => m && m.kind === "hl" && String(m.text ?? "").trim());
+		if (!marks.length) return;
+		const t = String(host[key] ?? "").replace(/\s+$/, "");
+		const esc = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+		for (const m of marks) {
+			const p = String(m.text).replace(/\s+/g, " ").trim();
+			const n = p.split(" ").filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+			if (n < 2 || n > (cfg.max_words ?? 6)) continue;
+			// a phrase the writer also bolded / italicised is already the anchor (the bold / italic run rule) — left to it
+			const mm = new RegExp(`(?:^|(?<=[\\s(“"‘']))${esc(p).replace(/ /g, "\\s+")}$`, "u").exec(t);
+			if (!mm) continue;
+			host[key] = t.slice(0, mm.index) + String.fromCharCode(0xE005) + mm[0] + String.fromCharCode(0xE006);
+			return;
+		}
 	}
 
 	/** True when a host candidate's trailing text is a MEDIA REFERENCE — a bare URL (+ "]"/")"

@@ -87,8 +87,10 @@ class InteractiveBuilder {
 		// GUARD: builders not configured at all → nothing to build.
 		if (!templates || typeof templates !== "object") return null;
 		// GUARD: a bundle with no type can't be matched.
-		const type = bundle?.type;
-		if (!type) return null;
+		if (!bundle?.type) return null;
+		// an untagged activity whose table carries the writer's answer key under a «match / drag / sort» lead is built as the
+		// widget that lead describes (#answerKeyType); the bundle keeps its own type, so a decline leaves the box as captured
+		const type = (bundle.type === "unclassified" && this.#answerKeyType(bundle, templates)) || bundle.type;
 
 		// Look up THIS widget's editable template. Missing = we don't build it
 		// yet (it stays a placeholder). enabled:false = a human switched it off.
@@ -181,10 +183,11 @@ class InteractiveBuilder {
 					html = this.#glossary({ bundle, tpl, renderInline });
 					break;
 				case "reorder":     // the table the writer typed in the correct order and said so (the KB 03F re-standard form)
-					html = this.#reorderTable({ bundle, tpl, renderInline });
+					html = this.#reorderTable({ bundle, tpl, renderInline }) ?? this.#reorderLines({ bundle, tpl, renderInline });
 					break;
 				case "radioQuiz":   // the radio-quiz table whose answers the writer marked (the KB 03D COMP_02 form)
-					html = this.#radioQuizTable({ bundle, tpl, renderInline });
+					html = this.#radioQuizTable({ bundle, tpl, renderInline })
+						?? this.#radioQuizLines({ bundle, tpl, renderInline });   // the same quiz typed as statement + red answer lines
 					break;
 				case "unclassified":   // an [Activity] whose red request asks for timed flip cards over a table of words → the word grid
 					html = this.#flipWordGridRequested({ bundle, templates, renderInline });
@@ -788,6 +791,38 @@ class InteractiveBuilder {
 		return html0;
 	}
 
+	/**
+	 * THE UNTAGGED TABLE THAT CARRIES THE WRITER'S ANSWER KEY. An activity with no widget keyword whose ONE captured table
+	 * carries an ANSWER mark (the _cell_marker_vocabulary answer_pattern) in every row — an unmarked first row being the
+	 * header — and whose own title or lead names the learner's action («Match the definition to each word», «Drag the
+	 * contractions to the correct column») is built as the type the data names (the drag-and-drop the writer describes).
+	 * Data interactive_builders.unclassified.answer_key_table; env UNTAGGEDKEY_OFF.
+	 * @returns {string|null} the type to build as, or null
+	 */
+	static AnswerKeyType(bundle, templates) {
+		return bundle?.type === "unclassified" ? this.#answerKeyType(bundle, templates) : null;
+	}
+
+	static #answerKeyType(bundle, templates) {
+		const cfg = templates?.unclassified?.answer_key_table;
+		if (!cfg || cfg.enabled === false || !cfg.as_type || !templates?.[cfg.as_type]) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "UNTAGGEDKEY_OFF"]) return null;
+		const voc = templates?._cell_marker_vocabulary;
+		if (!voc?.answer_pattern || bundle?.extraTypes?.length) return null;
+		const tables = (bundle.memberItems ?? []).filter((m) => m?.type === "table" && Array.isArray(m.block?.rows));
+		if (tables.length !== 1) return null;
+		const answerRe = new RegExp(voc.answer_pattern, "iu");
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const keyed = (row) => (Array.isArray(row) ? row : []).some((c) => [...String(typeof c === "string" ? c : c?.text ?? "")
+			.matchAll(RED)].some((m) => { const t = m[1].replace(/\u{1f534}/gu, "").replace(/\s+/g, " ").trim(); return !!t && answerRe.test(t); }));
+		const rows = tables[0].block.rows.filter((r) => Array.isArray(r) && r.some((c) => String(typeof c === "string" ? c : c?.text ?? "").trim()));
+		const body = rows.length && !keyed(rows[0]) ? rows.slice(1) : rows;
+		if (body.length < (cfg.min_rows ?? 3) || !body.every(keyed)) return null;
+		const said = [bundle.activityOwner, ...(bundle.activityLeadItems ?? []), ...(bundle.openerItems ?? [])]
+			.filter(Boolean).map((m) => `${String(m.text ?? "").replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, " ")} ${m.blackAfter ?? ""}`).join(" ");
+		return new RegExp(cfg.action_pattern ?? "$^", "i").test(said) ? cfg.as_type : null;
+	}
+
 	/** The bundle's own property descriptors (getters untouched), each array value copied. */
 	static #bundleState(bundle) {
 		const d = Object.getOwnPropertyDescriptors(bundle);
@@ -871,7 +906,12 @@ class InteractiveBuilder {
 					&& [...cell.replace(/\[\/RED TEXT\]\u{1f534}(\s*)\u{1f534}\[RED TEXT\]/gu, "$1").matchAll(RED)].some((m) => classOf(m[1]) === "ANSWER") ? c : -1)).filter((c) => c >= 0)));
 				const head = b.rows[0].map((c) => this.#cellText(c).replace(/\s+/g, " ").trim());
 				const shared = [...marks[1]].filter((c) => marks.slice(1).every((s) => s.has(c)));
-				if (!marks[0].size && shared.length && !b.rows[0].some((c) => this.#hasRedText(c))
+				// marks spread over several columns key a COLUMN SORT, whose first row names the columns — it stays
+				// (data unmarked_header.marks_one_column, env CELLMARKHEADONE_OFF)
+				const oc = hd.marks_one_column;
+				const spread = !!oc && oc.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[oc.env || "CELLMARKHEADONE_OFF"])
+					&& new Set(marks.slice(1).flatMap((s) => [...s])).size > 1;
+				if (!marks[0].size && shared.length && !spread && !b.rows[0].some((c) => this.#hasRedText(c))
 					&& head.every((t) => t && t.split(" ").length <= (hd.max_words ?? 4) && !/https?:\/\//.test(t))
 					&& !dropHead.some((x) => x.rows === b.rows)) dropHead.push(b);   // one rows array is shifted once
 			}
@@ -1644,6 +1684,20 @@ class InteractiveBuilder {
 				if (lr.decline_identity !== false && pair.length && pair.every(([l, a]) => l.replace(/\s+/g, " ") === a.replace(/\s+/g, " "))) return null;
 			}
 		}
+		// THE BOLD HEADER ROW: a first row of two wholly-bold labels («**Gesture** ║ **Meaning**») over rows that are not is the
+		// table's header — the human's heading row above the pairs, never a pair (data label_row.bold_header; env DDBOLDHEAD_OFF)
+		let headCells = null;
+		{
+			const bh = lr?.bold_header;
+			const bold = (c) => /^\*\*[^*]+\*\*$/.test(this.#cellText(c).replace(/\s+/g, " ").trim());
+			if (bh && bh.enabled !== false && !labelNotes.length && !raPairs && rows.length > (bh.min_rows ?? 2)
+				&& !(typeof process !== "undefined" && process.env && process.env[bh.env || "DDBOLDHEAD_OFF"])
+				&& !this.#hasRedText(rows[0][0]) && !this.#hasRedText(rows[0][1]) && rows[0].every(bold)
+				&& rows.slice(1).every((r) => !r.every(bold))) {
+				const h = rows[0].map((c) => this.#cellText(c).replace(/\*\*/g, "").replace(/\s+/g, " ").trim());
+				if (h.every((t) => t && t.split(/\s+/).length <= (bh.max_words ?? 8))) { headCells = h; rows = rows.slice(1); }
+			}
+		}
 		// THE ALL-CAPS HEADER ROW: a first row of short ALL-CAPS labels («HOPES ║ REALITIES») over ordinary rows is the table's
 		// header, never a pair (data label_row.caps_header; env DDCAPSHEAD_OFF)
 		{
@@ -1682,6 +1736,11 @@ class InteractiveBuilder {
 			}
 		}
 		const out = [tpl.open];
+		if (headCells) {                   // the bold header row, the human's heading row between the widget's opening and its pairs
+			const bh = lr.bold_header, k = tpl.open.indexOf("\n");
+			const hr = Utils.FillTemplate(bh.heading_row, { cells: headCells.map((t) => Utils.FillTemplate(bh.heading_cell, { text: inline(t) })).join("\n") });
+			out.splice(0, 1, ...(k > 0 ? [tpl.open.slice(0, k), hr, tpl.open.slice(k + 1)] : [tpl.open, hr]));
+		}
 		for (const l of labels) out.push(Utils.FillTemplate(tpl.question, { label: inline(l) }));
 		out.push(tpl.mid);
 		for (let i = 0; i < labels.length; i++) out.push(Utils.FillTemplate(tpl.drop, { n: i + 1 }));   // (= rows.length off the red-answer-column path)
@@ -2251,10 +2310,34 @@ class InteractiveBuilder {
 		const filled = row0.map((c) => this.#cellText(c).replace(/\s+/g, " ").trim()).filter(Boolean);
 		if (filled.length < 2 || !filled.every((t) => /^\*\*[^*]+\*\*$/.test(t))) return null;
 		// a header that names the PAIR roles («English meaning ║ French sentence», «Word ║ Definition») is a matching table
-		if (bh.pair_header_pattern && new RegExp(bh.pair_header_pattern, "i").test(filled.join(" | "))) return null;
+		// — read per cell when pair_header_whole is on: the role word must BE the label (one qualifier word allowed — «Word»,
+		// «English meaning»), so a category label that merely holds the word («Words with a prefix») is no pair role
+		// (column.bold_header.pair_header_whole; env DDPAIRWHOLE_OFF)
+		const phw = bh.pair_header_whole;
+		const wholeOn = phw && phw.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[phw.env || "DDPAIRWHOLE_OFF"]);
+		if (bh.pair_header_pattern) {
+			const roleRe = new RegExp(bh.pair_header_pattern, "i");
+			const roleCell = (t) => roleRe.test(t) && t.replace(/\*\*/g, "").trim().split(/\s+/).length <= (phw?.max_words ?? 2);
+			if (wholeOn ? filled.some(roleCell) : roleRe.test(filled.join(" | "))) return null;
+		}
 		const said = [...(bundle?.openerItems ?? []), ...(bundle?.memberItems ?? [])].map((m) => this.#peekMember(m))
 			.filter((m) => m?.type === "tag").map((m) => this.#cellText(m.text)).join(" ");
-		return new RegExp(bh.sort_cue_pattern, "i").test(said) ? bh : null;
+		// the tag's trailing words («[drag and drop] These words are currently in the correct column.») name the sort too: the
+		// modifier and the instruction notes (with label_row.bold_header — env DDBOLDHEAD_OFF reverts)
+		const lbh = DataService.Data.EmitTemplates?.interactive_builders?.dragAndDrop?.label_row?.bold_header;
+		const more = lbh && lbh.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[lbh.env || "DDBOLDHEAD_OFF"])
+			? ` ${String(bundle?.modifier ?? "")} ${(bundle?.instructions ?? []).join(" ")}` : "";
+		// the writer's instruction line just above the widget («… drag it to the correct column …», «Sort these
+		// characteristics.») names the sort as well (column.bold_header.prev_line_cue; env DDCOLPREV_OFF)
+		const cueRe = new RegExp(bh.sort_cue_pattern, "i");
+		if (cueRe.test(said + more)) return bh;
+		const plc = bh.prev_line_cue;
+		if (!plc || plc.enabled === false || (typeof process !== "undefined" && process.env && process.env[plc.env || "DDCOLPREV_OFF"])) return null;
+		if (!cueRe.test(this.#cellText(String(bundle?.prevItemText ?? "")))) return null;
+		// read from the line above only when every item is a short label (max_item_words — never a picture's page title)
+		const rows = (bundle?.tables?.[0]?.rows ?? []).slice(1);
+		const lines = rows.flat().flatMap((c) => this.#cellText(String(c ?? "")).split(/\s+\/\s+|\n/)).map((t) => t.replace(/\*\*/g, "").trim()).filter(Boolean);
+		return lines.length && lines.every((t) => t.split(/\s+/).length <= (plc.max_item_words ?? 8)) ? bh : null;
 	}
 
 	/**
@@ -9163,8 +9246,11 @@ class InteractiveBuilder {
 				const built = this.#tabsFromList({ bundle, tpl, inline, listCfg });
 				if (built !== null) return built;
 			}
-			// the GENERAL composer, tried LAST (see #tabsPanes).
-			return this.#tabsPanes({ bundle, tpl, inline, run, renderBlock, renderTable });
+			// the GENERAL composer (see #tabsPanes), then the writer's own marked label table, so every form above keeps its
+			// builds (rich_panes.marked_table)
+			const general = this.#tabsPanes({ bundle, tpl, inline, run, renderBlock, renderTable });
+			if (general !== null && general !== undefined) return general;
+			return this.#tabsMarkedTable({ bundle, tpl, inline, run, renderBlock });
 		}
 
 		// STRICT text path first (the plain walk, unchanged for the bundles it
@@ -10741,6 +10827,129 @@ class InteractiveBuilder {
 		}
 		return titleHtml + [tpl.open, tpl.nav_open, ...navItems, tpl.nav_close,
 			tpl.content_open, ...paneItems, tpl.content_close, tpl.close].join("\n");
+	}
+
+	/**
+	 * THE MARKED LABEL TABLE. The writer lays the tab set out as ONE table and types their own marker in every label cell:
+	 *   (L1) a label row over pane rows   «[Tab] [H4]» Mon ║ «[Tab] [H4]» Ma ║ …   then   • mon père / • mon frère ║ …
+	 *   (L2) one row, a panel per cell     «[Title Tab 1]» **Prénom / First name** / Antoine / Nicolas ║ …
+	 * The marker (rich_panes.marked_table.label_marker_pattern) makes the labels the writer's, so no gold-choice registry is
+	 * read. A pane line may open with «[Body]» (dropped) or be a video asked for with no address («[Video] [Audiovisual item
+	 * 33 (Luc)]», video_request_pattern), which shows the no-address flag and the empty video frame, as the body does.
+	 * Returns null (the hand-off box) on a second table, any member but the bare [tabs] opener, a label cell without its
+	 * marker, an empty or long label, any other red in a pane, a lettered bracket left in pane text, or an empty pane.
+	 * Data rich_panes.marked_table; env TABMARKED_OFF.
+	 */
+	static #tabsMarkedTable({ bundle, tpl, inline, run, renderBlock }) {
+		const cfg = tpl?.rich_panes?.marked_table;
+		if (!cfg || cfg.enabled === false || tpl.rich_panes.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "TABMARKED_OFF"]) return null;
+		if (typeof renderBlock !== "function") return null;
+		if ((bundle?.extraTypes ?? []).some((t) => t !== "tabs")) return null;
+		let table = null;
+		for (const m of bundle?.memberItems ?? []) {
+			if (m && m.type === "table") { if (table) return null; table = m; continue; }
+			const tag = m && m.type === "tag" ? m.parse?.primary?.tag : null;
+			if (tag === "tabs" && !this.#cellText(m.blackAfter ?? "")) continue;
+			if (m && m.type === "black" && !this.#cellText(m.text)) continue;
+			return null;
+		}
+		if (!table) return null;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		// adjacent red runs are one span («[Video]» + «[Audiovisual item 33]»)
+		const joinRed = (c) => String(typeof c === "string" ? c : (c?.text ?? "")).replace(/\[\/RED TEXT\]\u{1f534}\s*\u{1f534}\[RED TEXT\]/gu, " ");
+		const rows = (table.block?.rows ?? []).map((r) => (r ?? []).map(joinRed));
+		if (!rows.length) return null;
+		const nCols = rows[0].length;
+		if (nCols < (cfg.min_cols ?? 2) || rows.some((r) => r.length !== nCols)) return null;
+		const markRe = new RegExp(cfg.label_marker_pattern, "i");
+		const bodyRe = new RegExp(cfg.body_tag_pattern ?? "^\\[\\s*body\\s*\\]$", "i");
+		const videoRe = new RegExp(cfg.video_request_pattern, "i");
+		const maxWords = cfg.max_label_words ?? 8;
+		const isMarker = (span) => {
+			const toks = span.match(/\[[^\]]*\]/g) ?? [];
+			return toks.length > 0 && !span.replace(/\[[^\]]*\]/g, "").trim() && toks.every((t) => markRe.test(t.trim()));
+		};
+		const cleanLabel = (s) => this.#cellText(s).replace(/\*\*/g, "").replace(/^\s*\/\s*/, "").replace(/\s+/g, " ").trim();
+		const labelOk = (s) => !!s && !/https?:\/\/|[[\]]/.test(s) && s.split(/\s+/).length <= maxWords;
+		// a label cell: its red spans are all markers, and at least one is there
+		const labelCell = (c) => {
+			const spans = [...c.matchAll(RED)].map((m) => m[1]);
+			return spans.length && spans.every(isMarker) ? c.replace(RED, " ") : null;
+		};
+		// a pane cell → ordered parts: {p} text runs and {flag} no-address video requests; null on any other red
+		const paneParts = (c) => {
+			const flags = [];
+			let bad = false;
+			const s = c.replace(RED, (all, span) => {
+				const t = span.replace(/\s+/g, " ").trim();
+				if (!t || bodyRe.test(t)) return "\n";
+				if (videoRe.test(t)) { flags.push(t); return `\n\u0000${flags.length - 1}\u0000\n`; }
+				bad = true;
+				return "";
+			});
+			if (bad) return null;
+			const parts = [];
+			let text = [];
+			const flush = () => { if (text.length) parts.push({ p: text.join("\n") }); text = []; };
+			// the cell's own paragraph joiner « / » and the line breaks the red spans left are the line seams
+			for (let seg of s.replace(/(^|\s)\/(?=\s|$)/g, "\n").split("\n")) {
+				seg = (seg ?? "").trim();
+				if (!seg) continue;
+				const fm = seg.match(/^\u0000(\d+)\u0000$/);
+				if (fm) { flush(); parts.push({ flag: flags[Number(fm[1])] }); continue; }
+				if ([...seg.matchAll(/\[([^\]]*)\]/g)].some((b) => /\p{L}/u.test(b[1]))) return null;
+				text.push(seg);
+			}
+			flush();
+			return parts;
+		};
+		const heads = [], panes = [];
+		if (rows.length >= 2 && rows[0].every((c) => labelCell(c) !== null)) {
+			// (L1) the label row, then the pane rows read down each column
+			for (const c of rows[0]) {
+				const label = cleanLabel(labelCell(c));
+				// a label cell of two paragraphs («And you? / Et toi?») is not one nav label
+				if (!labelOk(label) || /\s\/\s/.test(label)) return null;
+				heads.push(label);
+				panes.push([]);
+			}
+			for (const r of rows.slice(1)) for (let c = 0; c < nCols; c++) {
+				const parts = paneParts(r[c]);
+				if (parts === null) return null;
+				panes[c].push(...parts);
+			}
+		} else if (rows.length === 1) {
+			// (L2) a panel per cell: the marker, the bold label, then the pane lines
+			for (const c of rows[0]) {
+				const m = c.match(/^\s*\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}\s*\*\*([^*]+)\*\*([\s\S]*)$/u);
+				if (!m || !isMarker(m[1])) return null;
+				const label = cleanLabel(m[2]);
+				if (!labelOk(label)) return null;
+				const parts = paneParts(m[3]);
+				if (parts === null) return null;
+				heads.push(label);
+				panes.push(parts);
+			}
+		} else return null;
+		if (panes.some((p) => !p.length) || (panes.some((p) => p.some((x) => x.flag)) && !run)) return null;
+		const navItems = [], paneItems = [];
+		for (let c = 0; c < heads.length; c++) {
+			const chunks = [];
+			for (const part of panes[c]) {
+				if (part.flag) {
+					chunks.push(NotesAndComments.redFlag(Utils.FillTemplate(cfg.video_request_flag ?? "{label} with no URL found — add the video source.", { label: part.flag }), run));
+					if (cfg.video_request_shell) chunks.push(cfg.video_request_shell);
+					continue;
+				}
+				const rendered = renderBlock(part.p);
+				for (const h of (Array.isArray(rendered) ? rendered : [rendered])) if (h && String(h).trim()) chunks.push(String(h));
+			}
+			if (!chunks.some((h) => !/cv2-note/.test(h))) return null;     // a pane holding only flags
+			navItems.push(Utils.FillTemplate(tpl.nav_item, { head: inline(heads[c]) }));
+			paneItems.push(Utils.FillTemplate(tpl.pane, { content: chunks.join("") }));
+		}
+		return [tpl.open, tpl.nav_open, ...navItems, tpl.nav_close, tpl.content_open, ...paneItems, tpl.content_close, tpl.close].join("\n");
 	}
 
 	/**
@@ -17249,6 +17458,147 @@ class InteractiveBuilder {
 		return parts.filter((x) => x != null && x !== "").join("\n");
 	}
 
+	/**
+	 * THE RADIO QUIZ TYPED AS LINES (data interactive_builders.radioQuiz.line_form; env RADIOLINES_OFF). Each statement on its
+	 * own line (a black member, or a «[Qn]» tag's words) and its answer right after it in RED (a tag member whose words are the
+	 * answer — «true», «[yes]», «[correct answer Yes]» split around a black «Yes» — or a «[Qn answer]» tag with the answer after
+	 * it). Every statement carries one answer from one two-value set (yes / no or true / false, the letters too): the table
+	 * form's KB 03D radioQuiz, the set's two words as the headings (true = the first), one radioButtons row per statement. A
+	 * lead line ending in a colon before the first statement is the description heading; a [body] line becomes a paragraph
+	 * before the quiz. Never
+	 * half-built: a statement without its answer, a mixed or foreign answer, a table, media, any other tag → null.
+	 */
+	static #radioQuizLines({ bundle, tpl, renderInline }) {
+		const lf = tpl?.line_form, tf = tpl?.table_form ?? {};
+		if (!lf || lf.enabled === false || !lf.answer_pattern) return null;
+		if (typeof process !== "undefined" && process.env && process.env[lf.env || "RADIOLINES_OFF"]) return null;
+		if (bundle?.extraTypes?.some((t) => t !== bundle.type) || (bundle?.media ?? []).length || (bundle?.tables ?? []).length) return null;
+		const inline = renderInline ?? ((s) => s);
+		const unred = (s) => String(s ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+		const ansRe = new RegExp(lf.answer_pattern, "i"), headRe = new RegExp(lf.answer_head_pattern ?? "$^", "i");
+		const qRe = new RegExp(lf.question_tag_pattern ?? "$^", "i"), qaRe = new RegExp(lf.answer_tag_pattern ?? "$^", "i");
+		const numRe = new RegExp(lf.strip_number_pattern ?? "$^");
+		const textTags = new Set(lf.text_tags ?? ["body"]);
+		const word = { y: "yes", n: "no", t: "true", f: "false" };
+		const leads = [], items = [];
+		let pending = null, headOpen = false, seenOpener = false, desc = null;
+		const answer = (w) => {
+			if (pending === null) return false;
+			items.push({ text: pending, w: word[w.toLowerCase()] ?? w.toLowerCase() });
+			pending = null;
+			return true;
+		};
+		for (const m of bundle?.memberItems ?? []) {
+			if (!m) continue;
+			if (m.type === "table" || m.type === "nested") return null;
+			if (m.type === "black") {
+				const t = String(m.text ?? "").trim();
+				if (!t) continue;
+				if (headOpen) { const a = t.match(/^\s*(\S+?)[.\s]*$/); if (!a || !ansRe.test(a[1]) || !answer(ansRe.exec(a[1])[1])) return null; headOpen = false; continue; }
+				if (pending !== null) {
+					// a lead line («… did the particles:») before the first statement
+					if (!items.length && desc === null && /:\s*$/.test(pending)) { desc = pending; pending = t; continue; }
+					return null;
+				}
+				pending = t; continue;
+			}
+			const p = m.parse?.primary, red = unred(m.text), after = String(m.blackAfter ?? "").trim();
+			if (!seenOpener && p?.directive === "INTERACTIVE") { seenOpener = true; continue; }
+			if (/^\]$/.test(red) && !after) continue;                 // the «]» that closes a split «[correct answer » … «]»
+			// the widget's own control the KB button row already carries («[button] Undo», «Reset», «Check»)
+			if (p?.tag === "button" && new RegExp(lf.button_label_pattern ?? "^(?:undo|reset|check(?:\\s+answers?)?)\\.?$", "i").test(after)) continue;
+			if (p && textTags.has(String(p.tag ?? "").toLowerCase()) && !items.length && pending === null) { if (after) leads.push(after); continue; }
+			if (qRe.test(red)) { if (pending !== null || !after) return null; pending = after; continue; }
+			if (qaRe.test(red)) { const a = after.match(/^\s*(\S+?)[.\s]*$/); if (!a || !ansRe.test(a[1]) || !answer(ansRe.exec(a[1])[1])) return null; continue; }
+			if (headRe.test(red)) { if (pending === null) return null; if (after) { const a = after.match(/^\s*(\S+?)[.\s]*$/); if (!a || !ansRe.test(a[1]) || !answer(ansRe.exec(a[1])[1])) return null; } else headOpen = true; continue; }
+			const am = ansRe.exec(red);
+			if (am && !after) { if (!answer(am[1])) return null; continue; }
+			return null;                                            // any other tag — not this shape
+		}
+		if (pending !== null || headOpen || items.length < (lf.min_rows ?? 3) || items.length > (tf.max_rows ?? 20)) return null;
+		const set = new Set(items.map((x) => x.w));
+		const yn = [...set].every((w) => w === "yes" || w === "no"), tfs = [...set].every((w) => w === "true" || w === "false");
+		if (!yn && !tfs) return null;
+		const labels = yn ? ["Yes", "No"] : [tf.default_true ?? "True", tf.default_false ?? "False"];
+		const parts = [
+			...leads.map((t) => `<p>${inline(t)}</p>`),
+			tpl.open,
+			Utils.FillTemplate(tpl.headings, { t: inline(labels[0]), f: inline(labels[1]), d: inline(desc ?? tf.default_description ?? "Description") }),
+			...items.map((x) => Utils.FillTemplate(tpl.row, { answer: x.w === "yes" || x.w === "true" ? "true" : "false", text: inline(x.text.replace(numRe, "")) })),
+			tpl.buttons,
+			tpl.close,
+		];
+		return parts.filter((x) => x != null && x !== "").join("\n");
+	}
+
+	/* ================================================================== *
+	 *  THE REORDER — the LINE form
+	 * ================================================================== */
+	/**
+	 * THE REORDER TYPED AS A LIST OF LINES, IN ORDER (data interactive_builders.reorder.line_form; env REORDERLINES_OFF).
+	 * The opener, a [body] instruction or two, then one item per black line in the correct order — and the writer SAYS the
+	 * typed order is the answer (the table form's answer_mark_pattern, or line_form.order_said_pattern: «[Correct order
+	 * shown]», «Please jumble them»). Builds the KB 03F re-standard list, the items in the
+	 * typed order (the page script shuffles them); a dash or bullet before an item is dropped, the [body] lines lead
+	 * the widget, the writer's «[button] Check answer» / «Reset» are the KB button row. Never half-built: a table, a red span
+	 * in an item, an item of word tiles («我wǒ / 的de / 老师lǎoshī» — a per-line sentence reorder), anything after the items
+	 * but the buttons, or too few / too many items keeps the hand-off box.
+	 */
+	static #reorderLines({ bundle, tpl, renderInline }) {
+		const lf = tpl?.line_form, tf = tpl?.table_form ?? {};
+		if (!lf || lf.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[lf.env || "REORDERLINES_OFF"]) return null;
+		if (bundle?.extraTypes?.length || (bundle?.media ?? []).length || (bundle?.tables ?? []).length) return null;
+		const inline = renderInline ?? ((s) => s);
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const textTags = new Set(lf.text_tags ?? ["body"]);
+		const btnRe = new RegExp(lf.button_label_pattern ?? "^(?:reset|check(?:\\s+answers?)?|undo)\\.?$", "i");
+		const tileRe = new RegExp(lf.tile_pattern ?? "\\S\\s*\\/\\s*\\S[^/]*\\/|\\S {3,}\\S", "u");
+		const stripRe = new RegExp(lf.item_strip_pattern ?? "^[—–•·-]\\s+", "u");
+		// the writer's own words: the modifier, the opener lines (the activity heading included — PEEKED, as the table form
+		// does, so reading them records no consumed member) and the instruction notes
+		const said = [String(bundle?.modifier ?? ""), ...(bundle?.instructions ?? []),
+			...(bundle?.openerItems ?? []).map((m) => { const r = this.#peekMember(m); return `${r?.text ?? ""} ${r?.blackAfter ?? ""}`; })];
+		const leads = [], items = [];
+		let seenOpener = false, done = false;
+		for (const m of bundle?.memberItems ?? []) {
+			if (!m) continue;
+			if (m.type === "table" || m.type === "nested") return null;
+			if (m.type === "black") {
+				// a black member may carry several of the writer's lines (one item per line)
+				for (const line of String(m.text ?? "").split("\n")) {
+					const t = line.trim();
+					if (!t) continue;
+					if (done || [...t.matchAll(RED)].some((x) => x[1].trim()) || tileRe.test(t)) return null;
+					items.push(t.replace(stripRe, "").trim());
+				}
+				continue;
+			}
+			const p = m.parse?.primary, red = String(m.text ?? ""), after = String(m.blackAfter ?? "").trim();
+			if (!seenOpener && p?.directive === "INTERACTIVE") { seenOpener = true; said.push(red, after); continue; }
+			if (m.parse?.class === "instruction" && !items.length) { said.push(red); continue; }
+			if (p && textTags.has(String(p.tag ?? "").toLowerCase()) && !items.length) { said.push(after); if (after) leads.push(after); continue; }
+			if (p?.tag === "button" && items.length && btnRe.test(after)) { done = true; continue; }
+			return null;                                            // any other tag — not this shape
+		}
+		if (items.length < (lf.min_items ?? 3) || items.length > (lf.max_items ?? 20) || items.some((t) => !t)) return null;
+		const flat = said.join(" ").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/\s+/g, " ");
+		const saidRe = [tf.answer_mark_pattern, lf.order_said_pattern].filter(Boolean).map((s) => new RegExp(s, "i"));
+		if (!saidRe.some((re) => re.test(flat))) return null;      // the typed order is the answer only where the writer says so
+		if (tf.no_answer_pattern && new RegExp(tf.no_answer_pattern, "i").test(flat)) return null;
+		const auto = lf.autocheck_pattern && new RegExp(lf.autocheck_pattern, "i").test(flat) ? (lf.autocheck_class ?? " autoCheck") : "";
+		const para = (t) => Utils.FillTemplate(tf.para ?? "<p>{text}</p>", { text: inline(t) });
+		return [
+			...leads.map((t) => `<p>${inline(t)}</p>`),
+			Utils.FillTemplate(lf.open, { autocheck: auto }),
+			Utils.FillTemplate(tf.list_open, { col: "col-12" }),
+			...items.map((t) => Utils.FillTemplate(tf.item, { paras: para(t) })),
+			tf.list_close,
+			tf.buttons,
+			tf.close,
+		].filter((x) => x != null && x !== "").join("\n");
+	}
+
 	/* ================================================================== *
 	 *  THE REORDER — the TABLE form
 	 * ================================================================== */
@@ -17472,6 +17822,12 @@ class InteractiveBuilder {
 		const reject = new RegExp(tpl.answer_reject_pattern ?? "$^", "i");
 		const labelRe = new RegExp(cfg.label_row_pattern ?? "^(?:questions?|answers?|statements?|sentences?|words?|working|solutions?|q|a)\\s*:?$", "i");
 		const isRedCell = (c) => { const t = String(c).trim(); if (!t) return false; RED.lastIndex = 0; return RED.test(t) && !/[\p{L}\p{N}]/u.test(t.replace(RED, "")); };
+		// the «[correct]» LABEL inside a cell: the black words after it are the answer (data table_form.correct_label_cell,
+		// env TYPTABLELABEL_OFF; the label words are typing.correct_label.tag_pattern)
+		const lc = cfg.correct_label_cell;
+		const cellLabRe = lc && lc.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[lc.env || "TYPTABLELABEL_OFF"])
+			? new RegExp(tpl.correct_label?.tag_pattern ?? "^correct$", "i") : null;
+		const cellLabDeny = tpl.correct_label?.answer_deny_pattern ? new RegExp(tpl.correct_label.answer_deny_pattern) : null;
 		let answers = 0;
 		const out = [];
 		rows.forEach((r, ri) => {
@@ -17499,6 +17855,19 @@ class InteractiveBuilder {
 					if (before.trim()) html += inline(before.replace(/\s+/g, " ").trim()) + " ";
 					// a writer who brackets the answer (`🔴[cannot]🔴`, BLL252) means the word, not the brackets
 					const a = m[1].replace(/\s+/g, " ").trim().replace(/^\[\s*([^\[\]]*?)\s*\]$/, "$1");
+					if (a && cellLabRe && cellLabRe.test(a)) {
+						// «[correct] mon / key»: the black words up to the next red run (or the cell's end) are the answer
+						const from = m.index + m[0].length;
+						const tailS = s.slice(from);
+						const nx = tailS.search(/\u{1f534}\[RED TEXT\]/u);
+						const raw = nx >= 0 ? tailS.slice(0, nx) : tailS;
+						const ans = raw.replace(/\*+/g, "").replace(/\s+/g, " ").trim();
+						if (!ans || ans.split(" ").length > maxW || reject.test(ans) || (cellLabDeny && cellLabDeny.test(ans))) { html = null; break; }
+						html += Utils.FillTemplate(tpl.input, { answer: Utils.EscapeHtml(ans) }) + " "; answers++;
+						last = from + raw.length;
+						RED.lastIndex = last;
+						continue;
+					}
 					if (a) {
 						// a red LABEL (`correct` beside the black answer — BLLR203; `(Question 1)` — SSCI205) means red is not
 						// the answer here: the whole table declines (never invent) — data table_form.label_answer_pattern

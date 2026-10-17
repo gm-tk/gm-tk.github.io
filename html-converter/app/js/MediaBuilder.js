@@ -590,10 +590,21 @@ class MediaBuilder {
 		// those stay dropped. Data: elements.media_hyperlinked_lead   Env toggle: MEDIALEAD_OFF
 		const hlOn = (tpl.elements?.media_hyperlinked_lead?.enabled !== false)
 			&& !(typeof process !== "undefined" && process.env && process.env.MEDIALEAD_OFF);
+		let redTail = "";
 		if (hlOn && it.block?.hyperTag && !(dropTitleOn && kind === "video" && builtVideoEmbed)) {
 			let lead = "";
 			try { lead = norm ? (norm.RenderText(String(it.text ?? "")) ?? "") : ""; } catch { lead = ""; }
-			if (lead && lead.trim()) keepRaw = keepRaw.trim() ? `${lead.trim()}\n${keepRaw}` : lead.trim();
+			// THE WRITER'S RED WORDS AFTER A LINKED TAG: when the line's link covers the bracket tag alone («[audio]» linked, the
+			// words after it outside the link), those words are the writer's red words — a Writers Note, never learner text (the
+			// gold shows none of them). Data elements.media_hyperlinked_lead.red_tail_note; env MEDIAREDTAIL_OFF.
+			const rt = tpl.elements?.media_hyperlinked_lead?.red_tail_note;
+			const links = it.block?.links ?? [];
+			const tagOnly = !!rt && rt.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[rt.env ?? "MEDIAREDTAIL_OFF"])
+				&& links.length > 0 && links.every((l) => !String(l?.text ?? "").replace(/\[[^\]]*\]/g, "").replace(/[\s*_]+/g, ""));
+			if (lead && lead.trim()) {
+				if (tagOnly) redTail = lead.trim();
+				else keepRaw = keepRaw.trim() ? `${lead.trim()}\n${keepRaw}` : lead.trim();
+			}
 		}
 		// When the embed's URL came from a FOLLOWING title-anchored reference line,
 		// that line IS the video's title — drop exactly it (the same title-line drop; any
@@ -629,6 +640,7 @@ class MediaBuilder {
 		const _wl = rest ? this.WholeLineVideoLinks(it._gatheredLinks ?? [], rest) : null;
 		const _links = _wl && _wl.merged.length ? [...(it.block?.links ?? []), ..._wl.merged] : it.block?.links;
 		if (rest) out.push(...ListsAndRuns.renderBlackText(rest, run, _links));
+		if (redTail) { const note = NotesAndComments.redFlag(redTail, run, "cs"); if (note) out.push(note); }   // the writer's red words after the linked tag
 		return out;
 	};
 

@@ -591,6 +591,11 @@ class BilingualBuilder {
 			openerFromRow = tstart + 1;
 		}
 		const inner = [];
+		// the side alerts whose words are the table after their tag (callouts.side_alert_table_body) — the side column
+		// beside the section's main column
+		const sideBoxes = [];
+		const sat = DataService.Data.EmitTemplates.callouts?.side_alert_table_body;
+		const satOn = !!sat && sat.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[sat.env ?? "SIDEALERTTABLE_OFF"]);
 		let hasWidget = false;   // a TRUE interactive widget → the section is a div.activity (selective)
 		let number = null;       // the "Activity NX:" number → the box's number= attr
 		let j = i;
@@ -680,6 +685,19 @@ class BilingualBuilder {
 				continue;
 			}
 			if (nx.type === "tag") {
+				// a side alert with no words of its own whose words are the TABLE after it («[Side Alert]» + the reo / English
+				// pair table): that table is the side column's alert box (callouts.side_alert_table_body; env SIDEALERTTABLE_OFF)
+				const nt = bodyItems[j + 1];
+				if (satOn && (sat.tags ?? []).includes(String(nx.parse?.primary?.tag ?? "")) && !String(nx.blackAfter || "").trim()
+					&& nt && nt.type === "table" && nt.consumedBy === undefined && !nt._consumed) {
+					const r = this.bilingualRows(nt.block, run, undefined, norm);
+					if (r.length && r.join(" ").replace(/<[^>]+>/g, " ").trim()) {
+						sideBoxes.push(r.join("\n"));
+						nt._consumed = true;
+						j++;
+						continue;
+					}
+				}
 				// an interior tag (e.g. an [Activity: Embedded] X opener the scanner did NOT consume):
 				// suppress the marker (it would leak) but keep its trailing black prose.
 				if (String(nx.blackAfter || "").trim())
@@ -688,7 +706,7 @@ class BilingualBuilder {
 			}
 			break;   // an unrecognised item ends the section (never silently swallow it)
 		}
-		if (!inner.length && !titleHtml) return null;
+		if (!inner.length && !titleHtml && !sideBoxes.length) return null;
 		// belt-and-braces: mark every absorbed NON-consumed item handled (the caller also jumps i)
 		for (let k = i; k < j; k++) if (bodyItems[k] && bodyItems[k].consumedBy === undefined) bodyItems[k]._consumed = true;
 		const innerHtml = inner.join("\n");
@@ -723,9 +741,16 @@ class BilingualBuilder {
 		const boxedInner = boxed ? this.boxedHeadingRelevel(innerHtml, run) : innerHtml;
 		// the box's class: the widget box, the dropbox box, or both when the section holds both
 		const boxCls = hasDbx ? (hasWidget ? `activity interactive ${dbxCfg.box.cls.replace(/^activity\s+/, "")}` : dbxCfg.box.cls) : "activity interactive";
+		// the side column of the section's side alerts, the right sibling of its main column (the `side alert` callout's own
+		// box and column classes)
+		const sDef = DataService.Data.EmitTemplates.callouts?.by_tag?.["side alert"] ?? {};
+		const side = sideBoxes.length
+			? `\n<div class="${sDef.side_column ?? "col-md-4 offset-md-0 col-12"}">\n${sideBoxes.map((b) => `${sDef.open ?? "<div class=\"alertActivity\">"}\n${b}\n${sDef.close ?? "</div>"}`).join("\n")}\n</div>`
+			: "";
 		if (inner.length) body = boxed
-			? `<div class="row">\n<div class="col-md-8 col-12">\n<div class="${boxCls}"${number ? ` number="${number}"` : ""}>\n<div class="row">\n<div class="col-12">\n${boxedInner}\n</div>\n</div>\n</div>\n</div>\n</div>`
-			: `<div class="row">\n<div class="col-md-8 col-12">\n${innerHtml}\n</div>\n</div>`;
+			? `<div class="row">\n<div class="col-md-8 col-12">\n<div class="${boxCls}"${number ? ` number="${number}"` : ""}>\n<div class="row">\n<div class="col-12">\n${boxedInner}\n</div>\n</div>\n</div>\n</div>${side}\n</div>`
+			: `<div class="row">\n<div class="col-md-8 col-12">\n${innerHtml}\n</div>${side}\n</div>`;
+		else if (side) body = `<div class="row">${side}\n</div>`;
 		// A [H2] Lesson N opener prepends its bare-col <h2> title BEFORE the box (or
 		// bare body) that was just built.
 		const html = titleHtml ? (body ? `${titleHtml}\n${body}` : titleHtml) : body;
