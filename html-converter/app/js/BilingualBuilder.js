@@ -1340,6 +1340,38 @@ class BilingualBuilder {
 	};
 
 	/**
+	 * THE LIST IN THE OTHER LANGUAGE TAKES THAT LANGUAGE'S TAG (a whole-page pass). A tagged list pair — `<ul reo>…</ul>`
+	 * then `<ul eng>…</ul>`, either order — whose reo-tagged list reads as English and whose eng-tagged list reads as te reo
+	 * (the share of its words that fit the te reo orthography, data maori_word_pattern) was typed in the other columns: the
+	 * two tags swap, so the language toggle shows each reader their own language. A pair that reads as its tags, or mixed,
+	 * is left as it is.
+	 * Data flag: elements.dual_language.lang_swap_lists   Env toggle: REOLANGSWAP_OFF
+	 *
+	 * @param {string} html - the assembled page
+	 * @returns {string} the page with every inverted list pair's tags swapped
+	 */
+	static LangSwapLists(html) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.lang_swap_lists;
+		if (!c || c.enabled === false || !c.maori_word_pattern || typeof html !== "string" || html.indexOf(" reo>") < 0
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOLANGSWAP_OFF"])) return html;
+		const word = new RegExp(c.maori_word_pattern, "u");
+		const share = (inner) => {
+			const ws = (inner.toLowerCase().replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/g, " ").match(/\p{L}+/gu) ?? [])
+				.filter((w) => [...w].length >= (c.min_letters ?? 3));
+			return ws.length < (c.min_words ?? 2) ? null : ws.filter((w) => word.test(w)).length / ws.length;
+		};
+		return html.replace(/<(ul|ol) (reo|eng)>([\s\S]*?)<\/\1>(\s*)<(ul|ol) (reo|eng)>([\s\S]*?)<\/\5>/g,
+			(m0, t1, l1, in1, gap, t2, l2, in2) => {
+				if (l1 === l2) return m0;
+				const s1 = share(in1), s2 = share(in2);
+				if (s1 === null || s2 === null) return m0;
+				const reoS = l1 === "reo" ? s1 : s2, engS = l1 === "reo" ? s2 : s1;
+				if (reoS > (c.reo_max ?? 0.2) || engS < (c.eng_min ?? 0.8)) return m0;
+				return `<${t1} ${l2}>${in1}</${t1}>${gap}<${t2} ${l1}>${in2}</${t2}>`;
+			});
+	}
+
+	/**
 	 * Splits ONE bilingual table cell (which may mix ordinary text with
 	 * `[Item]`/`[Image]`/`[Audio]`/`[video]` markers) into two separate
 	 * output streams: rendered TEXT elements and rendered MEDIA embeds.
@@ -1482,7 +1514,13 @@ class BilingualBuilder {
 			if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?(?:image|photo)\s*\]/.test(low)) {
 				// the picture is named from the table's link on its words (an iStock picture keeps its id) —
 				// dual_language.cell_image_links; env REOCELLIMGLINK_OFF
-				flush(); for (const x of TablesAndGrids.cellImage(part, run, this.#cellImageLinks(links))) pushM(x);
+				flush();
+				const imgF = TablesAndGrids.cellImage(part, run, this.#cellImageLinks(links));
+				// the writer's WORD before the picture's marker is written under the picture (dual_language.image_word;
+				// env REOIMGWORD_OFF); a part with no word keeps the picture alone
+				const iw = imgF.length ? this.#imageWord(part) : null;
+				if (iw) imgF[imgF.length - 1] += "\n" + iw;
+				for (const x of imgF) pushM(x);
 			} else if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?audio[^\]]*\]/.test(low)) {
 				flush();
 				// the writer's WORD before the audio marker is the KB's inline audio trigger (dual_language.audio_word;
@@ -1823,6 +1861,30 @@ class BilingualBuilder {
 		const name = plain.replace(/[^\p{L}\p{M}\p{N}\s-]/gu, "").trim().replace(/\s+/g, "_");
 		if (!name) return null;
 		return Utils.FillTemplate(c.form, { name: Utils.EscapeHtml(name), word: ListsAndRuns.inlineMarkup(lead) });
+	}
+
+	/**
+	 * THE WORD UNDER ITS PICTURE. A cell part whose writer's word stands BEFORE its `[Item N] [Image]` marker
+	 * («**tepetepe** [Item 3] [Image] __jellyfish__ …», «**Whakapapa** [Item 8] [Image] Family tree …») is a picture
+	 * with that word written under it: the word as typed (its bold kept) in the data form, placed after the picture;
+	 * a leading tag is the writer's size cue and is dropped. Returns null for a part with no such word (the picture
+	 * stays alone).
+	 * Data flag: elements.dual_language.image_word   Env toggle: REOIMGWORD_OFF
+	 */
+	static #imageWord(part) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.image_word;
+		if (!c || c.enabled === false || !c.lead_pattern || !c.form
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOIMGWORD_OFF"])) return null;
+		const t = String(part ?? "").replace(/\u{1f534}|\[\/?RED TEXT\]/gu, " ");
+		const m = t.match(new RegExp(c.lead_pattern, "i"));
+		if (!m) return null;
+		const glyphs = c.strip_glyphs ? new RegExp(c.strip_glyphs, "gu") : null;
+		let lead = m[1].replace(/\s+/g, " ").trim().replace(/^[\]\s]+/, "").replace(/[[\s]+$/, "");
+		if (glyphs) lead = lead.replace(glyphs, "");
+		lead = lead.trim();
+		const plain = lead.replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+		if (!plain || !/\p{L}/u.test(plain) || /https?:\/\/|www\./i.test(plain) || plain.split(" ").length > (c.max_words ?? 4)) return null;
+		return Utils.FillTemplate(c.form, { word: ListsAndRuns.inlineMarkup(lead) });
 	}
 
 	/**

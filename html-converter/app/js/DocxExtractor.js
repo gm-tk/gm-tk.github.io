@@ -3115,8 +3115,18 @@ class DocxExtractor {
 							return `${sl}${mk}${seg.trim()}${mk}${st}`;
 						}).join("\n");
 					}
-					else if (bold) blackText = `${lead}${rules.formatting_markers.bold}${blackText.trim()}${rules.formatting_markers.bold}${tail}`;
-					else if (italic) blackText = `${lead}${rules.formatting_markers.italic}${blackText.trim()}${rules.formatting_markers.italic}${tail}`;
+					else {
+						// A STYLED RUN THAT ENDS (OR OPENS) WITH THE WRITER'S SOFT BREAK keeps the break outside its markers
+						// («**Did you …?**» + "\n" + «Make sure …»); the trim below would delete it and glue the next line on.
+						// Data formatting_markers.wrap_per_line.edge_break; env STYLEEDGEBR_OFF.
+						const eb = wpl?.edge_break;
+						const ebOn = !!eb && eb.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[eb.env ?? "STYLEEDGEBR_OFF"]);
+						const bLead = ebOn && /^\s*\n/.test(blackText) && blackText.trim() ? "\n" : lead;
+						const bTail = ebOn && /\n\s*$/.test(blackText) && blackText.trim() ? "\n" : tail;
+						if (bold) blackText = `${bLead}${rules.formatting_markers.bold}${blackText.trim()}${rules.formatting_markers.bold}${bTail}`;
+						else if (italic) blackText = `${bLead}${rules.formatting_markers.italic}${blackText.trim()}${rules.formatting_markers.italic}${bTail}`;
+					}
 				}
 				out += blackText;
 			}

@@ -273,6 +273,11 @@
 			"env": "STYLEPERLINE_OFF",
 			"bold": true,
 			"italic": true,
+			"edge_break": {
+				"enabled": true,
+				"env": "STYLEEDGEBR_OFF",
+				"_doc": "A STYLED RUN THAT ENDS (OR OPENS) WITH THE WRITER'S SOFT LINE BREAK KEEPS THE BREAK. «**Did you start with a capital letter?**» ⏎ «Make sure the first word of the sentence is capitalised.» — the bold question's run ends in the break (<w:br w:type=\"textWrapping\"/>, read as a line feed), the per-line wrap reads only a break INSIDE the run's text, and the single wrap trims the run's text before putting the markers round it, so the break went and the next line was glued on («letter?</b>Make sure»). A break at the run's start or end now stays outside its markers, where the writer typed it; a run with no break at its edge is wrapped as before."
+			},
 			"_doc": "A STYLED RUN ACROSS THE WRITER'S SOFT LINE BREAK IS STYLED ON EACH LINE. A bold or italic run that holds a Word soft line break (w:br, a real newline in the run text) was wrapped once across the break ('**Strong g\\nSoft g**'), and the per-line split downstream left '<p>**Strong g</p><p>Soft g**</p>': the markers shown to the learner and the style lost. Each line of such a run is wrapped on its own ('**Strong g**\\n**Soft g**'), with the same leading / trailing space rule per line — here in the extractor, the one place that knows a real bold run from asterisks the writer typed (footnote marks «*», «**», «***»). bold / italic turn each half on. An answer mark that spans the break is matched with the markers allowed at each break (Utils.MarkAnswers). Env STYLEPERLINE_OFF = the single wrap."
 		},
 		"run_toggle_forms": {

@@ -1244,8 +1244,10 @@ class PageAssembler {
 					(() => {
 						// the unfilled Connections sample leaves the page (NotesAndComments.OmitTemplateSample;
 						// red_flag.omit_template_sample; env TEMPLATESAMPLE_OFF) — beside the placeholder-residue pass.
-						const tidied = NotesAndComments.TidyDeveloperNotes(
-							NotesAndComments.OmitTemplateSample(NotesAndComments.OmitPlaceholderResidue(html)));
+						// A tagged list pair typed in each other's columns swaps its language tags (BilingualBuilder.LangSwapLists;
+						// dual_language.lang_swap_lists; env REOLANGSWAP_OFF).
+						const tidied = NotesAndComments.TidyDeveloperNotes(BilingualBuilder.LangSwapLists(
+							NotesAndComments.OmitTemplateSample(NotesAndComments.OmitPlaceholderResidue(html))));
 						// Adjacent sibling lists join into one (body_region.merge_adjacent_lists; env ULMERGE_OFF) — after TypedNumberList, before the link-text pass.
 						// A bare list-number paragraph leaves the page (body_region.lone_list_number; env LONENUM_OFF) — after TypedNumberList.
 						// An orphan punctuation block merges onto the text before it or leaves (ListsAndRuns.OrphanPunctuation;

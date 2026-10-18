@@ -74,6 +74,13 @@
 				"^leaving to learn$"
 			]
 		},
+		"remainder_lead": {
+			"_doc": "THE NOTE KEEPS THE WORDS ITS TAG CUT FROM ITS BRACKET. A widget opener typed as one bracket — «[carousel of images with captions, auto rotating]», «[Flip cards with images on the front, text on the back]» — builds the widget from its tag word, and the bracket's other words reach the developer as the red Writers Note after the built widget; that note began where the tag word ended («of images with captions, auto rotating»), so it read as broken text. A built widget's note that opens with a connective word (connective_pattern) and sits inside an open bracket of its opener's text takes back the words before it in that bracket (at most max_words): «carousel of images with captions, auto rotating». A note with no such bracket, or more words before it, is left as it is.",
+			"enabled": true,
+			"env": "REMAINDERLEAD_OFF",
+			"connective_pattern": "^(?:of|for|with|and|to|on|in|showing|that)\\b",
+			"max_words": 3
+		},
 		"omit_placeholders": {
 			"enabled": true,
 			"match": "prefix",
@@ -172,6 +179,25 @@
 				"max_words": 4,
 				"lead_pattern": "^\\s*(?:\\[[^\\]]*\\]\\s*)*([^\\[]*?)\\s*\\[\\s*item[^\\]]*\\]\\s*\\[\\s*audio[^\\]]*\\]",
 				"form": "<p><span class=\"audioTrigger\" audioName=\"{name}\">{word}</span></p>"
+			},
+			"lang_swap_lists": {
+				"_doc": "THE LIST IN THE OTHER LANGUAGE TAKES THAT LANGUAGE'S TAG. A bilingual page's tagged list pair — '<ul reo>…</ul><ul eng>…</ul>' (or the other order) — takes each list's tag from the column it was typed in; when the writer typed the Māori list in the English column and the English list in the Māori column (the TRR overview's Connections lists: '<ul reo>' holding «Sounds / Consonants / Dipthongs …», '<ul eng>' «Ngā Oro / Ngā Orokati …»), the language toggle showed each reader the other language. A pair whose reo-tagged list reads as English (at most reo_max of its words of min_letters letters or more are te reo words by the orthography in maori_word_pattern) and whose eng-tagged list reads as te reo (at least eng_min) swaps its two tags; a list with fewer than min_words such words is never judged, and a pair that reads as its tags (or mixed) is left as it is. Lists only — a paragraph pair is not judged.",
+				"enabled": true,
+				"env": "REOLANGSWAP_OFF",
+				"maori_word_pattern": "^(?:[aeiouāēīōū]|[hkmnprtw][aeiouāēīōū]|ng[aeiouāēīōū]|wh[aeiouāēīōū])+$",
+				"min_letters": 3,
+				"min_words": 2,
+				"reo_max": 0.2,
+				"eng_min": 0.8
+			},
+			"image_word": {
+				"_doc": "THE WORD UNDER ITS PICTURE. A bilingual cell part that carries the writer's WORD before its '[Item N] [Image]' marker ('**tepetepe** [Item 3] [Image] __jellyfish__ [LINK: …]', '**Whakapapa** [Item 8] [Image] Family tree [LINK: …]') is a picture with that word written under it — the human's '<img …><p>tepetepe</p>', the carousel slide's caption, the item's heading. Before, TablesAndGrids.cellImage read every word of the part into the picture's file name and the word never reached the page. The word as typed (its bold kept) follows the picture in a paragraph; a leading tag is the writer's size cue and is dropped, and the table-drawing and highlight glyphs in strip_glyphs are never the word. A part with no word before its marker, a word with no letter, a lead of more than max_words words or an address adds nothing (the picture alone, as before).",
+				"enabled": true,
+				"env": "REOIMGWORD_OFF",
+				"max_words": 4,
+				"lead_pattern": "^\\s*(?:\\[[^\\]]*\\]\\s*)*([^\\[]*?)\\s*\\[\\s*item[^\\]]*\\]\\s*\\[\\s*(?:image|photo)\\s*\\]",
+				"strip_glyphs": "[│║✅]",
+				"form": "<p>{word}</p>"
 			},
 			"video_no_source": {
 				"_doc": "THE VIDEO WITH NO ADDRESS NAMES ITSELF. A bilingual cell's '[Item N] [Video] <title>' part carries no address — the Media List row it names, when there is one, holds a SharePoint or mail-safety link at most — so its frame shipped empty, with no record of which video belongs there and the writer's title gone. The frame keeps its place (a video whose ID is pending keeps its frame with a visible To Do, KB 05A / CL-0037), and the body path's red missing-source flag (elements.no_url_writer_tag) goes before it, naming the writer's whole line. A part carrying an address is never flagged. OFF = the empty frame alone.",
@@ -1536,6 +1562,12 @@
 				"max_letters": 2,
 				"spaced_words": ["I", "A"]
 			},
+			"note_tail": {
+				"_doc": "THE RED RUN AFTER A RED NOTE IS THE NOTE'S NEXT PART. A writer types an answer key as red parts with a tab between them — «Answers: 1. C ⇥ 2. A», «Answers: 1. b ⇥ 2. c ⇥ 3. b ⇥ 4. a ⇥ 5. B» — and each part is its own red run. The first part (an instruction to the tag classifier) ships as the Writers Note; a later part of fewer than three words with no bracket («2. A») is noise to the classifier and rendered nothing, so the developer's key lost every answer after the first. A noise run that follows a red writer's note of the same paragraph, with only white space between them and no black text after it, joins that note (one space between the parts). A run matching skip_pattern (a phase, page or lesson marker the structure rules read) is left as it was.",
+				"enabled": true,
+				"env": "REDNOTETAIL_OFF",
+				"skip_pattern": "^(?:phase|stage|part|page|lesson|week|day|step)\\s+\\S+$"
+			},
 			"glued": {
 				"_doc": "A few letters or digits typed red INSIDE a word: no space between the run and a letter on at least one side (the first letter of a word, a phonics passage's focus letters, the digit of «5s»). It can only be part of the word.",
 				"enabled": true,
@@ -2488,7 +2520,13 @@
 			"title_level": 3,
 			"last_box_only": true,
 			"box_open": "<div class=\"activity dropbox\" number=\"{id}\">\n<div class=\"row\">\n<div class=\"col-12\">",
-			"box_close": "</div>\n</div>\n</div>"
+			"box_close": "</div>\n</div>\n</div>",
+			"trailing_buttons": {
+				"_doc": "THE WRITER'S BUTTON AFTER THE UPLOAD BUTTON JOINS THE BOX. The reader modules' share row types two buttons together — «Upload to dropbox button   Go to assessment quiz button» — and the human keeps both inside the dropbox box. The box was cut after the upload button's own To Do note, so the quiz button shipped in a row of its own. Up to max buttons that follow straight after (each with its To Do notes, nothing else between) are taken into the box. Env FREEDBXNEXTBTN_OFF (or enabled:false) cuts the box at the upload button again.",
+				"enabled": true,
+				"env": "FREEDBXNEXTBTN_OFF",
+				"max": 3
+			}
 		},
 		"standalone_widget_box": {
 			"enabled": true,
@@ -2552,6 +2590,12 @@
 			"max_lookahead": 120,
 			"button_tag": true,
 			"button_label_match": "drop\\s?box|upload",
+			"next_button_keeps_open": {
+				"_doc": "THE BUTTON THAT FOLLOWS THE UPLOAD BUTTON STAYS IN ITS BOX. The writer types two buttons together — «Upload to dropbox button   Go to assessment quiz button» (the reader modules' share row), a second «[button] Upload to dropbox» — and the human keeps both inside the dropbox box. Read as content, the second button closed the box after the first and shipped in a row of its own. A [button] that comes straight after the upload button (before any other content) and is not itself an upload button keeps the box open, as an immediately-following widget already does (a second «Upload to dropbox» reads its own way); where the box ends is then decided after it. Env DBXNEXTBTN_OFF (or enabled:false) counts it as content again.",
+				"enabled": true,
+				"env": "DBXNEXTBTN_OFF",
+				"tags": ["button"]
+			},
 			"_seams_note": "Three seams, one rule: (1) the freed upload-box BUNDLE at the inline site (XTAS101 1G — the held frame of owned_activity_keeps_trailing_dropbox); (2) the upload-box builder hands the text captured AFTER the marker back on the bundle (uploadAfterText) and the owner / inline emit sites ship it AFTER the box closes (BLL123 2E — the dropbox split is a precondition); (3) a plain [Button] whose label matches button_label_match inside an open activity frame (ENGR102 5B: '[Button] Upload to dropbox' then 'Watch the video…'); button_tag false turns seam 3 off on its own.",
 			"_note_ends_box": "The human keeps the \"Upload to dropbox\" button as the activity box's LAST content child and ships whatever the writer typed after the dropbox marker with no [End activity] as FREE body rows (BLL123 2E's module-end 'Congratulations…' paragraph, XTAS101 1G's [body] + carousel, ENGR102 5B's video); without this the box would stay open to the next auto-close boundary. A few human boxes keep a tail (ENGJ403, ENGS201, XMES201 — named exceptions). Engine: at the inline (non-owner) widget site, a freed upload-box bundle (InteractiveBuilder.UploadBoxCandidate) closes the innermost activity frame right after it; a writer's own [End activity] met within max_lookahead items before the next activity opener / page boundary is flagged _dbxStrayCloser. OFF = the box closes at the next boundary."
 		},
@@ -2595,6 +2639,17 @@
 	},
 	"interactive_col_ceiling_note": "The top-most col-* ceiling for EVERY interactive type in the human build is overwhelmingly 'col-12 col-md-8' — the body_region.content_col_class_default the converter emits (dragAndDrop mostly col-md-8, only occasionally col-md-12; even .images dragAndDrops and .interactive activities are mostly col-md-8). So a per-type WIDER ceiling (e.g. col-md-12 for dragAndDrop) is NOT supported by the human build and is NOT enforced — it would contradict the col-md-8 majority. ENGS301-1.0's col-md-12 is a NON-DERIVABLE minority (a per-instance layout choice); col-md-8 is the correct default.",
 	"image": {
+		"side_by_side": {
+			"_doc": "THE WRITER'S «[2 images next to each other]» IS A LAYOUT, NOT A PICTURE. The science and ConnectED writers ask for a pair or a row of pictures side by side with a bracket of its own — «[2 images next to each other]», «[two images next to each other]», «[3 images with captions next to each other]» — before the pictures' own [image] lines. Read as an image tag it became a placeholder picture named from the request (images/next-to-each-other.jpg) and the real pictures stacked full width; the human build puts them side by side in one row, one column each (div.row > div.col-md-6 col-12 > img + p.captionText). The request emits only a marker; the page post-pass (MediaBuilder.sideBySidePostpass) wraps the next N picture groups — a picture, its file comment, its caption — in row_open / col_open (col width 12 / N) when exactly N follow one another with nothing between them, and otherwise just drops the marker. Env SIDEBYSIDE_OFF (or enabled:false) keeps the old reading.",
+			"enabled": true,
+			"env": "SIDEBYSIDE_OFF",
+			"tag_pattern": "^\\s*\\[\\s*(2|3|two|three)\\s+images?\\b(?:\\s+with\\s+captions?)?\\s+next\\s+to\\s+each\\s+other\\s*\\]\\s*$",
+			"marker": "<!-- cv2-side-by-side {n} -->",
+			"row_open": "<div class=\"row\">",
+			"col_open": "<div class=\"col-md-{w} col-12\">",
+			"col_close": "</div>",
+			"row_close": "</div>"
+		},
 		"mode_P": {
 			"visible": "<img class=\"img-fluid\" src=\"https://placehold.co/800x450?text={label}\" alt=\"\">",
 			"comment": "<!-- <img class=\"img-fluid\" src=\"images/{filename}\" alt=\"\"> -->",
@@ -2738,7 +2793,32 @@
 	"audio": {
 		"form": "<audio preload=\"none\" src=\"audio/{filename}\" class=\"audioPlayer icon\" title=\"{title}\"></audio>",
 		"default_filename": ".mp3",
-		"note": "Corpus form. The developer drops the real file into audio/ — a missing filename stays empty exactly as the corpus does, plus the writer's sourcing note as a red flag."
+		"note": "Corpus form. The developer drops the real file into audio/ — a missing filename stays empty exactly as the corpus does, plus the writer's sourcing note as a red flag.",
+		"request_button": {
+			"_doc": "THE AUDIO REQUEST WITH NO FILE IS THE COMPACT AUDIO BUTTON WHERE THE HUMAN BUILD USES IT. A writer's audio tag that names no recording («[audio 1]», «[insert audio 4]») ships the player with an empty file (audio/.mp3). KB 05A lists three audio forms (audioPlayer, audioPlayer icon, the compact audioButton) and no rule for which a free-body request takes, so the form follows the module group's own human build: in the groups listed (module_meta phase|template_type) the human builds the request as the text-less compact button on most sites (BLL2|Standard: 42 audio buttons against 8 players over the built sites), so the empty player is emitted as this form instead. A request whose address names a file keeps the player with that file; every other group keeps the player. Env AUDIOREQBTN_OFF (or enabled:false) keeps the empty player everywhere.",
+			"enabled": true,
+			"env": "AUDIOREQBTN_OFF",
+			"form": "<div class=\"audioButton\" audioName=\"\"></div>",
+			"groups": [
+				"BLL2|Standard"
+			]
+		},
+		"script_note": {
+			"_doc": "THE RECORDING'S WORDS AFTER A NUMBERED AUDIO TAG ARE THE DEVELOPER'S, NOT THE LEARNER'S. The phonics writer types the recording's script after a numbered audio tag that opens its own line — «[audio 1] Can we go for a walk?», «[audio 3] The ant is in a tin.» — the sentence the recording says, which in a dictation activity is the answer the learner writes down. The human build shows the button or player and never the sentence. When the tag names no recording (the empty request), its own line's words become a Writers Note (the words kept for whoever records the audio) instead of a learner paragraph; a following line stays page text. Only the module prefixes listed; only a red tag that is exactly the numbered audio tag (tag_pattern) with nothing before it on its line; a script longer than max_chars stays. Env AUDIOSCRIPT_OFF (or enabled:false) keeps the words on the page.",
+			"enabled": true,
+			"env": "AUDIOSCRIPT_OFF",
+			"prefixes": [
+				"BLL"
+			],
+			"tag_pattern": "^\\s*\\[\\s*audio\\s*\\d+\\s*\\]\\s*$",
+			"max_chars": 200,
+			"note_text": "Audio script: {words}",
+			"linked_tag": {
+				"_doc": "THE SAME WORDS AFTER A LINKED TAG. The writer often links the numbered tag alone to the folder the recordings sit in («__[audio 1]__ [LINK: drive folder] Kim had a roast pork bun.», the spelling lines «__[audio 1]__ [LINK] helicopter. hel - i - cop - ter. …»); the human build hides those words too (the dictated-sentence players, the spelling buttons). When every link on the tag's line covers the bracket tag alone, the line is read by the rule above as if unlinked; a line whose link covers other words (a production document's name) is left as it was. Env AUDIOSCRIPTLINK_OFF (or enabled:false) reads unlinked lines only.",
+				"enabled": true,
+				"env": "AUDIOSCRIPTLINK_OFF"
+			}
+		}
 	},
 	"buttons": {
 		"button": {
@@ -3028,8 +3108,37 @@
 			"directives": ["ELEMENT", "INLINE"],
 			"_note": "A tag member whose words ride its OWN bracket line ('[audio] while, whale, whirl, whole, whine', '[image] angry person', '[button] Go to journal') is CONTENT for the un-built hand-off box: the empty-bundle / empty-box guards count it and the member dump renders the raw bracket line, so such boxes are never suppressed with the words lost from the page (as in BLL150 / BLL166 audio word lists, ENGC101 4.0's five [image] faces). Only members whose primary directive is listed here (content ELEMENTs and INLINE links — never an INTERACTIVE invocation, whose bracket text is its own spec and lives in the .txt) and whose span is a TAG (an instruction-class member already surfaces as the note before the box). Env MEMBERTEXT_OFF turns off both guards and the dump."
 		},
+		"lead_body_release": {
+			"_doc": "THE WIDGET'S LEAD INSTRUCTION IS PAGE TEXT. The writer opens a quiz, drag or typing activity with its tag, then a «[Body]» line telling the learner what to do («[drag and drop] / [Body] Drag the words into the right order. / <the table>»), then the widget's data. When the widget is not built, the hand-off box captured that line with the data and the learner saw only the collapsed box. The human build shows the lead line as the activity's text above the widget (the leading [Body] lines: 538 shown outside the widget against 61 inside it; about 0.95 in the types listed). The box renderer releases every [Body] member that stands before the bundle's first table and before a second non-body tag, as page text just before the box, when the box keeps other content; black lines (often the widget's own questions) stay in the box, and the hand-off file keeps the whole capture. Only bundles whose every type is listed (container widgets — accordion, tabs, modal, click-drop, carousel — keep their panel bodies). Env BOXLEADBODY_OFF (or enabled:false) keeps every captured line in the box.",
+			"enabled": true,
+			"env": "BOXLEADBODY_OFF",
+			"types": [
+				"dragAndDrop",
+				"multiChoiceQuiz",
+				"typing",
+				"reorder",
+				"dropDown",
+				"radioQuiz",
+				"selfCheck",
+				"selectionBox",
+				"wordFind",
+				"memoryGame",
+				"clickingOrder",
+				"timeline",
+				"crossword",
+				"wordDrag",
+				"unclassified",
+				"interactive"
+			],
+			"body_tags": [
+				"body"
+			],
+			"min_words": 4,
+			"min_box_chars": 60,
+			"_min_box_chars_note": "The box keeps its own content: the letters and digits of what stays in it (its text members and its tables) must reach this many, or nothing is released — a box left holding a bare tag line is an empty box."
+		},
 		"instructions_before": true,
-		"_instructions_before_note": "A writer instruction EMBEDDED inside an un-built interactive moves to JUST BEFORE the dashed box rather than rendering nested in the middle of it (as with OSAI201-01 1B's sketcher CS notes). Set false (or env NOTEBEFORE_OFF) to place it inside the box. Notes already AFTER an element are left where they are.",
+		"_instructions_before_note":"A writer instruction EMBEDDED inside an un-built interactive moves to JUST BEFORE the dashed box rather than rendering nested in the middle of it (as with OSAI201-01 1B's sketcher CS notes). Set false (or env NOTEBEFORE_OFF) to place it inside the box. Notes already AFTER an element are left where they are.",
 		"block_open": "<div class=\"cv2-interactive\" data-cv2-index=\"{index}\" style=\"border: 3px dashed #d9480f; background: #fff4e6; padding: 16px; margin: 16px 0\">",
 		"block_open_scroll": "<div class=\"cv2-interactive\" data-cv2-index=\"{index}\" style=\"border: 3px dashed #d9480f; background: #fff4e6; padding: 16px; margin: 16px 0; overflow-x: auto\">",
 		"scroll_x": {
@@ -3325,6 +3434,13 @@
 				"absorb_tags": ["engagement quiz button"],
 				"absorb_window": 2,
 				"quiz_bundle_types": ["multiChoiceQuiz", "radioQuiz", "dragAndDrop", "clickDrop", "dropQuiz", "wordSelect", "wordDrag", "typing", "selectionBox", "reorder", "selfCheck"],
+				"questions_block": {
+					"_doc": "THE D2L QUIZ'S QUESTIONS AFTER ITS BUTTON. Some writers type the quiz button first — «[Button] Quiz.», which becomes the canonical «Go to quiz» button with its To Do — and then the teacher-marked questions that go into the quiz under «[Quiz questions]». No [MTKquiz] marker opens the omission, so the questions shipped as an un-built multi-choice hand-off box; the human shows only the button (KB constraint 65 / CL-0082: the quiz's own content is omitted silently). A quiz-type bundle (quiz_bundle_types) whose opening tag matches opener_pattern, reached within window items after a button whose label matches the quiz button pattern, is silenced like the [MTKquiz] content: it renders nothing and leaves the hand-off list. Env MTKQBLOCK_OFF (or enabled:false) keeps the box.",
+					"enabled": true,
+					"env": "MTKQBLOCK_OFF",
+					"opener_pattern": "^\\s*\\[\\s*quiz\\s+questions?\\s*\\]\\s*$",
+					"window": 4
+				},
 				"second_marker_same_box": {
 					"_doc": "THE QUIZ CONTENT'S OWN HEADER IS NOT A SECOND QUIZ. After the box's shell («[Activity 1C] [MTK quiz] [quickeval] [engage]» … «[button] Go to quiz») the writer often types the header of the quiz content that goes into MTK — a second marker, «[MTK Quiz] [quickeval] [engage]», «[MTKQuiz] Read each statement carefully …», «[MTK Quiz Written Response] [Quick Eval] …», «[MTKQuiz content]» — inside the same box. Any marker used to end the omit-quiz silence, so the second one built a second To Do and a second «Go to quiz» button (KB constraint 65 / CL-0082: the box holds one of each). With this on, a marker reaching the open box that holds the quiz the shell is for continues the silence: it builds nothing and its words stay out with the rest of the quiz content. Env MTKSECONDMARKER_OFF.",
 					"enabled": true,
@@ -6079,6 +6195,20 @@
 			"enabled": true,
 			"_doc": "A LESSON page whose registry h1_count asks for 2 pushes the module's Te Reo title as a second h1 — but ONLY when the lesson has NO distinct title of its own (i.e. its title falls back to / fold-equals the module English title, the XMES102/103 human form where the module pair repeats on every lesson). When the lesson carries a DISTINCT own title (fold-differs from the module English title), the module Te Reo h1 is SUPPRESSED — the human form on distinct-title lessons (XMES101, CEDT207, CEDT301 ship ONE h1, the lesson's own; as the developer confirmed for SCCH302). Known exception: XMES103-01's writer left the placeholder 'Add lesson title' as the lesson title — it counts as distinct, so its Te Reo drops where the human ships the module pair. Composes with (never replaces) the lesson_title_h1 OSSC gate. Env toggle: LESSONTEREO_OFF (the unconditional push).",
 			"suppress_when_distinct_title": true
+		},
+		"title_placeholder_tail": {
+			"_doc": "THE WRITER'S PLACEHOLDER FOR THE TE REO TITLE IS NOT THE TITLE. A writer whose te reo title is not ready types a placeholder after the English one — «CHANGING THE WORLD | Te reo Māori translation needed», «**Lesson 1:** **Aotearoa …** *Te reo* Māori translation needed», «Leadership and Information | Please translate», «Produce a visual and verbal text/TE REO Currently with the Te Reo translations team», «STOMP TE REO» — and the header showed it as the title. The human build shows the English title alone (or a te reo title supplied later, which no Writers Template carries). At the header's title emission each title loses a trailing match of one of the patterns (with the separator before it); a title that is nothing but a placeholder is dropped when another title stands; one To Do note names what was cut. A caps_only pattern applies only to a title with no lower-case letter (a bare trailing «TE REO» can be a real title's last words in mixed case). Env TITLEPHTAIL_OFF (or enabled:false) shows the titles as typed.",
+			"enabled": true,
+			"env": "TITLEPHTAIL_OFF",
+			"patterns": [
+				"\\s*[|/:–—-]?\\s*(?:te\\s+reo\\s+)?(?:m[aā]ori\\s+)?translation\\s+(?:is\\s+)?(?:needed|required|to\\s+come|pending)\\.?\\s*$",
+				"\\s*[|/:–—-]?\\s*please\\s+translate\\.?\\s*$",
+				"\\s*[|/:–—-]?\\s*(?:te\\s+reo\\s+)?currently\\s+with\\s+the\\s+te\\s+reo\\s+translations?\\s+team\\.?\\s*$"
+			],
+			"caps_only_patterns": [
+				"\\s+TE\\s+REO\\s*$"
+			],
+			"note": "the te reo title is still to come — the writer's placeholder «{words}» is not shown"
 		},
 		"title_casing": {
 			"_doc": "The KB's title-casing rule (01A_TEMPLATE_LEVELS_CORE 'Title casing — normalise a MULTI-WORD ALL-CAPS title' / 10_CORPUS_VALIDATED_SCAFFOLDING §1 / constraint 1's permitted normalisations). A writer's multi-word ALL-CAPS header title (`DREAM IT, PLAN IT, DO IT`, `TE TIRITI O WAITANGI`) renders in SENTENCE CASE — the first letter capitalised, the rest lowercase, macrons kept, a token carrying a digit (`(US7121)`) left as a code; a SINGLE all-caps token (`STOMP`) is left as written (proper noun / acronym); a title already in sentence / title / mixed case is never touched. Finished header titles are never all-caps (the only all-caps ones in the human build are unreplaced placeholders). Sentence-casing cannot restore proper-noun capitals, so ONE red flag (cv2-note) quoting the original follows every normalised title — the KB's proper-noun caution applied to all of them, because the converter cannot tell `Castle Bravo` from `castle bravo`. Applied at SkeletonBuilder's header title fill (the plain and lowercase-span templates; the BLL phonics template has its own mechanism and is untouched). Env TITLECASE_OFF turns it off.",
@@ -9476,6 +9606,14 @@
 				}
 			],
 			"_doc_forms": "WHERE the human's lone heading sits: PWY, XOTPB and XOTPG put it in its OWN ROW (`row > col-12 col-md-8 > h`) — mode rows; PHE and ENO put it in its own `col-12` COLUMN first in a row whose next column is `col-12 col-md-8` — mode columns (the row stays one row, a column per block, the heading's column `heading_column_class`). The page's OPENING heading (the first block of the first row): XOTPB keeps it with its prose (keep_opening_heading); PWY, PHE, ENO and XOTPG mostly isolate it."
+		},
+		"banner_full_row": {
+			"_doc": "THE ROTATING BANNER'S OWN FULL-WIDTH ROW. A built rotating banner (div.rotateBanner) lands inside the ordinary two-thirds content column with the introduction's text; in the Health & PE Fundamentals family the human gives it a row of its own at full width (div.row > div.col-md-12 col-12 > div.rotateBanner — 10 of the 12 family golds that carry one; col-md-8 on 2). In a module whose code starts with a listed prefix, a banner that is a direct child of the only column of its row is moved to its own row (column_class); the text before it keeps its column and the text after it gets a new row in the same column. Env BANNERROW_OFF (or enabled:false) leaves the banner in the text column.",
+			"enabled": true,
+			"env": "BANNERROW_OFF",
+			"prefixes": ["HPFUN"],
+			"from_column": "col-md-8 col-12",
+			"column_class": "col-md-12 col-12"
 		},
 		"intro_heading_full_row": {
 			"_doc": "THE BLL INTRODUCTION HEADING'S OWN FULL-WIDTH ROW. The writer's mid-document `[Introduction]` (a title-bar alias) renders as `<h3>Introduction</h3>` at the head of the ordinary `col-md-8 col-12` content row; the Blended Literacy human build mostly gives that heading its own FULL-WIDTH row, `div.row > div.col-12 > h3 Introduction` alone. A page post-pass (ContentConverter.#introHeadingFullRow, just inside #pageNumberNormalise): in a module whose Module_Structure_Index subject is listed, a row whose column OPENS with the heading is split — the heading alone in `row > <column_class>`, the rest in the row's own column; a heading alone in its row just changes column class. A family dialect keyed by subject (§1d exception 1). Env INTROROW_OFF.",

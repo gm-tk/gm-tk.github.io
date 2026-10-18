@@ -425,6 +425,39 @@ class SkeletonBuilder {
 	 * sentence / title / mixed case are returned untouched. Returns { text, changed }.
 	 * Data header.title_casing; env TITLECASE_OFF.
 	 */
+	/**
+	 * The writer's placeholder for the te reo title, cut from the header titles: each title loses a trailing match of one
+	 * of the data patterns (a caps_only pattern only on a title with no lower-case letter); a title that is nothing but a
+	 * placeholder is dropped when another title stands. A title the pair casing marked keeps its mark under its new text.
+	 * Data header.title_placeholder_tail; env TITLEPHTAIL_OFF.
+	 * @param {string[]} titles - the header titles in order
+	 * @param {Object} tpl - EmitTemplates
+	 * @param {Set<string>|null} pairCapsSet - the titles the pair casing sentence-cases (updated in place)
+	 * @returns {{titles: string[], notes: string[]}} the titles to emit and one To Do note per cut
+	 */
+	static #titlePlaceholderTail(titles, tpl, pairCapsSet) {
+		const cfg = tpl?.header?.title_placeholder_tail;
+		if (!cfg || cfg.enabled === false || (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "TITLEPHTAIL_OFF"])) {
+			return { titles, notes: [] };
+		}
+		const res = (cfg.patterns ?? []).map((p) => new RegExp(p, "iu"));
+		const caps = (cfg.caps_only_patterns ?? []).map((p) => new RegExp(p, "u"));
+		const out = [], notes = [];
+		for (const t of titles) {
+			const s = String(t);
+			let cut = null;
+			for (const re of [...res, ...(/\p{Ll}/u.test(s) ? [] : caps)]) {
+				const m = s.match(re);
+				if (m) { cut = m; break; }
+			}
+			if (!cut) { out.push(t); continue; }
+			const kept = s.slice(0, cut.index).replace(/[\s|/:–—*-]+$/u, "").trim();
+			notes.push(Utils.FillTemplate(cfg.note ?? "the te reo title is still to come ({words})", { words: cut[0].replace(/^[\s|/:–—*-]+/u, "").trim() }));
+			if (kept) { out.push(kept); if (pairCapsSet && pairCapsSet.has(t)) pairCapsSet.add(kept); }
+		}
+		return out.length ? { titles: out, notes } : { titles, notes: [] };
+	}
+
 	static #titleCasing(title, tpl) {
 		const cfg = tpl?.header?.title_casing;
 		const t = String(title ?? "");
@@ -813,7 +846,9 @@ class SkeletonBuilder {
 		// this is a phonics-family overview — it separately marks up the normal-cased lead
 		// text (CSS-capitalised by the site) and the lowercase letter-team span.
 		let firstTitle = true;
-		for (const t of titles.filter(Boolean)) {
+		// the writer's placeholder for the te reo title is cut from the titles (header.title_placeholder_tail; env TITLEPHTAIL_OFF)
+		const phTail = SkeletonBuilder.#titlePlaceholderTail(titles.filter(Boolean), tpl, pairCapsSet);
+		for (const t of phTail.titles) {
 			if (firstTitle && pageType === "overview" && content.titleBar?.phonicsLead
 				&& tpl.header.title_h1_phonics) {
 				parts.push(Utils.FillTemplate(tpl.header.title_h1_phonics, {
@@ -838,6 +873,7 @@ class SkeletonBuilder {
 					Utils.FillTemplate(tpl.header.title_casing.red_flag, { original: t }), run, "diagnostic"));
 			}
 		}
+		for (const n of phTail.notes) parts.push(NotesAndComments.redFlag(n, run, "todo"));
 
 		// ---- menu button + content (menu_type pattern) ---------------------
 		if (content.menu.kind !== "none") {

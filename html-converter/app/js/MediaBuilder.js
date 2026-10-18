@@ -113,9 +113,48 @@ class MediaBuilder {
 		return String(hit.target).trim();
 	}
 
+	/**
+	 * THE PICTURES THE WRITER ASKED FOR SIDE BY SIDE. Each side-by-side marker MediaBuilder.image left for a
+	 * «[2 images next to each other]» request is replaced: when exactly N picture groups follow it with nothing between them
+	 * (a picture, its file comment, its caption paragraph), they are wrapped in one row with one column each (col width
+	 * 12 / N); otherwise the marker alone is dropped and the pictures stay as they are. Data image.side_by_side; env
+	 * SIDEBYSIDE_OFF (the markers are never written then).
+	 * @param {string} html - the page body
+	 * @param {ConversionRun} run - the current conversion run
+	 * @returns {string} the body with every marker resolved
+	 */
+	static sideBySidePostpass(html, run) {
+		const sbs = DataService.Data.EmitTemplates.image?.side_by_side;
+		if (!sbs || !String(html).includes("cv2-side-by-side")) return html;
+		const group = /^\s*(<img\b[^>]*>)(\s*<!--\s*<img\b[^>]*>\s*-->)?(\s*<p class="captionText">[\s\S]*?<\/p>)?/;
+		return String(html).replace(/<!-- cv2-side-by-side (\d) -->([\s\S]*?)(?=<!-- cv2-side-by-side \d -->|$)/g, (all, nStr, rest) => {
+			const n = Number(nStr);
+			const groups = []; let tail = rest;
+			while (groups.length < n) {
+				const g = tail.match(group); if (!g) break;
+				groups.push(g[0].trim()); tail = tail.slice(g[0].length);
+			}
+			if (groups.length !== n) return rest.replace(/^\n/, "");
+			const w = String(Math.floor(12 / n));
+			const cols = groups.map((g) => [Utils.FillTemplate(sbs.col_open, { w }), g, sbs.col_close].join("\n"));
+			return "\n" + [sbs.row_open, ...cols, sbs.row_close].join("\n") + tail;
+		});
+	};
+
 	static image(it, bodyItems, i, run) {
 		const tpl = DataService.Data.EmitTemplates.image;
 		const out = [];
+		// the writer's «[2 images next to each other]» is a layout request, not a picture: a marker the page post-pass reads
+		// (image.side_by_side; env SIDEBYSIDE_OFF)
+		const sbs = tpl.side_by_side;
+		if (sbs && sbs.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[sbs.env ?? "SIDEBYSIDE_OFF"])
+			&& !String(it.blackAfter ?? "").trim() && !(it.block?.links ?? []).length) {
+			const m = String(it.text ?? "").match(new RegExp(sbs.tag_pattern, "i"));
+			if (m) {
+				const n = { two: 2, three: 3 }[m[1].toLowerCase()] ?? Number(m[1]);
+				return [Utils.FillTemplate(sbs.marker, { n: String(n) })];
+			}
+		}
 		const gathered = this.gatherFollowing(it, bodyItems, i);
 		// THE WRITER'S PASTED PICTURE (Input_Doc_Rules.pasted_pictures; env PASTEDPIC_OFF): its bytes are in hand, so either image
 		// mode shows the picture itself and its file ships in images/; the words typed under it are its caption as for any image
@@ -524,10 +563,20 @@ class MediaBuilder {
 			}
 		} else if (kind === "audio") {
 			const file = url.split("/").pop() || tpl.audio.default_filename;
-			out.push(Utils.FillTemplate(tpl.audio.form, {
-				filename: Utils.EscapeHtml(/\.\w{2,4}$/.test(file) ? file : tpl.audio.default_filename),
-				title: "",
-			}));
+			// the request that names no file is the compact audio button in the groups whose human build uses it
+			// (audio.request_button; env AUDIOREQBTN_OFF)
+			const rb = tpl.audio.request_button;
+			const noFile = !/\.\w{2,4}$/.test(file) || file === tpl.audio.default_filename;
+			if (noFile && rb && rb.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[rb.env ?? "AUDIOREQBTN_OFF"])
+				&& (rb.groups ?? []).includes(this.#moduleGroup(run))) {
+				out.push(rb.form);
+			} else {
+				out.push(Utils.FillTemplate(tpl.audio.form, {
+					filename: Utils.EscapeHtml(/\.\w{2,4}$/.test(file) ? file : tpl.audio.default_filename),
+					title: "",
+				}));
+			}
 		} else {
 			const videoId = url.match(new RegExp(acks.youtube_id))?.[1] ?? null;
 			if (videoId) {
@@ -612,6 +661,31 @@ class MediaBuilder {
 		if (dropTitleOn && builtVideoEmbed && followLinkLine && url === followLink) {
 			keepRaw = keepRaw.split("\n").filter((L) => L.trim() !== followLinkLine).join("\n");
 		}
+		// THE RECORDING'S WORDS: the words on the line of a numbered audio tag that names no recording («[audio 1] Can
+		// we go for a walk?») are the recording's script — a Writers Note, not learner text; the lines after it stay
+		// (audio.script_note; env AUDIOSCRIPT_OFF)
+		let scriptNote = "";
+		const sn = tpl.audio?.script_note;
+		// a line whose links all cover the bracket tag alone reads as unlinked (script_note.linked_tag; env AUDIOSCRIPTLINK_OFF)
+		const snl = sn?.linked_tag;
+		const snLinks = it.block?.links ?? [];
+		const tagOnlyLinks = !!snl && snl.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[snl.env ?? "AUDIOSCRIPTLINK_OFF"])
+			&& snLinks.length > 0 && snLinks.every((l) => !String(l?.text ?? "").replace(/\[[^\]]*\]/g, "").replace(/[\s*_]+/g, ""));
+		if (kind === "audio" && !animation && sn && sn.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[sn.env ?? "AUDIOSCRIPT_OFF"])
+			&& (tagOnlyLinks || (!/\.\w{2,4}$/.test(url.split("/").pop() || "") && !it.block?.hyperTag && !snLinks.length))
+			&& (sn.prefixes ?? []).some((p) => String(run?.moduleCode ?? "").startsWith(p))
+			&& new RegExp(sn.tag_pattern ?? "^\\s*\\[\\s*audio\\s*\\d+\\s*\\]\\s*$", "i").test(String(it.text ?? ""))
+			&& !(i > 0 && bodyItems[i - 1]?.block && bodyItems[i - 1].block === it.block)) {
+			const ownLines = String(own).split("\n");
+			const first = ownLines[0].trim();
+			if (first && /[A-Za-z]/.test(first) && first.length <= (sn.max_chars ?? 200)) {
+				scriptNote = first;
+				const restOwn = ownLines.slice(1).join("\n");
+				keepRaw = restOwn.trim() ? `${restOwn}${following}` : following.replace(/^\n/, "");
+			}
+		}
 		const rest = this.stripMediaResidue(keepRaw);
 		// THE LEARNER'S «WATCH …» LINE: a built video's own tag-line words that open with an instruction verb are the
 		// learner's line, not the title — kept as a paragraph BEFORE the embed, the address stripped
@@ -639,6 +713,10 @@ class MediaBuilder {
 		// video-line pass can build its embed
 		const _wl = rest ? this.WholeLineVideoLinks(it._gatheredLinks ?? [], rest) : null;
 		const _links = _wl && _wl.merged.length ? [...(it.block?.links ?? []), ..._wl.merged] : it.block?.links;
+		if (scriptNote) {
+			const note = NotesAndComments.redFlag(Utils.FillTemplate(sn.note_text ?? "Audio script: {words}", { words: scriptNote }), run, "cs");
+			if (note) out.push(note);
+		}
 		if (rest) out.push(...ListsAndRuns.renderBlackText(rest, run, _links));
 		if (redTail) { const note = NotesAndComments.redFlag(redTail, run, "cs"); if (note) out.push(note); }   // the writer's red words after the linked tag
 		return out;
@@ -1253,6 +1331,17 @@ class MediaBuilder {
 
 	static #applyVideoIcon(embed, run) {
 		return this.#videoIconGroup(run) ? embed.replace('class="videoSection ', 'class="videoSection icon ') : embed;
+	};
+
+	/**
+	 * The module's phase|template group («BLL2|Standard») from Module_Structure_Index.module_meta — the key the
+	 * per-group audio form reads (audio.request_button.groups). Empty when the module has no entry.
+	 * @param {ConversionRun} run - the current conversion run (run.moduleCode)
+	 * @returns {string} "<phase>|<template_type>", or "" when either is unknown
+	 */
+	static #moduleGroup(run) {
+		const m = (DataService.Data.ModuleStructureIndex?.module_meta || {})[run?.moduleCode] || {};
+		return m.phase && m.template_type ? `${m.phase}|${m.template_type}` : "";
 	};
 
 	/**

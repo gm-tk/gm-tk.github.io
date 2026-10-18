@@ -2796,6 +2796,16 @@ class ContentConverter {
 					bundle._emitted = true;
 					continue;
 				}
+				// THE D2L QUIZ'S QUESTIONS AFTER ITS BUTTON (KB c65 / CL-0082): a «[Quiz questions]» quiz bundle right after the
+				// «Go to quiz» button is the quiz's own content — silenced, out of the hand-off list
+				// (interactive_builders.mtk_quiz.omit_quiz_content.questions_block; env MTKQBLOCK_OFF)
+				if (bundle && !bundle._emitted && this.#quizQuestionsAfterButton(bundle, bodyItems, i, tpl)) {
+					bundle._emitted = true;
+					bundle._mtkSilenced = true;
+					const k = (run.interactives ?? []).indexOf(bundle);
+					if (k >= 0) run.interactives.splice(k, 1);
+					continue;
+				}
 				if (bundle && !bundle._emitted) {
 					bundle._emitted = true;
 					// THE WRITER'S STOPWATCH, the bundle half: a red stopwatch request the widget capture CONSUMED
@@ -5465,8 +5475,8 @@ class ContentConverter {
 		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
 		// modifier) has run, so the page's consecutive numbering is settled last.
 		const bodyHtml0 = this.#titleIdEcho(this.#boldMarkerResidue(this.#softBreakLead(this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
-			this.#journalPlaceholderFill(this.#pageNumberNormalise(this.#emptyActivityDrop(this.#freeDropboxBox(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				ActivitiesBuilder.activityTitleLevelPostpass(this.#lessonLabelTitlePair(this.#relevelHeadings(body.filter(Boolean).join("\n"), run), run), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), page, run), page, run), page, run), page, run),   // #journalPlaceholderFill, #emptyActivityDrop, #freeDropboxBox, #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
+			this.#journalPlaceholderFill(this.#pageNumberNormalise(this.#emptyActivityDrop(this.#freeDropboxBox(this.#bannerFullRow(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#lessonLabelTitlePair(this.#relevelHeadings(body.filter(Boolean).join("\n"), run), run), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), run), page, run), page, run), page, run), page, run),   // #journalPlaceholderFill, #emptyActivityDrop, #freeDropboxBox, #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// the level-pages dialect's nav/tile labels + registry row
@@ -5514,8 +5524,9 @@ class ContentConverter {
 		// the multi-file levels overview (#levelOverview — the overview page only, outermost: it wraps the finished body).
 		// a Writers Note that is only the tag(s) the converter has already built beside it is dropped (#carriedTagNote).
 		// an ALL-CAPS multi-word body heading is set in sentence case (#bodyHeadingCase).
+		// the pictures the writer asked for side by side share one row (MediaBuilder.sideBySidePostpass — innermost).
 		const finalBody = ContentConverter.#levelOverview(ContentConverter.#bodyHeadingCase(ContentConverter.#carriedTagNote(ContentConverter.#dropEmptyListItems(ContentConverter.#liftVisibleTags(ContentConverter.#tagOnlyParagraphNote(ContentConverter.#redundantBold(ContentConverter.#unwrapLonePunct(ContentConverter.#mergeSplitRuns(ContentConverter.#familyRowPerBlock(ContentConverter.#familyQuoteParagraphs(
-			MediaBuilder.productionDocPostpass(MediaBuilder.stockButtonPostpass(MediaBuilder.videoTimePostpass(MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(finalBody0, run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), page, run);
+			MediaBuilder.productionDocPostpass(MediaBuilder.stockButtonPostpass(MediaBuilder.videoTimePostpass(MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(MediaBuilder.sideBySidePostpass(finalBody0, run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), page, run);
 		// a fallback-shell page that built its panels is an inquiry page too (the body class and
 		// the inquiry footer class follow, as for every other mode; its footer LINKS stay the registry's own).
 		const inquiryActive = (inquiryMode || cedInquiryMode || secInquiryMode || inqFallbackMode) && finalBody0 !== bodyHtml;
@@ -8105,7 +8116,29 @@ class ContentConverter {
 			const s = String(t ?? "").replace(/\s+/g, " ").trim();
 			if (s && !seen.has(s)) { seen.add(s); out.push(s); }
 		};
-		for (const t of (bundle.instructions ?? [])) add(t);
+		// a note the tag cut from its own bracket («[carousel of images with captions]» → «of images with captions») takes back
+		// the bracket's words before it, so it reads as the writer typed it — the opener read from the capture's opener items
+		// and the page item the capture starts at (red_flag.remainder_lead; env REMAINDERLEAD_OFF)
+		const rl = DataService.Data.EmitTemplates.red_flag?.remainder_lead;
+		const rlRe = rl && rl.enabled !== false && rl.connective_pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[rl.env ?? "REMAINDERLEAD_OFF"])
+			? new RegExp(rl.connective_pattern, "iu") : null;
+		const openerRaw = rlRe ? [...(bundle.openerItems ?? []), bundle.page?.items?.[bundle.startIndex]].filter(Boolean).map((it) => String(it?.text ?? "")
+			.replace(/\u{1f534}|\[\/?RED TEXT\]/gu, " ").replace(/\s+/g, " ")) : [];
+		const withLead = (t) => {
+			const s = String(t ?? "").replace(/\s+/g, " ").trim();
+			if (!rlRe || !rlRe.test(s)) return t;
+			for (const r of openerRaw) {
+				const at = r.indexOf(s);
+				if (at < 0) continue;
+				const open = r.lastIndexOf("[", at);
+				if (open < 0 || r.lastIndexOf("]", at) > open) continue;
+				const pre = r.slice(open + 1, at).trim();
+				if (pre && pre.split(" ").length <= (rl.max_words ?? 3)) return `${pre} ${s}`;
+			}
+			return t;
+		};
+		for (const t of (bundle.instructions ?? [])) add(withLead(t));
 		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
 		const scan = (text) => {
 			for (const m of String(text ?? "").matchAll(RED)) {
@@ -8471,6 +8504,12 @@ class ContentConverter {
 		const tt = on(cfg.tag_tail) && !(typeof process !== "undefined" && process.env && process.env[cfg.tag_tail.env || "REDTAGTAIL_OFF"])
 			? cfg.tag_tail : null;
 		const ttRe = tt ? new RegExp(`^([\\s\\S]*\\])\\s*(\\p{L}{1,${tt.max_letters ?? 2}})(\\s?)$`, "u") : null;
+		// THE RED RUN AFTER A RED NOTE IS THE NOTE'S NEXT PART (note_tail; env REDNOTETAIL_OFF): «Answers: 1. C» ⇥ «2. A» — the
+		// short run after a red writer's note of the same paragraph, white space only between them, joins the note
+		const nt = on(cfg.note_tail) && !(typeof process !== "undefined" && process.env && process.env[cfg.note_tail.env || "REDNOTETAIL_OFF"])
+			? cfg.note_tail : null;
+		const ntSkipRe = nt ? rx(nt.skip_pattern, "iu") : null;
+		let ntN = 0;
 		let n = 0;
 		let lastJoin = null;   // the host text a red run was last put back into, and where it ended (in_sentence.restore_space)
 		for (let i = 0; i < items.length; i++) {
@@ -8518,6 +8557,20 @@ class ContentConverter {
 			let own = inner.replace(/^ /, "").replace(/ $/, "");
 			if (/^[.,;:!?)\]]/.test(after)) own = own.replace(/\s+$/, "");
 			const word = own.trim();
+			// the note's next part (note_tail): nothing black after the run, and the item before it a red writer's note of the
+			// same paragraph with only white space after it
+			if (nt && word && !(ntSkipRe && ntSkipRe.test(word)) && !after.trim()) {
+				const pv = i > 0 ? items[i - 1] : null;
+				if (free(pv) && pv.block === it.block && pv.type === "tag" && !pv.parse?.primary && pv.parse?.class === "instruction"
+					&& !pv._redWordNote && !String(pv.blackAfter ?? "").trim()) {
+					pv.text = String(pv.text ?? "").replace(/\s+$/, "") + " " + word + " ";
+					pv.blackAfter = after;
+					items.splice(i, 1);
+					i--;
+					ntN++;
+					continue;
+				}
+			}
 			if (!word || (notRe && notRe.test(word))) continue;
 			const prev = i > 0 ? items[i - 1] : null;
 			const host = free(prev) && prev.block === it.block && (prev.type === "black" || prev.type === "tag") ? prev : null;
@@ -8571,6 +8624,7 @@ class ContentConverter {
 			n++;
 		}
 		if (n) run?.AddNote?.("info", "ContentConverter", `${n} red run${n === 1 ? "" : "s"} that are part of the writer's text kept in place (inline_red_words).`);
+		if (ntN) run?.AddNote?.("info", "ContentConverter", `${ntN} red run${ntN === 1 ? "" : "s"} after a red writer's note joined the note (inline_red_words.note_tail).`);
 		// the definitions blocks: the entries a hover used leave the page (the request they answered is not repeated); when
 		// every entry was used, the opener goes with them
 		let hovered = 0;
@@ -9415,6 +9469,82 @@ class ContentConverter {
 				`Page ${page.lessonLabel}: activity number${changes.length > 1 ? "s" : ""} normalised (page_number_normalise): ${changes.join(", ")}.`);
 		}
 		return out.join("");
+	}
+
+	/** Is this quiz bundle the D2L quiz's own questions typed after its button? Its opening tag matches
+	 *  omit_quiz_content.questions_block.opener_pattern, its every type is a quiz type, and a [button] whose label is the
+	 *  quiz button's stands within `window` items before the bundle's first item. Data
+	 *  interactive_builders.mtk_quiz.omit_quiz_content.questions_block; env MTKQBLOCK_OFF. */
+	static #quizQuestionsAfterButton(bundle, bodyItems, i, tpl) {
+		const mq = tpl.interactive_builders?.mtk_quiz;
+		const cfg = mq?.omit_quiz_content?.questions_block;
+		if (!cfg || cfg.enabled === false || mq.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "MTKQBLOCK_OFF"]) return false;
+		const qt = new Set(mq.omit_quiz_content.quiz_bundle_types ?? []);
+		if (![bundle.type, ...(bundle.extraTypes ?? [])].every((t) => qt.has(t))) return false;
+		const opener = [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])].find((m) => m?.type === "tag");
+		if (!opener || !new RegExp(cfg.opener_pattern, "i").test(this.#norm.RenderText(opener.text) || String(opener.text ?? ""))) return false;
+		const first = bodyItems.indexOf(opener) >= 0 ? bodyItems.indexOf(opener) : i;
+		const labelRe = new RegExp(mq.button_label_pattern ?? "^(go to (the )?quiz|quiz)[.!]?$", "i");
+		for (let j = first - 1, seen = 0; j >= 0 && seen < Number(cfg.window ?? 4); j--) {
+			const c = bodyItems[j];
+			if (!c || (c.type === "black" && !String(c.text ?? "").trim())) continue;
+			seen++;
+			if (c.type !== "tag" || c.parse?.primary?.tag !== "button") continue;
+			const label = ((this.#norm.RenderText(c.text) || "").replace(/\*/g, "").trim() || String(c.blackAfter ?? "").replace(/\*/g, "").trim());
+			if (labelRe.test(label)) return true;
+		}
+		return false;
+	}
+
+	/** THE ROTATING BANNER'S OWN FULL-WIDTH ROW. A built rotating banner lands inside the ordinary two-thirds content
+	 *  column with the text around it; in the families the data lists the human gives it a row of its own at full width
+	 *  (`div.row > div.col-md-12 col-12 > div.rotateBanner`). A banner that is a direct child of the only column of its row
+	 *  is moved out: the text before it keeps its column, the banner gets `row > <column_class>`, the text after it a new
+	 *  row in the same column. Data body_region.banner_full_row; env BANNERROW_OFF. */
+	static #bannerFullRow(html, run) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.banner_full_row;
+		if (!cfg || cfg.enabled === false || !html || !html.includes('class="rotateBanner"')) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "BANNERROW_OFF"]) return html;
+		const code = String(run?.moduleCode || "");
+		if (!(cfg.prefixes ?? []).some((p) => code.startsWith(p))) return html;
+		const divClose = (s, from) => {
+			const re = /<(\/?)div\b[^>]*>/gi; re.lastIndex = from; let d = 1, m;
+			while ((m = re.exec(s)) !== null) { d += m[1] ? -1 : 1; if (d === 0) return { start: m.index, end: m.index + m[0].length }; }
+			return null;
+		};
+		const fromCol = cfg.from_column ?? "col-md-8 col-12";
+		const open = new RegExp(`(<div class="row">\\s*)(<div class="${Utils.RegexEscape(fromCol)}">)`, "g");
+		let out = html, from = 0, n = 0, m;
+		while ((open.lastIndex = from, m = open.exec(out)) !== null) {
+			from = m.index + m[0].length;
+			const colOpenEnd = from;
+			const colClose = divClose(out, colOpenEnd), rowClose = divClose(out, m.index + m[1].indexOf(">") + 1);
+			if (!colClose || !rowClose || out.slice(colClose.end, rowClose.start).trim()) continue;   // one column only
+			const inner = out.slice(colOpenEnd, colClose.start);
+			// the banner as a direct child of the column
+			const re = /<(\/?)div\b([^>]*)>/gi; let d = 0, b = -1, x;
+			while ((x = re.exec(inner)) !== null) {
+				if (x[1]) { d--; continue; }
+				if (d === 0 && /class="rotateBanner"/.test(x[2])) { b = x.index; break; }
+				d++;
+			}
+			if (b < 0) continue;
+			const bEnd = divClose(inner, b + inner.slice(b).indexOf(">") + 1);
+			if (!bEnd) continue;
+			const before = inner.slice(0, b), banner = inner.slice(b, bEnd.end), after = inner.slice(bEnd.end);
+			const rows = [];
+			if (before.trim()) rows.push(`<div class="row">\n${m[2]}${before.replace(/\s+$/, "")}\n</div>\n</div>`);
+			rows.push(`<div class="row">\n<div class="${cfg.column_class ?? "col-md-12 col-12"}">\n${banner}\n</div>\n</div>`);
+			if (after.trim()) rows.push(`<div class="row">\n${m[2]}${after.replace(/^\s*\n/, "\n")}</div>\n</div>`);
+			const rep = rows.join("\n");
+			out = out.slice(0, m.index) + rep + out.slice(rowClose.end);
+			from = m.index + rep.length;
+			n++;
+		}
+		if (n && run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `${n} rotating banner${n > 1 ? "s" : ""} given ${n > 1 ? "their" : "its"} own full-width row (banner_full_row).`);
+		return out;
 	}
 
 	/** THE BLL INTRODUCTION HEADING'S OWN FULL-WIDTH ROW. The writer's mid-document `[Introduction]` renders as
@@ -10855,6 +10985,16 @@ class ContentConverter {
 			let segEnd = c.aEnd;
 			const note = /^\s*(?:<p class="cv2-note"[^>]*>[\s\S]*?<\/p>\s*)+/.exec(out.slice(segEnd, colClose.start));
 			if (note) segEnd += note[0].replace(/\s+$/, "").length;
+			// the writer's buttons straight after the upload button (and their notes) join the box
+			// (free_dropbox_box.trailing_buttons; env FREEDBXNEXTBTN_OFF)
+			const tb = cfg.trailing_buttons;
+			if (tb && tb.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[tb.env || "FREEDBXNEXTBTN_OFF"])) {
+				for (let k = 0; k < Number(tb.max ?? 3); k++) {
+					const nb = /^\s*<a\b[^>]*>\s*<div class="button">([\s\S]*?)<\/div>\s*<\/a>(?:\s*<p class="cv2-note"[^>]*>[\s\S]*?<\/p>)*/.exec(out.slice(segEnd, colClose.start));
+					if (!nb || labelRe.test(plain(nb[1]))) break;   // another upload button is its own box's
+					segEnd += nb[0].replace(/\s+$/, "").length;
+				}
+			}
 			let inner = out.slice(segStart, segEnd).trim();
 			if (head) inner = inner.replace(/^<h([3-5])\b([^>]*)>([\s\S]*?)<\/h\1>/, `<h${titleLevel}$2>$3</h${titleLevel}>`);
 			const box = Utils.FillTemplate(cfg.box_open, { id }) + "\n" + inner + "\n" + cfg.box_close;
@@ -11421,6 +11561,11 @@ class ContentConverter {
 		const hMax = (typeof process !== "undefined" && process.env && process.env.ACTHEAD_OFF)
 			? (ccfg.rendered_heading_max_legacy ?? 3) : (ccfg.rendered_heading_max ?? 4);
 		let sawContent = !!hasAfterText;
+		// a button straight after the upload button keeps the box open, as a widget does
+		// (upload_box_ends_activity.next_button_keeps_open; env DBXNEXTBTN_OFF)
+		const nb = tpl.activity_wrapper?.upload_box_ends_activity?.next_button_keeps_open;
+		const nbOn = !!nb && nb.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[nb.env ?? "DBXNEXTBTN_OFF"]);
 		for (let j = i + 1; j < bodyItems.length && j <= i + max; j++) {
 			const c = bodyItems[j];
 			if (!c || c._consumed) continue;
@@ -11434,6 +11579,12 @@ class ContentConverter {
 			}
 			const p = c.parse?.primary;
 			if (!p) continue;                                             // an instruction / noise span
+			if (nbOn && !sawContent && (nb.tags ?? ["button"]).includes(p.tag)) {
+				// another upload button reads its own way (a writer's second «Upload to dropbox» is not kept beside the first)
+				const lab = ((this.#norm.RenderText(c.text) || "").replace(/\*/g, "").trim() || String(c.blackAfter ?? "").replace(/\*/g, "").trim());
+				const upRe = new RegExp(tpl.activity_wrapper?.upload_box_ends_activity?.button_label_match ?? "drop\\s?box|upload", "i");
+				if (!upRe.test(lab)) return false;
+			}
 			if (p.directive === "CONTAINER_CLOSE" && (p.tag === "end activity" || /\bactivity\b/i.test(p.tag ?? ""))) {
 				if (!sawContent) return false;
 				c._dbxStrayCloser = true;                                  // the writer's closer for the frame closed here
@@ -14256,6 +14407,10 @@ class ContentConverter {
 		}
 
 		const tpl = DataService.Data.EmitTemplates.interactive_placeholder;
+		// THE WIDGET'S LEAD INSTRUCTION IS PAGE TEXT: the [Body] members before the bundle's first table (and before a second
+		// non-body tag) render as page text just before the box, when the box keeps other content
+		// (interactive_placeholder.lead_body_release; env BOXLEADBODY_OFF)
+		const released = this.#leadBodyRelease(bundle, tpl);
 		// A writer instruction EMBEDDED inside the interactive is moved to JUST BEFORE the
 		// placeholder box: notesBefore prepends the bundle's instructions at the return point
 		// instead of nesting them inside the dashed placeholder box itself.
@@ -14393,6 +14548,7 @@ class ContentConverter {
 		const ak = Utils.AnswerKeyConfig(DataService.Data.EmitTemplates.interactive_placeholder?.answer_key, bundle);
 		let lastBlk = null;   // the source block of the last dumped line
 		for (const m of [...bundle.openerItems, ...bundle.memberItems]) {
+			if (released.has(m)) continue;   // the lead instruction renders before the box
 			if (m.type === "table") { flushText(); lastBlk = null; parts.push(TablesAndGrids.contentTable(ak ? this.#answerKeyTable(m.block, ak) : m.block, run, true, this.#norm)); continue; }
 			let text = m.type === "black" ? m.text : (String(m.blackAfter ?? "").trim() ? m.blackAfter : embeddedText(m));   // the bracket-line words of an element member
 			if (ak) {
@@ -14414,6 +14570,7 @@ class ContentConverter {
 			? bundle.instructions.map((i) => NotesAndComments.redFlag(i, run, "cs")).join("\n")
 			: "";
 		const inlineHtml = (lead ? lead + "\n" : "") + parts.join("\n");
+		const releasedHtml = [...released].map((m) => ListsAndRuns.renderBlackText(String(m.blackAfter ?? "").trim(), run, m.block?.links ?? []).join("\n")).join("\n");
 		// The default hand-off wrap: the inline rendering above (retained notes + the dashed box)
 		// goes INSIDE the loud reference-code marker box, collapsed by default behind the animated
 		// arrow toggle. The wrapper carries BOTH classes — cv2-interactive (so every tool that skips
@@ -14422,7 +14579,7 @@ class ContentConverter {
 		// data-cv2-ref swaps the hidden raw content out together with the marker).
 		if (extractWrap) {
 			const c = extractWrap.col;
-			return [
+			return (releasedHtml ? releasedHtml + "\n" : "") + [
 				Utils.FillTemplate(c.wrapper_open, { index: extractWrap.index, id: extractWrap.id, ref: extractWrap.ref }),
 				Utils.FillTemplate(c.label_row, { label: extractWrap.label }),
 				c.content_open,
@@ -14431,8 +14588,52 @@ class ContentConverter {
 				c.wrapper_close,
 			].join("\n");
 		}
-		return inlineHtml;
+		return (releasedHtml ? releasedHtml + "\n" : "") + inlineHtml;
 	};
+
+	/**
+	 * The [Body] members of an un-built bundle that are the widget's LEAD instruction: those standing before the bundle's
+	 * first table and before a second non-body tag, with at least min_words words — released as page text before the box.
+	 * Only when every type of the bundle is listed, and only when the box keeps other content (a table, or a text member
+	 * that is not released). Data interactive_placeholder.lead_body_release; env BOXLEADBODY_OFF.
+	 * @param {Object} bundle - the un-built interactive bundle
+	 * @param {Object} tpl - EmitTemplates.interactive_placeholder
+	 * @returns {Set<Object>} the released member items (empty when the rule does not apply)
+	 */
+	static #leadBodyRelease(bundle, tpl) {
+		const out = new Set();
+		const cfg = tpl?.lead_body_release;
+		if (!cfg || cfg.enabled === false) return out;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "BOXLEADBODY_OFF"]) return out;
+		const types = new Set(cfg.types ?? []);
+		if (![bundle.type, ...(bundle.extraTypes ?? [])].every((t) => types.has(t))) return out;
+		const bodyTags = new Set(cfg.body_tags ?? ["body"]);
+		const all = [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])];
+		let otherTags = 0;
+		for (const m of bundle.memberItems ?? []) {
+			if (!m) continue;
+			if (m.type === "table") break;
+			if (m.type !== "tag") continue;
+			const prim = m.parse?.primary?.tag ?? null;
+			if (prim && bodyTags.has(prim)) {
+				const words = String(m.blackAfter ?? "").trim().split(/\s+/).filter(Boolean).length;
+				// only a whole paragraph: not a list paragraph (its numbering lives on the block) and no other captured item
+				// from the same paragraph (a red word inside the sentence is its own item)
+				if (words >= (cfg.min_words ?? 4) && !m.block?.list
+					&& !(m.block && all.some((x) => x !== m && x?.block === m.block))) out.add(m);
+				continue;
+			}
+			if (++otherTags > 1) break;
+		}
+		if (!out.size) return out;
+		// the box must keep content of its own (min_box_chars letters / digits in what stays: its text members and tables)
+		const letters = (s) => String(s ?? "").replace(/<[^>]+>/g, " ").replace(/[^\p{L}\p{N}]/gu, "").length;
+		const cellText = (c) => (typeof c === "string" ? c : (c?.text ?? ""));
+		const left = all.filter((it) => it && !out.has(it)).reduce((n, it) => n + (it.type === "table"
+			? letters((it.block?.rows ?? []).flat().map(cellText).join(" "))
+			: letters(it.type === "black" ? it.text : (String(it.blackAfter ?? "").trim() ? it.blackAfter : ""))), 0);
+		return left >= (cfg.min_box_chars ?? 60) ? out : new Set();
+	}
 
 	// =======================================================================
 	// TEXT RENDERING HELPERS
