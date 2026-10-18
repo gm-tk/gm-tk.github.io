@@ -1516,6 +1516,18 @@
 			"wrapper_tags": ["b", "strong", "i", "em", "u"],
 			"start_pattern": "\\bstart(?:s|ing)?\\s+(?:at\\s+|from\\s+)?(\\d{1,2}):(\\d{1,2})\\b"
 		},
+		"cell_parts_repair": {
+			"_doc": "Repairs to a table cell's paragraph split (TablesAndGrids.cellParts: the extractor joins a cell's paragraphs with « / », and the split cannot tell that join from the writer's own slash). bold_slash: two neighbouring pieces that BOTH hold an unclosed «**» were one bold phrase holding the writer's slash — «**mēnā / mehemea**» (TRR301) — and are one piece again (apart, the unpaired markers show as text). unclosed_tag: a piece that opens with the writer's tag left unclosed — «[Body Tukua kia tekau hāora …» with no «]» anywhere in it (TRR108) — is the tag it names.",
+			"bold_slash": {
+				"enabled": true,
+				"env": "CELLBOLDSLASH_OFF"
+			},
+			"unclosed_tag": {
+				"enabled": true,
+				"env": "CELLOPENTAG_OFF",
+				"tags": ["body"]
+			}
+		},
 		"soft_break_lead": {
 			"_doc": "THE SOFT-BREAK SLASH NEVER OPENS A BLOCK (KB constraint 5: no stray markup; constraint 1: the writer's words unchanged). The parsed Writers Template writes a table cell's line break as « / ». When a builder lifts the line before it — a video address, a [caption] tag, a bold title — the marker is left opening the next block («<p>/ More examples of using 只 (zhī)…»), a slash the writer never typed and the gold never shows. Outside the un-built hand-off boxes a listed block whose text opens with «/ » loses the marker (repeated markers too, inside any leading inline wrapper); a block left empty is dropped. A block whose text also closes with «/» is BLL's sound notation («/ oo /») and is left alone, and so is a slash inside the text. Env SLASHLEAD_OFF.",
 			"enabled": true,
@@ -4177,6 +4189,25 @@
 			}
 		},
 		"speechBubble": {
+			"hover_translation": {
+				"enabled": true,
+				"env": "SBHOVER_OFF",
+				"pattern": "^\\[\\s*hover\\s+transl(?:ation|ate)\\b\\s*\\]?",
+				"trailing_anchor": {
+					"enabled": true,
+					"env": "SBHOVERTAIL_OFF",
+					"underline": true,
+					"last_word": true,
+					"sentence_end_pattern": "[.!?…:;]\\s*$",
+					"_doc": "A HOVER TYPED MID-SENTENCE. The writer types the bubble's sentence, the marker and its translation in the middle of it, and the sentence goes on after the closing bracket («Ich spreche Englisch, Māori und ein bisschen [hover translate A bit.] Deutsch. Ich lerne Deutsch. [hover translate I'm learning German.]»). The marker names no phrase and does not follow the bubble's opening words, so the whole-paragraph anchor does not apply. The anchor is the run the writer underlined right before the marker (the underline is their mark for the hovered words; it does not ship); else, when the marker interrupts a sentence (the text before it does not end at a sentence mark), the last word, the free text's own hover convention. Only the text after the paragraph's last hover is read."
+				},
+				"actioned_note": {
+					"enabled": true,
+					"env": "SBHOVERNOTE_OFF",
+					"_doc": "THE HOVER A BUBBLE TOOK LEAVES THE WRITERS NOTE. The scanner lists every instruction member of a bundle in the red Writers Note after the widget, so «[hover translation]» stayed in the note after the bubble had turned it into the hover, telling the developer to do what is already done. Its red text leaves the note when every hover member carrying that text in the bundle was taken by a bubble; one the rule left stays."
+				},
+				"_doc": "THE BUBBLE'S HOVER TRANSLATION. A language writer types the bubble's words, then a red «[hover translation]» (or «[hover translate … ]», its closer a span of its own) and the translation in black. The member is the bubble's hover, never a designer note: the text-only builder dropped it with its words and the rich composer showed it as a Writers Note, so the learner never saw the translation. The gold wraps the translated words in an infoTrigger span whose info is the translation; the builder hands the phrase and the translation to the inline renderer's own hover sentinels, so the span is the free text's (elements.info_trigger). The anchor is the phrase the marker names in its own red span; else, when the marker follows the bubble's own words, the bubble's whole paragraph. Black text after the closing bracket continues the paragraph after the span. A named phrase that is not in the bubble, or a hover after words the bubble did not open with, leaves the member as it was."
+			},
 			"rich": {
 				"enabled": true,
 				"plain_cell_bubbles": true,
@@ -5634,6 +5665,14 @@
 				"line_pattern": "^\\[?\\s*answers?\\s*(?:guide|key)?\\s*\\]?\\s*:?\\s*((?:\\d{1,2}\\s*[.):]?\\s*[a-h]\\b[\\s,;.]*)+)$",
 				"pair_pattern": "(\\d{1,2})\\s*[.):]?\\s*([a-h])\\b"
 			},
+			"yes_no_statements": {
+				"_doc": "THE YES / NO STATEMENT QUIZ. The writer lists statements, each ending in a yes / no (or true / false) pair, and types the correct-answer mark right after the word that is the answer — `Fiordland has big mountains. YES [correct answer] /NO`, `Fiordland. is in. Aotearoa New Zealand. YES/NO [correct answer]` (WJFUN105 1B). Each statement is its own question, the pair its two options in the writer's order and words, the marked word the answer; a [Body] paragraph before the statements is the activity's instruction, page text ahead of the quiz (the human builds one Yes / No question per statement). Read before the list forms; any other member, line or mark declines it. Env MCQYESNO_OFF.",
+				"enabled": true,
+				"env": "MCQYESNO_OFF",
+				"word_pairs": [["yes", "no"], ["true", "false"]],
+				"lead_tags": ["body"],
+				"min_statements": 2
+			},
 			"question_indent": {
 				"_doc": "THE QUESTIONS TOLD BY INDENT: the writer numbers the questions AND the options («1. The characters begin helping …» / «  1. They are still unhappy.») and tells them apart only by indentation. Where the numbered lines stand at exactly two indents, each holding two or more lines, the outer numbered line opens a question, the inner ones are its options, and an unnumbered line before the question's first option joins the question («Original sequence: AATGGTC»). Never with the writer's [Question N] tags, nor where an outer numbered line ends in «?» (the question-mark reading tells those apart). Env MCQINDENT_OFF.",
 				"enabled": true,
@@ -5672,6 +5711,14 @@
 				"lettered_option_pattern": "^\\s*[A-Da-d][.)]\\s+",
 				"cell_break": "<br />",
 				"_cell_break_note": "A cell's second paragraph (the extractor's ` / ` cell join, TablesAndGrids.cellParts) is the human's line break inside the question or option — ENFUN01 `Who is most likely to say this: <br />“Hiya my cuzzie! …”`.",
+				"cell_blocks": {
+					"_doc": "THE QUESTION BLOCK PER TABLE CELL. The writer lays the quiz out as a grid: every non-empty cell holds ONE whole question block — the question as its first paragraph, then two or more option paragraphs (the extractor's ` / ` cell join), exactly one option wholly red (or a yellow ✅) — `1. If 60 % of travellers … / a. 100 travellers / b. 🔴120 travellers🔴 / c. 140 travellers ║ 2. If 70 % …` (MXFL301 3C, MXEO301 4C, MXFU301, SSOG103, TEDC402). The blocks are the quiz's questions in reading order, row by row and cell by cell, as the human numbers them; the writer's list marker goes from the question and from each option, and the marked option's own answer note («(correct answer)») is not option text. Black lines before the table (the activity's instruction) stay page text, ahead of the quiz. Declines (the hand-off box stays) when any non-empty cell is not such a block, a block has no marked option or two, a cell holds a link, a tag or a media request, or the table holds fewer than min_blocks blocks. Env MCQCELLBLOCK_OFF.",
+					"enabled": true,
+					"env": "MCQCELLBLOCK_OFF",
+					"min_blocks": 2,
+					"min_options": 2,
+					"answer_note_pattern": "\\s*\\(\\s*(?:the\\s+)?correct(?:\\s+answers?)?\\s*\\)\\s*$"
+				},
 				"table_layout": {
 					"enabled": true,
 					"env": "MCQTABLELAYOUT_OFF",

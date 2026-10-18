@@ -5620,6 +5620,82 @@ class InteractiveBuilder {
 		return { image_col: `${row.image_col}\n${img}\n</div>`, col_open: row.col_open, bubble: row.bubble, todo: k.todo };
 	}
 
+	/**
+	 * THE BUBBLE'S HOVER TRANSLATION. A writer member «[hover translation] English» (or «[hover translate English ]»)
+	 * after a bubble is that bubble's hover, not a designer note. Returns { anchor, info } — the phrase the marker
+	 * names in its own red span ("" when none) and the translation — or null for any other member. Reads the member
+	 * WITHOUT recording a read (#peekMember): the caller marks it read only when a bubble takes the hover, so a hover
+	 * left as it was keeps its place in the members rule.
+	 * Data flag: speechBubble.hover_translation   Env toggle: SBHOVER_OFF
+	 */
+	static #sbHoverMember(member, tpl) {
+		const hc = tpl?.hover_translation;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (!hc || hc.enabled === false || !hc.pattern || env[hc.env ?? "SBHOVER_OFF"]) return null;
+		const m = this.#peekMember(member);
+		if (!m || m.type !== "tag" || m.parse?.primary || m.parse?.class !== "instruction") return null;
+		const t = String(m.text ?? "").replace(/\s+/g, " ").trim();
+		const hit = t.match(new RegExp(hc.pattern, "i"));
+		if (!hit) return null;
+		const anchor = t.slice(hit[0].length).replace(/[[\]]/g, " ").replace(/\s+/g, " ").trim();
+		const info = String(m.blackAfter ?? "").replace(/\*{1,3}|_{2}/g, "").replace(/\s+/g, " ").trim();
+		if (!/[\p{L}\p{N}]/u.test(info)) return null;
+		return { anchor, info, cfg: hc };
+	}
+
+	/**
+	 * Marks a hover's anchor in a bubble paragraph (its text before inline rendering) with the inline renderer's own
+	 * hover sentinels — the phrase in U+E005…U+E006, the translation in U+E000…U+E001 right after it — so
+	 * ListsAndRuns.inlineMarkup emits the infoTrigger span (the phrase's bold kept inside, an underline dropped).
+	 * A named anchor must be in the paragraph; with no named anchor the whole paragraph is the anchor, only when
+	 * `whole` (the hover follows the bubble's own words) and the paragraph holds no hover yet. A hover typed
+	 * mid-sentence takes the run the writer underlined right before it, else the last word when it interrupts a
+	 * sentence, reading only the text after the paragraph's last hover (hover_translation.trailing_anchor; env
+	 * SBHOVERTAIL_OFF). Returns the marked text, or null (the member stays as it was).
+	 */
+	static #sbHoverMark(text, hov, whole) {
+		const s = String(text ?? "");
+		const cut = (a, b) => s.slice(0, a) + "\uE005" + s.slice(a, b).replace(/__|\uE024|\uE025/g, "") + "\uE006\uE000" + hov.info + "\uE001" + s.slice(b);
+		if (hov.anchor) {
+			let a = s.lastIndexOf(hov.anchor);
+			if (a < 0) return null;
+			let b = a + hov.anchor.length;
+			const l = s.slice(0, a).match(/[*_]+$/)?.[0] ?? "", r = s.slice(b).match(/^[*_]+/)?.[0] ?? "";
+			const n = Math.min(l.length, r.length);
+			if (n && l.slice(-n) === [...r.slice(0, n)].reverse().join("")) { a -= n; b += n; }
+			return cut(a, b);
+		}
+		if (whole && !/\uE000/.test(s)) {
+			const lead = s.match(/^\s*/)[0].length, trail = s.match(/\s*$/)[0].length;
+			if (!/[\p{L}\p{N}]/u.test(s)) return null;
+			return cut(lead, s.length - trail);
+		}
+		const tc = hov.cfg?.trailing_anchor;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (whole || !tc || tc.enabled === false || env[tc.env ?? "SBHOVERTAIL_OFF"]) return null;
+		const from = s.lastIndexOf("\uE001") + 1, tail = s.slice(from);
+		const u = tc.underline !== false ? tail.match(/\uE024([^\uE024\uE025]*[\p{L}\p{N}][^\uE024\uE025]*)\uE025([\s.,;:!?\u2026]*)$/u) : null;
+		if (u) return cut(from + u.index, from + u.index + u[0].length - u[2].length);
+		if (tc.last_word === false || new RegExp(tc.sentence_end_pattern ?? "[.!?\u2026:;]\\s*$", "u").test(tail)) return null;
+		const w = tail.match(/([\p{L}\p{M}\p{N}][\p{L}\p{M}\p{N}'\u2019\-]*)\s*$/u);
+		return w ? cut(from + w.index, from + w.index + w[1].length) : null;
+	}
+
+	/**
+	 * The hover a bubble TOOK leaves the bundle's red Writers Note: its red text («[hover translation]») is dropped from
+	 * bundle.instructions when every hover member carrying that text was taken (`taken`) and none was left (`left`).
+	 * Data flag: speechBubble.hover_translation.actioned_note   Env toggle: SBHOVERNOTE_OFF
+	 */
+	static #sbHoverNotes(bundle, tpl, taken, left) {
+		const an = tpl?.hover_translation?.actioned_note;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (!an || an.enabled === false || env[an.env ?? "SBHOVERNOTE_OFF"] || !taken.size || !Array.isArray(bundle?.instructions)) return;
+		bundle.instructions = bundle.instructions.filter((x) => {
+			const k = String(x ?? "").replace(/\s+/g, " ").trim();
+			return !(taken.has(k) && !left.has(k));
+		});
+	}
+
 	static #speechBubbleTextOnly({ bundle, tpl, renderInline, run }) {
 		const cfg = tpl?.text_only;
 		if (!cfg || cfg.enabled === false || !bundle) return null;
@@ -5638,7 +5714,8 @@ class InteractiveBuilder {
 		const maxP = cfg.max_paragraphs ?? 4;
 		const thoughtRe = new RegExp(cfg.thought_re ?? "thought", "i");
 		const bubbles = [];
-		let curB = null, thought = false;
+		let curB = null, thought = false, ownWords = false, hoverOpen = false;
+		const taken = new Set(), left = new Set();   // the hover members' red text, taken by a bubble or left (#sbHoverNotes)
 		for (const m of bundle.memberItems ?? []) {
 			if (!m) continue;
 			if (m.type === "table" || m.type === "nested") return null;
@@ -5647,6 +5724,7 @@ class InteractiveBuilder {
 				if (!t) continue;
 				if (!curB) return null;                 // stray text before any bubble → not this form
 				curB.push(t);
+				ownWords = hoverOpen = false;
 				continue;
 			}
 			const p = m.parse?.primary;
@@ -5656,9 +5734,32 @@ class InteractiveBuilder {
 				bubbles.push(curB);
 				const t = clean(m.blackAfter);
 				if (t) curB.push(t);
+				ownWords = !!t; hoverOpen = false;
 				continue;
 			}
-			if (!p && ["instruction", "noise"].includes(m.parse?.class)) continue;   // writer notes ride along
+			if (!p && ["instruction", "noise"].includes(m.parse?.class)) {
+				// the bubble's hover translation marks its anchor; black words after the hover's closing bracket
+				// continue the paragraph after the span (speechBubble.hover_translation; env SBHOVER_OFF)
+				const hov = this.#sbHoverMember(m, tpl);
+				const mk = (hov && curB && curB.length) ? this.#sbHoverMark(curB[curB.length - 1], hov, ownWords) : null;
+				const hk = hov ? String(this.#peekMember(m).text ?? "").replace(/\s+/g, " ").trim() : "";
+				if (mk) {
+					curB[curB.length - 1] = mk;
+					void m.blackAfter;                  // the bubble took the hover: its words are in the build (a read)
+					taken.add(hk);
+					ownWords = false; hoverOpen = true;
+					continue;
+				}
+				if (hov) left.add(hk);
+				if (hoverOpen && m.parse?.class === "noise" && /^[\s\]]*$/.test(String(this.#peekMember(m).text ?? ""))) {
+					const t = clean(m.blackAfter);
+					if (t) curB[curB.length - 1] += ` ${t}`;
+					hoverOpen = false;
+					continue;
+				}
+				ownWords = hoverOpen = false;
+				continue;                               // writer notes ride along
+			}
 			return null;                                // a real second element → never half-build
 		}
 		// a "paragraph" with no letter/digit in any script is stray punctuation a split
@@ -5691,6 +5792,7 @@ class InteractiveBuilder {
 			].join("\n");
 		});
 		if (phOn && ph.todo && run) rows.push(NotesAndComments.redFlag(ph.todo, run, "todo"));
+		this.#sbHoverNotes(bundle, tpl, taken, left);
 		return rows.join("\n");
 	}
 
@@ -5904,6 +6006,11 @@ class InteractiveBuilder {
 			// writer left for the designer → rides along as a note (the instruction-member rule).
 			if (["instruction", "noise"].includes(m.parse?.class)) {
 				const t = `${String(m.text ?? "").trim()} ${after}`.replace(/\s+/g, " ").trim();
+				// the bubble's hover translation (speechBubble.hover_translation; env SBHOVER_OFF) — a note again when
+				// no bubble takes it; a closing bracket's black words may continue the hovered paragraph
+				const hov = this.#sbHoverMember(m, tpl);
+				if (hov) return [{ role: "hover", anchor: hov.anchor, info: hov.info, cfg: hov.cfg, text: t, key: String(m.text ?? "").replace(/\s+/g, " ").trim() }];
+				if (m.parse?.class === "noise" && /^[\s\]]*$/.test(String(m.text ?? ""))) return [{ role: "note", text: t, closer: after }];
 				return t ? [{ role: "note", text: t }] : [];
 			}
 			return null;
@@ -6170,11 +6277,28 @@ class InteractiveBuilder {
 				if (g[i].role === "text" && g[i - 1].role === "image" && this.#sbImageTrail(g[i].text, cfg)) g.splice(i, 1);
 			}
 		}
+		const hoverTaken = new Set(), hoverLeft = new Set();   // the hover members' red text, taken or left (#sbHoverNotes)
 		for (const g of groups) {
 			let b = null;
 			const pending = [];            // text/head seen before this group's bubble
 			let pendingImgs = [];
+			let ownWords = false, hoverOpen = false;
 			for (const p of g) {
+				if (p.role === "hover") {
+					const ln = b && b.lines.length ? b.lines[b.lines.length - 1] : null;
+					const mk = (ln && !ln.head) ? this.#sbHoverMark(ln.text, p, ownWords) : null;
+					if (mk) { ln.text = mk; hoverOpen = true; hoverTaken.add(p.key); }
+					else { hoverLeft.add(p.key); if (p.text) notes.push(p.text); }
+					ownWords = false;
+					continue;
+				}
+				if (p.role === "note" && hoverOpen && p.closer !== undefined) {
+					const t = String(p.closer).replace(/\s+/g, " ").trim();
+					if (t) b.lines[b.lines.length - 1].text += ` ${t}`;
+					hoverOpen = false;
+					continue;
+				}
+				ownWords = p.role === "bubble" && !!p.text; hoverOpen = false;
 				if (p.role === "note") { if (p.text) notes.push(p.text); continue; }
 				if (p.role === "image") {
 					if (!p.url) { if (p.hint) notes.push(p.hint); continue; }   // an asset REQUEST
@@ -6229,7 +6353,7 @@ class InteractiveBuilder {
 		const live = bubbles.filter((b) => b.lines.some((l) => (l.text ?? "").replace(/[^\p{L}\p{N}]/gu, "").length >= min));
 		for (const b of bubbles) {
 			if (live.includes(b)) continue;
-			for (const l of b.lines) if (l.text) notes.push(l.text);
+			for (const l of b.lines) if (l.text) notes.push(String(l.text).replace(/\uE005|\uE006/g, "").replace(/\uE000([^\uE001]*)\uE001/g, " $1"));
 		}
 		if (!live.length) return null;
 		if (live.some((b) => b.lines.length > (cfg.max_paragraphs ?? 8))) return null;
@@ -6318,6 +6442,7 @@ class InteractiveBuilder {
 		flushCasts(bubbles.length);
 		// the skipped asset requests / writer instructions surface as the standard red
 		// Writers Note after the widget — ONLY on a successful build.
+		this.#sbHoverNotes(bundle, tpl, hoverTaken, hoverLeft);
 		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...new Set(notes)];
 		if (phUsed && phUsed.todo && run) out.push(NotesAndComments.redFlag(phUsed.todo, run, "todo"));   // ONE To Do per group
 		return out.join("\n");
@@ -16969,6 +17094,15 @@ class InteractiveBuilder {
 		// bare list number or the question has no option yet (the mark-after reading stands everywhere else)
 		const mb = tpl.mark_before;
 		const mbOn = !!mb && mb.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[mb.env || "MCQMARKBEFORE_OFF"]);
+		// THE YES / NO STATEMENT QUIZ (data yes_no_statements; env MCQYESNO_OFF): every line a statement ending in a yes / no (or
+		// true / false) pair, the writer's mark typed right after ONE word of it — «Fiordland has big mountains. YES [correct
+		// answer] /NO» — is its own question, the pair its options, the marked word the answer; a [Body] lead before the lines is
+		// page text ahead of the quiz. Any other line, mark or member declines this reading (the forms below then read the bundle).
+		const yn = tpl.yes_no_statements;
+		if (!qs && yn && yn.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[yn.env || "MCQYESNO_OFF"])) {
+			const ynq = this.#mcqYesNo({ bundle, yn, reCorrect, openTags, stripped });
+			if (ynq) qs = ynq;
+		}
 		if (!qs) {
 		/* --- the member stream, flattened to ordered STEPS ---------------- */
 		const steps = [];
@@ -17184,6 +17318,8 @@ class InteractiveBuilder {
 		const opt = (o) => Utils.FillTemplate(o.correct ? tpl.option_correct : tpl.option, { text: line(o.text) });
 		const tl = qs.tableLayout ? tpl.table_form?.table_layout : null;
 		const out = [];
+		// the activity's instruction typed before a question-block table (table_form.cell_blocks): page text, ahead of the quiz
+		for (const t of qs.lead ?? []) for (const ln of String(t).split(/\n+/)) if (stripped(ln)) out.push(`<p>${inline(ln.trim())}</p>`);
 		if (tl) {
 			// the writer's two-column table kept, as the human keeps it (table_form.table_layout)
 			out.push(Utils.FillTemplate(tl.open, { autocheck: ac }));
@@ -17225,6 +17361,54 @@ class InteractiveBuilder {
 	 * and emitter, or null (the hand-off box stays): no marked option in a row or two, a cell with a tag / URL / media
 	 * request, black text in the capture, any member that is not the opener, a writer note or a check-answers button.
 	 */
+	/**
+	 * READS THE YES / NO STATEMENT QUIZ (data interactive_builders.multiChoiceQuiz.yes_no_statements; env MCQYESNO_OFF). The
+	 * capture after the widget's opener is black statement lines, each ending in a word pair of word_pairs («YES/NO», «True /
+	 * False»), with the writer's correct-answer mark typed right after ONE word of the pair (the mark's own black tail — «/NO» —
+	 * continues the line); a lead_tags paragraph before the first statement is the activity's instruction. Returns one question
+	 * per statement, the pair as its two options in the writer's order and words, the marked word the answer, with qs.lead — or
+	 * null when any member, line or mark falls outside that shape.
+	 */
+	static #mcqYesNo({ bundle, yn, reCorrect, openTags, stripped }) {
+		const members = bundle?.memberItems ?? [];
+		const pairs = (yn.word_pairs ?? [["yes", "no"], ["true", "false"]]).map((p) => p.map((w) => String(w).toLowerCase()));
+		const alt = pairs.flat().map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+		const MARK = "⁣M⁣";                                   // an invisible separator: never in the writer's text
+		const lineRe = new RegExp(`^(.*\\S)\\s+(${alt})\\s*(${MARK})?\\s*\\/\\s*(${alt})\\s*(${MARK})?\\s*$`, "iu");
+		const lead = [], lines = [];
+		let seenOpener = false;
+		for (const m of members) {
+			if (!m) continue;
+			if (m.type === "black") {
+				for (const ln of String(m.text ?? "").split(/\n+/)) { const t = ln.trim(); if (t) lines.push(t); }
+				continue;
+			}
+			if (m.type !== "tag") return null;
+			const tag = m.parse?.primary?.tag ?? null;
+			if (!seenOpener && openTags.includes(tag) && !lines.length) { seenOpener = true; if (String(m.blackAfter ?? "").trim()) return null; continue; }
+			if (reCorrect.test(stripped(m.text))) {
+				if (!lines.length) return null;
+				lines[lines.length - 1] += MARK + String(m.blackAfter ?? "").trim();   // the mark, then the rest of the writer's line
+				continue;
+			}
+			if ((yn.lead_tags ?? ["body"]).includes(tag) && !lines.length && String(m.blackAfter ?? "").trim()) { lead.push(String(m.blackAfter).trim()); continue; }
+			return null;
+		}
+		if (lines.length < (yn.min_statements ?? 2)) return null;
+		const qs = [];
+		for (const ln of lines) {
+			const mm = lineRe.exec(ln);
+			if (!mm) return null;
+			const [, stmt, w1, m1, w2, m2] = mm;
+			if (!!m1 === !!m2) return null;                              // exactly one word of the pair marked
+			const a = w1.toLowerCase(), b = w2.toLowerCase();
+			if (!pairs.some(([x, y]) => (a === x && b === y) || (a === y && b === x))) return null;
+			qs.push({ text: stmt.trim(), opts: [{ text: w1, correct: !!m1 }, { text: w2, correct: !!m2 }] });
+		}
+		qs.lead = lead;
+		return qs;
+	}
+
 	static #mcqTable({ bundle, tpl, tf, stripped, notes, openTags }) {
 		const members = bundle?.memberItems ?? [];
 		const tables = members.filter((m) => m?.type === "table");
@@ -17232,10 +17416,21 @@ class InteractiveBuilder {
 		const unRed = (s) => String(s ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ");
 		const btnRe = new RegExp(tf.button_label_pattern ?? "^(?:check(?:\\s+(?:your\\s+)?answers?)?|submit|reset|show(?:\\s+answers?)?)\\.?$", "i");
 		const pending = [];
+		// the question block per cell (table_form.cell_blocks): black lines BEFORE the table are the activity's instruction, kept
+		// as page text ahead of the quiz — any other form still declines on them
+		const cb = tf.cell_blocks;
+		const cbOn = !!cb && cb.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[cb.env || "MCQCELLBLOCK_OFF"]);
+		const lead = [];
+		let seenTable = false;
 		for (const m of members) {
+			if (m?.type === "table") seenTable = true;
 			if (!m || m.type === "table") continue;
 			if (m.type === "nested") return null;
-			if (m.type === "black") { if (String(m.text ?? "").trim()) return null; continue; }
+			if (m.type === "black") {
+				if (!String(m.text ?? "").trim()) continue;
+				if (cbOn && !seenTable) { lead.push(String(m.text).trim()); continue; }
+				return null;
+			}
 			const p = m.parse?.primary, cls = m.parse?.class;
 			const raw = unRed(m.text).replace(/\s+/g, " ").trim();
 			const after = String(m.blackAfter ?? "").trim();
@@ -17274,6 +17469,41 @@ class InteractiveBuilder {
 			const mk = ytOn ? (blk.cellMarks?.[ri]?.[ci] ?? []).filter((x) => x && x.kind === "hl" && (yt.colours ?? ["yellow"]).includes(x.color)) : [];
 			return mk.length ? Utils.MarkAnswers(t, mk, TICK) : t;
 		};
+		// the yellow-tick guards (b) / (c), shared by both readings below
+		const yellowRefused = () => {
+			const said = [bundle?.prevItemText ?? "", ...members.map((m) => `${m?.text ?? ""} ${m?.blackAfter ?? ""}`)].join(" ");
+			if (yt?.no_answers_pattern && new RegExp(yt.no_answers_pattern, "i").test(said)) return true;                        // guard (c)
+			return !!(yt?.d2l_button_pattern && new RegExp(yt.d2l_button_pattern, "i").test(String(bundle?.prevItemText ?? "")));  // guard (b)
+		};
+		// THE QUESTION BLOCK PER CELL (table_form.cell_blocks; env MCQCELLBLOCK_OFF): every non-empty cell holds one whole question
+		// block — the question paragraph, then two or more option paragraphs, exactly one of them marked (wholly red, or a yellow
+		// ✅) — and the blocks are the quiz's questions in reading order, row by row and cell by cell
+		if (cbOn) {
+			const markRe = /^\s*(?:\*\*)?\s*(?:[A-Za-z][.)]|\d+[.)]|[•●▪◦‣])\s*/u;
+			const noteRe = new RegExp(cb.answer_note_pattern ?? "\\s*\\(\\s*correct(?:\\s+answers?)?\\s*\\)\\s*$", "i");
+			const marks = (s) => isMarked(s) || isMarked(String(s).replace(markRe, ""));
+			const cq = [];
+			let ok = true, yellow = false;
+			for (let ri = 0; ri < rows.length && ok; ri++) {
+				for (let ci = 0; ci < rows[ri].length; ci++) {
+					const c = cellText(ri, ci);
+					if (!clean(c)) continue;
+					if (denyRe.test(unRed(c))) { ok = false; break; }
+					const parts = c.split(/\s+\/(?:\s+\/)*\s+/).map((s) => s.trim()).filter((s) => clean(s));
+					if (parts.length < 1 + (cb.min_options ?? 2) || marks(parts[0])) { ok = false; break; }
+					const opts = parts.slice(1), marked = opts.filter(marks);
+					if (marked.length !== 1) { ok = false; break; }             // an answer is never invented; never two
+					if (!RED.test(marked[0]) && !RED.test(marked[0].replace(markRe, ""))) yellow = true;
+					cq.push({ text: clean(parts[0]), opts: opts.map((o) => ({ text: o === marked[0] ? clean(o).replace(noteRe, "").trim() : clean(o), correct: o === marked[0] })) });
+				}
+			}
+			if (ok && cq.length >= (cb.min_blocks ?? 2) && cq.every((q) => q.text && q.opts.every((o) => o.text)) && !(yellow && yellowRefused())) {
+				cq.lead = lead;
+				notes.push(...pending);
+				return cq;
+			}
+		}
+		if (lead.length) return null;                                // the instruction lines belong to the cell-block reading only
 		let correctCol = -1, yellowUsed = false, lettered = 0, header = false;
 		const qs = [];
 		for (let ri = 0; ri < rows.length; ri++) {

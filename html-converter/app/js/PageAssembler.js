@@ -186,6 +186,38 @@ class PageAssembler {
 		if (n) run.AddNote("info", "PageAssembler", `${n} front-matter field line(s) left out of the body (template metadata, not learner text).`);
 	}
 
+	/**
+	 * THE TEMPLATE'S OWN GUIDANCE UNDER A HEADING IS NEVER LEARNER TEXT. The template's italic prompt beside an overview
+	 * heading («**Understand:** *Insert big idea from your resource planner (…)*») is cut from a black paragraph and from a
+	 * tag's tail before the split and the menu read the item; a paragraph left with no words is dropped. Data
+	 * template_prompts; env TEMPLATEPROMPT_OFF.
+	 */
+	static #templatePrompts(items, run) {
+		const cfg = DataService.Data.InputDocRules?.template_prompts;
+		if (!cfg || cfg.enabled === false || !cfg.pattern) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "TEMPLATEPROMPT_OFF"]) return;
+		const re = new RegExp(cfg.pattern, "gi");
+		const words = (s) => /[\p{L}\p{N}]/u.test(String(s ?? "").replace(/[*_]+/g, ""));
+		let n = 0;
+		for (let k = items.length - 1; k >= 0; k--) {
+			const it = items[k];
+			if (!it) continue;
+			if (it.type === "black" && re.test(String(it.text ?? ""))) {
+				re.lastIndex = 0;
+				const rest = String(it.text).replace(re, " ").replace(/[ \t]{2,}/g, " ").trim();
+				if (words(rest)) it.text = rest; else items.splice(k, 1);
+				n++;
+			} else if (it.type === "tag" && re.test(String(it.blackAfter ?? ""))) {
+				re.lastIndex = 0;
+				// the label's colon introduced the prompt — «**Understand:** *Insert …*» keeps «**Understand**», as the label read before
+				it.blackAfter = String(it.blackAfter).replace(re, " ").replace(/[ \t]{2,}/g, " ").trimEnd().replace(/:(\s*\*{0,2})$/, "$1") + " ";
+				n++;
+			}
+			re.lastIndex = 0;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} template prompt(s) («Insert … from your resource planner») left out (the template's guidance, not learner text).`);
+	}
+
 	static #journalBracketSentence(items, run) {
 		const cfg = DataService.Data.EmitTemplates?.activity_wrapper?.journal_instruction_box;
 		if (!cfg || cfg.enabled === false || cfg.bracket_sentence === false) return;
@@ -943,6 +975,7 @@ class PageAssembler {
 		PageAssembler.#blackAudioAnimation(items, run, normaliser);   // AUDIOANIMBLACK_OFF
 		PageAssembler.#oneCellUnfold(items, run, normaliser);   // ONECELLUNFOLD_OFF — before the split and the scanner
 		PageAssembler.#frontMatterBody(items, run);   // FRONTMATTERBODY_OFF
+		PageAssembler.#templatePrompts(items, run);   // TEMPLATEPROMPT_OFF
 		run.pages = PageSplitter.Split(items, run, normaliser);
 		if (!run.pages.length) {
 			run.AddNote("error", "PageAssembler",

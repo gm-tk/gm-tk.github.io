@@ -684,9 +684,35 @@ class TablesAndGrids {
 		let s = String(cell ?? "");
 		if (glue) s = s.replace(/(\p{L})?\u{1f534}\[RED TEXT\] (\p{L}{1,5}) \[\/RED TEXT\]\u{1f534}(\p{L})?/gu, (m, pre, red, post) => (!pre && !post) ? m
 			: (pre ?? "") + "\u{1f534}[RED TEXT]" + (pre ? "" : " ") + red + (post ? "" : " ") + "[/RED TEXT]\u{1f534}" + (post ?? ""));
-		return s
+		let parts = s
 			.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "")
 			.split(run ? /\s+\/(?:\s+\/)*\s+/ : /\s+\/\s+/).map((p) => p.trim()).filter(Boolean);
+		// the repairs of a split the separator got wrong (elements.cell_parts_repair; each its own env toggle)
+		const rp = DataService.Data.EmitTemplates?.elements?.cell_parts_repair ?? {};
+		const on = (c, env) => !!c && c.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[c.env || env]);
+		// (a) the writer's own slash inside a bold run («**mēnā / mehemea**»): two neighbouring pieces that BOTH hold an unclosed
+		// «**» were one bold phrase — apart, neither can render, and the unpaired markers show as text (env CELLBOLDSLASH_OFF)
+		if (on(rp.bold_slash, "CELLBOLDSLASH_OFF") && parts.length > 1) {
+			const n = (p) => (p.match(/\*\*/g) || []).length;
+			// a bold run that wraps two WHOLE pieces («[H4] **3 Animals» / «basic description**») is a run across a paragraph
+			// break, not a slash inside a phrase: the split stands
+			const whole = (a, b) => n(a) === 1 && n(b) === 1 && /^(?:\[[^\]]*\]\s*)*\*\*/.test(a) && /\*\*[\s.,;:!?)”’"']*$/.test(b);
+			const out = [];
+			for (const p of parts) {
+				const prev = out[out.length - 1];
+				if (out.length && n(prev) % 2 === 1 && n(p) % 2 === 1 && !whole(prev, p)) out[out.length - 1] += " / " + p;
+				else out.push(p);
+			}
+			parts = out;
+		}
+		// (b) a piece that opens with the writer's tag left unclosed — «[Body Tukua kia …», no «]» anywhere in the piece — is the
+		// tag it names (env CELLOPENTAG_OFF)
+		if (on(rp.unclosed_tag, "CELLOPENTAG_OFF")) {
+			const tags = (rp.unclosed_tag.tags ?? ["body"]).map((t) => String(t).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+			const re = new RegExp(`^\\[\\s*(${tags})\\s+(?=\\S)(?![^\\]]*\\])`, "i");
+			parts = parts.map((p) => p.replace(re, (m, t) => `[${t}] `));
+		}
+		return parts;
 	};
 
 	/**

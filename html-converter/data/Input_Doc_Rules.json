@@ -323,6 +323,12 @@
 		"note": "Matches the parsed corpus conventions: **bold**, *italic*, '• ' bullets. Numbered list items keep their literal numbers.",
 		"preserve_leading_space_note": "(As in OSBY201-01.) A docx splits a styled phrase into its own run, and Word often keeps the inter-word SPACE INSIDE that styled run as a LEADING space (run 'their' has no trailing space; the bold run is ' wellbeing or hauora'). Wrapping a bold/italic run with blackText.trim() drops BOTH sides, so restoring only the TRAILING space would lose the leading one and glue the words ('their<b>wellbeing…', 'house or<b>whare</b>'); the human build keeps the space before <b>. When true, DocxExtractor#parseParagraph restores the leading space SYMMETRICALLY, only when the run actually had one, so legitimately-glued cases (no leading space) are untouched. Env BOLDSPACE_OFF uses the drop form."
 	},
+	"template_prompts": {
+		"_doc": "THE TEMPLATE'S OWN GUIDANCE UNDER A HEADING IS NEVER LEARNER TEXT. The Writers Template prints an italic prompt beside each overview heading — «**Understand:** *Insert big idea from your resource planner (based on your curriculum area or Te Ara Pounamu)*», «*Insert knowledge context …*», «*Insert practices …*» — and the writer types the real statements below it; a writer who leaves the prompt in place shipped it as a paragraph above them, where the human build shows only the heading and the writer's statements. Each prompt (pattern) is cut from a black paragraph and from a tag's tail; a paragraph left with no words is dropped. Env TEMPLATEPROMPT_OFF.",
+		"enabled": true,
+		"env": "TEMPLATEPROMPT_OFF",
+		"pattern": "\\*{0,2}\\s*insert\\s+(?:big\\s+ideas?|knowledge\\s+context|practices)\\s+from\\s+your\\s+resource\\s+planner\\s*(?:\\([^)]*\\))?\\s*\\*{0,3}"
+	},
 	"front_matter_metadata": {
 		"body_strip": {
 			"enabled": true,
