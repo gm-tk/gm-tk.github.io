@@ -6754,6 +6754,19 @@ class ContentConverter {
 		// heading, a [supervisor note]; the item carries `_introStart`): the introduction is the page's BODY, as the
 		// gold ships it (HIS1002, XFUN02, PES1005, ART1006, MXFL103 …). Data page_split.intro_cluster_forms.menu_boundary;
 		// env INTROMENU_OFF.
+		// The far form (XGF9004): the writer closed the overview with [End page] and typed a structure note, tiles
+		// and tab lists BEFORE the red [MODULE INTRODUCTION] tag. The red tag would end the menu after them — the
+		// tiles and the note then land in #module-menu-content, the tiles as menu text and the note nowhere — so the
+		// [End page] PageSplitter marked (`_introStartFar`) is the boundary and they are body, as the writer's own
+		// page break says. Data page_split.intro_cluster_forms.far_marker.menu_boundary; env INTROMENU_OFF.
+		if (page.isOverview && !(typeof process !== "undefined" && process.env && process.env.INTROMENU_OFF)) {
+			const _kf = items.findIndex((x) => x && x._introStartFar === true);
+			if (_kf > 0 && (introIdx < 0 || _kf < introIdx)) {
+				introIdx = _kf;
+				run.AddNote?.("info", "ContentConverter",
+					"The overview's menu ends at the writer's [End page] — the tags before the introduction's marker are body (intro_cluster_forms.far_marker.menu_boundary).");
+			}
+		}
 		if (introIdx < 0 && page.isOverview
 			&& !(typeof process !== "undefined" && process.env && process.env.INTROMENU_OFF)) {
 			const _k = items.findIndex((x) => x && x._introStart === true);

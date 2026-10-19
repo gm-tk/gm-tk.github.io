@@ -95,6 +95,21 @@
 			],
 			"note": "OMIT a writer instruction that is verbatim WT TEMPLATE-PLACEHOLDER text the writer never replaced. These are the template's default prompts ('Insert brief introductory text.' / 'Insert appropriate introductory video to pique student interest [max. 3 minutes].' / 'Start with a whakatauki' in [MODULE INTRODUCTION]; 'In this section outline any connections…' in [Connections]; 'Outline any relevant information relating to assessment…'; and the per-lesson [Lesson Overview] prompt 'Depending on the size and complexity of your module, it may or may not be relevant for you to add additional Learning Intentions and Success Criteria…'). Leaving them means the writer supplied NO content, so the human OMITS them entirely — they are NOT surfaced as a CS note. The Lesson Overview prompt is stored as the SHARED PREFIX 'depending on the size and complexity of your' because the Fundamentals subjects (HPFUN*/XFUN01) carry a variant ('…your FUNDAMENTAL, …frame THE LEARNING') of the standard ('…your MODULE, …frame EACH LESSON'); the prefix covers both. The #redFlag emitter (kind 'cs' only) folds the note text (Utils.Fold: lowercase, accents stripped, dashes→hyphen, whitespace collapsed) and, when match=='prefix', drops it if the folded text EQUALS or STARTS WITH any phrase (so the '[max. 3 minutes].' tail and trailing whitespace variants match); no red-flag is counted. These phrases are template boilerplate, never a unique writer note, and the human build never keeps them. Diagnostics (kind 'diagnostic': 'Empty [tag]…', missing URL) are never omitted. Env PLACEHOLDER_OFF surfaces every placeholder as a CS note."
 		},
+		"blank_page_flag": {
+			"enabled": true,
+			"env": "BLANKFLAG_OFF",
+			"min_words": 15,
+			"skip_page_pattern": "acks|acknowledge|glossary|references",
+			"kind": "todo",
+			"text": "Missing content — this page shows no learner text, picture or video; its Writers Template section supplies {what} and nothing else. Place that content on the page or supply the copy for this page.",
+			"text_empty": "Missing content — the Writers Template supplies nothing for this page: no learner text, picture or video. Supply the copy for this page.",
+			"what_parts": {
+				"notes": "designer notes",
+				"boxes": "un-built interactives (the hand-off boxes on this page)",
+				"links": "links"
+			},
+			"_doc": "KB constraint 37 (the red designer To Do) and the human's own floor — TRR116 0.0's gold ships «NOTE: Missing content?». NO PAGE SHIPS LOOKING EMPTY: after the notes are tidied, a page whose body holds fewer than min_words learner words and no picture, video or audio OUTSIDE the designer notes and the hand-off boxes (the severity sweep's own test) gets this To Do as the first thing in its body, naming what the page's Writers Template section did supply — designer notes (BLLR202 / BLLR203 0.0: a recording to come and layout notes; HIS1007 0.0: an old module's lessons pasted in with no introduction; SPA1004 0.0: the template's own prompts; PES1007 5.0 / 6.0: a linked D2L lesson; MXFL204 6.0: pictures of the old module's page), un-built interactives (ENGC401 0.0's table, ENGS202 0.0's bubble — the words sit in the box and the note points the developer there), links, or nothing at all (TRR116 0.0: no Module Introduction section). The floor, never the fix: content that exists is placed by its own rule and the flag leaves with it. Acknowledgement, glossary and reference pages are never flagged (skip_page_pattern). Env BLANKFLAG_OFF."
+		},
 		"note_tidy": {
 			"enabled": true,
 			"coalesce_enabled": true,
@@ -178,7 +193,17 @@
 				"env": "REOAUDIOWORD_OFF",
 				"max_words": 4,
 				"lead_pattern": "^\\s*(?:\\[[^\\]]*\\]\\s*)*([^\\[]*?)\\s*\\[\\s*item[^\\]]*\\]\\s*\\[\\s*audio[^\\]]*\\]",
-				"form": "<p><span class=\"audioTrigger\" audioName=\"{name}\">{word}</span></p>"
+				"form": "<p><span class=\"audioTrigger\" audioName=\"{name}\">{word}</span></p>",
+				"heading_word": {
+					"enabled": true,
+					"env": "REOAUDIOHEAD_OFF",
+					"max_words": 4,
+					"marker_pattern": "^\\s*(?:\\[[^\\]]*\\]\\s*)*\\[\\s*item[^\\]]*\\]\\s*\\[\\s*audio[^\\]]*\\]|^\\s*\\[\\s*audio\\s*\\]",
+					"form": "<p class=\"sassoonI-text center-text\"><span class=\"audioButton\" audioName=\"{name}\"></span> <span style=\"font-size: 3em;\">{word}</span></p>",
+					"inline_form": "<span class=\"audioTrigger\" audioName=\"{name}\">{word}</span>",
+					"_doc_inline_form": "The gold's two forms, told apart by the prose: when the heading word RECURS in the prose part after the marker (TRR116 1.2: «[H2] **Haere rā**», then «[Body] We say **‘haere rā’** when we are saying goodbye …») the word is the activity's title — the section heading already shows it — and its audio goes on the word in that prose, inline (the KB 04B audioTrigger, the gold's «<span class=\"audioTrigger\" audioName=\"haere rā\"><b>'Haere rā'</b></span>»); when the prose does not repeat it (1.1's «haere mai» between «You might have heard» and «when you have been on the marae …») the big-word line stands. Empty = always the big-word line.",
+					"_doc": "THE HEADING WORD THAT PLAYS ITS AUDIO (KB 01E: audio in a table cell is the audioButton). The TRR writer opens a unit as «[AudioHover]», then types the word as a HEADING part («[H2] **Haere rā**») and the audio as the next part — the bare «[Item 8] [Audio] haere rā [LINK: …]» marker with the word nowhere before it, so audio_word's lead test finds no word: the heading rendered as a doubled h3 pair and the audio parked as an empty player at the activity's end, 0 audio buttons on nine modules against the gold's 323. Measured over the nine TRR templates' 171 [AudioHover] units: 75 take this form (TRR116 45, TRR111 8, TRR113 7, TRR112 6, TRR110 5, TRR109 4); 31 type the word in the marker's part (audio_word builds them), 12 are picture units (audio_image_tag). A heading part of at most max_words words whose NEXT part is a bare marker (marker_pattern, and audio_word finds no word in it) becomes this line — the speaker button beside the word at heading size, the gold's own form in TRR116 and TRR111 («<p class='sassoonI-text center-text'><span class='audioButton' audioName='haere mai'></span> <span style='font-size: 3em;'>haere mai</span></p>»; TRR113 puts the button under an h5, TRR112 inside a drop grid — named differences) — and the marker part renders nothing; the name as audio_word names it (the word, spaces as underscores). Env REOAUDIOHEAD_OFF."
+				}
 			},
 			"lang_swap_lists": {
 				"_doc": "THE LIST IN THE OTHER LANGUAGE TAKES THAT LANGUAGE'S TAG. A bilingual page's tagged list pair — '<ul reo>…</ul><ul eng>…</ul>' (or the other order) — takes each list's tag from the column it was typed in; when the writer typed the Māori list in the English column and the English list in the Māori column (the TRR overview's Connections lists: '<ul reo>' holding «Sounds / Consonants / Dipthongs …», '<ul eng>' «Ngā Oro / Ngā Orokati …»), the language toggle showed each reader the other language. A pair whose reo-tagged list reads as English (at most reo_max of its words of min_letters letters or more are te reo words by the orthography in maori_word_pattern) and whose eng-tagged list reads as te reo (at least eng_min) swaps its two tags; a list with fewer than min_words such words is never judged, and a pair that reads as its tags (or mixed) is left as it is. Lists only — a paragraph pair is not judged.",
@@ -309,6 +334,15 @@
 				"enabled": true,
 				"_note_layout_grid": "In reoMode (a bilingual module OR any module the broad mtkFlag flags), a free-body table that ALL the bilingual handlers decline falls through to a cv2-interactive 'bilingual-unbuilt' placeholder that keeps the raw WT [tag] text BY DESIGN. That is right for an un-built widget/spec table, but a CLEAN STRUCTURAL LAYOUT table (a side-by-side image|body panel, every cell led by a structural [tag]) is NOT a widget — the human renders it as a row>col GRID (as in ENGS201's 'Origin stories' image|body table), and the placeholder would leak [body]/[image] as visible text. So before the placeholder, TablesAndGrids.layoutTableGrid is tried (the SAME detector the normal path uses — single-row or all-cells-tagged only, and it BAILS on any widget-member cell tag). A grid is emitted for a clean layout table; a widget/spec/data table still returns null and keeps the placeholder, so no [tag] is newly exposed. env REOLTABLE_OFF = always the placeholder."
 			},
+			"headerless_paired_rows": {
+				"enabled": true,
+				"env": "REOPAIRROWS_OFF",
+				"max_rows": 1,
+				"lead_pattern": "^\\s*\\[\\s*(body|h[1-6])\\s*\\]",
+				"detect_orientation": true,
+				"reo_marker_pattern": "[āēīōū]|\\b(?:te|nga|ki|ko|kia|kei|ka|kua|koe|ahau|kupu|reo|ana|atu|mai|tonu)\\b",
+				"_doc": "THE HEADER-LESS PAIRED TABLE. A bilingual-module table with no English ║ Māori header row whose every row (up to max_rows) has two cells opening with the SAME structural lead tag (lead_pattern: [Body] / [H#]), the cells different and carrying no widget invocation, is the writer's reo / English pair itself — the one-row module introduction («[Body] Kia ora … / [Item][Image] … / [Body] In this kōwae …» ║ the Māori cell) and the one-row closing karakia. bilingualTable unfolds it through bilingualRows as it does a headed table; before, the header requirement sent it to the bilingual-unbuilt hand-off box and every word of the starting page sat inside the box. The column orientation is read from the cells (detect_orientation: the cell with the higher reo_marker_pattern count is the Māori column), so a Māori-first table pairs the right way round. The two-row «[H3] ║ [H3]» + «[Body] ║ [Body]» activity-intro table stays outside the form (max_rows 1) — the human build boxes it inside the activity with the widget table after it. Env REOPAIRROWS_OFF restores the box."
+			},
 			"proverb_box": {
 				"enabled": true,
 				"env": "PROVERBBOX_OFF",
@@ -430,6 +464,13 @@
 					"env": "REOSECTIONTABLE_OFF",
 					"paired_heading_pattern": "^\\s*\\[\\s*(?:h[1-3]|body)\\s*\\]",
 					"release_types": ["carousel"],
+					"release_requests": {
+						"enabled": true,
+						"env": "REOSECTIONREQ_OFF",
+						"types": ["infoTrigger", "tabs"],
+						"paired_label_pattern": "^\\s*(?:module introduction|k[ōo]wae ako whakataki)\\b"
+					},
+					"_doc_release_requests": "THE INTRODUCTION TABLE TAKEN BY AN INLINE REQUEST (release_requests; env REOSECTIONREQ_OFF). Two more cues release a paired-row table as content: an infoTrigger (a «[Hover definition]» typed inside the prose — with its definition the cell renderer weaves the hover onto its word, without one the bare request is the writer's note; PMT101's introduction table was captured whole as an un-built infoTrigger and the overview showed 0 learner words where the gold shows the introduction with its hovers built) and tabs (a «[Tabs: can these tabs please be an option at the top of the page …]» layout request typed inside the introduction's body cell — a note to the developer, never a widget with data rows; TRR108's introduction table was captured whole as a tabs box). The paired row may also be the introduction's LABEL row («Module Introduction ║ Kōwae Ako Whakataki», bold text with no heading tag — paired_label_pattern, both cells). The drop-downs, ☒ checklists, flip cards and radio quizzes typed in paired-row tables stay captured, as the finished pages box them.",
 					"_doc": "THE HEADERLESS BILINGUAL SECTION TABLE. The guard knows a reo/eng prose table by its «English ║ Māori» header row; the Pūriki modules' lesson-section tables open with a paired heading or body row instead («[H1] 1.5 ║ [H1] 1.5», «[H3] Find the ‘ao’ ║ [H3] Rapua …»), so a section whose body cell carried a carousel typed in the cell was captured WHOLE as that carousel and its headings and prose hid in a hand-off box (TRR109 1.5 «Kete kupu / Vocabulary»: the human page shows the prose, then the carousel). A table whose first row's two cells both open with a heading or body tag is CONTENT when the type the scanner would make of it is one of release_types — the carousel, which the cell renderer builds in place. The other cues stay captured: a ☒ checklist or a dropbox button (the renderer has no selection box or dropbox button for a cell — the finished pages box them as activities), the generic «[Interactive]» marker (its trailing red instruction would render as prose), and any cue that needs its own data rows (a flip card's faces, a drag-and-drop's pairs, an embedded activity's rows) — the designer finds each whole in its hand-off. Env REOSECTIONTABLE_OFF: the header-row test alone."
 				},
 				"_note_pairing": "Default-on, and it must run WITH section_grouping: the released content tables unfold reo/eng inside the human's div.activity nest, and the embedded-widget marker is re-emitted inside the box. On its own (without the selective boxing + the per-paragraph interleave) unfolding a content table that embeds a widget reference puts the prose in the wrong order and nesting. env REOTABLE_OFF turns it off independently of REONEST_OFF.",
@@ -508,6 +549,11 @@
 				"closer_pattern": "^\\[end of drop[ -]?down menu\\]$",
 				"module_content_pattern": "^\\[module content\\b",
 				"module_content_all_tables": true,
+				"module_content_after_closer": {
+					"enabled": true,
+					"env": "REODROPCLOSER_OFF",
+					"_doc": "THE MARKER AFTER A DROP-DOWN CLOSER WITH NO STANDALONE OPENER. TRR304 writes its drop-down menu with no '[Content for DROP DOWN MENU]' opener (the menu tables open the document), closes it with [END OF DROP DOWN MENU] and types '[MODULE CONTENT;PAGE 1]' — the same marker as PNR101 / 102 / 104 and TRR301, and in every human build the start of the overview's own body: the whakataukī / waiata table and the 'Module Introduction | Kōwae Ako Whakataki' table. Scoped to the opener, the marker branch never saw it: the marker opened page 1.0 as a page-as-lesson and the overview shipped an empty body, where the gold's 0.0 holds the introduction and its 1.0 opens at the '[H2] Lesson 1' table (lesson_table_boundary opens it once the overview stays open). With this on, a stream that carried the drop-down CLOSER (closer_pattern) also keeps the marker's content on the overview. Env REODROPCLOSER_OFF (the opener-only scope)."
+				},
 				"_doc_module_content_all_tables": "PageSplitter flags EVERY table in the [MODULE CONTENT: PAGE n] region (until the next structural red marker — [END OF PAGE]/[LESSON N CONTENT]) as _reoModuleContent, not just the FIRST. A writer may split the module intro into several tables (PNR104: a whakatauki table with its own English|Maori header + a 'Module Introduction | Kowae Ako Whakataki' table); an unflagged later table would be declined by bilingualTable (no header) and the module introduction would render as a raw cv2 bilingual-unbuilt dump. The marker modules are exactly PNR101/102/104 (TRR304's opener-less form never enters this branch). false (or env REOMODCONTENT_OFF) flags only the first table.",
 				"title_from_module_name": true,
 				"nav_item": "\n<li><a><span reo>{reo}</span><span eng>{eng}</span></a></li>",
@@ -5615,6 +5661,21 @@
 				"env": "MCQQBLOCK_OFF",
 				"opener_tags": { "multiChoiceQuiz": ["mcq"], "selectionBox": ["checklist"] },
 				"note_skip_pattern": "\\bactivity\\b|multi\\s*-?\\s*choice|\\bm\\s*-\\s*choice\\b|check\\s*-?\\s*box|check\\s*-?\\s*list|\\bmcq\\b|\\bquiz\\b|auto\\s*-?\\s*check",
+				"free_body_run": {
+					"enabled": true,
+					"env": "MCQFREERUN_OFF",
+					"min_options": 2,
+					"max_options": 6,
+					"stem_pattern": "^\\s*(\\*\\*)?\\s*(?:(\\d{1,2})[.)]\\s*)?(\\S.*?)\\s*(?:\\*\\*)?\\s*$",
+					"option_pattern": "^\\s*[A-Za-z][.)]\\s+(?=\\S)",
+					"black_mark_pattern": "\\s*\\[\\s*correct(?:\\s+answers?)?\\s*\\]\\s*$",
+					"max_stem_words": 40,
+					"skip_after_tags": ["mtkquiz"],
+					"skip_after_pattern": "\\[\\s*mtk\\s*-?\\s*quiz",
+					"skip_lookback_tags": 3,
+					"_doc_skip": "The questions typed under an «[MTK quiz …]» marker (SCBI301, SCPH301, SCCH301, WJFUN206's «[Activity 1B] [MTK Quiz][Multichoice]») are the quiz's own content, which the page omits under KB constraint 65 (the quiz is built in D2L; the shell keeps its title, the instructions, the To Do and the «Go to quiz» button): a run whose three nearest preceding tag items include that marker (by its canonical tag or by the pattern) is never read — read, it became a bundle the page silences and a phantom entry in the hand-off list.",
+					"_doc": "THE LETTERED QUIZ BLOCK WITH NO OPENER. A writer marks a multi-choice question with no widget tag at all: a stem line — plain-numbered («1. The crew lifted the anchor.», WJFUN304; «2. What does Eva keep doing throughout the story?», XGF9004) or a bare question («Who is the audience?», WJFUN305) — then two or more LETTERED option lines («A. Active», «b. Looking at the night sky with her mum.»), exactly one of them carrying the red «[Correct answer]» mark (or the mark typed in black at the line's end); the next question follows straight on. Without a tag no bundle opened: the stem shipped as an ordered-list item, the options as paragraphs and the mark as the orphan-sub-tag red flag, where the finished page builds the KB multiChoiceQuiz (CEDO204, WJFUN304, WJFUN305, XGF9004: 30 marked questions, every one a quiz on the finished page — the letters dropped from the options). InteractiveScanner reads a free black run of that shape (stem_pattern, then option_pattern lines with their marks, min_options … max_options, one mark per question; questions join one quiz while they follow each other) into a multiChoiceQuiz bundle with no opener, and the question-block reader takes the run's stem form — a stem with no number takes its place in the run as its number. The reader's own fences stand: one mark per question, options ≤ max_option_words, no blank. Env MCQFREERUN_OFF."
+				},
 				"_doc": "THE QUESTION BLOCKS AS A MULTI-CHOICE QUIZ. The drop-down's question-block form (dropDown.question_blocks and its more_forms: «Q1.» / «Question 1» stems, option lines, ONE trailing «[Correct answer]» per question — red, or black at the end of the line — and an optional «[Hint] … [End Hint]») typed under «[multi choice]» or «[checkbox – Auto Check]» (opener_tags per widget type) is read by the same parser and emitted as the gold's multiChoiceQuiz: the question text the stem and the question lines (line breaks between), the writer's marked option value=\"correct\", the KB hint inside the question. Runs before the list / table forms. Env MCQQBLOCK_OFF."
 			},
 			"_comment": ["multiChoiceQuiz — the MULTIPLE-CHOICE QUIZ.",
@@ -10434,6 +10495,17 @@
 				"max_lines": 6,
 				"blocking_tags": ["h1", "h2", "h3", "h4", "h5", "h6", "heading", "sub head", "title bar", "module introduction"],
 				"_doc": "KB 01D Standard Page Structure (the overview page carries the module introduction) + AR-1. AN UNTITLED SEGMENT BEFORE THE FIRST LESSON IS THE INTRODUCTION: ENGJ302's writer closed the overview with [End page], typed the introduction as plain learner text with its video and no heading or marker, closed it with a second [End page] and opened [LESSON] 1. The implicit page break made that segment page 1.0 and left the overview body empty; the gold keeps it on 0.0. The rule: on the overview's [end page], when the next item is learner text and the segment up to the next page boundary carries no heading, title bar or introduction marker, no table, at most max_lines lines, and ends with an [end page] the lesson opener follows directly, the [end page] is disregarded and the segment stays on the overview as its introduction (menu_boundary marks its first item). A segment that opens with a tag (an instruction note, an unresolved marker) or carries a heading is left to the implicit page break."
+			},
+			"far_marker": {
+				"enabled": true,
+				"env": "INTROFAR_OFF",
+				"max_items": 80,
+				"marker_tags": ["module introduction", "introduction"],
+				"heading_form": false,
+				"_doc_heading_form": "false: the far scan reads the explicit marker forms only (marker_tags, the embedded and black '[MODULE INTRODUCTION]'); the heading form ('[H2] Introduction') belongs to the four-item peek, because a lesson's own '[H2] Introduction:' section heading (ART1002, ART1006) sits within the scan's reach. The scan never runs on an overview that already holds an introduction (AR-1 merged it at the first [end page]; the introduction's own [end page] is a page end).",
+				"menu_boundary": true,
+				"_doc_menu_boundary": "The far form's menu / body boundary is the writer's [End page] itself, not the red [MODULE INTRODUCTION] tag that follows: ContentConverter reads the mark PageSplitter leaves on the [End page] first, so the structure note and the tiles typed between are the page's body (the note a Writers Note, the tiles their headings, pictures and tab lists) instead of #module-menu-content text. false leaves the red tag as the boundary (the tags between then sit in the menu).",
+				"_doc": "KB 01D Standard Page Structure (the overview page carries the module introduction) + AR-1. THE INTRODUCTION MARKER BEHIND OTHER TAGS: XGF9004's writer closed the overview with [End page], then typed a module-structure note, three '[Tile n] [H2]' openers with their [Image] lines and two '[Seven tabs]' lists, and only then '[MODULE INTRODUCTION]' + '[Whakataukī]' + the welcome. The introduction-cluster peek judges by the first tag span — the first tile — so the [End page] stood: the overview shipped an empty body and the introduction opened page 1.0; the gold keeps it on 0.0. The rule: on the overview's [end page], when the peek found no cluster marker, the scan runs on through the next max_items items for one (a marker_tags tag, the embedded or black '[MODULE INTRODUCTION]' form, or the heading form) and stops at a page boundary, a table or a mid-page lesson opener — nothing before the introduction's marker is lesson content unless one of those sits between. Found, the [end page] is disregarded and the tags between stay on the overview with the introduction (menu_boundary marks the boundary; a 'Lesson N' heading after the merged introduction opens its lesson page through the mid-page opener). Env INTROFAR_OFF (the four-item peek alone)."
 			},
 			"menu_boundary": true,
 			"_doc_menu_boundary": "KB 01D Standard Page Structure. The item where AR-1 recognised the module introduction (every form above, and [supervisor note]) is marked `_introStart`; with no red [MODULE INTRODUCTION] tag and no mid-document title-bar alias, ContentConverter ends the overview's menu there, so the introduction is the page's body (as in the human build) instead of sitting in #module-menu-content (HIS1002, XFUN02, PES1005, ART1006, MXFL103 …). Env INTROMENU_OFF.",

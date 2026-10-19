@@ -532,6 +532,82 @@ class NotesAndComments {
 	}
 
 	/**
+	 * NO PAGE SHIPS LOOKING EMPTY. A page whose body holds fewer than `min_words` learner words and no picture,
+	 * video or audio outside the designer notes and the hand-off boxes gets the human's own floor — the red
+	 * «Designer/Developer To Do: Missing content — …» note (KB constraint 37; TRR116 0.0's gold ships «NOTE:
+	 * Missing content?») as the first thing in its body, naming what the page's Writers Template section did
+	 * supply: designer notes, un-built interactives (the hand-off boxes), links, or nothing at all. The floor,
+	 * never the fix: a page whose words sit in a hand-off box keeps the box and the note points the developer
+	 * at it; content that exists is placed by its own rule and the flag leaves with it. Acknowledgement,
+	 * glossary and reference pages are never flagged. Runs after TidyDeveloperNotes, so a note moved out of the
+	 * menu is already in the body. Data red_flag.blank_page_flag; env BLANKFLAG_OFF.
+	 *
+	 * @param {string} html - the fully assembled page
+	 * @param {ConversionRun} run - the current run (the note is counted like any other)
+	 * @param {string} pageName - the page's file name
+	 * @returns {string} the page, with the To Do first in its body when it looked empty
+	 */
+	static FlagBlankPage(html, run, pageName) {
+		const cfg = DataService.Data.EmitTemplates.red_flag?.blank_page_flag;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "BLANKFLAG_OFF"]) return html;
+		if (cfg.skip_page_pattern && new RegExp(cfg.skip_page_pattern, "i").test(String(pageName ?? ""))) return html;
+		const bi = html.indexOf("<div id=\"body\"");
+		if (bi < 0) return html;
+		const open = html.indexOf(">", bi) + 1;
+		let end = html.indexOf("<div id=\"footer\"", open);
+		if (end < 0) end = html.length;
+		const body = html.slice(open, end);
+		const VOID = new Set(["img", "br", "input", "col", "hr", "meta", "link", "source", "area", "base", "wbr", "track", "embed"]);
+		const boxRe = new RegExp(cfg.box_class_pattern ?? "\\bcv2-(?:interactive|int-ref|int-raw)\\b");
+		const noteRe = new RegExp(cfg.note_class_pattern ?? "\\bcv2-note\\b");
+		const tokRe = /<!--[\s\S]*?-->|<\/?([a-zA-Z][a-zA-Z0-9]*)([^>]*)>|([^<]+)/g;
+		const stack = [];
+		let m, words = 0, media = 0, notes = 0, boxes = 0, links = 0, boxDepth = 0, noteDepth = 0;
+		while ((m = tokRe.exec(body))) {
+			if (m[0].startsWith("<!--")) continue;
+			if (m[3] !== undefined) {
+				if (!boxDepth && !noteDepth) {
+					const t = m[3].replace(/&[a-z#0-9]+;/gi, " ").trim();
+					if (t) words += t.split(/\s+/).length;
+				}
+				continue;
+			}
+			const tag = m[1].toLowerCase(), attrs = m[2] || "";
+			if (m[0].startsWith("</")) {
+				const top = stack.pop();
+				if (top === "box") boxDepth--; else if (top === "note") noteDepth--;
+				continue;
+			}
+			const outside = !boxDepth && !noteDepth;
+			if (VOID.has(tag) || /\/\s*$/.test(attrs)) { if (outside && tag === "img") media++; continue; }
+			if (tag === "script" || tag === "style") { stack.push("note"); noteDepth++; continue; }   // never learner text
+			const cls = (attrs.match(/class="([^"]*)"/) || [, ""])[1];
+			let kind = "el";
+			if (boxRe.test(cls)) { kind = "box"; if (outside) boxes++; boxDepth++; }
+			else if (noteRe.test(cls)) { kind = "note"; if (outside) notes++; noteDepth++; }
+			else if (outside) {
+				if (tag === "iframe" || tag === "video" || tag === "audio") media++;
+				else if (tag === "a") links++;
+			}
+			stack.push(kind);
+		}
+		if (words >= (cfg.min_words ?? 15) || media > 0) return html;
+		const wp = cfg.what_parts ?? {};
+		const parts = [];
+		if (notes) parts.push(wp.notes ?? "designer notes");
+		if (boxes) parts.push(wp.boxes ?? "un-built interactives (the hand-off boxes on this page)");
+		if (links) parts.push(wp.links ?? "links");
+		const text = parts.length
+			? Utils.FillTemplate(cfg.text ?? "Missing content — this page shows no learner text, picture or video; its Writers Template section supplies {what} and nothing else. Place that content on the page or supply the copy for this page.", { what: parts.join(" and ") })
+			: (cfg.text_empty ?? "Missing content — the Writers Template supplies nothing for this page: no learner text, picture or video. Supply the copy for this page.");
+		const note = NotesAndComments.redFlag(text, run, cfg.kind ?? "todo");
+		run.AddNote?.("info", "NotesAndComments",
+			`Page ${pageName}: looks empty (${words} learner word(s), no picture / video / audio outside the notes and boxes) — the Missing content To Do added (red_flag.blank_page_flag).`);
+		return html.slice(0, open) + "\n" + note + html.slice(open);
+	}
+
+	/**
 	 * Final tidy-up pass over EVERY developer-facing cv2-note `<p>` on the
 	 * WHOLE assembled page — a housekeeping pass that makes the notes
 	 * easier for a real developer to actually find and read, without

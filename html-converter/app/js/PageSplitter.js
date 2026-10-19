@@ -530,11 +530,18 @@ class PageSplitter {
 
 		// Tracks whether this document's stream carried the STANDALONE
 		// "[Content for DROP DOWN MENU]" opener (the MTK bilingual
-		// template's PNR shape). Only such a document treats a later "[MODULE
-		// CONTENT: PAGE n]" marker as overview content rather than a page break.
-		let _ddSeenOpener = false;
+		// template's PNR shape) — or, with module_content_after_closer, its
+		// "[END OF DROP DOWN MENU]" closer (TRR304 opens the menu tables with no
+		// opener). Only such a document treats a later "[MODULE CONTENT: PAGE n]"
+		// marker as overview content rather than a page break.
+		let _ddSeenOpener = false, _ddSeenCloser = false;
 		const _ddOpenerRe = (_dlCfg?.dropdown_menu && _dlCfg.dropdown_menu.enabled !== false)
 			? new RegExp(_dlCfg.dropdown_menu.opener_pattern ?? "^\\[content for drop[ -]?down menu\\]$", "i")
+			: null;
+		const _ddAfterCloser = _dlCfg?.dropdown_menu?.module_content_after_closer;
+		const _ddCloserRe = _ddOpenerRe && _ddAfterCloser && _ddAfterCloser.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_ddAfterCloser.env ?? "REODROPCLOSER_OFF"])
+			? new RegExp(_dlCfg.dropdown_menu.closer_pattern ?? "^\\[end of drop[ -]?down menu\\]$", "i")
 			: null;
 
 		// KB 01D «explicit numbers preserved»: every explicit integer [LESSON N] tag's position, so an
@@ -621,6 +628,8 @@ class PageSplitter {
 			const primary = it.type === "tag" ? it.parse.primary : null;
 			if (_ddOpenerRe && !_ddSeenOpener && it.type === "tag"
 				&& _ddOpenerRe.test((it.parse?.folded ?? "").trim())) _ddSeenOpener = true;
+			if (_ddCloserRe && !_ddSeenCloser && it.type === "tag"
+				&& _ddCloserRe.test((it.parse?.folded ?? "").trim())) _ddSeenCloser = true;
 			if (i === _dupOpeningSkip) continue;   // the pasted-twice opening's repeated heading
 			if (_steOn && it.type === "tag") {
 				const _f = (it.parse?.folded ?? "").trim();
@@ -926,14 +935,20 @@ class PageSplitter {
 				// handling below would have opened a new "page-as-lesson" file and
 				// the overview would ship without its introduction. SCOPED to a
 				// document whose stream carried the STANDALONE "[Content for DROP
-				// DOWN MENU]" opener earlier (_ddSeenOpener — the PNR shape): the
-				// TRR203/TRR301 siblings glue this marker onto their drop-down
-				// CLOSER inside one red span (so the anchored pattern never matches
-				// them anyway), and TRR304 has no drop-down opener at all — all
-				// three keep their own pagination.
-				// Data: elements.dual_language.dropdown_menu.module_content_pattern.
-				// Env toggle: REODROPMENU_OFF.
-				if (tag === "page" && reoPage && _ddSeenOpener
+				// DOWN MENU]" opener earlier (_ddSeenOpener — the PNR shape; TRR203
+				// glues this marker onto its drop-down CLOSER inside one red span, so
+				// the anchored pattern never matches it) — or, with
+				// module_content_after_closer, the "[END OF DROP DOWN MENU]" closer
+				// (_ddSeenCloser): TRR304 opens its menu tables with no opener, and
+				// without the closer scope its marker opened page 1.0 as a
+				// page-as-lesson and the overview shipped an empty body, where the
+				// human keeps the whakataukī / waiata and "Module Introduction"
+				// tables on 0.0 and opens 1.0 at the "[H2] Lesson 1" table
+				// (lesson_table_boundary does that once the overview stays open).
+				// Data: elements.dual_language.dropdown_menu.module_content_pattern,
+				// dropdown_menu.module_content_after_closer.
+				// Env toggles: REODROPMENU_OFF, REODROPCLOSER_OFF.
+				if (tag === "page" && reoPage && (_ddSeenOpener || _ddSeenCloser)
 					&& _dlCfg?.dropdown_menu && _dlCfg.dropdown_menu.enabled !== false
 					&& !(typeof process !== "undefined" && process.env && process.env.REODROPMENU_OFF)
 					&& new RegExp(_dlCfg.dropdown_menu.module_content_pattern ?? "^\\[module content\\b", "i")
@@ -1669,6 +1684,51 @@ class PageSplitter {
 							.test((peek.parse?.folded ?? "").trim());
 						break;   // judge by the FIRST tag span only
 					}
+					// THE INTRODUCTION MARKER BEHIND OTHER TAGS. A writer may put a structure note, a tile row with its
+					// pictures or a tab list between the overview's [end page] and the [MODULE INTRODUCTION] marker
+					// (XGF9004: a note, three "[Tile n] [H2]" openers, their [Image] lines, two "[Seven tabs]" lists, then
+					// the marker and its [Whakataukī]). The peek above judges by the first tag span — the first tile — so
+					// the [end page] stood, the overview shipped an empty body and the introduction opened page 1.0; the
+					// human keeps it on 0.0 (KB 01D: the overview carries the module introduction). Nothing before the
+					// introduction's marker is lesson content unless a page boundary, a table or a lesson opener sits
+					// between, so the scan runs on to the marker across every other tag and stops at those three.
+					// Data intro_cluster_forms.far_marker; env INTROFAR_OFF.
+					// An overview that already holds an introduction (AR-1 merged it at its first [end page]) is never scanned
+					// again at the introduction's OWN [end page]: ART1002 / ART1006's lesson 1 opens with an «[H2] Introduction:»
+					// heading, which a second scan would take for the marker and merge the lesson in. The heading form stays
+					// with the four-item peek (heading_form false); the far scan reads the explicit marker forms only.
+					const _ifm = _icf?.far_marker;
+					let farIntro = false;
+					if (_icfOn && !introNext && !choiceNext && _ifm && _ifm.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_ifm.env ?? "INTROFAR_OFF"])
+						&& !seenIntro && !current._introMerged && !current.items.some((x) => x._introStart)) {
+						const _ifmTags = new Set(_ifm.marker_tags ?? ["module introduction"]);
+						const _ifmMax = _ifm.max_items ?? 80;
+						const _ifmHead = _ifm.heading_form === true;
+						for (let k = i + 1; k < Math.min(i + 1 + _ifmMax, items.length); k++) {
+							const peek = items[k];
+							if (peek.type === "table") break;
+							if (peek.type !== "tag") {
+								if (peek.type === "black" && new RegExp(_icf.black_pattern, "i").test(_icfClean(peek.text))) introNext = true;
+								if (introNext) break;
+								continue;
+							}
+							const p = peek.parse?.primary;
+							if (p?.directive === "PAGE_BOUNDARY" || _midOpeners.has(k)) break;
+							if (_ifmTags.has(p?.tag)
+								|| new RegExp(_icf.embedded_pattern, "i").test(String(peek.text ?? ""))
+								|| (_ifmHead && (_icf.heading_tags ?? ["h1", "h2", "h3"]).includes(p?.tag)
+									&& new RegExp(_icf.heading_pattern, "i").test(_icfClean(peek.blackAfter || (peek.parse?.remainders ?? []).join(" "))))) {
+								introNext = true;
+								break;
+							}
+						}
+						if (introNext) {
+							farIntro = true;
+							run.AddNote("info", "PageSplitter",
+								"The introduction's marker sits past other tags after the overview's [end page] — they stay on the overview with the introduction (intro_cluster_forms.far_marker).");
+						}
+					}
 					// THE UNTITLED INTRODUCTION SEGMENT. Learner text the writer typed between the overview's [end page] and the
 					// first lesson opener, under no heading and no marker of its own, and closed by its own [end page] that the
 					// lesson opener follows directly («Welcome to an exploration …» + its video): the module's introduction,
@@ -1724,6 +1784,11 @@ class PageSplitter {
 						// [MODULE INTRODUCTION] tag. Data intro_cluster_forms.menu_boundary; env INTROMENU_OFF.
 						if (introNext && _icf?.menu_boundary === true
 							&& !(typeof process !== "undefined" && process.env && process.env.INTROMENU_OFF)) it._introStart = true;
+						// The far form: the writer's [End page] closed the overview section, so the tags between it and the
+						// introduction's marker (the structure note, the tiles) are BODY, not menu — the boundary stands here
+						// even though the red [MODULE INTRODUCTION] tag follows later (ContentConverter reads this mark first).
+						// Data intro_cluster_forms.far_marker.menu_boundary.
+						if (farIntro && it._introStart && _ifm?.menu_boundary !== false) it._introStartFar = true;
 						closed = false;
 						current.items.push(it);
 						continue;

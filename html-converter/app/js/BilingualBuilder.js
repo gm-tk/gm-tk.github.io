@@ -147,15 +147,23 @@ class BilingualBuilder {
 		const cfg = DataService.Data.EmitTemplates.elements?.dual_language;
 		if (!cfg || cfg.enabled === false) return null;
 		const rows = block.rows ?? [];
-		if (rows.length < 2 || !Array.isArray(rows[0]) || rows[0].length < 2) return null;
+		// THE HEADER-LESS PAIRED TABLE (dual_language.headerless_paired_rows; env REOPAIRROWS_OFF): no English ║ Māori header
+		// row, every row two cells opening with the SAME structural lead tag ([Body] / [H#]) — the one-row introduction or
+		// closing-karakia table whose pair IS the content. It unfolds like a headed table; its column orientation is read
+		// from the cells (the Māori-marker score), so a Māori-first table pairs the right way round. Before, the header
+		// requirement sent it to the bilingual-unbuilt hand-off box.
+		const paired = forceNoHeader ? null : this.#headerlessPairedRows(block, cfg);
+		if (!paired && (rows.length < 2 || !Array.isArray(rows[0]) || rows[0].length < 2)) return null;
 		// requires an English|Māori header row — EXCEPT for the table the
 		// [MODULE CONTENT: PAGE n] marker introduces (the MTK
 		// drop-down-menu template): PNR102/PNR104 open that table with
 		// "Module Introduction | Kōwae Ako Whakataki" instead of the header,
 		// but the column orientation is the same English|Māori as everywhere
 		// else in the template (the caller passes forceNoHeader=true for it).
-		if (!forceNoHeader && !this.bilingualHeader(block)) return null;
-		const out = this.bilingualRows(block, run, undefined, norm);
+		if (!paired && !forceNoHeader && !this.bilingualHeader(block)) return null;
+		if (paired) run?.AddNote?.("info", "BilingualBuilder",
+			`A header-less table whose cells open with the same lead tag is the reo / English pair itself${paired.swap ? " (Māori column first)" : ""} (dual_language.headerless_paired_rows).`);
+		const out = this.bilingualRows(paired?.swap ? { ...block, rows: rows.map((r) => [r[1], r[0]]) } : block, run, undefined, norm);
 		if (!out.length) return null;
 		let html = `${cfg.wrapper_open}\n${out.join("\n")}\n${cfg.wrapper_close}`;
 		// Sometimes the content table EMBEDS a widget reference (the writer wrote
@@ -925,6 +933,39 @@ class BilingualBuilder {
 	 * @param {Object} block - a table block
 	 * @returns {boolean} true when any cell matches either pattern
 	 */
+	/**
+	 * The header-less paired table's form test (dual_language.headerless_paired_rows): every row (up to max_rows) has
+	 * exactly two cells, both opening with the same lead tag the form lists, the cells different, each with words after
+	 * its tag and neither carrying a widget invocation. Returns { swap } — swap when the FIRST column scores as the
+	 * Māori cell (reo_marker_pattern counted per cell, detect_orientation) — or null when the table is not the form.
+	 *
+	 * @param {Object} block - a table block
+	 * @param {Object} cfg - the dual_language data block
+	 * @returns {{swap: boolean}|null}
+	 */
+	static #headerlessPairedRows(block, cfg) {
+		const f = cfg?.headerless_paired_rows;
+		if (!f || f.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[f.env ?? "REOPAIRROWS_OFF"])) return null;
+		const rows = block?.rows ?? [];
+		if (!rows.length || rows.length > (f.max_rows ?? 1) || this.bilingualHeader(block)) return null;
+		const leadRe = new RegExp(f.lead_pattern ?? "^\\s*\\[\\s*(body|h[1-6])\\s*\\]", "i");
+		const widgetRe = new RegExp(this.embeddedWidgetRe.source, "i");
+		const reoRe = f.reo_marker_pattern ? new RegExp(f.reo_marker_pattern, "giu") : null;
+		const strip = (c) => String(c ?? "").replace(/\u{1f534}|\[\/?RED TEXT\]/gu, "").replace(/\*+/g, "").trim();
+		let scoreA = 0, scoreB = 0;
+		for (const r of rows) {
+			if (!Array.isArray(r) || r.length !== 2) return null;
+			const a = strip(r[0]), b = strip(r[1]);
+			const ma = leadRe.exec(a), mb = leadRe.exec(b);
+			if (!ma || !mb || String(ma[1] ?? "").toLowerCase() !== String(mb[1] ?? "").toLowerCase()) return null;
+			if (!a.slice(ma[0].length).trim() || !b.slice(mb[0].length).trim() || a.toLowerCase() === b.toLowerCase()) return null;
+			if (widgetRe.test(a) || widgetRe.test(b)) return null;
+			if (reoRe) { scoreA += (a.match(reoRe) || []).length; scoreB += (b.match(reoRe) || []).length; }
+		}
+		return { swap: f.detect_orientation !== false && scoreA > scoreB };
+	}
+
 	static isActivityMarker(block) {
 		for (const row of (block?.rows ?? [])) for (const c of row) {
 			const s = String(c ?? "");
@@ -1456,6 +1497,9 @@ class BilingualBuilder {
 		const dbx = this.#dropboxCfg();
 		// the «[Button] [Go to PDF]» part + its document part → the document's button (dual_language.pdf_button; env REOPDFBUTTON_OFF)
 		const pdfb = this.#pdfButtonCfg();
+		// the audio marker part a heading-word unit has already taken, and the units whose audio goes on the word inside the
+		// prose that follows (dual_language.audio_word.heading_word; env REOAUDIOHEAD_OFF)
+		const _ahSkip = new Set(), _ahInline = [];
 		for (let pi = 0; pi < parts.length; pi++) {
 			let part = parts[pi];
 			const cr = carRuns.get(pi);
@@ -1523,6 +1567,8 @@ class BilingualBuilder {
 				for (const x of imgF) pushM(x);
 			} else if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?audio[^\]]*\]/.test(low)) {
 				flush();
+				// a marker the heading-word unit before it has taken renders nothing (audio_word.heading_word)
+				if (_ahSkip.has(pi)) continue;
 				// the writer's WORD before the audio marker is the KB's inline audio trigger (dual_language.audio_word;
 				// env REOAUDIOWORD_OFF); a part with no word keeps the audio player
 				const aw = this.#audioWord(part);
@@ -1560,6 +1606,17 @@ class BilingualBuilder {
 					t = t.replace(tlARe, "").trim();
 					if (!t) { headCarry = lvl; continue; }
 				}
+				// THE HEADING WORD THAT PLAYS ITS AUDIO: a short heading whose next part is the bare audio marker is the
+				// word with its speaker button (dual_language.audio_word.heading_word; env REOAUDIOHEAD_OFF)
+				const hw = t ? this.#headingAudioWord(t, parts[pi + 1]) : null;
+				if (hw) {
+					// the word that recurs in the prose after the marker carries its audio THERE, inline (the gold's form for an
+					// activity's title word); a word the prose does not repeat is the big-word line
+					const inl = this.#headingAudioInline(t, parts[pi + 2]);
+					if (inl) _ahInline.push({ ...inl, from: text.length }); else text.push(hw);
+					_ahSkip.add(pi + 1);
+					continue;
+				}
 				if (t) text.push(`<h${lvl}>${ListsAndRuns.inlineMarkup(t)}</h${lvl}>`);
 			} else if (headCarry && !/^\s*\[[^\]]+\]\s*$/.test(part) && (canon ? rest : part).replace(/\[[^\]]*\]|\u{1f534}|\*/gu, "").trim()) {
 				// the heading the label stood in for: this part's words
@@ -1591,6 +1648,14 @@ class BilingualBuilder {
 			}
 		}
 		flush();
+		// the heading-word units whose audio goes on the word in the prose: the first paragraph after the unit that carries
+		// the word gets the inline trigger on its first occurrence (audio_word.heading_word.inline_form)
+		for (const u of _ahInline) {
+			for (let k = u.from; k < text.length; k++) {
+				const woven = this.#weaveAudioTrigger(text[k], u.word, u.name, u.form);
+				if (woven) { text[k] = woven; break; }
+			}
+		}
 		if (ai) {
 			aiFail();
 			if (aiUnits.length) {
@@ -1861,6 +1926,81 @@ class BilingualBuilder {
 		const name = plain.replace(/[^\p{L}\p{M}\p{N}\s-]/gu, "").trim().replace(/\s+/g, "_");
 		if (!name) return null;
 		return Utils.FillTemplate(c.form, { name: Utils.EscapeHtml(name), word: ListsAndRuns.inlineMarkup(lead) });
+	}
+
+	/**
+	 * THE HEADING WORD THAT PLAYS ITS AUDIO (KB 01E: audio in a table cell is the audioButton). The TRR writer types
+	 * the word as a heading part («[H2] **Haere rā**») and the audio as the NEXT part — the bare «[Item N] [Audio] …»
+	 * marker with no word before it — under an «[AudioHover]» opener. The heading becomes the word beside its speaker
+	 * button at heading size (the gold's `p.sassoonI-text` line) and the marker part renders nothing. Returns null
+	 * when the heading is long, the next part is not a bare marker, or audio_word finds a word in that part.
+	 * Data flag: elements.dual_language.audio_word.heading_word   Env toggle: REOAUDIOHEAD_OFF
+	 */
+	static #headingAudioWord(heading, nextPart) {
+		const aw = DataService.Data.EmitTemplates?.elements?.dual_language?.audio_word;
+		const c = aw?.heading_word;
+		if (!aw || aw.enabled === false || !c || c.enabled === false || !c.marker_pattern || !c.form
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOAUDIOHEAD_OFF"])) return null;
+		if (nextPart == null) return null;
+		const nxt = String(nextPart).replace(/\u{1f534}|\[\/?RED TEXT\]/gu, " ");
+		if (!new RegExp(c.marker_pattern, "i").test(nxt) || this.#audioWord(nextPart)) return null;
+		const plain = String(heading).replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+		if (!plain || /[\[\]]/.test(plain) || plain.split(" ").length > (c.max_words ?? 4)) return null;
+		const name = plain.replace(/[^\p{L}\p{M}\p{N}\s-]/gu, "").trim().replace(/\s+/g, "_");
+		if (!name) return null;
+		return Utils.FillTemplate(c.form, { name: Utils.EscapeHtml(name), word: ListsAndRuns.inlineMarkup(plain) });
+	}
+
+	/**
+	 * The heading-word unit whose word RECURS in the prose part after its marker («[Body] We say **‘haere rā’** when …»
+	 * after «[H2] **Haere rā**»): its audio goes on that word inline, the gold's form for an activity's title word, and
+	 * the big-word line is not emitted. Returns { word, name, form } or null (no prose part, or the word not in it).
+	 * Data: audio_word.heading_word.inline_form (empty or missing = always the big-word line).
+	 */
+	static #headingAudioInline(heading, prosePart) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.audio_word?.heading_word;
+		if (!c || !c.inline_form || prosePart == null) return null;
+		const fold = (s) => String(s ?? "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+		const plain = String(heading).replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+		const prose = String(prosePart).replace(/\u{1f534}|\[\/?RED TEXT\]/gu, " ").replace(/\[[^\]]*\]/g, " ").replace(/[*_]/g, "").replace(/\s+/g, " ");
+		// the word as a WHOLE word («oa» is not the «oa» inside «ahakoa»)
+		const esc = fold(plain).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+		if (!plain || !new RegExp("(?:^|[^\\p{L}\\p{M}])" + esc + "(?![\\p{L}\\p{M}])", "u").test(fold(prose))) return null;
+		const name = plain.replace(/[^\p{L}\p{M}\p{N}\s-]/gu, "").trim().replace(/\s+/g, "_");
+		return name ? { word: plain, name, form: c.inline_form } : null;
+	}
+
+	/**
+	 * Weave the inline audio trigger onto the first occurrence of `word` in a rendered paragraph's TEXT (never inside a
+	 * tag), macrons and case ignored. Returns the woven HTML, or null when the paragraph does not carry the word.
+	 */
+	static #weaveAudioTrigger(html, word, name, form) {
+		if (!/^<p\b/i.test(String(html ?? ""))) return null;
+		const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+		const w = fold(word);
+		const parts = String(html).split(/(<[^>]+>)/);   // text and tags alternate; tags start with "<"
+		for (let i = 0; i < parts.length; i++) {
+			if (parts[i].startsWith("<") || !parts[i]) continue;
+			const f = fold(parts[i]);
+			// the first WHOLE-word occurrence (a letter on either side is another word)
+			let at = -1, from = 0;
+			while ((at = f.indexOf(w, from)) >= 0) {
+				const before = at > 0 ? f[at - 1] : " ", after = f[at + w.length] ?? " ";
+				if (!/[\p{L}\p{M}]/u.test(before) && !/[\p{L}\p{M}]/u.test(after)) break;
+				from = at + 1;
+			}
+			if (at < 0) continue;
+			// the folded string has the same length as the source only when no combining marks were removed — map by
+			// walking the source to the folded index
+			let src = 0, seen = 0;
+			while (src < parts[i].length && seen < at) { if (fold(parts[i][src]).length) seen++; src++; }
+			let end = src, got = 0;
+			while (end < parts[i].length && got < w.length) { got += fold(parts[i][end]).length; end++; }
+			const hit = parts[i].slice(src, end);
+			parts[i] = parts[i].slice(0, src) + Utils.FillTemplate(form, { name: Utils.EscapeHtml(name), word: hit }) + parts[i].slice(end);
+			return parts.join("");
+		}
+		return null;
 	}
 
 	/**

@@ -1279,8 +1279,10 @@ class PageAssembler {
 						// red_flag.omit_template_sample; env TEMPLATESAMPLE_OFF) — beside the placeholder-residue pass.
 						// A tagged list pair typed in each other's columns swaps its language tags (BilingualBuilder.LangSwapLists;
 						// dual_language.lang_swap_lists; env REOLANGSWAP_OFF).
-						const tidied = NotesAndComments.TidyDeveloperNotes(BilingualBuilder.LangSwapLists(
-							NotesAndComments.OmitTemplateSample(NotesAndComments.OmitPlaceholderResidue(html))));
+						// A page that looks empty gets the red «Missing content» To Do first in its body (NotesAndComments.FlagBlankPage;
+						// red_flag.blank_page_flag; env BLANKFLAG_OFF) — after the note tidy, so a note moved out of the menu is already there.
+						const tidied = NotesAndComments.FlagBlankPage(NotesAndComments.TidyDeveloperNotes(BilingualBuilder.LangSwapLists(
+							NotesAndComments.OmitTemplateSample(NotesAndComments.OmitPlaceholderResidue(html)))), run, filenames[i]);
 						// Adjacent sibling lists join into one (body_region.merge_adjacent_lists; env ULMERGE_OFF) — after TypedNumberList, before the link-text pass.
 						// A bare list-number paragraph leaves the page (body_region.lone_list_number; env LONENUM_OFF) — after TypedNumberList.
 						// An orphan punctuation block merges onto the text before it or leaves (ListsAndRuns.OrphanPunctuation;

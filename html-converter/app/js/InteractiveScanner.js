@@ -124,6 +124,32 @@ class InteractiveScanner {
 				const txt = (it.blackAfter || it.parse.remainders.join(" ")).trim();
 				if (txt) lastContext = `After ${it.parse.primary.tag} "${txt.slice(0, 60)}"`;
 			}
+			// THE LETTERED QUIZ BLOCK WITH NO OPENER: a free black stem, two or more lettered option lines, exactly one «[Correct
+			// answer]» mark — a multi-choice question the writer never tagged (WJFUN304 «1. The crew lifted the anchor. / A. Active
+			// [Correct answer] / B. Passive»). The run (questions following each other) becomes one multiChoiceQuiz bundle with
+			// no opener; the question-block reader builds it. Data interactive_builders.multiChoiceQuiz.question_blocks.free_body_run;
+			// env MCQFREERUN_OFF.
+			if (it.type === "black" && it.consumedBy === undefined) {
+				const _fr = DataService.Data.EmitTemplates?.interactive_builders?.multiChoiceQuiz?.question_blocks?.free_body_run;
+				if (_fr && _fr.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[_fr.env ?? "MCQFREERUN_OFF"])) {
+					const end = InteractiveScanner.#freeQuestionRun(items, i, _fr);
+					if (end > i) {
+						const bundle = {
+							type: "multiChoiceQuiz", canonTag: "mcq", modifier: "", activityId: null, headingText: "",
+							openerItems: [], memberItems: items.slice(i, end), tables: [], instructions: [], media: [],
+							redFlags: bank.interactives.multiChoiceQuiz ? [] : ["Widget type \"multiChoiceQuiz\" has no boundary-bank entry."],
+							positionContext: lastContext, startIndex: i, endIndex: end, _freeRun: true,
+						};
+						for (let k = i; k < end; k++) items[k].consumedBy = bundles.length;
+						run?.AddNote?.("info", "InteractiveScanner",
+							`multiChoiceQuiz: a lettered question run with no opener — ${bundle.memberItems.filter((m) => m.type === "tag").length} marked question(s) read as one quiz (question_blocks.free_body_run).`);
+						bundles.push(bundle);
+						i = end - 1;
+						continue;
+					}
+				}
+			}
 
 			// ---- activity WITHOUT a widget keyword but WITH a data table ---
 			// (the BLL phonics pattern — verified on BLL146 Activities
@@ -1178,12 +1204,27 @@ class InteractiveScanner {
 		const cfg = DataService.Data.EmitTemplates?.elements?.dual_language?.content_table_guard?.headerless_sections;
 		if (!cfg || cfg.enabled === false
 			|| (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "REOSECTIONTABLE_OFF"])) return false;
-		if (!Array.isArray(cfg.release_types) || !cfg.release_types.includes(type)) return false;
+		// The inline REQUEST types release the table too — a bare «[Hover definition]» or a «[Tabs: …]» layout note typed
+		// inside the introduction's prose cell is the writer's note, never a widget with data rows (PMT101, TRR108 — their
+		// introduction tables were captured whole and the overviews showed no learner text). Data
+		// headerless_sections.release_requests; env REOSECTIONREQ_OFF (the carousel release alone).
+		const rq = cfg.release_requests;
+		const rqOn = !!rq && rq.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[rq.env ?? "REOSECTIONREQ_OFF"]);
+		const types = [...(Array.isArray(cfg.release_types) ? cfg.release_types : []), ...(rqOn && Array.isArray(rq.types) ? rq.types : [])];
+		if (!types.includes(type)) return false;
 		const rows = block?.rows ?? [];
 		if (!rows.length || !Array.isArray(rows[0]) || rows[0].length < 2) return false;
 		const strip = (s) => String(s ?? "").replace(/🔴|\[\/?RED TEXT\]|\*/g, "");
 		const re = new RegExp(cfg.paired_heading_pattern ?? "^\\s*\\[\\s*h[1-3]\\s*\\]", "i");
-		return re.test(strip(rows[0][0])) && re.test(strip(rows[0][1]));
+		if (re.test(strip(rows[0][0])) && re.test(strip(rows[0][1]))) return true;
+		// The module-introduction table's paired LABEL row («Module Introduction ║ Kōwae Ako Whakataki», bold text with no
+		// heading tag — PMT101) is a paired row too. Data release_requests.paired_label_pattern.
+		if (rqOn && rq.paired_label_pattern) {
+			const lre = new RegExp(rq.paired_label_pattern, "iu");
+			return lre.test(strip(rows[0][0])) && lre.test(strip(rows[0][1]));
+		}
+		return false;
 	};
 
 	/**
@@ -4807,6 +4848,71 @@ class InteractiveScanner {
 	 *
 	 * @returns {Object|null} { type, canonTag } or null
 	 */
+	/**
+	 * THE LETTERED QUESTION RUN WITH NO OPENER (data multiChoiceQuiz.question_blocks.free_body_run). From item i, a run of
+	 * questions: a black stem (stem_pattern, not an option line, at most max_stem_words words), then min_options … max_options
+	 * black lettered option lines (option_pattern), exactly ONE of them marked — by a following «correct» tag item or the mark
+	 * typed in black at the line's end (black_mark_pattern); blank lines between are skipped. Questions follow each other
+	 * into one run. Returns the run's end index (exclusive) — at least one complete question — or -1.
+	 */
+	static #freeQuestionRun(items, i, fr) {
+		const clean = (s) => String(s ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+		const stemRe = new RegExp(fr.stem_pattern ?? "^\\s*(\\*\\*)?\\s*(?:(\\d{1,2})[.)]\\s*)?(\\S.*?)\\s*(?:\\*\\*)?\\s*$", "i");
+		const optRe = new RegExp(fr.option_pattern ?? "^\\s*[A-Za-z][.)]\\s+(?=\\S)");
+		const markRe = new RegExp(fr.black_mark_pattern ?? "\\s*\\[\\s*correct(?:\\s+answers?)?\\s*\\]\\s*$", "i");
+		const minO = fr.min_options ?? 2, maxO = fr.max_options ?? 6, maxW = fr.max_stem_words ?? 40;
+		// the questions under an [MTK quiz …] marker are the quiz's own content, which the page omits (KB constraint 65 — the
+		// quiz is built in D2L and the shell keeps only the button): a run whose nearest preceding tags include that marker
+		// is never read. Data free_body_run.skip_after_tags / skip_after_pattern / skip_lookback_tags.
+		{
+			const skipTags = new Set(fr.skip_after_tags ?? ["mtkquiz"]);
+			const skipRe = fr.skip_after_pattern ? new RegExp(fr.skip_after_pattern, "i") : null;
+			let seen = 0;
+			for (let b = i - 1; b >= 0 && seen < (fr.skip_lookback_tags ?? 3); b--) {
+				const x = items[b];
+				if (x.type !== "tag") continue;
+				if (String(x.parse?.primary?.tag ?? "") === "correct") continue;   // the earlier questions' marks are not structure
+				seen++;
+				if (skipTags.has(String(x.parse?.primary?.tag ?? "")) || (skipRe && skipRe.test(clean(x.text)))) return -1;
+			}
+		}
+		// the writer soft-breaks a question into ONE paragraph («1. The crew lifted the anchor.⏎A. Active [Correct answer]⏎B.
+		// Passive»), and the red mark splits it into a multi-line black item, the mark's tag item and the rest of the options
+		// in the tag's trailing text — so the run is walked LINE by line across items, and ends at an item boundary
+		let cur = null, complete = 0, end = -1;
+		const done = () => cur && cur.options >= minO && cur.options <= maxO && cur.marks === 1;
+		const takeLine = (raw) => {
+			const t = clean(raw);
+			if (!t) return true;
+			if (optRe.test(t)) {
+				if (!cur) return false;                                    // an option with no question before it
+				cur.options++;
+				if (markRe.test(t)) cur.marks++;
+				return cur.marks <= 1 && cur.options <= maxO;
+			}
+			if (!stemRe.test(t) || t.split(" ").length > maxW) return false;
+			if (cur && !done()) return false;                             // the question before it never completed
+			if (cur) complete++;
+			cur = { options: 0, marks: 0 };
+			return true;
+		};
+		for (let q = i; q < items.length; q++) {
+			const x = items[q];
+			if (x.consumedBy !== undefined) break;
+			let ok;
+			if (x.type === "black") ok = String(x.text ?? "").split(/\n/).every(takeLine);
+			else if (x.type === "tag" && x.parse?.primary?.tag === "correct") {
+				// the mark TRAILS the option typed before it; the options soft-broken after it are the question's next lines
+				const after = String(x.blackAfter ?? "").split(/\n/);
+				ok = !!cur && cur.options > 0 && cur.marks === 0 && !clean(after[0]);
+				if (ok) { cur.marks++; ok = after.slice(1).every(takeLine); }
+			} else ok = false;
+			if (!ok) break;
+			if (done()) end = q + 1;                                      // a complete question ends at this item's boundary
+		}
+		return (end > i && (complete > 0 || done())) ? end : -1;
+	}
+
 	static #interactiveInTable(block, normaliser, noRelease = false) {
 		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
 		const spans = [];

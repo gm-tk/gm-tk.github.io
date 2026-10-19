@@ -14879,13 +14879,17 @@ class InteractiveBuilder {
 		const mf = cfg.more_forms;
 		const more = !!mf && mf.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env[mf.env ?? "DDQBLOCKX_OFF"]);
-		const stemRe = new RegExp((more && mf.stem_pattern) || cfg.stem_pattern || "^\\s*(\\*\\*)?\\s*Q(\\d{1,2})\\s*[.:)]\\s*(.*?)\\s*(?:\\*\\*)?\\s*$", "i");
+		// the lettered run with no opener (mode.freeRun): its stem form — a plain-numbered line or a bare question — and
+		// no opener to find; a stem with no number takes its place in the run (multiChoiceQuiz.question_blocks.free_body_run)
+		const freeRun = mode?.freeRun ?? null;
+		const stemRe = new RegExp((freeRun && freeRun.stem_pattern) || (more && mf.stem_pattern) || cfg.stem_pattern || "^\\s*(\\*\\*)?\\s*Q(\\d{1,2})\\s*[.:)]\\s*(.*?)\\s*(?:\\*\\*)?\\s*$", "i");
 		// the bold numbered stem, the bullet options, a leading heading (question_blocks.numbered_stems; env DDQBLOCKN_OFF)
 		const ns = cfg.numbered_stems;
 		const numbered = !mode && !!ns && ns.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env[ns.env ?? "DDQBLOCKN_OFF"]);
 		const numStemRe = numbered && ns.stem_pattern ? new RegExp(ns.stem_pattern, "i") : null;
-		const optRe = new RegExp((numbered && ns.option_marker_pattern) || cfg.option_marker_pattern || "^\\s*(?:\\d{1,2}|[A-Za-z])[.)]\\s+");
+		// the free run's options are the LETTERED lines only — a numbered line is its next question's stem
+		const optRe = new RegExp((freeRun && freeRun.option_pattern) || (numbered && ns.option_marker_pattern) || cfg.option_marker_pattern || "^\\s*(?:\\d{1,2}|[A-Za-z])[.)]\\s+");
 		const blankRe = new RegExp(cfg.blank_pattern ?? "\\s*_{3,}\\s*");
 		const hintTags = cfg.hint_tags ?? ["hint"];
 		const closeTags = cfg.closer_tags ?? ["end hint"];
@@ -14900,10 +14904,14 @@ class InteractiveBuilder {
 			let sm = t.match(stemRe), boldNum = false;
 			if (!sm && numStemRe) { sm = t.match(numStemRe); boldNum = !!sm; }
 			if (sm) {
-				cur = { n: Number(sm[2]), bold: !!sm[1], stem: boldNum ? sm[3].replace(/\*\*/g, "").trim() : sm[3].trim(), lines: [], mark: -1, hint: null };
-				units.push(cur);
-				last = null;
-				return true;
+				// the free run's stem is the FIRST line of each question only: once a question has its options, the next
+				// stem opens the next question; an option line never reads as a stem
+				if (freeRun && cur && optRe.test(t)) { /* fall through to the option lines */ } else {
+					cur = { n: freeRun && !sm[2] ? units.length + 1 : Number(sm[2]), bold: !!sm[1], stem: boldNum ? sm[3].replace(/\*\*/g, "").trim() : sm[3].trim(), lines: [], mark: -1, hint: null };
+					units.push(cur);
+					last = null;
+					return true;
+				}
 			}
 			if (!cur) { pre.push(t); return true; }
 			if (cur.hint !== null) return false;                     // text after the hint, before the next question
@@ -14980,7 +14988,7 @@ class InteractiveBuilder {
 			}
 			return null;                                             // a member this form cannot place
 		}
-		if (!opener || !units.length || marks !== units.length) return null;
+		if ((!opener && !freeRun) || !units.length || marks !== units.length) return null;
 		const min = tpl.min_options ?? 2, max = tpl.max_options ?? 10, maxW = cfg.max_option_words ?? 6;
 		// an option line: short, no blank, not a question, not a wrapped quote
 		const optLike = (t) => !blankRe.test(t) && !/[?:]\s*\**\s*$/.test(t) && !/^\*[^*][\s\S]*[^*]\*$/.test(t) && words(t) <= maxW;
@@ -15040,9 +15048,10 @@ class InteractiveBuilder {
 		}
 		const out = [];
 		// the opener: its tail is the activity title (a heading where the opener carries «[Hn]»); its other brackets ride as a note
-		const own = this.#cellText(opener.text ?? "");
+		// the free run has no opener: no title, no opener notes (question_blocks.free_body_run)
+		const own = opener ? this.#cellText(opener.text ?? "") : "";
 		const hm = own.match(new RegExp(cfg.heading_pattern ?? "\\[\\s*h([2-6])\\s*\\]", "i"));
-		const tail = this.#cellText(opener.blackAfter ?? "");
+		const tail = opener ? this.#cellText(opener.blackAfter ?? "") : "";
 		if (tail) out.push(hm ? `<h${hm[1]}>${inline(tail)}</h${hm[1]}>` : Utils.FillTemplate(tpl.question_text, { text: inline(tail) }));
 		const skip = new RegExp((mode && mode.skipPattern) || cfg.note_skip_pattern || "\\bactivity\\b|drop\\s*-?\\s*down|\\bquiz\\b|auto\\s*-?\\s*check", "i");
 		for (const br of own.match(/\[[^\]]*\]/g) ?? []) {
@@ -16830,7 +16839,9 @@ class InteractiveBuilder {
 		if (!Array.isArray(openerTags)) return null;
 		const notes = [];
 		const html = this.#ddQuestionBlocks(bundle, templates.dropDown, renderInline ?? ((s) => s), notes, run,
-			{ openerTags, mcqTpl: mt, skipPattern: cfg.note_skip_pattern });
+			{ openerTags, mcqTpl: mt, skipPattern: cfg.note_skip_pattern,
+				// the lettered run the scanner read with no opener takes its own stem form (question_blocks.free_body_run)
+				freeRun: bundle?._freeRun === true && cfg.free_body_run && cfg.free_body_run.enabled !== false ? cfg.free_body_run : null });
 		if (!html || this.#mcqLeakGuard(html)) return null;
 		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
 		bundle.builtMcq = true;
