@@ -115,7 +115,11 @@ class NotesAndComments {
 		const op = DataService.Data.EmitTemplates.red_flag?.omit_placeholders;
 		if (op && op.enabled !== false && kind === "cs"
 			&& !(typeof process !== "undefined" && process.env && process.env.PLACEHOLDER_OFF)) {
-			const f = Utils.Fold(String(text ?? "")).replace(/^[•\-*\s]+/, "").trim();
+			let f = Utils.Fold(String(text ?? "")).replace(/^[•\-*\s]+/, "").trim();
+			// a template line keeps out with or without the cue typed before it («CS: …» — red_flag.omit_placeholders.lead_cue_pattern;
+			// env PLACEHOLDERCUE_OFF)
+			if (op.lead_cue_pattern && !(typeof process !== "undefined" && process.env && process.env[op.lead_cue_env ?? "PLACEHOLDERCUE_OFF"]))
+				f = f.replace(new RegExp(op.lead_cue_pattern, "i"), "").trim();
 			const hit = (op.phrases ?? []).some((p) =>
 				op.match === "prefix" ? (f === p || f.startsWith(p)) : f === p);
 			// Omit: emit a marker (not "") rather than nothing, so a later full-page

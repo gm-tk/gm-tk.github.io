@@ -461,6 +461,27 @@ class InteractiveScanner {
 							j++;
 						}
 					}
+					// THE DECLARATION TABLE'S DATA TABLE. A «Layout Tool: ║ … / Activity Type: ║ [Sketcher …]» declaration takes the
+					// table straight after it (the sketcher's background picture, a slide table) when that table names no widget of its
+					// own, is not an «English ║ Māori» content table and opens no section. Data member_rule.declaration_data_table_absorb;
+					// env DECLDATA_OFF.
+					const dda = DataService.Data.BoundaryBank?._meta?.member_rule?.declaration_data_table_absorb;
+					if (dda && dda.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[dda.env ?? "DECLDATA_OFF"])
+						&& (dda.declaration_patterns ?? []).length
+						&& dda.declaration_patterns.every((p) => new RegExp(p, "i").test(it.block.text ?? ""))) {
+						let j = tableBundle.endIndex, taken = 0;
+						while (taken < (dda.max_tables ?? 1) && j < items.length && items[j].type === "table" && items[j].consumedBy === undefined
+							&& !this.#interactiveInTable(items[j].block, normaliser, true)
+							&& !this.#bilingualContentTable(items[j].block)
+							&& !this.#bilingualSectionOpener(items[j].block)) {
+							tableBundle.memberItems.push(items[j]);
+							tableBundle.tables.push(items[j].block);
+							this.#harvestMedia(tableBundle, items[j]);
+							items[j].consumedBy = bundles.length;
+							tableBundle.endIndex = j + 1;
+							j++; taken++;
+						}
+					}
 					it.consumedBy = bundles.length;
 					bundles.push(tableBundle);
 					i = tableBundle.endIndex - 1;

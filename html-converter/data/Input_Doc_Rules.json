@@ -485,6 +485,13 @@
 				"_doc": "THE PICTURES AFTER A RED INSTRUCTION JOIN THE FILES. A picture-only paragraph right after a mostly red one (skip_after_red keeps it off the page — it often illustrates the writer's request to the developer, not the learner's page) still ships as images/<name> and is listed with the rest, with the line below so the developer knows it followed an instruction. Nothing reaches a page. Env PASTEDAFTERRED_OFF.",
 				"enabled": true,
 				"env": "PASTEDAFTERRED_OFF",
+				"place_on_page": {
+					"_doc": "THE PICTURE THE WRITER PASTED UNDER THEIR NOTE SITS UNDER THE NOTE. A picture-only paragraph right after a mostly red one is the writer showing the designer what the note asks for («Can we line the texts up on the ‘shelf’ like this?» and the mock-up under it). The note reaches the page as the red Writers Note, so before the page's notes are tidied (the notes after it stay a note of their own) the picture is placed straight after the note that carries the words it follows (its first match_chars characters, folded; at least min_chars) — the Word document's own order — as <img class=\"img-fluid\" loading=\"lazy\" src=\"images/<name>\"> with its file in images/ (MediaBuilder.PlaceNotePictures). Nothing is added to the document's blocks, so no page, heading, menu or widget boundary moves. A note inside an un-built hand-off box is never used, and a picture whose note is not on the page stays a file. Only these pictures are placed; every other pasted picture stays a file listed in the interactives file (the list leaves out the placed ones). Env PASTEDAFTERREDPLACE_OFF keeps them as files only.",
+					"enabled": true,
+					"env": "PASTEDAFTERREDPLACE_OFF",
+					"match_chars": 40,
+					"min_chars": 12
+				},
 				"manifest_line": "Follows the writer's red instruction: it may show what the writer is asking for rather than a picture for the page."
 			}
 		},

@@ -341,6 +341,77 @@ class MediaBuilder {
 	};
 
 	/**
+	 * THE PICTURE THE WRITER PASTED UNDER THEIR NOTE SITS UNDER THE NOTE (Input_Doc_Rules.pasted_pictures.files_only
+	 * .include_after_red.place_on_page; env PASTEDAFTERREDPLACE_OFF). A picture-only paragraph right after a mostly red one is
+	 * the writer showing the designer what the note asks for; before the page's notes are tidied (so the picture follows its
+	 * own note, and the notes after it are not joined to it), the red Writers Note that carries the words the picture follows (the registry's where.after, its first match_chars characters, folded) gets the
+	 * picture straight after it — the Word document's order — as the pasted picture's <img> (PastedImg; its file ships in
+	 * images/). A note inside an un-built hand-off box is never used, and a picture whose note is not on the page (a marker the
+	 * page structure consumed, a note another rule rewrote) stays a file listed in the interactives file. Each picture is
+	 * placed once, on the first page whose note matches; the placed ones leave that list (PastedFilesList).
+	 *
+	 * @param {string} html - the assembled page
+	 * @param {ConversionRun} run - the current run (its pasted-picture registry)
+	 * @returns {string} the page, with each matching picture after its note
+	 */
+	static PlaceNotePictures(html, run) {
+		const cfg = DataService.Data.InputDocRules?.pasted_pictures;
+		if (!cfg || !run?.pastedPictures || !html || !DocxExtractor.PlaceAfterRed(cfg)) return html;
+		const pl = cfg.files_only.include_after_red.place_on_page;
+		const fold = (s) => Utils.Fold(String(s ?? "").replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, " ")
+			.replace(/&#39;/g, "'").replace(/&quot;/g, "\"").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&")
+			.replace(/[\[\]]/g, " "));
+		const minChars = pl.min_chars ?? 12, matchChars = pl.match_chars ?? 40;
+		const recs = [...run.pastedPictures.values()]
+			.filter((r) => r.admitted && r.afterRed && !r.placed && r.where)
+			.map((r) => ({ r, key: fold(r.where.after).slice(0, matchChars).trim() }))
+			.filter((x) => x.key.length >= minChars)
+			.sort((x, y) => (x.r.order ?? 0) - (y.r.order ?? 0));
+		if (!recs.length) return html;
+		const bi = html.indexOf("<div id=\"body\"");
+		if (bi < 0) return html;
+		const fi = html.indexOf("<div id=\"footer\"", bi);
+		const end = fi < 0 ? html.length : fi;
+		// the un-built hand-off boxes on the page: a note inside one is the box's raw content, never a place for a picture
+		const spans = [];
+		for (const h of html.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
+			const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
+		}
+		const notes = [];
+		const noteRe = /<p\b[^>]*class="[^"]*\bcv2-note\b[^"]*"[^>]*>([\s\S]*?)<\/p>/g;
+		noteRe.lastIndex = bi;
+		let m;
+		while ((m = noteRe.exec(html)) !== null && m.index < end) {
+			if (spans.some(([a, z]) => m.index >= a && m.index < z)) continue;
+			notes.push({ start: m.index, at: m.index + m[0].length, text: fold(m[1]) });
+		}
+		if (!notes.length) return html;
+		const byAt = new Map();
+		for (const { r, key } of recs) {
+			let k = notes.findIndex((x) => x.text.includes(key));
+			if (k < 0) continue;
+			// one Word paragraph the page split into notes (a link between its words): the picture follows the last of them —
+			// the next note right after this one whose opening words are still the paragraph's words
+			const ctx = fold(r.where.after);
+			while (k + 1 < notes.length && !html.slice(notes[k].at, notes[k + 1].start).trim()) {
+				const head = notes[k + 1].text.replace(/^(?:writers note|designer\/developer to do|red flag)\s*:\s*/, "").slice(0, minChars).trim();
+				if (head.length < minChars || !ctx.includes(head)) break;
+				k++;
+			}
+			const n = notes[k];
+			r.placed = true;
+			if (!byAt.has(n.at)) byAt.set(n.at, []);
+			byAt.get(n.at).push(this.PastedImg(r, run));
+		}
+		if (!byAt.size) return html;
+		let out = html;
+		for (const at of [...byAt.keys()].sort((a, b) => b - a)) out = out.slice(0, at) + "\n" + byAt.get(at).join("\n") + out.slice(at);
+		run.AddNote?.("info", "MediaBuilder", `${[...byAt.values()].flat().length} pasted picture(s) placed after the writer's note they follow (include_after_red.place_on_page).`);
+		return out;
+	};
+
+	/**
 	 * FILES-ONLY mode (Input_Doc_Rules.pasted_pictures.files_only; env PASTEDFILES_OFF): the admitted pictures, in the order the
 	 * document holds them, for the interactives file's list — [] when the picture lines are placed on the pages (they are the
 	 * list) or the rule is off.
@@ -351,7 +422,7 @@ class MediaBuilder {
 		if (!cfg || cfg.enabled !== false || !fo || fo.enabled === false || !run?.pastedPictures) return [];
 		const envOn = (name) => typeof process !== "undefined" && process.env && process.env[name];
 		if (envOn(cfg.env ?? "PASTEDPIC_OFF") || envOn(fo.env ?? "PASTEDFILES_OFF")) return [];
-		return [...run.pastedPictures.values()].filter((r) => r.admitted).sort((x, y) => (x.order ?? 0) - (y.order ?? 0));
+		return [...run.pastedPictures.values()].filter((r) => r.admitted && !r.placed).sort((x, y) => (x.order ?? 0) - (y.order ?? 0));   // a placed picture is on its page
 	};
 
 	/**

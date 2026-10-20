@@ -1992,6 +1992,14 @@ class DocxExtractor {
 		}
 	};
 
+	/** Is the picture under the writer's note placed after that note on the page (files_only.include_after_red.place_on_page; env PASTEDAFTERREDPLACE_OFF)? */
+	static PlaceAfterRed(cfg) {
+		if (!cfg || !this.#filesAfterRed(cfg)) return false;
+		const pl = cfg.files_only?.include_after_red?.place_on_page;
+		if (!pl || pl.enabled === false) return false;
+		return !(typeof process !== "undefined" && process.env && process.env[pl.env ?? "PASTEDAFTERREDPLACE_OFF"]);
+	};
+
 	/**
 	 * One run's pasted picture, admitted by the filter: inline (not floating), at least min_px on both sides, more than
 	 * min_bytes, not a template graphic. Returns { name, w, h } (the alt is recorded on the registry record) or null.

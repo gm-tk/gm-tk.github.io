@@ -12222,6 +12222,7 @@ class ContentConverter {
 			&& !(typeof process !== "undefined" && process.env && process.env[_more.env ?? "MOREFREENOTE_OFF"]);
 		const _tags = [...(c.tags ?? ["image", "video", "audio", "embed"]), ...(_moreOn ? (_more.tags ?? []) : [])];
 		if (!_tags.includes(it.parse?.primary?.tag) || it.parse.instructionFragment) return out;
+		if (it._sourceNoted) return out;   // the embed's sourcing note already carries the writer's words (embeds.source_link_note)
 		if (_moreOn) {
 			const op = DataService.Data.EmitTemplates.red_flag?.omit_placeholders;
 			const f = Utils.Fold(String(it.text ?? "").replace(/\[[^\]]*\]/g, " ")).replace(/^[•\-*\s]+/, "").trim();
@@ -12944,6 +12945,22 @@ class ContentConverter {
 			if (!url) {
 				out.push(MediaBuilder.NoUrlFlag(it, "embed", run));
 				return out;
+			}
+			// AN [embed] WHOSE WORDS TELL THE DESIGNER WHERE TO GET THE CONTENT («… can be downloaded from: <address>») is the
+			// designer's note: ONE Writers Note with the address written in just after the writer's last sourcing cue — no button,
+			// frame or second note. Data elements.embeds.source_link_note; env EMBEDSOURCENOTE_OFF.
+			const _sln = tpl.embeds?.source_link_note;
+			if (_sln && _sln.enabled !== false && _sln.cue_pattern
+				&& !(typeof process !== "undefined" && process.env && process.env[_sln.env || "EMBEDSOURCENOTE_OFF"])) {
+				const _words = String(it.text ?? "").replace(/\u{1f534}\[RED TEXT\] ?| ?\[\/RED TEXT\]\u{1f534}/gu, "").trim();
+				const _cues = [..._words.matchAll(new RegExp(_sln.cue_pattern, "gi"))];
+				if (_cues.length) {
+					const _at = _cues[_cues.length - 1].index + _cues[_cues.length - 1][0].length;
+					const _note = (_words.slice(0, _at).replace(/\s+$/, "") + " " + url + _words.slice(_at)).trim();
+					it._sourceNoted = true;
+					out.push(NotesAndComments.redFlag(_note, run, "cs"));
+					return out;
+				}
 			}
 			// An [embed] of an EXTERNAL web page is the KB's externalButton, never a bare iframe: the gold
 			// never iframes such a page — it drops the resource (mostly worksheet / PDF pages the developer

@@ -1281,8 +1281,11 @@ class PageAssembler {
 						// dual_language.lang_swap_lists; env REOLANGSWAP_OFF).
 						// A page that looks empty gets the red «Missing content» To Do first in its body (NotesAndComments.FlagBlankPage;
 						// red_flag.blank_page_flag; env BLANKFLAG_OFF) — after the note tidy, so a note moved out of the menu is already there.
-						const tidied = NotesAndComments.FlagBlankPage(NotesAndComments.TidyDeveloperNotes(BilingualBuilder.LangSwapLists(
-							NotesAndComments.OmitTemplateSample(NotesAndComments.OmitPlaceholderResidue(html)))), run, filenames[i]);
+						// The picture the writer pasted under a note goes straight after that note (MediaBuilder.PlaceNotePictures;
+						// pasted_pictures.files_only.include_after_red.place_on_page; env PASTEDAFTERREDPLACE_OFF) — before the note tidy, so the picture
+						// follows its own note and the notes after it stay a separate note.
+						const tidied = NotesAndComments.FlagBlankPage(NotesAndComments.TidyDeveloperNotes(MediaBuilder.PlaceNotePictures(BilingualBuilder.LangSwapLists(
+							NotesAndComments.OmitTemplateSample(NotesAndComments.OmitPlaceholderResidue(html))), run)), run, filenames[i]);
 						// Adjacent sibling lists join into one (body_region.merge_adjacent_lists; env ULMERGE_OFF) — after TypedNumberList, before the link-text pass.
 						// A bare list-number paragraph leaves the page (body_region.lone_list_number; env LONENUM_OFF) — after TypedNumberList.
 						// An orphan punctuation block merges onto the text before it or leaves (ListsAndRuns.OrphanPunctuation;

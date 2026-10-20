@@ -352,6 +352,16 @@
 				"_note": "The [Embedded][Flipcard] form is a DECLARATION table ('Activity Type / [Embedded] / [Flipcard]') captured here (the [Flipcard] invocation lives in a cell, so #interactiveInTable opens a flipCard table-bundle), immediately followed by a SEPARATE flip-DATA table whose cells carry [Item N] rows ('Card no. / Image (front) / Text (back side)'). Without this the decl table would be captured but the data table (no invocation of its own) would escape the bundle and leak its [Item N]/[Image] literals (PNR101/102/104). When a flipCard table-bundle is created from a table whose text carries [Embedded] (trigger_tag), absorb the immediately-following member-tagged ([Item N], member_tags) data table(s) into the SAME bundle, so the page shows ONE flipCard placeholder with all its data INSIDE it (a developer reference, not a learner-facing leak). A following table that has its OWN invocation or a [back] face tag (its own face_table_capture bundle) is LEFT for that bundle — the absorb stops. Env FLIPDATA_OFF turns this off.",
 				"scope_note": "Free-body [Item N] data tables occur only in PNR101/102/104; the trigger requires the preceding decl table to carry [Embedded], so the absorb cannot run on a non-[Embedded] flipCard (e.g. the XGF [back] tables, which have no [Embedded] and no following [Item N] table)."
 			},
+			"declaration_data_table_absorb": {
+				"enabled": true,
+				"env": "DECLDATA_OFF",
+				"declaration_patterns": [
+					"layout\\s*tool",
+					"activity\\s*type"
+				],
+				"max_tables": 1,
+				"_note": "THE DECLARATION TABLE'S DATA TABLE IS PART OF ITS WIDGET. The bilingual writers declare a widget in a two-row table («Layout Tool: ║ [Embedded] with [Reset]» / «Activity Type: ║ [Sketcher 8 colours] …») and give its content in the table straight after it — the sketcher's background picture («Sketcher background ║ [Item 25] [Image] Blue sky green hills»), a slide table («Slide number ║ Background picture to draw over»), a picture-select or reorder table. The declaration is captured as the widget's hand-off box, but its data table carries no invocation of its own, so it escaped the box and unfolded on the page as a label and a picture (the finished pages build the picture inside the widget — the sketcher's canvasImage). A table declared by BOTH declaration_patterns absorbs the next max_tables table(s) when such a table carries no widget invocation of its own, is not a bilingual «English ║ Māori» content table and does not open a section («[H1] N.M»); its pictures are the bundle's media. Every declaration table in the Writers Templates is followed by its data table (7 of 7, PNR101 / PNR104 / PNR107). Runs after the flip-card absorb (flipcard_data_table_absorb), which keeps its own [Item] data tables. Env DECLDATA_OFF."
+			},
 			"body_terminates_after_invocation_text_types": [
 				"speechBubble"
 			],
