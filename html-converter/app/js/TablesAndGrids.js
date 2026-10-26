@@ -190,6 +190,10 @@ class TablesAndGrids {
 						// picture in place through the same sentinels (cellPastedPictures); a hand-off box keeps the raw line.
 						const pz = this.cellPastedPictures(work, run, P0 ? SEP : null, irImgs ? irImgs.length : 0);
 						if (pz) { irImgs = (irImgs ?? []).concat(pz.imgs); work = pz.text; changed = true; }
+						// THE VIDEO IN A KEPT CELL (layout_table_grid.cell_video; env CELLVIDEO_OFF): a «[video] <address>» run becomes the embed in
+						// place through the same sentinels (cellVideos); the tag no longer stays literal, so the leak guard lets the table ship.
+						const vz = this.cellVideos(work, run, norm, irImgs ? irImgs.length : 0);
+						if (vz) { irImgs = (irImgs ?? []).concat(vz.imgs); work = vz.text; changed = true; }
 						const rq = this.cellRedRequests(work, run, norm, P0 ? SEP : null, links);
 						if (rq) { rqNotes = rq.notes; rqLinks = rq.links ?? []; work = rq.text; changed = true; }
 						if (changed) {
@@ -798,6 +802,13 @@ class TablesAndGrids {
 				const shifted = Math.min(Math.max(digit + tpl.elements.heading.logical_to_element.body_shift, 2), 5);
 				const text = (rest.trim() || norm.RenderText(part) || "").replace(/\*/g, "").trim();
 				if (text) out.push(`<h${shifted}>${ListsAndRuns.inlineMarkup(text, cl)}</h${shifted}>`);
+			} else if (canon === "video" && MediaBuilder.CellVideo(rest, run, links)) {
+				// THE VIDEO IN A LAYOUT-GRID CELL (layout_table_grid.cell_video; env CELLVIDEO_OFF): the part’s address renders as the body
+				// path’s embed; the part’s other words (a title typed beside the address) stay as text, every other bracket token — a media-list pointer, a pasted-picture token — goes
+				flush();
+				out.push(MediaBuilder.CellVideo(rest, run, links));
+				const rem = rest.replace(/https?:\/\/[^\s\]\)"<>\[]+/, "").replace(/\[[^\]]*\]/g, "").trim();
+				if (rem && !skipRe.test(rem)) buf.push(rem);
 			} else if (canon === "image") {
 				flush();
 				out.push(...this.cellImage(rest, run, links));
@@ -1012,6 +1023,35 @@ class TablesAndGrids {
 		return { text, imgs: hits.map((h) => h.img) };
 	};
 
+	/**
+	 * THE VIDEO IN A KEPT CELL (body_region.layout_table_grid.cell_video; env CELLVIDEO_OFF): a «[video] <address>» run in a
+	 * free-body table cell becomes a sentinel (⟦CV2IMGn⟧, numbered after the cell's images — the `offset`) that fillImageRefs
+	 * puts back as the body path's own embed (MediaBuilder.CellVideo); the tag that would have stayed literal — and sent the whole
+	 * table to the leak guard's raw hand-off box — is consumed with its address. Only a bracket the normaliser resolves to the
+	 * video tag counts. Returns { text, imgs } or null when the cell holds no such run.
+	 */
+	static cellVideos(cell, run, norm, offset = 0) {
+		const s = String(cell ?? "");
+		if (!/\[[^\]]*\]/.test(s) || !/https?:\/\//i.test(s)) return null;
+		const cfg = DataService.Data.EmitTemplates?.body_region?.layout_table_grid?.cell_video;
+		if (!cfg || cfg.enabled === false || !norm) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "CELLVIDEO_OFF"]) return null;
+		const re = /(?:\u{1f534}\[RED TEXT\] *)?\[([^\]]{1,60})\](?: *\[\/RED TEXT\]\u{1f534})? *(https?:\/\/[^\s\]\)"<>\[]+)/giu;
+		const hits = [];
+		for (const m of s.matchAll(re)) {
+			let tag = null;
+			try { tag = norm.Parse(`[${m[1]}]`)?.primary?.tag ?? null; } catch { tag = null; }
+			if (tag !== "video") continue;
+			const html = MediaBuilder.CellVideo(m[2], run);
+			if (!html) continue;
+			hits.push({ start: m.index, end: m.index + m[0].length, img: html });
+		}
+		if (!hits.length) return null;
+		let text = "", at = 0;
+		hits.forEach((h, i) => { text += s.slice(at, h.start) + `⟦CV2IMG${offset + i}⟧`; at = h.end; });
+		text += s.slice(at);
+		return { text, imgs: hits.map((h) => h.img) };
+	};
 	/**
 	 * Puts the images of cellImageRefs back into a rendered cell: a token alone in a paragraph replaces the paragraph,
 	 * any other token is replaced where it stands, and a token the rendering lost is added at the end (the image is never

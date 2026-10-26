@@ -434,6 +434,86 @@ class ContentConverter {
 	};
 
 	/**
+	 * THE LESSON-PHASE MENU (the «[LESSON] FUNdamental Phase N» family; data body_region.fundamentals_panels.lesson_phases; env
+	 * LESSONPHASEMENU_OFF). The finished overview's module menu is one tab per phase, each pane «We are learning:» with the bullets
+	 * the human wrote from the phase lesson's opening sentence — «In this lesson you are learning how to …. You are learning how to
+	 * …» — and that sentence leaves the body. The writer's own words are the bullets here: every «you are learning …» / «you are
+	 * going to …» sentence of the first paragraph after the phase marker (its [Lesson Overview] / [Lesson content] / heading lines
+	 * skipped) is one bullet, and the paragraph is consumed when each of its sentences is one; a phase whose first paragraph is
+	 * content keeps it and gets no bullets. Registry-gated (the row by series, else subject|phase) and at least min_phases
+	 * markers; fills run._levelMenu for MenuBuilder's level tabs (no Overview tab when the row says so). Returns null always —
+	 * the phases nav and panels are PanelsBuilder's lesson-sentinel branch, untouched.
+	 */
+	static #lessonPhasesPrepass(bodyItems, run, fundPanelMode, singleFilePage, menuType) {
+		const cfg = DataService.Data.EmitTemplates.body_region.fundamentals_panels?.lesson_phases;
+		if (!cfg || cfg.enabled === false || !fundPanelMode || !singleFilePage || run._levelMenu || menuType === "none") return null;   // a page with no module menu keeps its sentences
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "LESSONPHASEMENU_OFF"]) return null;
+		const reg = cfg.registry || {};
+		let row = reg.series?.[run?.moduleCode] ?? null;
+		if (!row) {
+			const subj = (run?.moduleCode || "").match(/^[A-Za-z]+/)?.[0] || "";
+			const rawPhase = run?.resolvedRules?.template_phase ?? "";
+			const phase = DataService.Data.EmitTemplates.skeleton?.template_attr_map?.[rawPhase] ?? rawPhase;
+			const lk = `${subj}|${phase}`.toLowerCase();
+			const hit = Object.keys(reg.groups || {}).find((k) => k.toLowerCase() === lk);
+			row = hit ? reg.groups[hit] : null;
+		}
+		if (!row) return null;
+		const folded = (it) => (it.parse?.folded ?? "").trim();
+		const markerRe = new RegExp(cfg.marker_pattern || "^\\[lesson\\]\\s*fundamental\\s+phase\\s+(\\d+)", "i");
+		const skipTags = new Set(cfg.skip_tags || ["lesson overview", "lesson content", "h1", "h2", "h3", "title bar"]);
+		const textTags = new Set(cfg.text_tags || ["body", "alert"]);
+		const sentRe = new RegExp(cfg.sentence_pattern || "^(?:in\\s+this\\s+lesson,?\\s+)?you\\s+are\\s+(?:also\\s+)?(learning|going\\s+to)\\s+(.+?)[.!]?$", "i");
+		const markers = [];
+		for (let i = 0; i < bodyItems.length; i++) {
+			const it = bodyItems[i];
+			if (it.type === "tag" && it.parse?.primary?.tag === "lesson" && it.consumedBy === undefined && markerRe.test(folded(it))) markers.push(i);
+		}
+		if (markers.length < (cfg.min_phases || 2)) return null;
+		const levels = [];
+		const consumed = new Set();
+		markers.forEach((mi, k) => {
+			const end = k + 1 < markers.length ? markers[k + 1] : bodyItems.length;
+			const num = (folded(bodyItems[mi]).match(markerRe) || [])[1] || String(k + 1);
+			const bullets = [];
+			for (let j = mi + 1; j < end; j++) {
+				const it = bodyItems[j];
+				if (it.consumedBy !== undefined) continue;
+				let text = null;
+				// the paragraph's own words: the document block with its red spans (a tag, an inline hover definition) removed, so a woven
+				// definition never rides into a bullet; a black item's text otherwise
+				const raw = String(it.block?.text ?? "");
+				const unred = raw.replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/\s+([.,;:!?])/g, "$1");
+				if (it.type === "tag") {
+					const t = it.parse?.primary?.tag || "";
+					if (skipTags.has(t) && !(it.blackAfter || "").trim()) continue;
+					if (!textTags.has(t)) break;
+					text = unred.trim() ? unred : String(it.blackAfter || "");
+				} else if (it.type === "black") {
+					if (!String(it.text || "").trim()) continue;
+					text = String(it.text || "");
+				} else break;
+				// the paragraph's sentences: every one a learning sentence → the bullets, the paragraph consumed; else nothing
+				const sents = text.replace(/\*\*/g, "").replace(/\s+/g, " ").trim().split(/(?<=[.!?])\s*(?=[A-Z])/).filter((s) => s.trim());
+				const got = sents.map((s) => { const m = s.trim().match(sentRe); return m ? { verb: m[1], rest: m[2].trim() } : null; });
+				let lead = 0; while (lead < got.length && got[lead]) lead++;
+				for (const g of got.slice(0, lead)) bullets.push(/^going/i.test(g.verb) ? (cfg.going_to_lead ?? "to ") + g.rest : g.rest);
+				// a paragraph carrying an inline marker of its own (a hover definition woven into a sentence) stays in the body whatever its
+				// sentences: the writer's definition is content the menu bullet cannot carry
+				const inlineMarkers = (raw.match(/\u{1f534}\[RED TEXT\]/gu) || []).length > (it.type === "tag" ? 1 : 0);
+				if (lead && lead === got.length && !inlineMarkers) consumed.add(j);   // every sentence a bullet → the paragraph leaves the body; a partial run (or a marker) keeps it
+				break;
+			}
+			levels.push({ num, label: Utils.FillTemplate(cfg.tab_label || "Phase {n}", { n: num }), li: { lead: "", bullets, label: null }, sc: { lead: "", bullets: [], label: null } });
+		});
+		if (!levels.some((l) => l.li.bullets.length)) return null;
+		for (const j of [...consumed].sort((a, b) => b - a)) bodyItems.splice(j, 1);
+		run._levelMenu = { module: { li: null, sc: null, extra: [] }, levels, row, cfg: { ...cfg, menu: { ...(cfg.menu || {}) } } };
+		run.AddNote("info", "ContentConverter",
+			`Lesson-phase menu: ${levels.length} phase tabs (${levels.map((l) => `${l.label} ${l.li.bullets.length}`).join(", ")}) — each phase's opening learning sentences as its pane's bullets, the sentences out of the body (fundamentals_panels.lesson_phases).`);
+		return null;
+	};
+	/**
 	 * THE TILE-PAGE FUNDAMENTALS DIALECT (the
 	 * WJFUN "My Te Kura Writing" family, 21 modules). The seventh phase-delimiter
 	 * dialect: the writer authors ONE single-file module whose lessons are
@@ -1175,7 +1255,13 @@ class ContentConverter {
 		const brCfg = fundPhaseCfg && fundPhaseCfg.bracketed_delimiter;
 		const brOn = !!brCfg && brCfg.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.FUNPANBRACKET_OFF);
-		const brOpenRe = brOn && brCfg.opener_pattern ? new RegExp(brCfg.opener_pattern, "i") : null;
+		// THE BEGIN / BEGINNING WORDING (bracketed_delimiter.begin_wording; env PHASEBEGIN_OFF): «[beginning of phase 1]», «[Begin phase
+		// three]» open a phase too — its pattern joins opener_pattern — and with it a bracketed opener counts on any page model (below)
+		const bwCfg = brCfg && brCfg.begin_wording;
+		const bwOn = brOn && !!bwCfg && bwCfg.enabled !== false && !!bwCfg.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[bwCfg.env || "PHASEBEGIN_OFF"]);
+		const brOpenRe = brOn && brCfg.opener_pattern
+			? new RegExp(bwOn ? `(?:${brCfg.opener_pattern})|(?:${bwCfg.pattern})` : brCfg.opener_pattern, "i") : null;
 		const brCloseRe = brOn && brCfg.closer_pattern ? new RegExp(brCfg.closer_pattern, "i") : null;
 		const brCloserDirs = (brCfg && brCfg.closer_primary_directives) || ["PAGE_BOUNDARY", "CONTAINER_CLOSE"];
 		const isBracketOpener = (it) => !!brOpenRe && it.type === "tag" && !it.parse?.primary
@@ -1300,7 +1386,13 @@ class ContentConverter {
 		// 19 pages) → excluded, matching the human; every TEFUN level is single-file. (phaseLineCount>=2
 		// already excludes MXFUN01 — its phase lines never surface as >=2 unconsumed black lines on a
 		// single page — so the page-model test is belt-and-braces against a future multi-file case.)
-		const singleFilePage = run.resolvedRules?.page_model === "single-file";
+		// THE BRACKETED PHASE OPENER IS EXPLICIT ON ANY PAGE MODEL (bracketed_delimiter.begin_wording.multi_file_page): the single-file
+		// scope guards the BARE «Phase N» line, which a multi-file module may type inside its prose; a writer’s bracketed opener span is a
+		// phase boundary whatever the module’s registry page model says, so a module modelled multi-file whose one assembled page carries
+		// those openers still panels (and gets its phases navigation) instead of falling to the [New tab] form, which reads every [Tab N]
+		// inside the phases as a panel of its own.
+		const singleFilePage = run.resolvedRules?.page_model === "single-file"
+			|| (bwOn && bwCfg.multi_file_page === true && bracketOpenerCount >= 1);
 		const phaseTextMode = fundPanelMode && !!fundPhaseCfg && fundPhaseCfg.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.FUNDPHASE_OFF)
 			&& singleFilePage
@@ -1437,6 +1529,7 @@ class ContentConverter {
 		// env TILEPAGE_OFF.
 		const lvInfo = this.#levelPagesPrepass(bodyItems, run, fundPanelMode, singleFilePage)
 			?? this.#tilePagesPrepass(bodyItems, run, fundPanelMode, singleFilePage, menuItems);
+		this.#lessonPhasesPrepass(bodyItems, run, fundPanelMode, singleFilePage, menuType);   // the lesson-phase menu (LESSONPHASEMENU_OFF) — fills run._levelMenu, returns null
 
 		// INQUIRY TABBED TEMPLATE (the BLL "[Tab N] label-list" family): some modules present
 		// their content as a set of navigable "inquiry" panels labelled by a crumb-trail of
@@ -14578,7 +14671,7 @@ class ContentConverter {
 		const ak = Utils.AnswerKeyConfig(DataService.Data.EmitTemplates.interactive_placeholder?.answer_key, bundle);
 		let lastBlk = null;   // the source block of the last dumped line
 		for (const m of [...bundle.openerItems, ...bundle.memberItems]) {
-			if (released.has(m)) continue;   // the lead instruction renders before the box
+			if (released.has(m) && !released.keepInBox) continue;   // the lead instruction renders before the box (a whole-released box keeps its prose for the hand-off)
 			if (m.type === "table") { flushText(); lastBlk = null; parts.push(TablesAndGrids.contentTable(ak ? this.#answerKeyTable(m.block, ak) : m.block, run, true, this.#norm)); continue; }
 			let text = m.type === "black" ? m.text : (String(m.blackAfter ?? "").trim() ? m.blackAfter : embeddedText(m));   // the bracket-line words of an element member
 			if (ak) {
@@ -14600,7 +14693,8 @@ class ContentConverter {
 			? bundle.instructions.map((i) => NotesAndComments.redFlag(i, run, "cs")).join("\n")
 			: "";
 		const inlineHtml = (lead ? lead + "\n" : "") + parts.join("\n");
-		const releasedHtml = [...released].map((m) => ListsAndRuns.renderBlackText(String(m.blackAfter ?? "").trim(), run, m.block?.links ?? []).join("\n")).join("\n");
+		// a released member is a tagged lead (its words after the tag) or an untagged paragraph (its own text)
+		const releasedHtml = [...released].map((m) => ListsAndRuns.renderBlackText(String(m.type === "black" ? (m.text ?? "") : (m.blackAfter ?? "")).trim(), run, m.block?.links ?? []).join("\n")).join("\n");
 		// The default hand-off wrap: the inline rendering above (retained notes + the dashed box)
 		// goes INSIDE the loud reference-code marker box, collapsed by default behind the animated
 		// arrow toggle. The wrapper carries BOTH classes — cv2-interactive (so every tool that skips
@@ -14636,13 +14730,70 @@ class ContentConverter {
 		if (!cfg || cfg.enabled === false) return out;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "BOXLEADBODY_OFF"]) return out;
 		const types = new Set(cfg.types ?? []);
-		if (![bundle.type, ...(bundle.extraTypes ?? [])].every((t) => types.has(t))) return out;
+		const bTypes = [bundle.type, ...(bundle.extraTypes ?? [])];
+		const inTypes = bTypes.every((t) => types.has(t));
+		// the no-member short-prose form (untagged_prose.no_member) reaches its own types list — the carousel, the sketcher and the
+		// slider among them — for that form only; the table-led and tag-led forms keep the parent list
+		const nmTypes = cfg.untagged_prose?.no_member?.types ?? [];
+		if (!inTypes && !bTypes.every((t) => nmTypes.includes(t))) return out;
 		const bodyTags = new Set(cfg.body_tags ?? ["body"]);
 		const all = [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])];
+		// THE UNTAGGED PROSE BEFORE THE FIRST TABLE (lead_body_release.untagged_prose; env BOXLEADPROSE_OFF): the black paragraphs the
+		// writer typed between the opener and the widget's table — the learner's instruction, which the finished pages keep as page
+		// text — are released like the tagged lead, up to max_paragraphs of min_words each, a whole paragraph each, and only when the
+		// first member after them is a table (a tag-led or table-less capture keeps its prose: those forms are their own readings)
+		const up = cfg.untagged_prose;
+		const upOn = !!up && up.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[up.env ?? "BOXLEADPROSE_OFF"]);
+		let firstMember = null;
+		for (const m of bundle.memberItems ?? []) {
+			if (!m) continue;
+			if (m.type === "black" && !String(m.text ?? "").trim()) continue;
+			// the opener tag itself (an INTERACTIVE directive), an instruction note (no primary) and the prose run are stepped over;
+			// a box opened by an activity container keeps its prose (that wider reach is its own reading)
+			if (m.type === "black" || (m.type === "tag" && (bodyTags.has(m.parse?.primary?.tag ?? "") || !m.parse?.primary || m.parse?.primary?.directive === "INTERACTIVE"))) continue;
+			firstMember = m; break;
+		}
+		// the prose is released before a TABLE member (every listed type), or before a TAG member for the types whose finished
+		// pages keep the lead free (untagged_prose.tag_led_types — the click-drop, the generic interactive)
+		const upTagLed = inTypes && upOn && firstMember?.type === "tag" && (up.tag_led_types ?? []).includes(bundle.type);
+		// THE NO-MEMBER SHORT-PROSE BOX (untagged_prose.no_member; env BOXNOMEMBER_OFF): a capture of one to max_paragraphs plain
+		// paragraphs and nothing else — no table, tag or media member, no address or bracket token in them — is the learner's
+		// instruction for a widget whose data is elsewhere; the finished pages keep it free before the built widget for the
+		// listed types, so every paragraph that passes the guards releases and the box keeps its compact marker
+		const nm = up?.no_member;
+		const nmOn = upOn && !!nm && nm.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[nm.env ?? "BOXNOMEMBER_OFF"]);
+		const blacks = (bundle.memberItems ?? []).filter((m) => m && m.type === "black" && String(m.text ?? "").trim());
+		const nmHere = nmOn && bTypes.every((t) => (nm.types ?? []).includes(t))
+			&& firstMember === null && !(bundle.memberItems ?? []).some((m) => m && m.type === "tag" && bodyTags.has(m.parse?.primary?.tag ?? ""))
+			&& !(bundle.tables?.length) && !(bundle.media?.length)
+			&& blacks.length >= 1 && blacks.length <= (nm.max_paragraphs ?? 3)
+			&& !blacks.some((m) => /https?:\/\//i.test(String(m.text ?? "")) || /\[[^\]]{1,80}\]/.test(String(m.text ?? "")));
+		const upHere = (inTypes && upOn && (firstMember?.type === "table" || upTagLed)) || nmHere;
+		const upMinWords = nmHere ? (nm.min_words ?? up.min_words ?? cfg.min_words ?? 4) : (up.min_words ?? cfg.min_words ?? 4);
+		const upMaxParas = nmHere ? (nm.max_paragraphs ?? 3) : (up.max_paragraphs ?? 3);
+		let upCount = 0;
 		let otherTags = 0;
 		for (const m of bundle.memberItems ?? []) {
 			if (!m) continue;
 			if (m.type === "table") break;
+			if (upTagLed && m === firstMember) break;   // the tag-led form: nothing after the widget's first member leaves the box
+			if (m.type === "black") {
+				if (!upHere || !String(m.text ?? "").trim()) continue;
+				const words = String(m.text ?? "").trim().split(/\s+/).filter(Boolean).length;
+				// a numbered or bulleted line («1. Giraffes are …», «• …») is the widget's own data, never the instruction
+				const dataLine = /^\s*(?:\d+[.)]|[•\-–*▪◦])\s/.test(String(m.text ?? ""));
+				// a paragraph whose document block carries a red span (a developer's note typed into the sentence) stays in the box, where
+				// the note is the box's own instruction — released, the note would read as learner text
+				const redSpan = /\u{1f534}\[RED TEXT\]/u.test(String(m.block?.text ?? ""));
+				// a paragraph that opens with a developer's lead («I have created a google doc …», «Please …», «CS: …» — untagged_prose.lead_cue_pattern)
+				// is the box's note, not the learner's instruction: it stays in the box
+				const devLead = !!up.lead_cue_pattern && new RegExp(up.lead_cue_pattern, "i").test(String(m.text ?? "").trim());
+				if (words >= upMinWords && upCount < upMaxParas && !m.block?.list && !dataLine && !redSpan && !devLead
+					&& !(m.block && all.some((x) => x !== m && x?.block === m.block))) { out.add(m); upCount++; }
+				continue;
+			}
 			if (m.type !== "tag") continue;
 			const prim = m.parse?.primary?.tag ?? null;
 			if (prim && bodyTags.has(prim)) {
@@ -14656,6 +14807,9 @@ class ContentConverter {
 			if (++otherTags > 1) break;
 		}
 		if (!out.size) return out;
+		// a no-member box released whole keeps its prose for the hand-off (the dump inside the marker, where the builder reads the
+		// instruction with the widget's reference) while the page shows it free: the box is never left empty
+		if (nmHere) { out.keepInBox = true; return out; }
 		// the box must keep content of its own (min_box_chars letters / digits in what stays: its text members and tables)
 		const letters = (s) => String(s ?? "").replace(/<[^>]+>/g, " ").replace(/[^\p{L}\p{N}]/gu, "").length;
 		const cellText = (c) => (typeof c === "string" ? c : (c?.text ?? ""));

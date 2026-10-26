@@ -164,7 +164,19 @@ class PageAssembler {
 			const paras = Array.isArray(own) && own.length ? own : [cell];
 			const paired = (t) => (String(t).match(/\u{1f534}\[RED TEXT\]/gu) ?? []).length === (String(t).match(/\[\/RED TEXT\]\u{1f534}/gu) ?? []).length;
 			if (!paras.every(paired)) continue;
-			const blocks = paras.filter((t) => String(t ?? "").trim())
+			// A CELL THAT OPENS WITH A BARE CALLOUT TAG IS THAT CALLOUT’S BOX (one_cell_unfold.bare_callout_cell; env BARECALLOUTCELL_OFF): the
+			// writer types «[Alert]» alone on the cell’s first line and the box’s paragraphs under it (a «[Body] …» line with its button, a
+			// closing line). Unfolded line by line the bare tag would ship an EMPTY box with a red flag and its paragraphs free after it, so
+			// the cell’s boundary is the box’s: the paragraphs follow the tag and the writer’s own closer form («[End alert]») follows them, so
+			// the callout spans the cell (ContentConverter’s span mode) and the body path renders the paragraphs, the button and the note inside it.
+			const bc = cfg.bare_callout_cell;
+			let cellBox = null;
+			if (bc && bc.enabled !== false && !env(bc.env || "BARECALLOUTCELL_OFF") && paras.length >= 2) {
+				const p0 = String(paras[0]), m0 = [...p0.matchAll(RED)];
+				const t0 = m0.length === 1 ? normaliser.Parse(m0[0][1])?.primary?.tag : null;
+				if (t0 && (bc.tags ?? []).includes(t0) && !p0.replace(RED, "").trim()) cellBox = { tag: t0 };
+			}
+			const blocks = (cellBox ? [...paras, `🔴[RED TEXT] [End ${cellBox.tag}] [/RED TEXT]🔴`] : paras).filter((t) => String(t ?? "").trim())
 				.map((t) => ({ kind: "para", text: String(t), links: (b.links ?? []).slice(), wtPage: b.wtPage, list: "", listLevel: 0 }));
 			if (!blocks.length) continue;
 			const made = PageSplitter.BuildItemStream(blocks, normaliser);

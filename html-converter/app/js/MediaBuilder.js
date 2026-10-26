@@ -1412,6 +1412,37 @@ class MediaBuilder {
 		return null;
 	}
 
+	/**
+	 * THE VIDEO IN A LAYOUT-GRID CELL (body_region.layout_table_grid.cell_video; env CELLVIDEO_OFF). A grid cell’s «[video] <address>»
+	 * part renders as the body path’s own embed — the Shorts form in a listed series, the YouTube frame, the generic frame — so the
+	 * grid ships where the literal tag would have sent the whole table to the leak guard’s raw hand-off box. The address is the
+	 * part’s own, else the table block’s first hyperlink target. Returns the embed HTML, or null when there is no address to embed
+	 * (a login-walled address is the developer’s record, not a learner frame — the part stays text).
+	 */
+	static CellVideo(text, run, links = null) {
+		const tpl = DataService.Data.EmitTemplates, cfg = tpl.body_region?.layout_table_grid?.cell_video;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "CELLVIDEO_OFF"]) return null;
+		const acks = DataService.Data.AcksFormats.extraction_regexes;
+		let url = (String(text ?? "").match(/https?:\/\/[^\s\]\)"<>\[]+/) ?? [])[0] ?? "";
+		if (!url) url = (links ?? []).map((l) => l?.target).find((t) => /^https?:\/\//i.test(t || "")) ?? "";
+		if (!url) return null;
+		const videoId = url.match(new RegExp(acks.youtube_id))?.[1] ?? null;
+		const sf = tpl.elements?.video_shorts_form, mtS = tpl.interactive_builders?.carousel?.media_table ?? {};
+		const shortsForm = !!videoId && !!sf && sf.enabled !== false && !!mtS.shorts_embed
+			&& !(typeof process !== "undefined" && process.env && process.env[sf.env ?? "VIDEOSHORT_OFF"])
+			&& new RegExp(mtS.shorts_id_re ?? "youtube\\.com/shorts/([\\w-]{11})", "i").test(url)
+			&& (sf.series ?? []).some((p) => String(run?.moduleCode ?? "").toUpperCase().startsWith(String(p).toUpperCase()));
+		if (shortsForm) return Utils.FillTemplate(mtS.shorts_embed, { videoId });
+		if (videoId) {
+			let embed = Utils.FillTemplate(tpl.video.youtube, { videoId, params: "" });
+			if (run?.conventions?.videoHost === "youtube") embed = embed.replace("youtube-nocookie.com", "youtube.com");
+			return this.#applyVideoIcon(embed, run);
+		}
+		if (this.#loginWall(url)) return null;
+		return this.#applyVideoIcon(Utils.FillTemplate(tpl.video.generic_iframe, { url: Utils.EscapeHtml(url) }), run);
+	}
+
 	static #applyVideoIcon(embed, run) {
 		return this.#videoIconGroup(run) ? embed.replace('class="videoSection ', 'class="videoSection icon ') : embed;
 	};

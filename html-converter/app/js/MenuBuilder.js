@@ -2590,7 +2590,9 @@ class MenuBuilder {
 		const pane = (li, sc, c) =>
 			(mc.pane_open || "\n<div class=\"tab-pane\">\n<div class=\"row\">") + "\n"
 			+ Utils.FillTemplate(colT, { cls: c[0], content: colHtml(li, liLabel) }) + "\n"
-			+ Utils.FillTemplate(colT, { cls: c[1] ?? c[0], content: colHtml(sc, scLabel) })
+			// menu.omit_empty_sc: a pane whose SC bucket is empty is the LI column alone (the lesson-phase menu — the writer's
+			// document carries no success criteria, so no «I can:» heading stands over nothing)
+			+ (mc.omit_empty_sc === true && !hasContent(sc) ? "" : Utils.FillTemplate(colT, { cls: c[1] ?? c[0], content: colHtml(sc, scLabel) }))
 			+ (mc.pane_close || "\n</div>\n</div>");
 		// menu.pane_form "single_col": a level / tile pane is ONE column
 		// holding the LI heading, the LI lead + bullets, then the SC lead + bullets

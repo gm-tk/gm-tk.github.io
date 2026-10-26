@@ -323,9 +323,15 @@
 					"tags": ["video", "image", "audio", "alert", "important", "body", "button", "data marker", "external link"],
 					"lead_tags": ["video", "image", "audio", "alert", "important"],
 					"after_scan": {
-						"enabled": false,
+						"enabled": true,
 						"env": "ONECELLAFTERSCAN_OFF",
 						"_doc": "THE ONE-CELL TABLE UNFOLDS AFTER THE WIDGET SCAN TOO. The pass above runs before the page split and the scanner, so it has to GUESS whether a widget tag within sixty items owns the table — and declined every one-cell box that followed a tabs, drop-box or flip-card request (FRNO902's «[Alert] Did you know?» boxes after its tabs and drop boxes; CHFUN05's «[video shorts][media item 3] … [Caption]» cells after a flip card), which then shipped raw as leak-guard hand-off boxes. The second pass runs over each page once the scanner has taken its captures: a one-cell table the scanner left free is no widget's data, so the look-back gives way to the scanner's verdict; a captured table stays its widget's; every other guard (the lead tag, the tag list, the bare tag before, the paired red markers) holds. The finished pages show these cells as body — the alert box, the video and its caption — never a table."
+					},
+					"bare_callout_cell": {
+						"enabled": true,
+						"env": "BARECALLOUTCELL_OFF",
+						"tags": ["alert", "important"],
+						"_doc": "A CELL THAT OPENS WITH A BARE CALLOUT TAG IS THAT CALLOUT’S BOX. The writer types «[Alert]» alone on the cell’s first line and the box’s paragraphs under it — a «[Body] You are using key vocabulary …» line with its «[Button]» and placeholder-link note, a closing line (FRNO902’s vocabulary box on five lessons; the finished pages show one box holding the paragraphs and the button). Unfolded line by line, the bare tag shipped an EMPTY box carrying «Red Flag: Empty [alert]» with its paragraphs free after it. Where the first paragraph is one bare tag of `tags` with no words of its own and more paragraphs follow, the cell’s boundary is the box’s: the paragraphs follow the tag and the writer’s own closer form («[End alert]») is added after them, so the callout spans the cell and the body path renders the paragraphs, the button and the note inside the box. A cell whose first line carries words beside the tag, or a one-paragraph cell, unfolds as before."
 					},
 					"_doc_guards": "The cell must OPEN with a red tag of lead_tags (a media element or a callout); a heading tag anywhere keeps the table (a writer's '[H2] WHAT TO DO NEXT? I have used the [H2] tag here but please use …' is a developer note, not a heading); a widget tag — or a quiz sub-tag such as [question] — before the table with no section heading (h1–h3), page boundary or closing tag between keeps it too: the table is that widget's, and unfolding it would end the widget's capture early (COM1005 6.0's answers).",
 					"_doc": "THE ONE-CELL TABLE IS THE WRITER'S BOX. A one-row one-cell table holding one element — '[video] [media item 7] <address> / [caption] Possessive Pronoun' (CHFUN05), '[alert] Did you know …' (FRNO901 / 902, FRFUN06, CEDK501, OSOH401), '[audio item 1] / [transcript] …' (PWY1002) — shipped raw inside a hand-off box (this guard), while the human build shows the cell's content as ordinary body every time (40 of 40 tables whose words the gold carries). PageAssembler (before the page split and the widget scanner): on the MTK path (not a bilingual module), a free-body one-row one-cell table whose red tags all resolve to an element of tags (instruction fragments allowed) and that no bare tag line just before it may own is replaced by the items of its cell's paragraphs."
@@ -1898,10 +1904,10 @@
 			"_doc": "A NUMBERED MEDIA TAG WITH NO ADDRESS TAKES ITS MEDIA LIST ROW. The writer types '[Item 1] [Video] Youtube Matike Maranga (Karaoke)' with no address on the line; the Media List row for it carries the address in its source cell. The number lookup alone cannot find it — these lists often leave the Item cell empty and number the page instead ('║ 10 ║ Video ║ Vowel action song ║ Youtube ║ Matike Maranga (Karaoke) … [LINK: …]') — so the tag shipped the red flag and an empty frame while the acknowledgements, pairing the same row by its page number, already credited the video on the page. The human build embeds the row's address when it is a video host's (the YouTube frame on TRR102 0.0, TRR103 1.0, TRR203 3.0, PNR101 0.0, TRR110 4.0); a SharePoint address — a login-walled file the page cannot show — the human re-hosts (Vimeo, a local file) or leaves beside an empty frame with a red designer note naming the item and the file, so an address outside `embed_host_pattern` ships the red flag `not_embeddable_flag` (the writer's line and the address, the developer's record of what to re-host) with the empty frame, never a learner frame on a login wall. MediaBuilder.MediaListRowUrl, read LAST in the address chain (after the tag's own link, the line's, the following line's, the red address line): only a tag of one of `kinds` whose own words carry `item_pattern` consults the list; (1) where the list numbers its rows and the tag carries a number, the row with that number (any type — the writer's pointer is explicit); else (2) among the rows of `row_type_pattern` with an address, the one sharing the most of the tag's title words (the tag's words minus `kind_words`, `min_word_chars` or longer, folded without diacritics) with the row's visible words, plus `same_page_weight` when the row's page is the tag's block's own page (the acknowledgements' page-record evidence; counted only when the run trusts the page records) — a unique best with a positive score; a title-less tag takes only a unique same-page row; a tie or no row keeps the flag. A row embeds once: a row an earlier tag of the run took scores `used_penalty` lower, so the second of two part-matching rows goes to the later tag ('Youtube vowel song' on a later page takes 'Vowel waiata', not the 'Vowel action song' the overview already embeds — the human build's reading). A mail-safety wrapper around a row's address ('safelinks.protection.outlook.com/?url=…') is unwrapped (`unwrap_pattern`, its first group the encoded address), so the YouTube address inside it builds the YouTube frame. A tag with no item reference and a bare '[video]' are untouched. Env MLITEMROW_OFF."
 		},
 		"video_shorts_form": {
-			"enabled": false,
+			"enabled": true,
 			"env": "VIDEOSHORT_OFF",
-			"series": ["CHFUN", "HPRE", "PHE", "PWY", "OSSM", "OSSC", "OSGM", "SSOG", "BLL"],
-			"_doc": "THE SHORTS FORM BY SERIES. A writer's youtube.com/shorts/ address on the body path (a [video] tag, a media-list row) shipped the standard 16:9 frame; the carousel-slide and media-table paths already ship the corpus youtubeShort 1×1 form (interactive_builders.carousel.media_table.shorts_embed). The finished pages are a SERIES convention, not a corpus one: the CHFUN modules (68 of 80 Shorts — CHFUN04 alone keeps 16:9), HPRE301 (6 of 6), PHE1007 (2 of 2), PWY1008 (2 of 3), OSSM501 / OSSC501 / OSGM501 (3 of 3), SSOG103 (1 of 1) and BLL250 (3) box a Short as youtubeShort; the XDLS (1 of 13), XGF, SC, TEFUN, TWHR, CEDT and XLP golds keep the 16:9 frame. The body path reads the same shorts_embed for a Short in a listed series; every other series keeps the frame. A series joins this list on its own finished pages."
+			"series": ["CHFUN", "HPRE", "PHE", "PWY", "OSSM", "OSSC", "OSGM", "SSOG"],
+			"_doc": "THE SHORTS FORM BY SERIES. A writer's youtube.com/shorts/ address on the body path (a [video] tag, a media-list row) shipped the standard 16:9 frame; the carousel-slide and media-table paths already ship the corpus youtubeShort 1×1 form (interactive_builders.carousel.media_table.shorts_embed). The finished pages are a SERIES convention, not a corpus one: the CHFUN modules (68 of 80 Shorts — CHFUN04 alone keeps 16:9), HPRE301 (6 of 6), PHE1007 (2 of 2; PHE1006 keeps the frame), PWY1008 (2 of 3), OSSM501 / OSSC501 / OSGM401 / OSGM501 (OSGM301 alone keeps the frame — 2 of 3 OSGM modules box it) and SSOG103 (1 of 1) box a Short as youtubeShort; the XDLS (1 of 13), XGF, SC, TEFUN, TWHR, CEDT, CEDW, ENFUN, HPFUN and XLP golds keep the 16:9 frame, and the BLL golds split (BLL240 / BLL250 box it, BLL220 / BLL262 keep the frame — under the series floor, so BLL keeps the frame). The body path reads the same shorts_embed for a Short in a listed series; every other series keeps the frame. A series joins this list on its own finished pages when at least three of five of its modules box the Short."
 		},
 		"video_login_wall": {
 			"enabled": true,
@@ -3201,6 +3207,7 @@
 			"enabled": true,
 			"env": "BOXLEADBODY_OFF",
 			"types": [
+				"clickDrop",
 				"dragAndDrop",
 				"multiChoiceQuiz",
 				"typing",
@@ -3223,6 +3230,27 @@
 			],
 			"min_words": 4,
 			"min_box_chars": 60,
+			"untagged_prose": {
+				"enabled": true,
+				"env": "BOXLEADPROSE_OFF",
+				"max_paragraphs": 3,
+				"lead_cue_pattern": "^(?:i (?:have|'ve) (?:created|made|attached|shared|added|put|linked)\\b|please\\b|cs\\s*[:\\-–]|dev(?:eloper)?\\s*[:\\-–]|note(?: to (?:the )?(?:designer|developer|cs))?\\s*[:\\-–]|designer\\b|creative services)",
+				"_doc_lead_cue_pattern": "a paragraph whose first words are a developer’s lead (an I-have-created, a please, a CS/dev/note label) is the box’s note, never released as page text",
+				"no_member": {
+					"enabled": true,
+					"env": "BOXNOMEMBER_OFF",
+					"max_paragraphs": 3,
+					"min_words": 5,
+					"_doc_min_words": "the shortest paragraph that releases from a no-member box (a four-word label pair such as a first-page / second-page caption stays)",
+					"types": ["carousel", "clickDrop", "dragAndDrop", "interactive", "sketcher", "slider", "typing"],
+					"_doc": "THE NO-MEMBER SHORT-PROSE BOX. An un-built box whose capture is one to three plain paragraphs and nothing else (no table, tag or media member) holds the learner’s instruction for a widget whose data is elsewhere («Click on the buttons below to hear the different sounds …» before a carousel, «Space in art is the area around …» before a click-drop). The finished pages keep that prose free before the built widget for the listed types (carousel 4 of 4, click-drop 8 of 8, drag-and-drop 4 of 4, generic interactive 7 of 7, sketcher, slider, typing 5 of 6), while a drop-down, hint, self-check, speech bubble, modal or multi-choice quiz keeps it inside and is not listed. Every such paragraph releases before the box (the lead rules’ word floor and guards apply: a numbered or bulleted line, a line carrying a bracket token or an address, a red span or a developer’s lead stays); the box keeps the prose in its hand-off dump, so the builder still reads the instruction with the widget’s reference and no box is left empty. The listed types reach this form only — the table-led and tag-led forms keep the parent types list. OFF: the prose stays inside the box.",
+					"_doc_types": "the widget types whose finished pages keep a no-member box’s prose free (FREE on four fifths or more of the found rows); a type under that mark stays out"
+				},
+				"min_words": 4,
+				"tag_led_types": ["clickDrop", "interactive"],
+				"_doc_tag_led_types": "THE PROSE BEFORE A CLICK-DROP’S OR AN INTERACTIVE’S FIRST TAG MEMBER. The same instruction run stands before a widget whose data is tagged members rather than a table («[Click drop] / Match the terms to the pictures below. / [Item 1] …»). The finished pages keep that prose free on 22 of 23 click-drops and 3 of 3 generic interactives, while for a quiz, a drag-and-drop, a drop-down or a modal they split or keep it inside the widget, so only the listed types release the prose before a TAG member; the release stops at that first member — a widget’s own black lines after its first tag never leave the box.",
+				"_doc": "THE UNTAGGED PROSE BEFORE THE FIRST TABLE IS PAGE TEXT. The writer opens the widget with its tag and then types the learner’s instruction as plain black paragraphs — no [Body] tag — before the widget’s table («[drag and drop] / Order these weights from lightest to heaviest: / <the table>»). The tagged-lead rule above never saw those paragraphs, so they shipped inside the hand-off box with the data, hidden on the page (on several modules most of the page’s learner words). The finished pages keep that prose as page text before the box on 50 of the 58 such boxes whose words they carry (one paragraph 0.89, two or three 0.82; a run of four or more paragraphs is the widget’s own content and stays). The black paragraphs standing between the opener and the first table — up to max_paragraphs of min_words each, a whole paragraph each, never a list line — are released like the tagged lead, and only when the first member after them IS a table: a capture whose first member is a tag or a picture, or one with no member at all, keeps its prose (those forms are read on their own). The box must still keep its own content (min_box_chars)."
+			},
 			"_min_box_chars_note": "The box keeps its own content: the letters and digits of what stays in it (its text members and its tables) must reach this many, or nothing is released — a box left holding a bare tag line is an empty box."
 		},
 		"instructions_before": true,
@@ -8984,10 +9012,17 @@
 				"panel_close": "</div>",
 				"bracketed_delimiter": {
 					"enabled": true,
-					"_doc": "The ARFUN family (ARFUN01/02/03/05, single-file) delimits each fundamentals phase with BRACKETED red instruction spans — the third dialect after TEFUN's black 'Phase N' and ENFUN's bare red 'Phase N' — in widely varied wording, spelled numbers AND digits: openers '[Phase one content begins]'/'[Start of phase two content]' (class instruction, primary null; they would otherwise render as retained CS notes), closers '[End of Phase One]'/'[End of phase two content]' ('end other', CONTAINER_CLOSE) and '[End page and phase N content]' ('end page', PAGE_BOUNDARY — those never reach ConvertPage items). ARFUN02's phase-4 boundary is CLOSER-ONLY ('[End of phase three content]' — the writer never wrote a phase-4 opener), so closers are break candidates too, gated by closer_requires_opener: CLOSER-ONLY modules (ARFUN04 + TEFUN01/03/04/06/07/08 '[end phase N]') stay untouched — TEFUN already panels via the black dialect (unconditional closer acceptance would double-break it) and ARFUN04 (multi-file page model, a 'beginning of/begin' opener dialect) is not covered. An engagement-quiz bundle can swallow the next phase's opener (ARFUN01/03/05), so the scanner hard-terminator twin covers the OPENER pattern (closers are never consumed). Adjacent closer+opener breaks and a trailing break are harmless by construction (the phase_text emit branch trims + filters empty segments). Both patterns are ENTIRE-folded-span with optional surrounding brackets, so near-miss wording stays inert; no module carries both this and the black/red dialects. Env FUNPANBRACKET_OFF turns off all three acceptances; FUNDPHASE_OFF turns off the whole phase-text machinery.",
+					"_doc": "The ARFUN family (ARFUN01/02/03/05, single-file) delimits each fundamentals phase with BRACKETED red instruction spans — the third dialect after TEFUN's black 'Phase N' and ENFUN's bare red 'Phase N' — in widely varied wording, spelled numbers AND digits: openers '[Phase one content begins]'/'[Start of phase two content]', '[beginning of phase 1]' / '[Beginning of phase two content]' / '[Begin phase three]' (the begin / beginning wording — read too, or the overview ships with no phases navigation) (class instruction, primary null; they would otherwise render as retained CS notes), closers '[End of Phase One]'/'[End of phase two content]' ('end other', CONTAINER_CLOSE) and '[End page and phase N content]' ('end page', PAGE_BOUNDARY — those never reach ConvertPage items). ARFUN02's phase-4 boundary is CLOSER-ONLY ('[End of phase three content]' — the writer never wrote a phase-4 opener), so closers are break candidates too, gated by closer_requires_opener: CLOSER-ONLY modules (ARFUN04 + TEFUN01/03/04/06/07/08 '[end phase N]') stay untouched — TEFUN already panels via the black dialect (unconditional closer acceptance would double-break it) and ARFUN04 (multi-file page model, a 'beginning of/begin' opener dialect) is not covered. An engagement-quiz bundle can swallow the next phase's opener (ARFUN01/03/05), so the scanner hard-terminator twin covers the OPENER pattern (closers are never consumed). Adjacent closer+opener breaks and a trailing break are harmless by construction (the phase_text emit branch trims + filters empty segments). Both patterns are ENTIRE-folded-span with optional surrounding brackets, so near-miss wording stays inert; no module carries both this and the black/red dialects. Env FUNPANBRACKET_OFF turns off all three acceptances; FUNDPHASE_OFF turns off the whole phase-text machinery.",
 					"opener_pattern": "^\\[?(?:phase\\s+(?:one|two|three|four|five|\\d+)\\s+content\\s+begins|start\\s+of\\s+phase\\s+(?:one|two|three|four|five|\\d+)(?:\\s+content)?)\\]?$",
 					"closer_pattern": "^\\[?end(?:\\s+page)?(?:\\s+and|\\s*[-–—])?(?:\\s+end\\s+of)?\\s+(?:of\\s+)?phase\\s+(?:one|two|three|four|five|\\d+)(?:\\s+content)?\\]?$",
 					"closer_requires_opener": true,
+					"begin_wording": {
+						"enabled": true,
+						"env": "PHASEBEGIN_OFF",
+						"pattern": "^\\[?begin(?:ning)?\\s+(?:of\\s+)?phase\\s+(?:one|two|three|four|five|\\d+)(?:\\s+content)?\\]?$",
+						"multi_file_page": true,
+						"_doc": "THE PHASE OPENER IN THE BEGIN / BEGINNING WORDING, ON ANY PAGE MODEL. A writer opens each phase «[beginning of phase 1]», «[Beginning of phase two content]», «[Begin phase three]», «[Begin phase four]» and closes it «[end of phase N (content)]» (the closer pattern already reads that); the opener wording was not in opener_pattern, so no phase was cut. The pattern here joins opener_pattern. And the phase-text mode is scoped to the single-file page model (a bare «Phase N» line typed inside a multi-file module’s prose must never cut a panel) — a bracketed opener is explicit, so with multi_file_page a module whose registry page model is multi-file but whose one assembled page carries these openers (no page markers in its document) still panels and gets its phases navigation; without it that page fell to the [New tab] form, which read every [Tab N] inside the phases as a panel of its own (21 panels, no navigation) where the finished overview shows the four-phase navigation, the picture tiles and four phase panels."
+					},
 					"closer_primary_directives": [
 						"PAGE_BOUNDARY",
 						"CONTAINER_CLOSE"
@@ -9200,6 +9235,49 @@
 						}
 					}
 				}
+			},
+			"lesson_phases": {
+				"enabled": true,
+				"env": "LESSONPHASEMENU_OFF",
+				"marker_pattern": "^\\[lesson\\]\\s*fundamental\\s+phase\\s+(\\d+)",
+				"min_phases": 2,
+				"skip_tags": [
+					"lesson overview",
+					"lesson content",
+					"h1",
+					"h2",
+					"h3",
+					"title bar"
+				],
+				"text_tags": [
+					"body",
+					"alert"
+				],
+				"sentence_pattern": "^(?:in\\s+this\\s+lesson,?\\s+)?you\\s+are\\s+(?:also\\s+)?(learning|going\\s+to)\\s+(.+?)[.!]?$",
+				"going_to_lead": "to ",
+				"tab_label": "Phase {n}",
+				"menu": {
+					"overview_label": "Overview",
+					"nav_item": "\n<li><a>{label}</a></li>",
+					"pane_open": "\n<div class=\"tab-pane\">\n<div class=\"row\">",
+					"pane_close": "\n</div>\n</div>",
+					"col_template": "<div class=\"{cls}\">\n{content}\n</div>",
+					"heading_template": "<h5>{label}</h5>",
+					"li_label_default": "We are learning:",
+					"sc_label_default": "I can:",
+					"omit_empty_sc": true
+				},
+				"registry": {
+					"groups": {
+						"SSFUN|combo": {
+							"menu_cols": [
+								"col-md-8 col-12"
+							],
+							"menu_omit_empty_overview": true
+						}
+					}
+				},
+				"_doc": "THE LESSON-PHASE MENU. The Social Sciences Fundamentals writers author one single-file module as «[LESSON] FUNdamental Phase N» lessons, each opening — under its [Lesson Overview] or straight after the marker — with «In this lesson you are learning how to …. You are learning how to …» (or «… you are going to …», or the same sentence inside an [Alert box]); the finished overview’s module menu is one tab per phase, each pane «We are learning:» with bullets the human wrote from that sentence, and the sentence is gone from the body. Without this the menu shipped as one empty Overview tab with a «no overview copy» To Do and the sentences stayed in the lessons. The writer’s own sentences are the bullets here (each «you are learning …» / «you are going to …» sentence of the phase’s first paragraph is one; «going to» reads as «to»), the paragraph leaves the body when every sentence is one, the Overview tab is omitted (the row), and a phase whose first paragraph is content keeps it. The human’s «I can:» criteria are not in the document, so no SC column is drawn (menu.omit_empty_sc). Registry-gated by series or subject|phase."
 			},
 			"level_pages": {
 				"enabled": true,
@@ -10154,6 +10232,11 @@
 		},
 		"layout_table_grid": {
 			"enabled": true,
+			"cell_video": {
+				"enabled": true,
+				"env": "CELLVIDEO_OFF",
+				"_doc": "THE VIDEO IN A LAYOUT-GRID CELL. A writer lays out a page as a one-row table whose cell opens with «[video] <address>» beside the prose of the other cell (a newspaper page: «**Barking Mad with Kea News** / [video] <YouTube address>» ║ «**DogTube Channel Unleashed!** / A new DogTube channel …»). The layout-grid renderer builds the finished pages’ two-column row for it, but its cell renderer had no video part, so the tag stayed literal, the MTK leak guard saw a resolved tag in the grid and shipped the whole table raw inside a hand-off box — the page’s learner words hidden on a starting page. A «[video]» part now renders as the body path’s own embed (the Shorts form in a listed series, the YouTube frame, the generic frame; the address is the part’s own, else the table block’s first hyperlink), the part’s other words stay as text and a pasted-picture token goes; a part with no address, or a login-walled one, stays text as before (the guard then decides as it did)."
+			},
 			"red_part_note": {
 				"enabled": true,
 				"env": "CELLREDNOTE_OFF",
