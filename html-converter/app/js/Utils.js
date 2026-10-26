@@ -329,7 +329,56 @@ class Utils {
 		if (!cfg || cfg.enabled === false || !bundle) return null;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "ANSWERKEY_OFF"]) return null;
 		const types = [bundle.type, ...(bundle.extraTypes ?? [])];
-		return types.some((t) => (cfg.types ?? []).includes(t)) ? cfg : null;
+		return types.some((t) => (cfg.types ?? []).includes(t)) ? this.AnswerKeyWriterCue(cfg, bundle) : null;
+	};
+
+	/**
+	 * THE WRITER'S OWN ANSWER-COLOUR ANNOUNCEMENT widens the marks the carry-through ticks, for ONE
+	 * bundle. The default ticks the yellow highlighter only, because a green mark can colour the
+	 * OPTIONS themselves. When the writer's captured words say which colour marks the answers
+	 * («correct answer highlighted in green», «Answers in green», «correct order in green»), that
+	 * colour's highlight values — and, for green, the answer-green text colour — are ticked too,
+	 * so the hand-off box and the worklist show WHICH option is right instead of only the note
+	 * that one is. A bundle whose words deny it («answer options in green – no correct answers»)
+	 * keeps the default. Reads every captured block of the bundle (openers, members, table cells).
+	 * Data answer_key.writer_cue (pattern — one capture group per colour name, colours — name →
+	 * {highlight: Word highlight values, kinds: mark kinds}, deny_pattern); env ANSKEYCUE_OFF.
+	 *
+	 * @returns {Object} cfg itself, or a widened shallow copy (cuedColours names the colours found)
+	 */
+	static AnswerKeyWriterCue(cfg, bundle) {
+		const wc = cfg?.writer_cue;
+		if (!wc || wc.enabled === false || !wc.pattern) return cfg;
+		if (typeof process !== "undefined" && process.env && process.env[wc.env ?? "ANSKEYCUE_OFF"]) return cfg;
+		const seen = new Set();
+		let text = "";
+		for (const m of [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])]) {
+			const blk = m?.block;
+			if (blk) {
+				if (seen.has(blk)) continue;
+				seen.add(blk);
+				text += ` ${blk.text ?? ""}`;
+				if (Array.isArray(blk.rows)) text += ` ${blk.rows.flat().join(" ")}`;
+			} else if (m) text += ` ${m.text ?? ""} ${m.blackAfter ?? ""}`;
+		}
+		text = text.replace(/\u{1f534}/gu, "").replace(/\[\/?RED TEXT\]/g, " ").replace(/\s+/g, " ");
+		if (wc.deny_pattern && new RegExp(wc.deny_pattern, "iu").test(text)) return cfg;
+		const names = new Set();
+		for (const hit of text.matchAll(new RegExp(wc.pattern, "giu"))) {
+			const c = String(hit.slice(1).find(Boolean) ?? "").toLowerCase();
+			if (c) names.add(c);
+		}
+		if (!names.size) return cfg;
+		const cols = new Set(Array.isArray(cfg.highlight_colours) ? cfg.highlight_colours : []);
+		const kinds = new Set(cfg.mark_kinds ?? ["hl"]);
+		let widened = false;
+		for (const n of names) {
+			const e = wc.colours?.[n];
+			if (!e) continue;
+			for (const h of e.highlight ?? []) if (!cols.has(h)) { cols.add(h); widened = true; }
+			for (const k of e.kinds ?? []) if (!kinds.has(k)) { kinds.add(k); widened = true; }
+		}
+		return widened ? { ...cfg, highlight_colours: [...cols], mark_kinds: [...kinds], cuedColours: [...names] } : cfg;
 	};
 
 	/**
