@@ -1454,6 +1454,27 @@ class InteractiveScanner {
 		return Object.keys(reg.groups || {}).some((k) => k.toLowerCase() === lk);
 	};
 
+	/**
+	 * Is this red span one of the Writers Template's own prompt lines (red_flag.omit_placeholders.phrases — the template's
+	 * default text the writer never replaced), read after the lead cue the template types before it? Such a line marks
+	 * where a page section's text begins, so an open widget capture ends there (member_rule.template_prompt_terminates;
+	 * env PROMPTFENCE_OFF). Mirrors NotesAndComments.redFlag's omit test on the item's folded text.
+	 * @param {Object} it - a page item (type tag, no primary tag)
+	 * @returns {boolean}
+	 */
+	static #templatePromptLine(it) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.template_prompt_terminates;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "PROMPTFENCE_OFF"]) return false;
+		if (!it || it.type !== "tag" || !(it.parse?.class === "noise" || it.parse?.class === "instruction")) return false;
+		const op = DataService.Data.EmitTemplates?.red_flag?.omit_placeholders;
+		if (!op || op.enabled === false || !Array.isArray(op.phrases) || !op.phrases.length) return false;
+		let f = Utils.Fold(String(it.text ?? it.parse?.folded ?? "")).replace(/^[•\-*\s]+/, "").trim();
+		if (op.lead_cue_pattern) f = f.replace(new RegExp(op.lead_cue_pattern, "i"), "").trim();
+		if (!f) return false;
+		return op.phrases.some((p) => (op.match === "prefix" ? (f === p || f.startsWith(p)) : f === p));
+	};
+
 	static #redPhaseDelimiter(it, run) {
 		const fp = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.phase_text;
 		if (!fp) return false;
@@ -2482,6 +2503,13 @@ class InteractiveScanner {
 			// content). Gated to fundamentals body_class + single-file + the data flag. Data
 			// fundamentals_panels.phase_text.red_delimiter; env FUNPANRED_OFF.
 			if (!p && this.#redPhaseDelimiter(next, run)) break;
+			// The Writers Template's OWN prompt line («Insert brief introductory text.», «In this section outline any
+			// connections …» — red_flag.omit_placeholders.phrases, with or without the typed lead cue) is a HARD terminator: the
+			// template puts that line where a page section's text begins, so what follows it is the section's content, never a
+			// widget's data — a carousel request typed above the introduction prompt would otherwise swallow the whole
+			// introduction and its video. The prompt line itself still renders through the body path, where the placeholder
+			// rule omits it. Data member_rule.template_prompt_terminates; env PROMPTFENCE_OFF.
+			if (!p && this.#templatePromptLine(next)) break;
 			// A TILE-PAGE marker (`[Tile N content]` / `[Tile N]`, the WJFUN family's phase
 			// boundary) is a HARD terminator too: it resolves to the `shape n` SUBTAG, so without
 			// this a widget open at the end of a tile would swallow the next tile's marker (and its

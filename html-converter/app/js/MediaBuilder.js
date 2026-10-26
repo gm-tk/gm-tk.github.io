@@ -650,7 +650,19 @@ class MediaBuilder {
 			}
 		} else {
 			const videoId = url.match(new RegExp(acks.youtube_id))?.[1] ?? null;
-			if (videoId) {
+			// THE SHORTS FORM BY SERIES (elements.video_shorts_form; env VIDEOSHORT_OFF): a youtube.com/shorts/ address in a module of a
+			// listed series ships the corpus youtubeShort 1×1 form — read from the carousel media_table block, the one source the
+			// table and slide paths already use (the CHFUN golds, HPRE301, PHE1007, PWY1008, the OS modules, SSOG103, BLL250 ship it;
+			// the XDLS / XGF / SC golds keep the 16:9 frame, so their series are not listed). No icon: the gold's Shorts carry none.
+			const sf = tpl.elements?.video_shorts_form, mtS = tpl.interactive_builders?.carousel?.media_table ?? {};
+			const shortsForm = !!videoId && !!sf && sf.enabled !== false && !!mtS.shorts_embed
+				&& !(typeof process !== "undefined" && process.env && process.env[sf.env ?? "VIDEOSHORT_OFF"])
+				&& new RegExp(mtS.shorts_id_re ?? "youtube\\.com/shorts/([\\w-]{11})", "i").test(url)
+				&& (sf.series ?? []).some((p) => String(run?.moduleCode ?? "").toUpperCase().startsWith(String(p).toUpperCase()));
+			if (shortsForm) {
+				out.push(Utils.FillTemplate(mtS.shorts_embed, { videoId }));
+				builtVideoEmbed = true;
+			} else if (videoId) {
 				let embed = Utils.FillTemplate(tpl.video.youtube, { videoId, params: this.#timeParams(it, bodyItems, i, run, videoId) });
 				if (run) (run._timeParamsIds ??= new Set()).add(videoId);   // the page post-pass leaves this id alone
 				// the embed HOST follows the module's group convention

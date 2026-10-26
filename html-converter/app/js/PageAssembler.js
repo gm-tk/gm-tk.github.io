@@ -104,13 +104,20 @@ class PageAssembler {
 	 * replaced, before the page split and the widget scanner, by the items of its cell's paragraphs.
 	 * Data dual_language.mtk_leak_guard.one_cell_unfold; env ONECELLUNFOLD_OFF.
 	 */
-	static #oneCellUnfold(items, run, normaliser) {
+	static #oneCellUnfold(items, run, normaliser, afterScan = null) {
 		const dl = DataService.Data.EmitTemplates.elements?.dual_language;
 		const lg = dl?.mtk_leak_guard, cfg = lg?.one_cell_unfold;
 		if (!dl || dl.enabled === false || !lg || lg.enabled === false || !cfg || cfg.enabled === false) return;
 		const env = (k) => typeof process !== "undefined" && process.env && process.env[k];
 		if (env(cfg.env || "ONECELLUNFOLD_OFF") || env("MTKGUARD_OFF") || env("MTKREO_OFF")) return;
 		if (!run.mtkFlag) return;
+		// AFTER THE SCAN (one_cell_unfold.after_scan; env ONECELLAFTERSCAN_OFF): the pass runs a second time over each page once the
+		// widget scanner has taken its captures. A one-cell table the scanner left FREE is no widget's data, so the widget look-back
+		// below — a guess made before the scan, which kept FRNO902's «[Alert] …» boxes and CHFUN05's video cells raw whenever a
+		// widget tag stood within sixty items — gives way to the scanner's own verdict; a captured table is left to its widget. The
+		// bundles' item indices move with each splice. Every other guard holds.
+		const asCfg = cfg.after_scan;
+		if (afterScan && !(asCfg && asCfg.enabled !== false && !env(asCfg.env || "ONECELLAFTERSCAN_OFF"))) return;
 		const reo = !env("REOTRANSLATE_OFF") && (/reoTranslate/i.test(run.resolvedRules?.body_class || "") || dl.use_mtk_flag === true
 			|| (dl.code_prefixes || []).some((p) => String(run.moduleCode || "").toUpperCase().startsWith(String(p).toUpperCase())));
 		if (reo) return;
@@ -120,6 +127,7 @@ class PageAssembler {
 		for (let k = items.length - 1; k >= 0; k--) {
 			const it = items[k];
 			if (it?.type !== "table") continue;
+			if (afterScan && (it.consumedBy !== undefined || it._consumed)) continue;   // the scanner's: its widget's data
 			const b = it.block, rows = b?.rows ?? [];
 			if (rows.length !== 1 || (rows[0] ?? []).length !== 1) continue;
 			const cell = String(rows[0][0] ?? "");
@@ -142,7 +150,7 @@ class PageAssembler {
 			// inside a widget's run — a widget tag before the table with no section heading, page boundary or closing tag
 			// between them — the table is the widget's (the scanner captures it): left as it is
 			let inWidget = false;
-			for (let w = k - 1, steps = 0; w >= 0 && steps < (cfg.lookback ?? 60); w--, steps++) {
+			if (!afterScan) for (let w = k - 1, steps = 0; w >= 0 && steps < (cfg.lookback ?? 60); w--, steps++) {
 				const q = items[w];
 				if (q?.type !== "tag" || !q.parse?.primary) continue;
 				const d = q.parse.primary.directive, t = q.parse.primary.tag;
@@ -159,10 +167,18 @@ class PageAssembler {
 			const blocks = paras.filter((t) => String(t ?? "").trim())
 				.map((t) => ({ kind: "para", text: String(t), links: (b.links ?? []).slice(), wtPage: b.wtPage, list: "", listLevel: 0 }));
 			if (!blocks.length) continue;
-			items.splice(k, 1, ...PageSplitter.BuildItemStream(blocks, normaliser));
+			const made = PageSplitter.BuildItemStream(blocks, normaliser);
+			items.splice(k, 1, ...made);
+			if (afterScan) {   // a bundle after the table keeps pointing at its own items (ContentConverter reads bundle.startIndex)
+				const delta = made.length - 1;
+				if (delta) for (const bb of [...(afterScan.bundles ?? []), ...(afterScan.bundles ?? []).flatMap((x) => x.nestedBundles ?? [])]) {
+					if (typeof bb.startIndex === "number" && bb.startIndex > k) bb.startIndex += delta;
+					if (typeof bb.endIndex === "number" && bb.endIndex > k) bb.endIndex += delta;
+				}
+			}
 			n++;
 		}
-		if (n) run.AddNote("info", "PageAssembler", `${n} one-cell table(s) unfolded into the page body (the cell's elements, not a raw hand-off table).`);
+		if (n) run.AddNote("info", "PageAssembler", `${n} one-cell table(s) unfolded into the page body${afterScan ? " after the widget scan (the scanner left them free)" : ""} (the cell's elements, not a raw hand-off table).`);
 	}
 
 	/**
@@ -738,7 +754,39 @@ class PageAssembler {
 			let p = k - 1; while (p >= 0 && items[p]?.type !== "table" && empty(items[p])) p--;
 			if (items[p]?.type === "tag" && items[p].parse?.primary?.directive === "INTERACTIVE") continue;
 			let owner = null;
-			if (items[p]?.type === "tag" && (cfg.owner_tags ?? []).includes(items[p].parse?.primary?.tag)) {
+			// THE WRITER'S OWN TAG, SEPARATED FROM THE PAIR BY ITS PICTURE: «[Whakatauki]», then the proverb's picture line (an image /
+			// video / audio tag, or the red image-reference note with its address) or a bare «[Body Text]» tag, then the pair. The
+			// tagged callout gathers only the black text straight after its tag, so it shipped EMPTY with a red flag and this pass
+			// boxed the pair a second time (PWYWHA1 / PWY1001 / XGF9004 / GENO901). The gold shows the picture, then ONE box. Walking
+			// back over up to max_items such lines to a payload-free whakatauki tag makes that tag the pair's OWNER: it is blanked
+			// below and the re-typed pair carries the box, after the picture. Data callouts.untagged_proverb.owner_past_media; env
+			// WHKOWNERMEDIA_OFF.
+			{
+				const opm = cfg.owner_past_media;
+				if (opm && opm.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[opm.env || "WHKOWNERMEDIA_OFF"])) {
+					const mediaTags = new Set((opm.media_tags ?? ["image", "video", "audio"]).map((t) => String(t).toLowerCase()));
+					const urlRe = /https?:\/\//i;
+					const skippable = (b) => {
+						if (!b) return false;
+						if (b.type === "black") return empty(b);
+						if (b.type === "assettodo") return true;
+						if (b.type !== "tag") return false;
+						const bp = b.parse?.primary;
+						if (bp && mediaTags.has(String(bp.tag ?? "").toLowerCase())) return true;                       // the picture's own tag
+						if (!bp && !/[p{L}p{N}]/u.test(String(b.text ?? "") + String(b.blackAfter ?? ""))) return true;        // a bracket residue («]»)
+						if (!bp && (b.parse?.class === "instruction" || b.parse?.class === "noise")
+							&& urlRe.test(String(b.text ?? "") + " " + String(b.blackAfter ?? ""))) return true;         // «Image: iStock: …» + address
+						return opm.skip_bare_body !== false && String(bp?.tag ?? "") === "body" && !String(b.blackAfter ?? "").trim();
+					};
+					let o = p, hops = 0;
+					while (o >= 0 && hops < (opm.max_items ?? 4) && skippable(items[o])) { if (items[o].type !== "black") hops++; o--; }
+					if (hops && items[o]?.type === "tag" && items[o].parse?.primary?.tag === "whakatauki" && !String(items[o].blackAfter ?? "").trim()) {
+						owner = items[o];
+						p = o;   // the lookback below starts at the tag it would otherwise read as the pair's owner
+					}
+				}
+			}
+			if (!owner && items[p]?.type === "tag" && (cfg.owner_tags ?? []).includes(items[p].parse?.primary?.tag)) {
 				// a payload-free callout whose WHOLE content is the pair (a tag / the end follows the English) is the writer's
 				// proverb box under another name — the gold ships the whakatauki alone (AGH1002, CBI1004, CEDT207, CEDT301,
 				// XDLS901); any other owned line stays with its callout
@@ -746,7 +794,7 @@ class PageAssembler {
 				if (String(items[p].blackAfter ?? "").trim() || (e < items.length && items[e]?.type !== "tag")) continue;
 				owner = items[p];
 			}
-			let q = p, back = 0, owned = false;
+			let q = owner && items[p] === owner ? p - 1 : p, back = 0, owned = false;
 			while (q >= 0 && back <= (cfg.tagged_lookback ?? 2)) {
 				const b = items[q];
 				if (b?.type === "tag") { owned = b.parse?.primary?.tag === "whakatauki"; break; }
@@ -990,6 +1038,7 @@ class PageAssembler {
 		for (const page of run.pages) {
 			const bundles = InteractiveScanner.ScanPage(page, normaliser, run);
 			PageAssembler.#blackLeadMedia(page, normaliser, run);   // AFTER the scan (BLACKLEADMEDIA_OFF)
+			PageAssembler.#oneCellUnfold(page.items, run, normaliser, { bundles });   // AFTER the scan too: the one-cell tables it left free (ONECELLAFTERSCAN_OFF)
 			for (const b of bundles) {
 				b.index = run.interactives.length + 1;
 				b.page = page;

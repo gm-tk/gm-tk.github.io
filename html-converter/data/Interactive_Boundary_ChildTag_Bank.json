@@ -209,6 +209,11 @@
 				"^phase\\s+\\d+$"
 			],
 			"terminators_absolute_text_note": "(As in TEFUN02.) A standalone BLACK line matching one of these patterns is a HARD terminator (the same class as terminators_absolute, but for plain TEXT not a tag). The TEFUN fundamentals family delimits each phase with a plain-text 'Phase N' line; without this, a quiz/widget at the end of a phase (whose [end quiz] -> 'end mcq' is NOT an absolute terminator) over-captures the next phase's 'Phase N' delimiter + its content, so the phase never opens. Only a few fundamentals modules carry such a line (TEFUN01-08 + MXFUN01), so this can never cut a real widget member in a standard module. Read by InteractiveScanner.#swallowMembers; env FUNDPHASE_OFF turns it off (the line is swallowed).",
+			"template_prompt_terminates": {
+				"enabled": true,
+				"env": "PROMPTFENCE_OFF",
+				"_note": "THE TEMPLATE'S OWN PROMPT LINE ENDS A WIDGET CAPTURE. The Writers Template puts a standing prompt where a page section's text begins («Insert brief introductory text.» under the module introduction, «In this section outline any connections …» under Connections — Emit_Templates.red_flag.omit_placeholders.phrases, read after the lead cue the template types before it). A red span matching one of those phrases is therefore a HARD terminator of any open capture: a widget request typed above the prompt (a carousel asked for at the top of the introduction) ends there and the paragraphs and media after the prompt are the section's content, never the widget's. The prompt line itself renders through the body path, where the placeholder rule omits it as before. The widget's own capture is unchanged wherever no template prompt stands inside it."
+			},
 			"never_member_note": "Any tag in absolute_terminator_tags can be relied on as a hard boundary: when the parser sees it after an interactive has opened, the interactive's content is complete and normal tag-by-tag conversion resumes from that tag.",
 			"same_activity_multi_widget": true,
 			"nested_interactive_absorb": {
