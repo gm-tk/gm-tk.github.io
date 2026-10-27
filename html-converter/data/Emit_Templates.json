@@ -180,6 +180,90 @@
 		"note": "Ground-truthed canonical form (Tag_Interpretation_Rules.md §4.1): always a block <p>, inline style with no trailing semicolon (the sanctioned inline-CSS exception), fixed greppable prefix. The writer's own DEV: cue stays inside {text}; a leading CS-family cue is folded into the prefix by cs_dedupe to avoid a doubled 'CS: CS …'. Styling is identical across form/cs_form — only the prefix word differs (still BOLD RED on the front-end)."
 	},
 	"elements": {
+		"writing_process": {
+			"_doc": "THE WRITING PROCESS COMPONENT (KB 14B2 §14.10, constraint 94, CL-0116; the template's writingProcess.html). The design team centralised the writing-process graphic: one empty div the template fills, so a page never carries the stage images. The writer's tag is the whole instruction. [Writing Process] / [Writing Process all] → the full interactive circle; its phase follows the page's <html template> band through phase_by_template (1-3 has two graphics, so the tag names the year — year_patterns; a 1-3 tag without a year takes _default and raises the year note). [… activeStage <stage>] opens one stage: full.active_attr. [Writing Process single <stage>] → one singleStage icon per stage word (stages, longest key first, so 'checkpoint 1' beats 'checkpoint'); the interim '[<stage> icon from the Writing Process English Universal parameters]' form counts as single (single_pattern). The full circle sits ALONE in its own row (full.column_class) — the template designer's own note; single icons share one row, one column each (single_stage.column_class, share_row). Gold: ENGC403 / ENGS404 carry the full circle in div.row > div.col-md-8.col-12. Env WRITEPROC_OFF turns the retag and the build off together (the tag then falls through as the red Writers Note it was).",
+			"enabled": true,
+			"env": "WRITEPROC_OFF",
+			"full": {
+				"html": "<div class=\"writingProcess\" phase=\"{phase}\"{active}></div>",
+				"active_attr": " activeStage=\"{stage}\"",
+				"column_class": "col-md-8 col-12"
+			},
+			"single_stage": {
+				"html": "<div class=\"writingProcess singleStage\" stage=\"{stage}\"></div>",
+				"column_class": "col-2",
+				"share_row": true
+			},
+			"single_pattern": "\\bsingle\\b|\\bicons?\\b",
+			"_single_doc": "A tag is a single-stage request when it says «single», or when it says «icon(s)» AND names a stage; «icons from the writing process» with no stage named is the whole set — the full circle.",
+			"legacy_cue": {
+				"_doc": "THE OLDER LOOSE WORDING (the request that predates the tags, read as the same request — KB CL-0120). An image-tagged span whose bracket words ask for an image / icon / picture / graphic OF the writing process or the MTK writing cycle — «[insert image of writing process from ENFUN09 …]» (ENGC403, ENGS404), «[Insert right, image of global parameters image of MTK Phase 2 writing cycle …]» (ENGC206), «[add writing process image in from TK …]» (ENO2060), «[Insert right, image of the draft icon from the global parameters image of MTK writing cycle]» (ENGC206, a single stage), «[image] [Planning icon from English universal parameters]» (ENGC204's activity + image pairs) — builds the component exactly as the tag does. exclude_pattern keeps out a button link («[insert FUN button link ENFUN09 …]», ENGI405), a flowchart to re-create (ENGJ403) and a span that also carries a real pasted picture. Env WRITEPROCLEGACY_OFF restores the writer-image placeholder + red note for these spans; WRITEPROC_OFF turns the whole component off.",
+				"enabled": true,
+				"env": "WRITEPROCLEGACY_OFF",
+				"pattern": "(?:\\bimages?\\b|\\bicons?\\b|\\bpictures?\\b|\\bgraphics?\\b)[^\\]]*?\\b(?:writing\\s+process|writing\\s+cycle|english\\s+universal\\s+parameters)\\b|\\b(?:writing\\s+process|writing\\s+cycle)\\b[^\\]]*?(?:\\bimages?\\b|\\bicons?\\b)",
+				"exclude_pattern": "\\bbutton\\b|\\bflow\\s*-?\\s*chart\\b|\\blink\\b|\\[\\s*image\\s*:\\s*[^\\]]*\\.(?:png|jpe?g|gif|svg)"
+			},
+			"active_pattern": "\\bactive\\s*stage\\b\\s*[:=\\-]?\\s*(checkpoint\\s*[123]|plan|draft|edit|revise|publish|reflect|checkpoint)\\b",
+			"stages": {
+				"checkpoint 1": "Checkpoint_1",
+				"checkpoint 2": "Checkpoint_2",
+				"checkpoint 3": "Checkpoint_3",
+				"checkpoint": "Checkpoint",
+				"plan": "Plan",
+				"planning": "Plan",
+				"draft": "Draft",
+				"drafting": "Draft",
+				"edit": "Edit",
+				"editing": "Edit",
+				"revise": "Revise",
+				"revising": "Revise",
+				"publish": "Publish",
+				"publishing": "Publish",
+				"reflect": "Reflect",
+				"reflecting": "Reflect"
+			},
+			"phase_by_template": {
+				"1-3": {
+					"_default": "1-yr-23",
+					"year_patterns": {
+						"1-yr-1": "\\b(?:year|yr|y)\\s*1\\b(?!\\s*(?:-|to|and|&)\\s*3)",
+						"1-yr-23": "\\b(?:years?|yrs?|y)\\s*2\\s*(?:-|to|and|&|,)?\\s*3\\b|\\b(?:years?|yrs?|y)\\s*(?:2|3)\\b"
+					}
+				},
+				"4-6": "2-yr-456",
+				"7-8": "3-yr-78",
+				"9-10": "4-yr9-10",
+				"NCEA": "5-NCEA1"
+			},
+			"notes": {
+				"year_missing": "Writing process — this is a phase 1 (template 1-3) page and the tag did not say which year: built the years 2-3 graphic (phase=\"1-yr-23\"). Change to phase=\"1-yr-1\" if this is a year 1 module.",
+				"phase_unresolved": "Writing process — the full circle needs a phase value and this page's template (\"{template}\") maps to none; add <div class=\"writingProcess\" phase=\"…\"></div> by hand (1-yr-1 / 1-yr-23 / 2-yr-456 / 3-yr-78 / 4-yr9-10 / 5-NCEA1).",
+				"stage_missing": "Writing process — a single stage icon was asked for but no stage was named ({words}); add <div class=\"writingProcess singleStage\" stage=\"…\"></div> with Plan / Draft / Edit / Revise / Publish / Reflect / Checkpoint / Checkpoint_1 / Checkpoint_2 / Checkpoint_3."
+			}
+		},
+		"central_image": {
+			"_doc": "A CENTRALISED IMAGE BY NAME (KB 14E §14.13 / §14.14, constraint 95, CL-0117; the template's refresh_imageCentral.html). The design team's central store holds standardised images used across modules, referenced from the page with class imageCentral (the template prefixes the path). A writer asks for one with [Centralised image: Quinn 4] / [Image centralised Hypi] / [Central image: clubhouse] — a span that resolves to the ordinary image tag. When its words name an asset in this registry the engine builds that asset's <img> (form) instead of a writer-image placeholder; a name no registry row knows is an ordinary image request and the span is untouched (XGF9001's '[Insert central image]' + iStock URL means a centred stock image — unchanged). Registry rows: name → folder, file pattern, the pose numbers the server holds, the alt. Science (Aroha, Lani, Max, Quinn): poses 1-3 full body, 4-5 head shots, Quinn 4-7; no number → default_pose. Maths: the un-numbered portrait; numbered poses only where the server has them (ada 1-3, omar 1-16) and only when the writer names the number. Folder casing is the server's ('Science Characters/' and 'Maths Characters/', both capitalised — the template page writes the Science folder lower-case; the server spelling is the one that exists). A known name with a pose the server does not hold raises pose_unknown and builds nothing. Env CENTRALIMG_OFF restores the plain image path for every such span.",
+			"enabled": true,
+			"env": "CENTRALIMG_OFF",
+			"cue_pattern": "\\bcentrali[sz]ed\\s+images?\\b|\\bimages?\\s+centrali[sz]ed\\b|\\bcentral\\s+images?\\b|\\bimage\\s*central\\b",
+			"form": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"{src}\" alt=\"{alt}\">",
+			"assets": {
+				"aroha": { "src": "Science Characters/Aroha-{n}.jpg", "poses": [1, 2, 3, 4, 5], "default_pose": 1, "alt": "Aroha", "family": "Science" },
+				"lani": { "src": "Science Characters/Lani-{n}.jpg", "poses": [1, 2, 3, 4, 5], "default_pose": 1, "alt": "Lani", "family": "Science" },
+				"max": { "src": "Science Characters/Max-{n}.jpg", "poses": [1, 2, 3, 4, 5], "default_pose": 1, "alt": "Max", "family": "Science" },
+				"quinn": { "src": "Science Characters/Quinn-{n}.jpg", "poses": [1, 2, 3, 4, 5, 6, 7], "default_pose": 1, "alt": "Quinn", "family": "Science" },
+				"clubhouse": { "src": "Science Characters/comic scenes/clubhouse_1.png", "alt": "Clubhouse", "family": "Science" },
+				"kowhai reserve": { "src": "Science Characters/comic scenes/kowhai_reserve_1.png", "alt": "Kōwhai Reserve", "family": "Science" },
+				"ada": { "src": "Maths Characters/maths_characters_ada.jpg", "numbered_src": "Maths Characters/ada/maths_characters_ada_{n}.jpg", "poses": [1, 2, 3], "alt": "Ada", "family": "Maths" },
+				"omar": { "src": "Maths Characters/maths_characters_omar.jpg", "numbered_src": "Maths Characters/omar/maths_characters_omar_{n}.jpg", "poses": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], "alt": "Omar", "family": "Maths" },
+				"hypi": { "src": "Maths Characters/maths_characters_hypi.jpg", "alt": "Hypi", "family": "Maths" },
+				"erni": { "src": "Maths Characters/maths_characters_erni.jpg", "alt": "Erni", "family": "Maths" },
+				"lara": { "src": "Maths Characters/maths_characters_lara.jpg", "alt": "Lara", "family": "Maths" }
+			},
+			"notes": {
+				"pose_unknown": "Centralised image — the central store has no pose {n} for {name} (it holds {poses}); insert the right image by hand or ask the design team."
+			}
+		},
 		"tail_punct_rejoin": {
 			"enabled": true,
 			"env": "TAILPUNCT_OFF",
@@ -8956,6 +9040,16 @@
 			"enabled": true
 		},
 		"fundamentals_panels": {
+			"level_labels": {
+				"_doc": "THE LANGUAGES FUN LEVEL NAMES (KB 14A §14.1, CL-0118 — the curriculum leads' confirmed names). Every Language Fundamentals module shows its two proficiency levels as First Steps and Next Steps — the names curriculum confirmed — wherever the level name is displayed: the module menu's tabs, the .phases strip, the phaseLink tiles' h3, the levels-overview panel heading and button page. The writers' markers still carry the old words ([PAGE 1 Novice], [Novice Page 1], [Novice Content starts here], [Tab 1] Novice Learning Intentions), so the level WORD stays the key everything is matched on and only the DISPLAYED label changes through this map (folded word → label); a word not in the map (a future [PAGE 1 First Steps]) displays as typed. Scoped to the Languages FUN code prefixes. The eleven golds that carry Novice / Emergent predate the decision and are overridden by it (named). Env LEVELNAMES_OFF restores the writers' words.",
+				"enabled": true,
+				"env": "LEVELNAMES_OFF",
+				"code_prefixes": ["CHFUN", "CHIFUN", "JPFUN", "JPNFUN", "JAPFUN", "FRFUN", "FREFUN", "GERFUN", "SPAFUN", "SAMFUN"],
+				"map": {
+					"novice": "First Steps",
+					"emergent": "Next Steps"
+				}
+			},
 			"phase_overview_note": {
 				"_doc": "THE ENFUN PHASE PANEL'S OWN OVERVIEW. The ENFUN writers type an [Overview] block for every phase — an 'Overview' heading, 'We are learning to:' and 'You will show your understanding by:' with their lists. The first becomes the module menu; each later one opened its phase panel as learner content. Every ENFUN gold (ENFUN01–05, 07–09) keeps ONE overview, in the module menu, and none inside a phase panel — a family dialect (keyed to the family by prefixes). The panel's first row, when it opens with the head_pattern and holds only headings and lists, becomes the developer's Writers Note carrying the same words; the phase content after it is untouched.",
 				"enabled": true,

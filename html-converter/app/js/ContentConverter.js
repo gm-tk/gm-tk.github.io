@@ -107,6 +107,26 @@ class ContentConverter {
 	};
 
 	/**
+	 * The label a Languages Fundamentals page SHOWS for a proficiency level the writer named
+	 * (fundamentals_panels.level_labels: folded word → display name; env LEVELNAMES_OFF). The
+	 * writer's word stays the key the level is matched on everywhere; only the displayed text
+	 * changes, and only in a module whose code starts with a listed prefix. A word the map does
+	 * not know displays as typed.
+	 * @param {string} label - the level word as the writer typed it
+	 * @param {ConversionRun} run
+	 * @returns {string}
+	 */
+	static LevelDisplayLabel(label, run) {
+		const c = DataService.Data.EmitTemplates.body_region?.fundamentals_panels?.level_labels;
+		if (!c || c.enabled === false) return label;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "LEVELNAMES_OFF"]) return label;
+		const code = String(run?.moduleCode ?? "");
+		if ((c.code_prefixes ?? []).length && !(c.code_prefixes ?? []).some((p) => code.startsWith(p))) return label;
+		const hit = (c.map ?? {})[Utils.Fold(String(label ?? ""))];
+		return hit ?? label;
+	}
+
+	/**
 	 * LEVEL-PAGE FUNDAMENTALS PRE-PASS (the CHFUN "[PAGE N Novice]"
 	 * dialect, module CHFUN01).
 	 *
@@ -269,8 +289,9 @@ class ContentConverter {
 				const m = raw.match(/\[\s*page\s+\d+\s+([^\]]+?)\s*\]/i)
 					|| (lfRe !== null ? raw.match(/\[\s*([^\]\d]+?)\s+page\s+\d+\s*\]/i) : null)   // "[Novice Page 1]"
 					|| (lsRe !== null ? raw.match(/\[\s*(\p{L}+)\s+content\s+starts\s+here\s*\]/iu) : null);   // the level section
-				const label = (m ? m[1] : "").replace(/\s+/g, " ").trim() || `Phase ${menuLevels.length + 1}`;
-				const key = label.toLowerCase();
+				const rawLabel = (m ? m[1] : "").replace(/\s+/g, " ").trim() || `Phase ${menuLevels.length + 1}`;
+				const key = rawLabel.toLowerCase();   // the writer's level word keys the level (its [Tabs] menu, re-entry)
+				const label = this.LevelDisplayLabel(rawLabel, run);   // what the page shows for it (level_labels)
 				if (!levelIdx.has(key)) {
 					levelIdx.set(key, menuLevels.length);
 					const _pm = preMenu.get(key);   // the level's [Tabs]-typed menu seeds it
@@ -2137,6 +2158,10 @@ class ContentConverter {
 		// Data flag: body_region.content_row_open, the '{rowClass}' template slot
 		let nextRowClass = "";
 		let nextColClass = "";   // a one-shot section column class (a callout variant's `column`)
+		// the `parts` length right after the last single-stage writing-process icon was emitted — a
+		// following single icon joins that row (one column each) only while nothing else has been
+		// pushed since (elements.writing_process.single_stage.share_row)
+		let wpRowLastIdx = -1;
 		// the index in `parts` of the most recently opened content row, so the
 		// positional side-alert routing below can look at the FIRST block of the row it is
 		// about to pair with (an activity box vs plain content). Set by the lazy row open only.
@@ -2183,6 +2208,8 @@ class ContentConverter {
 		 */
 		const rowFor = (kind) => {
 			if (stack.length) return;
+			// a writing-process icon row holds icons only — the next root-level block of any other kind closes it
+			if (wpRowLastIdx !== -1) { if (rowOpen && wpRowLastIdx === parts.length) breakRow(); wpRowLastIdx = -1; }
 			// GROUPED ROWS (data: body_region.row_breaks.group_content) — matches
 			// the human, where most rows hold 2+ content children. Text and lists
 			// FLOW into the current row; a heading starts a fresh row (the text
@@ -4046,6 +4073,34 @@ class ContentConverter {
 							if (!stack.length) breakRow();
 						}
 						if (!stack.length) { breakRow(); parts.push(INQ_SENTINEL); pageLabelHold = ""; }
+					}
+					// THE WRITING PROCESS COMPONENT'S OWN ROW (KB constraint 94 / CL-0116; data
+					// elements.writing_process; env WRITEPROC_OFF). The template designer's note: the
+					// writingProcess div must sit in a row of its own or it bugs — so at the root the full
+					// circle closes the open row, takes a row in its own column class (the gold's
+					// col-md-8 col-12) and closes it again; single-stage icons take a shared row, one
+					// column each (the template page's col-2 strip), joining the previous icon's row only
+					// while nothing else has been pushed since. Inside a box (stack open) the component
+					// renders in place like any element.
+					const _wpCfg = this.#writingProcessItem(it);   // the tag, or an image span in the legacy wording
+					if (_wpCfg && !stack.length) {
+						const _wpOut = this.#element(it, bodyItems, i, stack, run);
+						const _wpSingle = this.#writingProcessRead(it, _wpCfg).single;
+						const _wpCol = (_wpSingle ? _wpCfg.single_stage?.column_class : _wpCfg.full?.column_class) || "";
+						const _wpJoin = _wpSingle && _wpCfg.single_stage?.share_row !== false && rowOpen && wpRowLastIdx === parts.length;
+						if (_wpSingle) {
+							// one column per icon — a tag naming two stages ([Edit and Revise icons …]) opens two
+							const _wpSep = `</div>\n<div class="${_wpCol}">`;
+							const _wpCols = [];
+							_wpOut.forEach((h, k) => { if (k > 0 || _wpJoin) _wpCols.push(_wpSep); _wpCols.push(h); });
+							if (!_wpJoin) { breakRow(); nextColClass = _wpCol; }
+							emit(..._wpCols);
+						} else { breakRow(); nextColClass = _wpCol; emit(..._wpOut); }
+						markContent();
+						wpRowLastIdx = _wpSingle ? parts.length : -1;
+						if (!_wpSingle) breakRow();
+						while (bodyItems[i + 1]?._consumed) i++;
+						break;
 					}
 					// row kind: headings start (and may share) a row; plain
 					// text-family elements behave as text runs; media and
@@ -12316,6 +12371,7 @@ class ContentConverter {
 		const _tags = [...(c.tags ?? ["image", "video", "audio", "embed"]), ...(_moreOn ? (_more.tags ?? []) : [])];
 		if (!_tags.includes(it.parse?.primary?.tag) || it.parse.instructionFragment) return out;
 		if (it._sourceNoted) return out;   // the embed's sourcing note already carries the writer's words (embeds.source_link_note)
+		if (this.#writingProcessItem(it)) return out;   // the request was the writing-process graphic and the component fulfilled it
 		if (_moreOn) {
 			const op = DataService.Data.EmitTemplates.red_flag?.omit_placeholders;
 			const f = Utils.Fold(String(it.text ?? "").replace(/\[[^\]]*\]/g, " ")).replace(/^[•\-*\s]+/, "").trim();
@@ -12330,10 +12386,174 @@ class ContentConverter {
 		return [...out, NotesAndComments.redFlag(String(it.text ?? "").trim(), run, "cs")];
 	}
 
+	// =======================================================================
+	// THE WRITING PROCESS COMPONENT (KB 14B2 §14.10, constraint 94, CL-0116)
+	// =======================================================================
+
+	/** elements.writing_process when the rule is on (data flag + env WRITEPROC_OFF), else null. */
+	static #writingProcessCfg() {
+		const c = DataService.Data.EmitTemplates.elements?.writing_process;
+		if (!c || c.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "WRITEPROC_OFF"]) return null;
+		return c;
+	}
+
+	/**
+	 * Reads the writer's tag: { single, stages[], active, year, words }. `single` — the tag asks
+	 * for stage icon(s) (single_pattern: the word «single», or «icon(s)» in the interim phrasing);
+	 * `stages` — every stage named, in the writer's order (longest key first, so «checkpoint 1»
+	 * is not read as «checkpoint»); `active` — the activeStage value when named; `year` — the
+	 * phase-1 graphic the tag names (phase_by_template["1-3"].year_patterns).
+	 */
+	static #writingProcessRead(it, cfg) {
+		const raw = String(it.text ?? "");
+		const f = Utils.Fold(raw).replace(/[\[\]]/g, " ").replace(/\s+/g, " ").trim();
+		let active = null, rest = f;
+		const am = cfg.active_pattern ? f.match(new RegExp(cfg.active_pattern, "i")) : null;
+		if (am) { active = am[1].replace(/\s+/g, " ").trim(); rest = f.replace(am[0], " "); }
+		const keys = Object.keys(cfg.stages ?? {}).sort((a, b) => b.length - a.length);
+		const stages = [];
+		let scan = " " + rest + " ";
+		for (const k of keys) {
+			const re = new RegExp("\\b" + k.replace(/\s+/g, "\\s*") + "\\b", "ig");
+			if (re.test(scan)) { stages.push({ key: k, at: scan.search(re) }); scan = scan.replace(re, " "); }
+		}
+		stages.sort((a, b) => a.at - b.at);
+		const toValue = (k) => (cfg.stages ?? {})[String(k).replace(/\s+/g, " ").trim()] ?? null;
+		// «single» is always one stage; «icon(s)» is one stage only when a stage is named — icons with no
+		// stage named are the whole set, the full circle (_single_doc)
+		const single = /\bsingle\b/i.test(rest) || (!!cfg.single_pattern && new RegExp(cfg.single_pattern, "i").test(rest) && stages.length > 0);
+		let year = null;
+		const yp = cfg.phase_by_template?.["1-3"]?.year_patterns ?? {};
+		for (const [phase, pat] of Object.entries(yp)) if (new RegExp(pat, "i").test(f)) { year = phase; break; }
+		return { single, stages: stages.map((s) => toValue(s.key)).filter(Boolean), active: active ? toValue(active) : null, year, words: f };
+	}
+
+	/**
+	 * True when an image-tagged span is the older loose request for the writing-process graphic
+	 * («[insert image of writing process from …]», «[… draft icon from the … MTK writing cycle]»,
+	 * «[Planning icon from English universal parameters]») — elements.writing_process.legacy_cue
+	 * (env WRITEPROCLEGACY_OFF). A button link, a flowchart or a span carrying a pasted picture is not.
+	 */
+	static #writingProcessLegacy(it, cfg) {
+		const lc = cfg && cfg.legacy_cue;
+		if (!lc || lc.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[lc.env ?? "WRITEPROCLEGACY_OFF"]) return false;
+		const raw = String(it.text ?? "");
+		if (lc.exclude_pattern && new RegExp(lc.exclude_pattern, "i").test(raw)) return false;
+		const f = Utils.Fold(raw);
+		return !!lc.pattern && new RegExp(lc.pattern, "i").test(f);
+	}
+
+	/**
+	 * A table cell's image text («[image] [Planning icon from English universal parameters]», or the words after an
+	 * [image] tag) that is the older loose request for the writing-process graphic → the component's HTML; otherwise
+	 * null and the cell renders its image as before. Called by TablesAndGrids (the layout-grid and kept-table cells).
+	 * @param {string} text - the cell part's raw text
+	 * @param {ConversionRun} run
+	 * @returns {string[]|null}
+	 */
+	static WritingProcessCell(text, run) {
+		const cfg = this.#writingProcessCfg();
+		if (!cfg) return null;
+		const it = { text: String(text ?? ""), parse: { primary: { tag: "image" } } };
+		if (!this.#writingProcessLegacy(it, cfg)) return null;
+		return this.#writingProcessEmit(it, run);
+	}
+
+	/** elements.writing_process when this item is a writing-process request — the tag, or an image span in the legacy wording. */
+	static #writingProcessItem(it) {
+		const cfg = this.#writingProcessCfg();
+		if (!cfg) return null;
+		const tag = it?.parse?.primary?.tag;
+		if (tag === "writing process") return cfg;
+		if (tag === "image" && this.#writingProcessLegacy(it, cfg)) return cfg;
+		return null;
+	}
+
+	/** The component's HTML (plus any To Do note) for one [Writing Process …] span. */
+	static #writingProcessEmit(it, run) {
+		const cfg = this.#writingProcessCfg();
+		if (!cfg) return [NotesAndComments.redFlag(String(it.text ?? "").trim(), run, "cs")];
+		const r = this.#writingProcessRead(it, cfg);
+		const out = [];
+		if (r.single) {
+			if (!r.stages.length) {
+				out.push(NotesAndComments.redFlag(Utils.FillTemplate(cfg.notes?.stage_missing ?? "Writing process — no stage named ({words}).", { words: r.words }), run, "todo"));
+				return out;
+			}
+			for (const st of r.stages) out.push(Utils.FillTemplate(cfg.single_stage.html, { stage: st }));
+			return out;
+		}
+		// the full circle — its phase follows the page's template band
+		const rawPhase = SkeletonBuilder.ResolveTemplatePhase(run, { quiet: true });
+		const template = DataService.Data.EmitTemplates.skeleton?.template_attr_map?.[rawPhase] ?? rawPhase ?? "";
+		let map = (cfg.phase_by_template ?? {})[template];
+		if (map === undefined) map = (cfg.phase_by_template ?? {})[String(template).toUpperCase()];
+		let phase = null;
+		if (typeof map === "string") phase = map;
+		else if (map && typeof map === "object") {
+			phase = r.year ?? map._default ?? null;
+			if (!r.year && cfg.notes?.year_missing) out.push(NotesAndComments.redFlag(cfg.notes.year_missing, run, "todo"));
+		}
+		if (!phase) {
+			out.push(NotesAndComments.redFlag(Utils.FillTemplate(cfg.notes?.phase_unresolved ?? "Writing process — no phase for template \"{template}\".", { template: String(template) }), run, "todo"));
+			return out;
+		}
+		const active = r.active ? Utils.FillTemplate(cfg.full.active_attr ?? "", { stage: r.active }) : "";
+		out.push(Utils.FillTemplate(cfg.full.html, { phase, active }));
+		return out;
+	}
+
+	// =======================================================================
+	// A CENTRALISED IMAGE BY NAME (KB 14E, constraint 95, CL-0117)
+	// =======================================================================
+
+	/**
+	 * An image-tagged span whose words are a centralised-image request naming a registry
+	 * asset ([Centralised image: Quinn 4], [Image centralised Hypi]) → that asset's <img>
+	 * (elements.central_image.form); a known name with a pose the server does not hold → the
+	 * pose_unknown To Do; any other span → null, so the ordinary image path runs unchanged.
+	 * Data flag elements.central_image.enabled; env CENTRALIMG_OFF.
+	 */
+	static #centralImage(it, run) {
+		const c = DataService.Data.EmitTemplates.elements?.central_image;
+		if (!c || c.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "CENTRALIMG_OFF"]) return null;
+		const f = Utils.Fold(String(it.text ?? "")).replace(/[\[\]]/g, " ").replace(/\s+/g, " ").trim();
+		if (!c.cue_pattern || !new RegExp(c.cue_pattern, "i").test(f)) return null;
+		// the words after the cue name the asset (+ an optional pose number)
+		const rest = f.replace(new RegExp(c.cue_pattern, "i"), " ").replace(/^[\s:;,\-–—]+/, "").trim();
+		const assets = c.assets ?? {};
+		const names = Object.keys(assets).sort((a, b) => b.length - a.length);
+		const name = names.find((n) => new RegExp("(^|\\s)" + n.replace(/\s+/g, "\\s+") + "(\\s|$)", "i").test(" " + rest + " "));
+		if (!name) return null;
+		const a = assets[name];
+		const nm = (" " + rest + " ").replace(new RegExp("(^|\\s)" + name.replace(/\s+/g, "\\s+") + "(\\s|$)", "i"), " ").match(/(?:^|\s)(\d{1,2})(?:\s|$)/);
+		const n = nm ? parseInt(nm[1], 10) : null;
+		let src;
+		if (n !== null) {
+			if (!(a.poses ?? []).includes(n)) {
+				return [NotesAndComments.redFlag(Utils.FillTemplate(c.notes?.pose_unknown ?? "Centralised image — no pose {n} for {name}.",
+					{ n: String(n), name: a.alt ?? name, poses: (a.poses ?? []).join(", ") || "none" }), run, "todo")];
+			}
+			src = Utils.FillTemplate(a.numbered_src ?? a.src, { n: String(n) });
+		} else {
+			src = Utils.FillTemplate(a.src, { n: String(a.default_pose ?? "") });
+		}
+		run.AddNote("info", "ContentConverter", `Centralised image "${a.alt ?? name}"${n !== null ? ` pose ${n}` : ""} built from the central store (${src}).`);
+		return [Utils.FillTemplate(c.form, { src: Utils.EscapeHtml(src), alt: Utils.EscapeHtml(a.alt ?? name) })];
+	}
+
 	static #elementCore(it, bodyItems, i, stack, run) {
 		const tpl = DataService.Data.EmitTemplates;
 		const tag = it.parse.primary.tag;
 		const out = [];
+
+		// ---- [Writing Process …], or the older loose request for the graphic → the centralised component ----
+		// (KB constraint 94 / CL-0116 + CL-0120; data elements.writing_process, env WRITEPROC_OFF / WRITEPROCLEGACY_OFF).
+		// Read before the instruction-fragment note: the span IS the request and the component fulfils it.
+		if (this.#writingProcessItem(it)) return this.#writingProcessEmit(it, run);
 
 		// instruction fragments riding in the same span flag first, in place
 		if (it.parse.instructionFragment) {
@@ -12570,6 +12790,11 @@ class ContentConverter {
 
 		// ---- image (Mode P / Mode D — uniform per run) ---------------------
 		if (tag === "image") {
+			// a centralised image the writer names ([Centralised image: Quinn 4]) builds the central-store
+			// asset from the registry (KB constraint 95 / CL-0117; data elements.central_image; env
+			// CENTRALIMG_OFF); a name the registry does not know leaves the span an ordinary image request
+			const _ci = this.#centralImage(it, run);
+			if (_ci) { out.push(..._ci); return out; }
 			// a generic media-item reference whose own URL is a video is that video (see #mediaItemVideoUrl)
 			const _miv = this.#mediaItemVideoUrl(it);
 			if (_miv) { it._mediaUrl = _miv; return out.concat(MediaBuilder.media(it, bodyItems, i, "video", run, this.#norm)); }
@@ -14940,7 +15165,7 @@ class ContentConverter {
 				const key = m[1].toLowerCase();
 				if (!byKey.has(key)) {
 					byKey.set(key, levels.length);
-					levels.push({ label: m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase(), pages: [] });
+					levels.push({ label: this.LevelDisplayLabel(m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase(), run), pages: [] });
 				}
 				levels[byKey.get(key)].pages.push({ idx, title });
 				nPages++;

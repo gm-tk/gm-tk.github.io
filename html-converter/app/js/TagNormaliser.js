@@ -935,6 +935,8 @@ class TagNormaliser {
 			if (umr && umr.enabled !== false
 				&& !(typeof process !== "undefined" && process.env && process.env.DROPQUIZ_OFF)) {
 				for (const rule of (umr.rules ?? [])) {
+					// a rule's own env turns that one rule off (the list-wide DROPQUIZ_OFF still turns them all off)
+					if (rule.env && typeof process !== "undefined" && process.env && process.env[rule.env]) continue;
 					if (new RegExp(rule.head_pattern, "i").test(s)) {
 						const rt = { tag: rule.canonical, directive: rule.directive ?? "INTERACTIVE",
 							how: "marker_retag", alias: rule.canonical };

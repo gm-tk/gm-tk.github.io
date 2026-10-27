@@ -379,8 +379,9 @@ class TablesAndGrids {
 				return inner;
 			}).join(cfg.label_join ?? " ");
 		}
-		// image-only cell → render the in-cell image(s)
-		const out = images.map((tx) => this.cellImage(tx, run, links).join("")).filter(Boolean);
+		// image-only cell → render the in-cell image(s); a cell asking for the writing-process graphic in the older wording
+		// («[image] [Planning icon from English universal parameters]») renders the component (ContentConverter.WritingProcessCell)
+		const out = images.map((tx) => (ContentConverter.WritingProcessCell(tx, run) ?? this.cellImage(tx, run, links)).join("")).filter(Boolean);
 		return out.length ? out.join("") : null;
 	};
 
@@ -811,7 +812,9 @@ class TablesAndGrids {
 				if (rem && !skipRe.test(rem)) buf.push(rem);
 			} else if (canon === "image") {
 				flush();
-				out.push(...this.cellImage(rest, run, links));
+				// the older loose request for the writing-process graphic in a kept cell builds the component
+				const wpc = ContentConverter.WritingProcessCell(part, run);
+				if (wpc) out.push(...wpc); else out.push(...this.cellImage(rest, run, links));
 			} else {
 				let content = canon ? rest : part;
 				// a Word-numbered item reads «1. » so its run is an <ol> (gridCellNumbered; cell_bullets.numbered.grid)

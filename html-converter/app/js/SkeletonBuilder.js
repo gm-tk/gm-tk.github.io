@@ -40,6 +40,184 @@
 class SkeletonBuilder {
 
 	/**
+	 * The page's resolved template phase BEFORE the template_attr_map — the value every
+	 * <html template="…"> rule agrees on: sibling inheritance, then the level-digit preset,
+	 * the unknown-subject digit fallback, the code-prefix overrides, the Languages combo
+	 * cohort and the last-resort default (data skeleton.template_phase_presets and its env
+	 * toggles). BuildPage calls it for the <html> attribute; ContentConverter calls it with
+	 * { quiet: true } for a component whose own attribute follows the page's band (the
+	 * writingProcess phase) — a quiet call emits no note and sets no once-per-run flag, so
+	 * the page build later notes exactly what it always did.
+	 * @param {ConversionRun} run
+	 * @param {{quiet?: boolean}} [opts]
+	 * @returns {string} the phase value ("1-3", "4-6", …, "combo", or "")
+	 */
+	static ResolveTemplatePhase(run, { quiet = false } = {}) {
+		const tpl = DataService.Data.EmitTemplates;
+		// THE TEMPLATE-ATTRIBUTE PRESET RULE.
+		// The <html template="…"> attribute (which decides the stylesheet the
+		// iDoc host loads) must follow the PRESET module-level rule — level
+		// digit 1→"1-3", 2→"4-6", 3→"7-8", 4→"9-10", 5→"NCEA" — and this rule
+		// SUPERSEDES sibling inheritance for THIS ATTRIBUTE ONLY. A series
+		// sibling's human-built value can itself be wrong (ENGJ402 carries
+		// "4-6" where its sibling ENGJ403 is "9-10"), so the level preset always
+		// wins here, regardless of what any previously-developed sibling carries.
+		// Everything ELSE (menu conventions, groupKey lookups, page model, chip
+		// forms…) keeps the sibling-emulation rule untouched — rules.template_phase
+		// itself is NOT changed, only the emitted attribute value. Scope: 3-digit
+		// codes with a level digit 1-5, subject in the preset list (families whose
+		// code digit is NOT a curriculum level — BLL, HPFUN, OS-shortcourse, XMES,
+		// MXEO, CEDK — are excluded), and a resolved "combo" value is
+		// preserved (combo marks a combined-cohort template decision, not a
+		// level band). Data: skeleton.template_phase_presets.
+		// Env toggle: TPLPRESET_OFF (reverts to the pure sibling value).
+		let phaseForAttr = run.resolvedRules?.template_phase;
+		const tppCfg = tpl.skeleton.template_phase_presets;
+		const tppOn = tppCfg && tppCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.TPLPRESET_OFF);
+		if (tppOn) {
+			const tm = String(run.moduleCode || "").match(
+				new RegExp(tppCfg.code_pattern ?? "^([A-Z]+)([1-5])\\d{2}$"));
+			const preset = tm && (tppCfg.subjects ?? []).includes(tm[1])
+				? (tppCfg.by_level_digit ?? {})[tm[2]] : null;
+			if (preset && preset !== phaseForAttr
+				&& !(tppCfg.preserve_values ?? ["combo"]).includes(phaseForAttr)) {
+				if (!run._tppNoted) {
+					if (!quiet) run._tppNoted = true;
+					if (!quiet) run.AddNote("info", "SkeletonBuilder",
+						`template attribute "${phaseForAttr}" overridden to the level-${tm[2]} preset "${preset}" (template_phase_presets — the module-level rule outranks sibling inheritance for this attribute only).`);
+				}
+				phaseForAttr = preset;
+			}
+		}
+		// THE UNKNOWN-SUBJECT DIGIT FALLBACK. A subject NOT in the preset list
+		// above (a brand-new subject the registry has never seen) would otherwise
+		// ship an EMPTY template attribute — and the iDoc host loads the stylesheet
+		// by this attribute, so the page would render unstyled. When the module
+		// resolved NO template_phase at all (phaseForAttr empty — a pure
+		// fallback: every module with a real resolved value, and every
+		// digit-is-not-a-level family, is untouched BY CONSTRUCTION), the
+		// code's own level digit supplies the band via the same
+		// by_level_digit map (SCCH302 → 3 → "7-8"). A code that does not match
+		// code_pattern (FUN-shaped codes, 4-digit codes) still ships empty:
+		// the FUN families' template values are genuinely MIXED (combo and NCEA
+		// bases), so no confident fallback exists there and the rule refuses to
+		// guess. prefix_overrides and cohort_overrides below still outrank this
+		// fallback.
+		// Data: skeleton.template_phase_presets.unknown_subject_digit_fallback.
+		// Env toggle: TPLFALLBACK_OFF (reverts to the empty attribute).
+		const usfCfg = tppCfg && tppCfg.unknown_subject_digit_fallback;
+		const usfOn = usfCfg && usfCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.TPLFALLBACK_OFF);
+		if (usfOn && (phaseForAttr == null || phaseForAttr === "")) {
+			const um = String(run.moduleCode || "").match(
+				new RegExp(tppCfg.code_pattern ?? "^([A-Z]+)([1-5])\\d{2}$"));
+			if (um && !(tppCfg.subjects ?? []).includes(um[1])) {
+				const fb = (tppCfg.by_level_digit ?? {})[um[2]];
+				if (fb) {
+					if (!run._tppNoted) {
+						if (!quiet) run._tppNoted = true;
+						if (!quiet) run.AddNote("info", "SkeletonBuilder",
+							`unknown subject "${um[1]}" resolved no template — the code's level digit ${um[2]} supplies template="${fb}" (unknown_subject_digit_fallback; env TPLFALLBACK_OFF reverts to the empty attribute).`);
+					}
+					phaseForAttr = fb;
+				}
+			}
+		}
+		// THE CODE-PREFIX TEMPLATE OVERRIDE. Some families' code digits are NOT
+		// curriculum levels, so the digit preset excludes them — but the design
+		// team still fixes their template by an explicit exception list. BLL2xx
+		// modules are actually PHASE 1 → template="1-3" (NOT the "4-6" a
+		// mis-built sibling would hand down); BLLR2xx ARE phase 2 and keep "4-6"
+		// (guard entry — a "BLLR…" code can never startsWith "BLL2", but the
+		// "BLLR is NOT BLL" startswith trap earns the explicit fence). LONGEST
+		// matching prefix wins; null = explicitly no override. Unconditional:
+		// outranks sibling inheritance AND the digit preset; preserve_values does
+		// not apply. Data: skeleton.template_phase_presets.prefix_overrides.
+		// Env toggle: TPLPREFIX_OFF (independent of TPLPRESET_OFF).
+		const poCfg = tppCfg && tppCfg.prefix_overrides;
+		const poOn = poCfg && poCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.TPLPREFIX_OFF);
+		if (poOn) {
+			const codeStr = String(run.moduleCode || "");
+			const poKey = Object.keys(poCfg.map ?? {})
+				.filter(k => !k.startsWith("_") && codeStr.startsWith(k))
+				.sort((a, b) => b.length - a.length)[0];
+			const poVal = poKey !== undefined ? (poCfg.map ?? {})[poKey] : undefined;
+			if (poVal != null && poVal !== phaseForAttr) {
+				if (!run._tppNoted) {
+					if (!quiet) run._tppNoted = true;
+					if (!quiet) run.AddNote("info", "SkeletonBuilder",
+						`template attribute "${phaseForAttr}" overridden to "${poVal}" (template_phase_presets.prefix_overrides — the "${poKey}" exception list outranks sibling inheritance and the level preset).`);
+				}
+				phaseForAttr = poVal;
+			}
+		}
+		// THE LANGUAGES COMBO COHORT (Change Ledger CL-0033).
+		// Every page of a Languages-cohort module (doc-14 §14.1: the six
+		// languages × FUN + non-FUN code prefixes — CHIFUN…SPAFUN, CHI…SPA)
+		// ships template="combo" on <html>; the sub-type still comes from the
+		// <body> class. UNCONDITIONAL within the cohort: outranks sibling
+		// inheritance AND the digit preset (preserve_values does not apply —
+		// the prefix_overrides semantics), applied after prefix_overrides (no
+		// key overlap). It is a forward-looking GUARANTEE: without it a fresh
+		// Languages code would ship the TEDC-style EMPTY attribute — no registry
+		// row, no sibling ever resolves "combo" for it.
+		// Kept separate from prefix_overrides so each rule reverses
+		// independently (§2). Data:
+		// skeleton.template_phase_presets.cohort_overrides.
+		// Env toggle: LANGCOMBO_OFF (independent of TPLPRESET/TPLPREFIX_OFF).
+		const coCfg = tppCfg && tppCfg.cohort_overrides;
+		const coOn = coCfg && coCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.LANGCOMBO_OFF);
+		if (coOn) {
+			const codeStr = String(run.moduleCode || "");
+			const coVal = coCfg.value ?? "combo";
+			if ((coCfg.prefixes ?? []).some((p) => codeStr.startsWith(p))
+				&& coVal !== phaseForAttr) {
+				if (!run._tppNoted) {
+					if (!quiet) run._tppNoted = true;
+					if (!quiet) run.AddNote("info", "SkeletonBuilder",
+						`template attribute "${phaseForAttr}" overridden to "${coVal}" (template_phase_presets.cohort_overrides — the Languages cohort ships combo, CL-0033).`);
+				}
+				phaseForAttr = coVal;
+			}
+		}
+		// THE LAST-RESORT TEMPLATE DEFAULT.
+		//
+		// A brand-new subject (e.g. FRNO901) can have no registry row, no gold
+		// sibling, and a code digit that is not a curriculum level (9), so
+		// code_pattern never matches and the unknown_subject_digit_fallback
+		// rightly declines to guess. Every OTHER universal field resolves through
+		// the evidence floor — but the template attribute would stay EMPTY, and
+		// the iDoc host loads the page stylesheet BY that attribute, so the page
+		// would render completely unstyled.
+		//
+		// After every other rule has had its say, a still-empty attribute takes
+		// the configured value. A LAST RESORT, never a preference: unreachable
+		// BY CONSTRUCTION for any module that resolved anything at all. The run
+		// carries a loud note because a default only holds until the developer
+		// builds the first proof, which then becomes the templated reference
+		// future conversions inherit from.
+		// Data: skeleton.template_phase_presets.last_resort_default.
+		// Env toggle: TPLDEFAULT_OFF (reverts to the empty attribute).
+		const lrdCfg = tppCfg && tppCfg.last_resort_default;
+		const lrdOn = lrdCfg && lrdCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.TPLDEFAULT_OFF);
+		if (lrdOn && (phaseForAttr == null || phaseForAttr === "")) {
+			const lrdVal = lrdCfg.value ?? "combo";
+			if (!run._tplDefaultNoted) {
+				if (!quiet) run._tplDefaultNoted = true;
+				if (!quiet) run.AddNote("warn", "SkeletonBuilder",
+					`No template could be resolved for "${run.moduleCode}" — no registry row, no developed sibling, and its code carries no level digit. Defaulting to template="${lrdVal}" so the page loads styled (last_resort_default). Once the first proof of this module is developed, add it as the templated reference so future conversions inherit the real value.`);
+			}
+			phaseForAttr = lrdVal;
+		}
+
+		return phaseForAttr;
+	}
+
+	/**
 	 * Builds one complete HTML page: everything from <!DOCTYPE html> to
 	 * </html>, wrapping ContentConverter's already-built body HTML in the
 	 * shared page shell described in the file banner above.
@@ -78,166 +256,7 @@ class SkeletonBuilder {
 		const levelAttr = levelMap[rules.level_attr] !== undefined
 			? levelMap[rules.level_attr]
 			: ` level="${Utils.EscapeHtml(rules.level_attr ?? "")}"`;
-		// THE TEMPLATE-ATTRIBUTE PRESET RULE.
-		// The <html template="…"> attribute (which decides the stylesheet the
-		// iDoc host loads) must follow the PRESET module-level rule — level
-		// digit 1→"1-3", 2→"4-6", 3→"7-8", 4→"9-10", 5→"NCEA" — and this rule
-		// SUPERSEDES sibling inheritance for THIS ATTRIBUTE ONLY. A series
-		// sibling's human-built value can itself be wrong (ENGJ402 carries
-		// "4-6" where its sibling ENGJ403 is "9-10"), so the level preset always
-		// wins here, regardless of what any previously-developed sibling carries.
-		// Everything ELSE (menu conventions, groupKey lookups, page model, chip
-		// forms…) keeps the sibling-emulation rule untouched — rules.template_phase
-		// itself is NOT changed, only the emitted attribute value. Scope: 3-digit
-		// codes with a level digit 1-5, subject in the preset list (families whose
-		// code digit is NOT a curriculum level — BLL, HPFUN, OS-shortcourse, XMES,
-		// MXEO, CEDK — are excluded), and a resolved "combo" value is
-		// preserved (combo marks a combined-cohort template decision, not a
-		// level band). Data: skeleton.template_phase_presets.
-		// Env toggle: TPLPRESET_OFF (reverts to the pure sibling value).
-		let phaseForAttr = rules.template_phase;
-		const tppCfg = tpl.skeleton.template_phase_presets;
-		const tppOn = tppCfg && tppCfg.enabled !== false
-			&& !(typeof process !== "undefined" && process.env && process.env.TPLPRESET_OFF);
-		if (tppOn) {
-			const tm = String(run.moduleCode || "").match(
-				new RegExp(tppCfg.code_pattern ?? "^([A-Z]+)([1-5])\\d{2}$"));
-			const preset = tm && (tppCfg.subjects ?? []).includes(tm[1])
-				? (tppCfg.by_level_digit ?? {})[tm[2]] : null;
-			if (preset && preset !== phaseForAttr
-				&& !(tppCfg.preserve_values ?? ["combo"]).includes(phaseForAttr)) {
-				if (!run._tppNoted) {
-					run._tppNoted = true;
-					run.AddNote("info", "SkeletonBuilder",
-						`template attribute "${phaseForAttr}" overridden to the level-${tm[2]} preset "${preset}" (template_phase_presets — the module-level rule outranks sibling inheritance for this attribute only).`);
-				}
-				phaseForAttr = preset;
-			}
-		}
-		// THE UNKNOWN-SUBJECT DIGIT FALLBACK. A subject NOT in the preset list
-		// above (a brand-new subject the registry has never seen) would otherwise
-		// ship an EMPTY template attribute — and the iDoc host loads the stylesheet
-		// by this attribute, so the page would render unstyled. When the module
-		// resolved NO template_phase at all (phaseForAttr empty — a pure
-		// fallback: every module with a real resolved value, and every
-		// digit-is-not-a-level family, is untouched BY CONSTRUCTION), the
-		// code's own level digit supplies the band via the same
-		// by_level_digit map (SCCH302 → 3 → "7-8"). A code that does not match
-		// code_pattern (FUN-shaped codes, 4-digit codes) still ships empty:
-		// the FUN families' template values are genuinely MIXED (combo and NCEA
-		// bases), so no confident fallback exists there and the rule refuses to
-		// guess. prefix_overrides and cohort_overrides below still outrank this
-		// fallback.
-		// Data: skeleton.template_phase_presets.unknown_subject_digit_fallback.
-		// Env toggle: TPLFALLBACK_OFF (reverts to the empty attribute).
-		const usfCfg = tppCfg && tppCfg.unknown_subject_digit_fallback;
-		const usfOn = usfCfg && usfCfg.enabled !== false
-			&& !(typeof process !== "undefined" && process.env && process.env.TPLFALLBACK_OFF);
-		if (usfOn && (phaseForAttr == null || phaseForAttr === "")) {
-			const um = String(run.moduleCode || "").match(
-				new RegExp(tppCfg.code_pattern ?? "^([A-Z]+)([1-5])\\d{2}$"));
-			if (um && !(tppCfg.subjects ?? []).includes(um[1])) {
-				const fb = (tppCfg.by_level_digit ?? {})[um[2]];
-				if (fb) {
-					if (!run._tppNoted) {
-						run._tppNoted = true;
-						run.AddNote("info", "SkeletonBuilder",
-							`unknown subject "${um[1]}" resolved no template — the code's level digit ${um[2]} supplies template="${fb}" (unknown_subject_digit_fallback; env TPLFALLBACK_OFF reverts to the empty attribute).`);
-					}
-					phaseForAttr = fb;
-				}
-			}
-		}
-		// THE CODE-PREFIX TEMPLATE OVERRIDE. Some families' code digits are NOT
-		// curriculum levels, so the digit preset excludes them — but the design
-		// team still fixes their template by an explicit exception list. BLL2xx
-		// modules are actually PHASE 1 → template="1-3" (NOT the "4-6" a
-		// mis-built sibling would hand down); BLLR2xx ARE phase 2 and keep "4-6"
-		// (guard entry — a "BLLR…" code can never startsWith "BLL2", but the
-		// "BLLR is NOT BLL" startswith trap earns the explicit fence). LONGEST
-		// matching prefix wins; null = explicitly no override. Unconditional:
-		// outranks sibling inheritance AND the digit preset; preserve_values does
-		// not apply. Data: skeleton.template_phase_presets.prefix_overrides.
-		// Env toggle: TPLPREFIX_OFF (independent of TPLPRESET_OFF).
-		const poCfg = tppCfg && tppCfg.prefix_overrides;
-		const poOn = poCfg && poCfg.enabled !== false
-			&& !(typeof process !== "undefined" && process.env && process.env.TPLPREFIX_OFF);
-		if (poOn) {
-			const codeStr = String(run.moduleCode || "");
-			const poKey = Object.keys(poCfg.map ?? {})
-				.filter(k => !k.startsWith("_") && codeStr.startsWith(k))
-				.sort((a, b) => b.length - a.length)[0];
-			const poVal = poKey !== undefined ? (poCfg.map ?? {})[poKey] : undefined;
-			if (poVal != null && poVal !== phaseForAttr) {
-				if (!run._tppNoted) {
-					run._tppNoted = true;
-					run.AddNote("info", "SkeletonBuilder",
-						`template attribute "${phaseForAttr}" overridden to "${poVal}" (template_phase_presets.prefix_overrides — the "${poKey}" exception list outranks sibling inheritance and the level preset).`);
-				}
-				phaseForAttr = poVal;
-			}
-		}
-		// THE LANGUAGES COMBO COHORT (Change Ledger CL-0033).
-		// Every page of a Languages-cohort module (doc-14 §14.1: the six
-		// languages × FUN + non-FUN code prefixes — CHIFUN…SPAFUN, CHI…SPA)
-		// ships template="combo" on <html>; the sub-type still comes from the
-		// <body> class. UNCONDITIONAL within the cohort: outranks sibling
-		// inheritance AND the digit preset (preserve_values does not apply —
-		// the prefix_overrides semantics), applied after prefix_overrides (no
-		// key overlap). It is a forward-looking GUARANTEE: without it a fresh
-		// Languages code would ship the TEDC-style EMPTY attribute — no registry
-		// row, no sibling ever resolves "combo" for it.
-		// Kept separate from prefix_overrides so each rule reverses
-		// independently (§2). Data:
-		// skeleton.template_phase_presets.cohort_overrides.
-		// Env toggle: LANGCOMBO_OFF (independent of TPLPRESET/TPLPREFIX_OFF).
-		const coCfg = tppCfg && tppCfg.cohort_overrides;
-		const coOn = coCfg && coCfg.enabled !== false
-			&& !(typeof process !== "undefined" && process.env && process.env.LANGCOMBO_OFF);
-		if (coOn) {
-			const codeStr = String(run.moduleCode || "");
-			const coVal = coCfg.value ?? "combo";
-			if ((coCfg.prefixes ?? []).some((p) => codeStr.startsWith(p))
-				&& coVal !== phaseForAttr) {
-				if (!run._tppNoted) {
-					run._tppNoted = true;
-					run.AddNote("info", "SkeletonBuilder",
-						`template attribute "${phaseForAttr}" overridden to "${coVal}" (template_phase_presets.cohort_overrides — the Languages cohort ships combo, CL-0033).`);
-				}
-				phaseForAttr = coVal;
-			}
-		}
-		// THE LAST-RESORT TEMPLATE DEFAULT.
-		//
-		// A brand-new subject (e.g. FRNO901) can have no registry row, no gold
-		// sibling, and a code digit that is not a curriculum level (9), so
-		// code_pattern never matches and the unknown_subject_digit_fallback
-		// rightly declines to guess. Every OTHER universal field resolves through
-		// the evidence floor — but the template attribute would stay EMPTY, and
-		// the iDoc host loads the page stylesheet BY that attribute, so the page
-		// would render completely unstyled.
-		//
-		// After every other rule has had its say, a still-empty attribute takes
-		// the configured value. A LAST RESORT, never a preference: unreachable
-		// BY CONSTRUCTION for any module that resolved anything at all. The run
-		// carries a loud note because a default only holds until the developer
-		// builds the first proof, which then becomes the templated reference
-		// future conversions inherit from.
-		// Data: skeleton.template_phase_presets.last_resort_default.
-		// Env toggle: TPLDEFAULT_OFF (reverts to the empty attribute).
-		const lrdCfg = tppCfg && tppCfg.last_resort_default;
-		const lrdOn = lrdCfg && lrdCfg.enabled !== false
-			&& !(typeof process !== "undefined" && process.env && process.env.TPLDEFAULT_OFF);
-		if (lrdOn && (phaseForAttr == null || phaseForAttr === "")) {
-			const lrdVal = lrdCfg.value ?? "combo";
-			if (!run._tplDefaultNoted) {
-				run._tplDefaultNoted = true;
-				run.AddNote("warn", "SkeletonBuilder",
-					`No template could be resolved for "${run.moduleCode}" — no registry row, no developed sibling, and its code carries no level digit. Defaulting to template="${lrdVal}" so the page loads styled (last_resort_default). Once the first proof of this module is developed, add it as the templated reference so future conversions inherit the real value.`);
-			}
-			phaseForAttr = lrdVal;
-		}
-
+		const phaseForAttr = SkeletonBuilder.ResolveTemplatePhase(run);
 		const templateAttr = tpl.skeleton.template_attr_map[phaseForAttr]
 			?? phaseForAttr ?? "";
 		if (!tpl.skeleton.template_attr_map[phaseForAttr]) {

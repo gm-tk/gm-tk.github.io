@@ -252,8 +252,8 @@
 				"audio"
 			]
 		},
-		"tag_count": 84,
-		"alias_count": 377,
+		"tag_count": 87,
+		"alias_count": 414,
 		"suffix_container_close": true,
 		"close_word_closer": {
 			"enabled": true,
@@ -273,11 +273,26 @@
 		"unresolved_marker_retag": {
 			"enabled": true,
 			"_note": "SEPARATE UNBUILT INTERACTIVE (as in CHFUN01). A span that resolves NO tags at all but opens with a known quiz-family marker is RETAGGED as the listed canonical INTERACTIVE, so the writer's quiz opens its own bundle (an honest hand-off box) instead of leaking as an instruction note + loose body text. CONTAINMENT BY CONSTRUCTION: only zero-tag spans are touched — every span that already resolves anything ([dropquiz][autocheck] -> typing quiz) is unchanged. The zero-tag carriers include CHFUN01/04, HPRE203, OSAI501, OSGM301, OSGM501, OSOH101, OSSM301 — their golds build dropDown/mcq quizzes at those spots. Env toggle: DROPQUIZ_OFF.",
+			"_env_note": "A rule may carry its own env — that toggle turns the one rule off while DROPQUIZ_OFF still turns the whole list off.",
 			"rules": [
 				{
 					"head_pattern": "\\[\\s*dropquiz",
 					"canonical": "dropdown",
 					"directive": "INTERACTIVE"
+				},
+				{
+					"_doc": "THE WRITING PROCESS TAG (KB constraint 94 / CL-0116). The design team's writer tag for the centralised writingProcess component — [Writing Process], [Writing Process all], [Writing Process all year 1], [Writing Process all activeStage Draft], [Writing Process single plan]. No alias existed, so every form fell through as a red Writers Note; a zero-tag span opening with the words is retagged as the writing process ELEMENT and ContentConverter builds the component from Emit_Templates.elements.writing_process. CONTAINMENT: zero-tag spans only — a legacy request that already resolves a tag ([insert image of writing process from …] → image) is read by Emit_Templates.elements.writing_process.legacy_cue in the image path instead.",
+					"env": "WRITEPROC_OFF",
+					"head_pattern": "^\\s*\\[?\\s*writing\\s+process\\b",
+					"canonical": "writing process",
+					"directive": "ELEMENT"
+				},
+				{
+					"_doc": "The writers' interim phrasing, honoured as the same request: [Plan icon from the Writing Process English Universal parameters] and similar — a stage word, the word icon(s), and the words writing process — reads as [Writing Process single <stage>].",
+					"env": "WRITEPROC_OFF",
+					"head_pattern": "^\\s*\\[?[^\\]]*\\bicons?\\b[^\\]]*\\b(?:writing\\s+process|english\\s+universal\\s+parameters)\\b",
+					"canonical": "writing process",
+					"directive": "ELEMENT"
 				}
 			]
 		},
@@ -1307,6 +1322,13 @@
 				"sticky navigation"
 			],
 			"rules_family": "-"
+		},
+		"writing process": {
+			"directive": "ELEMENT",
+			"aliases": [],
+			"rules_family": "CL-0116",
+			"_note": "KB constraint 94 / CL-0116: the centralised writingProcess component (full circle, or one singleStage icon) — templates in Emit_Templates.elements.writing_process. DELIBERATELY NO ALIASES: the span-level retag in _meta.unresolved_marker_retag (env WRITEPROC_OFF) does the matching so the family is env-gateable; this entry is the taxonomy record + directive lookup for the injected tag.",
+			"widget_types": []
 		},
 		"format": {
 			"directive": "INLINE_FORMAT",
