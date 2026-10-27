@@ -206,6 +206,10 @@ class InteractiveBuilder {
 						// alias word "check" folds the bundle to selfCheck; the writer's own "type" decides — KB c14)
 						?? this.#typingTable({ bundle, tpl: templates?.typing, renderInline, typed: false })
 						?? this.#selfCheck({ bundle, tpl, renderInline })
+						// numbered questions that each carry the writer's red answer: the typing builder's red-answer form
+						// (data selfCheck.red_answer_typing; env SCTYPING_OFF)
+						?? (this.#scRedAnswerLines(bundle, tpl?.red_answer_typing)
+							? this.#typing({ bundle, tpl: templates?.typing, renderInline, journalMember: true }) : null)
 						// the BLL picture-word choice ([word ║ picture ║ word], the red word correct) where every other reading declined
 						?? this.#pictureWordChoice({ bundle, tpl, renderInline, run })
 						// the BLL «Find the sound» pictures with the writer's marked dot under each («Middle dot is the correct answer»)
@@ -1522,6 +1526,33 @@ class InteractiveBuilder {
 			out.push(Utils.FillTemplate(cfg.example, { picture: img, word: example.word ? Utils.FillTemplate(cfg.example_word, { text: inline(example.word) }) : "" }));
 		}
 		return [...out, cfg.open, ...qs, cfg.close].join("\n");
+	}
+
+	/**
+	 * Is this self check the numbered question list whose answers the writer typed red (data selfCheck.red_answer_typing;
+	 * env SCTYPING_OFF)? Every black line is a numbered question (number_pattern), the writer's instruction names no
+	 * selection task (decline_pattern — «Click on the nouns …» is a word select), and no table or media rides along.
+	 */
+	static #scRedAnswerLines(bundle, cfg) {
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "SCTYPING_OFF"]) return false;
+		if ((bundle?.tables ?? []).length || (bundle?.media ?? []).length || bundle?.extraTypes?.length) return false;
+		const numRe = new RegExp(cfg.number_pattern ?? "^\\s*\\d+[.)]\\s*\\S", "u");
+		const deny = cfg.decline_pattern ? new RegExp(cfg.decline_pattern, "i") : null;
+		const said = [bundle?.prevItemText ?? "", ...[...(bundle?.openerItems ?? []), ...(bundle?.memberItems ?? [])]
+			.filter((m) => m?.type === "tag").map((m) => `${m.text ?? ""} ${m.blackAfter ?? ""}`)].join(" ");
+		if (deny && deny.test(this.#cellText(said))) return false;
+		let n = 0;
+		for (const m of bundle?.memberItems ?? []) {
+			if (!m || m.type !== "black") continue;
+			for (const line of String(m.text ?? "").split(/\n+/)) {
+				const t = this.#cellText(line).trim();
+				if (!t) continue;
+				if (!numRe.test(t)) return false;
+				n++;
+			}
+		}
+		return n >= (cfg.min_questions ?? 2);
 	}
 
 	static #selfCheck({ bundle, tpl, renderInline }) {
@@ -18267,7 +18298,7 @@ class InteractiveBuilder {
 		].join("\n");
 	}
 
-	static #typing({ bundle, tpl, renderInline, fib, ddTpl }) {
+	static #typing({ bundle, tpl, renderInline, fib, ddTpl, journalMember = false }) {
 		// `fib` (interactive_builders.dragAndDrop.fib): the SAME red-answer reading renders KB 03B's drag-and-drop
 		// FIB layout instead of typing inputs (the writer's `[Drag and drop]` + sentences whose answers are red). Its own
 		// enabled / env (DDFIB_OFF) govern it; the typing toggles do not.
@@ -18348,6 +18379,9 @@ class InteractiveBuilder {
 				continue;
 			}
 			if (rest && p?.tag === "button" && btnTagRe.test(String(m.blackAfter ?? "").replace(/\s+/g, " ").trim())) continue;   // the KB button row covers it
+			// the self check's go-to-journal button at the tail: the go-journal machinery ships it after the widget
+			// (only for the self check read here — data selfCheck.red_answer_typing)
+			if (journalMember && !fib && p?.tag === "button" && this.#accIsGoJournal(m)) continue;
 			return null;                                           // any other tag — not ours to place
 		}
 

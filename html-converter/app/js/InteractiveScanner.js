@@ -1493,7 +1493,12 @@ class InteractiveScanner {
 		if (![bundle.type, ...(bundle.extraTypes ?? [])].every((t) => (cfg.types ?? []).includes(t)) || (bundle.tables ?? []).length) return false;
 		// an activity-owned capture keeps its walk: ending it would close the activity, and the finished pages keep the
 		// learner's text inside the activity, outside the widget (inline_only)
-		if (cfg.inline_only !== false && bundle.activityId) return false;
+		// — unless the box itself stays open for that text (activity_owned; env LINKTAILACT_OFF): the walk ends and the
+		// owner's close site keeps the frame open, so the learner's text renders inside the activity after the box
+		const ao = cfg.activity_owned;
+		const aoOn = !!ao && ao.enabled !== false && !!bundle.activityOwner
+			&& !(typeof process !== "undefined" && process.env && process.env[ao.env || "LINKTAILACT_OFF"]);
+		if (cfg.inline_only !== false && bundle.activityId && !aoOn) return false;
 		const next = items[j];
 		const tagOf = (it) => String(it?.parse?.primary?.tag ?? "");
 		const numRe = new RegExp(cfg.numbered_pattern ?? "^\\s*\\d+[.)]\\s+\\S");
@@ -2307,6 +2312,22 @@ class InteractiveScanner {
 			// THE LEARNER'S TEXT AFTER A LINK-ONLY CAPTURE IS PAGE TEXT (member_rule.link_tail_terminates; env LINKTAIL_OFF)
 			if (j > startJ && this.#linkTailStart(bundle, items, j)) {
 				run?.AddNote?.("info", "InteractiveScanner", `${bundle.type}: the link-only capture ends before the learner's text «${String(next.blackAfter || next.text || "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim().slice(0, 60)}» (link_tail_terminates).`);
+				// an owned box stays open: its learner text renders inside the activity, after the box (activity_owned)
+				if (bundle.activityOwner) {
+					bundle._postTableResume = true;
+					// the writer's go-to-journal button is the held box's last child: what follows it is page text again
+					const _ao = DataService.Data.BoundaryBank?._meta?.member_rule?.link_tail_terminates?.activity_owned;
+					const _gjRe = new RegExp(_ao?.journal_pattern ?? "go\\s+to\\s+(?:your\\s+)?journal", "i");
+					for (let k = j; k < Math.min(items.length, j + 30); k++) {
+						const x = items[k], d = x?.parse?.primary?.directive, t = String(x?.parse?.primary?.tag ?? "");
+						if (k > j && x?.type === "tag" && (d === "INTERACTIVE" || d === "PAGE_BOUNDARY" || d === "CONTAINER_CLOSE"
+							|| d === "SECTION_MARKER" || t === "activity" || /^h[1-3]$/.test(t))) break;
+						if (x?.type === "tag" && _gjRe.test(`${x.text ?? ""} ${x.blackAfter ?? ""}`)) {
+							if (items[k + 1]) items[k + 1]._heldBoxCloseBefore = true;
+							break;
+						}
+					}
+				}
 				break;
 			}
 			if (_pbsMOn && next._afterPageBoundary === true && j > startJ) {
@@ -2647,7 +2668,11 @@ class InteractiveScanner {
 					&& !(typeof process !== "undefined" && process.env
 						&& (btT.env_by_type ?? {})[bundle.type]
 						&& process.env[(btT.env_by_type ?? {})[bundle.type]])
-					&& (btT.types ?? ["accordion"]).includes(bundle.type)
+					&& ((btT.types ?? ["accordion"]).includes(bundle.type)
+						// a type that ends its walk at the go-to-journal button alone (go_journal_closes.also_types;
+						// env SCGJTAIL_OFF): its own control buttons stay members
+						|| (_gjBtn && _gjCloses && !!_gjc.also_types && (_gjc.also_types.types ?? []).includes(bundle.type)
+							&& !(typeof process !== "undefined" && process.env && process.env[_gjc.also_types.env ?? "SCGJTAIL_OFF"])))
 					&& (btT.tags ?? ["button"]).includes(p?.tag)
 					&& p?.directive !== "INTERACTIVE"
 					// A PHANTOM button — the writer's "[embed audio with a link and play

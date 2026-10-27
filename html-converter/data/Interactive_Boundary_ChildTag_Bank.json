@@ -215,6 +215,12 @@
 				"_note": "THE LEARNER'S TEXT AFTER A LINK-ONLY WIDGET IS PAGE TEXT. A writer asks for a widget whose data is an address — «[carousel] (embed pdf as carousel)», «[Interactive] Please embed this document», «[Source 1] … <link>» — then types the learner's next step: a [Body] / [H#] line, a numbered question list, a journal button. The capture used to run on through all of it and the learner saw the questions only inside the collapsed hand-off box; the finished pages keep them free after the widget (23 of the 30 boxes whose words are found in the gold, 0.77, across the BLL, ARFUN, WJFUN, ENGC, HIS, MXEO, OSOH and DAN series). The walk ends BEFORE a [Body] / [H#] tag or a numbered line (numbered_pattern) when every member captured so far is a link (an address in its words or its runs, or a listed link tag), an empty line or an instruction span, at least one is a link, no table or media tag is captured, and no further link, media member, table or pasted picture follows within lookahead items before the next widget opener or page boundary (a capture whose slides come later keeps its walk). Only the listed types: the flip card (its back faces are the questions), the accordion, the click-drop and the modal (their panels are a title or picture link + the [Body] text the panel shows) keep their capture. Env LINKTAIL_OFF (or enabled:false) keeps the old walk.",
 				"types": ["carousel", "interactive", "selectionBox", "timeline"],
 				"inline_only": true,
+				"activity_owned": {
+					"enabled": true,
+					"env": "LINKTAILACT_OFF",
+					"journal_pattern": "go\\s+to\\s+(?:your\\s+)?journal",
+					"_doc": "An activity-owned capture ends early too, and its box stays open: the learner's text after the link renders inside the activity, after the box, as the finished pages keep it. The writer's go-to-journal button (journal_pattern) is the box's last child; otherwise the next boundary or opener closes it."
+				},
 				"_inline_only": "true: only an inline capture (no activity owns it) ends early. An activity-owned capture keeps its walk — ending it closes the activity, and the finished pages keep the learner's text inside the activity, outside the widget.",
 				"link_tags": ["link", "embed", "hyperlink"],
 				"media_tags": ["image", "video", "audio", "picture"],
@@ -647,7 +653,12 @@
 				"go_journal_closes": {
 					"_doc": "THE GO-TO-JOURNAL BUTTON IS THE WIDGET'S LAST MEMBER. A go-to-journal [button] at a widget's tail is not released as a section break (exclude_go_journal: the go-journal machinery ships its <h4 class=\"goJournal\"> after the widget), but on its own that left the member walk running on past it — an un-built carousel then swallowed the writer's speech bubble and the lesson summary that follow. With this rule the walk takes the button as a member and ENDS there, under every fence the break itself carries (the widget has captured content, no further panel delimiter lies ahead). Env GOJOURNALTAIL_OFF.",
 					"enabled": true,
-					"env": "GOJOURNALTAIL_OFF"
+					"env": "GOJOURNALTAIL_OFF",
+					"also_types": {
+						"types": ["selfCheck"],
+						"env": "SCGJTAIL_OFF",
+						"_doc": "Types whose walk ends at the go-to-journal button alone (taken as the last member), every other tail button staying a member: a self check's own controls («[button] Check your answers») belong to it, while what the writer typed after the journal button («[Body] Ka pai! You have now completed …») is page text."
+					}
 				},
 				"clean_hows": [
 					"exact",

@@ -722,6 +722,14 @@
 		},
 		"heading": {
 			"form": "<{tag}>{content}</{tag}>",
+			"empty_takes_next_line": {
+				"enabled": true,
+				"env": "EMPTYHEADNEXT_OFF",
+				"tags": ["h1", "h2", "h3", "h4", "h5", "heading", "activity heading"],
+				"max_words": 10,
+				"deny_pattern": "^\\s*(?:[•●▪◦*\\-–]|\\[)|https?://|[.?!:]\\s*$|^[^\\p{L}]*$",
+				"_doc": "A heading tag typed with no words of its own («[H3]» alone on its line) and a short line straight after it («1. Basic description») is the writer's heading: the line becomes the heading's text, where the finished page builds it, instead of the empty-heading flag and a plain line. Not a bullet, a tag, an address, a sentence (a line ending . ? ! :) or a line with no letter (an equation's «20»), and at most max_words words."
+			},
 			"logical_to_element": {
 				"rule": "The writer's H-digit is a LOGICAL level resolved in context, never a fixed element (§5.1). In body context the digit shifts DOWN one level; page-title headings are built by the skeleton, not here; overview menu headings are CONSUMED into the menu (menu.tab_map below).",
 				"body_shift": 1,
@@ -3816,6 +3824,14 @@
 		},
 		"selfCheck": {
 			"enabled": true,
+			"red_answer_typing": {
+				"enabled": true,
+				"env": "SCTYPING_OFF",
+				"number_pattern": "^\\s*\\d+[.)]\\s*\\S",
+				"decline_pattern": "\\b(?:click|select|highlight|circle|tap|underline)\\b",
+				"min_questions": 2,
+				"_doc": "A self check whose numbered questions each end in the writer's red answer («1. What number is 10 more than 545? 555») is the self-marking typing quiz the finished pages build — each red answer the input's answer. Read by the typing builder's own red-answer form (its guards decide) where the free-text self check declines; a self check without its answers keeps the free-text form. The self check's go-to-journal button at its tail is stepped over there (the go-journal machinery ships it after the widget); a [typing] box keeps the reader's own rule."
+			},
 			"picture_word_choice": {
 				"_doc": "THE PICTURE-WORD CHOICE: the BLL family's «[self check] Correct answers are in red» + a table whose every row is [word ║ stock picture ║ word] with ONE word in red («hog ║ <iStock picture of a hug> ║ 🔴hug🔴», «🔴snack🔴 ║ <picture> ║ sack») — «Look at the picture and then click on the word that matches the picture.» The human builds a multiChoiceQuiz in every one (BLL133 / 141 / 162 / 172 / 217 / 223 / 232): one question per row, the two words its options, the red word value=\"correct\". Built so: the picture is the question (the stock picture's own file, the run's image mode), the two words its options in the writer's order, the red one correct. Tried only after every other selfCheck reading declined. The writer's note must say the answers are marked (answer_note_pattern — an answer is never invented); every row needs exactly one red word, a stock picture in the middle cell and words of at most max_words; fewer than min_rows rows, a header row, any other member with learner text or a cell holding a tag keeps the hand-off box.",
 				"enabled": true,

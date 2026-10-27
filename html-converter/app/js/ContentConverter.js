@@ -2827,6 +2827,13 @@ class ContentConverter {
 			// placed BEFORE the comment surfacing so an omitted question leaves no trace.
 			if (mtkGuard(it)) continue;
 
+			// An activity box held open for the learner's text after a link-only widget closes after the writer's
+			// go-to-journal button (the scanner flags the item after it; link_tail_terminates.activity_owned).
+			if (it._heldBoxCloseBefore && stack.length && stack[stack.length - 1].tag === "activity") {
+				emit(stack.pop().close);
+				breakRow();
+			}
+
 			// ---- whitelisted Word comments → red note JUST BEFORE the element ----
 			// Surface each anchored Creative-Services comment as a direct child of the body
 			// content region, immediately before the element it is anchored to. One source block
@@ -8248,8 +8255,37 @@ class ContentConverter {
 
 			bodyItems.push(it);
 		}
+		this.#emptyHeadingNextLine(bodyItems, run);
 		return { titleBar, menuItems, bodyItems };
 	};
+
+	/**
+	 * THE EMPTY HEADING TAG TAKES THE SHORT LINE AFTER IT: «[H3]» with no words of its own, then «1. Basic description» as the
+	 * next black line — the line is the heading's text (the finished page's heading), not an empty-heading flag and a plain
+	 * line. Data elements.heading.empty_takes_next_line {tags, max_words, deny_pattern}; env EMPTYHEADNEXT_OFF.
+	 */
+	static #emptyHeadingNextLine(items, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.heading?.empty_takes_next_line;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "EMPTYHEADNEXT_OFF"]) return;
+		const tags = new Set(cfg.tags ?? []);
+		const deny = cfg.deny_pattern ? new RegExp(cfg.deny_pattern, "u") : null;
+		for (let i = 0; i + 1 < items.length; i++) {
+			const it = items[i], nx = items[i + 1];
+			if (it?.type !== "tag" || !tags.has(String(it.parse?.primary?.tag ?? ""))) continue;
+			if (String(it.blackAfter ?? "").trim() || String(this.#norm.RenderText(it.text) ?? "").replace(/\*/g, "").trim()) continue;
+			if (nx?.type !== "black") continue;
+			const lines = String(nx.text ?? "").split("\n");
+			const k = lines.findIndex((l) => l.trim());
+			if (k < 0) continue;
+			const line = lines[k].trim();
+			const plain = line.replace(/\*+|_{2,}/g, "").trim();
+			if (!plain || plain.split(/\s+/).length > (cfg.max_words ?? 10) || (deny && deny.test(plain))) continue;
+			it.blackAfter = line;
+			nx.text = lines.slice(k + 1).join("\n");
+			run?.AddNote?.("info", "ContentConverter", `An empty [${it.parse.primary.tag}] took the line after it as its words («${plain.slice(0, 50)}», empty_takes_next_line).`);
+		}
+	}
 
 	// =======================================================================
 	// EMITTERS (one per concern; all forms come from Emit_Templates.json)

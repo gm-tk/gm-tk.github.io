@@ -1346,6 +1346,10 @@ class DocxExtractor {
 		result = this.PromoteBlackLeadTags(result, normaliser, run);
 		// An UNBRACKETED red supervisor label at a paragraph head is the [Supervisor note] tag (PromoteRedLabelTags).
 		result = this.PromoteRedLabelTags(result, run);
+		// The letters a red tag run caught from the word after it return to the word (ReturnTagLetterSpill).
+		result = this.ReturnTagLetterSpill(result, run);
+		// The writer's separator punctuation between a tag and its words is part of the tag (DropTagSeparator).
+		result = this.DropTagSeparator(result, run);
 
 		// Some writers accidentally drop the opening square bracket off a tag
 		// — e.g. typing "H2] Know:" instead of "[H2] Know:". Repair that here,
@@ -1389,6 +1393,64 @@ class DocxExtractor {
 			n++;
 		}
 		if (n) run?.AddNote("info", "DocxExtractor", `${n} unbracketed red supervisor label(s) read as the writer's [${cfg.tag ?? "Supervisor note"}] tag (red_label_tag).`);
+		return blocks;
+	};
+
+	/**
+	 * THE LETTERS A RED TAG CAUGHT FROM ITS WORD. The writer's red run ends one or two letters into the word after the tag
+	 * («[H3] T» + «e ao Māori»): those letters go back to the black text, so the tag reads as the bare tag and the word is
+	 * whole. Paragraphs and table cells alike. Data InputDocRules.red_runs.tag_letter_spill {pattern}; env TAGSPILL_OFF.
+	 */
+	static ReturnTagLetterSpill(blocks, run = null) {
+		const cfg = DataService?.Data?.InputDocRules?.red_runs?.tag_letter_spill;
+		if (!cfg || cfg.enabled === false || !cfg.pattern) return blocks;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "TAGSPILL_OFF"]) return blocks;
+		const re = new RegExp(cfg.pattern, "gu");
+		const deny = cfg.deny_tag_pattern ? new RegExp(cfg.deny_tag_pattern, "i") : null;
+		let n = 0;
+		const back = (m0, head, letters) => (deny && deny.test(head) ? m0 : `${head}[/RED TEXT]\u{1f534}${letters}`);
+		const fix = (s) => typeof s === "string" ? s.replace(re, (...a) => { const r = back(...a); if (r !== a[0]) n++; return r; }) : s;
+		for (const b of blocks) {
+			if (!b) continue;
+			if (b.kind === "para" && b.text) b.text = fix(b.text);
+			else if (b.kind === "table" && Array.isArray(b.rows)) {
+				b.rows = b.rows.map((r) => Array.isArray(r) ? r.map(fix) : r);
+				if (b.text) b.text = String(b.text).replace(re, back);
+			}
+		}
+		if (n) run?.AddNote("info", "DocxExtractor", `${n} letter run(s) a red tag caught from the word after it returned to the word (tag_letter_spill).`);
+		return blocks;
+	};
+
+	/**
+	 * THE TAG'S SEPARATOR PUNCTUATION. «[H1]: 1.1» typed with the colon in the red run, or «[Image]: low angle shot …» with
+	 * it in the black text, would ship a heading or line opening «: ». The separator after the tag's last bracket goes, in
+	 * paragraphs and table cells. Data InputDocRules.red_runs.tag_separator {red_pattern, black_pattern}; env TAGSEP_OFF.
+	 */
+	static DropTagSeparator(blocks, run = null) {
+		const cfg = DataService?.Data?.InputDocRules?.red_runs?.tag_separator;
+		if (!cfg || cfg.enabled === false) return blocks;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "TAGSEP_OFF"]) return blocks;
+		// [pattern, what the matched separator becomes]: the red run's end keeps its closing marker; the black lead loses it;
+		// the separator inside a red run before the tag's red words becomes one space
+		const res = [[cfg.red_pattern, (h) => `${h.replace(/\s*$/, " ")}[/RED TEXT]\u{1f534}`], [cfg.black_pattern, (h) => h],
+			[cfg.red_lead_pattern, (h) => `${h} `]].filter(([p]) => p).map(([p, f]) => [new RegExp(p, "gu"), f]);
+		let n = 0;
+		const fix = (s) => {
+			if (typeof s !== "string") return s;
+			let out = s;
+			for (const [re, f] of res) out = out.replace(re, (m0, head) => { n++; return f(head); });
+			return out;
+		};
+		for (const b of blocks) {
+			if (!b) continue;
+			if (b.kind === "para" && b.text) b.text = fix(b.text);
+			else if (b.kind === "table" && Array.isArray(b.rows)) {
+				b.rows = b.rows.map((r) => Array.isArray(r) ? r.map(fix) : r);
+				if (b.text) { const k = n; b.text = fix(b.text); n = k; }
+			}
+		}
+		if (n) run?.AddNote("info", "DocxExtractor", `${n} separator(s) between a tag and its words dropped (tag_separator).`);
 		return blocks;
 	};
 

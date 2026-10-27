@@ -160,6 +160,22 @@
 			"code_patterns": ["^MX"],
 			"_doc": "Constraint 1; a family dialect keyed to the MX series (with the red-label mechanism). The MX writers type the LEARNER's instruction in red behind an 'Akonga Instructions:' label ('Akonga Instructions: Check your skill of reading data from a table …' — MXDB301, MXDI301 (label red, text black), MXEO102; the label occurs in no other family). Treated as a normal instruction it would become a developer-facing Writers Note (the learner would never see the instruction) or a stray 'Writers Note: Akonga Instructions:'; the gold renders the text as an ordinary learner paragraph and drops the label. For a module matching code_patterns, ContentConverter.#instrNote renders a writer instruction opening with label_pattern as the learner's paragraph(s), the label dropped, where the free §5.16 whole-span instruction's red Writers Note would go. A line a widget capture holds stays the developer's note: in hand-off mode the 'before the box' place is inside the collapsed reference-code box (a learner paragraph there is still developer-only, and would enlarge the capture). Skipped when the text holds a bracketed tag. Env AKONGALABEL_OFF."
 		},
+		"tag_letter_spill": {
+			"enabled": true,
+			"env": "TAGSPILL_OFF",
+			"pattern": "(\\u{1f534}\\[RED TEXT\\] (?:[^\\u{1f534}\\]]*\\])\\s*)([A-Za-zĀ-ūā-ū]{1,2}) \\[\\/RED TEXT\\]\\u{1f534}(?=[a-zā-ū])(?!https?:)",
+			"deny_tag_pattern": "hover|definition|glossary",
+			"_deny_tag_pattern": "An inline-payload tag reads the letters as its own payload (a hover's definition) and its sentence runs on through it; returning the letters would leave an empty hover that splits the sentence — those tags keep the letters.",
+			"_doc": "The writer's colour slip: the red tag run also took the first one or two letters of the word after it («[H3] T» + «e ao Māori», «[body] P» + «resented», «[button] G» + «o»). Letters at the end of a red span that ends in a bracketed tag, with no space before the black text and the black text going on in lower case (never an address), return to the word as black text; a red letter followed by a space («I » + «hope») is a word of its own and stays."
+		},
+		"tag_separator": {
+			"enabled": true,
+			"env": "TAGSEP_OFF",
+			"red_pattern": "(\\u{1f534}\\[RED TEXT\\] (?:\\[[^\\u{1f534}\\]]*\\]\\s*)+?)\\s*[:;\\-–]+\\s*\\[\\/RED TEXT\\]\\u{1f534}",
+			"black_pattern": "(\\u{1f534}\\[RED TEXT\\] (?:\\[[^\\u{1f534}\\]]*\\]\\s*)+\\[\\/RED TEXT\\]\\u{1f534})[ \\t]*[:;–][ \\t]+(?=[\\p{L}\\p{N}“\"‘'(*])",
+			"red_lead_pattern": "(\\u{1f534}\\[RED TEXT\\] \\[(?:[Hh][1-6]|[Tt]itle|[Hh]eading)[^\\u{1f534}\\]]*\\])[ \\t]*[:;–][ \\t]+(?=[\\p{L}\\p{N}“\"‘'(*])",
+			"_doc": "The writer's separator between a tag and its words («[H1]: 1.1», «[Image]: low angle shot …», «[H2]- Mix & Match …») is part of the tag, not the learner's text: a colon / semicolon / dash in the red tag run after its last bracket is dropped (red_pattern), and so is a colon / semicolon / en dash opening the black text right after a red run that is nothing but tags (black_pattern; a hyphen there may be the writer's list dash and stays, and a dash glued to its word — «–ing» — is the writer's own)."
+		},
 		"red_label_tag": {
 			"enabled": true,
 			"env": "REDLABEL_OFF",
