@@ -14759,6 +14759,9 @@ class ContentConverter {
 		// non-body tag) render as page text just before the box, when the box keeps other content
 		// (interactive_placeholder.lead_body_release; env BOXLEADBODY_OFF)
 		const released = this.#leadBodyRelease(bundle, tpl);
+		// A BILINGUAL CONTENT TABLE IS NEVER A WIDGET MEMBER: the leading run of «English ║ Māori» content tables renders as reo / eng
+		// pairs before the box, the trailing run after it (interactive_placeholder.bilingual_table_release; env BOXREOTABLE_OFF)
+		const reoTables = this.#bilingualTableRelease(bundle, tpl, run);
 		// A writer instruction EMBEDDED inside the interactive is moved to JUST BEFORE the
 		// placeholder box: notesBefore prepends the bundle's instructions at the return point
 		// instead of nesting them inside the dashed placeholder box itself.
@@ -14897,6 +14900,7 @@ class ContentConverter {
 		let lastBlk = null;   // the source block of the last dumped line
 		for (const m of [...bundle.openerItems, ...bundle.memberItems]) {
 			if (released.has(m) && !released.keepInBox) continue;   // the lead instruction renders before the box (a whole-released box keeps its prose for the hand-off)
+			if (reoTables.before.includes(m) || reoTables.after.includes(m)) continue;   // a bilingual content table renders outside the box
 			if (m.type === "table") { flushText(); lastBlk = null; parts.push(TablesAndGrids.contentTable(ak ? this.#answerKeyTable(m.block, ak) : m.block, run, true, this.#norm)); continue; }
 			let text = m.type === "black" ? m.text : (String(m.blackAfter ?? "").trim() ? m.blackAfter : embeddedText(m));   // the bracket-line words of an element member
 			if (ak) {
@@ -14919,7 +14923,11 @@ class ContentConverter {
 			: "";
 		const inlineHtml = (lead ? lead + "\n" : "") + parts.join("\n");
 		// a released member is a tagged lead (its words after the tag) or an untagged paragraph (its own text)
-		const releasedHtml = [...released].map((m) => ListsAndRuns.renderBlackText(String(m.type === "black" ? (m.text ?? "") : (m.blackAfter ?? "")).trim(), run, m.block?.links ?? []).join("\n")).join("\n");
+		const reoHtml = (list) => list.map((m) => reoTables.html.get(m)).join("\n");
+		const releasedHtml = [reoHtml(reoTables.before),
+			[...released].map((m) => ListsAndRuns.renderBlackText(String(m.type === "black" ? (m.text ?? "") : (m.blackAfter ?? "")).trim(), run, m.block?.links ?? []).join("\n")).join("\n")]
+			.filter(Boolean).join("\n");
+		const trailingHtml = reoHtml(reoTables.after);
 		// The default hand-off wrap: the inline rendering above (retained notes + the dashed box)
 		// goes INSIDE the loud reference-code marker box, collapsed by default behind the animated
 		// arrow toggle. The wrapper carries BOTH classes — cv2-interactive (so every tool that skips
@@ -14935,10 +14943,69 @@ class ContentConverter {
 				inlineHtml,
 				c.content_close,
 				c.wrapper_close,
-			].join("\n");
+			].join("\n") + (trailingHtml ? "\n" + trailingHtml : "");
 		}
-		return (releasedHtml ? releasedHtml + "\n" : "") + inlineHtml;
+		return (releasedHtml ? releasedHtml + "\n" : "") + inlineHtml + (trailingHtml ? "\n" + trailingHtml : "");
 	};
+
+	/**
+	 * The bilingual content tables an un-built bundle captured as members: the LEADING run (before any other content member)
+	 * and the TRAILING run (after the last other member), each a table whose header names English ║ Māori, with at least one
+	 * content row whose every non-empty cell carries a structural tag, and which the bilingual content-table builder renders
+	 * (a table it declines stays in the box). Released only when the box keeps a table of its own. Data
+	 * interactive_placeholder.bilingual_table_release; env BOXREOTABLE_OFF.
+	 * @param {Object} bundle - the un-built interactive bundle
+	 * @param {Object} tpl - EmitTemplates.interactive_placeholder
+	 * @param {ConversionRun} run - the current run
+	 * @returns {{before: Object[], after: Object[], html: Map<Object, string>}} the member items rendered before / after the box
+	 */
+	static #bilingualTableRelease(bundle, tpl, run) {
+		const none = { before: [], after: [], html: new Map() };
+		const cfg = tpl?.bilingual_table_release;
+		if (!cfg || cfg.enabled === false) return none;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "BOXREOTABLE_OFF"]) return none;
+		const tagRe = new RegExp(cfg.cell_tag_pattern ?? "\\[\\s*(?:h[1-6]|body)\\s*\\]", "i");
+		const cellText = (c) => String(typeof c === "string" ? c : (c?.text ?? ""));
+		const html = new Map();
+		const isReo = (m) => {
+			if (m?.type !== "table" || !BilingualBuilder.bilingualHeader(m.block)) return false;
+			const rows = (m.block?.rows ?? []).slice(1);
+			if (!rows.length) return false;
+			for (const r of rows) {
+				const cells = (r ?? []).map(cellText).filter((t) => t.replace(/[\u{1f534}*\s]|\[\/?RED TEXT\]/gu, "").length);
+				if (!cells.length || !cells.every((t) => tagRe.test(t))) return false;
+			}
+			return true;
+		};
+		// the members that count as content: a table, a non-empty black line, a tag member with words (the opener directive and
+		// instruction notes are stepped over)
+		const items = (bundle.memberItems ?? []).filter((m) => m && (m.type === "table"
+			|| (m.type === "black" && String(m.text ?? "").trim())
+			|| (m.type === "tag" && m.parse?.primary && m.parse.primary.directive !== "INTERACTIVE" && String(m.blackAfter ?? "").trim())));
+		const before = [], after = [];
+		let i = 0;
+		while (i < items.length && isReo(items[i])) before.push(items[i++]);
+		let j = items.length - 1;
+		while (j >= i && isReo(items[j])) after.unshift(items[j--]);
+		if (!before.length && !after.length) return none;
+		if (!items.slice(i, j + 1).some((m) => m.type === "table")) return none;
+		// rendered once, only for the tables that leave the box; one the builder declines stays in the box with every table
+		// between it and the box
+		// unwrap: the pairs join the column the box stands in (the bilingual activity's own column), without the content table's
+		// own row / column wrapper; a widget marker the builder appends after the pairs is kept
+		const dl = DataService.Data.EmitTemplates.elements?.dual_language ?? {};
+		const unwrap = (h) => {
+			if (cfg.unwrap !== true || !dl.wrapper_open || !h.startsWith(dl.wrapper_open + "\n")) return h;
+			const k = h.indexOf("\n" + dl.wrapper_close);
+			return k < 0 ? h : h.slice(dl.wrapper_open.length + 1, k) + h.slice(k + 1 + dl.wrapper_close.length);
+		};
+		const render = (m) => { const h = BilingualBuilder.bilingualTable(m.block, run, this.#norm); if (h) html.set(m, unwrap(h)); return !!h; };
+		let b = 0;
+		while (b < before.length && render(before[b])) b++;
+		let a = after.length - 1;
+		while (a >= 0 && render(after[a])) a--;
+		return { before: before.slice(0, b), after: after.slice(a + 1), html };
+	}
 
 	/**
 	 * The [Body] members of an un-built bundle that are the widget's LEAD instruction: those standing before the bundle's

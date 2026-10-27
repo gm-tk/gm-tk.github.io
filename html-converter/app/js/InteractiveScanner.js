@@ -1475,6 +1475,56 @@ class InteractiveScanner {
 		return op.phrases.some((p) => (op.match === "prefix" ? (f === p || f.startsWith(p)) : f === p));
 	};
 
+	/**
+	 * Does the learner's text after a LINK-ONLY capture begin at this item? True for a [Body] / [H#] tag or a numbered line when
+	 * every member the bundle holds is a link (an address in its words or runs, or a listed link tag), an empty line or an
+	 * instruction span, at least one is a link, no table or media tag is held, and no further link or media member follows
+	 * within the lookahead before the next widget opener or page boundary. The walk ends before it, so the questions, the
+	 * journal button and anything after take the page path (member_rule.link_tail_terminates; env LINKTAIL_OFF).
+	 * @param {Object} bundle - the open bundle
+	 * @param {Object[]} items - the page items
+	 * @param {number} j - the index of the item under test
+	 * @returns {boolean}
+	 */
+	static #linkTailStart(bundle, items, j) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.link_tail_terminates;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "LINKTAIL_OFF"]) return false;
+		if (![bundle.type, ...(bundle.extraTypes ?? [])].every((t) => (cfg.types ?? []).includes(t)) || (bundle.tables ?? []).length) return false;
+		// an activity-owned capture keeps its walk: ending it would close the activity, and the finished pages keep the
+		// learner's text inside the activity, outside the widget (inline_only)
+		if (cfg.inline_only !== false && bundle.activityId) return false;
+		const next = items[j];
+		const tagOf = (it) => String(it?.parse?.primary?.tag ?? "");
+		const numRe = new RegExp(cfg.numbered_pattern ?? "^\\s*\\d+[.)]\\s+\\S");
+		const opensTail = (next?.type === "tag" && /^(?:body|h[1-6])$/.test(tagOf(next)))
+			|| (next?.type === "black" && numRe.test(String(next.text ?? "")));
+		if (!opensTail) return false;
+		const linkTags = new Set(cfg.link_tags ?? ["link"]), mediaTags = new Set(cfg.media_tags ?? ["image", "video", "audio"]);
+		const btnRe = new RegExp(cfg.button_pattern ?? "button|journal", "i");
+		const words = (it) => `${it?.text ?? ""} ${it?.blackAfter ?? ""}`;
+		const mediaLinkRe = cfg.media_link_pattern ? new RegExp(cfg.media_link_pattern, "i") : null;
+		const linkText = (it) => `${words(it)} ${(it?.block?.links ?? []).map((l) => `${l?.target ?? ""} ${l?.text ?? ""}`).join(" ")}`;
+		const isMedia = (it) => (it?.type === "tag" && mediaTags.has(tagOf(it))) || (!!mediaLinkRe && mediaLinkRe.test(linkText(it)));
+		const isLink = (it) => !isMedia(it) && (/https?:\/\//i.test(words(it)) || (it?.block?.links?.length ?? 0) > 0
+			|| (it?.type === "tag" && linkTags.has(tagOf(it))));
+		const members = (bundle.memberItems ?? []).filter(Boolean);
+		if (!members.some(isLink) || members.some(isMedia)) return false;
+		if (!members.every((m) => isLink(m) || (m.type === "black" && !String(m.text ?? "").trim())
+			|| (m.type === "tag" && (!m.parse?.primary || m.parse.primary.directive === "INTERACTIVE")))) return false;
+		const end = Math.min(items.length, j + (cfg.lookahead ?? 30));
+		for (let k = j; k < end; k++) {
+			const it = items[k];
+			if (!it) continue;
+			// a table or a pasted picture ahead may be the widget's slides: the capture keeps its walk
+			if (it.type !== "black" && it.type !== "tag") return false;
+			const dir = it.parse?.primary?.directive;
+			if (k > j && it.type === "tag" && (dir === "INTERACTIVE" || dir === "PAGE_BOUNDARY" || dir === "CONTAINER_CLOSE")) break;
+			if (isMedia(it) || (isLink(it) && !btnRe.test(words(it)))) return false;
+		}
+		return true;
+	};
+
 	static #redPhaseDelimiter(it, run) {
 		const fp = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.phase_text;
 		if (!fp) return false;
@@ -2252,6 +2302,11 @@ class InteractiveScanner {
 						if (dir === "PAGE_BOUNDARY" || dir === "CONTAINER_CLOSE" || stops.has(pt)) break;
 					}
 				}
+				break;
+			}
+			// THE LEARNER'S TEXT AFTER A LINK-ONLY CAPTURE IS PAGE TEXT (member_rule.link_tail_terminates; env LINKTAIL_OFF)
+			if (j > startJ && this.#linkTailStart(bundle, items, j)) {
+				run?.AddNote?.("info", "InteractiveScanner", `${bundle.type}: the link-only capture ends before the learner's text «${String(next.blackAfter || next.text || "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim().slice(0, 60)}» (link_tail_terminates).`);
 				break;
 			}
 			if (_pbsMOn && next._afterPageBoundary === true && j > startJ) {

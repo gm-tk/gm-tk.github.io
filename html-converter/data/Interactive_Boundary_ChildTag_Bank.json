@@ -209,6 +209,21 @@
 				"^phase\\s+\\d+$"
 			],
 			"terminators_absolute_text_note": "(As in TEFUN02.) A standalone BLACK line matching one of these patterns is a HARD terminator (the same class as terminators_absolute, but for plain TEXT not a tag). The TEFUN fundamentals family delimits each phase with a plain-text 'Phase N' line; without this, a quiz/widget at the end of a phase (whose [end quiz] -> 'end mcq' is NOT an absolute terminator) over-captures the next phase's 'Phase N' delimiter + its content, so the phase never opens. Only a few fundamentals modules carry such a line (TEFUN01-08 + MXFUN01), so this can never cut a real widget member in a standard module. Read by InteractiveScanner.#swallowMembers; env FUNDPHASE_OFF turns it off (the line is swallowed).",
+			"link_tail_terminates": {
+				"enabled": true,
+				"env": "LINKTAIL_OFF",
+				"_note": "THE LEARNER'S TEXT AFTER A LINK-ONLY WIDGET IS PAGE TEXT. A writer asks for a widget whose data is an address — «[carousel] (embed pdf as carousel)», «[Interactive] Please embed this document», «[Source 1] … <link>» — then types the learner's next step: a [Body] / [H#] line, a numbered question list, a journal button. The capture used to run on through all of it and the learner saw the questions only inside the collapsed hand-off box; the finished pages keep them free after the widget (23 of the 30 boxes whose words are found in the gold, 0.77, across the BLL, ARFUN, WJFUN, ENGC, HIS, MXEO, OSOH and DAN series). The walk ends BEFORE a [Body] / [H#] tag or a numbered line (numbered_pattern) when every member captured so far is a link (an address in its words or its runs, or a listed link tag), an empty line or an instruction span, at least one is a link, no table or media tag is captured, and no further link, media member, table or pasted picture follows within lookahead items before the next widget opener or page boundary (a capture whose slides come later keeps its walk). Only the listed types: the flip card (its back faces are the questions), the accordion, the click-drop and the modal (their panels are a title or picture link + the [Body] text the panel shows) keep their capture. Env LINKTAIL_OFF (or enabled:false) keeps the old walk.",
+				"types": ["carousel", "interactive", "selectionBox", "timeline"],
+				"inline_only": true,
+				"_inline_only": "true: only an inline capture (no activity owns it) ends early. An activity-owned capture keeps its walk — ending it closes the activity, and the finished pages keep the learner's text inside the activity, outside the widget.",
+				"link_tags": ["link", "embed", "hyperlink"],
+				"media_tags": ["image", "video", "audio", "picture"],
+				"media_link_pattern": "\\.(?:jpe?g|png|gif|svg|webp|bmp|mp4|mov|m4v|mp3|m4a|wav)\\b|sharepoint\\.com/:[iuv]:/|istockphoto\\.com|youtu\\.?be|vimeo\\.com",
+				"_media_link_pattern": "A link whose words or address name a picture, sound or video file (a .jpg filename, a SharePoint image / audio / video share, a stock-photo page, a video host) is a MEDIA member, never a link: a click-drop tile's «[Clickdrop image] <picture link>» + «[Body] caption» keeps its caption.",
+				"numbered_pattern": "^\\s*\\d+[.)]\\s+\\S",
+				"button_pattern": "button|journal|dropbox",
+				"lookahead": 30
+			},
 			"template_prompt_terminates": {
 				"enabled": true,
 				"env": "PROMPTFENCE_OFF",
