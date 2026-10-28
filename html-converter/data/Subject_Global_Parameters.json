@@ -1965,6 +1965,24 @@
         "rule": "A built speech-bubble image column takes inner-side padding: left-positioned image -> paddingR, right-positioned -> paddingL; never mirror a sibling that pads both sides the same. HPE head-only dialogue strips are the ONE scoped exception (paddingR both sides, CL-0067 — see the 14.8 family).",
         "v2_home": "interactive_builders.speechBubble.image_col (the bare col-3 form); not wired live",
         "measured_note": "Most gold bubble image cols are UNPADDED (the bare col-3 era-form); of the padded ones, nearly all follow the side rule (left:paddingR, right:paddingL). The converter emits the unpadded col-3 form == the gold MAJORITY form. The rule is forward-looking (the gold library largely predates it); wiring it would move AWAY from the gold majority and is a real output change, so it is a documented delta when wired. Bubble-ness is tested on DIV class tokens only — an <img class='bubble-img'> must not read as a bubble col."
+      },
+      {
+        "id": "bubble_text_left_image_right",
+        "ledger_id": "KB constraint 35 (text_left_image_right) with its speech-bubble exception removed; KB constraint 45 (speech_bubble_positional_class) re-stated",
+        "status": "LIVE (env SBSIDE_OFF; Emit_Templates.interactive_builders.speechBubble.fixed_side; InteractiveBuilder.#sbFixedSide)",
+        "name": "A standard speech bubble always puts the text on the LEFT and the picture on the RIGHT (bubble-left), whatever order the Writers Template used",
+        "keywords": [
+          "speech bubble",
+          "bubble-left",
+          "bubble-right",
+          "text left image right",
+          "side",
+          "character image",
+          "avatar"
+        ],
+        "rule": "A single-character speech bubble built from a text + picture pair — the writer's 1x2 table, the one-paragraph [image] + [speech bubble] form, the composer's avatar rows (every picture after the text), the placeholder character — renders the bubble column first and the picture column second, with the bubble-left class and the picture column's inner-side padding paddingL where the form carries padding. The Writers Template's own order (image cell first, 'RHS' / 'LHS' words) never changes the side. Outside the rule: the conversation layout (alternating sides, no picture), the vertical bubble-top / bubble-bottom forms a writer asks for, and the Kea bubble of the MiW / WJ series (14B2 §14.10: the Kea picture column is that series' convention).",
+        "v2_home": "interactive_builders.speechBubble.fixed_side (side, image_col_right); no_table_image.image_col_right; text_only.placeholder_character.bubble_left / bubble_wrapped_left / image_col_right",
+        "measured_note": "The finished human pages predate the rule: 827 of their 1,032 picture bubbles put the picture on the left. The gold is NOT the target here — a comparison that finds a built bubble on the other side from the human page has found this rule, not a defect, and never moves the builder back toward the human page (gold_override_policy_ref above)."
       }
     ]
   }

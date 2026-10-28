@@ -4498,9 +4498,9 @@
 				"speechBubble — a character image beside a STATIC speech/thought bubble of text.",
 				"CAPTURED AS: exactly ONE 1x2 table (one row, two cells) PLUS exactly one image URL in",
 				"the bundle's media. One cell is the writer's [image] tag + its iStock URL; the other is",
-				"the [speech bubble] tag + the bubble text. The cell ORDER decides which side the bubble is:",
-				"   text cell first, image cell second  ->  bubble-LEFT  (text on the left, image on the right)",
-				"   image cell first, text cell second  ->  bubble-RIGHT (image on the left, text on the right)",
+				"the [speech bubble] tag + the bubble text. THE SIDE is fixed by fixed_side (text on the left,",
+				"image on the right -> bubble-LEFT, whatever the cell order). With fixed_side off (env SBSIDE_OFF)",
+				"the cell ORDER decides: text cell first -> bubble-LEFT; image cell first -> bubble-RIGHT.",
 				"BUILT ONLY for the clean, single, STATIC (no-hover) bubble. The WHOLE widget falls back to",
 				"the orange placeholder (never half-built) the moment the capture is richer than that: a",
 				"'layout'/conversation modifier, 2+ images or 2+ rows/columns, a video URL instead of an",
@@ -4516,6 +4516,13 @@
 			],
 			"enabled": true,
 			"layout_attr": "speech",
+			"fixed_side": {
+				"enabled": true,
+				"env": "SBSIDE_OFF",
+				"side": "left",
+				"_doc": "THE STANDARD BUBBLE'S SIDE IS FIXED: text on the LEFT, picture on the RIGHT (the bubble-left form), whatever order the Writers Template put the two in — a table whose image cell comes first, a paragraph whose [image] leads, a writer's RHS / LHS word. The design authority's house rule is that side-by-side text and picture always read text-left picture-right (KB constraint 35, now without its speech-bubble exception, and the KB's CL row for it); the finished human pages predate the rule and mostly ship the picture on the left, so this is a recorded gold override (Subject_Global_Parameters._universal_conventions.bubble_text_left_image_right): a gate or census that finds a built bubble on the other side from the gold has found the rule, not a defect. Applies to every single-character bubble with a picture — the table form, the no-table paragraph form, the rich composer's avatar rows (every picture after the text), the placeholder character. Left alone: the conversation layout (alternating sides, no picture), the vertical bubble-top / bubble-bottom forms, and the Kea bubble, whose picture column is the MiW / WJ series convention of KB 14B2 §14.10. Env SBSIDE_OFF restores the writer's-order reading; side \"right\" fixes the other way.",
+				"image_col_right": "<div class=\"col-3\">{image}</div>"
+			},
 			"open": "<div class=\"row speechBubble\" layout=\"{layout}\">",
 			"text_left": "<div class=\"col-md-9 col-sm-8\"><div class=\"bubble-left no-hover\"><p>{text}</p></div></div>",
 			"text_right": "<div class=\"col-md-9 col-sm-8\"><div class=\"bubble-right no-hover\"><p>{text}</p></div></div>",
@@ -4544,11 +4551,13 @@
 				"enabled": true,
 				"open": "<div class=\"row speechBubble\" layout=\"{layout}\">",
 				"image_col": "<div class=\"col-md-2 offset-md-0 col-12 paddingR\">{image}</div>",
+				"image_col_right": "<div class=\"col-md-2 offset-md-0 col-12 paddingL\">{image}</div>",
+				"_image_col_right_note": "The picture column when it sits on the RIGHT of the bubble (speechBubble.fixed_side): inner-side padding is paddingL there (KB constraint 29 / CL-0055).",
 				"text_col_right": "<div class=\"col-md-6 col-6\"><div class=\"bubble-basic no-hover bubble-right\">{text}</div></div>",
 				"text_col_left": "<div class=\"col-md-6 col-6\"><div class=\"bubble-basic no-hover bubble-left\">{text}</div></div>",
 				"close": "</div>",
 				"max_paragraphs": 4,
-				"_note": "THE NO-TABLE AVATAR+BUBBLE FORM (the IMAGE-LESS form lives in text_only below). The static speechBubble branch only recognises the writer's TABLE dialect (exactly one 1x2 table, image cell + text cell). A large family of writers instead types the whole thing as ONE PARAGRAPH: '[Image] avatar Tina  smiling  <iStock title> [LINK: https://…gm…]  [speech bubble] RHS  <bubble text>'. That has no table, so without this form the bubble would fall to the developer hand-off box while its avatar rendered loose above it. The scanner's same_block_image_absorb (Interactive_Boundary_ChildTag_Bank._meta.member_rule) recovers the paragraph-mate [image]; this template block is the shape the branch emits. The human builds an avatar+bubble row for every one of these (TEDC401/TEDC402/SSCI104); its dominant column pair is 'col-md-2 offset-md-0 col-12 paddingR' | 'col-md-6 col-6' with class 'bubble-basic no-hover bubble-{side}' inside 'row speechBubble' and a single <p>. SIDE comes from the writer's ORDER exactly as the table branch derives it from cell order — image first => the image column leads and the bubble is bubble-right, as the human almost always does (the rare lefts are editorial one-offs). The writer's own side WORD is deliberately NOT read: it is rarely present and it is WRONG where it disagrees (TEDC401 says 'RHS' where the human ships bubble-left). env SBNOTBL_OFF turns off the whole form."
+				"_note": "THE NO-TABLE AVATAR+BUBBLE FORM (the IMAGE-LESS form lives in text_only below). The static speechBubble branch only recognises the writer's TABLE dialect (exactly one 1x2 table, image cell + text cell). A large family of writers instead types the whole thing as ONE PARAGRAPH: '[Image] avatar Tina  smiling  <iStock title> [LINK: https://…gm…]  [speech bubble] RHS  <bubble text>'. That has no table, so without this form the bubble would fall to the developer hand-off box while its avatar rendered loose above it. The scanner's same_block_image_absorb (Interactive_Boundary_ChildTag_Bank._meta.member_rule) recovers the paragraph-mate [image]; this template block is the shape the branch emits. The human builds an avatar+bubble row for every one of these (TEDC401/TEDC402/SSCI104); its dominant column pair is 'col-md-2 offset-md-0 col-12 paddingR' | 'col-md-6 col-6' with class 'bubble-basic no-hover bubble-{side}' inside 'row speechBubble' and a single <p>. SIDE is the fixed side (speechBubble.fixed_side: text left, picture right, the picture column taking image_col_right); with it off, the writer's ORDER decides exactly as the table branch derives it from cell order — image first => the image column leads and the bubble is bubble-right. The writer's own side WORD is deliberately NOT read: it is rarely present and it is WRONG where it disagrees (TEDC401 says 'RHS' where the human ships bubble-left). env SBNOTBL_OFF turns off the whole form."
 			},
 			"text_only": {
 				"enabled": true,
@@ -4591,6 +4600,10 @@
 					"bubble": "<div class=\"bubble-right no-hover\">{text}</div>",
 					"bubble_wrapped": "<div class=\"bubble-basic no-hover bubble-right\">{text}</div>",
 					"bubble_wrapped_env": "SBPHWRAPBASIC_OFF",
+					"image_col_right": "<div class=\"col-3\"><img class=\"img-fluid bubble-img\" alt=\"\" loading=\"lazy\" src=\"https://placehold.co/200x200?text=Character\"></div>",
+					"bubble_left": "<div class=\"bubble-left no-hover\">{text}</div>",
+					"bubble_wrapped_left": "<div class=\"bubble-basic no-hover bubble-left\">{text}</div>",
+					"_side_note": "Under speechBubble.fixed_side the placeholder picture column follows the bubble column (text left, picture right) and the bubble takes the *_left form.",
 					"_bubble_wrapped_note": "A WRAPPED BODY TAKES THE BASIC FORM. A placeholder bubble whose body is more than one block carries the KB's inner <div>; with it the text div takes 'bubble-basic no-hover bubble-right', the form the narrow builder's multi_wrapper gives the same body and the one the TEDC pages use (the gold's wrapped bubbles are bubble-basic 107 of 121). A one-paragraph body keeps 'bubble'.",
 					"todo": "add this speech bubble's character picture in place of the grey 'Character' placeholder — the Writers Template names none, and the Online Safety / TEDC bubbles carry their character (Chris's D13-9).",
 					"_doc": "In the OS* and TEDC* families only (the Online Safety / TEDC bubbles carry their character), a TEXT-ONLY bubble (no image, no table, no media) whose writer named NO picture — no picture word (picture_named_re) on its own tag line, where the tag-words note would carry 'avatar Tina … iStock' — takes the avatar form (the narrow builder's col-3 image column + col-md-9 col-sm-8 bubble-right) with the KB 04C placeholder image (never imageCentral), and ONE red Designer/Developer To Do follows the bubble group. Env SBPLACEHOLDER_OFF keeps the plain text-only form."
@@ -5791,6 +5804,22 @@
 		},
 		"selectionBox": {
 			"enabled": true,
+			"list": {
+				"_doc": "THE CHECKLIST: «[Checkbox]» / «[checklist]» over a plain bullet list of statements builds KB 07B's selectionBox — div.row.selectionBox › div.col-md-12.col-12 › ol › li[select=\"tick\"] (the gold's form wherever the page pairs). Runs after the question-block quiz form. The opener's own words and black lines before the first bullet render above the list as paragraphs; an unread media member is left to the members rule. Declines on an opener matching quiz_opener_pattern, a red span, another tag, a line after the last bullet, fewer than min_items or more than max_items bullets, or a bullet over max_item_words. KB 01D's survey quiz is the rating-column form, which this never reads.",
+				"enabled": true,
+				"env": "SELBOXLIST_OFF",
+				"opener_tags": ["checklist"],
+				"media_tags": ["image", "video", "audio"],
+				"bullet_pattern": "^\\s*[•●▪‣◦]\\s*",
+				"quiz_opener_pattern": "auto\\s*-?\\s*check|correct|answer|mark",
+				"min_items": 2,
+				"max_items": 25,
+				"max_item_words": 60,
+				"lead": "<p>{text}</p>",
+				"open": "<div class=\"row selectionBox\">\n<div class=\"col-md-12 col-12\">\n<ol>",
+				"item": "<li select=\"tick\">{text}</li>",
+				"close": "</ol>\n</div>\n</div>"
+			},
 			"_doc": "The writer's «[checkbox]» / «[checklist]» widget. KB 01D maps «checkbox» to the multi-choice quiz (the survey variant when nothing is marked). Built only where the capture is the question-block form with ONE marked answer per question (interactive_builders.multiChoiceQuiz.question_blocks — the gold's multiChoiceQuiz, WJFUN307 2A / 2B); every other checklist keeps its hand-off box."
 		},
 		"memoryGame": {
@@ -6200,6 +6229,22 @@
 			"leak_guard": true,
 			"_note_cells": "cell_parens — the D1 paragraph reading applied to a table CELL, one question per cell, emitting the SAME paragraph form the human ships for exactly these tables (MXFL302_05.1, BLL275_1_0, BLLR201_2_0 match it cell for cell). cell_correct_pattern names the explicit [correct]-family bracket inside a cell; note it has NO leading \\b, because the writers type [Q1Correct] and \\b does not fire between a digit and a letter. thousands_guard — a comma with digits IMMEDIATELY on both sides is a thousands separator, not an option break ('(1,400 km, 1,500 km)' is two options, not four); the discriminator is the absent space, so a real option break written ', ' is untouched. env DDCELLPARENS_OFF / DDNUMCOMMA_OFF.",
 			"cell_parens": true,
+			"gap_paragraph": {
+				"_doc": "THE GAP PARAGRAPH — the last dialect in the chain. Prose whose answer words the writer typed red INSIDE the sentences (a fill-the-gap summary, a value word in each numbered sentence, a red True / False after each statement): each red word is one gap, the options are the red words pooled in document order — the whole pool while it holds at most pool_max words, else consecutive near-equal groups of about group_size gaps, each offering its own group's words. Emits the paragraph form, one item per numbered sentence; prose after the sentence that holds the last gap renders after the quiz. Declines on a table, picture, repeated opener, [correct] mark, bullet line, a red word holding | / ( ) or brackets or over max_gap_words, fewer than min_gaps gaps, too little prose per gap, or a numbered item with no gap.",
+				"enabled": true,
+				"env": "DDGAP_OFF",
+				"min_gaps": 3,
+				"max_gap_words": 4,
+				"min_prose_chars_per_gap": 12,
+				"pool_max": 6,
+				"group_size": 5,
+				"option_order": "alphabetical",
+				"_note_option_order": "alphabetical (the default) so the answer never follows the gaps' own order (a pool in document order would make the answers read 1, 2, 3 …); «document» keeps the writer's order.",
+				"answer_deny_pattern": "[|/()\\[\\]:]|^(?:options?|answers?)\\b",
+				"beside_deny_pattern": "[|/]",
+				"_note_deny": "answer_deny_pattern (case-insensitive) refuses a red word that is an option list, a bracketed note, a label («Answers:») or the template's «Option N» placeholder; beside_deny_pattern refuses a gap with a slash or bar within four characters on either side — the writer's own options typed in black around the red answer.",
+				"bullet_pattern": "^\\s*[•●▪‣\\-*]"
+			},
 			"cell_correct_pattern": "\\[[^\\]]{0,30}correct\\b[^\\]]{0,20}\\]",
 			"thousands_guard": true,
 			"colour_marks": {

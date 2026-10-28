@@ -166,7 +166,9 @@ class InteractiveBuilder {
 					html = this.#slider({ bundle, tpl, renderInline });
 					break;
 				case "selectionBox":   // «[checkbox – Auto Check]» typed as question blocks, one marked answer each (KB 01D)
-					html = this.#mcqQuestionBlocks({ bundle, templates, renderInline, run });
+					html = this.#mcqQuestionBlocks({ bundle, templates, renderInline, run })
+						// a plain bullet list of statements the learner ticks off → the checklist (KB 07B's selectionBox form)
+						?? this.#selectionList({ bundle, tpl, renderInline });
 					break;
 				case "typing":
 					// shape 1, the writer's red answer on the question line → the KB 03D text-only form.
@@ -178,6 +180,12 @@ class InteractiveBuilder {
 					// aliases the student file-upload "dropbox" onto this same widget type
 					// and the two are unrelated things (most captured bundles are dropbox).
 					html = this.#dropDown({ bundle, tpl, renderInline, run, renderTable, renderBlock });
+					// the gap paragraph's red words are its answers, not Writers Notes
+					if (html !== null && bundle?._ddGapWords) {
+						const sp = (x) => String(x).replace(/\s+/g, " ").trim();
+						const drop = new Set(bundle._ddGapWords.map(sp));
+						bundle.instructions = (bundle.instructions ?? []).filter((x) => !drop.has(sp(x)));
+					}
 					break;
 				case "glossary":
 					html = this.#glossary({ bundle, tpl, renderInline });
@@ -5341,7 +5349,8 @@ class InteractiveBuilder {
 	 *   media:  [ "https://www.istockphoto.com/photo/...gm978974888-..." ]
 	 *   tables: [ { rows: [ [ "[speech bubble] Kia ora! I'm Aria...",   // text cell
 	 *                         "[image] https://...gm978974888-..." ] ] } ]  // image cell
-	 *   → text cell first, image cell second → bubble-LEFT (matches the human file).
+	 *   → bubble-LEFT (text left, picture right) — the fixed side (speechBubble.fixed_side);
+	 *     with it off, cell order decides, as here.
 	 *
 	 * BUILDS (Emit_Templates.interactive_builders.speechBubble):
 	 *   <div class="row speechBubble" layout="speech">
@@ -5468,10 +5477,10 @@ class InteractiveBuilder {
 	 * page (Mode P/D via #assetImage) beside the bubble text.
 	 *
 	 * The human gold builds an avatar+bubble row for this whole class (TEDC401, TEDC402,
-	 * SSCI104). The SIDE follows the writer's ORDER, the same rule the table branch derives
-	 * from cell order — the image leads, giving bubble-right, which the gold follows apart
-	 * from rare editorial lefts. The writer's own side word is deliberately ignored: it is
-	 * rare and disagrees with the gold where it does appear.
+	 * SSCI104). The SIDE is the fixed side (speechBubble.fixed_side: text left, picture right);
+	 * with it off, the writer's ORDER decides, the same rule the table branch derives from cell
+	 * order. The writer's own side word is deliberately ignored: it is rare and disagrees with
+	 * the gold where it does appear.
 	 *
 	 * NEVER HALF-BUILDS. Every richer shape keeps the honest hand-off box: the absorb itself
 	 * refuses a bundle with a table, extra widget types, a video URL, more than one iStock id, or
@@ -5562,10 +5571,12 @@ class InteractiveBuilder {
 		const paras = this.NoTableBubbleParagraphs(bundle.memberItems, imgItem, cfg);
 		if (!paras) return null;
 
-		// ORDER sets the side, exactly like the table branch's cell order: the image leading
-		// puts the avatar in the left column and the bubble on the right.
-		const imgFirst = (bundle.memberItems ?? []).indexOf(imgItem) === 0;
-		const imageBlock = Utils.FillTemplate(cfg.image_col,
+		// THE SIDE. The fixed side (speechBubble.fixed_side; env SBSIDE_OFF) decides: text left, picture
+		// right. With it off, the writer's order decides, as the table branch reads cell order: the image
+		// leading puts the avatar in the left column and the bubble on the right.
+		const fixed = this.#sbFixedSide(tpl);
+		const imgFirst = fixed ? fixed === "right" : (bundle.memberItems ?? []).indexOf(imgItem) === 0;
+		const imageBlock = Utils.FillTemplate((fixed && !imgFirst) ? (cfg.image_col_right ?? cfg.image_col) : cfg.image_col,
 			{ image: this.#assetImage(named[0].fn, tpl, run) });
 		const textBlock = Utils.FillTemplate(imgFirst ? cfg.text_col_right : cfg.text_col_left,
 			{ text: paras.map((t) => `<p>${inline(t)}</p>`).join("\n") });
@@ -5603,15 +5614,55 @@ class InteractiveBuilder {
 	 * (picture_named_re) on any of its INTERACTIVE tag lines (the "[Image] avatar Tina … iStock" dialect). Else null.
 	 */
 	/**
+	 * THE FIXED SIDE of the standard single-character bubble (speechBubble.fixed_side; env SBSIDE_OFF):
+	 * "left" = the text column first and the picture column second (bubble-left), "right" the reverse,
+	 * null = the writer's own order decides. The house rule is text left, picture right, whatever
+	 * order the Writers Template used — a recorded gold override
+	 * (Subject_Global_Parameters._universal_conventions.bubble_text_left_image_right).
+	 *
+	 * @param {object} tpl - the speechBubble template block
+	 * @returns {"left"|"right"|null}
+	 */
+	static #sbFixedSide(tpl) {
+		const fs = tpl?.fixed_side;
+		if (!fs || fs.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[fs.env ?? "SBSIDE_OFF"]) return null;
+		return fs.side === "right" ? "right" : "left";
+	}
+
+	/**
+	 * The character-form bubble's three middle pieces — picture column, bubble column open, bubble — in
+	 * the order the row needs. The Kea rows (no bubble_left of their own) keep their series order; the
+	 * placeholder character follows the fixed side: text left puts the picture column AFTER the bubble
+	 * column, with the bubble in its *_left form.
+	 *
+	 * @param {object} ph - the character row (placeholder config or a Kea series row)
+	 * @param {object} tpl - the speechBubble template block
+	 * @param {string} text - the bubble body (one <p>, or the wrapped <div> run)
+	 * @param {string} colClose - the bubble column's close
+	 * @returns {string[]} the pieces between the row's open and close
+	 */
+	static #phColumns(ph, tpl, text, colClose) {
+		const bubble = Utils.FillTemplate(this.#phBubble(ph, text, tpl), { text });
+		if (ph.bubble_left && this.#sbFixedSide(tpl) === "left") {
+			return [ph.col_open, bubble, colClose, ph.image_col_right ?? ph.image_col];
+		}
+		return [ph.image_col, ph.col_open, bubble, colClose];
+	}
+
+	/**
 	 * The placeholder-character bubble's text div. A WRAPPED body (the multi-block <div> of the KB's speech-bubble
 	 * constraint) takes the bubble-basic form the narrow builder's wrapper uses; a one-paragraph body keeps the plain
 	 * form. Data text_only.placeholder_character.bubble_wrapped; env SBPHWRAPBASIC_OFF. A character row with no
 	 * bubble_wrapped (the Kea series rows) keeps its own bubble.
 	 */
-	static #phBubble(ph, text) {
+	static #phBubble(ph, text, tpl) {
 		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
 		const wrapped = /^s*<div>/.test(String(text ?? ""));
-		return (wrapped && ph.bubble_wrapped && !env[ph.bubble_wrapped_env ?? "SBPHWRAPBASIC_OFF"]) ? ph.bubble_wrapped : ph.bubble;
+		const left = !!ph.bubble_left && this.#sbFixedSide(tpl) === "left";   // the fixed side's bubble-left form
+		const basic = wrapped && ph.bubble_wrapped && !env[ph.bubble_wrapped_env ?? "SBPHWRAPBASIC_OFF"];
+		if (basic) return (left && ph.bubble_wrapped_left) ? ph.bubble_wrapped_left : ph.bubble_wrapped;
+		return (left && ph.bubble_left) ? ph.bubble_left : ph.bubble;
 	}
 
 	static #sbPlaceholder(bundle, tpl, run) {
@@ -5816,9 +5867,8 @@ class InteractiveBuilder {
 			const text = b.length > 1 ? `<div>\n${ps}\n</div>` : ps;   // the multi-<p> wrapper rule
 			return [
 				Utils.FillTemplate(cfg.open ?? tpl.open, { layout }),
-				...(phOn ? [ph.image_col, ph.col_open] : [cfg.col_open]),
-				Utils.FillTemplate(phOn ? this.#phBubble(ph, text) : cfg.bubble, { text }),
-				cfg.col_close,
+				...(phOn ? this.#phColumns(ph, tpl, text, cfg.col_close)
+					: [cfg.col_open, Utils.FillTemplate(cfg.bubble, { text }), cfg.col_close]),
 				cfg.close ?? tpl.close,
 			].join("\n");
 		});
@@ -6445,10 +6495,15 @@ class InteractiveBuilder {
 			const text = body(b);
 			if (!text) return null;
 			if (b.imgs.length) {
+				// the fixed side (speechBubble.fixed_side): text left puts every picture column AFTER the bubble column
+				const textLeft = this.#sbFixedSide(tpl) === "left";
+				const imgCols = b.imgs.map((fn) => Utils.FillTemplate(
+					textLeft ? (av.image_col_right ?? av.image_col ?? tpl.image_col) : (av.image_col ?? tpl.image_col),
+					{ image: this.#assetImage(fn, tpl, run) }));
+				const textCol = Utils.FillTemplate(textLeft ? (av.text_col_left ?? tpl.text_left) : (av.text_col_right ?? tpl.text_right), { text });
 				out.push([
 					Utils.FillTemplate(av.open ?? tpl.open, { layout: (b.thought && avThoughtOn) ? (to.layout_thought ?? "thought") : (tpl.layout_attr ?? "speech") }),
-					...b.imgs.map((fn) => Utils.FillTemplate(av.image_col ?? tpl.image_col, { image: this.#assetImage(fn, tpl, run) })),
-					Utils.FillTemplate(av.text_col_right ?? tpl.text_right, { text }),
+					...(textLeft ? [textCol, ...imgCols] : [...imgCols, textCol]),
 					av.close ?? tpl.close,
 				].join("\n"));
 			} else {
@@ -6462,9 +6517,10 @@ class InteractiveBuilder {
 				if (ph) phUsed = ph;
 				out.push([
 					Utils.FillTemplate(to.open ?? tpl.open, { layout: b.thought ? (to.layout_thought ?? "thought") : (tpl.layout_attr ?? "speech") }),
-					...(ph ? [ph.image_col, ph.col_open] : [to.col_open ?? "<div class=\"col-12\">"]),
-					Utils.FillTemplate(ph ? this.#phBubble(ph, text) : (to.bubble ?? "<div class=\"bubble-basic no-hover bubble-top\">{text}</div>"), { text }),
-					to.col_close ?? "</div>",
+					...(ph ? this.#phColumns(ph, tpl, text, to.col_close ?? "</div>")
+						: [to.col_open ?? "<div class=\"col-12\">",
+							Utils.FillTemplate(to.bubble ?? "<div class=\"bubble-basic no-hover bubble-top\">{text}</div>", { text }),
+							to.col_close ?? "</div>"]),
 					to.close ?? tpl.close,
 				].join("\n"));
 			}
@@ -6638,11 +6694,15 @@ class InteractiveBuilder {
 			textHtml = paragraphs.map((p) => inline(p)).join("</p><p>");
 		}
 
-		// (6) Compose. Cell order sets the side: image SECOND → bubble-left (text
-		// on the left); image FIRST → bubble-right (image on the left). The image
-		// renders per the run's Mode P/D, like every other image on the page.
+		// (6) Compose. THE SIDE: the fixed side (speechBubble.fixed_side; env SBSIDE_OFF) puts the
+		// text on the left and the picture on the right whatever the cell order. With it off, cell
+		// order decides: image SECOND → bubble-left (text on the left); image FIRST → bubble-right
+		// (image on the left). The image renders per the run's Mode P/D, like every other image on the page.
 		const layout = tpl.layout_attr ?? "speech";
-		const imageBlock = Utils.FillTemplate(tpl.image_col, { image: this.#assetImage(filename, tpl, run) });
+		const fixed = this.#sbFixedSide(tpl);
+		const textLeft = fixed ? fixed === "left" : imgIdx === 1;
+		const imageBlock = Utils.FillTemplate(textLeft ? (tpl.fixed_side?.image_col_right ?? tpl.image_col) : tpl.image_col,
+			{ image: this.#assetImage(filename, tpl, run) });
 		// THE WRAPPER-DIV RULE (verified against OSAH501-01): when the bubble body is
 		// MORE THAN ONE <p> (the ' / ' multi-paragraph split) OR a bulleted block, the human
 		// wraps the whole run in an extra <div> inside a 'bubble-basic no-hover bubble-{side}'
@@ -6653,17 +6713,17 @@ class InteractiveBuilder {
 		const useWrap = (blockBody || multiP) && mw && mw.enabled !== false && !env.SBWRAP_OFF;
 		let txtTpl, fill;
 		if (useWrap) {
-			txtTpl = imgIdx === 1 ? mw.text_left : mw.text_right;        // bubble-basic + <div> wrapper
+			txtTpl = textLeft ? mw.text_left : mw.text_right;            // bubble-basic + <div> wrapper
 			fill = blockBody ? textHtml : `<p>${textHtml}</p>`;          // a COMPLETE block run
 		} else if (blockBody) {
-			txtTpl = imgIdx === 1 ? (tpl.text_left_block ?? tpl.text_left) : (tpl.text_right_block ?? tpl.text_right);
+			txtTpl = textLeft ? (tpl.text_left_block ?? tpl.text_left) : (tpl.text_right_block ?? tpl.text_right);
 			fill = textHtml;
 		} else {
-			txtTpl = imgIdx === 1 ? tpl.text_left : tpl.text_right;       // template wraps in <p>{text}</p>
+			txtTpl = textLeft ? tpl.text_left : tpl.text_right;           // template wraps in <p>{text}</p>
 			fill = textHtml;
 		}
 		const textBlock = Utils.FillTemplate(txtTpl, { text: fill });
-		const middle = imgIdx === 1 ? [textBlock, imageBlock] : [imageBlock, textBlock];
+		const middle = textLeft ? [textBlock, imageBlock] : [imageBlock, textBlock];
 		return [Utils.FillTemplate(tpl.open, { layout }), ...middle, tpl.close].join("\n");
 	}
 
@@ -14879,7 +14939,8 @@ class InteractiveBuilder {
 			?? this.#ddTable(bundle, tpl, inline, ac, kinds)
 			?? this.#ddCellParagraph(bundle, toks, tpl, inline, ac)
 			?? this.#ddOptList(toks, tpl, inline, ac, kinds)
-			?? this.#ddCellOptions(bundle, toks, tpl, inline, run, ac, kinds);
+			?? this.#ddCellOptions(bundle, toks, tpl, inline, run, ac, kinds)
+			?? this.#ddGapParagraph(bundle, toks, tpl, inline, ac, kinds);
 		if (!body || bundle._ddRowChoiceDecline) return null;   // a column of each row's own choices is never built (row_choice_lists)
 		const built = [...pre, body].join("\n");
 		if (this.#ddLeakGuard(built, tpl)) return null;            // a build must never ADD a leak
@@ -15972,6 +16033,96 @@ class InteractiveBuilder {
 		return [open, ...lis, tpl.paragraph_close].join("\n");
 	}
 
+	/**
+	 * THE GAP PARAGRAPH. Prose whose answer words the writer typed RED INSIDE the
+	 * sentences — «Interdependence refers to the mutual 🔴reliance🔴 and
+	 * interconnectedness between 🔴sectors🔴 of the economy» (COM1005 8A, «The words in
+	 * the red will be part of dropdown menu»), «the students showed 🔴manaakitanga🔴 by
+	 * being kind …» (ENGR201), «The longest bone in your body is the femur. 🔴True🔴»
+	 * (PHE1007). Each red word is one gap; the OPTION SET is the red words themselves,
+	 * pooled in document order — every gap offers the whole pool while it is small, and
+	 * a long summary is cut into consecutive groups of near-equal size, each gap offering
+	 * its own group's words (the gold's 18-gap summary ships four groups of 4–5). Emits
+	 * the paragraph form, one <li> per numbered item. LAST in the dialect chain, so every
+	 * earlier dialect's build is unchanged BY CONSTRUCTION; never under the announced
+	 * colour marks. Prose after the sentence that holds the last gap is the widget's own
+	 * tail and renders after the quiz.
+	 * Data interactive_builders.dropDown.gap_paragraph; env DDGAP_OFF.
+	 */
+	static #ddGapParagraph(bundle, toks, tpl, inline, ac, kinds) {
+		const cfg = tpl?.gap_paragraph;
+		if (!cfg || cfg.enabled === false || kinds) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "DDGAP_OFF"]) return null;
+		if (toks.some((t) => t.kind === "table" || t.kind === "img" || t.kind === "delim" || t.kind === "optlist")) return null;
+		if (toks.some((t) => t.kind === "mark" && !String(t.text ?? "").trim())) return null;      // a [correct] form
+		const bullet = new RegExp(cfg.bullet_pattern ?? "^\\s*[•●▪‣\\-*]");
+		if (toks.some((t) => t.kind === "plain" && bullet.test(String(t.text ?? "")))) return null;
+		const lastMark = toks.map((t) => t.kind).lastIndexOf("mark");
+		if (lastMark < 0) return null;
+		// the sentence that holds the last gap ends with the first plain token after it
+		let cut = lastMark + 1;
+		if (cut < toks.length && toks[cut].kind === "plain" && !toks[cut].noteTail) cut++;
+		const body = toks.slice(0, cut);
+		if (body.some((t) => t.noteTail)) return null;                  // a button / link line inside the quiz
+		const tail = toks.slice(cut).filter((t) => t.kind === "plain" && !t.noteTail && String(t.text ?? "").trim());
+		const { text, marks, starts } = this.#ddRebuild(body, tpl);
+		if (marks.length < (cfg.min_gaps ?? 3)) return null;
+		const deny = new RegExp(cfg.answer_deny_pattern ?? "[|/()\\[\\]:]|^(?:options?|answers?)\\b", "i");
+		const beside = new RegExp(cfg.beside_deny_pattern ?? "[|/]");
+		const maxW = cfg.max_gap_words ?? 4;
+		const gaps = marks.map(([a, b]) => ({ from: a, to: b, word: text.slice(a, b).replace(/\*\*/g, "").trim() }));
+		if (gaps.some((g) => !g.word || deny.test(g.word) || g.word.split(/\s+/).length > maxW)) return null;
+		// the writer's own option list typed in black beside the red answer («Yes / No») is another dialect
+		if (gaps.some((g) => beside.test(text.slice(Math.max(0, g.from - 4), g.from)) || beside.test(text.slice(g.to, g.to + 4)))) return null;
+		const prose = (text.length - gaps.reduce((n, g) => n + (g.to - g.from), 0));
+		if (prose < (cfg.min_prose_chars_per_gap ?? 12) * gaps.length) return null;
+		// the option groups — the pool while it is small, else consecutive near-equal groups
+		const distinct = (list) => [...new Set(list.map((g) => g.word))];
+		// the options read alphabetically, so the answer never follows the gaps' own order
+		const order = (list) => (cfg.option_order === "document" ? list
+			: [...list].sort((x, y) => x.localeCompare(y, undefined, { sensitivity: "base" })));
+		const pool = order(distinct(gaps));
+		if (pool.length < (tpl.min_options ?? 2)) return null;
+		const poolMax = cfg.pool_max ?? 6;
+		const sets = [];
+		if (pool.length <= poolMax) gaps.forEach(() => sets.push(pool));
+		else {
+			const k = Math.ceil(gaps.length / (cfg.group_size ?? 5));
+			const base = Math.floor(gaps.length / k), extra = gaps.length % k;
+			let i = 0;
+			for (let g = 0; g < k; g++) {
+				const n = base + (g < extra ? 1 : 0);
+				const opts = order(distinct(gaps.slice(i, i + n)));
+				if (opts.length < (tpl.min_options ?? 2)) return null;
+				for (let j = 0; j < n; j++) sets.push(opts);
+				i += n;
+			}
+		}
+		const groups = gaps.map((g, i) => ({ from: g.from, to: g.to, options: sets[i], answer: sets[i].indexOf(g.word) + 1 }));
+		if (groups.some((g) => g.answer < 1 || g.options.length > (tpl.max_options ?? 10))) return null;
+		const items = this.#ddSplitItems(text, groups, starts);
+		if (!items.length || items.length !== new Set([0, ...(starts ?? [])]).size) return null;   // an item with no gap would be lost
+		const lis = [];
+		for (const it of items) {
+			const parts = [];
+			let cur = it.from;
+			for (const g of it.groups) {
+				const lead = text.slice(cur, g.from);
+				if (lead.trim()) parts.push(inline(this.#ddTidy(lead)));
+				parts.push([tpl.question_open, this.#ddUnit(g, tpl), tpl.question_close].join("\n"));
+				cur = g.to;
+			}
+			const rest = text.slice(cur, it.to);
+			if (rest.trim()) parts.push(inline(this.#ddTidy(rest)));
+			lis.push(`${tpl.para_item_open}\n${parts.join("\n")}\n${tpl.para_item_close}`);
+		}
+		const open = Utils.FillTemplate(tpl.paragraph_open, { autocheck: ac ?? "" });
+		const after = tail.map((t) => this.#ddTidy(t.text)).filter(Boolean)
+			.map((s) => Utils.FillTemplate(tpl.question_text, { text: inline(s) }));
+		bundle._ddGapWords = distinct(gaps);   // a red gap word is the widget's, never a Writers Note
+		return [open, ...lis, tpl.paragraph_close, ...after].join("\n");
+	}
+
 	/** Splits the rebuilt prose into numbered items, each owning its groups. */
 	static #ddSplitItems(text, groups, starts) {
 		const cuts = [...new Set([0, ...(starts ?? [])])].sort((a, b) => a - b);
@@ -16861,6 +17012,58 @@ class InteractiveBuilder {
 	 * multiChoiceQuiz — the question text the stem and the question lines, the writer's marked option correct, the hint inside
 	 * the question. Returns null (the next reading, or the hand-off box) on any other shape.
 	 */
+	/**
+	 * THE CHECKLIST. «[Checkbox]» / «[checklist]» over a plain bullet list of statements — «• I know what ANZAC Day
+	 * remembers.», «• Goods and services are things people use …» — is the list the learner ticks off: the KB 07B form
+	 * `div.row.selectionBox` › `div.col-md-12.col-12` › `ol` › `li[select="tick"]`, the gold's on every page it pairs
+	 * (SSEA203, SSOG105, SSCI205, OSOH201). KB 01D's survey quiz is for statements against rating columns («Always /
+	 * Sometimes / Not yet»), which this never reads: a table declines. The opener's own words and black lines before the
+	 * first bullet render above the list; a member it does not read (a picture after the list) is left to the members
+	 * rule. Declines on an opener that asks for marking (a quiz), a red span, a widget tag, a line after the last bullet,
+	 * fewer than min_items bullets or an over-long one.
+	 * Data interactive_builders.selectionBox.list; env SELBOXLIST_OFF.
+	 */
+	static #selectionList({ bundle, tpl, renderInline }) {
+		const cfg = tpl?.list;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "SELBOXLIST_OFF"]) return null;
+		const inline = renderInline ?? ((s) => s);
+		const bullet = new RegExp(cfg.bullet_pattern ?? "^\\s*[•●▪‣◦]\\s*");
+		const quiz = new RegExp(cfg.quiz_opener_pattern ?? "auto\\s*-?\\s*check|correct|answer|mark", "i");
+		const openers = cfg.opener_tags ?? ["checklist"];
+		const media = cfg.media_tags ?? ["image", "video", "audio"];
+		const lead = [], items = [];
+		let opened = false;
+		for (const m of bundle?.memberItems ?? []) {
+			if (!m) continue;
+			if (m.type === "tag") {
+				const tag = m.parse?.primary?.tag ?? null;
+				if (!opened && tag && openers.includes(tag)) {
+					if (quiz.test(String(m.text ?? ""))) return null;
+					opened = true;
+					const own = this.#cellText(m.blackAfter ?? "").replace(/\*\*\s*\*\*/g, "").trim();
+					if (own && /[\p{L}\p{N}]/u.test(own)) lead.push(own);
+					continue;
+				}
+				if (tag && media.includes(tag)) continue;                 // left to the members rule
+				return null;                                              // a red span or another widget's tag
+			}
+			if (m.type !== "black" || !opened) return null;
+			for (const raw of String(m.text ?? "").split("\n")) {
+				const line = this.#cellText(raw).trim();
+				if (!line) continue;
+				if (bullet.test(line)) items.push(line.replace(bullet, "").trim());
+				else if (items.length) return null;                       // prose after the list — not this shape
+				else lead.push(line);
+			}
+		}
+		if (!opened || items.length < (cfg.min_items ?? 2) || items.length > (cfg.max_items ?? 25)) return null;
+		if (items.some((s) => !s || s.split(/\s+/).length > (cfg.max_item_words ?? 60))) return null;
+		const leadHtml = lead.map((s) => Utils.FillTemplate(cfg.lead, { text: inline(s) }));
+		const lis = items.map((s) => Utils.FillTemplate(cfg.item, { text: inline(s) }));
+		return [...leadHtml, cfg.open, ...lis, cfg.close].join("\n");
+	}
+
 	static #mcqQuestionBlocks({ bundle, templates, renderInline, run }) {
 		const mt = templates?.multiChoiceQuiz;
 		const cfg = mt?.question_blocks;
