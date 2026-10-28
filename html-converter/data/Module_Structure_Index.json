@@ -155,7 +155,42 @@
    "GEWHA": "1-10 Languages",
    "WJFUN": "1-10 Writing (MiW)",
    "PMT": "Te Marautanga o Aotearoa TMoA"
-  }
+  },
+  "provisional_intake": [
+   {
+    "date": "2026-10-29",
+    "codes": [
+     "ANZHFUN01",
+     "BLLR204",
+     "BLLR205",
+     "BLLR206",
+     "ENGC404",
+     "ENWJ105",
+     "ENWJ106",
+     "ENWJ107",
+     "ENWJ108",
+     "ENWJ110",
+     "ENWJ204",
+     "ENWJ206",
+     "ENWJ304",
+     "GEFUN02",
+     "MXDB303",
+     "MXDI211",
+     "MXEX105",
+     "SCBI202",
+     "SCES401",
+     "SCFUN08",
+     "SCFUN09",
+     "SCFUN10",
+     "SMFUN06",
+     "SPNO901",
+     "WJFUN111",
+     "WJFUN114",
+     "WJFUN209"
+    ],
+    "note": "module_meta rows added by pageforge-sprint-scan-part-2 (process_new_modules.py) so the new gold modules appear in the Reference-module picker at once; their per-module ladders and every sibling registry are rebuilt by the loop's Round 0d Phase 4 (LOOP__Round_0d_Intake.md), which supersedes these rows."
+   }
+  ]
  },
  "module_meta": {
   "AGH1001": {
@@ -4573,6 +4608,222 @@
    "phase": "XWHA0",
    "series": "XWHA02",
    "dev_order": 2
+  },
+  "ANZHFUN01": {
+   "subject": "ANZH",
+   "template_type": "Fundamentals",
+   "prefix": "ANZHFUN",
+   "phase": "ANZHFUN0",
+   "series": "ANZHFUN01",
+   "dev_order": 1
+  },
+  "BLLR204": {
+   "subject": "1-10 Blended Literacy",
+   "template_type": "Standard",
+   "prefix": "BLLR",
+   "phase": "BLLR2",
+   "series": "BLLR20",
+   "dev_order": 204
+  },
+  "BLLR205": {
+   "subject": "1-10 Blended Literacy",
+   "template_type": "Standard",
+   "prefix": "BLLR",
+   "phase": "BLLR2",
+   "series": "BLLR20",
+   "dev_order": 205
+  },
+  "BLLR206": {
+   "subject": "1-10 Blended Literacy",
+   "template_type": "Standard",
+   "prefix": "BLLR",
+   "phase": "BLLR2",
+   "series": "BLLR20",
+   "dev_order": 206
+  },
+  "ENGC404": {
+   "subject": "1-10 English",
+   "template_type": "Standard",
+   "prefix": "ENGC",
+   "phase": "ENGC4",
+   "series": "ENGC40",
+   "dev_order": 404
+  },
+  "ENWJ105": {
+   "subject": null,
+   "template_type": "Standard",
+   "prefix": "ENWJ",
+   "phase": "ENWJ1",
+   "series": "ENWJ10",
+   "dev_order": 105
+  },
+  "ENWJ106": {
+   "subject": null,
+   "template_type": "Standard",
+   "prefix": "ENWJ",
+   "phase": "ENWJ1",
+   "series": "ENWJ10",
+   "dev_order": 106
+  },
+  "ENWJ107": {
+   "subject": null,
+   "template_type": "Standard",
+   "prefix": "ENWJ",
+   "phase": "ENWJ1",
+   "series": "ENWJ10",
+   "dev_order": 107
+  },
+  "ENWJ108": {
+   "subject": null,
+   "template_type": "Standard",
+   "prefix": "ENWJ",
+   "phase": "ENWJ1",
+   "series": "ENWJ10",
+   "dev_order": 108
+  },
+  "ENWJ110": {
+   "subject": null,
+   "template_type": "Standard",
+   "prefix": "ENWJ",
+   "phase": "ENWJ1",
+   "series": "ENWJ11",
+   "dev_order": 110
+  },
+  "ENWJ204": {
+   "subject": null,
+   "template_type": "Standard",
+   "prefix": "ENWJ",
+   "phase": "ENWJ2",
+   "series": "ENWJ20",
+   "dev_order": 204
+  },
+  "ENWJ206": {
+   "subject": null,
+   "template_type": "Standard",
+   "prefix": "ENWJ",
+   "phase": "ENWJ2",
+   "series": "ENWJ20",
+   "dev_order": 206
+  },
+  "ENWJ304": {
+   "subject": null,
+   "template_type": "Standard",
+   "prefix": "ENWJ",
+   "phase": "ENWJ3",
+   "series": "ENWJ30",
+   "dev_order": 304
+  },
+  "GEFUN02": {
+   "subject": null,
+   "template_type": "Fundamentals",
+   "prefix": "GEFUN",
+   "phase": "GEFUN0",
+   "series": "GEFUN02",
+   "dev_order": 2
+  },
+  "MXDB303": {
+   "subject": "1-10 Mathematics",
+   "template_type": "Standard",
+   "prefix": "MXDB",
+   "phase": "MXDB3",
+   "series": "MXDB30",
+   "dev_order": 303
+  },
+  "MXDI211": {
+   "subject": "1-10 Mathematics",
+   "template_type": "Standard",
+   "prefix": "MXDI",
+   "phase": "MXDI2",
+   "series": "MXDI21",
+   "dev_order": 211
+  },
+  "MXEX105": {
+   "subject": "1-10 Mathematics",
+   "template_type": "Standard",
+   "prefix": "MXEX",
+   "phase": "MXEX1",
+   "series": "MXEX10",
+   "dev_order": 105
+  },
+  "SCBI202": {
+   "subject": "1-10 Science",
+   "template_type": "Standard",
+   "prefix": "SCBI",
+   "phase": "SCBI2",
+   "series": "SCBI20",
+   "dev_order": 202
+  },
+  "SCES401": {
+   "subject": "1-10 Science",
+   "template_type": "Standard",
+   "prefix": "SCES",
+   "phase": "SCES4",
+   "series": "SCES40",
+   "dev_order": 401
+  },
+  "SCFUN08": {
+   "subject": "1-10 Science",
+   "template_type": "Fundamentals",
+   "prefix": "SCFUN",
+   "phase": "SCFUN0",
+   "series": "SCFUN08",
+   "dev_order": 8
+  },
+  "SCFUN09": {
+   "subject": "1-10 Science",
+   "template_type": "Fundamentals",
+   "prefix": "SCFUN",
+   "phase": "SCFUN0",
+   "series": "SCFUN09",
+   "dev_order": 9
+  },
+  "SCFUN10": {
+   "subject": "1-10 Science",
+   "template_type": "Fundamentals",
+   "prefix": "SCFUN",
+   "phase": "SCFUN1",
+   "series": "SCFUN10",
+   "dev_order": 10
+  },
+  "SMFUN06": {
+   "subject": null,
+   "template_type": "Fundamentals",
+   "prefix": "SMFUN",
+   "phase": "SMFUN0",
+   "series": "SMFUN06",
+   "dev_order": 6
+  },
+  "SPNO901": {
+   "subject": null,
+   "template_type": "Standard",
+   "prefix": "SPNO",
+   "phase": "SPNO9",
+   "series": "SPNO90",
+   "dev_order": 901
+  },
+  "WJFUN111": {
+   "subject": "1-10 Writing (MiW)",
+   "template_type": "Fundamentals",
+   "prefix": "WJFUN",
+   "phase": "WJFUN1",
+   "series": "WJFUN11",
+   "dev_order": 111
+  },
+  "WJFUN114": {
+   "subject": "1-10 Writing (MiW)",
+   "template_type": "Fundamentals",
+   "prefix": "WJFUN",
+   "phase": "WJFUN1",
+   "series": "WJFUN11",
+   "dev_order": 114
+  },
+  "WJFUN209": {
+   "subject": "1-10 Writing (MiW)",
+   "template_type": "Fundamentals",
+   "prefix": "WJFUN",
+   "phase": "WJFUN2",
+   "series": "WJFUN20",
+   "dev_order": 209
   }
  },
  "modules": {
