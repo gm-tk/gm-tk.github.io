@@ -3062,7 +3062,13 @@ class InteractiveBuilder {
 			const text = this.#cellText(raw).trim();
 
 			if (m.parse?.primary?.directive === "INTERACTIVE") {
-				const t = openerTitle(m);
+				let t = openerTitle(m);
+				// the link label typed straight after the hint tag («[Hint button] Need help?»), no [Title] tag
+				// (hint.opener_text_title; env HINTLABEL_OFF)
+				const otl = tpl.opener_text_title;
+				if (t === null && otl && otl.enabled !== false && text && text.split(/\s+/).length <= (otl.max_words ?? 8)
+					&& !(otl.deny_label_pattern && new RegExp(otl.deny_label_pattern).test(text))
+					&& !(typeof process !== "undefined" && process.env && process.env[otl.env || "HINTLABEL_OFF"])) t = text;
 				if (t !== null && title === null) title = t;           // may be "" → default below
 				continue;
 			}
@@ -17973,7 +17979,10 @@ class InteractiveBuilder {
 		if (!rows.length) return null;
 		const width = rows[0].length;
 		if (rows.some((r) => r.length !== width) || (width !== 2 && width !== 3)) return null;
-		const isMark = (c) => !!plain(c) && markRe.test(plain(c));
+		// a mark typed in square brackets («[correct]») is the same mark (table_form.bracket_marks; env RADIOBRACKET_OFF)
+		const bmOn = !!tf.bracket_marks && tf.bracket_marks.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[tf.bracket_marks.env || "RADIOBRACKET_OFF"]);
+		const isMark = (c) => !!plain(c) && (markRe.test(plain(c)) || (bmOn && markRe.test(plain(c).replace(/^\[\s*|\s*\]$/g, ""))));
 		const denyRe = new RegExp(tf.deny_cell_pattern ?? "https?://|www\\.|\\[\\s*(?:image|video|audio|picture|photo)\\b", "i");
 		// a statement: black words only (a red span is a request this form cannot place) — but the red letters glued to the
 		// front of a word are its own letters («[red T]own where you live», glued_red_letters_pattern)

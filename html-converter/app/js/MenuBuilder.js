@@ -2614,7 +2614,14 @@ class MenuBuilder {
 			&& levels.some((l) => hasContent(l.li) || hasContent(l.sc))
 			&& !(typeof process !== "undefined" && process.env && process.env[(cfg.level_menu_tabs && cfg.level_menu_tabs.env) || "LEVELMENUTABS_OFF"]);
 		let nav = omitOv ? "" : navItem(mc.overview_label || "Overview");
-		let panes = omitOv ? "" : pane(mod.li, mod.sc, ovCols);
+		// A registry row with overview_prose_pane fills an Overview pane the module gives no LI / SC with the
+		// module overview's own prose (the gold's German FUN pane) instead of two headings over nothing
+		const ovProse = row.overview_prose_pane === true && !hasContent(mod.li) && !hasContent(mod.sc) && (mod.prose ?? []).length > 0;
+		let panes = omitOv ? "" : ovProse
+			? (mc.pane_open || "\n<div class=\"tab-pane\">\n<div class=\"row\">") + "\n"
+				+ Utils.FillTemplate(colT, { cls: row.overview_prose_col || "col-12", content: mod.prose.map((t) => `<p>${Utils.EscapeHtml(t)}</p>`).join("\n") })
+				+ (mc.pane_close || "\n</div>\n</div>")
+			: pane(mod.li, mod.sc, ovCols);
 		// the module overview's own Knowledge / Practices blocks, each a one-column tab after Overview
 		// (tile_pages.untagged_overview_labels; the pre-pass fills mod.extra only when that rule is on)
 		for (const ex of (mod.extra ?? [])) {

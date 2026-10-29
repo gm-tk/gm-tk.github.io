@@ -197,6 +197,14 @@ class ContentConverter {
 		const lsRe = row.level_sections === true && cfg.level_section_marker_pattern
 			&& !(typeof process !== "undefined" && process.env && process.env[cfg.level_section_env ?? "LEVELSECTION_OFF"])
 			? new RegExp(cfg.level_section_marker_pattern, "iu") : null;
+		// THE OTHER LEVEL OPENERS («[<CODE> Fundamental content for Novice begins here]», «[Novice Page]», «[Start of Emergent
+		// Content]» …): each form captures the level word and opens (or re-enters) that level like the section opener.
+		// Data level_pages.level_section_forms; env LEVELOPEN_OFF.
+		const lofCfg = cfg.level_section_forms;
+		const lofRes = lsRe !== null && lofCfg && lofCfg.enabled !== false && Array.isArray(lofCfg.patterns)
+			&& !(typeof process !== "undefined" && process.env && process.env[lofCfg.env ?? "LEVELOPEN_OFF"])
+			? lofCfg.patterns.map((p) => new RegExp(p, "iu")) : [];
+		const lofLevel = (f) => { for (const re of lofRes) { const m = re.exec(f); if (m) return m[1]; } return null; };
 		// a level-section marker ENDS any widget capture that ran over it (JPFUN02's closing clickDrop / multichoice capture
 		// swallowed "[Novice content ends here]" + "[Emergent Content starts here]"): the marker and the rest of that
 		// bundle's members return to the body
@@ -205,14 +213,14 @@ class ContentConverter {
 			for (const x of bodyItems) {
 				if (x.type !== "tag" || x.consumedBy === undefined) continue;
 				const f = folded(x);
-				if (!lsRe.test(f) && !(lsNoop !== null && lsNoop.test(f))) continue;
+				if (!lsRe.test(f) && lofLevel(f) === null && !(lsNoop !== null && lsNoop.test(f))) continue;
 				const b = (run.interactives ?? []).find((bb) => (bb.memberItems ?? []).includes(x));
 				if (b) {
 					const k = b.memberItems.indexOf(x);
 					for (const m of b.memberItems.slice(k)) if (m) m.consumedBy = undefined;
 					b.memberItems = b.memberItems.slice(0, k);
 					// the scan also copied the markers into the widget's writer notes — they leave those too
-					const _isSec = (ln) => { const g = Utils.Fold(String(ln).replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "")).replace(/\s+/g, " ").trim(); return lsRe.test(g) || (lsNoop !== null && lsNoop.test(g)); };
+					const _isSec = (ln) => { const g = Utils.Fold(String(ln).replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "")).replace(/\s+/g, " ").trim(); return lsRe.test(g) || lofLevel(g) !== null || (lsNoop !== null && lsNoop.test(g)); };
 					if (Array.isArray(b.instructions)) b.instructions = b.instructions
 						.map((s) => String(s).split(/\n/).filter((ln) => !_isSec(ln)).join("\n")).filter((s) => s.trim());
 					run.AddNote?.("info", "ContentConverter", `A level-section marker ("${f}") ends the widget capture it ran into (level_pages.level_section_marker_pattern).`);
@@ -222,7 +230,8 @@ class ContentConverter {
 		const isMarker = (it) => it.type === "tag" && it.consumedBy === undefined
 			&& ((it.parse?.primary?.directive === "PAGE_BOUNDARY" && it.parse?.primary?.tag === "page"
 				&& (markerRe.test(folded(it)) || (lfRe !== null && lfRe.test(folded(it)))))
-				|| (lsRe !== null && lsRe.test(folded(it))));
+				|| (lsRe !== null && lsRe.test(folded(it)))
+				|| lofLevel(folded(it)) !== null);
 		if (bodyItems.filter(isMarker).length < (cfg.min_markers ?? 2)) return null;
 
 		const pageContentRe = new RegExp(cfg.page_content_pattern || "^\\[page content\\]$", "i");
@@ -250,7 +259,11 @@ class ContentConverter {
 			const lmt = cfg.level_menu_tabs;
 			if (lmt && lmt.enabled !== false && row.level_menu_tabs === true && lmt.label_pattern
 				&& !(typeof process !== "undefined" && process.env && process.env[lmt.env ?? "LEVELMENUTABS_OFF"])) {
-				const labRe = new RegExp(lmt.label_pattern, "iu");
+				// a tab labelled with the level word alone («[Tab 1] Novice») carries both sides — read through the
+				// LI / SC split (level_menu_tabs.bare_level_pattern; env LEVELOPEN_OFF with the level openers)
+				const bareRe = lofRes.length && lmt.bare_level_pattern ? new RegExp(lmt.bare_level_pattern, "iu") : null;
+				const labRe0 = new RegExp(lmt.label_pattern, "iu");
+				const labRe = { exec: (s) => labRe0.exec(s) || (bareRe !== null ? bareRe.exec(s) : null) };
 				const isTab = (x) => x && x.type === "tag" && ["tabs", "tab n"].includes(x.parse?.primary?.tag);
 				const groups = new Map();
 				bodyItems.forEach((x, k) => { if (x.consumedBy !== undefined && isTab(x)) { if (!groups.has(x.consumedBy)) groups.set(x.consumedBy, []); groups.get(x.consumedBy).push(k); } });
@@ -260,7 +273,6 @@ class ContentConverter {
 					if (lab.length < 2 || !lab.every((p) => p.m)) continue;
 					for (const p of lab) {
 						const key = p.m[1].toLowerCase();
-						const side = /learn/i.test(p.m[2]) ? "li" : "sc";
 						const e = preMenu.get(key) ?? { li: { lead: "", bullets: [] }, sc: { lead: "", bullets: [] } };
 						const lines = [];
 						for (let j = p.k + 1; j < bodyItems.length; j++) {
@@ -268,7 +280,12 @@ class ContentConverter {
 							if (x.consumedBy !== cb || isTab(x)) break;
 							if (x.type === "black") lines.push(...String(x.text || "").split("\n"));
 						}
-						this.#levelMenuLines(e[side], lines, cfg);
+						// a bare level tab, or a «Learning Intentions» tab whose own lines go on into the «I can:» run, carries
+						// both sides (the LI / SC split)
+						const scLeadRe = new RegExp(cfg.sc_lead_pattern || "^i can\\b", "i");
+						if (p.m[2] === undefined || (bareRe !== null && /learn/i.test(p.m[2])
+							&& lines.some((ln) => scLeadRe.test(Utils.Fold(ln).trim())))) this.#levelMenuAbsorb(e, lines, cfg);
+						else this.#levelMenuLines(e[/learn/i.test(p.m[2]) ? "li" : "sc"], lines, cfg);
 						preMenu.set(key, e);
 					}
 					bodyItems.forEach((x, k) => { if (x.consumedBy === cb) dropIdx.add(k); });
@@ -289,7 +306,9 @@ class ContentConverter {
 				const m = raw.match(/\[\s*page\s+\d+\s+([^\]]+?)\s*\]/i)
 					|| (lfRe !== null ? raw.match(/\[\s*([^\]\d]+?)\s+page\s+\d+\s*\]/i) : null)   // "[Novice Page 1]"
 					|| (lsRe !== null ? raw.match(/\[\s*(\p{L}+)\s+content\s+starts\s+here\s*\]/iu) : null);   // the level section
-				const rawLabel = (m ? m[1] : "").replace(/\s+/g, " ").trim() || `Phase ${menuLevels.length + 1}`;
+				const lofWord = m ? null : lofLevel(folded(it));   // the other level openers (folded: title-case the word)
+				const rawLabel = (m ? m[1] : (lofWord ? lofWord.charAt(0).toUpperCase() + lofWord.slice(1) : ""))
+					.replace(/\s+/g, " ").trim() || `Phase ${menuLevels.length + 1}`;
 				const key = rawLabel.toLowerCase();   // the writer's level word keys the level (its [Tabs] menu, re-entry)
 				const label = this.LevelDisplayLabel(rawLabel, run);   // what the page shows for it (level_labels)
 				if (!levelIdx.has(key)) {
@@ -344,6 +363,15 @@ class ContentConverter {
 				}
 				// ---- the module's own [Overview] marker — renders nothing ----
 				if (curLevel === null && it.parse?.primary?.tag === "title bar" && ovAliasRe.test(f)) {
+					// a row with overview_prose_pane also copies the overview's prose (up to the next tag) into the
+					// menu's Overview pane — it stays in the body too, as the gold ships it twice
+					if (row.overview_prose_pane === true) {
+						const pl = [];
+						if ((it.blackAfter || "").trim()) pl.push(...String(it.blackAfter).split("\n"));
+						for (let j = i + 1; j < bodyItems.length && bodyItems[j].type === "black" && bodyItems[j].consumedBy === undefined; j++)
+							pl.push(...String(bodyItems[j].text || "").split("\n"));
+						moduleMenu.prose = pl.map((s) => s.trim()).filter(Boolean);
+					}
 					if ((it.blackAfter || "").trim()) out.push({ type: "black", text: it.blackAfter, block: it.block });
 					continue;
 				}
@@ -1207,7 +1235,7 @@ class ContentConverter {
 		// Data flag: fundamentals_panels.phase_text   Env toggle: FUNDPHASE_OFF
 		const fundPhaseCfg = fundCfg && fundCfg.phase_text;
 		const FUND_PHASETEXT_SENTINEL = (fundPhaseCfg && fundPhaseCfg.sentinel) || "<!--CV2_FUNDPHASETEXT-->";
-		const phaseTextRe = new RegExp((fundPhaseCfg && fundPhaseCfg.delimiter_pattern) || "^phase\\s+\\d+$", "i");
+		const phaseTextRe = new RegExp(ContentConverter.PhaseLinePattern(fundPhaseCfg), "i");
 		// The ENFUN fundamentals subject group uses yet another way of marking phase
 		// boundaries: a standalone span of RED text reading "Phase N", with no square
 		// brackets around it at all — so the tag-classifier treats it as plain unstructured
@@ -1329,15 +1357,20 @@ class ContentConverter {
 			.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "").replace(/\s+/g, " ").trim().toLowerCase();
 		const taBaRe = taOn ? new RegExp((taCfg.blackafter_pattern || "^(?:{code}\\s*)?phase\\s+\\d+$")
 			.replace("{code}", String(run.moduleCode || "").toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))) : null;
-		const taKindOf = (it) => {
-			if (!taOn || it.type !== "tag" || it.consumedBy !== undefined) return null;
-			const kind = taTags[it.parse?.primary?.tag];
-			return (kind && taBaRe.test(taClean(it.blackAfter))) ? kind : null;
-		};
 		// the BLACK-typed twin (a tile line the writer never made red — keeps its brackets)
 		const taLineRe = taOn && taCfg.black_line_pattern ? new RegExp(taCfg.black_line_pattern, "i") : null;
 		const taLineClean = (s) => String(s || "").replace(/\*\*/g, " ")
 			.replace(/^[^\p{L}\p{N}\[\]]+|[^\p{L}\p{N}\[\]]+$/gu, "").replace(/\s+/g, " ").trim();
+		// the ALL-RED twin: «[Tile 1] Phase 1» typed in one red span — the phase word is the tag's own text, not its
+		// blackAfter (labelled_delimiter.red_tile_form; env PHASELABEL_OFF)
+		const taRedTile = taOn && !!taLineRe && ContentConverter.PhaseRedTileOn(fundPhaseCfg);
+		const taKindOf = (it) => {
+			if (!taOn || it.type !== "tag" || it.consumedBy !== undefined) return null;
+			const kind = taTags[it.parse?.primary?.tag];
+			if (!kind) return null;
+			if (taBaRe.test(taClean(it.blackAfter))) return kind;
+			return (taRedTile && !taClean(it.blackAfter) && taLineRe.test(taLineClean(it.parse?.folded))) ? kind : null;
+		};
 		const isTaLine = (ln) => !!taLineRe && taLineRe.test(taLineClean(ln));
 		// ACCORDION-AS-PHASES: module XFUN01 authors its phases as ONE single [Accordion]
 		// widget containing nine numbered sections, [Accordion 1] through [Accordion 9] — but
@@ -6629,6 +6662,24 @@ class ContentConverter {
 	 * Env: CODEPHASE_OFF (reverts the whole dialect)
 	 */
 	/**
+	 * The phase-line pattern every phase reader shares: the labelled form («Section 1: Phase 1», «[Phase 2]»,
+	 * «[Tile 1] Phase 1») when fundamentals_panels.phase_text.labelled_delimiter is on, else the bare
+	 * delimiter_pattern. Env PHASELABEL_OFF (the labelled block's `env`) restores the bare pattern.
+	 */
+	static PhaseLinePattern(fp) {
+		const lb = fp && fp.labelled_delimiter;
+		const on = !!lb && lb.enabled !== false && !!lb.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[lb.env || "PHASELABEL_OFF"]);
+		return on ? lb.pattern : ((fp && fp.delimiter_pattern) || "^phase\\s+\\d+$");
+	}
+
+	/** True when the labelled phase block's red tile form is live (see PhaseLinePattern). */
+	static PhaseRedTileOn(fp) {
+		return ContentConverter.PhaseLinePattern(fp) !== ((fp && fp.delimiter_pattern) || "^phase\\s+\\d+$")
+			&& fp.labelled_delimiter.red_tile_form === true;
+	}
+
+	/**
 	 * The index of the FIRST fundamentals PHASE delimiter in a page's item stream, or -1.
 	 *
 	 * Used to bound the overview's menu/body boundary: the module menu is the front matter, so a
@@ -6645,7 +6696,7 @@ class ContentConverter {
 		if (!fp || fp.enabled === false) return -1;
 		if (typeof process !== "undefined" && process.env && process.env.FUNDPHASE_OFF) return -1;
 		if (!/(^|\s)fundamentals(\s|$)/.test(run?.resolvedRules?.body_class || "")) return -1;
-		const lineRe = new RegExp(fp.delimiter_pattern || "^phase\\s+\\d+$", "i");
+		const lineRe = new RegExp(ContentConverter.PhaseLinePattern(fp), "i");
 		const brRe = fp.bracketed_delimiter && fp.bracketed_delimiter.enabled !== false && fp.bracketed_delimiter.opener_pattern
 			? new RegExp(fp.bracketed_delimiter.opener_pattern, "i") : null;
 		const ccRe = fp.code_content_delimiter && fp.code_content_delimiter.enabled !== false && fp.code_content_delimiter.marker_pattern
@@ -7087,7 +7138,7 @@ class ContentConverter {
 				&& /(^|\s)fundamentals(\s|$)/.test(run.resolvedRules?.body_class || "")
 				&& run.resolvedRules?.page_model === "single-file";
 			if (rdOn) {
-				const rdRe = new RegExp((fpCfg && fpCfg.delimiter_pattern) || "^phase\\s+\\d+$", "i");
+				const rdRe = new RegExp(ContentConverter.PhaseLinePattern(fpCfg), "i");
 				const rdIdx = [];
 				for (let i2 = 0; i2 < items.length; i2++) {
 					const x = items[i2];
@@ -8103,6 +8154,17 @@ class ContentConverter {
 				// Data flag: header.title_split.placeholder_title_rule
 				// Env toggle: TITLEPH_OFF (uses the smaller, basic placeholder list,
 				// and to always restoring a title rather than allowing an empty result)
+				// THREE OR MORE TITLES (header.title_split.multi_part_lines; env TITLEMULTI_OFF): a bar whose one separator is a
+				// spaced « / » typed two or more times («¡HOLA! / HELLO! / KIA ORA!») splits on it when every part is short
+				const mplCfg = tsCfg.multi_part_lines;
+				const mplOn = !!mplCfg && mplCfg.enabled !== false
+					&& (!(mplCfg.subjects ?? []).length || (mplCfg.subjects ?? []).includes(String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.subject ?? "")))
+					&& !(typeof process !== "undefined" && process.env && process.env[mplCfg.env || "TITLEMULTI_OFF"]);
+				if (mplOn && parts.length === 1 && mplCfg.multi_slash && mplCfg.multi_slash.enabled !== false) {
+					const segs = parts[0].split(/\s+\/\s+/).map((s) => s.trim()).filter(Boolean);
+					if (segs.length >= (mplCfg.min_parts ?? 3)
+						&& segs.every((s) => s.split(/\s+/).length <= (mplCfg.multi_slash.max_words ?? 6))) { parts = segs; titleBar.multiSlash = true; }
+				}
 				const before = parts.length;
 				const kept = parts.filter((p) => {
 					if (ph.includes(Utils.Fold(p).replace(/[\[\]\s]+/g, ""))) {
@@ -8145,6 +8207,14 @@ class ContentConverter {
 				} else {
 					titleBar.english = this.#normaliseTitleCase(parts[0] ?? "");
 					titleBar.teReo = this.#normaliseTitleCase(parts.slice(1).join(" ").trim());
+					// three or more titles: each after the first is its own header line (multi_part_lines)
+					// only when every part comes from ONE separator typed again — the pipe, or the multi-slash above; a bar that
+					// mixes a pipe with a dash or a wide space keeps its parts after the first together
+					if (mplOn && parts.length >= (mplCfg.min_parts ?? 3)
+						&& (titleBar.multiSlash === true || String(payload).split("|").length - 1 >= parts.length - 1)) {
+						titleBar.teReoLines = parts.slice(1).map((s) => this.#normaliseTitleCase(s));
+						titleBar.teReo = titleBar.teReoLines[0];
+					}
 				}
 				// flag a SINGLE-title payload (0 or 1 real title) so PageAssembler can decide
 				// whether the lone title is actually Te Reo (no English pair)

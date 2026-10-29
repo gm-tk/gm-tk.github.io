@@ -1541,7 +1541,7 @@ class InteractiveScanner {
 		const rd = fp.red_delimiter;
 		if (rd && rd.enabled !== false && rd.scanner_hard_terminator !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.FUNPANRED_OFF)
-			&& new RegExp(fp.delimiter_pattern || "^phase\\s+\\d+$", "i").test(folded)) return true;
+			&& new RegExp(ContentConverter.PhaseLinePattern(fp), "i").test(folded)) return true;
 		const br = fp.bracketed_delimiter;
 		if (br && br.enabled !== false && br.scanner_hard_terminator !== false && br.opener_pattern
 			&& !(typeof process !== "undefined" && process.env && process.env.FUNPANBRACKET_OFF)
@@ -4458,6 +4458,46 @@ class InteractiveScanner {
 				}
 				for (const c of pre6.consume) { c.type = "black"; c.text = ""; c.blackAfter = ""; }
 				return true;
+			}
+		}
+		// (A7) THE ANCHOR BEFORE ITS MARKER, THE DEFINITION IN PARENTHESES AFTER IT — the mirror of (A6): «your Hoa ako
+		// [hover] (learning partner)». The definition weaves onto the words before the marker in the same source paragraph: a
+		// bold / italic run ending there is the anchor already; otherwise the trailing Māori-alphabet term (≤ max_anchor_words,
+		// no stop word) is wrapped as one anchor (the U+E005 … U+E006 pair). Data split_bracket.post_anchor_paren; env HOVERPOSTANCHOR_OFF.
+		const _pa7 = split?.post_anchor_paren;
+		if (_pa7 && _pa7.enabled !== false && splitOff && !leadingAnchor
+			&& !(typeof process !== "undefined" && process.env && process.env[_pa7.env ?? "HOVERPOSTANCHOR_OFF"])
+			&& new RegExp(_pa6?.bare_head_pattern ?? "^\\[\\s*(?:hover|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover)(?:\\s+(?:definition|defn|def|text|info))*\\s*\\]\\s*$", "i").test(rawMarker)) {
+			const m7 = String(it.blackAfter ?? "").match(/^\s*\(\s*([^()]{1,160}?)\s*\)([\s\S]*)$/u);
+			let host7 = null;
+			for (let h = i - 1; h >= 0 && m7; h--) {
+				const c = items[h];
+				const t = c?.type === "black" ? c.text : c?.blackAfter;
+				if (!String(t ?? "").trim()) continue;
+				if (c.block !== undefined && c.block === it.block && !InteractiveScanner.#urlTailHost(t)) host7 = c;
+				break;
+			}
+			if (m7 && host7 && /\p{L}/u.test(m7[1]) && !InteractiveScanner.#hoverDefIsInstruction(m7[1])) {
+				const key = host7.type === "black" ? "text" : "blackAfter";
+				let t = String(host7[key]).replace(/\s+$/, "");
+				if (!/(?:\*\*|__|\*|_)$/.test(t)) {
+					const stop = new Set((_pa7.stop_words ?? []).map((w) => String(w).toLowerCase()));
+					const words = t.split(/\s+/);
+					const reo = (w) => { const L = w.replace(/[^\p{L}]/gu, ""); return !!L && w === w.replace(/[^\p{L}\p{N}'’ʻ-]/gu, "") && !/[bcdfgjlqsvxyz]/i.test(L.normalize("NFD").replace(/\p{M}/gu, "").replace(/ng/gi, "")) && !stop.has(L.toLowerCase()); };
+					let k = 0;
+					while (k < (_pa7.max_anchor_words ?? 3) && k < words.length && reo(words[words.length - 1 - k])) k++;
+					if (k > 1) {
+						const anchor = words.slice(-k).join(" ");
+						t = words.slice(0, -k).join(" ") + (words.length > k ? " " : "") + String.fromCharCode(0xE005) + anchor + String.fromCharCode(0xE006);
+					} else if (k === 0) t = null;
+				}
+				if (t !== null) {
+					const IT0 = String.fromCharCode(0xE000), IT1 = String.fromCharCode(0xE001);
+					const rest = String(m7[2] ?? "").replace(/^\s+/, "");
+					host7[key] = t + IT0 + m7[1].trim() + IT1 + (rest ? (/^(?:\*\*|__|\*)?[,.;:!?)]/.test(rest) ? "" : " ") + rest : "");
+					it.type = "black"; it.text = ""; it.blackAfter = "";
+					return true;
+				}
 			}
 		}
 		const skipKw = cfg.skip_if_tag_keyword ? new RegExp(cfg.skip_if_tag_keyword, "i") : null;

@@ -329,9 +329,21 @@
 						],
 						"prefix_deltas": {
 							"_note": "The BLL14x / 15x / 16x sub-series carry the DECIMAL lesson chip (BLL141-1.0.html: <h1>1.0</h1>) where the level says padded-number (01); BLL11x–13x and BLL17x keep the level's padded form.",
-							"BLL14": { "module_code": { "lesson": "decimal" } },
-							"BLL15": { "module_code": { "lesson": "decimal" } },
-							"BLL16": { "module_code": { "lesson": "decimal" } }
+							"BLL14": {
+								"module_code": {
+									"lesson": "decimal"
+								}
+							},
+							"BLL15": {
+								"module_code": {
+									"lesson": "decimal"
+								}
+							},
+							"BLL16": {
+								"module_code": {
+									"lesson": "decimal"
+								}
+							}
 						},
 						"template_deltas": {
 							"Inquiry": {
@@ -417,8 +429,16 @@
 						],
 						"prefix_deltas": {
 							"_note": "The BLL26x / 27x sub-series carry the PADDED lesson chip (BLL261_1.0.html: <h1>01</h1>) where the base says decimal (1.0); BLL21x–25x keep decimal (BLL240 / 253 / 255 are the padded minority there).",
-							"BLL26": { "module_code": { "lesson": "padded-number" } },
-							"BLL27": { "module_code": { "lesson": "padded-number" } }
+							"BLL26": {
+								"module_code": {
+									"lesson": "padded-number"
+								}
+							},
+							"BLL27": {
+								"module_code": {
+									"lesson": "padded-number"
+								}
+							}
 						},
 						"template_deltas": {
 							"Inquiry": {
@@ -530,7 +550,10 @@
 						"members": [
 							"BLLR201",
 							"BLLR202",
-							"BLLR203"
+							"BLLR203",
+							"BLLR204",
+							"BLLR205",
+							"BLLR206"
 						],
 						"delta": {
 							"template_phase": "4-6"
@@ -592,7 +615,8 @@
 							"ENFUN11"
 						],
 						"delta": {
-							"template_phase": "combo"
+							"template_phase": "combo",
+							"page_model": "single-file"
 						}
 					}
 				}
@@ -644,7 +668,8 @@
 					"ENGC4": {
 						"members": [
 							"ENGC401",
-							"ENGC403"
+							"ENGC403",
+							"ENGC404"
 						],
 						"delta": {
 							"template_phase": "9-10",
@@ -940,6 +965,71 @@
 						}
 					}
 				}
+			},
+			"ENWJ": {
+				"base_code": "ENWJ",
+				"base_rules": {
+					"template_phase": "1-3",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "padded-number"
+					},
+					"h1_count": {
+						"overview": "2",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes",
+						"lesson": "yes"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home",
+						"final": "prev+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"ENWJ1": {
+						"members": [
+							"ENWJ105",
+							"ENWJ106",
+							"ENWJ107",
+							"ENWJ108",
+							"ENWJ110"
+						],
+						"delta": {
+							"template_phase": "1-3"
+						}
+					},
+					"ENWJ2": {
+						"members": [
+							"ENWJ204",
+							"ENWJ206"
+						],
+						"delta": {
+							"template_phase": "4-6"
+						}
+					},
+					"ENWJ3": {
+						"members": [
+							"ENWJ304"
+						],
+						"delta": {
+							"template_phase": "7-8"
+						}
+					}
+				},
+				"_note_mined": "Base row mined from the 8 gold module(s) ENWJ105 ENWJ106 ENWJ107 ENWJ108 ENWJ110 ENWJ204 ENWJ206 ENWJ304 with ReferenceMiner.Distil; majority per field; splits — template_phase: \"1-3\" 5/8 | \"4-6\" ×2 (ENWJ204,ENWJ206) | \"7-8\" ×1 (ENWJ304); menu_button_tooltip: {\"overview\":\"yes\",\"lesson\":\"yes\"} 7/8 | {\"overview\":\"no\",\"lesson\":\"no\"} ×1 (ENWJ106)"
 			}
 		}
 	},
@@ -1083,7 +1173,8 @@
 					"MXDB3": {
 						"members": [
 							"MXDB301",
-							"MXDB302"
+							"MXDB302",
+							"MXDB303"
 						],
 						"delta": {
 							"template_phase": "7-8",
@@ -1122,7 +1213,8 @@
 					"MXDI2": {
 						"members": [
 							"MXDI201",
-							"MXDI202"
+							"MXDI202",
+							"MXDI211"
 						],
 						"delta": {
 							"template_phase": "4-6",
@@ -1218,7 +1310,8 @@
 				"levels": {
 					"MXEX1": {
 						"members": [
-							"MXEX101"
+							"MXEX101",
+							"MXEX105"
 						],
 						"delta": {
 							"template_phase": "1-3",
@@ -1712,7 +1805,8 @@
 							"SCFUN10"
 						],
 						"delta": {
-							"template_phase": "combo"
+							"template_phase": "combo",
+							"page_model": "single-file"
 						}
 					}
 				}
@@ -1779,6 +1873,14 @@
 						"delta": {
 							"template_phase": "7-8"
 						}
+					},
+					"SCBI2": {
+						"members": [
+							"SCBI202"
+						],
+						"delta": {
+							"template_phase": "4-6"
+						}
 					}
 				},
 				"_note_mined": "Base row mined from the 1 gold module(s) SCBI301 with ReferenceMiner.Distil; majority per field; every field unanimous"
@@ -1821,6 +1923,14 @@
 						],
 						"delta": {
 							"template_phase": "4-6"
+						}
+					},
+					"SCES4": {
+						"members": [
+							"SCES401"
+						],
+						"delta": {
+							"template_phase": "9-10"
 						}
 					}
 				},
@@ -2183,7 +2293,21 @@
 							"ANZHFUN10"
 						],
 						"delta": {
-							"template_phase": "combo"
+							"template_phase": "combo",
+							"body_class": "fundamentals container-fluid",
+							"module_code": {
+								"overview": "full-code"
+							},
+							"h1_count": {
+								"overview": "2"
+							},
+							"menu_type": {
+								"overview": "none"
+							},
+							"footer_links": {
+								"overview": "prev+next+home"
+							},
+							"page_model": "single-file"
 						}
 					}
 				}
@@ -4292,7 +4416,22 @@
 							"XOTPG14"
 						],
 						"delta": {
-							"template_phase": "1-3"
+							"template_phase": "1-3",
+							"module_code": {
+								"lesson": "full-code"
+							},
+							"h1_count": {
+								"lesson": "2"
+							},
+							"menu_type": {
+								"lesson": "simplified"
+							},
+							"menu_button_tooltip": {
+								"lesson": "no"
+							},
+							"footer_links": {
+								"lesson": "next+home"
+							}
 						}
 					}
 				}
@@ -4366,7 +4505,22 @@
 							"XOTPO14"
 						],
 						"delta": {
-							"template_phase": "1-3"
+							"template_phase": "1-3",
+							"module_code": {
+								"lesson": "full-code"
+							},
+							"h1_count": {
+								"lesson": "2"
+							},
+							"menu_type": {
+								"lesson": "simplified"
+							},
+							"menu_button_tooltip": {
+								"lesson": "no"
+							},
+							"footer_links": {
+								"lesson": "next+home"
+							}
 						}
 					}
 				}
@@ -7207,6 +7361,125 @@
 						"delta": {}
 					}
 				}
+			},
+			"GEFUN": {
+				"base_code": "GEFUN",
+				"base_rules": {
+					"template_phase": "combo",
+					"body_class": "fundamentals container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav fundamentals-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code"
+					},
+					"h1_count": {
+						"overview": "2"
+					},
+					"menu_type": {
+						"overview": "tabs"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes"
+					},
+					"footer_links": {
+						"overview": "home"
+					},
+					"page_model": "single-file"
+				},
+				"levels": {
+					"GEFUN0": {
+						"members": [
+							"GEFUN02"
+						],
+						"delta": {
+							"template_phase": "combo"
+						}
+					}
+				},
+				"_note_mined": "Base row mined from the 1 gold module(s) GEFUN02 with ReferenceMiner.Distil; majority per field; every field unanimous"
+			},
+			"SMFUN": {
+				"base_code": "SMFUN",
+				"base_rules": {
+					"template_phase": "combo",
+					"body_class": "fundamentals container-fluid",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav fundamentals-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code"
+					},
+					"h1_count": {
+						"overview": "3"
+					},
+					"menu_type": {
+						"overview": "tabs"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes"
+					},
+					"footer_links": {
+						"overview": "home"
+					},
+					"page_model": "single-file"
+				},
+				"levels": {
+					"SMFUN0": {
+						"members": [
+							"SMFUN06"
+						],
+						"delta": {
+							"template_phase": "combo"
+						}
+					}
+				},
+				"_note_mined": "Base row mined from the 1 gold module(s) SMFUN06 with ReferenceMiner.Distil; majority per field; every field unanimous"
+			},
+			"SPNO": {
+				"base_code": "SPNO",
+				"base_rules": {
+					"template_phase": "combo",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "padded-number"
+					},
+					"h1_count": {
+						"overview": "3",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes",
+						"lesson": "yes"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home",
+						"final": "prev+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"SPNO9": {
+						"members": [
+							"SPNO901"
+						],
+						"delta": {
+							"template_phase": "combo"
+						}
+					}
+				},
+				"_note_mined": "Base row mined from the 1 gold module(s) SPNO901 with ReferenceMiner.Distil; majority per field; every field unanimous"
 			}
 		}
 	},
@@ -7248,8 +7521,10 @@
 							"WJFUN108",
 							"WJFUN109",
 							"WJFUN110",
+							"WJFUN111",
 							"WJFUN112",
 							"WJFUN113",
+							"WJFUN114",
 							"WJFUN115",
 							"WJFUN116"
 						],
@@ -7265,6 +7540,7 @@
 							"WJFUN205",
 							"WJFUN206",
 							"WJFUN208",
+							"WJFUN209",
 							"WJFUN210",
 							"WJFUN211",
 							"WJFUN212"

@@ -226,6 +226,22 @@ class PageSplitter {
 	 * @returns {Object[]} pages
 	 */
 	static Split(items, run, normaliser = null) {
+		// A LESSON TAG THAT IS A MEDIA NOTE («[lesson 1 outro comic in development]») is a writer instruction, not a
+		// page boundary. Data page_split.lesson_boundary_guard.note_lesson_tag; env LESSONNOTE_OFF.
+		{
+			const _lbg = DataService.Data.EmitTemplates.page_split?.lesson_boundary_guard;
+			const _nlt = _lbg?.note_lesson_tag;
+			if (_lbg?.enabled !== false && _nlt && _nlt.enabled !== false && _nlt.pattern
+				&& !(typeof process !== "undefined" && process.env && process.env[_nlt.env || "LESSONNOTE_OFF"])) {
+				const _nltRe = new RegExp(_nlt.pattern, "i");
+				for (const it of items) {
+					if (it.type !== "tag" || it.parse?.primary?.tag !== "lesson" || it.parse.primary.directive !== "PAGE_BOUNDARY") continue;
+					if (!_nltRe.test(it.parse.folded ?? "")) continue;
+					it.parse = { ...it.parse, tags: [], primary: null, class: "instruction" };
+					run.AddNote("info", "PageSplitter", `«${it.parse.folded}» is a media note, not a lesson boundary (page_split.lesson_boundary_guard.note_lesson_tag).`);
+				}
+			}
+		}
 		// AR-3: single-document modules never split. THE REGISTRY DECIDES
 		// (its page_model is validated per level): 'single-file' = one file
 		// regardless of page tags; 'multi-file' = [LESSON]/[PAGE]/[end page]

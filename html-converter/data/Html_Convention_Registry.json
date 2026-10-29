@@ -168,26 +168,33 @@
    "members": [
     "BLLR201",
     "BLLR202",
-    "BLLR203"
+    "BLLR203",
+    "BLLR204",
+    "BLLR205",
+    "BLLR206"
    ],
    "menu": {
     "overview": {
      "dominant": {
       "archetype": "tabs"
      },
-     "share": "3/3"
+     "share": "6/6"
     },
     "lesson": {
      "dominant": {
       "archetype": "flat",
       "heading_form": "h5"
      },
-     "share": "14/18"
+     "share": "21/37"
     }
    },
    "callout_lead": {
     "element": "div",
-    "share": "6/10"
+    "share": "26/30"
+   },
+   "video_host": {
+    "host": "youtube",
+    "share": "1/1"
    }
   },
   "1-10 English|1-3": {
@@ -202,7 +209,12 @@
     "ENGR101",
     "ENGR102",
     "ENGS101",
-    "ENGS102"
+    "ENGS102",
+    "ENWJ105",
+    "ENWJ106",
+    "ENWJ107",
+    "ENWJ108",
+    "ENWJ110"
    ],
    "menu": {
     "overview": {
@@ -211,23 +223,23 @@
       "banner_h4_span": false,
       "left_h5_span": false
      },
-     "share": "10/11"
+     "share": "10/16"
     },
     "lesson": {
      "dominant": {
       "archetype": "flat",
       "heading_form": "h5"
      },
-     "share": "43/62"
+     "share": "65/84"
     }
    },
    "callout_lead": {
     "element": "div",
-    "share": "22/33"
+    "share": "26/41"
    },
    "video_host": {
     "host": "nocookie",
-    "share": "44/54"
+    "share": "58/70"
    },
    "series_deviations": {
     "ENGI": {
@@ -240,6 +252,11 @@
      "menu_lesson": {
       "archetype": "flat",
       "heading_form": "mixed"
+     }
+    },
+    "ENWJ": {
+     "menu_overview": {
+      "archetype": "tabs"
      }
     }
    }
@@ -261,44 +278,65 @@
     "ENGR201",
     "ENGR202",
     "ENGS201",
-    "ENGS202"
+    "ENGS202",
+    "ENWJ204",
+    "ENWJ206"
    ],
    "menu": {
     "overview": {
      "dominant": {
-      "archetype": "two_col_li",
-      "banner_h4_span": false,
-      "left_h5_span": false
+      "archetype": "tabs"
      },
-     "share": "8/16"
+     "share": "10/18"
     },
     "lesson": {
      "dominant": {
       "archetype": "flat",
       "heading_form": "h5"
      },
-     "share": "80/106"
+     "share": "92/118"
     }
    },
    "callout_lead": {
     "element": "div",
-    "share": "74/108"
+    "share": "90/124"
    },
    "video_host": {
     "host": "youtube",
-    "share": "52/82"
+    "share": "52/91"
    },
    "series_deviations": {
+    "ENGC": {
+     "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    },
     "ENGI": {
+     "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
      "menu_lesson": {
       "archetype": "two_col_li",
       "banner_h4_span": false,
       "left_h5_span": false
      }
     },
-    "ENGJ": {
+    "ENGR": {
      "menu_overview": {
-      "archetype": "tabs"
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    },
+    "ENGS": {
+     "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
      }
     }
    }
@@ -313,7 +351,8 @@
     "ENGR301",
     "ENGR302",
     "ENGS301",
-    "ENGS302"
+    "ENGS302",
+    "ENWJ304"
    ],
    "menu": {
     "overview": {
@@ -322,23 +361,23 @@
       "banner_h4_span": false,
       "left_h5_span": false
      },
-     "share": "5/9"
+     "share": "5/10"
     },
     "lesson": {
      "dominant": {
       "archetype": "flat",
       "heading_form": "h5"
      },
-     "share": "43/61"
+     "share": "49/67"
     }
    },
    "callout_lead": {
     "element": "div",
-    "share": "24/49"
+    "share": "28/59"
    },
    "video_host": {
     "host": "nocookie",
-    "share": "23/46"
+    "share": "25/48"
    },
    "series_deviations": {
     "ENGC": {
@@ -355,6 +394,11 @@
      }
     },
     "ENGR": {
+     "menu_overview": {
+      "archetype": "tabs"
+     }
+    },
+    "ENWJ": {
      "menu_overview": {
       "archetype": "tabs"
      }
@@ -402,7 +446,8 @@
       "left_h5_span": false
      }
     }
-   }
+   },
+   "held_back_note": "The rebuilt row (with ENGC404 joined) flipped the ENGC overview deviation to tabs and the video host to nocookie on a one-module change, moving ENGC401 / ENGC403 / ENGI401 / ENGI405 away from their gold; the row stays at its measured state until a second module confirms the change. ENGC404 resolves through it."
   },
   "1-10 English|9-10/NCEA": {
    "members": [
@@ -518,35 +563,41 @@
     "CHFUN07",
     "CHFUN08",
     "CHWHA",
+    "FRFUN06",
+    "FRFUN07",
+    "FRFUN08",
     "FRNO901",
     "FRNO902",
+    "GEFUN02",
     "GENO901",
     "GEWHA",
     "JPFUN01",
-    "JPFUN02"
+    "JPFUN02",
+    "SMFUN06",
+    "SPNO901"
    ],
    "menu": {
     "overview": {
      "dominant": {
       "archetype": "tabs"
      },
-     "share": "11/20"
+     "share": "16/26"
     },
     "lesson": {
      "dominant": {
       "archetype": "flat",
       "heading_form": "h5"
      },
-     "share": "16/17"
+     "share": "24/25"
     }
    },
    "callout_lead": {
     "element": "div",
-    "share": "37/42"
+    "share": "82/89"
    },
    "video_host": {
     "host": "nocookie",
-    "share": "28/29"
+    "share": "41/43"
    },
    "series_deviations": {
     "GENO": {
@@ -573,6 +624,7 @@
     "MXEO201",
     "MXEO202",
     "MXEX101",
+    "MXEX105",
     "MXFL101",
     "MXFL102",
     "MXFL103",
@@ -583,23 +635,23 @@
      "dominant": {
       "archetype": "tabs"
      },
-     "share": "9/12"
+     "share": "10/13"
     },
     "lesson": {
      "dominant": {
       "archetype": "flat",
       "heading_form": "mixed"
      },
-     "share": "52/78"
+     "share": "52/83"
     }
    },
    "callout_lead": {
     "element": "div",
-    "share": "21/21"
+    "share": "30/32"
    },
    "video_host": {
     "host": "nocookie",
-    "share": "103/104"
+    "share": "108/109"
    },
    "series_deviations": {
     "MXEX": {
@@ -628,6 +680,7 @@
     "MXDB202",
     "MXDI201",
     "MXDI202",
+    "MXDI211",
     "MXEX201",
     "MXEX202",
     "MXFL201",
@@ -642,23 +695,23 @@
      "dominant": {
       "archetype": "tabs"
      },
-     "share": "7/13"
+     "share": "8/14"
     },
     "lesson": {
      "dominant": {
       "archetype": "flat",
       "heading_form": "mixed"
      },
-     "share": "48/110"
+     "share": "48/115"
     }
    },
    "callout_lead": {
     "element": "div",
-    "share": "32/63"
+    "share": "54/85"
    },
    "video_host": {
     "host": "nocookie",
-    "share": "84/106"
+    "share": "85/107"
    },
    "series_deviations": {
     "MXDB": {
@@ -705,6 +758,7 @@
    "members": [
     "MXDB301",
     "MXDB302",
+    "MXDB303",
     "MXDI301",
     "MXEO301",
     "MXEX301",
@@ -719,23 +773,23 @@
      "dominant": {
       "archetype": "tabs"
      },
-     "share": "10/10"
+     "share": "11/11"
     },
     "lesson": {
      "dominant": {
       "archetype": "flat",
       "heading_form": "h5"
      },
-     "share": "91/95"
+     "share": "96/100"
     }
    },
    "callout_lead": {
     "element": "div",
-    "share": "54/83"
+    "share": "56/85"
    },
    "video_host": {
     "host": "youtube",
-    "share": "31/58"
+    "share": "31/61"
    }
   },
   "1-10 Mathematics|9-10": {
@@ -805,14 +859,16 @@
   },
   "1-10 Science|4-6": {
    "members": [
+    "SCBI202",
     "SCES201"
    ],
    "menu": {
     "overview": {
      "dominant": {
-      "archetype": "tabs"
+      "archetype": "flat",
+      "heading_form": "h5"
      },
-     "share": "1/1"
+     "share": "8/10"
     },
     "lesson": {
      "dominant": {
@@ -824,11 +880,18 @@
    },
    "callout_lead": {
     "element": "div",
-    "share": "2/3"
+    "share": "4/6"
    },
    "video_host": {
     "host": "nocookie",
-    "share": "5/5"
+    "share": "14/14"
+   },
+   "series_deviations": {
+    "SCES": {
+     "menu_overview": {
+      "archetype": "tabs"
+     }
+    }
    }
   },
   "1-10 Science|7-8": {
@@ -858,6 +921,34 @@
    "video_host": {
     "host": "nocookie",
     "share": "12/13"
+   }
+  },
+  "1-10 Science|9-10": {
+   "members": [
+    "SCES401"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "tabs"
+     },
+     "share": "1/1"
+    },
+    "lesson": {
+     "dominant": {
+      "archetype": "flat",
+      "heading_form": "h5"
+     },
+     "share": "8/8"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "9/9"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "5/5"
    }
   },
   "1-10 Social Science|1-3": {
@@ -980,8 +1071,10 @@
     "WJFUN108",
     "WJFUN109",
     "WJFUN110",
+    "WJFUN111",
     "WJFUN112",
     "WJFUN113",
+    "WJFUN114",
     "WJFUN115",
     "WJFUN116"
    ],
@@ -990,7 +1083,7 @@
      "dominant": {
       "archetype": "tabs"
      },
-     "share": "10/10"
+     "share": "12/12"
     }
    },
    "callout_lead": {
@@ -999,7 +1092,7 @@
    },
    "video_host": {
     "host": "nocookie",
-    "share": "7/10"
+    "share": "9/12"
    }
   },
   "1-10 Writing (MiW)|4-6": {
@@ -1007,6 +1100,7 @@
     "WJFUN205",
     "WJFUN206",
     "WJFUN208",
+    "WJFUN209",
     "WJFUN210",
     "WJFUN211",
     "WJFUN212"
@@ -1016,16 +1110,16 @@
      "dominant": {
       "archetype": "tabs"
      },
-     "share": "6/6"
+     "share": "7/7"
     }
    },
    "callout_lead": {
     "element": "div",
-    "share": "14/20"
+    "share": "15/21"
    },
    "video_host": {
     "host": "nocookie",
-    "share": "5/6"
+    "share": "5/7"
    }
   },
   "1-10 Writing (MiW)|7-8": {
@@ -1180,12 +1274,37 @@
     "share": "8/12"
    }
   },
+  "ANZH|combo": {
+   "members": [
+    "ANZHFUN01",
+    "ANZHFUN05"
+   ],
+   "menu": {
+    "overview": {
+     "dominant": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     },
+     "share": "1/1"
+    }
+   },
+   "callout_lead": {
+    "element": "div",
+    "share": "9/14"
+   },
+   "video_host": {
+    "host": "nocookie",
+    "share": "2/2"
+   }
+  },
   "ConnectED|1-3": {
    "members": [
     "CEDK101",
     "CEDK102",
     "CEDO102",
     "CEDO105",
+    "CEDR101",
     "CEDW101"
    ],
    "menu": {
@@ -1202,16 +1321,16 @@
       "archetype": "flat",
       "heading_form": "h5"
      },
-     "share": "5/8"
+     "share": "5/9"
     }
    },
    "callout_lead": {
     "element": "p",
-    "share": "5/8"
+    "share": "5/10"
    },
    "video_host": {
     "host": "youtube",
-    "share": "6/9"
+    "share": "7/10"
    },
    "series_deviations": {
     "CEDK": {
@@ -1223,6 +1342,13 @@
     },
     "CEDO": {
      "menu_overview": {
+      "archetype": "two_col_li",
+      "banner_h4_span": false,
+      "left_h5_span": false
+     }
+    },
+    "CEDR": {
+     "menu_lesson": {
       "archetype": "two_col_li",
       "banner_h4_span": false,
       "left_h5_span": false
@@ -1323,7 +1449,9 @@
   },
   "ConnectED|9-10": {
    "members": [
+    "CEDK401",
     "CEDO402",
+    "CEDR401",
     "CEDT101",
     "CEDT104",
     "CEDT404"
@@ -1343,16 +1471,16 @@
       "banner_h4_span": false,
       "left_h5_span": false
      },
-     "share": "2/3"
+     "share": "4/5"
     }
    },
    "callout_lead": {
     "element": "div",
-    "share": "15/15"
+    "share": "29/29"
    },
    "video_host": {
     "host": "youtube",
-    "share": "2/4"
+    "share": "3/6"
    }
   },
   "ConnectED|9-10/NCEA": {
@@ -2195,7 +2323,10 @@
     "TWHA903",
     "TWHA904",
     "TWHA905",
-    "TWHA906"
+    "TWHA906",
+    "TWHR905",
+    "TWHR907",
+    "TWHT903"
    ],
    "menu": {
     "lesson": {
@@ -2204,16 +2335,16 @@
       "banner_h4_span": false,
       "left_h5_span": false
      },
-     "share": "6/6"
+     "share": "9/9"
     }
    },
    "callout_lead": {
     "element": "p",
-    "share": "17/27"
+    "share": "17/31"
    },
    "video_host": {
     "host": "nocookie",
-    "share": "3/6"
+    "share": "5/9"
    }
   }
  }

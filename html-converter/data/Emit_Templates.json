@@ -1069,6 +1069,13 @@
 					"tail_pattern": "^\\s*[:–—-]\\s*$",
 					"_doc": "Form (A2) of InteractiveScanner.#weaveHoverDefinition, widened: a marker whose own black tail is ONLY a separator («**climate change** 🔴[roll over defn🔴: 🔴Long term shifts in temperatures and weather patterns.]🔴 is affecting …», GEO1006) has no definition of its own — the separator is not one (the hover read «:») — so, as for an empty tail, the definition is the NEXT red run, here one that closes the bracket «…]» whatever tag its words resolve to (never an interactive), and the sentence continues on that run's own tail (it was lost). The separator itself leaves with the marker."
 				},
+				"post_anchor_paren": {
+					"enabled": true,
+					"env": "HOVERPOSTANCHOR_OFF",
+					"max_anchor_words": 3,
+					"stop_words": ["a", "an", "and", "are", "at", "he", "here", "i", "in", "is", "it", "me", "more", "my", "no", "of", "on", "or", "our", "she", "the", "their", "them", "there", "to", "we", "were", "where", "who", "with", "you", "your"],
+					"_doc": "Form (A7) of InteractiveScanner.#weaveHoverDefinition, the mirror of (A6): THE ANCHOR BEFORE ITS MARKER, THE DEFINITION IN PARENTHESES AFTER IT — «your Hoa ako [hover] (learning partner)», «**restrictive eating** [hover] (Only eating a limited number of foods.)». A bare hover head whose black text opens with a parenthesised definition weaves that definition onto the words before the marker: a bold or italic run ending the text there is the anchor (the bold-run rule); otherwise the trailing term in the Māori alphabet, at most `max_anchor_words` words, no word of `stop_words` (the English words the Māori alphabet also spells), wrapped as one anchor. The gold builds the span on those words (46 of 49 sites). OFF: the marker ships as the writer's note."
+				},
 				"pre_anchor_paren": {
 					"enabled": true,
 					"env": "HOVERPREANCHOR_OFF",
@@ -3635,6 +3642,13 @@
 			"enabled": true,
 			"title_tags": ["title bar"],
 			"default_title": "Need help?",
+			"opener_text_title": {
+				"enabled": true,
+				"env": "HINTLABEL_OFF",
+				"max_words": 8,
+				"deny_label_pattern": "[:：]\\s*$",
+				"_doc": "THE LINK LABEL TYPED AFTER THE TAG. «[Hint button] Need help?» — the writer types the hint link's own words straight after the hint tag, with no [Title] tag; those words (at most `max_words`) are the title, as the human's hint link shows them. A label ending in a colon («Misinformation:») heads a list of terms, not a link — `deny_label_pattern` keeps that box. OFF: a title only from a [Title] tag."
+			},
 			"require_body": true,
 			"link": "<p class=\"hintLink\">{title} <span class=\"hint\"></span></p>",
 			"drop_open": "<div class=\"hintDropContent\">",
@@ -5690,6 +5704,11 @@
 				"_doc": "THE MARKED TABLE. (A) a label row over three columns — the statement column and two option columns ('Scenario ║ Formal ║ Informal', 'T ║ F ║ Question') — each data row with a mark in exactly one option cell: a pasted tick picture ('[IMAGE: image1.png]'), a red 'tick', a tick symbol (mark_pattern); (B) two columns — the statement and its answer, one of two values: true / false words (true_words / false_words) or the two options a label row names ('True / False', '[Options: Open Closed]' — the first named is the true column). The statements keep the writer's words; a statement carrying a picture, an address or a red word, a row without its single mark, a ragged or wider table declines the build.",
 				"enabled": true,
 				"env": "RADIOTABLE_OFF",
+				"bracket_marks": {
+					"enabled": true,
+					"env": "RADIOBRACKET_OFF",
+					"_doc": "THE BRACKETED MARK. A writer marks the answer cell «[correct]» or «[✅]» — the mark in square brackets, typed red like a tag — where `mark_pattern` reads the bare word or tick; the brackets are stripped before the test. OFF: only the bare mark counts."
+				},
 				"mark_pattern": "^(?:\\[IMAGE:\\s*[^\\]]+\\]|✅|✓|✔|☑|☒|x|tick|correct)$",
 				"deny_cell_pattern": "https?://|www\\.|\\[\\s*(?:image|video|audio|picture|photo)\\b",
 				"glued_red_letters_pattern": "\\u{1f534}\\[RED TEXT\\]\\s*(\\p{L}{1,3})\\s*\\[\\/RED TEXT\\]\\u{1f534}(?=\\p{L})",
@@ -6628,6 +6647,18 @@
 				"note": "A writer who never replaces the template's italic 'MODULE TITLE TE REO' (or 'MODULE TITLE') placeholder has NOT provided that title — the real one is not in the WT, so it must NOT be shipped as an <h1>. extra_placeholders extends placeholder_titles (folded compare); a half matching ANY is DROPPED. all_placeholder_uses_course: when EVERY title-bar half is a placeholder, do NOT restore it — first try front_matter_titles above, then fall back to the front-matter Course as the SINGLE English title and emit NO Te Reo (the human ships only what's real; e.g. OSBY101/201, CEDO202). For a MIXED bar (one real + one placeholder, e.g. OSGM501 'GAMING SAFELY | MODULE TITLE TE REO', also OSOH101/501, TEFUN02/05, XGF9001/9006, XLP05), the real half is kept as the English title and the dropped-placeholder flag stops PageAssembler from mis-promoting it to the Te Reo slot. The strings 'module title te reo'/'module title'/'te reo' are unambiguous template boilerplate — no real module is titled that, so the discriminator cannot touch a genuine bilingual title. Env TITLEPH_OFF uses the plain ['te reo'] list with no Course fallback."
 			},
 			"bilingual_punct_split": true,
+			"multi_part_lines": {
+				"enabled": true,
+				"env": "TITLEMULTI_OFF",
+				"subjects": ["1-10 Languages"],
+				"_doc_subjects": "The three-language title is the Languages writers' form: their golds give each language its own line (4 of 5 modules, 4 series); a non-language bar with three pipe parts is a title and two subtitles the human merges or drops (ANZH304, HIS1007 / 1008, XGF9003), so the rule stays inside the listed subjects.",
+				"min_parts": 3,
+				"multi_slash": {
+					"enabled": true,
+					"max_words": 6
+				},
+				"_doc": "A TITLE BAR WITH THREE OR MORE TITLES GIVES ONE HEADER LINE EACH. A Languages writer types the title in three languages — «HALLO, DEUTSCH! | HELLO, GERMAN! | NAU MAI KI TE REO TIAMANA!», «¡HOLA! / HELLO! / KIA ORA!» — and the human builds one <h1><span> per title; the split kept the first and ran the others together in one line. With `min_parts` or more parts, every part after the first is its own header line, in the writer's order. `multi_slash`: a bar whose only separator is a spaced « / » typed two or more times splits on it when every part is at most `max_words` words (a single « / » keeps the two-language guard of the slash separator). OFF: the parts after the first share one line."
+			},
 			"bilingual_dash_split": true,
 			"bilingual_marker_split": {
 				"colon": true,
@@ -9113,7 +9144,7 @@
 				"_doc": "THE LANGUAGES FUN LEVEL NAMES (KB 14A §14.1, CL-0118 — the curriculum leads' confirmed names). Every Language Fundamentals module shows its two proficiency levels as First Steps and Next Steps — the names curriculum confirmed — wherever the level name is displayed: the module menu's tabs, the .phases strip, the phaseLink tiles' h3, the levels-overview panel heading and button page. The writers' markers still carry the old words ([PAGE 1 Novice], [Novice Page 1], [Novice Content starts here], [Tab 1] Novice Learning Intentions), so the level WORD stays the key everything is matched on and only the DISPLAYED label changes through this map (folded word → label); a word not in the map (a future [PAGE 1 First Steps]) displays as typed. Scoped to the Languages FUN code prefixes. The eleven golds that carry Novice / Emergent predate the decision and are overridden by it (named). Env LEVELNAMES_OFF restores the writers' words.",
 				"enabled": true,
 				"env": "LEVELNAMES_OFF",
-				"code_prefixes": ["CHFUN", "CHIFUN", "JPFUN", "JPNFUN", "JAPFUN", "FRFUN", "FREFUN", "GERFUN", "SPAFUN", "SAMFUN"],
+				"code_prefixes": ["CHFUN", "CHIFUN", "JPFUN", "JPNFUN", "JAPFUN", "FRFUN", "FREFUN", "GEFUN", "GERFUN", "SMFUN", "SPAFUN", "SAMFUN"],
 				"map": {
 					"novice": "First Steps",
 					"emergent": "Next Steps"
@@ -9155,6 +9186,13 @@
 				"enabled": true,
 				"sentinel": "<!--CV2_FUNDPHASETEXT-->",
 				"delimiter_pattern": "^phase\\s+\\d+$",
+				"labelled_delimiter": {
+					"enabled": true,
+					"env": "PHASELABEL_OFF",
+					"pattern": "^(?:\\[?\\s*(?:section|tile)\\s+\\d+\\s*\\]?\\s*[:\\-–—]?\\s*)?\\[?\\s*phase\\s+\\d+\\s*\\]?$",
+					"red_tile_form": true,
+					"_doc": "THE LABELLED PHASE LINE. A writer may label the phase word with its section or tile number and may bracket it: «Section 1: Phase 1» (red or black), «[Phase 2]», «[Section 3] Phase 3», «[Tile 1] Phase 1» typed all red. `pattern` replaces `delimiter_pattern` wherever a phase line is read — the black-line count and split, the red-span form, the first-delimiter search and the scanner's hard stop — so every one of these opens a fundamentals phase on a single-file page exactly as the bare «Phase N» does (the gold builds the phases navigation, the tiles and one panel per phase). `red_tile_form`: a tile / section tag whose own red text reads «[Tile N] Phase N» is a phase break like the tag followed by black «Phase N». The single-file scope and `min_delimiters` still apply. OFF: the bare «Phase N» line only."
+				},
 				"min_delimiters": 2,
 				"list_then_headings": {
 					"enabled": true,
@@ -9467,10 +9505,24 @@
 				"level_section_marker_pattern": "^\\[\\s*(\\p{L}+)\\s+content\\s+starts\\s+here\\s*\\]$",
 				"level_section_noop_pattern": "^\\[\\s*\\p{L}+\\s+content\\s+ends\\s+here\\s*\\]$",
 				"level_section_env": "LEVELSECTION_OFF",
+				"level_section_forms": {
+					"enabled": true,
+					"env": "LEVELOPEN_OFF",
+					"patterns": [
+						"^\\[?\\s*(?:[a-z]{2,6}\\d{2,4}\\s+)?fundamentals?\\s+content\\s+for\\s+(novice|emergent)\\s+(?:begins|starts)\\s+here\\s*\\]?$",
+						"^\\[?\\s*(novice|emergent)\\s+content\\s+(?:[a-z]{2,6}\\d{2,4}\\s+)?(?:\\p{L}+\\s+)?(?:begins|starts)\\s+here\\s*\\]?$",
+						"^\\[\\s*(novice|emergent)\\s+page\\s*\\]$",
+						"^\\[\\s*start\\s+of\\s+(novice|emergent)(?:\\s+content)?\\s*\\]$",
+						"^\\[\\s*(novice|emergent)\\s*\\]$"
+					],
+					"_doc": "THE OTHER WAYS A WRITER OPENS A LEVEL SECTION. On a registry row with `level_sections`, besides «[Novice Content starts here]» a writer opens a proficiency level as «[<CODE> Fundamental content for Novice begins here]», «EMERGENT CONTENT <CODE> Emergent Begins Here», «[Novice Page]» (no number), «[Start of Emergent Content]» or a bare «[Novice]». Each pattern captures the level word; the marker opens that level's panel (or re-enters it), its phases-nav item and tile — the CHFUN level form the gold builds. A closer («[End of Novice Content]») stays a no-op. OFF: only the «content starts here» form."
+				},
 				"_doc_level_section_marker_pattern": "The JPFUN family's LEVEL SECTIONS: JPFUN02's writer marks them as '[Novice Content starts here]' … '[Novice content ends here]' '[Emergent Content starts here]' — unresolved instruction spans, not page tags — so without this the level pre-pass would not run (no .phases nav, no level panels, no level menu). For a registry row with level_sections: true (JPFUN|combo) the opener is a level marker (its level word the label; a repeated opener for an already-open level re-enters it — JPFUN02 types '[Novice Content starts here]' before its [Tabs] LI / SC block AND before its content) and the closer a structural no-op. Env LEVELSECTION_OFF.",
 				"level_menu_tabs": {
 					"enabled": true,
 					"env": "LEVELMENUTABS_OFF",
+					"bare_level_pattern": "^(novice|emergent)$",
+					"_doc_bare_level_pattern": "A level-menu tab labelled with the level word alone («[Tab 1] Novice», «[Tab 2] Emergent») carries both sides of that level: its «We are learning:» and «I can:» runs split through the level LI / SC reader. Read only with the level openers (level_section_forms, env LEVELOPEN_OFF).",
 					"label_pattern": "^(\\p{L}+)\\s+(learning\\s+intentions?|success\\s+criteria)$",
 					"_doc": "KB 10 §5 / 01B; a §1d family dialect on the `JPFUN|combo` row. THE LEVEL MENUS TYPED AS A [TABS] BLOCK: the JPFUN writer types each level's LI / SC as '[Tabs]' + '[Tab 1] Novice Learning Intentions' / '[Tab 2] Novice Success Criteria' / '[Tab 3] Emergent Learning Intentions' / '[Tab 4] Emergent Success Criteria', each followed by 'We are learning:' / 'I can:' + bullets. The tabs widget captures the block before the level pre-pass, so without this no LI / SC would be found, #levelTabs would return null and the generic Overview | Information menu would ship. For a registry row with level_menu_tabs: true, a tabs bundle whose EVERY labelled tab matches label_pattern is read into per-level menu buckets (#levelMenuLines — the lead, the bullets), seeds each level's menu when its marker opens it, and is dropped from the body and from run.interactives (no widget, no hand-off entry). The row's menu_omit_empty_overview drops the Overview tab when the module has no LI / SC of its own (the JPFUN human build: Novice | Emergent only). Env LEVELMENUTABS_OFF."
 				},
@@ -9521,6 +9573,41 @@
 							"_doc_menu_tabs": "The JPFUN level menus typed as a [Tabs] block → the level-tab menu, no Overview tab (level_pages.level_menu_tabs; env LEVELMENUTABS_OFF).",
 							"_doc": "The Japanese Fundamentals level-page modules (JPFUN01 / 02) — the human form is the CHFUN one-page combo level form (.phases Novice / Emergent, col-md-6 offset-md-0 col-12 paddingR / paddingL menu columns, the phaseLink tiles); the same row. Env LEVELFIRST_OFF.",
 							"env": "LEVELFIRST_OFF",
+							"menu_cols": [
+								"col-md-6 offset-md-0 col-12 paddingR",
+								"col-md-6 offset-md-0 col-12 paddingL"
+							],
+							"phases_nav_item": "<div phase=\"{n}\">\n<p>{label}</p>\n</div>",
+							"tiles_open": "<div class=\"row phaseContainer noPhase margB2\">",
+							"tile_open": "<div class=\"col-6\">\n<div class=\"phaseLink\" phase=\"{n}\">\n<h3>{label}</h3>",
+							"tile_img": "<img class=\"phaseImg margB0\" src=\"{src}\" alt=\"{alt}\">",
+							"tile_close": "</div>\n</div>",
+							"tiles_close": "</div>",
+							"tiles_inside_col": true
+						},
+						"GEFUN|combo": {
+							"_doc": "The German Fundamentals level modules — the gold is the CHFUN one-page level form (.phases First Steps / Next Steps, the two phaseLink tiles); the writer opens each level with a level_section_forms marker and types the level menus as a [Tabs] block. overview_prose_pane: the module gives no LI / SC of its own, so the menu Overview pane carries the overview prose (the gold ships it there and in the body).",
+							"level_sections": true,
+							"overview_prose_pane": true,
+							"overview_prose_col": "col-12 paddingR",
+							"level_menu_tabs": true,
+							"menu_cols": [
+								"col-md-6 offset-md-0 col-12 paddingR",
+								"col-md-6 offset-md-0 col-12 paddingL"
+							],
+							"phases_nav_item": "<div phase=\"{n}\">\n<p>{label}</p>\n</div>",
+							"tiles_open": "<div class=\"row phaseContainer noPhase margB2\">",
+							"tile_open": "<div class=\"col-6\">\n<div class=\"phaseLink\" phase=\"{n}\">\n<h3>{label}</h3>",
+							"tile_img": "<img class=\"phaseImg margB0\" src=\"{src}\" alt=\"{alt}\">",
+							"tile_close": "</div>\n</div>",
+							"tiles_close": "</div>",
+							"tiles_inside_col": true
+						},
+						"SMFUN|combo": {
+							"_doc": "The Samoan Fundamentals level modules — the gold is the CHFUN one-page level form; the writer opens each level with a level_section_forms marker («[Novice Page]», «[Start of Emergent Content]») and labels its level-menu tabs with the level word alone.",
+							"level_sections": true,
+							"level_menu_tabs": true,
+							"menu_omit_empty_overview": true,
 							"menu_cols": [
 								"col-md-6 offset-md-0 col-12 paddingR",
 								"col-md-6 offset-md-0 col-12 paddingL"
@@ -10870,6 +10957,12 @@
 		},
 		"lesson_boundary_guard": {
 			"enabled": true,
+			"note_lesson_tag": {
+				"enabled": true,
+				"env": "LESSONNOTE_OFF",
+				"pattern": "\\b(?:comic|outro|in\\s*development|indevelopment)\\b",
+				"_doc": "A LESSON TAG THAT IS A MEDIA NOTE IS NOT A PAGE BOUNDARY. A writer who names a lesson inside a placeholder note — «[lesson 1 outro comic in development]», «[outro comic lesson 3]», «[Lesson 4 intro comic in development]» — has written a note about a picture still to come, not a new lesson: the bracket parses as a [LESSON N] page boundary and splits the lesson in two (an empty page, a page holding only the note). A lesson-tag span whose folded text matches `pattern` is a writer instruction (the red note the developer sees), the lesson continuing on its page. OFF: every lesson-tag span is a page boundary."
+			},
 			"front_matter_fold": {
 				"enabled": true,
 				"env": "FRONTFOLD_OFF",
