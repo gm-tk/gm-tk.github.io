@@ -158,7 +158,6 @@
   },
   "provisional_intake": [
    {
-    "date": "2026-10-29",
     "codes": [
      "ANZHFUN01",
      "BLLR204",
@@ -188,7 +187,7 @@
      "WJFUN114",
      "WJFUN209"
     ],
-    "note": "module_meta rows added by pageforge-sprint-scan-part-2 (process_new_modules.py) so the new gold modules appear in the Reference-module picker at once; their per-module ladders and every sibling registry are rebuilt by the loop's Round 0d Phase 4 (LOOP__Round_0d_Intake.md), which supersedes these rows."
+    "note": "provisional module_meta rows written at the staging of a new module batch so the new gold modules appear in the Reference-module picker at once; the per-module ladders and every sibling registry are rebuilt by the next registry rebuild, which supersedes these rows and removes this list."
    }
   ]
  },
