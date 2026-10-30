@@ -215,6 +215,11 @@
   "retrieved_date_rule": "Stamped by the program at fetch time — the converter's own run date.",
   "throttle_ms": 250,
   "cache_by": "video id",
+  "retry_failures": {
+   "enabled": true,
+   "env": "OEMBEDRETRY_OFF",
+   "_doc": "The web app keeps a SUCCESSFUL look-up for the whole session (a repeat video, or the same module converted again, costs no second request) but never keeps a failed one: a dropped connection, a rate limit or a video that was private when asked is asked again by the next look-up. Converting again after the connection comes back therefore fills the acknowledgement in exactly as a freshly loaded page would; a kept failure would repeat the first conversion's ACK-TODO and dead-link warning until the page is reloaded. OFF: failures are kept as well. The batch converter keeps its own look-up cache and is unaffected."
+  },
   "failure_rule": "Empty body or HTTP error → ACK-TODO[video-meta] with reason 'unavailable' | 'offline' | 'error'. Never fabricate fields. A fetch failure doubles as a dead-link signal worth surfacing.",
   "cors_note": "The endpoint echoes Access-Control-Allow-Origin, so in-browser fetch works."
  },

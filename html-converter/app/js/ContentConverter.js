@@ -57,11 +57,14 @@ class ContentConverter {
 	// activity numbers such as "3A", "3B" (see data activity_wrapper.lesson_letter_number).
 	// #lessonLetterMap is keyed BY lessonNumber so the lettering CONTINUES correctly across
 	// several sub-pages that belong to the same lesson (A, B on page one, then C, D on page
-	// two of the same lesson) instead of restarting at A on every page. #lettersModule tracks
-	// which module was last lettered, so the whole map resets whenever a new module starts.
+	// two of the same lesson) instead of restarting at A on every page. The map belongs to ONE
+	// conversion: it resets when a new conversion starts (#letteredRuns remembers the runs that
+	// have started) and whenever the module changes (#lettersModule tracks which module was
+	// last lettered).
 	static #pageLessonNumber = null;
 	static #lessonLetterMap = {};
 	static #lettersModule = null;
+	static #letteredRuns = new WeakSet();
 
 	/**
 	 * Looks up the "accordion delimiter" registry row for this module, or returns null
@@ -1072,13 +1075,22 @@ class ContentConverter {
 		this.#firstBodyHeadingSeen = false;
 		this.#pageIsLesson = !page.isOverview;
 		// LESSON-LETTER ACTIVITY NUMBERING CONTEXT: lessonNumber stays null on the overview
-		// page (there is no "{lessonNumber}{letter}" activity renumbering there). The
-		// per-lesson letter counter is reset whenever the module changes; WITHIN one module it
-		// persists across pages, so a lesson that is split over several sub-pages keeps
-		// counting its letters onward (A, B on the first sub-page, then C, D on the next)
-		// instead of restarting at A each time.
+		// page (there is no "{lessonNumber}{letter}" activity renumbering there). WITHIN one
+		// conversion the per-lesson letter counter persists across pages, so a lesson that is
+		// split over several sub-pages keeps counting its letters onward (A, B on the first
+		// sub-page, then C, D on the next) instead of restarting at A each time. A NEW
+		// conversion starts the counter afresh — a different module, or the SAME module
+		// converted again without reloading the page (typically after the Word file was
+		// fixed), which letters its activities exactly as a first conversion does. Data
+		// activity_wrapper.lesson_letter_number.per_conversion; env ACTLETTERRUN_OFF resets
+		// the counter only when the module code changes.
 		this.#pageLessonNumber = page.isOverview ? null : (page.lessonNumber ?? null);
-		if (this.#lettersModule !== run.moduleCode) {
+		const _llPerRun = tpl.activity_wrapper?.lesson_letter_number?.per_conversion;
+		const _llPerRunOn = _llPerRun?.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_llPerRun?.env || "ACTLETTERRUN_OFF"]);
+		const _llNewRun = !this.#letteredRuns.has(run);
+		this.#letteredRuns.add(run);
+		if (this.#lettersModule !== run.moduleCode || (_llPerRunOn && _llNewRun)) {
 			this.#lettersModule = run.moduleCode;
 			this.#lessonLetterMap = {};
 		}

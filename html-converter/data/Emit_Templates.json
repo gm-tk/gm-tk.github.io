@@ -2590,6 +2590,11 @@
 				"env": "ACTUNNUM_OFF",
 				"_doc": "THE UN-NUMBERED ACTIVITY OPENER TAKES THE NEXT POSITIONAL LETTER. The human numbers EVERY activity box {lesson}{letter}, including the writer's bare [Activity] / [Activity: Embedded] / [interactive] … openers with no id, which the lesson-letter rule would otherwise neither letter nor count (only an id-carrying opener or the synthetic positionalId box enters the letter counter). With this on, an opener with no writer id on a page whose lesson number is known (#pageLessonNumber != null — the same gate as the synthetic box; phase pages included) takes the next positional letter and advances the counter exactly as the synthetic box does; writer-lettered ids, bare-digit ids (the lesson-letter renumber) and pages without a lesson number are unchanged. OFF (env ACTUNNUM_OFF) turns it off."
 			},
+			"per_conversion": {
+				"enabled": true,
+				"env": "ACTLETTERRUN_OFF",
+				"_doc": "EVERY CONVERSION LETTERS ITS ACTIVITIES FROM A. The per-lesson letter counter belongs to one conversion: it carries on across the pages of that conversion (a lesson split over sub-pages keeps counting A, B then C, D) and starts afresh when the next conversion starts. The web app keeps its engine loaded between conversions, so a developer who converts the SAME module again without reloading the page (typically after fixing the Word file) runs it through the engine the first conversion used; a counter that resets only when the module code changes would carry on from the first conversion there (1A would come out as 1E), and about half the modules would convert differently the second time. OFF: the counter resets only when the module code changes. A module's first conversion builds the same pages either way."
+			},
 			"integer_prefix": true,
 			"_integer_prefix_doc": "The {lessonNumber}{letter} renumber uses the INTEGER lesson part of a DOTTED page lesson number ('1.0'→'1', '5.1'→'5') as both the id prefix AND the letter-map key — the human ships '1A'/'5D', never '1.0A'/'5.1A' (ENGJ403/CEDK501/CEDT501/MXDB301/MXEO301/MXFL302), and integer map keys let a lesson split over sub-pages (2.0→2.1) CONTINUE its lettering (2A then 2B/2C). The letter-LESS dotted-id convention (number='1.1') is writer-typed ids kept verbatim — it never enters this renumber. Env ACTLNINT_OFF uses the raw dotted prefix/key."
 		},

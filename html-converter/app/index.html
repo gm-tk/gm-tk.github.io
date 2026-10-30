@@ -204,6 +204,12 @@
 			<button id="download-all" type="button" hidden>Download all as .zip</button>
 		</section>
 
+		<!-- ============ 6. TEMPLATE CHECK ============ -->
+		<!-- The plain-English questions about what PageForge was unsure of in
+		     this Writers Template. Hidden until a conversion completes;
+		     TemplateCheckPanel.js renders it, App.js shows and clears it. -->
+		<section id="template-check-panel" class="panel template-check-panel" hidden></section>
+
 		<!-- Resets the converter to a fresh state in place (no page
 		     reload, which would drop back to the site's landing view). Hidden
 		     until a conversion has completed; App.js wires + re-hides it. -->
@@ -249,10 +255,13 @@
 	<script src="js/ManifestBuilder.js"></script>
 	<script src="js/HtmlFormatter.js"></script>
 	<script src="js/PageAssembler.js"></script>
-	<!-- 5. output + presentation -->
+	<!-- 5. the Template check (reads a finished run, changes nothing) -->
+	<script src="js/TemplateCheck.js"></script>
+	<!-- 6. output + presentation -->
 	<script src="js/ZipWriter.js"></script>
 	<script src="js/SummaryReporter.js"></script>
-	<!-- 6. App.js LAST — it orchestrates everything above -->
+	<script src="js/TemplateCheckPanel.js"></script>
+	<!-- 7. App.js LAST — it orchestrates everything above -->
 	<script src="js/App.js"></script>
 </body>
 </html>

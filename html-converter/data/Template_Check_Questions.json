@@ -1,0 +1,556 @@
+{
+	"_doc": "THE TEMPLATE CHECK CATALOGUE. After a conversion, TemplateCheck.js reads what the conversion already produced — the run notes, the notes printed in the pages (class cv2-note) and the un-built interactive boxes (class cv2-interactive cv2-int-ref) — and turns the things PageForge was unsure about into a short list of plain-English questions for the developer, grouped into the sections below. This file holds every question: which notes it matches (a regex over the note's text, with named groups for the blanks), how the matches are grouped, the question's wording with {blanks}, and the answer choices. The code only matches, fills in blanks and renders. Answers are recorded in the {CODE}_template-answers.json file; they change no page. The entries are tried in the order they are listed (the first match wins); the panel shows them by section. Every question gets a Skip button and a comment box from the renderer. A template that is a list is read in order: the first one whose blanks are all filled is used.",
+	"enabled": true,
+	"env": "TEMPLATECHECK_OFF",
+	"_meta": {
+		"sections": [
+			{ "id": 1, "title": "Things only you know", "description": "Facts a Writers Template never holds, such as links and quicklinks. Answer once for the whole module." },
+			{ "id": 2, "title": "Things the template got wrong", "description": "Places where the writer's tags don't fit together. PageForge kept the content, but not in the shape the writer meant." },
+			{ "id": 3, "title": "Guesses to confirm", "description": "Decisions PageForge made on its own. Please check them against the Writers Template." },
+			{ "id": 4, "title": "Requests the writer made to you", "description": "The writer's notes to the developer, word for word. Tick each one once you've seen it." },
+			{ "id": 5, "title": "Not in the template", "description": "Things the pages need that this Writers Template doesn't contain, so PageForge can't do them." },
+			{ "id": 6, "title": "Interactives PageForge will hand off", "description": "Interactives PageForge couldn't build. They're listed so you know what's coming. There's nothing to answer." },
+			{ "id": 7, "title": "Other things PageForge noticed", "description": "Anything else PageForge flagged, in its own words. For information only.", "collapsed": true }
+		],
+		"question_sections": [1, 2, 3],
+		"tick_sections": [4, 5],
+		"request_words": "\\?|\\b(can we|could we|could you|can you|please|is it possible|are we able|would like|designer note|note to designer|dev(eloper)? note|replace|insert .{0,40} from|same (image|as)|use the same|something like|mock ?up|similar to)\\b",
+		"request_flags": "i",
+		"page_notes": {
+			"_doc": "How a page note is found and read: the paragraph's text after its prefix is what the match patterns see (tags stripped, entities decoded, line breaks as spaces).",
+			"element": "<p\\b[^>]*\\bclass=\"cv2-note\"[^>]*>([\\s\\S]*?)</p>",
+			"prefix": "^(Red Flag|Writers Note|Designer/Developer To Do):\\s*",
+			"activity": "<div\\b[^>]*\\bclass=\"activity\\b[^\"]*\"[^>]*\\bnumber=\"([^\"]+)\"",
+			"box": "<div\\b[^>]*\\bclass=\"cv2-interactive cv2-int-ref\"[^>]*\\bdata-cv2-index=\"(\\d+)\"[^>]*\\bdata-cv2-ref=\"([^\"]+)\"",
+			"box_label": "^[\\s\\S]{0,1200}?>([A-Z0-9]+-INT-[0-9]+-[0-9]+-([A-Za-z]+(?: \\+ [A-Za-z]+)*))<",
+			"page_file": "^(.+?)_(\\d+(?:_\\d+)*)\\.html$",
+			"writer_prefix": "Writers Note"
+		},
+		"activity_renumbered": {
+			"_doc": "A run note saying PageForge renumbered a page's activities maps a page's activity back to the writer's number, so a question can name both.",
+			"pattern": "^Page (?<page>\\d+(?:\\.\\d+)*): activity numbers? normalised \\(page_number_normalise\\): (?<changes>.+?)\\.?$",
+			"pair": "(\\w+) → (\\w+)"
+		},
+		"where": {
+			"forms": [
+				"Page {page}, activity {activity} ({writer_activity} in the Writers Template)",
+				"Page {page}, activity {activity}",
+				"Page {page}, {activities}",
+				"Page {page}, inside the hand-off box {box}",
+				"Page {page}"
+			]
+		},
+		"lists": { "sep": ", ", "last": " and ", "max": 6, "more": " and {n} more" },
+		"pages_form": ["page {list}", "pages {list}"],
+		"activities_form": ["activity {list}", "activities {list}"],
+		"activities_range_form": "activities {first} to {last}",
+		"plurals": {
+			"_doc": "Filled from a number blank: {s} and the others follow {count}; for any other number blank X they are {X_s}, {X_es} and so on.",
+			"s": ["", "s"],
+			"es": ["", "es"],
+			"verb_s": ["s", ""],
+			"is_are": ["is", "are"],
+			"was_were": ["was", "were"],
+			"it_them": ["it", "them"],
+			"it_they": ["it", "they"],
+			"each_it": ["it", "each one"],
+			"its_their": ["its", "their"],
+			"this_these": ["this", "these"],
+			"y_ies": ["y", "ies"]
+		},
+		"tag_forms": [
+			{ "pattern": "^(?<base>.+) n$", "form": "[{base} 1], [{base} 2] …" },
+			{ "pattern": "", "form": "[{tag}]" }
+		],
+		"nearby_note_within": 4000,
+		"article": { "_doc": "{type_article}: «an» before a type name that starts with a vowel, «a» before the rest.", "an_pattern": "^[aeiou]", "forms": ["a", "an"] },
+		"type_names": {
+			"accordion": "accordion",
+			"carousel": "carousel",
+			"clickDrop": "click and drop",
+			"dragAndDrop": "drag and drop",
+			"dropDown": "drop-down quiz",
+			"flipCard": "flip card",
+			"hint": "hint",
+			"hintSlider": "hint slider",
+			"interactive": "interactive",
+			"memoryGame": "memory game",
+			"modal": "pop-up",
+			"multiChoiceQuiz": "multiple-choice quiz",
+			"radioQuiz": "radio quiz",
+			"reorder": "reorder quiz",
+			"selectionBox": "checklist",
+			"selfCheck": "self check",
+			"sketcher": "drawing pad",
+			"slider": "slider",
+			"speechBubble": "speech bubble",
+			"tabs": "tabs",
+			"timeline": "timeline",
+			"typing": "typing quiz",
+			"unclassified": "interactive"
+		},
+		"ignore": {
+			"_doc": "PageForge reporting its own normal work, not questions. These — and every info-level run note no question claims — are only counted: «PageForge handled N small things automatically».",
+			"rules": [
+				{ "source": "page", "prefix": ["Red Flag"], "pattern": "^Emoji have been removed\\b" },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^the writer['’]s link — " },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^the writer['’]s production document\\b" },
+				{ "source": "page", "prefix": ["Designer/Developer To Do", "Red Flag"], "pattern": "^image goes here\\b" },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^(?:An? )?Media List item(?: \\S+)? goes here\\b" },
+				{ "source": "run", "pattern": "\\((?:stubbed|offline)\\) — possible dead link worth checking" },
+				{ "source": "run", "pattern": "^Built \\w+ #\\d+ from captured data" },
+				{ "source": "run", "pattern": " auto-closed before " },
+				{ "source": "run", "pattern": "additional widget .+ absorbed" },
+				{ "source": "run", "pattern": "redundant bold runs? dropped" },
+				{ "source": "run", "pattern": "boilerplate dropped" },
+				{ "source": "run", "pattern": "had no open container" }
+			],
+			"info_notes": "handled"
+		},
+		"other": {
+			"_doc": "What nothing above claims and is not ignored: a warn or error run note, or a Red Flag / To Do page note, is listed in section 7 in PageForge's own words. A Writers Note that is not a request is only counted.",
+			"section": 7,
+			"run_levels": ["warn", "error"],
+			"page_prefixes": ["Red Flag", "Designer/Developer To Do"],
+			"question": ["{where}: «{note}»", "«{note}»"]
+		},
+		"timing": { "seconds_per_question": 40, "seconds_per_tick": 10 },
+		"strings": {
+			"heading": "Template check",
+			"app_title": "6 · Template check",
+			"page_title": "Template check — {code}",
+			"page_intro": "This page works on its own, offline. Answer what you can, then save your answers and send the file with your comparison report. Don't upload this page, or the answers file, to compare mode or the Page Stitcher.",
+			"summary": "PageForge has {questions} question{questions_s} about this Writers Template{ticks_part} — about {minutes} minute{minutes_s}. Answering is optional: your pages are already built and your answers don't change them yet. They help improve PageForge.",
+			"summary_ticks": ", plus {ticks} item{ticks_s} to tick off",
+			"summary_ticks_only": "PageForge has no questions about this Writers Template, just {ticks} item{ticks_s} to tick off — about {minutes} minute{minutes_s}. Answering is optional: your pages are already built and your answers don't change them yet. They help improve PageForge.",
+			"summary_none": "PageForge has no questions about this Writers Template.",
+			"mini": "{questions} question{questions_s} · {ticks} to tick off",
+			"mini_none": "nothing to answer",
+			"handled": "PageForge handled {count} small thing{s} automatically.",
+			"writer_notes_left": "The pages also carry {count} other note{s} from the writer, left where the writer typed {it_them}.",
+			"skip": "Skip",
+			"unskip": "Undo skip",
+			"skipped": "Skipped",
+			"skip_all": "Skip all",
+			"unskip_all": "Undo skip all",
+			"save": "Save my answers",
+			"load": "Load saved answers",
+			"save_hint": "Send the saved file with your comparison report.",
+			"comment": "Comment (optional)",
+			"name": "Your name (optional)",
+			"progress": "{answered} of {questions} answered · {skipped} skipped",
+			"saved": "Saved {file}.",
+			"loaded": "Loaded the answers from {file}.",
+			"load_other_module": "That file is for {module}, not {code}, so nothing was loaded.",
+			"load_bad": "That file isn't a saved template check, so nothing was loaded.",
+			"load_unknown": "{count} saved answer{s} didn't match a question here and {was_were} left out.",
+			"writer_said": "The writer wrote:",
+			"nearby_note": "The writer's note just before it:",
+			"choose": "Choose…",
+			"info_only": "For information only.",
+			"pages_label": "Pages"
+		},
+		"files": {
+			"folder": "template-check/",
+			"page": "{code}_template-check.html",
+			"answers": "{code}_template-answers.json",
+			"format": "pageforge-template-answers",
+			"format_version": 1
+		}
+	},
+	"questions": [
+		{
+			"id": "LINK_DROPBOX",
+			"section": 1,
+			"enabled": true,
+			"match": [
+				{ "source": "page", "prefix": ["Designer/Developer To Do", "Red Flag"], "pattern": "^Wire this button['’]s D2L dropbox quicklink\\b(?:.*?\\bWriter: (?<writer>.+))?" }
+			],
+			"context": { "button": { "before": "<div class=\"button[^\"]*\">([^<]{1,120})</div>", "within": 900 } },
+			"group": "module",
+			"question": "This module has {count} dropbox button{s}, on {pages}. The D2L dropbox quicklink is never in a Writers Template, so PageForge left the link{s} blank. Paste the quicklink, or skip and wire {it_them} later.",
+			"detail": ["{where}: «{button}»", "{where}"],
+			"answer": { "kind": "text", "label": "Dropbox quicklink", "check": { "id": "same_link", "label": "Use the same link for every dropbox button", "checked": true } }
+		},
+		{
+			"id": "LINK_QUIZ",
+			"section": 1,
+			"enabled": true,
+			"match": [
+				{ "source": "page", "prefix": ["Designer/Developer To Do", "Red Flag"], "pattern": "^Wire this button['’]s D2L quiz quicklink\\b",
+					"question": ["{where}: the «{button}» button needs this quiz's D2L quicklink, which is never in a Writers Template. Paste it, or skip.", "{where}: a quiz button needs its D2L quicklink, which is never in a Writers Template. Paste it, or skip."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do", "Red Flag"], "pattern": "^create this quiz in MTK DEV\\b(?:.*?\\bWriter['’]s quiz spec: (?<writer>.+))?", "flags": "i",
+					"context": { "button": { "after": "<div class=\"button[^\"]*\">([^<]{1,120})</div>", "within": 900 } },
+					"question": ["{where}: this quiz has to be made in MTK DEV and linked to the module first. Paste its D2L quicklink once it exists, or skip."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do", "Red Flag"], "pattern": "^Wire this engagement quiz['’]s D2L quicklink\\b(?:.*?\\bWriter['’]s quiz source: (?<writer>.+))?",
+					"question": ["{where}: the engagement quiz button needs its D2L quicklink. Paste it, or skip."] }
+			],
+			"context": { "button": { "before": "<div class=\"button[^\"]*\">([^<]{1,120})</div>", "within": 900 } },
+			"group": "each",
+			"item": ["writer", "button"],
+			"writer_text": "writer",
+			"answer": { "kind": "text", "label": "Quiz quicklink" }
+		},
+		{
+			"id": "LINK_JOURNAL",
+			"section": 1,
+			"enabled": true,
+			"match": [
+				{ "source": "page", "prefix": ["Designer/Developer To Do", "Red Flag"], "pattern": "^Wire this button['’]s link to the module['’]s learning journal document\\b" }
+			],
+			"context": { "button": { "before": "<div class=\"button[^\"]*\">([^<]{1,120})</div>", "within": 900 } },
+			"group": "module",
+			"question": "{count} button{s} on {pages} link{verb_s} to the module's learning journal document. Its address isn't in the Writers Template, so PageForge left the link{s} blank. Paste the journal's address, or skip.",
+			"detail": ["{where}: «{button}»", "{where}"],
+			"answer": { "kind": "text", "label": "Journal address" }
+		},
+		{
+			"id": "LINK_BUTTON",
+			"section": 1,
+			"enabled": true,
+			"match": [
+				{ "source": "page", "prefix": ["Designer/Developer To Do", "Red Flag"], "pattern": "^Wire this button['’]s link target\\b",
+					"question": ["{where}: the «{button}» button has no link in the Writers Template. Paste the address it should open, or skip.", "{where}: a button has no link in the Writers Template. Paste the address it should open, or skip."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do", "Red Flag"], "pattern": "^Wire this button to the document «(?<doc>[^»]*)»",
+					"question": ["{where}: the «{button}» button should open the document «{doc}». Its address isn't in the Writers Template. Paste it, or skip.", "{where}: a button should open the document «{doc}». Its address isn't in the Writers Template. Paste it, or skip."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do", "Red Flag"], "pattern": "^Wire this button['’]s link to the file this button downloads\\b",
+					"question": ["{where}: the «{button}» button downloads a file that isn't in the Writers Template. Paste the file's address, or skip.", "{where}: a download button's file isn't in the Writers Template. Paste the file's address, or skip."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do", "Red Flag"], "pattern": "^Wire this button['’]s D2L portfolio link\\b",
+					"question": ["{where}: the «{button}» button needs the module's D2L portfolio link. Paste it, or skip.", "{where}: a portfolio button needs the module's D2L portfolio link. Paste it, or skip."] }
+			],
+			"context": { "button": { "before": "<div class=\"button[^\"]*\">([^<]{1,120})</div>", "within": 900 } },
+			"group": "each",
+			"item": ["button", "doc"],
+			"answer": { "kind": "text", "label": "Link address" }
+		},
+		{
+			"id": "ISTOCK_ACKS",
+			"section": 1,
+			"enabled": true,
+			"match": [
+				{ "source": "run", "pattern": "^(?<count>\\d+) iStock titles? could not be verified \\(no \\*istock-acks\\*\\.txt was supplied\\)" },
+				{ "source": "page", "prefix": ["Designer/Developer To Do", "Red Flag"], "pattern": "^No iStock acknowledgements file \\(\\*istock-acks\\*\\.txt\\) was supplied with this module, so the (?<count>\\d+) iStock titles?\\b" }
+			],
+			"group": "module",
+			"count_from": "count",
+			"question": ["No iStock acknowledgements file was uploaded with this module, so PageForge worked out {count} iStock picture title{s} from the image address{es} instead. Each one is marked ❗ on the page for checking."],
+			"answer": { "kind": "tick", "label": "I'll add the iStock acknowledgements file and convert again" }
+		},
+		{
+			"id": "MEDIA_LIST",
+			"section": 1,
+			"enabled": true,
+			"match": [
+				{ "source": "run", "pattern": "^No media list found\\b" }
+			],
+			"group": "module",
+			"question": "No Media List was found among the uploads, so the acknowledgements only hold the standard items. If this module has a Media List, add it and convert again.",
+			"answer": { "kind": "tick", "label": "I'll add the Media List and convert again" }
+		},
+		{
+			"id": "MISSING_COPY",
+			"section": 1,
+			"enabled": true,
+			"match": [
+				{ "source": "page", "prefix": ["Designer/Developer To Do", "Red Flag"], "pattern": "^Lesson menu: the Writers Template has no learning intentions / success criteria for this lesson\\b",
+					"question": ["{where}: the Writers Template has no learning intentions or success criteria for this lesson's menu. Type or paste them here, or skip."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do", "Red Flag"], "pattern": "^Module menu: no overview copy was captured for the module menu\\b",
+					"question": ["{where}: the Writers Template has no overview text for the module menu. Type or paste it here, or skip."] }
+			],
+			"group": "each",
+			"answer": { "kind": "text", "label": "Menu text", "multiline": true }
+		},
+		{
+			"id": "MISSING_TITLE",
+			"section": 1,
+			"enabled": true,
+			"match": [
+				{ "source": "run", "pattern": "^\\[TITLE BAR\\] title half is the placeholder \"(?<placeholder>[^\"]+)\"" },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^the te reo title is still to come — the writer['’]s placeholder «(?<placeholder>[^»]*)»" }
+			],
+			"group": "module",
+			"question": "The [TITLE BAR] still has the placeholder «{placeholder}» where one of the module's titles should be, so PageForge left that title out. What should it say?",
+			"answer": { "kind": "text", "label": "Title" }
+		},
+		{
+			"id": "PIECE_OUTSIDE",
+			"section": 2,
+			"enabled": true,
+			"match": [
+				{ "source": "page", "prefix": ["Red Flag"], "pattern": "Orphan sub-tag \\[(?<tag>[^\\]]+)\\] outside an interactive", "repeat": true }
+			],
+			"group": "page_item",
+			"item": ["tag"],
+			"writer_text": "nearby",
+			"question": "{where}: {count} piece{s} of an interactive, tagged {tag_form}, {is_are} outside any interactive, so PageForge kept {it_them} as plain page text. What {is_are} {it_they}?",
+			"answer": { "kind": "choose", "options": [
+				{ "id": "above", "label": "They belong to the interactive just above them" },
+				{ "id": "other", "label": "They belong to a different interactive", "say": "Which one?" },
+				{ "id": "page_text", "label": "Leave them as page text" },
+				{ "id": "unsure", "label": "Not sure" }
+			] }
+		},
+		{
+			"id": "NEVER_CLOSED",
+			"section": 2,
+			"enabled": true,
+			"match": [
+				{ "source": "run", "pattern": "^Page (?<page>\\d+(?:\\.\\d+)*): \\[(?<tag>[^\\]]+)\\] was never closed — closed at page end" }
+			],
+			"group": "each",
+			"item": ["tag"],
+			"question": "{where}: the writer opened [{tag}] but never closed it, so PageForge closed it at the end of the page. Where should it end?",
+			"answer": { "kind": "choose", "options": [
+				{ "id": "page_end", "label": "The end of the page is right" },
+				{ "id": "ends_at", "label": "It should end earlier", "say": "Quote the last line that belongs in it" }
+			] }
+		},
+		{
+			"id": "EMPTY_PLACEHOLDER",
+			"section": 2,
+			"enabled": true,
+			"match": [
+				{ "source": "page", "prefix": ["Red Flag"], "pattern": "^Empty \\[(?<tag>[^\\]]+)\\] — the writer left a callout with no content",
+					"row": "{page}-{tag}", "row_each": true,
+					"row_label": ["{where}: an empty [{tag}] box", "An empty [{tag}] box"] },
+				{ "source": "page", "prefix": ["Red Flag"], "pattern": "^Empty \\[(?<tag>[^\\]]+)\\] — the writer left a heading placeholder with no text",
+					"row": "{page}-{tag}", "row_each": true,
+					"row_label": ["{where}: an empty [{tag}] heading", "An empty [{tag}] heading"] }
+			],
+			"group": "table",
+			"question": "The writer left {count} placeholder{s} empty — a box or a heading with nothing in {it_them}. Say what to do with {each_it}.",
+			"answer": { "kind": "table", "options": [
+				{ "id": "delete", "label": "Delete it" },
+				{ "id": "fill", "label": "Put text in it", "say": "Text to put in" }
+			] }
+		},
+		{
+			"id": "MARKER_NO_CONTENT",
+			"section": 2,
+			"enabled": true,
+			"match": [
+				{ "source": "page", "prefix": ["Red Flag"], "pattern": "^Un-built \\[(?<type>[^\\]]+)\\] marker — no content captured" }
+			],
+			"group": "each",
+			"item": ["type"],
+			"writer_text": "nearby",
+			"question": "{where}: the writer typed a tag for {type_article} {type_name}, but nothing for it to hold, so PageForge had nothing to build.",
+			"answer": { "kind": "choose", "options": [
+				{ "id": "meant", "label": "Here's what was meant", "say": "What should it be?" },
+				{ "id": "delete", "label": "Delete it" }
+			] }
+		},
+		{
+			"id": "MEDIA_ADDRESS",
+			"section": 2,
+			"enabled": true,
+			"match": [
+				{ "source": "page", "prefix": ["Red Flag"], "pattern": "— the video['’]s address is a document on a login wall\\b.*?: (?<url>\\S+)\\s*$",
+					"question": ["{where}: the video's address is a document behind a login (the request to the audiovisual team), not a video the page can play: {url}"] },
+				{ "source": "page", "prefix": ["Red Flag"], "pattern": "— the video['’]s address is on a login wall the page cannot embed; re-host it: (?<url>\\S+)",
+					"question": ["{where}: the video's address needs a login, so it can't play on the page: {url}"] },
+				{ "source": "page", "prefix": ["Red Flag"], "pattern": "— the Media List address is not one the page can embed; re-host the video: (?<url>\\S+)",
+					"question": ["{where}: the Media List's address for this video isn't one the page can play: {url}"] },
+				{ "source": "page", "prefix": ["Red Flag"], "pattern": "^(?<label>.{1,200}?) with no URL found — add the (?<what>\\w+) source",
+					"question": ["{where}: the writer's «{label}» has no web address, so there's nothing to play."] }
+			],
+			"group": "each",
+			"item": ["url", "label"],
+			"answer": { "kind": "choose", "options": [
+				{ "id": "address", "label": "Here's the address", "say": "Address" },
+				{ "id": "to_come", "label": "It's still to come" }
+			] }
+		},
+		{
+			"id": "PAGE_PLAN",
+			"section": 3,
+			"enabled": true,
+			"match": [
+				{ "source": "run", "pattern": "^Implicit page break: content continues after \\[end page\\] without a \\[LESSON\\] tag — opened page (?<opened>\\d+(?:\\.\\d+)*)",
+					"detail": ["Page {opened} starts after an [end page] tag with no [LESSON] tag after it."] },
+				{ "source": "run", "pattern": "^Implicit page break inside lesson (?<lesson>\\d+) — the writer['’]s (?<next>\\[[^\\]]+\\]) is still to come, so the page is its continuation (?<opened>\\d+(?:\\.\\d+)*)",
+					"detail": ["Page {opened} continues lesson {lesson} after an [end page] tag, because the writer's {next} comes later."] },
+				{ "source": "run", "pattern": "^Duplicate lesson label (?<old>\\d+(?:\\.\\d+)*) \\(writers reused the number\\) — relabelled to (?<new>\\d+(?:\\.\\d+)*)",
+					"detail": ["The writer used lesson number {old} twice, so PageForge numbered the second one {new}."] },
+				{ "source": "run", "pattern": "^Page (?<page>\\d+(?:\\.\\d+)*): activity number normalised \\(page_number_normalise\\): (?<changes>.+?)\\.?$",
+					"detail": ["Page {page}: PageForge renumbered an activity to match the page ({changes})."] },
+				{ "source": "run", "pattern": "^Page (?<page>\\d+(?:\\.\\d+)*): activity numbers normalised \\(page_number_normalise\\): (?<changes>.+?)\\.?$",
+					"detail": ["Page {page}: PageForge renumbered activities to match the page ({changes})."] },
+				{ "source": "run", "pattern": "^Page (?<page>\\d+(?:\\.\\d+)*): heading says \"(?<heading>[^\"]+)\" — using the heading['’]s number",
+					"detail": ["Page {page}: the heading says «{heading}», so PageForge used the heading's number for the page."] },
+				{ "source": "run", "pattern": "^Mid-page lesson opener — \"(?<heading>[^\"]+)\" opened page (?<opened>\\d+(?:\\.\\d+)*)",
+					"detail": ["The heading «{heading}» in the middle of a page starts a new page, {opened}."] },
+				{ "source": "run", "pattern": "^Second \\[TITLE BAR\\] found — starting sub-document (?<doc>\\d+)",
+					"detail": ["A second [TITLE BAR] starts a second set of pages."] },
+				{ "source": "run", "pattern": "^No \\[TITLE BAR\\]/\\[Fundamental content\\] opener — content started at the first structural tag",
+					"detail": ["The Writers Template has no [TITLE BAR], so the first page starts at the first tag PageForge recognised."] },
+				{ "source": "run", "pattern": "^Overview segment had headings only — merged forward into the first lesson page",
+					"detail": ["The overview held only headings, so PageForge moved them onto the first lesson page."] }
+			],
+			"group": "module",
+			"pagelist": true,
+			"question": "PageForge made {count} decision{s} about the pages on its own (listed below). Its page plan is: {pagelist}. Is it right?",
+			"answer": { "kind": "choose", "options": [
+				{ "id": "correct", "label": "Yes, that's right" },
+				{ "id": "wrong", "label": "No", "say": "What should change?" }
+			] }
+		},
+		{
+			"id": "FILLED_GAP",
+			"section": 3,
+			"enabled": true,
+			"match": [
+				{ "source": "run", "pattern": "^An empty \\[(?<tag>[^\\]]+)\\] took the line after it as its words \\(«(?<line>[^»]*)»",
+					"locate": "line",
+					"row": "heading-{line}", "row_each": true,
+					"row_label": ["{where}: an empty [{tag}] heading now reads «{line}», the line after it.", "An empty [{tag}] heading now reads «{line}», the line after it."] },
+				{ "source": "run", "pattern": "^(?<count>\\d+) empty callouts? took the heading that follows as (?:its|their) title",
+					"row": "box-heading", "row_each": true,
+					"row_label": ["{count} empty box{es} now take{verb_s} the heading that follows as {its_their} title."] },
+				{ "source": "run", "pattern": "^(?<count>\\d+) empty callouts? took the writer['’]s following lines",
+					"row": "box-lines", "row_each": true,
+					"row_label": ["{count} empty box{es} now hold{verb_s} the writer's lines that follow."] }
+			],
+			"group": "table",
+			"question": "The writer left some headings or boxes empty, so PageForge filled {it_them} with the words that follow. Check each one.",
+			"answer": { "kind": "table", "options": [
+				{ "id": "correct", "label": "That's right" },
+				{ "id": "wrong", "label": "That's not right", "say": "What should it be?" }
+			] }
+		},
+		{
+			"id": "MEDIA_LESSON",
+			"section": 3,
+			"enabled": true,
+			"match": [
+				{ "source": "run", "pattern": "^Media item (?<item>.*?) ?could not be mapped to a lesson — placed in the first group \\((?<placed>[^)]+)\\)",
+					"row": "unmapped-{placed}",
+					"row_label": ["{count} item{s} ({items}) couldn't be matched to any lesson, so PageForge put {it_them} with {placed}.", "{count} item{s} couldn't be matched to any lesson, so PageForge put {it_them} with {placed}."] },
+				{ "source": "run", "pattern": "^Media item (?<item>.*?) ?sits between lessons (?<from>[\\d.]+) and (?<to>[\\d.]+) — placed in (?<placed>[\\d.]+)",
+					"row": "between-{from}-{to}",
+					"row_label": ["{count} item{s} ({items}) sit{verb_s} between lessons {from} and {to}, so PageForge put {it_them} with {placed}.", "{count} item{s} sit{verb_s} between lessons {from} and {to}, so PageForge put {it_them} with {placed}."] },
+				{ "source": "run", "pattern": "^Media item (?<item>.*?) ?placed in lesson (?<placed>[\\d.]+) by neighbour interpolation",
+					"row": "guessed-{placed}",
+					"row_label": ["{count} item{s} ({items}) went with {placed}, going by the items around {it_them}.", "{count} item{s} went with {placed}, going by the items around {it_them}."] }
+			],
+			"group": "table",
+			"question": "PageForge had to guess which lesson {count} Media List item{s} belong{verb_s} to. Check each group against the acknowledgements on its page.",
+			"answer": { "kind": "table", "options": [
+				{ "id": "right", "label": "Right" },
+				{ "id": "wrong", "label": "Wrong", "say": "Which items go in which lesson?" },
+				{ "id": "unsure", "label": "Not sure" }
+			] }
+		},
+		{
+			"id": "MEDIA_TYPE",
+			"section": 3,
+			"enabled": true,
+			"match": [
+				{ "source": "run", "pattern": "^Unknown media item type \"(?<type>[^\"]*)\" \\(item (?<item>[^)]*)\\)",
+					"row": "{type}",
+					"row_label": ["«{type}» — {count} item{s}"] }
+			],
+			"group": "table",
+			"question": "The Media List uses {rows} item type{rows_s} PageForge doesn't recognise. Pick the type {rows_each_it} means.",
+			"answer": { "kind": "table", "options_from": { "data": "AcksFormats", "key": "type_prefix_map" }, "options": [
+				{ "id": "other", "label": "Something else", "say": "What type is it?" }
+			] }
+		},
+		{
+			"id": "MODULE_CODE",
+			"section": 3,
+			"enabled": true,
+			"match": [
+				{ "source": "run", "pattern": "^Multiple module-code candidates found \\((?<candidates>[^)]+)\\) — using (?<used>\\S+) from (?<source>.+?)(?: \\([^)]*\\))?\\.?$" }
+			],
+			"group": "module",
+			"question": "The Writers Template mentions more than one module code ({candidates}). PageForge used {used}, taken from the {source}. Is that the right code?",
+			"answer": { "kind": "choose", "options": [
+				{ "id": "right", "label": "Yes" },
+				{ "id": "code", "label": "No", "say": "The right module code" }
+			] }
+		},
+		{
+			"id": "VIDEO_LINK",
+			"section": 3,
+			"enabled": true,
+			"match": [
+				{ "source": "run", "pattern": "^YouTube metadata unavailable for item (?<item>.*?) \\((?<reason>unavailable|error)\\) — possible dead link worth checking: (?<url>\\S+)" }
+			],
+			"group": "each",
+			"item": ["url"],
+			"question": ["PageForge couldn't look up Media List item {item}, the YouTube video {url}. The link may be broken.", "PageForge couldn't look up the YouTube video {url}. The link may be broken."],
+			"answer": { "kind": "choose", "options": [
+				{ "id": "works", "label": "It works" },
+				{ "id": "broken", "label": "It's broken", "say": "The replacement address" }
+			] }
+		},
+		{
+			"id": "NOT_IN_TEMPLATE",
+			"section": 5,
+			"enabled": true,
+			"_doc": "Listed before WRITER_REQUEST so that a writer's note asking for content from another module is shown here, not as a request.",
+			"match": [
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^Audiovisual item (?<n>\\S+) — the recording is to come",
+					"question": ["{where}: audiovisual item {n} — the recording is still to come."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^An audiovisual item — the recording is to come",
+					"question": ["{where}: an audiovisual recording is still to come."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "— the audiovisual recording is to come\\.?$",
+					"question": ["{where}: an audiovisual recording is still to come."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^Kea audio still under development\\b",
+					"question": ["{where}: the audio for the Kea speech bubbles is still being made."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^(?<tag>.{1,200}?) — the audiovisual team['’]s animation video goes in this frame",
+					"question": ["{where}: the audiovisual team's animation video for {tag} goes here once it's made."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^add vimeo embed for the animated character\\b",
+					"question": ["{where}: the animated character's video goes here once it's made."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^add the recordings the writer links \\(«(?<label>[^»]*)»\\): (?<url>\\S+)",
+					"question": ["{where}: the recordings «{label}» are in a separate folder, not in the Writers Template: {url}"] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^Merged content from another course\\b",
+					"question": ["{where}: this content comes from another course, so it isn't in this Writers Template."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^add this speech bubble['’]s character picture\\b",
+					"question": ["{where}: the Writers Template doesn't say which character picture this speech bubble uses."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^paste the overview from the linked Google Doc\\b",
+					"question": ["{where}: the overview is in a separate Google Doc, not in the Writers Template."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^credit needed for this lesson['’]s reader book\\b",
+					"question": ["{where}: the credit for this lesson's reader book isn't in the Writers Template."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^Build this carousel from the pages of the story(?: ‘(?<title>[^’]+)’)?",
+					"question": ["{where}: this carousel shows the pages of the story «{title}», and those pages aren't in the Writers Template.", "{where}: this carousel shows the pages of a story, and those pages aren't in the Writers Template."] },
+				{ "source": "page", "prefix": ["Designer/Developer To Do"], "pattern": "^The module journal document still needs to be created\\b",
+					"question": ["{where}: the module's journal document still has to be made, so the journal button has nothing to download yet."] },
+				{ "source": "run", "pattern": "^Levels overview: the phaseLink tiles \\((?<levels>[^)]+)\\) carry no image",
+					"question": ["The level tiles ({levels}) have no pictures. Tile pictures are designer assets, so they aren't in the Writers Template."] },
+				{ "source": "page", "prefix": ["Writers Note"], "pattern": "\\b(?:insert|copy|merge[ds]?|combine|use|reuse|bring in|take)\\b[^.]{0,80}?\\bfrom\\b[^.]{0,60}?\\b(?<code>[A-Z]{2,6}\\d{3,4})\\b", "flags": "i", "not_own_code": "code",
+					"writer_text": "note",
+					"question": ["{where}: the writer asks for something from {code}, another module. It isn't in this Writers Template."] }
+			],
+			"group": "each",
+			"item": ["n", "code", "label", "title", "tag"],
+			"answer": { "kind": "tick", "label": "Noted" }
+		},
+		{
+			"id": "WRITER_REQUEST",
+			"section": 4,
+			"enabled": true,
+			"match": [
+				{ "source": "page", "prefix": ["Writers Note"], "pattern": "", "requires": "request_words" }
+			],
+			"group": "each",
+			"item": ["note"],
+			"writer_text": "note",
+			"question": "{where}, the writer wrote:",
+			"answer": { "kind": "tick", "label": "Noted" }
+		},
+		{
+			"id": "HANDOFF",
+			"section": 6,
+			"enabled": true,
+			"match": [
+				{ "source": "box" }
+			],
+			"group": "each",
+			"item": ["ref"],
+			"question": ["{where}: {type_name} (reference {ref})", "{where}: an interactive (reference {ref})"],
+			"answer": { "kind": "info" }
+		}
+	]
+}

@@ -30,8 +30,9 @@ class DataService {
 	// All loaded data files, keyed like Config.DataFiles. Filled by Init().
 	static Data = {};
 
-	// oEmbed responses cached by video id — repeat videos in one module
-	// (or repeat runs in one session) cost one request total.
+	// Successful oEmbed responses cached by video id — repeat videos in one
+	// module (or repeat runs in one session) cost one request total. A failed
+	// look-up is not kept, so the next look-up asks again (see FetchOembed).
 	static #oembedCache = new Map();
 
 	/**
@@ -122,7 +123,15 @@ class DataService {
 			result = { ok: false, reason: offline ? "offline" : "error" };
 			console.warn(`🟠 oEmbed fetch failed for ${videoId}:`, error.message);
 		}
-		this.#oembedCache.set(videoId, result);
+		// Only a success is kept. A failure — a dropped connection, a rate limit, a
+		// video that was private when asked — is asked again by the next look-up, so
+		// converting again fills the acknowledgement in exactly as a freshly loaded
+		// page would, instead of repeating the first failure for the rest of the
+		// session. Data oembed.retry_failures; env OEMBEDRETRY_OFF keeps
+		// failures as well.
+		const retry = cfg.retry_failures?.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[cfg.retry_failures?.env || "OEMBEDRETRY_OFF"]);
+		if (result.ok || !retry) this.#oembedCache.set(videoId, result);
 		return result;
 	};
 }

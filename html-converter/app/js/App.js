@@ -78,6 +78,11 @@ class App {
 	// The currently-suggested reference code, so the list can mark
 	// its row with the red "recommended" note on every rebuild.
 	static #refSuggestedCode = null;
+	// The Template check for the latest conversion: { check, info, controller }
+	// (null before a conversion, after a reset, or when the check is
+	// switched off). Its files join the "Download all" zip only — never
+	// run.outputs.
+	static #templateCheck = null;
 	// The full library-code list, cached once so the type-to-filter
 	// box can rebuild the dropdown's options without re-reading the data.
 	// Each row is enriched at fill time with its phase key
@@ -1098,7 +1103,9 @@ class App {
 	 *       run.outputs. See stage [5]–[8]'s own comment, below.
 	 *   Finally: render the finished output files into the download list
 	 *       (#renderOutputs) and the run summary panel (SummaryReporter),
-	 *       mark the progress bar 100% Done, and log a one-line result.
+	 *       show the Template check (#showTemplateCheck — it only reads the
+	 *       finished run), mark the progress bar 100% Done, and log a
+	 *       one-line result.
 	 *
 	 * @returns {Promise<void>} resolves once conversion has finished (or
 	 *   failed, or been refused) and the button has been re-enabled
@@ -1254,6 +1261,7 @@ class App {
 			// (SummaryReporter.Render), then mark the progress bar 100% Done.
 			this.#renderOutputs(run);
 			SummaryReporter.Render(run);
+			await this.#showTemplateCheck(run, prep);
 			this.#progressDone();
 			this.#log(`${Config.Strings.Done} ${run.outputs.length} files for ${run.moduleCode ?? "module"}.`);
 
@@ -1382,11 +1390,14 @@ class App {
 			list.appendChild(li);
 		}
 
-		// download-all zip
+		// download-all zip — the module's outputs, plus the Template check's
+		// files in their own template-check/ folder (built at click time, so
+		// answers given in the panel go with them)
 		const all = document.getElementById(Config.Selectors.DownloadAll);
 		all.hidden = run.outputs.length === 0;
 		all.onclick = () => {
-			const blob = ZipWriter.Build(run.outputs);
+			const checkFiles = typeof TemplateCheckPanel === "undefined" ? [] : TemplateCheckPanel.ZipFiles(this.#templateCheck);
+			const blob = ZipWriter.Build([...run.outputs, ...checkFiles]);
 			const a = document.createElement("a");
 			a.href = URL.createObjectURL(blob);
 			a.download = `${run.moduleCode ?? "module"}_converted.zip`;
@@ -1414,6 +1425,59 @@ class App {
 		const panel = document.getElementById(Config.Selectors.SummaryPanel);
 		panel.hidden = true;
 		panel.innerHTML = "";
+		const check = document.getElementById(Config.Selectors.TemplateCheckPanel);
+		if (check) { check.hidden = true; check.innerHTML = ""; }
+		this.#templateCheck = null;
+	};
+
+	/**
+	 * THE TEMPLATE CHECK. After a successful conversion, asks the developer
+	 * the handful of things PageForge wasn't sure about in this Writers
+	 * Template (TemplateCheck reads run.notes, the pages and the interactives
+	 * list; the questions live in data/Template_Check_Questions.json) and
+	 * shows them in the "Template check" panel. It READS the finished run
+	 * and changes nothing in it: the module pages and run.outputs are exactly
+	 * what they are without it. Switched off by the data flag, it shows
+	 * nothing and adds nothing to the zip. A failure here is logged and never
+	 * spoils the finished conversion.
+	 *
+	 * @param {ConversionRun} run - the completed run
+	 * @param {Object} prep - PrepareRun's result (prep.wt names the Writers Template upload)
+	 * @returns {Promise<void>}
+	 */
+	static async #showTemplateCheck(run, prep) {
+		const panel = document.getElementById(Config.Selectors.TemplateCheckPanel);
+		if (!panel) return;
+		try {
+			const check = TemplateCheck.FromRun(run, DataService.Data);
+			if (!check) return;
+			const wtFile = this.#files.find((f) => f.name === prep?.wt?.name) ?? null;
+			const info = {
+				version: Config.AppVersion,
+				wtFile: wtFile?.name ?? "",
+				wtSha256: await this.#sha256(wtFile),
+				checkedAt: new Date().toISOString(),
+			};
+			const controller = TemplateCheckPanel.Show(panel, check, { info });
+			this.#templateCheck = { check, info, controller };
+		} catch (error) {
+			console.error("🔴 Template check error:", error);
+			this.#log(`⚠ The template check could not be shown (${error.message}); the converted files are not affected.`);
+		}
+	};
+
+	/**
+	 * The SHA-256 of an uploaded file's bytes, as hex (Web Crypto). Empty
+	 * when there is no file or the browser offers no crypto.subtle (it needs
+	 * https or localhost).
+	 *
+	 * @param {File|null} file
+	 * @returns {Promise<string>}
+	 */
+	static async #sha256(file) {
+		if (!file || !globalThis.crypto?.subtle) return "";
+		const digest = await crypto.subtle.digest("SHA-256", await file.arrayBuffer());
+		return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
 	};
 
 	/**

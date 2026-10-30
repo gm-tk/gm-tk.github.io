@@ -34,7 +34,7 @@ class Config {
 	// This is shown in the UI so a developer can tell which build produced a
 	// page. It is NOT written into the converted HTML, so changing it never
 	// changes any output — bump it with every release.
-	static AppVersion = "260625.93";
+	static AppVersion = "260625.95";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
@@ -83,6 +83,10 @@ class Config {
 		// human corpus. MenuBuilder uses it to decide when a one-line
 		// "**Title:** content" heading should be split (env MENUHEADINGLEX_OFF).
 		OverviewMenuHeadingLexicon: "../data/Overview_Menu_Heading_Lexicon.json",
+		// The Template check's question catalogue: which notes each question
+		// matches, its plain-English wording and its answer choices (read by
+		// TemplateCheck.js after a conversion; it changes no page).
+		TemplateCheckQuestions: "../data/Template_Check_Questions.json",
 	};
 
 	// ---------------------------------------------------------------------
@@ -137,6 +141,8 @@ class Config {
 		SummaryPanel:  "summary-panel",
 		DownloadAll:   "download-all",
 		OutputList:    "output-list",
+		// The Template check panel (shown after a conversion; TemplateCheckPanel.js renders it).
+		TemplateCheckPanel: "template-check-panel",
 	};
 
 	// ---------------------------------------------------------------------
