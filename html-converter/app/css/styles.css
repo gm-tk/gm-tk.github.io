@@ -612,3 +612,37 @@ body {
 	border-radius: 6px;
 	font: inherit;
 }
+
+/* =========================================================================
+   The Template check panel's frame (App.js draws it; TemplateCheckPanel.js
+   draws the questions inside .tc-app-body): the heading line with the
+   on-screen switch at its right, then the status and files lines.
+   ========================================================================= */
+.tc-app-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 6px 16px;
+	margin: 0 0 6px;
+}
+.tc-app-head h2 { margin: 0; }
+.tc-switch {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 0.92rem;
+	color: var(--ink-soft);
+	cursor: pointer;
+}
+.tc-app-status {
+	margin: 4px 0 6px;
+	color: var(--accent);
+	font-size: 0.95rem;
+}
+.tc-app-status:empty, .tc-app-files:empty { display: none; }
+.tc-app-status.tc-app-muted { color: var(--ink-soft); }
+.tc-app-files { margin: 0 0 8px; font-size: 0.92rem; color: var(--ink-soft); }
+.tc-app-files p { margin: 2px 0; }
+.tc-app-files .tc-app-bad, .tc-app-status.tc-app-bad { color: #c00000; font-weight: 600; }
+.tc-app-body.tc-app-stale { opacity: 0.55; }

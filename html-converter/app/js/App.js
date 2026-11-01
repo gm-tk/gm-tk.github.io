@@ -21,7 +21,7 @@
  * setup (classifying the uploads, detecting the module code, resolving its
  * structural rules, parsing the Media List, trimming front-matter) through
  * the SAME shared engine method, ModuleResolver.PrepareRun (see stage [3]
- * inside #convert(), below), specifically so the browser tool and the
+ * inside #build(), below), specifically so the browser tool and the
  * command-line tool can never silently drift apart and produce different
  * output for the same input document.
  *
@@ -29,12 +29,18 @@
  *   file:// guard → DataService.Init() → new TagNormaliser(...) → wire up
  *   the upload UI → ready for a click.
  *
- * CONVERSION SEQUENCE (one big try/catch, standards §8a) — see #convert(),
- * which runs once per click of the Convert button:
- *   read the upload-time option checkboxes → extract every uploaded .docx
+ * CONVERSION SEQUENCE — see #build(), THE conversion, which two callers use:
+ *   read the inputs (#currentInputs: the Word files, the iStock .txt files,
+ *   the image mode, the reference choice) → extract every uploaded .docx
  *   into blocks → the shared prep (ModuleResolver.PrepareRun) → build every
- *   output page (PageAssembler.AssembleModule) → render the download list
- *   and the run summary.
+ *   output page (PageAssembler.AssembleModule).
+ *   - Convert (#convert, one big try/catch, standards §8a) is #build plus the
+ *     display: the log lines, the progress bar, the download list and the
+ *     run summary.
+ *   - The Template check (#runCheck) is #build in quiet mode — nothing
+ *     shown, nothing offered for download — plus TemplateCheck.FromRun: it
+ *     runs as soon as Convert could, and again whenever the inputs change.
+ *   Both go through ONE queue (#enqueue), so two conversions never overlap.
  *
  * WHY THE file:// GUARD:
  * The engine fetches ../data/*.json at runtime (edit a data file → reload
@@ -78,11 +84,44 @@ class App {
 	// The currently-suggested reference code, so the list can mark
 	// its row with the red "recommended" note on every rebuild.
 	static #refSuggestedCode = null;
-	// The Template check for the latest conversion: { check, info, controller }
-	// (null before a conversion, after a reset, or when the check is
-	// switched off). Its files join the "Download all" zip only — never
-	// run.outputs.
+	// THE TEMPLATE CHECK's state. #templateCheck is the check on screen:
+	// { check, info, controller, fingerprint } — fingerprint names the exact
+	// inputs it was built from (null before a check, after a reset, or when
+	// the check is switched off). Its files join the "Download all" zip only —
+	// never run.outputs — and only when its fingerprint is the converted
+	// pages' (#converted), so the zip never mixes one upload's pages with
+	// another's check. #tcParked keeps it while the switch is off.
 	static #templateCheck = null;
+	static #tcParked = null;
+	// ONE queue for every conversion (the quiet check and Convert): each job
+	// starts when the one before it has finished, and a failed job never jams
+	// it. #tcToken grows with every change of the inputs: a check whose token
+	// is no longer current is stale — it is not started, or its result is
+	// dropped. #tcTimer is the pending (debounced) check; #tcRunning is true
+	// while a check converts.
+	static #queue = Promise.resolve();
+	static #tcToken = 0;
+	static #tcTimer = null;
+	static #tcPending = false;   // a check is waiting to start (its pause, or its turn in the queue)
+	static #tcRunning = false;
+	static #convertQueued = false;
+	// The change record of this visit (one module): { module, checks,
+	// template_changes } for the answers file, and #tcLast = { sha256, texts }
+	// of the latest check's Word file, which the next check compares against.
+	static #tcRecord = null;
+	static #tcLast = null;
+	// The on-screen switch's setting when the browser cannot store it.
+	static #tcSwitchMemory = null;
+	// The latest successful Convert: { fingerprint, run, prep, docs } (null
+	// before one, after a reset, or once the inputs have changed since).
+	static #converted = null;
+	// The inputs' fingerprint at the last change check (#inputsChanged).
+	static #lastPrint = null;
+	// The module code the reference suggestion was last made for (a new
+	// module forgets a manual pick), and whether the module code is still
+	// being read from the first document (the check waits for it).
+	static #refLastCode = null;
+	static #refPending = false;
 	// The full library-code list, cached once so the type-to-filter
 	// box can rebuild the dropdown's options without re-reading the data.
 	// Each row is enriched at fill time with its phase key
@@ -162,9 +201,10 @@ class App {
 	 *   5. #wireUi() — attach every click/drag/drop event listener the
 	 *      upload UI and the Convert button need.
 	 *   6. Log "ready to convert" and stop. The app now just waits for a
-	 *      person to drop in files and click Convert, which is handled
-	 *      entirely separately by #convert() (see CONVERSION SEQUENCE at
-	 *      the top of this file, and #convert()'s own JSDoc below).
+	 *      person to drop in files (the Template check starts by itself)
+	 *      and click Convert, which is handled entirely separately by
+	 *      #convert() (see CONVERSION SEQUENCE at the top of this file, and
+	 *      #build()'s and #convert()'s own JSDoc below).
 	 *
 	 * @returns {Promise<void>} resolves once the app is ready for a click —
 	 *   or once the file:// guard has shown its message and returned early
@@ -215,7 +255,8 @@ class App {
 	 *   files onto it adds them via #addFiles()
 	 * - the hidden file <input>: its "change" event fires after a person
 	 *   picks files through the native picker it opens
-	 * - the Convert button: starts one conversion by calling #convert()
+	 * - the Convert button: starts one conversion (#onConvertClick → #convert)
+	 * - the image-mode radios: a change re-evaluates the gate (and the check)
 	 * - the file list: ONE delegated click listener on the whole <ul>,
 	 *   rather than a listener per row (see WHY, below)
 	 *
@@ -250,7 +291,12 @@ class App {
 		});
 
 		document.getElementById(Config.Selectors.ConvertButton)
-			.addEventListener("click", () => this.#convert());
+			.addEventListener("click", () => this.#onConvertClick());
+		// the image mode is one of the inputs: a change re-checks (and, after
+		// Convert, clears the pages it no longer matches)
+		for (const id of [Config.Selectors.ModeP, Config.Selectors.ModeD]) {
+			document.getElementById(id)?.addEventListener("change", () => this.#updateConvertGate());
+		}
 
 		// the "clear everything & convert another module" reset button — resets
 		// the converter to its fresh state in place (see #resetPage()).
@@ -367,23 +413,22 @@ class App {
 	};
 
 	/**
-	 * THE CONVERT GATE. The Convert button is clickable only
-	 * when (a) at least one .docx is uploaded AND (b) the reference
-	 * requirement is satisfied: either a reference module is selected in
-	 * the dropdown (the suggestion auto-fills it when one exists), or the
-	 * "upload reference HTML" choice is active with at least one page
-	 * added. When the reference feature is off (data flag) or its panel
-	 * isn't showing yet, only the file requirement applies.
+	 * THE CONVERT GATE. Convert could run only when (a) one or two .docx
+	 * files are listed (more than two hold it until one is removed — which one
+	 * to drop is never guessed) AND (b) the reference requirement is
+	 * satisfied: either a reference module is selected in the dropdown (the
+	 * suggestion auto-fills it when one exists), or the "upload reference
+	 * HTML" choice is active with at least one page added. When the reference
+	 * feature is off (data flag) or its panel isn't showing yet, only the
+	 * file requirement applies. The Template check starts by the same gate.
 	 *
-	 * @returns {void}
+	 * @returns {Object} { ok, blockedNote } — blockedNote is the red line
+	 *   under the button when files are listed but Convert can't run yet
 	 */
-	static #updateConvertGate() {
-		const btn = document.getElementById(Config.Selectors.ConvertButton);
-		if (!btn) return;
+	static #gateState() {
 		let ok = this.#files.length > 0;
-		// When the REFERENCE requirement is what blocks Convert,
-		// say so in red under the button (refBlocked drives the note below).
-		let refBlocked = false;
+		let blockedNote = "";
+		if (this.#files.length > 2) return { ok: false, blockedNote: Config.Strings.ConvertGateFiles };
 		let noteText = Config.Strings.ConvertGateReference;
 		const panel = document.getElementById(Config.Selectors.ReferencePanel);
 		const cfg = DataService.Data?.EmitTemplates?.reference_module;
@@ -399,14 +444,31 @@ class App {
 			} else {
 				ok = !!(document.getElementById(Config.Selectors.RefCodeSelect)?.value);
 			}
-			refBlocked = !ok;
+			// When the REFERENCE requirement is what blocks Convert,
+			// say so in red under the button.
+			if (!ok) blockedNote = noteText;
 		}
-		btn.disabled = !ok;
+		return { ok, blockedNote };
+	};
+
+	/**
+	 * Applies the gate to the Convert button and its red note, then looks for
+	 * a change of the inputs (#inputsChanged) — every change to the uploads
+	 * and choices passes through here.
+	 *
+	 * @returns {void}
+	 */
+	static #updateConvertGate() {
+		const btn = document.getElementById(Config.Selectors.ConvertButton);
+		if (!btn) return;
+		const { ok, blockedNote } = this.#gateState();
+		btn.disabled = !ok || this.#convertQueued;
 		const note = document.getElementById(Config.Selectors.ConvertGateNote);
 		if (note) {
-			note.hidden = !refBlocked;
-			note.textContent = refBlocked ? noteText : "";
+			note.hidden = !blockedNote;
+			note.textContent = blockedNote;
 		}
+		this.#inputsChanged();
 	};
 
 	/**
@@ -441,6 +503,11 @@ class App {
 	 * fallback), names the SUGGESTED reference module, and fills the
 	 * pick-list of every library module code. All the detection work happens inside
 	 * ReferenceMiner.PreviewSuggestion (an engine helper), never here.
+	 * When the detected module code changes (the files are now another
+	 * module's), a manual reference pick made for the earlier module is
+	 * forgotten and the new module's suggestion selected, with a log line —
+	 * the check would otherwise check (and Convert convert) one module against
+	 * another's reference without anyone noticing.
 	 *
 	 * @returns {Promise<void>}
 	 */
@@ -452,6 +519,7 @@ class App {
 		if (!this.#files.length) {
 			panel.hidden = true;
 			this.#refPreview = null;
+			this.#refPending = false;
 			this.#updateConvertGate();
 			return;
 		}
@@ -463,7 +531,9 @@ class App {
 		let preview = ReferenceMiner.PreviewSuggestion({ filenames });
 		if (!preview.code) {
 			// no code in the filenames — peek at the first docx's front matter
+			// (the Template check waits until this is known)
 			this.#renderRefStatus({ code: null, pending: true });
+			this.#refPending = true;
 			try {
 				const zip = new ZipReader(await this.#files[0].arrayBuffer());
 				const doc = await DocxExtractor.Extract(zip);
@@ -472,8 +542,18 @@ class App {
 			} catch { /* advisory only — leave preview code-less */ }
 		}
 		if (token !== this.#refPreviewToken) return;
+		const wasPending = this.#refPending;
+		this.#refPending = false;
 		this.#refPreview = preview;
 		this.#renderRefStatus(preview);
+
+		// A different module: forget a manual pick made for the earlier one.
+		let newModule = false;
+		if (preview.code && this.#refLastCode && preview.code !== this.#refLastCode && this.#refUserPicked) {
+			this.#refUserPicked = false;
+			newModule = true;
+		}
+		if (preview.code) this.#refLastCode = preview.code;
 
 		// Auto-select the suggestion in the dropdown. A manual
 		// selection is never clobbered; with no suggestion (and no manual
@@ -514,7 +594,13 @@ class App {
 			// recommended row shows its note
 			this.#renderRefCodeOptions();
 		}
+		if (newModule) {
+			this.#log(Utils.FillTemplate(preview.suggestion?.code ? Config.Strings.ReferenceNewModule : Config.Strings.ReferenceNewModuleNone,
+				{ code: preview.code, suggestion: preview.suggestion?.code ?? "" }));
+		}
 		this.#updateConvertGate();
+		// the module code was being read: the check can start now even if no input changed
+		if (wasPending) this.#scheduleCheck();
 	};
 
 	/** Clears the code/subject/phase filters back to "show everything". */
@@ -838,16 +924,22 @@ class App {
 	 * - extension: only files ending in ".docx" are kept. Anything else (a
 	 *   stray .pdf, .doc, a screenshot, …) is rejected immediately with a
 	 *   visible log message — never silently dropped without explanation.
+	 * - the same name: a .docx (or .txt) with the same name as one already
+	 *   listed REPLACES that one, in its place — the newest copy wins and the
+	 *   log says so. This is how a developer adds the corrected copy of a
+	 *   Word file after fixing it.
 	 * - count: this tool converts ONE module per run, which needs at most
 	 *   two files — the Writers Template (WT) and its companion Media List
 	 *   — or a single combined .docx that serves as both. A third file is
-	 *   refused, the list is trimmed back to the first two, and a log
-	 *   message explains why.
+	 *   kept in the list, with a red line under it: the Template check and
+	 *   Convert wait until one is removed (✕). Which one to drop is never
+	 *   guessed here — only PrepareRun reads which file is which.
 	 *
-	 * WHAT IT DOES NOT DO: work out WHICH of the (up to two) accepted files
-	 * is the WT and which is the Media List — that classification happens
-	 * later, inside ModuleResolver.PrepareRun, once the files have actually
-	 * been unzipped and their content read (see #convert() stage [3]).
+	 * WHAT IT DOES NOT DO: work out WHICH of the accepted files is the WT
+	 * and which is the Media List — that classification happens later,
+	 * inside ModuleResolver.PrepareRun, once the files have actually been
+	 * unzipped and their content read (see #build() stage [3]); the
+	 * Template check's files line then names the files it used.
 	 *
 	 * @param {File[]} files - newly-picked or dropped browser File objects
 	 * @returns {void}
@@ -863,8 +955,15 @@ class App {
 		// file. The check below is for immediate on-screen feedback; the
 		// authoritative pick happens once, for both entries, inside
 		// ModuleResolver.PrepareRun (AcksBuilder.PickIstockAcks).
+		// a file with the same name as one already listed replaces it, in its place
+		const addOrReplace = (list, f) => {
+			const i = list.findIndex((x) => x.name.toLowerCase() === f.name.toLowerCase());
+			if (i < 0) { list.push(f); return; }
+			list[i] = f;
+			this.#log(Utils.FillTemplate(Config.Strings.FileReplaced, { name: f.name }));
+		};
 		for (const f of files) {
-			if (f.name.toLowerCase().endsWith(".docx")) { this.#files.push(f); continue; }
+			if (f.name.toLowerCase().endsWith(".docx")) { addOrReplace(this.#files, f); continue; }
 			if (!f.name.toLowerCase().endsWith(".txt")) {
 				this.#log(`⚠ "${f.name}" is not a .docx (or a .txt of iStock acknowledgements) — ignored.`);
 				continue;
@@ -873,7 +972,7 @@ class App {
 			try { verdict = AcksBuilder.LooksLikeIstockAcks(await f.text()); }
 			catch { /* unreadable file falls through as "not recognised" */ }
 			if (verdict.ok) {
-				this.#txtFiles.push(f);
+				addOrReplace(this.#txtFiles, f);
 				this.#log(`✓ "${f.name}" — recognised by its contents as verified iStock acknowledgements `
 					+ `(${verdict.matched} entries); these titles will be used for the iStock acks.`);
 			} else {
@@ -882,11 +981,8 @@ class App {
 					+ `Expected one line per asset, e.g. "&lt;p&gt;Photo: Title, iStock 1234567, Getty Images. Used with permission.&lt;/p&gt;".`);
 			}
 		}
-		// one module per run: a WT + its media list (or one combined file)
-		if (this.#files.length > 2) {
-			this.#log("⚠ More than two .docx files — Phase 1 converts ONE module per run (WT + media list, or one combined docx). Extra files removed.");
-			this.#files = this.#files.slice(0, 2);
-		}
+		// one module per run: a WT + its media list (or one combined file) —
+		// more than two are kept, and #renderFileList says so in red
 		this.#renderFileList();
 	};
 
@@ -896,7 +992,7 @@ class App {
 	 * only becomes clickable once at least one file has been added.
 	 *
 	 * WHY REBUILD THE WHOLE LIST (rather than patch individual rows): the
-	 * list is always short (at most two files — see #addFiles()), so simply
+	 * list is always short (normally two files — see #addFiles()), so simply
 	 * re-rendering the whole <ul> from #files on every change keeps this
 	 * file's in-memory state and the visible DOM impossible to get out of
 	 * sync — #files is the one source of truth, and the DOM is always just
@@ -918,6 +1014,15 @@ class App {
 		this.#txtFiles.forEach((f, i) => rows.push(
 			`<li>${Utils.EscapeHtml(f.name)} <em>(verified iStock acks)</em> <button type="button" data-remove="acks:${i}" title="Remove">✕</button></li>`));
 		list.innerHTML = rows.join("");
+		// More than two Word files: say so in red under the list (the check and
+		// Convert wait until one is removed).
+		const note = document.getElementById(Config.Selectors.FileListNote);
+		if (note) {
+			const n = this.#files.length;
+			note.hidden = n <= 2;
+			note.textContent = n <= 2 ? "" : n === 3 ? Config.Strings.TooManyWordFiles
+				: Utils.FillTemplate(Config.Strings.TooManyWordFilesMany, { count: n });
+		}
 		// The Convert button's state is owned by the gate (files
 		// present + a reference selected or reference HTML added).
 		this.#updateConvertGate();
@@ -937,7 +1042,8 @@ class App {
 	// resets mid-run) without needing to know every stage's total item count
 	// up front (page counts, media counts, etc. only exist once the run is
 	// actually under way). The extract and prep stages are reported directly
-	// by #convert(); the pages and acks stages arrive through
+	// by #build() (Convert's run only — the quiet check reports to its own
+	// status line instead); the pages and acks stages arrive through
 	// run.onProgress — an OPTIONAL callback that ONLY this browser entry
 	// point ever sets. The command-line batch-conversion tool
 	// (batch_convert.cjs) never sets run.onProgress, so the engine's guarded
@@ -1056,26 +1162,92 @@ class App {
 	};
 
 	// =======================================================================
-	// THE CONVERSION (one run per click)
+	// THE CONVERSION — one shared function, two callers
 	// =======================================================================
+	// #build() IS the conversion (stages [1]–[8] below). Convert (#convert)
+	// is #build plus the display; the Template check (#runCheck) is #build in
+	// quiet mode plus TemplateCheck.FromRun — one function, so the check is
+	// always built from exactly what Convert builds. Both run through ONE
+	// queue (#enqueue) and never overlap: the engine keeps state while it
+	// converts (the activity-letter counter, reset when each conversion
+	// starts; the equation register; the shared TagNormaliser) and is not
+	// built for two conversions at once — and a conversion pauses at every
+	// await (unzipping a Word file, each YouTube look-up), where a second one
+	// could otherwise start in the gap.
 
 	/**
-	 * Runs ONE complete conversion: everything that happens between a person
-	 * clicking the Convert button and the finished HTML pages appearing in
-	 * the download list. Wrapped in one big try/catch (standards §8a) so any
-	 * failure — anywhere in the whole pipeline — is caught, logged to both
-	 * the browser console and the on-page log, and shown as a frozen red
-	 * progress bar, rather than leaving the button disabled forever or
-	 * failing in a way nobody can see.
+	 * The inputs of one conversion, read in ONE place: the Word files, the
+	 * iStock acknowledgements .txt files, the image mode and the reference
+	 * choice (a picked module, uploaded reference HTML, or "Make your own
+	 * template"). The arrays are copies, so a file added while a conversion
+	 * runs never changes that conversion. The fingerprint names them all
+	 * (each file's name, size and last-modified time, plus the choices): two
+	 * equal fingerprints convert to the same pages.
+	 *
+	 * @returns {Object} { files, txtFiles, imageMode, ref: { mode, code, spec,
+	 *   htmlFiles }, suggestedCode, fingerprint }
+	 */
+	static #currentInputs() {
+		// imageMode ("P" or "D"): which of two placeholder-image rendering
+		// styles to use for an image the converter can't fetch a real
+		// asset for yet. Purely a user choice, carried on the run object.
+		const imageMode = document.getElementById(Config.Selectors.ModeP)?.checked ? "P" : "D";
+		// the reference choice, in the order Convert reads it: "Make
+		// your own template", then uploaded reference HTML (when pages are
+		// added), else the picked library module
+		let ref;
+		if (document.getElementById(Config.Selectors.RefCustom)?.checked) {
+			ref = {
+				mode: "custom",
+				spec: {
+					subject: document.getElementById(Config.Selectors.RefCustomSubject)?.value ?? "",
+					phase: document.getElementById(Config.Selectors.RefCustomPhase)?.value ?? "",
+					template: document.getElementById(Config.Selectors.RefCustomTemplate)?.value ?? "",
+				},
+			};
+		} else if (document.getElementById(Config.Selectors.RefHtml)?.checked && this.#refHtmlFiles.length) {
+			ref = { mode: "html", htmlFiles: [...this.#refHtmlFiles] };
+		} else {
+			ref = { mode: "pick", code: (document.getElementById(Config.Selectors.RefCodeSelect)?.value ?? "").trim().toUpperCase() };
+		}
+		const files = [...this.#files];
+		const txtFiles = [...this.#txtFiles];
+		const key = (f) => [f.name, f.size, f.lastModified];
+		const fingerprint = JSON.stringify({
+			files: files.map(key),
+			txt: txtFiles.map(key),
+			imageMode,
+			ref: ref.mode === "html" ? { mode: "html", pages: ref.htmlFiles.map(key) } : ref,
+		});
+		return { files, txtFiles, imageMode, ref, suggestedCode: this.#refPreview?.suggestion?.code ?? null, fingerprint };
+	};
+
+	/**
+	 * Adds a job to THE queue: it starts when every job before it has
+	 * finished. A job that fails does not stop the ones after it.
+	 *
+	 * @param {Function} job - an async function
+	 * @returns {Promise<*>} the job's result
+	 */
+	static #enqueue(job) {
+		const p = this.#queue.then(() => job());
+		this.#queue = p.catch(() => { });
+		return p;
+	};
+
+	/**
+	 * THE CONVERSION. Converts one module from the inputs it is handed —
+	 * everything between "these files" and the finished pages in memory. It
+	 * shows nothing in quiet mode (the Template check); Convert adds the
+	 * display around it.
 	 *
 	 * THE CONVERSION SEQUENCE, STEP BY STEP:
-	 *   [1] Read the upload-time option checkboxes (image mode P/D, and the
-	 *       interactive hand-off mode inline/extract) and use them to
-	 *       construct a fresh ConversionRun — the "run" object: one mutable
-	 *       scratchpad object created for THIS conversion only, that every
-	 *       later stage reads from and writes onto (the detected module
-	 *       code, the resolved rules, the finished pages, warning/error
-	 *       notes, the output files, …).
+	 *   [1] Construct a fresh ConversionRun from the upload-time choice (the
+	 *       image mode P/D) — the "run" object: one mutable scratchpad object
+	 *       created for THIS conversion only, that every later stage reads
+	 *       from and writes onto (the detected module code, the resolved
+	 *       rules, the finished pages, warning/error notes, the output
+	 *       files, …).
 	 *   [2] Extract every uploaded .docx file into this engine's internal
 	 *       block representation (see ZipReader + DocxExtractor.Extract).
 	 *       Neither uploaded file is known yet to be the Writers Template or
@@ -1091,185 +1263,240 @@ class App {
 	 *       the uploads at all (prep.reason === "no-wt"), or the module uses
 	 *       a pathway this converter doesn't support yet (prep.reason ===
 	 *       "unsupported", e.g. certain bilingual templates) — either way,
-	 *       #convert() logs why, re-enables the Convert button, and returns
-	 *       early without attempting to build any pages.
+	 *       #build returns the refusal without building any pages, and its
+	 *       caller says why.
 	 *   [4] Wire up run.onProgress (see THE CONVERSION PROGRESS BAR, above)
 	 *       so the engine can report page-by-page and acknowledgement-by-
-	 *       acknowledgement progress back to this browser UI as it works.
+	 *       acknowledgement progress back to the browser as it works —
+	 *       Convert's progress bar, or the check's own line in quiet mode.
 	 *   [5]–[8] Hand the fully-prepared run to PageAssembler.AssembleModule,
 	 *       which runs the rest of the pipeline (page splitting, interactive
 	 *       widget scanning + content conversion, acknowledgements, and
 	 *       final HTML assembly) and fills in run.pages / run.interactives /
 	 *       run.outputs. See stage [5]–[8]'s own comment, below.
-	 *   Finally: render the finished output files into the download list
-	 *       (#renderOutputs) and the run summary panel (SummaryReporter),
-	 *       show the Template check (#showTemplateCheck — it only reads the
-	 *       finished run), mark the progress bar 100% Done, and log a
-	 *       one-line result.
+	 *
+	 * @param {Object} inputs - from #currentInputs (a snapshot)
+	 * @param {Object} [opts]
+	 * @param {boolean} [opts.quiet] - no log line, no progress bar (the check)
+	 * @param {Function} [opts.onProgress] - quiet mode's progress callback (stage, done, total)
+	 * @returns {Promise<Object>} { ok, reason, run, prep, docs } — reason is
+	 *   PrepareRun's refusal ("no-wt" / "unsupported") when ok is false
+	 */
+	static async #build(inputs, { quiet = false, onProgress = null } = {}) {
+		const log = (text) => { if (!quiet) this.#log(text); };
+
+		// ---- [1] the run, from the upload-time choice -------------------
+		// The interactive HAND-OFF is the DEFAULT and has no UI switch:
+		// interactiveMode is resolved by the run itself
+		// (ConversionRun.DefaultInteractiveMode — the same shared, data-driven
+		// decision the batch entry point uses, so the two entries cannot drift).
+		// Every un-built interactive renders as its reference-code box with
+		// the raw captured content collapsed inside it, and the same codes
+		// head the {CODE}_interactives.txt blocks.
+		const run = new ConversionRun({ imageMode: inputs.imageMode });
+
+		// ---- [2] extract every uploaded docx into blocks ----------------
+		// A .docx file IS a zip archive internally (that's Word's own
+		// format), so ZipReader opens it as one, and
+		// DocxExtractor.Extract(zip) reads the zip's XML parts and turns
+		// them into this engine's internal representation: an ordered
+		// list of paragraph/table "blocks" that the rest of the pipeline
+		// works with (see DocxExtractor.js for the full block shape).
+		// This runs for EVERY uploaded file (normally two — see
+		// #addFiles()) — at this point neither file is known yet to be
+		// the Writers Template or the Media List; that classification
+		// happens next, in stage [3].
+		//
+		// `docs` ends up shaped like:
+		//   [
+		//     { name: "OSAH401 Writers Template.docx", doc: { blocks, rels, mtkFlag, hasContentStart, metadata } },
+		//     { name: "OSAH401 Media List.docx",        doc: { blocks, rels, mtkFlag, hasContentStart, metadata } },
+		//   ]
+		const docs = [];
+		for (const file of inputs.files) {
+			const zip = new ZipReader(await file.arrayBuffer());
+			const doc = await DocxExtractor.Extract(zip);
+			docs.push({ name: file.name, doc });
+			log(`Extracted ${file.name}: ${doc.blocks.length} blocks, ${doc.rels.size} links.`);
+			if (!quiet) this.#progressSet("extract", docs.length, inputs.files.length);
+		}
+
+		// ---- [3] THE SHARED PREP ----------------------------------------
+		// Classification (working out which uploaded file is the WT and
+		// which is the Media List), module-code detection, structural
+		// rule resolution, setting run.mtkFlag, the unsupported-pathway
+		// refusal check, media-item parsing, and trimming the WT's
+		// front-matter ALL live in ONE method: ModuleResolver.PrepareRun.
+		// This browser app and batch_convert.cjs (the separate,
+		// command-line entry point used for bulk/automated conversion —
+		// see the note near the top of this file) BOTH call this exact
+		// same method for their setup, so they can never silently drift
+		// apart: two separate copies of this logic would slowly fall out
+		// of sync, and the SAME module could then produce DIFFERENT HTML
+		// depending on which tool converted it. This file calls it from
+		// this one place only, for Convert and the check alike.
+		// The optional verified iStock acknowledgements
+		// file rides into the ONE shared prep sequence as plain text; parsing
+		// lives inside PrepareRun/AcksBuilder (never here — entry parity).
+		// Hand in EVERY accepted .txt; PrepareRun applies the one
+		// shared content test and picks (entry parity: the batch entry point
+		// hands in its folder's .txt files exactly the same way).
+		const istockAcksFiles = await Promise.all(inputs.txtFiles.map(
+			async (f) => ({ name: f.name, text: await f.text() })));
+		// The Reference-module choice rides into the ONE
+		// shared prep sequence as plain options (exactly like
+		// istockAcksFiles): the decision logic lives inside PrepareRun,
+		// never here (entry parity — the batch entry point passes neither, so
+		// its conversions are untouched by this feature). The Convert gate
+		// normally guarantees one of the two is present; the defensive
+		// branches below only fire if the gate was somehow bypassed.
+		let referenceCode = null;
+		let referenceHtmlFiles = null;
+		let referenceSpec = null;
+		if (inputs.ref.mode === "custom") {
+			// "Make your own template": the three required choices
+			const spec = { ...inputs.ref.spec };
+			if (spec.subject && spec.phase && spec.template) {
+				referenceSpec = spec;
+				log(`Reference module: making your own template — ${spec.subject} · `
+					+ `${this.#RefPhaseLabels[spec.phase] ?? spec.phase} · ${spec.template} `
+					+ `(the converter will inherit from the most typical matching library module; the template always leads).`);
+			} else {
+				log("⚠ 'Make your own template' is selected but not all three choices were made — converting from the module's own registry home.");
+			}
+		} else if (inputs.ref.mode === "html") {
+			referenceHtmlFiles = await Promise.all(inputs.ref.htmlFiles.map(
+				async (f) => ({ name: f.name, text: await f.text() })));
+			log(`Reference module: mining ${referenceHtmlFiles.length} uploaded HTML page(s) — a distilled template file will be included in the outputs to send to Gavin.`);
+		} else {
+			const v = inputs.ref.code;
+			if (v) {
+				referenceCode = v;
+				const suggested = inputs.suggestedCode;
+				log(`Reference module: inheriting page structure from ${v}${v === suggested ? " (the suggested module)" : " (your choice)"}.`);
+			} else {
+				log("⚠ No reference module was selected — converting from the module's own registry home.");
+			}
+		}
+		const prep = ModuleResolver.PrepareRun({ docs, run, normaliser: this.#normaliser, istockAcksFiles, referenceCode, referenceHtmlFiles, referenceSpec });
+		if (!prep.ok) return { ok: false, reason: prep.reason, run, prep, docs };
+		if (prep.mediaSource) log(`Media list: ${run.mediaItems.length} items.`);
+		if (!quiet) this.#progressSet("prep", 1, 1);
+
+		// ---- [4] the browser-only progress hook ---------------------------
+		// Pages + acks progress reports flow from the engine's guarded call
+		// sites inside the pipeline below. batch_convert.cjs never sets
+		// run.onProgress, so those same call sites are harmless no-ops when
+		// running in batch — see THE CONVERSION PROGRESS BAR section, above,
+		// for the full explanation.
+		run.onProgress = quiet ? onProgress : (stage, done, total) => this.#progressSet(stage, done, total);
+
+		// ---- [5]-[8]: the page-building pipeline ------------------------
+		// Stages [5] through [8] all happen INSIDE this one call, entirely
+		// inside PageAssembler.AssembleModule: split the prepared module into
+		// pages, scan each page for interactive widgets and convert its
+		// content to HTML, build the acknowledgements section, and wrap
+		// every finished page in its page skeleton plus write the
+		// interactives hand-off manifest. This file deliberately doesn't
+		// need those details to stay correct — see PageAssembler.js if you
+		// need to trace further in.
+		await PageAssembler.AssembleModule(run, this.#normaliser);
+		return { ok: true, run, prep, docs };
+	};
+
+	/**
+	 * The Convert button. Convert waits only for a check that is already
+	 * running (the screen says so); a check that has not started yet is
+	 * dropped, because Convert's own run gives the check (#checkAfterConvert).
+	 * The check never disables Convert beyond that wait.
+	 *
+	 * @returns {Promise<void>}
+	 */
+	static async #onConvertClick() {
+		if (this.#convertQueued) return;
+		this.#convertQueued = true;
+		const button = document.getElementById(Config.Selectors.ConvertButton);
+		button.disabled = true;
+		if (this.#tcRunning) {
+			this.#log(this.#tcText("waiting_convert") || "…");
+		} else if (this.#tcPending) {
+			clearTimeout(this.#tcTimer);
+			this.#tcTimer = null;
+			this.#tcPending = false;
+			this.#tcToken++;
+			this.#checkStatus("");
+		}
+		try {
+			await this.#enqueue(() => this.#convert());
+		} finally {
+			this.#convertQueued = false;
+			this.#updateConvertGate();
+		}
+	};
+
+	/**
+	 * CONVERT: ONE complete conversion (#build) plus its display — everything
+	 * between a person clicking the Convert button and the finished HTML
+	 * pages appearing in the download list. Wrapped in one big try/catch
+	 * (standards §8a) so any failure — anywhere in the whole pipeline — is
+	 * caught, logged to both the browser console and the on-page log, and
+	 * shown as a frozen red progress bar, rather than leaving the button
+	 * disabled forever or failing in a way nobody can see.
+	 *
+	 * After the conversion: render the finished output files into the
+	 * download list (#renderOutputs) and the run summary panel
+	 * (SummaryReporter), bring the Template check up to date with the
+	 * converted run (#checkAfterConvert — it only reads the run), mark the
+	 * progress bar 100% Done, and log a one-line result.
 	 *
 	 * @returns {Promise<void>} resolves once conversion has finished (or
-	 *   failed, or been refused) and the button has been re-enabled
+	 *   failed, or been refused)
 	 */
 	static async #convert() {
 		const button = document.getElementById(Config.Selectors.ConvertButton);
 		button.disabled = true;
+		const inputs = this.#currentInputs();
 		this.#clearOutputs();
+		// with the check after Convert (or none), the check is built afresh
+		// from this run; with the check before Convert, it stays — whatever
+		// the switch — and is compared with this run afterwards
+		if (!(this.#tcAvailable() && TemplateCheck.RunsBeforeConvert(this.#tcCat()))) this.#clearCheck();
 		this.#progressStart();
 		this.#log(Config.Strings.Converting);
 
 		try {
-			// ---- [1] upload-time choices ------------------------------------
-			// imageMode ("P" or "D"): which of two placeholder-image rendering
-			// styles to use for an image the converter can't fetch a real
-			// asset for yet. Purely a user choice, carried on the run object.
-			const imageMode = document.getElementById(Config.Selectors.ModeP).checked ? "P" : "D";
-			// The interactive HAND-OFF is the DEFAULT and has no UI switch:
-			// interactiveMode is resolved by the run itself
-			// (ConversionRun.DefaultInteractiveMode — the same shared, data-driven
-			// decision the batch entry point uses, so the two entries cannot drift).
-			// Every un-built interactive renders as its reference-code box with
-			// the raw captured content collapsed inside it, and the same codes
-			// head the {CODE}_interactives.txt blocks.
-			const run = new ConversionRun({ imageMode });
-
-			// ---- [2] extract every uploaded docx into blocks ----------------
-			// A .docx file IS a zip archive internally (that's Word's own
-			// format), so ZipReader opens it as one, and
-			// DocxExtractor.Extract(zip) reads the zip's XML parts and turns
-			// them into this engine's internal representation: an ordered
-			// list of paragraph/table "blocks" that the rest of the pipeline
-			// works with (see DocxExtractor.js for the full block shape).
-			// This runs for EVERY uploaded file (there are at most two — see
-			// #addFiles()) — at this point neither file is known yet to be
-			// the Writers Template or the Media List; that classification
-			// happens next, in stage [3].
-			//
-			// `docs` ends up shaped like:
-			//   [
-			//     { name: "OSAH401 Writers Template.docx", doc: { blocks, rels, mtkFlag, hasContentStart, metadata } },
-			//     { name: "OSAH401 Media List.docx",        doc: { blocks, rels, mtkFlag, hasContentStart, metadata } },
-			//   ]
-			const docs = [];
-			for (const file of this.#files) {
-				const zip = new ZipReader(await file.arrayBuffer());
-				const doc = await DocxExtractor.Extract(zip);
-				docs.push({ name: file.name, doc });
-				this.#log(`Extracted ${file.name}: ${doc.blocks.length} blocks, ${doc.rels.size} links.`);
-				this.#progressSet("extract", docs.length, this.#files.length);
-			}
-
-			// ---- [3] THE SHARED PREP ----------------------------------------
-			// Classification (working out which uploaded file is the WT and
-			// which is the Media List), module-code detection, structural
-			// rule resolution, setting run.mtkFlag, the unsupported-pathway
-			// refusal check, media-item parsing, and trimming the WT's
-			// front-matter ALL live in ONE method: ModuleResolver.PrepareRun.
-			// This browser app and batch_convert.cjs (the separate,
-			// command-line entry point used for bulk/automated conversion —
-			// see the note near the top of this file) BOTH call this exact
-			// same method for their setup, so they can never silently drift
-			// apart: two separate copies of this logic would slowly fall out
-			// of sync, and the SAME module could then produce DIFFERENT HTML
-			// depending on which tool converted it.
-			// The optional verified iStock acknowledgements
-			// file rides into the ONE shared prep sequence as plain text; parsing
-			// lives inside PrepareRun/AcksBuilder (never here — entry parity).
-			// Hand in EVERY accepted .txt; PrepareRun applies the one
-			// shared content test and picks (entry parity: the batch entry point
-			// hands in its folder's .txt files exactly the same way).
-			const istockAcksFiles = await Promise.all(this.#txtFiles.map(
-				async (f) => ({ name: f.name, text: await f.text() })));
-			// The Reference-module choice rides into the ONE
-			// shared prep sequence as plain options (exactly like
-			// istockAcksFiles): the decision logic lives inside PrepareRun,
-			// never here (entry parity — the batch entry point passes neither, so
-			// its conversions are untouched by this feature). The Convert gate
-			// normally guarantees one of the two is present; the defensive
-			// branches below only fire if the gate was somehow bypassed.
-			let referenceCode = null;
-			let referenceHtmlFiles = null;
-			let referenceSpec = null;
-			if (document.getElementById(Config.Selectors.RefCustom)?.checked) {
-				// "Make your own template": the three required choices
-				const spec = {
-					subject: document.getElementById(Config.Selectors.RefCustomSubject)?.value ?? "",
-					phase: document.getElementById(Config.Selectors.RefCustomPhase)?.value ?? "",
-					template: document.getElementById(Config.Selectors.RefCustomTemplate)?.value ?? "",
-				};
-				if (spec.subject && spec.phase && spec.template) {
-					referenceSpec = spec;
-					this.#log(`Reference module: making your own template — ${spec.subject} · `
-						+ `${this.#RefPhaseLabels[spec.phase] ?? spec.phase} · ${spec.template} `
-						+ `(the converter will inherit from the most typical matching library module; the template always leads).`);
-				} else {
-					this.#log("⚠ 'Make your own template' is selected but not all three choices were made — converting from the module's own registry home.");
-				}
-			} else if (document.getElementById(Config.Selectors.RefHtml)?.checked && this.#refHtmlFiles.length) {
-				referenceHtmlFiles = await Promise.all(this.#refHtmlFiles.map(
-					async (f) => ({ name: f.name, text: await f.text() })));
-				this.#log(`Reference module: mining ${referenceHtmlFiles.length} uploaded HTML page(s) — a distilled template file will be included in the outputs to send to Gavin.`);
-			} else {
-				const v = (document.getElementById(Config.Selectors.RefCodeSelect)?.value ?? "")
-					.trim().toUpperCase();
-				if (v) {
-					referenceCode = v;
-					const suggested = this.#refPreview?.suggestion?.code;
-					this.#log(`Reference module: inheriting page structure from ${v}${v === suggested ? " (the suggested module)" : " (your choice)"}.`);
-				} else {
-					this.#log("⚠ No reference module was selected — converting from the module's own registry home.");
-				}
-			}
-			const prep = ModuleResolver.PrepareRun({ docs, run, normaliser: this.#normaliser, istockAcksFiles, referenceCode, referenceHtmlFiles, referenceSpec });
-			if (!prep.ok && prep.reason === "no-wt") {
-				this.#log("🔴 No Writers Template found among the uploads (no [TITLE BAR]/[Fundamental content] opener). Nothing converted.");
+			const r = await this.#build(inputs);
+			const { run, prep } = r;
+			if (!r.ok && r.reason === "no-wt") {
+				this.#log(`🔴 ${Config.Strings.NoWritersTemplate} Nothing converted.`);
 				this.#progressHide();
-				button.disabled = false;
 				return;
 			}
-			if (!prep.ok && prep.reason === "unsupported") {
+			if (!r.ok && r.reason === "unsupported") {
 				run.AddNote("error", "App", `${prep.unsupported.label}: ${prep.unsupported.action}`);
 				SummaryReporter.Render(run);
 				this.#progressHide();
-				button.disabled = false;
 				return;
 			}
-			if (prep.mediaSource) this.#log(`Media list: ${run.mediaItems.length} items.`);
-			this.#progressSet("prep", 1, 1);
-
-			// The browser-only progress hook: pages + acks progress reports flow
-			// from the engine's guarded call sites inside the pipeline below.
-			// batch_convert.cjs never sets run.onProgress, so those same call
-			// sites are harmless no-ops when running in batch — see THE
-			// CONVERSION PROGRESS BAR section, above, for the full explanation.
-			run.onProgress = (stage, done, total) => this.#progressSet(stage, done, total);
-
-			// ---- [5]-[8]: the page-building pipeline ------------------------
-			// App.js's own stage numbering picks back up here at [5]. Stages
-			// [5] through [8] all happen INSIDE this one call, entirely inside
-			// PageAssembler.AssembleModule: split the prepared module into
-			// pages, scan each page for interactive widgets and convert its
-			// content to HTML, build the acknowledgements section, and wrap
-			// every finished page in its page skeleton plus write the
-			// interactives hand-off manifest. This file deliberately doesn't
-			// need those details to stay correct — see PageAssembler.js if you
-			// need to trace further in.
-			await PageAssembler.AssembleModule(run, this.#normaliser);
 
 			// ---- outputs + summary ------------------------------------------
 			// Conversion succeeded: hand the finished files to the download
 			// list (#renderOutputs) and the human-readable run summary
 			// (SummaryReporter.Render), then mark the progress bar 100% Done.
+			this.#converted = { fingerprint: inputs.fingerprint, run, prep, docs: r.docs };
 			this.#renderOutputs(run);
 			SummaryReporter.Render(run);
-			await this.#showTemplateCheck(run, prep);
+			await this.#checkAfterConvert(r, inputs);
 			this.#progressDone();
 			this.#log(`${Config.Strings.Done} ${run.outputs.length} files for ${run.moduleCode ?? "module"}.`);
 
 			// ---- post-success UI -------------------------------------------
 			// The module is converted, so:
 			//  - HIDE the Convert button — the current module is done; a
-			//       fresh conversion goes through the reset button below. We
-			//       hide (not destroy) the node so the reset can restore it.
+			//       fresh conversion goes through the reset button below (or,
+			//       with the check before Convert, a change of the files or
+			//       choices, which clears these pages and brings it back).
+			//       We hide (not destroy) the node so the reset can restore it.
 			//  - SHOW the "clear everything & convert another module" reset
 			//       button, which is meaningless before a conversion exists.
 			//  - SCROLL to the VERY BOTTOM so the "Download all as .zip"
@@ -1289,12 +1516,16 @@ class App {
 			} else {
 				window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 			}
+			// remember the inputs these pages were made from: if a file or
+			// choice changed while this conversion ran, the change check that
+			// follows Convert (#onConvertClick → #updateConvertGate) finds the
+			// difference and clears the pages again
+			this.#lastPrint = inputs.fingerprint;
 		} catch (error) {
 			console.error("🔴 Conversion error:", error);
 			this.#progressError();
 			this.#log(`🔴 Conversion failed: ${error.message} (see the browser console for the stack).`);
 		}
-		button.disabled = false;
 	};
 
 	// =======================================================================
@@ -1392,11 +1623,25 @@ class App {
 
 		// download-all zip — the module's outputs, plus the Template check's
 		// files in their own template-check/ folder (built at click time, so
-		// answers given in the panel go with them)
+		// answers given in the panel go with them). The check goes in only
+		// when it was built from exactly the inputs these pages were made
+		// from, and a failure building its files never stops the download:
+		// the zip then holds the module files only, and the log says so.
 		const all = document.getElementById(Config.Selectors.DownloadAll);
 		all.hidden = run.outputs.length === 0;
 		all.onclick = () => {
-			const checkFiles = typeof TemplateCheckPanel === "undefined" ? [] : TemplateCheckPanel.ZipFiles(this.#templateCheck);
+			let checkFiles = [];
+			const tc = this.#templateCheck;
+			if (tc && this.#converted?.run === run && tc.fingerprint === this.#converted.fingerprint
+				&& typeof TemplateCheckPanel !== "undefined") {
+				try {
+					checkFiles = TemplateCheckPanel.ZipFiles(tc);
+				} catch (error) {
+					console.error("🔴 Template check zip files:", error);
+					this.#log(Utils.FillTemplate(Config.Strings.TemplateCheckZipFailed, { reason: error.message }));
+					checkFiles = [];
+				}
+			}
 			const blob = ZipWriter.Build([...run.outputs, ...checkFiles]);
 			const a = document.createElement("a");
 			a.href = URL.createObjectURL(blob);
@@ -1413,7 +1658,9 @@ class App {
 	 * state. Called at the very start of every #convert() click, before any
 	 * new conversion work begins, so a failed or refused conversion can
 	 * never leave a STALE previous run's outputs visible alongside (or
-	 * instead of) whatever the new click actually produced.
+	 * instead of) whatever the new click actually produced; and when the
+	 * inputs change after Convert (#clearPagesAfterChange). The Template
+	 * check has its own clearing (#clearCheck).
 	 *
 	 * @returns {void}
 	 */
@@ -1425,45 +1672,463 @@ class App {
 		const panel = document.getElementById(Config.Selectors.SummaryPanel);
 		panel.hidden = true;
 		panel.innerHTML = "";
-		const check = document.getElementById(Config.Selectors.TemplateCheckPanel);
-		if (check) { check.hidden = true; check.innerHTML = ""; }
-		this.#templateCheck = null;
+		this.#converted = null;
+	};
+
+	// =======================================================================
+	// THE TEMPLATE CHECK (reads a finished run; changes no page)
+	// =======================================================================
+	// With the check before Convert (data run_before_convert), as soon as
+	// Convert could run PageForge converts the module quietly (#build in quiet
+	// mode) and shows the questions in "4 · Template check"; it checks again
+	// by itself whenever the inputs change, carries the answers that still
+	// apply (TemplateCheck.CarryAnswers) and records what changed in the Word
+	// file (TemplateCheck.RecordCheck). Convert then converts from scratch and
+	// the check is compared with Convert's run (#checkAfterConvert). With it
+	// off, the check is built after Convert from the converted run. Every call
+	// into TemplateCheck / TemplateCheckPanel goes through #tcAvailable, so a
+	// missing script or data file only makes the check unavailable, and any
+	// failure here never touches a conversion or a download.
+
+	/** The check's data (null when Template_Check_Questions.json did not load). */
+	static #tcCat() {
+		return DataService.Data?.TemplateCheckQuestions ?? null;
+	};
+
+	/** Can the check run at all? (Its two scripts and its data loaded, and it is switched on in the data.) */
+	static #tcAvailable() {
+		const cat = this.#tcCat();
+		return typeof TemplateCheck !== "undefined" && typeof TemplateCheckPanel !== "undefined"
+			&& !!cat && TemplateCheck.Enabled(cat);
+	};
+
+	/** The on-screen switch: on unless the developer unticked it (this browser remembers). */
+	static #tcSwitchOn() {
+		const sw = this.#tcCat()?.switch;
+		if (!sw || sw.enabled === false) return true;
+		if (this.#tcSwitchMemory != null) return this.#tcSwitchMemory;
+		try {
+			const v = localStorage.getItem(sw.storage_key);
+			if (v === "on") return true;
+			if (v === "off") return false;
+		} catch { /* storage blocked in this browser — the default applies */ }
+		return sw.default_on !== false;
+	};
+
+	/** Does the check run before Convert right now? (Available, switched on, and the data's flow.) */
+	static #tcRunsBefore() {
+		return this.#tcAvailable() && this.#tcSwitchOn() && TemplateCheck.RunsBeforeConvert(this.#tcCat());
+	};
+
+	/** One of the check's strings, filled (plural forms included); "" when it has none. */
+	static #tcText(key, values = {}) {
+		const cat = this.#tcCat();
+		const t = cat?._meta?.strings?.[key];
+		if (t == null || typeof TemplateCheck === "undefined") return t ?? "";
+		return TemplateCheck.Words(cat, t, values);
 	};
 
 	/**
-	 * THE TEMPLATE CHECK. After a successful conversion, asks the developer
-	 * the handful of things PageForge wasn't sure about in this Writers
-	 * Template (TemplateCheck reads run.notes, the pages and the interactives
-	 * list; the questions live in data/Template_Check_Questions.json) and
-	 * shows them in the "Template check" panel. It READS the finished run
-	 * and changes nothing in it: the module pages and run.outputs are exactly
-	 * what they are without it. Switched off by the data flag, it shows
-	 * nothing and adds nothing to the zip. A failure here is logged and never
-	 * spoils the finished conversion.
+	 * The panel's frame, drawn once: the heading line (the title, and the
+	 * on-screen switch at its right — visible even when it is unticked), a
+	 * status line, the files line and the body the questions go in.
 	 *
-	 * @param {ConversionRun} run - the completed run
-	 * @param {Object} prep - PrepareRun's result (prep.wt names the Writers Template upload)
-	 * @returns {Promise<void>}
+	 * @returns {Object|null} { panel, status, files, body }
 	 */
-	static async #showTemplateCheck(run, prep) {
+	static #checkFrame() {
+		const panel = document.getElementById(Config.Selectors.TemplateCheckPanel);
+		if (!panel) return null;
+		if (!panel.querySelector(".tc-app-body")) {
+			const available = this.#tcAvailable();
+			const cat = available ? this.#tcCat() : null;
+			const title = cat?._meta?.strings?.app_title ?? Config.Strings.TemplateCheckTitle;
+			const showSwitch = available && cat.switch?.enabled !== false;
+			panel.innerHTML = `<div class="tc-app-head"><h2>${Utils.EscapeHtml(title)}</h2>`
+				+ (showSwitch ? `<label class="tc-switch"><input type="checkbox" data-tc-switch${this.#tcSwitchOn() ? " checked" : ""}> `
+					+ `${Utils.EscapeHtml(this.#tcText("switch_label"))}</label>` : "")
+				+ `</div><p class="tc-app-status" role="status" aria-live="polite"></p>`
+				+ `<div class="tc-app-files"></div><div class="tc-app-body"></div>`;
+			panel.querySelector("[data-tc-switch]")?.addEventListener("change", (e) => this.#onSwitch(e.target.checked));
+		}
+		return {
+			panel,
+			status: panel.querySelector(".tc-app-status"),
+			files: panel.querySelector(".tc-app-files"),
+			body: panel.querySelector(".tc-app-body"),
+		};
+	};
+
+	/** Sets the check's status line ("" hides it); kind "bad" = red, "muted" = grey. */
+	static #checkStatus(text, kind = "") {
+		const f = this.#checkFrame();
+		if (!f) return;
+		f.status.textContent = text ?? "";
+		f.status.classList.toggle("tc-app-bad", kind === "bad");
+		f.status.classList.toggle("tc-app-muted", kind === "muted");
+	};
+
+	/** Empties the questions and the files line (the frame stays). */
+	static #checkBodyClear() {
+		const f = this.#checkFrame();
+		if (!f) return;
+		f.body.innerHTML = "";
+		f.body.classList.remove("tc-app-stale");
+		f.files.innerHTML = "";
+	};
+
+	/**
+	 * Clears the check completely: its questions, its queue token (a
+	 * running check's result is dropped), its pending start, its parked copy
+	 * and the change record of this visit. The panel hides.
+	 */
+	static #clearCheck() {
+		this.#tcToken++;
+		clearTimeout(this.#tcTimer);
+		this.#tcTimer = null;
+		this.#tcPending = false;
+		this.#templateCheck = null;
+		this.#tcParked = null;
+		this.#tcRecord = null;
+		this.#tcLast = null;
+		const panel = document.getElementById(Config.Selectors.TemplateCheckPanel);
+		if (panel) { panel.hidden = true; panel.innerHTML = ""; }
+	};
+
+	/**
+	 * Called after every change to the uploads and choices (#updateConvertGate).
+	 * When the inputs' fingerprint changed: after a successful Convert (with
+	 * the check before Convert) the pages no longer match the inputs, so they
+	 * are cleared; then the check is brought up to date.
+	 *
+	 * @returns {void}
+	 */
+	static #inputsChanged() {
+		const inputs = this.#currentInputs();
+		if (inputs.fingerprint === this.#lastPrint) return;
+		this.#lastPrint = inputs.fingerprint;
+		if (this.#converted && this.#converted.fingerprint !== inputs.fingerprint && this.#tcRunsBefore()) {
+			this.#clearPagesAfterChange();
+		}
+		this.#scheduleCheck();
+	};
+
+	/**
+	 * The pages no longer match the files or choices: clear them (with a log
+	 * line saying why) and bring the Convert button back.
+	 */
+	static #clearPagesAfterChange() {
+		this.#clearOutputs();
+		this.#progressHide();
+		const button = document.getElementById(Config.Selectors.ConvertButton);
+		if (button) button.hidden = false;
+		const resetPanel = document.getElementById(Config.Selectors.ResetPanel);
+		if (resetPanel) resetPanel.hidden = true;
+		this.#log(this.#tcText("pages_cleared"));
+	};
+
+	/**
+	 * Brings the check up to date with the current inputs: hides it with no
+	 * Word file; says why it waits (too many Word files, no reference module
+	 * yet); shows "switched off" or "unavailable"; reuses a check of exactly
+	 * these inputs; classifies a converted run of exactly these inputs; or
+	 * starts a quiet check after a short pause (data debounce_ms), so a
+	 * burst of changes becomes one check. Every call makes any check still
+	 * running for older inputs stale.
+	 *
+	 * @returns {void}
+	 */
+	static #scheduleCheck() {
+		this.#tcToken++;
+		clearTimeout(this.#tcTimer);
+		this.#tcTimer = null;
+		this.#tcPending = false;
 		const panel = document.getElementById(Config.Selectors.TemplateCheckPanel);
 		if (!panel) return;
+		if (!this.#files.length) { panel.hidden = true; return; }
+		if (!this.#tcAvailable()) {
+			// the check's files did not load: say so once; converting is not affected
+			const f = this.#checkFrame();
+			if (!f) return;
+			this.#checkStatus(Config.Strings.TemplateCheckUnavailable, "muted");
+			panel.hidden = false;
+			return;
+		}
+		const cat = this.#tcCat();
+		if (!TemplateCheck.RunsBeforeConvert(cat)) {
+			// the check after Convert: the panel shows only once a conversion has built it
+			panel.hidden = !panel.querySelector(".tc-app-body");
+			return;
+		}
+		const f = this.#checkFrame();
+		panel.hidden = false;
+		if (!this.#tcSwitchOn()) {
+			this.#checkStatus(this.#tcText("switched_off"), "muted");
+			this.#checkBodyClear();
+			return;
+		}
+		const inputs = this.#currentInputs();
+		if (this.#templateCheck?.fingerprint === inputs.fingerprint) {
+			// these inputs are already checked (a change was undone, say)
+			f.body.classList.remove("tc-app-stale");
+			this.#checkStatus(this.#templateCheck.statusLine ?? "");
+			return;
+		}
+		// questions shown for older inputs stay visible, dimmed, until the new check replaces them
+		if (this.#templateCheck) f.body.classList.add("tc-app-stale");
+		const wait = this.#checkWaitReason();
+		if (wait) {
+			this.#checkStatus(this.#tcText(wait === "files" ? "waiting_files" : "waiting_reference"), "muted");
+			return;
+		}
+		if (this.#converted?.fingerprint === inputs.fingerprint) {
+			// a conversion of exactly these inputs exists: classify it, no second conversion
+			const c = this.#converted;
+			this.#checkAfterConvert({ run: c.run, prep: c.prep, docs: c.docs }, inputs);
+			return;
+		}
+		this.#checkStatus(this.#tcText("checking"));
+		const token = this.#tcToken;
+		this.#tcPending = true;
+		this.#tcTimer = setTimeout(() => {
+			this.#tcTimer = null;
+			this.#enqueue(() => this.#runCheck(token));
+		}, Number(cat.run_before_convert?.debounce_ms ?? 500));
+	};
+
+	/** Why the check waits: "files" (more than two Word files), "reference" (no reference module yet), or null. */
+	static #checkWaitReason() {
+		if (this.#files.length > 2) return "files";
+		if (this.#refPending) return "reference";
+		return this.#gateState().ok ? null : "reference";
+	};
+
+	/**
+	 * THE QUIET CHECK — one job in the queue. It converts the inputs as they
+	 * are when it starts (a snapshot), with nothing shown but its own
+	 * progress line, and turns the run into the questions. A newer change
+	 * makes it stale: it is not started, or its result is dropped. If it
+	 * fails, the panel says so in one line and the error goes to the console.
+	 *
+	 * @param {number} token - #tcToken when this check was scheduled
+	 * @returns {Promise<void>}
+	 */
+	static async #runCheck(token) {
+		if (token !== this.#tcToken || !this.#tcRunsBefore()) return;
+		this.#tcPending = false;
+		if (this.#checkWaitReason()) { this.#scheduleCheck(); return; }
+		const inputs = this.#currentInputs();
+		if (this.#templateCheck?.fingerprint === inputs.fingerprint) return;
+		this.#tcRunning = true;
+		const started = (typeof performance !== "undefined" ? performance : Date).now();
 		try {
-			const check = TemplateCheck.FromRun(run, DataService.Data);
-			if (!check) return;
-			const wtFile = this.#files.find((f) => f.name === prep?.wt?.name) ?? null;
-			const info = {
-				version: Config.AppVersion,
-				wtFile: wtFile?.name ?? "",
-				wtSha256: await this.#sha256(wtFile),
-				checkedAt: new Date().toISOString(),
+			this.#checkStatus(this.#tcText("checking"));
+			const onProgress = (stage, done, total) => {
+				if (token !== this.#tcToken) return;
+				const key = stage === "pages" ? "checking_pages" : stage === "acks" ? "checking_acks" : "checking";
+				this.#checkStatus(this.#tcText(key, { done, total }));
 			};
-			const controller = TemplateCheckPanel.Show(panel, check, { info });
-			this.#templateCheck = { check, info, controller };
+			const r = await this.#build(inputs, { quiet: true, onProgress });
+			if (token !== this.#tcToken) return;
+			if (!r.ok) {
+				// the same words Convert uses
+				this.#templateCheck = null;
+				this.#checkBodyClear();
+				this.#checkStatus(r.reason === "no-wt" ? Config.Strings.NoWritersTemplate
+					: `${r.prep?.unsupported?.label ?? ""}: ${r.prep?.unsupported?.action ?? ""}`, "bad");
+				return;
+			}
+			const seconds = (((typeof performance !== "undefined" ? performance : Date).now() - started) / 1000).toFixed(1);
+			const adopted = await this.#adoptCheck(r, inputs, "before", token);
+			if (!adopted) return;
+			this.#log(this.#tcText("checked_log", { questions: adopted.check.counts.questions, ticks: adopted.check.counts.ticks, seconds }));
+		} catch (error) {
+			if (token !== this.#tcToken) return;
+			console.error("🔴 Template check error:", error);
+			this.#templateCheck = null;
+			this.#checkBodyClear();
+			this.#checkStatus(this.#tcText("couldnt_run") || error.message, "bad");
+		} finally {
+			this.#tcRunning = false;
+		}
+	};
+
+	/**
+	 * Shows a check built from a finished run (the quiet one, or Convert's):
+	 * the questions, the answers carried from the check before (the same
+	 * module only, the same question only), the change record, the files the
+	 * check used, and one line on what changed since the check before.
+	 *
+	 * @param {Object} r - { run, prep, docs } from #build
+	 * @param {Object} inputs - the inputs the run was built from
+	 * @param {string} stage - "before" or "after" (the summary's wording)
+	 * @param {number|null} token - the check's token (a stale one shows nothing)
+	 * @param {string} [lineKey] - the change line's string ("rechecked" or "converted_changed")
+	 * @returns {Promise<Object|null>} { check, carry } — null when nothing was shown
+	 */
+	static async #adoptCheck(r, inputs, stage, token = null, lineKey = "rechecked") {
+		const cat = this.#tcCat();
+		const check = TemplateCheck.FromRun(r.run, DataService.Data, { stage });
+		if (!check) return null;
+		const wtName = r.prep?.wt?.name ?? "";
+		const wtFile = inputs.files.find((x) => x.name === wtName) ?? null;
+		const info = {
+			version: Config.AppVersion,
+			wtFile: wtFile?.name ?? "",
+			wtSha256: await this.#sha256(wtFile),
+			checkedAt: new Date().toISOString(),
+		};
+		if (token != null && token !== this.#tcToken) return null;
+
+		// the answers given so far move to the same questions of the new check
+		const prev = this.#templateCheck ?? this.#tcParked;
+		const same = !!prev && String(prev.check.module).toUpperCase() === String(check.module).toUpperCase();
+		const carry = same ? TemplateCheck.CarryAnswers(prev.check, prev.controller?.getState?.() ?? { answers: {} }, check) : null;
+		if (!same) { this.#tcRecord = null; this.#tcLast = null; }
+
+		// the change record of this visit
+		const rc = cat.change_record;
+		if (rc && rc.enabled !== false) {
+			const wtDoc = r.docs?.find((d) => d.name === wtName)?.doc ?? null;
+			const texts = wtDoc ? TemplateCheck.ParagraphTexts(wtDoc.blocks, rc) : null;
+			this.#tcRecord = TemplateCheck.RecordCheck(this.#tcRecord, { check, info, texts, previous: this.#tcLast, carry }, rc);
+			this.#tcLast = { sha256: info.wtSha256, texts };
+			info.record = { checks: this.#tcRecord.checks, template_changes: this.#tcRecord.template_changes };
+		}
+
+		const f = this.#checkFrame();
+		const controller = TemplateCheckPanel.Show(f.body, check, { info, initialState: carry?.state ?? null });
+		f.body.classList.remove("tc-app-stale");
+		// one line on what changed since the check before (none for a first check)
+		const changed = !!carry && (lineKey === "converted_changed" || prev.fingerprint !== inputs.fingerprint);
+		const statusLine = changed ? this.#tcText(lineKey, {
+			fixed: carry.gone.length,
+			added: carry.added.length,
+			kept: carry.kept,
+			dropped_part: carry.dropped ? this.#tcText("dropped_part", { dropped: carry.dropped }) : "",
+		}) : "";
+		this.#templateCheck = { check, info, controller, fingerprint: inputs.fingerprint, statusLine, filesHtml: this.#checkFiles(r.prep, inputs) };
+		this.#tcParked = null;
+		f.panel.hidden = false;
+		this.#checkStatus(statusLine);
+		return { check, carry };
+	};
+
+	/**
+	 * The files line: which upload PageForge read as the Writers Template and
+	 * which as the Media List (PrepareRun's own answer), and, in red, any
+	 * listed Word file it did not use — a corrected copy added under a new
+	 * name sits behind the old one, which is read first.
+	 *
+	 * @returns {string} the line's HTML (kept with the check, to draw it again)
+	 */
+	static #checkFiles(prep, inputs) {
+		const f = this.#checkFrame();
+		if (!f) return "";
+		const wt = prep?.wt?.name ?? "";
+		const ml = prep?.mediaSource?.name ?? "";
+		const esc = (x) => Utils.EscapeHtml(x);
+		const lines = [];
+		if (wt) {
+			const key = !ml ? "files_used_no_ml" : ml === wt ? "files_used_combined" : "files_used";
+			lines.push(`<p>${esc(this.#tcText(key, { wt, ml }))}</p>`);
+		}
+		for (const x of inputs.files) {
+			if (x.name === wt || x.name === ml) continue;
+			lines.push(`<p class="tc-app-bad">${esc(this.#tcText("file_not_used", { file: x.name, wt }))}</p>`);
+		}
+		f.files.innerHTML = lines.join("");
+		return f.files.innerHTML;
+	};
+
+	/**
+	 * THE CHECK AND CONVERT'S RUN. After a successful Convert: when the check
+	 * shown was built before Convert from exactly these inputs, the converted
+	 * run is classified too and the two compared (ids, fingerprints, wording)
+	 * — the same (the expected case: a second conversion builds what the
+	 * first built) keeps the panel and its answers untouched, only the
+	 * summary moving to its after-Convert wording; different (a YouTube
+	 * look-up that failed during the check answered during Convert, say)
+	 * redraws it with the answers carried over and one line saying what
+	 * changed. With no check of these inputs (the check after Convert, or
+	 * Convert pressed before the check began), the check is built from the
+	 * converted run. A failure here never touches the converted files.
+	 *
+	 * @param {Object} r - { run, prep, docs } — the converted run
+	 * @param {Object} inputs - its inputs
+	 * @returns {Promise<void>}
+	 */
+	static async #checkAfterConvert(r, inputs) {
+		if (!this.#tcAvailable()) { this.#scheduleCheck(); return; }   // (says it is unavailable)
+		if (!this.#tcSwitchOn()) {
+			// unticked: the heading line and its switch stay, so it can be ticked again
+			const f = this.#checkFrame();
+			this.#checkStatus(this.#tcText("switched_off"), "muted");
+			if (f) f.panel.hidden = false;
+			return;
+		}
+		try {
+			const prev = this.#templateCheck;
+			if (prev && prev.fingerprint === inputs.fingerprint) {
+				const after = TemplateCheck.FromRun(r.run, DataService.Data, { stage: "after" });
+				if (!after) return;
+				if (TemplateCheck.SameQuestions(prev.check, after)) {
+					// the same questions: the panel and its answers stay as they are
+					prev.check = after;
+					prev.controller?.setSummary?.(after.summary);
+					return;
+				}
+				await this.#adoptCheck(r, inputs, "after", null, "converted_changed");
+				return;
+			}
+			await this.#adoptCheck(r, inputs, "after");
 		} catch (error) {
 			console.error("🔴 Template check error:", error);
 			this.#log(`⚠ The template check could not be shown (${error.message}); the converted files are not affected.`);
 		}
+	};
+
+	/**
+	 * The on-screen switch. Off: no quiet conversion, no questions, nothing
+	 * in the zip (the check shown is kept aside, with its answers, in case it
+	 * is ticked again). On: the check comes back — the kept one when the
+	 * inputs are the same, else a new check (from the converted run when
+	 * there is one). The browser remembers the setting.
+	 *
+	 * @param {boolean} on
+	 */
+	static #onSwitch(on) {
+		this.#tcSwitchMemory = on;
+		const key = this.#tcCat()?.switch?.storage_key;
+		try { if (key) localStorage.setItem(key, on ? "on" : "off"); } catch { /* not stored — kept for this page only */ }
+		const f = this.#checkFrame();
+		if (!on) {
+			if (this.#templateCheck) this.#tcParked = this.#templateCheck;
+			this.#templateCheck = null;
+			this.#checkBodyClear();
+			this.#scheduleCheck();
+			if (!TemplateCheck.RunsBeforeConvert(this.#tcCat())) this.#checkStatus(this.#tcText("switched_off"), "muted");
+			return;
+		}
+		this.#checkStatus("");
+		const parked = this.#tcParked;
+		const inputs = this.#currentInputs();
+		if (parked && parked.fingerprint === inputs.fingerprint) {
+			// the same inputs: the kept check comes back with its answers
+			parked.controller = TemplateCheckPanel.Show(f.body, parked.check,
+				{ info: parked.info, initialState: parked.controller?.getState?.() ?? null });
+			this.#templateCheck = parked;
+			this.#tcParked = null;
+			f.files.innerHTML = parked.filesHtml ?? "";
+			this.#checkStatus(parked.statusLine ?? "");
+			f.panel.hidden = false;
+			return;
+		}
+		if (this.#converted?.fingerprint === inputs.fingerprint) {
+			const c = this.#converted;
+			this.#checkAfterConvert({ run: c.run, prep: c.prep, docs: c.docs }, inputs);
+			return;
+		}
+		this.#scheduleCheck();
 	};
 
 	/**
@@ -1493,6 +2158,9 @@ class App {
 	 * to "new-page state without navigating away".
 	 *
 	 * WHAT IT CLEARS/RESTORES:
+	 *  - the Template check: its questions, its queue token (a check still
+	 *    running is dropped), its history (the change record) — via
+	 *    #clearCheck — and the memory of the converted inputs
 	 *  - the pending uploads (#files) + the (now empty) file list
 	 *  - all outputs: the download list, module-details card, download-all
 	 *    button, and the summary panel (via #clearOutputs)
@@ -1505,6 +2173,14 @@ class App {
 	 * @returns {void}
 	 */
 	static #resetPage() {
+		// the Template check and the converted state first, so emptying the
+		// file list below is not read as "the inputs changed after Convert"
+		this.#clearCheck();
+		this.#converted = null;
+		this.#lastPrint = null;
+		this.#refLastCode = null;
+		this.#refPending = false;
+
 		// pending uploads + file list (incl. any accepted acknowledgements .txt)
 		this.#files = [];
 		this.#txtFiles = [];

@@ -17,9 +17,13 @@
  * - Fetch/caching behaviour needs adjusting
  *
  * FAILURE PHILOSOPHY:
- * Data files are load-or-die: a converter running on partial rules would
- * "handle" things silently, which is exactly the bug this project bans —
- * so a missing/invalid data file stops startup with a clear message.
+ * The conversion rules are load-or-die: a converter running on partial
+ * rules would "handle" things silently, which is exactly the bug this
+ * project bans — so a missing/invalid rule file stops startup with a clear
+ * message. The files listed in Config.OptionalDataFiles are not conversion
+ * rules (the Template check's questions): a missing or broken one is noted
+ * in DataService.Unavailable, its Data entry stays null, and the app starts
+ * and converts as normal without it.
  * oEmbed, by contrast, degrades per the acks spec: a failed fetch becomes
  * a visible ACK-TODO[video-meta], never a fabricated field.
  * ===========================================================================
@@ -29,6 +33,9 @@ class DataService {
 
 	// All loaded data files, keyed like Config.DataFiles. Filled by Init().
 	static Data = {};
+
+	// The optional data files that could not be loaded: key → the reason.
+	static Unavailable = {};
 
 	// Successful oEmbed responses cached by video id — repeat videos in one
 	// module (or repeat runs in one session) cost one request total. A failed
@@ -40,17 +47,33 @@ class DataService {
 	 *
 	 * HOW IT WORKS:
 	 * Builds one fetch task per Config.DataFiles entry, awaits them all
-	 * (Promise.all — standards §7b), stores under DataService.Data.
+	 * (Promise.all — standards §7b), stores under DataService.Data. An
+	 * optional file (Config.OptionalDataFiles) that fails to load or parse is
+	 * stored as null and its reason kept in DataService.Unavailable.
 	 *
 	 * @returns {Promise<void>} resolves when all data is ready
-	 * @throws {Error} when any file fails to load or parse
+	 * @throws {Error} when any required file fails to load or parse
 	 */
 	static async Init() {
 		const entries = Object.entries(Config.DataFiles);
+		const optional = new Set(Config.OptionalDataFiles ?? []);
 		const results = await Promise.all(
-			entries.map(([key, url]) => this.#fetchJSON(url).then((json) => [key, json]))
+			entries.map(([key, url]) => this.#fetchJSON(url).then((json) => [key, json], (error) => {
+				if (!optional.has(key)) throw error;
+				this.Unavailable[key] = error.message;
+				console.warn(`🟠 DataService: optional data file ${url} not loaded — ${error.message}`);
+				return [key, null];
+			}))
 		);
 		for (const [key, json] of results) this.Data[key] = json;
+
+		// an optional file that loads but lacks its basic shape counts as not loaded
+		const tc = this.Data.TemplateCheckQuestions;
+		if (tc && !(Array.isArray(tc.questions) && tc._meta?.strings && Array.isArray(tc._meta.sections))) {
+			this.Unavailable.TemplateCheckQuestions = "the file has no questions, strings or sections";
+			this.Data.TemplateCheckQuestions = null;
+			console.warn("🟠 DataService: Template_Check_Questions.json loaded but is not a question catalogue — the check is unavailable");
+		}
 
 		// sanity guards — fail loudly NOW, not mid-conversion
 		if (!this.Data.TagLexicon?.tags) throw new Error("Tag_Lexicon.json loaded but has no tags");

@@ -2,6 +2,27 @@
 	"_doc": "THE TEMPLATE CHECK CATALOGUE. After a conversion, TemplateCheck.js reads what the conversion already produced — the run notes, the notes printed in the pages (class cv2-note) and the un-built interactive boxes (class cv2-interactive cv2-int-ref) — and turns the things PageForge was unsure about into a short list of plain-English questions for the developer, grouped into the sections below. This file holds every question: which notes it matches (a regex over the note's text, with named groups for the blanks), how the matches are grouped, the question's wording with {blanks}, and the answer choices. The code only matches, fills in blanks and renders. Answers are recorded in the {CODE}_template-answers.json file; they change no page. The entries are tried in the order they are listed (the first match wins); the panel shows them by section. Every question gets a Skip button and a comment box from the renderer. A template that is a list is read in order: the first one whose blanks are all filled is used.",
 	"enabled": true,
 	"env": "TEMPLATECHECK_OFF",
+	"run_before_convert": {
+		"_doc": "WHEN THE CHECK RUNS. On: as soon as Convert could run (the Word files are listed and a reference module is settled), the HTML Generator converts the module quietly in memory — nothing shown, nothing offered for download — and shows the check above the Convert button; it checks again by itself whenever the Word files, the reference module, the image mode or the iStock acknowledgements file change (debounce_ms turns a burst of changes into one check). Convert then converts from scratch, exactly as it does with the check off. The quiet conversion and Convert run one at a time: Convert pressed during a check waits for it. Off: the check is built after Convert from the converted run, and nothing is converted before Convert.",
+		"enabled": true,
+		"debounce_ms": 500
+	},
+	"switch": {
+		"_doc": "THE ON-SCREEN SWITCH in the check's heading line (strings.switch_label). Ticked by default (default_on); the browser remembers the developer's setting under storage_key. Unticked: no quiet conversion, no questions, nothing added to the zip — Convert makes the pages on its own.",
+		"enabled": true,
+		"default_on": true,
+		"storage_key": "pageforge-template-check-before-convert"
+	},
+	"change_record": {
+		"_doc": "WHAT THE DEVELOPER CHANGED IN THE WORD FILE. Within one visit, every check of one module is recorded (when it ran, the Word file's name and SHA-256, the question count, the questions that went away), and when a re-check follows a changed Word file (a different SHA-256) the paragraphs whose text changed — each with its Word page, the text before and after — found by a longest-common-subsequence match of the paragraph texts. Both lists go into the answers file as checks and template_changes. Caps: max_checks entries, max_changes paragraphs of at most max_chars characters, and a match table of at most max_cells cells (a larger middle counts as changed as a whole). An equation in a paragraph is written as equation_text.",
+		"enabled": true,
+		"max_checks": 50,
+		"max_changes": 40,
+		"max_chars": 300,
+		"max_cells": 4000000,
+		"equation_marker": "\\uE010\\d+\\uE011",
+		"equation_text": "[equation]"
+	},
 	"_meta": {
 		"sections": [
 			{ "id": 1, "title": "Things only you know", "description": "Facts a Writers Template never holds, such as links and quicklinks. Answer once for the whole module." },
@@ -117,7 +138,7 @@
 		"timing": { "seconds_per_question": 40, "seconds_per_tick": 10 },
 		"strings": {
 			"heading": "Template check",
-			"app_title": "6 · Template check",
+			"app_title": "4 · Template check",
 			"page_title": "Template check — {code}",
 			"page_intro": "This page works on its own, offline. Answer what you can, then save your answers and send the file with your comparison report. Don't upload this page, or the answers file, to compare mode or the Page Stitcher.",
 			"summary": "PageForge has {questions} question{questions_s} about this Writers Template{ticks_part} — about {minutes} minute{minutes_s}. Answering is optional: your pages are already built and your answers don't change them yet. They help improve PageForge.",
@@ -148,7 +169,28 @@
 			"nearby_note": "The writer's note just before it:",
 			"choose": "Choose…",
 			"info_only": "For information only.",
-			"pages_label": "Pages"
+			"pages_label": "Pages",
+			"summary_before": "PageForge has {questions} question{questions_s} about this Writers Template{ticks_part} — about {minutes} minute{minutes_s}. Answer what you can, then press Convert, or convert now and come back to them. Your answers don't change the pages yet: they're recorded to help improve PageForge. If you fix something in the Word document, add the corrected copy and the check runs again.",
+			"summary_ticks_only_before": "PageForge has no questions about this Writers Template, just {ticks} item{ticks_s} to tick off — about {minutes} minute{minutes_s}. Tick what you can, then press Convert, or convert now and come back to them. Your answers don't change the pages yet: they're recorded to help improve PageForge. If you fix something in the Word document, add the corrected copy and the check runs again.",
+			"summary_none_before": "PageForge has no questions about this Writers Template. Press Convert to make the pages.",
+			"switch_label": "Check the template before converting (recommended)",
+			"switched_off": "Switched off: Convert makes the pages without checking the template, and the zip has no template-check folder.",
+			"waiting_reference": "The check starts as soon as a reference module is selected.",
+			"waiting_files": "The check starts once no more than two Word files are listed.",
+			"checking": "Checking the template…",
+			"checking_pages": "Checking the template: page {done} of {total}…",
+			"checking_acks": "Checking the template: Media List item {done} of {total}…",
+			"checked_log": "Template check: {questions} question{questions_s}, {ticks} to tick off ({seconds} seconds).",
+			"rechecked": "Checked again after your change: {fixed} fixed, {added} new, {kept} of your answer{kept_s} kept{dropped_part}.",
+			"converted_changed": "The questions changed while the pages were made (a YouTube look-up, for example, can answer differently the second time): {fixed} gone, {added} new, {kept} of your answer{kept_s} kept{dropped_part}.",
+			"dropped_part": ", {dropped} left out because {dropped_its_their} question changed or went away",
+			"couldnt_run": "The template check couldn't run for this module — you can still convert as normal.",
+			"files_used": "Checked «{wt}» as the Writers Template and «{ml}» as the Media List.",
+			"files_used_combined": "Checked «{wt}» as the Writers Template and its Media List.",
+			"files_used_no_ml": "Checked «{wt}» as the Writers Template; no Media List was found.",
+			"file_not_used": "«{file}» wasn't used — PageForge read «{wt}» as the Writers Template. If «{file}» is your corrected copy, remove the other one (✕).",
+			"waiting_convert": "Finishing the template check first…",
+			"pages_cleared": "The files or choices changed after Convert, so the converted pages were cleared. Press Convert to make them again."
 		},
 		"files": {
 			"folder": "template-check/",

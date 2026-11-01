@@ -93,30 +93,27 @@ summary.tc-section-title { cursor: pointer; }
 	// =======================================================================
 
 	/**
-	 * Renders the check into the app's panel (open when there is anything to
-	 * answer) and wires it.
+	 * Renders the check into the app's panel body (open when there is anything
+	 * to answer) and wires it. The panel's heading line, its switch and its
+	 * status lines belong to the app; this draws the questions under them.
 	 *
-	 * @param {HTMLElement} panel - the panel section
+	 * @param {HTMLElement} body - the panel's body element
 	 * @param {Object} check - from TemplateCheck.Classify / FromRun
-	 * @param {Object} opts - { info } (see Mount)
-	 * @returns {Object} the controller: { getState() }
+	 * @param {Object} opts - { info, initialState, onChange } (see Mount)
+	 * @returns {Object} the controller: { getState(), setSummary(text) }
 	 */
-	static Show(panel, check, opts = {}) {
+	static Show(body, check, opts = {}) {
 		if (!document.getElementById("tc-styles")) {
 			const style = document.createElement("style");
 			style.id = "tc-styles";
 			style.textContent = this.Css;
 			document.head.appendChild(style);
 		}
-		const s = check.strings;
 		const open = check.counts.questions + check.counts.ticks > 0;
-		panel.innerHTML = `<details class="tc-panel"${open ? " open" : ""}>`
-			+ `<summary class="tc-panel-summary"><span class="tc-panel-title">${this.#esc(s.app_title)}</span>`
-			+ `<span class="tc-panel-mini">${this.#esc(check.mini)}</span></summary>`
+		body.innerHTML = `<details class="tc-panel"${open ? " open" : ""}>`
+			+ `<summary class="tc-panel-summary"><span class="tc-panel-mini">${this.#esc(check.mini)}</span></summary>`
 			+ `<div class="tc-panel-body"></div></details>`;
-		const controller = this.Mount(panel.querySelector(".tc-panel-body"), check, opts);
-		panel.hidden = false;
-		return controller;
+		return this.Mount(body.querySelector(".tc-panel-body"), check, opts);
 	};
 
 	/**
@@ -124,7 +121,8 @@ summary.tc-section-title { cursor: pointer; }
 	 * folder: the stand-alone page, plus the answers file when the developer
 	 * has already answered or skipped something in the app.
 	 *
-	 * @param {Object|null} entry - { check, info, controller } (null → none)
+	 * @param {Object|null} entry - { check, info, controller } (null → none);
+	 *   info.record, when present, is the change record the answers file carries
 	 * @returns {Object[]} [{ filename, content }]
 	 */
 	static ZipFiles(entry) {
@@ -134,7 +132,8 @@ summary.tc-section-title { cursor: pointer; }
 		const f = check.files;
 		const code = check.module || "module";
 		const out = [{ filename: f.folder + this.#fill(f.page, { code }), content: this.BuildPage(check, info, state) }];
-		if (state && this.HasAnswers(state)) {
+		// the answers file goes in when there is an answer, or a recorded change to the Word file
+		if (state && (this.HasAnswers(state) || (info?.record?.template_changes?.length ?? 0) > 0)) {
 			const saved = TemplateCheck.BuildAnswers(check, state, { ...info, savedAt: new Date().toISOString() });
 			out.push({ filename: f.folder + this.#fill(f.answers, { code }), content: JSON.stringify(saved, null, 2) });
 		}
@@ -209,7 +208,7 @@ summary.tc-section-title { cursor: pointer; }
 	 * @param {Object} [opts.info] - { version, wtFile, wtSha256, checkedAt } for the answers file
 	 * @param {Object} [opts.initialState] - { answers, answeredBy } to start from
 	 * @param {Function} [opts.onChange] - called with a copy of the state after each change
-	 * @returns {Object} { getState() } — a copy of the answers so far
+	 * @returns {Object} { getState(), setSummary(text) } — a copy of the answers so far, and the summary line's text
 	 */
 	static Mount(root, check, opts = {}) {
 		const T = TemplateCheck;
@@ -354,7 +353,14 @@ summary.tc-section-title { cursor: pointer; }
 			}
 		});
 		refresh();
-		return { getState: () => copy(state) };
+		return {
+			getState: () => copy(state),
+			// the one-line summary above the questions (the wording changes once the pages are built)
+			setSummary: (text) => {
+				const el = root.querySelector(".tc-summary");
+				if (el) el.textContent = text;
+			},
+		};
 	};
 
 	/** The whole check as an HTML string. */

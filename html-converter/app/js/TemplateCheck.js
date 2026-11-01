@@ -12,8 +12,13 @@
  *     Note / Designer/Developer To Do), and
  *   - the un-built interactive boxes (class "cv2-interactive cv2-int-ref")
  *     plus the interactives worklist ({CODE}_interactives.txt)
- * — and never changes a note, a page or run.outputs. It also builds and
- * reads the answers file ({CODE}_template-answers.json).
+ * — and never changes a note, a page or run.outputs. The HTML Generator
+ * runs it on a quiet conversion as soon as Convert could run (and again
+ * after every change of the uploads), and on Convert's own run. It also
+ * builds and reads the answers file ({CODE}_template-answers.json), carries
+ * answers across a re-check (CarryAnswers — the same question only, by id
+ * AND fingerprint) and records what the developer changed in the Word file
+ * between checks (RecordCheck, TemplateChanges).
  *
  * WHY SEPARATE FILE:
  * Every question — which notes it matches, how matches are grouped, its
@@ -58,9 +63,13 @@ class TemplateCheck {
 	 *
 	 * @param {ConversionRun} run - the completed run (read only)
 	 * @param {Object} data - the loaded data files (DataService.Data)
+	 * @param {Object} [opts]
+	 * @param {string} [opts.stage] - "before" when the check is shown before
+	 *   Convert (its summary invites the developer to answer, then convert);
+	 *   "after" (the default) when the pages are already built
 	 * @returns {Object|null} the check, or null when switched off
 	 */
-	static FromRun(run, data) {
+	static FromRun(run, data, opts = {}) {
 		const outputs = run.outputs ?? [];
 		return this.Classify({
 			moduleCode: run.moduleCode,
@@ -68,7 +77,20 @@ class TemplateCheck {
 			pages: this.PagesFromOutputs(outputs),
 			worklist: outputs.find((o) => o.kind === "manifest")?.content ?? null,
 			data,
+			stage: opts.stage,
 		});
+	};
+
+	/**
+	 * Is the check meant to run before Convert? (The data block
+	 * run_before_convert; off, the check is built after Convert from the
+	 * converted run.)
+	 *
+	 * @param {Object} cat - the Template_Check_Questions.json object
+	 * @returns {boolean}
+	 */
+	static RunsBeforeConvert(cat) {
+		return this.Enabled(cat) && cat.run_before_convert?.enabled !== false;
 	};
 
 	/**
@@ -94,14 +116,15 @@ class TemplateCheck {
 	 * @param {Object[]} input.pages - [{ filename, content }]
 	 * @param {string|null} input.worklist - the {CODE}_interactives.txt text
 	 * @param {Object} input.data - the loaded data files (needs TemplateCheckQuestions)
+	 * @param {string} [input.stage] - "before" (shown before Convert) or "after" (the default)
 	 * @returns {Object|null} the check:
 	 *   { module, sections, strings, files, plurals, tickSections,
 	 *     questions: [{ id, type, section, page, pageFile, activity, text,
 	 *     blanks, writerText, writerLabel, sourceNote, details, rows, choices }],
 	 *     counts: { questions, ticks, info, handled, writerNotes }, minutes,
-	 *     summary, mini }
+	 *     summary, mini, stage }
 	 */
-	static Classify({ moduleCode, notes, pages, worklist, data }) {
+	static Classify({ moduleCode, notes, pages, worklist, data, stage }) {
 		const cat = data?.TemplateCheckQuestions;
 		if (!this.Enabled(cat)) return null;
 		const meta = cat._meta;
@@ -176,6 +199,7 @@ class TemplateCheck {
 			tickSections: meta.tick_sections ?? [4, 5],
 			questions,
 			counts: { handled, writerNotes },
+			stage: stage === "before" ? "before" : "after",
 		};
 		this.#summarise(check, meta);
 		return check;
@@ -660,7 +684,10 @@ class TemplateCheck {
 		return [...counts].map(([l, n]) => (n > 1 ? `${l} (×${n})` : l));
 	};
 
-	/** The one-line summary, the counts and the time estimate. */
+	/**
+	 * The one-line summary, the counts and the time estimate. Before Convert
+	 * the summary uses the "…_before" wording when the data has it.
+	 */
 	static #summarise(check, meta) {
 		const qs = new Set(meta.question_sections ?? [1, 2, 3]);
 		const ts = new Set(meta.tick_sections ?? [4, 5]);
@@ -677,12 +704,13 @@ class TemplateCheck {
 		});
 		check.minutes = minutes;
 		const s = meta.strings;
+		const pick = (key) => (check.stage === "before" && s[`${key}_before`] != null ? s[`${key}_before`] : s[key]);
 		const b = { questions, ticks, minutes };
 		this.#plurals(meta, b);
 		b.ticks_part = ticks ? Utils.FillTemplate(s.summary_ticks, b) : "";
-		check.summary = !questions && !ticks ? s.summary_none
-			: !questions ? Utils.FillTemplate(s.summary_ticks_only, b)
-				: Utils.FillTemplate(s.summary, b);
+		check.summary = !questions && !ticks ? pick("summary_none")
+			: !questions ? Utils.FillTemplate(pick("summary_ticks_only"), b)
+				: Utils.FillTemplate(pick("summary"), b);
 		check.mini = !questions && !ticks ? s.mini_none : Utils.FillTemplate(s.mini, b);
 	};
 
@@ -819,13 +847,16 @@ class TemplateCheck {
 	 *
 	 * @param {Object} check
 	 * @param {Object} state - { answers: { id: {...} }, answeredBy }
-	 * @param {Object} info - { version, wtFile, wtSha256, checkedAt, savedAt }
+	 * @param {Object} info - { version, wtFile, wtSha256, checkedAt, savedAt,
+	 *   record } — record (optional) is { checks, template_changes }, the
+	 *   change record of this visit (see RecordCheck); its two fields are
+	 *   added to the file when it is given
 	 * @returns {Object} the plain object to JSON.stringify
 	 */
 	static BuildAnswers(check, state, info = {}) {
 		const files = check?.files ?? {};
 		const answers = state?.answers ?? {};
-		return {
+		const out = {
 			format: files.format ?? "pageforge-template-answers",
 			format_version: files.format_version ?? 1,
 			module: check?.module ?? "",
@@ -857,15 +888,26 @@ class TemplateCheck {
 				};
 			}),
 		};
+		if (info.record) {
+			out.checks = JSON.parse(JSON.stringify(info.record.checks ?? []));
+			out.template_changes = JSON.parse(JSON.stringify(info.record.template_changes ?? []));
+		}
+		return out;
 	};
 
 	/**
-	 * Reads a saved answers object back into a state for this check.
+	 * Reads a saved answers object back into a state for this check. An
+	 * answer is read only into the same question: the same id AND the same
+	 * fingerprint (see Fingerprint). Ids are positional («the third empty box
+	 * on page 2»), so an answers file saved from an older copy of the Word
+	 * file can use an id that now names a different question; such an answer
+	 * is left out and counted in "unknown". A file saved from the same copy
+	 * matches every id and fingerprint, so it loads whole.
 	 *
 	 * @param {Object} saved - the parsed answers file
 	 * @param {Object} check
-	 * @returns {Object} { ok, state, unknown } — or { ok:false, reason:"bad" |
-	 *   "other_module", module }
+	 * @returns {Object} { ok, state, unknown, changed } — or { ok:false,
+	 *   reason:"bad" | "other_module", module }
 	 */
 	static ReadAnswers(saved, check) {
 		const files = check?.files ?? {};
@@ -876,12 +918,24 @@ class TemplateCheck {
 		if (saved.module && check?.module && String(saved.module).toUpperCase() !== String(check.module).toUpperCase()) {
 			return { ok: false, reason: "other_module", module: saved.module };
 		}
-		const units = new Map(this.AnswerUnits(check).map((u) => [u.id, u]));
+		const unitList = this.AnswerUnits(check);
+		const units = new Map(unitList.map((u) => [u.id, u]));
+		const nowCount = this.#tally(unitList.map((u) => this.Fingerprint(u)));
+		const savedPrint = (a, u) => this.#savedFingerprint(a, u);
+		const thenCount = this.#tally(saved.answers.filter((a) => a && units.get(a.id)).map((a) => savedPrint(a, units.get(a.id))));
 		const state = { answers: {}, answeredBy: String(saved.answered_by ?? "") };
 		let unknown = 0;
+		let changed = 0;
 		for (const a of saved.answers) {
 			const u = a ? units.get(a.id) : null;
 			if (!u) { unknown++; continue; }
+			const f = savedPrint(a, u);
+			// the same id, but not the same question (or one of several alike
+			// whose number changed): leave it out
+			if (f !== this.Fingerprint(u) || thenCount.get(f) !== nowCount.get(f)) {
+				if (this.#hasContent(a)) changed++;
+				continue;
+			}
 			state.answers[a.id] = {
 				choice: String(a.choice ?? ""),
 				text: String(a.text ?? ""),
@@ -890,7 +944,279 @@ class TemplateCheck {
 				skipped: u.row ? false : !!a.skipped,
 			};
 		}
-		return { ok: true, state, unknown };
+		return { ok: true, state, unknown: unknown + changed, changed };
+	};
+
+	/**
+	 * A question's FINGERPRINT: what it is about, without its position — its
+	 * type, its page, the writer's text and PageForge's note; for a table row,
+	 * its label and note; for a table's own entry (its comment and Skip), its
+	 * type, page and the writer's text. Two checks of the same question give
+	 * the same fingerprint.
+	 *
+	 * @param {Object} unit - an AnswerUnits entry { question, row }, or a question
+	 * @returns {string}
+	 */
+	static Fingerprint(unit) {
+		const q = unit?.question ?? unit ?? {};
+		const r = unit?.question ? unit.row : null;
+		if (r) return JSON.stringify(["row", q.type ?? "", r.label ?? "", r.sourceNote ?? ""]);
+		if (q.choices?.kind === "table") return JSON.stringify(["table", q.type ?? "", q.page ?? "", q.writerText ?? ""]);
+		return JSON.stringify([q.type ?? "", q.page ?? "", q.writerText ?? "", q.sourceNote ?? ""]);
+	};
+
+	/** The fingerprint of a saved answers-file entry, read as the unit it is saved against. */
+	static #savedFingerprint(a, u) {
+		if (u.row) return JSON.stringify(["row", String(a.type ?? ""), String(a.row ?? ""), String(a.pageforge_note ?? "")]);
+		if (u.question.choices?.kind === "table") return JSON.stringify(["table", String(a.type ?? ""), String(a.page ?? ""), String(a.writer_text ?? "")]);
+		return JSON.stringify([String(a.type ?? ""), String(a.page ?? ""), String(a.writer_text ?? ""), String(a.pageforge_note ?? "")]);
+	};
+
+	/** Has an answer anything in it, a Skip included? */
+	static #hasContent(a) {
+		return !!a && !!(a.skipped || a.choice || a.text || a.comment);
+	};
+
+	/** value → how many times it occurs. */
+	static #tally(values) {
+		const m = new Map();
+		for (const v of values) m.set(v, (m.get(v) ?? 0) + 1);
+		return m;
+	};
+
+	/**
+	 * Every item of a check, for comparing two checks: each question, and each
+	 * row of a table question (the table itself is its rows).
+	 *
+	 * @param {Object} check
+	 * @returns {Object[]} [{ id, print, text }]
+	 */
+	static Items(check) {
+		const out = [];
+		for (const q of check?.questions ?? []) {
+			if (q.choices?.kind === "table") {
+				for (const r of q.rows ?? []) out.push({ id: r.id, print: this.Fingerprint({ question: q, row: r }), text: r.label ?? "" });
+			} else out.push({ id: q.id, print: this.Fingerprint(q), text: q.text ?? "" });
+		}
+		return out;
+	};
+
+	/**
+	 * CARRYING ANSWERS ACROSS A RE-CHECK. After the developer fixes the Word
+	 * file and adds the corrected copy, the check runs again; an answer moves
+	 * to the new check only when its question is still there: the same id AND
+	 * the same fingerprint. When several questions read exactly alike (two
+	 * empty boxes on one page) and their number changed, PageForge cannot tell
+	 * which one went, so their answers are left out too. Nothing is carried
+	 * to another module.
+	 *
+	 * @param {Object} oldCheck
+	 * @param {Object} oldState - { answers, answeredBy }
+	 * @param {Object} newCheck
+	 * @returns {Object} { state, kept, dropped, gone, added } — kept / dropped
+	 *   count the answers (a Skip alone is carried but not counted); gone /
+	 *   added list the items ({ id, text }) that went away and came new
+	 */
+	static CarryAnswers(oldCheck, oldState, newCheck) {
+		const sameModule = String(oldCheck?.module ?? "").toUpperCase() === String(newCheck?.module ?? "").toUpperCase();
+		const oldUnits = this.AnswerUnits(oldCheck);
+		const newUnits = this.AnswerUnits(newCheck);
+		const fpOld = new Map(oldUnits.map((u) => [u.id, this.Fingerprint(u)]));
+		const fpNew = new Map(newUnits.map((u) => [u.id, this.Fingerprint(u)]));
+		const nOld = this.#tally(fpOld.values());
+		const nNew = this.#tally(fpNew.values());
+		const state = { answers: {}, answeredBy: sameModule ? String(oldState?.answeredBy ?? "") : "" };
+		let kept = 0;
+		let dropped = 0;
+		for (const [id, a] of Object.entries(oldState?.answers ?? {})) {
+			if (!this.#hasContent(a)) continue;
+			const f = fpOld.get(id);
+			if (f == null) continue;
+			if (sameModule && fpNew.get(id) === f && nOld.get(f) === nNew.get(f)) {
+				state.answers[id] = { choice: String(a.choice ?? ""), text: String(a.text ?? ""), comment: String(a.comment ?? ""), skipped: !!a.skipped };
+				if (this.IsAnswered(a)) kept++;
+			} else if (this.IsAnswered(a)) dropped++;
+		}
+		// the items that went away and came new, matched by fingerprint (as many of each as there are)
+		const left = this.#tally(this.Items(newCheck).map((i) => i.print));
+		const gone = [];
+		for (const i of this.Items(oldCheck)) {
+			const n = left.get(i.print) ?? 0;
+			if (n > 0) left.set(i.print, n - 1); else gone.push({ id: i.id, text: i.text });
+		}
+		const had = this.#tally(this.Items(oldCheck).map((i) => i.print));
+		const added = [];
+		for (const i of this.Items(newCheck)) {
+			const n = had.get(i.print) ?? 0;
+			if (n > 0) had.set(i.print, n - 1); else added.push({ id: i.id, text: i.text });
+		}
+		return { state, kept, dropped, gone, added };
+	};
+
+	/**
+	 * Do two checks ask exactly the same questions? (Same ids, fingerprints,
+	 * wording, details and rows, in the same order.)
+	 *
+	 * @param {Object} a
+	 * @param {Object} b
+	 * @returns {boolean}
+	 */
+	static SameQuestions(a, b) {
+		const shape = (c) => JSON.stringify((c?.questions ?? []).map((q) => [q.id, this.Fingerprint(q), q.text, q.details,
+			(q.rows ?? []).map((r) => [r.id, r.label, r.sourceNote]), q.choices?.kind ?? ""]));
+		return shape(a) === shape(b);
+	};
+
+	/**
+	 * Fills one of the check's strings for the app: the {blanks} from values,
+	 * and for every number value X its plural forms from the data's plurals
+	 * ({X_s}, {X_its_their} …; {s} … for "count").
+	 *
+	 * @param {Object} cat - the Template_Check_Questions.json object
+	 * @param {string} template
+	 * @param {Object} values
+	 * @returns {string}
+	 */
+	static Words(cat, template, values = {}) {
+		const out = { ...values };
+		for (const [name, n] of Object.entries(values)) {
+			if (typeof n !== "number") continue;
+			for (const [k, pair] of Object.entries(cat?._meta?.plurals ?? {})) {
+				if (k.startsWith("_") || !Array.isArray(pair)) continue;
+				out[name === "count" ? k : `${name}_${k}`] = n === 1 ? pair[0] : pair[1];
+			}
+		}
+		return String(template ?? "").replace(/\{(\w+)\}/g, (whole, key) => (out[key] ?? whole));
+	};
+
+	// =======================================================================
+	// THE CHANGE RECORD (what the developer changed in the Word file)
+	// =======================================================================
+
+	/**
+	 * The Word file's paragraphs as plain text, in order, each with its Word
+	 * page — the input TemplateChanges compares. An equation is shown by the
+	 * data's placeholder text, not by the extractor's internal register mark.
+	 *
+	 * @param {Object[]} blocks - an extracted document's blocks ({ kind, text, wtPage })
+	 * @param {Object} cfg - the data's change_record block
+	 * @returns {Object[]} [{ text, page }]
+	 */
+	static ParagraphTexts(blocks, cfg = {}) {
+		const marker = cfg.equation_marker ? new RegExp(cfg.equation_marker, "g") : null;
+		return (blocks ?? []).map((b) => {
+			let t = String(b?.text ?? "");
+			if (marker) t = t.replace(marker, cfg.equation_text ?? "");
+			return { text: t.replace(/\s+/g, " ").trim(), page: b?.wtPage ?? null };
+		});
+	};
+
+	/**
+	 * THE CHANGES between two copies of a Word file: the paragraphs whose text
+	 * changed, was added or was removed, found by a longest-common-subsequence
+	 * match of the paragraph texts (the shared start and end are set aside
+	 * first; a middle too large for the match counts as changed as a whole).
+	 *
+	 * @param {Object[]} oldTexts - ParagraphTexts of the earlier copy
+	 * @param {Object[]} newTexts - ParagraphTexts of the corrected copy
+	 * @param {Object} caps - { max_changes, max_chars, max_cells }
+	 * @returns {Object} { changes: [{ wtPage, before, after }], total, truncated }
+	 */
+	static TemplateChanges(oldTexts, newTexts, caps = {}) {
+		const a = (oldTexts ?? []).map((x) => (typeof x === "string" ? { text: x, page: null } : x));
+		const b = (newTexts ?? []).map((x) => (typeof x === "string" ? { text: x, page: null } : x));
+		let s = 0;
+		while (s < a.length && s < b.length && a[s].text === b[s].text) s++;
+		let ea = a.length, eb = b.length;
+		while (ea > s && eb > s && a[ea - 1].text === b[eb - 1].text) { ea--; eb--; }
+		const A = a.slice(s, ea), B = b.slice(s, eb);
+		const ops = [];   // ["=", i, j] | ["-", i] | ["+", j]
+		const maxCells = caps.max_cells ?? 4000000;
+		if (A.length && B.length && (A.length + 1) * (B.length + 1) <= maxCells) {
+			const w = B.length + 1;
+			const L = new Uint32Array((A.length + 1) * w);
+			for (let i = A.length - 1; i >= 0; i--) {
+				for (let j = B.length - 1; j >= 0; j--) {
+					L[i * w + j] = A[i].text === B[j].text ? L[(i + 1) * w + j + 1] + 1 : Math.max(L[(i + 1) * w + j], L[i * w + j + 1]);
+				}
+			}
+			let i = 0, j = 0;
+			while (i < A.length || j < B.length) {
+				if (i < A.length && j < B.length && A[i].text === B[j].text) { ops.push(["=", i++, j++]); continue; }
+				if (j < B.length && (i === A.length || L[i * w + j + 1] >= L[(i + 1) * w + j])) ops.push(["+", j++]);
+				else ops.push(["-", i++]);
+			}
+		} else {
+			for (let i = 0; i < A.length; i++) ops.push(["-", i]);
+			for (let j = 0; j < B.length; j++) ops.push(["+", j]);
+		}
+		// each run of removals and additions pairs up in order: a changed
+		// paragraph shows its text before and after
+		const max = caps.max_chars ?? 300;
+		const cut = (t) => (t.length > max ? `${t.slice(0, max)}…` : t);
+		const changes = [];
+		for (let k = 0; k < ops.length;) {
+			if (ops[k][0] === "=") { k++; continue; }
+			const del = [], ins = [];
+			while (k < ops.length && ops[k][0] !== "=") {
+				if (ops[k][0] === "-") del.push(A[ops[k][1]]); else ins.push(B[ops[k][1]]);
+				k++;
+			}
+			for (let n = 0; n < Math.max(del.length, ins.length); n++) {
+				const before = del[n], after = ins[n];
+				changes.push({ wtPage: (after ?? before).page ?? null, before: before ? cut(before.text) : "", after: after ? cut(after.text) : "" });
+			}
+		}
+		const limit = caps.max_changes ?? 40;
+		return { changes: changes.slice(0, limit), total: changes.length, truncated: changes.length > limit };
+	};
+
+	/**
+	 * Adds one check to the CHANGE RECORD of this visit: one entry per check
+	 * of the module (when it ran, the Word file's name and SHA-256, the
+	 * question count, the questions that went away since the check before),
+	 * and — when the Word file itself changed (a different SHA-256) — the
+	 * paragraphs that changed, from TemplateChanges. A different module
+	 * starts a new record. The caps live in the data's change_record block.
+	 *
+	 * @param {Object|null} record - { module, checks, template_changes } so far
+	 * @param {Object} input
+	 * @param {Object} input.check - the new check
+	 * @param {Object} input.info - { wtFile, wtSha256, checkedAt }
+	 * @param {Object[]|null} input.texts - ParagraphTexts of the Word file this check read
+	 * @param {Object|null} input.previous - { sha256, texts } of the check before
+	 * @param {Object|null} input.carry - CarryAnswers' result against the check before
+	 * @param {Object} cfg - the change_record block (max_checks, max_changes, max_chars, max_cells)
+	 * @returns {Object} the new record { module, checks, template_changes }
+	 */
+	static RecordCheck(record, { check, info = {}, texts = null, previous = null, carry = null }, cfg = {}) {
+		const module = String(check?.module ?? "");
+		const same = record && String(record.module ?? "").toUpperCase() === module.toUpperCase();
+		const rec = {
+			module,
+			checks: same ? [...(record.checks ?? [])] : [],
+			template_changes: same ? [...(record.template_changes ?? [])] : [],
+		};
+		const n = (same && rec.checks.length ? rec.checks[rec.checks.length - 1].check : 0) + 1;
+		const maxList = cfg.max_changes ?? 40;
+		const entry = {
+			check: n,
+			checked_at: info.checkedAt ?? "",
+			writers_template: { file: info.wtFile ?? "", sha256: info.wtSha256 ?? "" },
+			questions: check?.counts?.questions ?? 0,
+			ticks: check?.counts?.ticks ?? 0,
+			went_away: (carry?.gone ?? []).slice(0, maxList).map((g) => ({ id: g.id, question: g.text })),
+		};
+		if (previous?.sha256 && info.wtSha256 && previous.sha256 !== info.wtSha256 && previous.texts && texts) {
+			const room = Math.max(0, maxList - rec.template_changes.length);
+			const found = this.TemplateChanges(previous.texts, texts, { ...cfg, max_changes: room });
+			for (const c of found.changes) rec.template_changes.push({ check: n, ...c });
+			entry.paragraphs_changed = found.total;
+		}
+		rec.checks.push(entry);
+		const maxChecks = cfg.max_checks ?? 50;
+		if (rec.checks.length > maxChecks) rec.checks = rec.checks.slice(-maxChecks);
+		return rec;
 	};
 }
 
