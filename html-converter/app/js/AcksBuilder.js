@@ -59,9 +59,15 @@ class AcksBuilder {
 		// ---- 1. resolve each media item into an entry (async: oEmbed) ----
 		// MapSeries + throttle keeps the unauthenticated oEmbed endpoint
 		// happy (rate-limit friendliness, standards §7c)
+		// The pause is for the look-up endpoint, so it follows an item that asked it; a picture, a link
+		// or a document asks nothing and moves straight on (oembed.pause_after_lookup_only; env ACKSPAUSE_OFF)
+		const pal = fmt.oembed.pause_after_lookup_only;
+		const pauseAll = !pal || pal.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[pal.env ?? "ACKSPAUSE_OFF"]);
 		const entries = await Utils.MapSeries(run.mediaItems, async (item, index, total) => {
+			const asked = this.#oembedAsks;
 			const entry = await this.#buildEntry(item, run);
-			if (run.mediaItems.length > 1) await this.#sleep(fmt.oembed.throttle_ms);
+			if (run.mediaItems.length > 1 && (pauseAll || this.#oembedAsks > asked)) await this.#sleep(fmt.oembed.throttle_ms);
 			// Browser-only progress reporting. Fetching each YouTube item's
 			// metadata over the network (oEmbed, in #youtubeEntry below) plus
 			// the deliberate throttle pause between items (#sleep) — being a
@@ -563,12 +569,16 @@ class AcksBuilder {
 	 *   real acknowledgement when the video id parses AND oEmbed succeeds,
 	 *   else an ACK-TODO ("video-meta")
 	 */
+	/** How many YouTube look-ups this builder has asked for (Build pauses only after an item that asked one). */
+	static #oembedAsks = 0;
+
 	static async #youtubeEntry(item, run) {
 		const fmt = DataService.Data.AcksFormats;
 		const videoId = item.url.match(new RegExp(fmt.extraction_regexes.youtube_id))?.[1];
 
 		if (!videoId) return this.#todo(item, "video-meta", { url: item.url, reason: "error" }, run);
 
+		this.#oembedAsks++;
 		const meta = await DataService.FetchOembed(item.url, videoId);
 		if (!meta.ok) {
 			run.AddNote("warn", "AcksBuilder",

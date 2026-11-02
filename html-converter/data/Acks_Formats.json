@@ -214,6 +214,11 @@
   "retrieved_date_format": "dd/mm/yy",
   "retrieved_date_rule": "Stamped by the program at fetch time — the converter's own run date.",
   "throttle_ms": 250,
+  "pause_after_lookup_only": {
+   "enabled": true,
+   "env": "ACKSPAUSE_OFF",
+   "_doc": "The throttle pause is for the YouTube look-up endpoint, so it follows only an item that asked it: a picture, a web page or a document asks nothing and the next item starts at once. Before, every Media List item paused, so a module with a long Media List and few videos (SCBI202: about a minute in the browser) waited for nothing. The batch converter sets the pause to zero, so no page changes. OFF: every item pauses."
+  },
   "cache_by": "video id",
   "retry_failures": {
    "enabled": true,

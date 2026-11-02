@@ -366,6 +366,11 @@ class PageAssembler {
 		if (!cfg || cfg.enabled === false || !normaliser || !cfg.pattern) return;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "BLACKDEVNOTE_OFF"]) return;
 		const re = new RegExp(cfg.pattern, "i");
+		// the whole line that asks the designers to make something («Please crop image to be banner like …»)
+		// (black_developer_note.please_design; env DEVPLEASE_OFF)
+		const pd = cfg.please_design;
+		const rePd = pd && pd.enabled !== false && pd.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[pd.env || "DEVPLEASE_OFF"]) ? new RegExp(pd.pattern, "i") : null;
 		const plain = (s) => String(s ?? "").replace(/<[^>]+>|\*+/g, "").replace(/\s+/g, " ").trim();
 		const heads = new Set(cfg.heading_tags ?? []);
 		// a black line inside a widget's capture (the nearest tag before it, over black lines only, is a widget tag) is the
@@ -384,7 +389,7 @@ class PageAssembler {
 			if (it.type === "black" && !inWidget(i)) text = plain(it.text);
 			else if (it.type === "tag" && heads.has(it.parse?.primary?.tag) && !String(it.text ?? "").replace(/\[[^\]]*\]|\u{1f534}\[\/?RED TEXT\]\u{1f534}/gu, "").trim())
 				text = plain(it.blackAfter);   // a heading tag whose whole payload is the note
-			if (!text || !re.test(text)) continue;
+			if (!text || !(re.test(text) || (rePd && rePd.test(text)))) continue;
 			const p = normaliser.Parse(text);
 			if (p?.class !== "instruction" || p.primary) continue;
 			it.type = "tag"; it.parse = p; it.text = text; it.blackAfter = "";

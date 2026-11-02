@@ -141,6 +141,13 @@
 					"env": "UNCLASSTAIL_OFF",
 					"headings_too": false,
 					"widget_ahead_keeps": true,
+					"upload_ahead_ends": {
+						"enabled": true,
+						"env": "UNCLASSDBX_OFF",
+						"pattern": "drop\\s*-?\\s*box",
+						"not_pattern": "drop\\s*-?\\s*down",
+						"_doc": "THE UPLOAD MARKER AHEAD IS NOT ANOTHER WIDGET. The writer ends the activity with its upload button — «[Button] Upload to Dropbox [Dropbox to trigger engagement]» (BLL237 1.0 1D, BLL161 1.0) — and the bracket resolves to a drop-down INTERACTIVE by its «dropbox» alias, so widget_ahead_keeps read it as the activity's next widget: the walk ran on and the post-table [Body] and the upload line sat in the hand-off box, where the finished pages keep the prose free inside the box with the upload button after it. An INTERACTIVE ahead whose words name a dropbox (pattern) and not a drop-down (not_pattern) ends the look-ahead like any other boundary, so the prose resumes as page text. Env UNCLASSDBX_OFF."
+					},
 					"_doc_cuts": "Two cases are excluded: a [Body] BETWEEN two data tables is the widget's own instruction and the second table its data (BLL175 1B), and a widget INVOCATION ahead ([hint slider] / [flip card] after the instruction) is the activity's next widget, not resumed free body (ENGS201 4C / XLP03 2A — splitting it out would turn the gold's one widget into two). So the walk looks ahead to its natural end and resumes only when NO table and (widget_ahead_keeps) NO widget invocation follow."
 				},
 				"reading_table": {
@@ -710,6 +717,21 @@
 				"types": ["accordion", "carousel"],
 				"pattern": "\\[\\s*(?:close|closing|finish|finished)\\s+(?:the\\s+)?(?:accordion|carousel|slideshow)\\b",
 				"_doc": "THE CLOSER THAT OPENS ITS OWN WIDGET. A bare '[close modal]' is the writer's END DELIMITER, not a fresh invocation, and the modal walk consumes it as a no-op at the OPEN site (member_rule.modal_gathering.closer_pattern, types ['modal']). The identical shape would still open useless one-marker bundles for two other families, because the lexicon aliases 'end accordion'/'end carousel' to CONTAINER_CLOSE but not the writer's 'close'/'finish' spellings, which fall through to the plain INTERACTIVE tag — each would render an empty hand-off box on a finished page (as with ENGJ402 p6.0 '[Finish carousel]', MXFL301 p2.0 + p3.0 and MXFU301 p8.0 '[close accordion]'). Most closer-shaped spans already resolve CONTAINER_CLOSE; the rest resolve INTERACTIVE. A lexicon change to CONTAINER_CLOSE is not used because EXPFUN04/05's BUILT tile modals absorb many interleaved closers mid-walk and would shatter; for accordion and carousel, bundles that carry a closer ALONGSIDE other members are already declining (ENGI405 p1.0, ENGJ403 p1.0 + p5.0, MXFU301 p9.0), so no built bundle is at risk. FENCES: the rule fires ONLY at the OPEN site (a closer met mid-walk keeps the normal behaviour, so nothing a working walk relies on moves); ONLY for a bundle whose type is in `types`; and ONLY when the span is BARE — a closer bracket carrying any other word keeps the normal behaviour, so a writer instruction riding the bracket can never be silently dropped. clickDrop is DELIBERATELY NOT in `types`: its closer spans are in the BLL27x/ENGJ403 families, whose clickDrop walks follow their own gathering rules, and consuming their closers would change bundle boundaries there. Env CLOSEROPEN_OFF."
+			},
+			"own_closer_ends_walk": {
+				"enabled": true,
+				"env": "OWNCLOSER_OFF",
+				"exclude_types": ["modal"],
+				"pattern": "^\\[\\s*(?:close|closed|closing)\\s+[^\\]]*\\]$|^\\[[^\\]]*\\s(?:end|ends|ended|close|closes|closed|finish|finishes|finished)\\s*\\]$",
+				"numbered_pattern": "\\d",
+				"numbered_only_before_same_type": {
+					"enabled": false,
+					"env": "NUMCLOSER_OFF",
+					"_doc": "A numbered member holds the walk open only while the same widget follows the closer. «[flip card 3 back text] … [flip card end] [body text] Our star, the Sun …» (SCES201), «[ clickdrop ends] [body] As we read a text …» (BLL273): the closer after the last numbered panel ends the widget; the closer between panels («[accordion 3] … [close accordion] [accordion 4]») still lets the walk go on. Env NUMCLOSER_OFF."
+				},
+				"keeps_box_open": true,
+				"same_type_next_continues": true,
+				"_doc": "THE WRITER'S OWN CLOSER ENDS THE WIDGET. The writer closes a widget in words — «[close clickdrop]», «[clickdrop ends]», «[close accordion]», «[flip card end]», «[quiz ends]», «[close tabs]». Only the «[end X]» spelling parses as a container close; the others resolve to the widget's OWN invocation tag with the close word as its remainder, so the open walk absorbed each one as one more same-type member and ran on past it, taking the next heading and paragraphs into the hand-off box (BLLR204 4.1: «[close clickdrop]» then «[H3] Literal or figurative?» and its two paragraphs, which the finished page shows as ordinary text after the click-drop). When the open walk meets a bare tag of its own type (the same canonical tag or widget type) whose whole bracket matches pattern and carries no words after it, the closer is consumed inside the widget and the walk ends there. Not for exclude_types (the modal has its own closer rule, modal_gathering) and not while the widget holds a NUMBERED member of its own type (a digit inside the same bracket — numbered_pattern), where the writer's closers sit between numbered panels. keeps_box_open: an activity box the widget owns stays open for what the writer typed after the closer (BLL246 2.0: the click-drop closes, and the reorder after it is still Activity 2D on the finished page), through the owner close site's hold that the unclassified post-table resume uses. same_type_next_continues: when the next item after the closer is another invocation of the same widget, the closer stays an ordinary member and the walk goes on, so a run of widgets the writer closes one by one still builds as one set (ENGJ403 5.0: five click-drops, each closed, are one button set on the finished page). Env OWNCLOSER_OFF."
 			},
 			"inner_closer": {
 				"enabled": true,

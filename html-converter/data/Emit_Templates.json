@@ -44,6 +44,12 @@
 				"h4",
 				"h5"
 			],
+			"please_design": {
+				"enabled": true,
+				"env": "DEVPLEASE_OFF",
+				"pattern": "^\\W{0,3}(?:[A-Za-z\\u2019'-]+\\s+){0,3}?please\\s+(?:add|crop|create|recreate|place|present|include|insert|design|draw)\\b(?=.{0,120}\\b(?:images?|gifs?|pictures?|photos?|diagrams?|alert\\s+box|banner|caption|font|buttons?|flip\\s?cards?|hover|modal|carousel|white\\s+space|column|layout|graphic|icons?|audio\\s+files?|snippets?|link\\s+for\\s+the\\s+drop\\s?box)\\b)",
+				"_doc": "THE WHOLE LINE THAT ASKS THE DESIGNERS TO MAKE SOMETHING. «Please add images of these things and a label on the image as has been done in …» (ANZH101), «Learning Journal Please create a link for the dropbox here for the students …» (COM1006 — a short label before it), «Please crop image to be banner like and fit in .alert» (DTC1004), «Please place this in the white space of the right-hand column next to the paragraph above» (HIS1007), «please create diagram like this: …» (MXDI201): typed black, opening with «please» and a production verb, about a picture, a diagram, a box, a font, a button or a layout — the writer talking to the designers, which the finished pages drop. Read the same way as the pattern above (the normaliser's instruction item, so the red Writers Note prints in its place). A learner's own «Please click …» / «Please contact …» opens with no production verb and never matches. Env DEVPLEASE_OFF."
+			},
 			"inside_widget": false,
 			"_inside_widget_doc": "false: a black line inside a widget's capture (the nearest tag before it, over black lines only, is a widget tag) is left as the widget's own content — the un-built hand-off box keeps the writer's lines as typed (XOTPB09 / XOTPB13's carousel boxes keep their «CS: …» line).",
 			"_doc": "THE BLACK DEVELOPER NOTE IS A WRITERS NOTE. A line the writer addressed to the developer but typed in BLACK ('Note to CS – Please use Sassoon font.', 'Note to developer – …', 'DEV: Colour code for phase 2:', 'Cs: can these two images …', 'Can we make something like this please?') would ship as learner text; the human build drops these lines. A black item whose text matches `pattern` — or a heading tag (heading_tags) whose whole payload does — is read as the writer-instruction item the normaliser already makes of that text (Parse → class instruction, no tag), so the instruction path prints the red Writers Note in its place. A parse that is not a pure instruction is left alone. The 'Insert / Add image …' form is NOT listed: it mixes learner instructions ('Add photos of your work to your journal'). Env BLACKDEVNOTE_OFF reverts."
@@ -1532,7 +1538,16 @@
 				"h5",
 				"h6"
 			],
-			"question_tag": "\\[\\s*(?:\\?|dev\\b)[^\\[\\]<>]*\\][\\s\\S]*$"
+			"question_tag": "\\[\\s*(?:\\?|dev\\b)[^\\[\\]<>]*\\][\\s\\S]*$",
+			"request_clause": {
+				"enabled": true,
+				"env": "REQCLAUSE_OFF",
+				"addressed_pattern": "^\\W*(?:note\\s+to\\s+)?(?:cs|devs?|dev\\s+team|developers?|designers?|creative\\s+services)\\b[\\s:,–-]*(?:(?:can|could)\\s+you\\s+)?(?:please\\s+)?(?:add|crop|create|recreate|cut|place|present|include|insert|design|draw|make|use|find|put|have|speed|source|record)\\b",
+				"please_pattern": "\\bplease\\s+(?:add|crop|create|recreate|cut|place|present|include|insert|design|draw|make|use|find|put|have)\\b",
+				"subject_pattern": "\\b(?:images?|pictures?|photos?|diagrams?|graphics?|icons?|audio|snippets?|buttons?|modal|labels?|drop\\s?box|stopwatch|font|layout|appropriate|similar|\\d{1,2}[:.]\\d{2})\\b",
+				"not_pattern": "\\byour\\b",
+				"_doc": "THE WRITER'S REQUEST TYPED INSIDE A LEARNER LINE. A bracketed or parenthesised clause in which the writer asks the designers for something — «Te Tiriti o Waitangi (Page 5) (CS Can you please cut snippets and add audio files to match)» (ANZH205), «… see if you can beat your best time. [Please add a stopwatch]» (TRR114), «Your Browser [All images in this column have been screen shot. Please find appropriate ones that appear the same.]» (CEDO501), «Final piece of writing (this is the word doc but please include as a modal …)» (ENGR301), «(please cut at 2:05)» (ENWJ105) — is lifted with the writer tags beside it into the red Writers Note; the human pages never show it. The clause qualifies when it opens by addressing the designers with a production verb (addressed_pattern), or asks «please» + a production verb (please_pattern) about a picture, audio, a button, a layout or a cut point (subject_pattern) — and never when it speaks to the learner (not_pattern). Env REQCLAUSE_OFF."
+			}
 		},
 		"empty_list_item_drop": {
 			"_doc": "THE EMPTY BULLET. A list item left with no content would show as a lone bullet dot: `<ul><li></li></ul>` after a bullet's image / video / answer was hoisted out of it (HES1006 1_0, ENGJ202 0_0, ENGI102 2_0), the media-list preamble residue (ANZH103 1_0), the audio / checkbox bullets (BLL110 / BLL130, ENGI103). An <li> whose content is only whitespace (no text, no element), outside a cv2-interactive hand-off box, is dropped; a <ul> / <ol> left with no item goes with it. Env EMPTYLI_OFF.",
@@ -5511,6 +5526,21 @@
 				"row_open": "<div class=\"row\">\n<div class=\"col-md-8 col-12 choicePage choiceHeightMatch\">",
 				"row_close": "</div>\n</div>",
 				"tile": "<div class=\"choice clickDrop dropBox col-md-4 col-6\">\n<div class=\"choiceImg\">\n<div class=\"iconCentral iconD\" iconType=\"{iconType}\"></div>\n</div>\n<div class=\"choiceText\">\n<h5>{label}</h5>\n</div>\n</div>",
+				"icon_image": {
+					"enabled": true,
+					"env": "CDTILEIMG_OFF",
+					"tile": "<div class=\"choice clickDrop dropBox col-md-4 col-6\">\n<div class=\"choiceImg hoverSwitch\">\n<img alt=\"\" src=\"{path}{file}\" />\n<div class=\"iconCentral iconD\" iconType=\"{iconType}\"></div>\n</div>\n<div class=\"choiceText\">\n<h5>{label}</h5>\n</div>\n</div>",
+					"path": "../Images/Learning support/Activity clickdrops/",
+					"files": {
+						"learnByHeart": "Learn by heart.jpg",
+						"explain": "explain.jpg",
+						"do": "do.jpg",
+						"compare": "compare.jpg",
+						"judge": "judge.jpg",
+						"create": "create.jpg"
+					},
+					"_doc": "THE LEARNING-SUPPORT TILE CARRIES ITS ICON PICTURE (KB 14.6, the LS family's supplied clickDrop layout). The KB gives the chooser tile as `choiceImg hoverSwitch` holding the library picture `../Images/Learning support/Activity clickdrops/Learn by heart.jpg` above the iconCentral div, and the finished XDLS pages build their tiles that way (168 of 181: Learn by heart / explain / do / compare / judge / create .jpg). A tile whose iconType names one of `files` takes this form; any other tile (an icon the library has no picture for, an empty iconType) keeps the plain tile above. Env CDTILEIMG_OFF."
+				},
 				"_note": "THE XDLS ACTIVITY-CHOOSER TILE GRID. The writer authors a page as a run of one-name click-drop SCRAPS ([Click Drop x 6] header + [Click Drop N] Label, or [Click Drop Activity NX with embedded image] Label + a URL-less LS-library icon reference) whose panels are the ordinary [Activity]-opened boxes further down the page. The human ships one TILE ROW (row > col-md-8 col-12 choicePage choiceHeightMatch > div.choice.clickDrop.dropBox.col-md-4.col-6 per tile, iconType = camelCase of the writer's own label — the human's near-universal form — label = the writer's words verbatim) and pairs the Nth tile with the Nth clickDropContent panel BY POSITION (the site JS contract; the human RENUMBERS writer id typos positionally, as on XDLS902 pages 4/5, so id lookup is NOT the pairing rule). NO <img> is emitted (the human's own XDLS909 no-img tile form; the LS-library photo paths are hand-placed, case-inconsistent — ../images vs ../Images on ONE page — and never in the WT; the writer's icon reference is FULFILLED by the iconType div). FENCES: every clickDrop bundle on the page must be a clean scrap (click-drop members + URL-less image refs + releasable trailing headings ONLY — XDLS908/911/912's content-carrying bundles decline the page), named tiles >= min_tiles, numbered evidence (an x-N header or >= min_numbered numbered markers — TEFUN06/HES1006's bare repeats decline), a tile label is never an id-shaped reference ('4B'), and the page must carry >= as many bare-id-tail [Activity] anchors as tiles (XDLS909's short scrap runs + BLLR201's slideshow panels decline — never a tile without a panel). Scraps that stole a NEIGHBOUR's [Activity]/heading as owner-lead (the backward lookback on XDLS902 tiles 4-6) are RELEASED back to the body flow. Env CDTILES_OFF (whole feature), CDTILEID_OFF (the anchor bare-id-tail -> number= repair alone, scoped to paired anchors because the human ITSELF ships <h3>4A</h3> id-titles on XTAS101/XLP01/XMES203/TEDC402 — a blanket repair would diverge), CDTILEPAIR_OFF (the clickDropContent postpass alone)."
 			},
 			"_comment": [

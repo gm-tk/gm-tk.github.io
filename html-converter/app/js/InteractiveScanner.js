@@ -3081,6 +3081,14 @@ class InteractiveScanner {
 							// a widget invocation ahead (a [flip card] / [hint slider] the writer typed after
 							// the instruction) is the activity's own next widget, not resumed free body —
 							// cutting there would split it out of the dump and lose it (ENGS201 4C, XLP03 2A)
+							// — except the writer's upload marker («[Button] Upload to Dropbox [Dropbox to trigger
+							// engagement]», a drop-down by its alias): that is the activity's upload button, so the prose
+							// before it resumes as page text (post_table_resume.upload_ahead_ends; env UNCLASSDBX_OFF)
+							const _uae = _ptr.upload_ahead_ends;
+							if (np.directive === "INTERACTIVE" && _uae && _uae.enabled !== false
+								&& !(typeof process !== "undefined" && process.env && process.env[_uae.env ?? "UNCLASSDBX_OFF"])
+								&& new RegExp(_uae.pattern ?? "drop\\s*-?\\s*box", "i").test(`${np.fragment ?? ""} ${np.alias ?? ""}`)
+								&& !new RegExp(_uae.not_pattern ?? "drop\\s*-?\\s*down", "i").test(String(np.fragment ?? ""))) break;
 							if (np.directive === "INTERACTIVE" && _ptr.widget_ahead_keeps !== false) { _more = true; break; }
 							if (np.directive === "PAGE_BOUNDARY" || np.directive === "SECTION_MARKER"
 								|| np.directive === "INTERACTIVE" || np.directive === "CONTAINER_CLOSE") break;
@@ -3321,6 +3329,53 @@ class InteractiveScanner {
 							&& !String(next.blackAfter ?? "").trim()
 							&& !(typeof process !== "undefined" && process.env && process.env[mgC.popout_marker_env ?? "MODPOPMARK_OFF"])) {
 							continue;
+						}
+					}
+				}
+				// THE WRITER'S OWN CLOSER ENDS THE WIDGET. «[close clickdrop]», «[clickdrop ends]», «[flip card end]» resolve
+				// to the open widget's own invocation tag with the close word as remainder, so the same-type absorb below
+				// would take the closer as one more member and run on into the next heading and paragraphs. A bare closer
+				// of this widget's own type is consumed IN RANGE and the walk stops — not for the excluded types (the modal
+				// rule above) and not while the widget holds a numbered member of its own type (closers between numbered
+				// panels). Data member_rule.own_closer_ends_walk; env OWNCLOSER_OFF.
+				{
+					const oc = meta.own_closer_ends_walk;
+					if (oc && oc.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[oc.env ?? "OWNCLOSER_OFF"])
+						&& !(oc.exclude_types ?? []).includes(bundle.type)
+						&& (p.tag === bundle.canonTag || (extra !== null && extra === bundle.type))
+						&& !String(next.blackAfter ?? "").trim()
+						&& new RegExp(oc.pattern, "i").test(String(next.parse?.folded ?? "").trim())) {
+						const numRe = new RegExp(oc.numbered_pattern ?? "\\d");
+						const numbered = [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])].some((m) =>
+							m && m.type === "tag" && m.parse?.primary?.tag === p.tag && numRe.test(String(m.parse?.folded ?? "")));
+						// the next widget of the same kind straight after the closer continues the writer's set (five
+						// click-drops each closed in turn build as one set)
+						let k = j + 1;
+						while (k < items.length && items[k].type !== "tag" && !String(items[k].text ?? "").trim()) k++;
+						const nx = items[k];
+						const setGoesOn = oc.same_type_next_continues !== false && nx && nx.type === "tag"
+							&& nx.parse?.primary?.tag === p.tag && !new RegExp(oc.pattern, "i").test(String(nx.parse?.folded ?? "").trim());
+						// a numbered member holds the walk open only while the same widget follows the closer
+						// (numbered_only_before_same_type; env NUMCLOSER_OFF)
+						const nb = oc.numbered_only_before_same_type;
+						const numberedHolds = numbered && !(nb && nb.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[nb.env ?? "NUMCLOSER_OFF"])
+							&& !(nx && nx.type === "tag" && nx.parse?.primary?.tag === p.tag));
+						// the closer after the last numbered panel is consumed in range but never handed to the panels' builder
+						// as a member
+						if (numbered && !numberedHolds && !setGoesOn) {
+							if (oc.keeps_box_open !== false) bundle._postTableResume = true;
+							j++;
+							break;
+						}
+						if (!numberedHolds && !setGoesOn) {
+							this.#collectMember(bundle, next, run);
+							// the activity box that owns the widget stays open for what the writer typed after the closer
+							// (the owner close site's hold; autoClose, the next opener or the upload button closes it)
+							if (oc.keeps_box_open !== false) bundle._postTableResume = true;
+							j++;
+							break;
 						}
 					}
 				}

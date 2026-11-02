@@ -9600,17 +9600,26 @@ class ContentConverter {
 	/** The tile row itself: the gold's row > choicePage col > one
 	 *  div.choice.clickDrop.dropBox per tile (label = the writer's words VERBATIM,
 	 *  iconType = their camelCase, as in the library's own tiles).
-	 *  NO <img> is emitted: the gold's own XDLS909 no-img tile form — the photo
-	 *  paths on the other golds are hand-placed and case-inconsistent (../images
-	 *  vs ../Images on ONE page), and the writer's icon reference is satisfied by
-	 *  the iconType div, which is what it names. */
+	 *  A tile whose iconType is one of the Learning-Support library icons carries the
+	 *  library picture in a hoverSwitch choiceImg, as KB 14.6 supplies it
+	 *  (tile_grid.icon_image; env CDTILEIMG_OFF); any other tile is the plain form,
+	 *  the writer's icon reference satisfied by the iconType div. */
 	static #cdTileRowHtml(names, tpl) {
 		const cfg = tpl.interactive_builders.clickDrop.tile_grid;
 		const camel = (label) => {
 			const w = String(label).toLowerCase().replace(/[^a-z0-9 ]+/g, " ").split(/\s+/).filter(Boolean);
 			return w.map((x, i) => (i ? x[0].toUpperCase() + x.slice(1) : x)).join("");
 		};
-		const tiles = names.map((n) => Utils.FillTemplate(cfg.tile, { iconType: camel(n), label: Utils.EscapeHtml(n) }));
+		const ii = cfg.icon_image;
+		const withImg = !!ii && ii.enabled !== false && !!ii.tile
+			&& !(typeof process !== "undefined" && process.env && process.env[ii.env ?? "CDTILEIMG_OFF"]);
+		const tiles = names.map((n) => {
+			const iconType = camel(n);
+			const file = withImg ? ii.files?.[iconType] : null;
+			return file
+				? Utils.FillTemplate(ii.tile, { iconType, label: Utils.EscapeHtml(n), path: ii.path ?? "", file })
+				: Utils.FillTemplate(cfg.tile, { iconType, label: Utils.EscapeHtml(n) });
+		});
 		return [cfg.row_open, ...tiles, cfg.row_close].join("\n");
 	}
 
@@ -9920,7 +9929,7 @@ class ContentConverter {
 		const tpl = DataService.Data.EmitTemplates.elements ?? {};
 		const cfg = tpl.visible_tag_lift;
 		const pat = tpl.tag_only_paragraph_note?.tag_pattern;
-		if (!cfg || cfg.enabled === false || !pat || !html || !html.includes("[")) return html;
+		if (!cfg || cfg.enabled === false || !pat || !html || !/[[(]/.test(html)) return html;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "TAGLIFT_OFF"]) return html;
 		let tagRe, questionRe;
 		try {
@@ -9932,11 +9941,29 @@ class ContentConverter {
 		const inBox = (i) => boxes.some(([a, b]) => i >= a && i < b);
 		const decode = (s) => s.replace(/&nbsp;/g, " ").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, "\"")
 			.replace(/&#39;|&apos;/g, "'").replace(/&#(\d+);/g, (m, d) => String.fromCharCode(Number(d))).replace(/&amp;/g, "&");
-		const isLiftable = (tok) => tagRe.test(decode(tok)) && !/https?:\/\/|www\./i.test(tok);
+		// a bracketed or parenthesised clause asking the designers for something (request_clause; env REQCLAUSE_OFF)
+		const rq = cfg.request_clause;
+		let isRequest = () => false;
+		if (rq && rq.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[rq.env || "REQCLAUSE_OFF"])) {
+			try {
+				const addrRe = new RegExp(rq.addressed_pattern, "i"), pleaseRe = new RegExp(rq.please_pattern, "i");
+				const subjRe = new RegExp(rq.subject_pattern, "i"), notRe = rq.not_pattern ? new RegExp(rq.not_pattern, "i") : null;
+				isRequest = (tok) => {
+					const t = decode(tok).replace(/^[[(]|[\])]$/g, "").trim();
+					return !(notRe && notRe.test(t)) && (addrRe.test(t) || (pleaseRe.test(t) && subjRe.test(t)));
+				};
+			} catch { /* a broken pattern lifts nothing */ }
+		}
+		const isLiftable = (tok) => (tagRe.test(decode(tok)) || isRequest(tok)) && !/https?:\/\/|www\./i.test(tok);
+		const lift = (m, at, whole, lifted) => {
+			lifted.push(decode(m.trim()));
+			// one space survives only between two words (never at the start or the end of the text run)
+			return /^[ \t]/.test(m) && /[ \t]$/.test(m) && at > 0 && at + m.length < whole.length ? " " : "";
+		};
 		const blockRe = new RegExp(`<(${blocks.join("|")})\\b([^>]*)>((?:(?!<\\/?(?:${blocks.join("|")})\\b)[\\s\\S])*?)<\\/\\1>`, "g");
 		let n = 0;
 		const out = html.replace(blockRe, (whole, tag, attrs, inner, off) => {
-			if (!inner.includes("[") || /class="[^"]*(?:cv2-(?:note|comment|omit)|ackTodo)/.test(attrs) || inBox(off)) return whole;
+			if (!/[[(]/.test(inner) || /class="[^"]*(?:cv2-(?:note|comment|omit)|ackTodo)/.test(attrs) || inBox(off)) return whole;
 			// lift the liftable tokens out of the TEXT segments only (never an attribute, never inside an <a>)
 			const lifted = [];
 			let aDepth = 0;
@@ -9953,13 +9980,8 @@ class ContentConverter {
 					lifted.push(decode(q[0]).replace(/\s+/g, " ").trim());
 					txt = txt.slice(0, q.index);
 				}
-				return txt.replace(/[ \t]*\[[^[\]<>]*\][ \t]*/g, (m, at, whole) => {
-					const tok = m.trim();
-					if (!isLiftable(tok)) return m;
-					lifted.push(decode(tok));
-					// one space survives only between two words (never at the start or the end of the text run)
-					return /^[ \t]/.test(m) && /[ \t]$/.test(m) && at > 0 && at + m.length < whole.length ? " " : "";
-				});
+				return txt.replace(/[ \t]*\[[^[\]<>]*\][ \t]*/g, (m, at, whole) => (isLiftable(m.trim()) ? lift(m, at, whole, lifted) : m))
+					.replace(/[ \t]*\([^()<>]*\)[ \t]*/g, (m, at, whole) => (isRequest(m.trim()) && !/https?:\/\/|www\./i.test(m) ? lift(m, at, whole, lifted) : m));
 			});
 			if (!lifted.length) return whole;
 			n++;
