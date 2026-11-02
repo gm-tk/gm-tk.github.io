@@ -725,7 +725,7 @@
 				"pattern": "^\\[\\s*(?:close|closed|closing)\\s+[^\\]]*\\]$|^\\[[^\\]]*\\s(?:end|ends|ended|close|closes|closed|finish|finishes|finished)\\s*\\]$",
 				"numbered_pattern": "\\d",
 				"numbered_only_before_same_type": {
-					"enabled": false,
+					"enabled": true,
 					"env": "NUMCLOSER_OFF",
 					"_doc": "A numbered member holds the walk open only while the same widget follows the closer. «[flip card 3 back text] … [flip card end] [body text] Our star, the Sun …» (SCES201), «[ clickdrop ends] [body] As we read a text …» (BLL273): the closer after the last numbered panel ends the widget; the closer between panels («[accordion 3] … [close accordion] [accordion 4]») still lets the walk go on. Env NUMCLOSER_OFF."
 				},

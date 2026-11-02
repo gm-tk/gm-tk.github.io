@@ -1065,6 +1065,106 @@ class MediaBuilder {
 	 * @returns {string} the body
 	 */
 	static productionDocPostpass(bodyHtml, run) {
+		return this.#uploadLabelEchoPass(this.#pictureFileNamePass(this.#productionDocPass(bodyHtml, run), run));
+	}
+
+	/**
+	 * THE UPLOAD BUTTON'S LABEL IS NOT SHOWN AGAIN. The writer's «[dropbox button] [engagement trigger] Upload to dropbox.» builds
+	 * the upload button, and the tag's own words were printed again as a paragraph after it. A paragraph whose whole text is the
+	 * upload label (label_pattern), separated from a built upload button by nothing but notes and box boundaries, is removed.
+	 * Data elements.upload_label_echo {label_pattern}; env UPLOADECHO_OFF.
+	 * @param {string} bodyHtml - the page body
+	 * @returns {string} the body
+	 */
+	static #uploadLabelEchoPass(bodyHtml) {
+		const c = DataService.Data.EmitTemplates.elements?.upload_label_echo;
+		if (!c || c.enabled === false || !c.label_pattern) return bodyHtml;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "UPLOADECHO_OFF"]) return bodyHtml;
+		const labelRe = new RegExp(`^${c.label_pattern}\\.?$`, "i");
+		const src = String(bodyHtml ?? "");
+		const btnRe = new RegExp(`<div class="button">${c.label_pattern}<\\/div><\\/a>`, "gi");
+		const cut = [];   // [start, end) spans to remove
+		let m;
+		while ((m = btnRe.exec(src))) {
+			let i = m.index + m[0].length;
+			// step over whitespace, the button's notes and box closings
+			for (;;) {
+				const ws = src.slice(i).match(/^\s+/);
+				if (ws) i += ws[0].length;
+				if (src.startsWith("</div>", i)) { i += 6; continue; }
+				if (src.startsWith("<p class=\"cv2-note\"", i)) { const e = src.indexOf("</p>", i); if (e < 0) break; i = e + 4; continue; }
+				break;
+			}
+			// the echo alone in a row of its own goes with its row; an echo right there goes alone
+			const row = src.slice(i).match(/^<div class="row">\s*<div class="col-[^"]*">\s*<p>([^<]{1,40})<\/p>\s*<\/div>\s*<\/div>/);
+			if (row && labelRe.test(row[1].trim())) { cut.push([i, i + row[0].length]); continue; }
+			const p = src.slice(i).match(/^<p>([^<]{1,40})<\/p>/);
+			if (p && labelRe.test(p[1].trim())) { cut.push([i, i + p[0].length]); continue; }
+			// the echo opening the next row, which goes on with the page's own text: just the echo goes (row_lead; env UPLOADECHOROW_OFF)
+			const rl = c.row_lead;
+			if (rl && rl.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[rl.env ?? "UPLOADECHOROW_OFF"])) {
+				const lead = src.slice(i).match(/^<div class="row">\s*<div class="col-[^"]*">\s*/);
+				const q = lead ? src.slice(i + lead[0].length).match(/^<p>([^<]{1,40})<\/p>/) : null;
+				if (q && labelRe.test(q[1].trim())) cut.push([i + lead[0].length, i + lead[0].length + q[0].length]);
+			}
+		}
+		if (!cut.length) return bodyHtml;
+		let out = "", at = 0;
+		for (const [s, e] of cut) { if (s < at) continue; out += src.slice(at, s); at = e; }
+		return out + src.slice(at);
+	}
+
+	/**
+	 * A PICTURE'S FILE NAME THE WRITER LINKED IS THE DEVELOPER'S NOTE, NOT LEARNER TEXT. The writer types «[image]» with the
+	 * picture's file name as the link label («__Tukutuku.jpg__» linked to the school's SharePoint copy); the picture element
+	 * builds its placeholder from the address and the label was left as a learner paragraph, its address lost. This page
+	 * post-pass turns a paragraph (or list item) whose whole text is such a label — a Writers Template link label that names a
+	 * picture file (name_pattern) — into the Designer/Developer To Do naming the file and its address; a file name the writer
+	 * typed as plain text (a lesson about naming files) is not a link label and stays. Hand-off boxes are left as they are.
+	 * Data elements.picture_filename_note {name_pattern, max_words, note}; env PICFILENOTE_OFF.
+	 * @param {string} bodyHtml - the page body
+	 * @param {ConversionRun} run - the run (wtBlocks)
+	 * @returns {string} the body
+	 */
+	static #pictureFileNamePass(bodyHtml, run) {
+		const c = DataService.Data.EmitTemplates.elements?.picture_filename_note;
+		if (!c || c.enabled === false || !c.name_pattern || !c.note) return bodyHtml;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "PICFILENOTE_OFF"]) return bodyHtml;
+		const nameRe = new RegExp(c.name_pattern, "i");
+		const fold = (t) => String(t ?? "").replace(/[*_]/g, "").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim().toLowerCase();
+		const labels = new Map();
+		for (const b of (run?.wtBlocks ?? [])) for (const l of (b?.links ?? [])) {
+			const t = fold(l?.text);
+			if (t && nameRe.test(t) && l?.target && t.split(" ").length <= (c.max_words ?? 12) && !labels.has(t)) labels.set(t, String(l.target));
+		}
+		if (!labels.size) return bodyHtml;
+		const todo = DataService.Data.EmitTemplates.red_flag?.todo_form
+			?? "<p class=\"cv2-note\" style=\"color: red; font-weight: bold;\">Designer/Developer To Do: {text}</p>";
+		const one = (seg) => seg.replace(/<(p|li)>\s*(?:<(b|i|strong|em)>\s*)?([^<>]{2,200}?)(?:\s*<\/\2>)?\s*<\/\1>/g, (whole, el, _w, words) => {
+			const url = labels.get(fold(words));
+			if (!url) return whole;
+			const note = Utils.FillTemplate(todo, { text: Utils.FillTemplate(c.note, { label: words.trim(), url }) });
+			return el === "li" ? `<li>${note}</li>` : note;
+		});
+		const src = String(bodyHtml ?? "");
+		let out = "", i = 0;
+		const open = /<div class="cv2-interactive/g;
+		let m;
+		while ((m = open.exec(src))) {
+			if (m.index < i) continue;
+			out += one(src.slice(i, m.index));
+			const r = /<div\b|<\/div>/g;
+			r.lastIndex = m.index;
+			let depth = 0, mm, end = src.length;
+			while ((mm = r.exec(src))) { depth += mm[0] === "</div>" ? -1 : 1; if (depth === 0) { end = r.lastIndex; break; } }
+			out += src.slice(m.index, end);
+			i = end; open.lastIndex = end;
+		}
+		return out + one(src.slice(i));
+	}
+
+	/** The production-document pass (see productionDocPostpass). */
+	static #productionDocPass(bodyHtml, run) {
 		const c = DataService.Data.EmitTemplates.elements?.production_doc_link;
 		if (!c || c.enabled === false || !c.word_pattern || !c.host_pattern || !c.note) return bodyHtml;
 		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "PRODDOCLINK_OFF"]) return bodyHtml;

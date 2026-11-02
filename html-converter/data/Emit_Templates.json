@@ -89,6 +89,12 @@
 		},
 		"omit_placeholders": {
 			"enabled": true,
+			"black_lines": {
+				"_doc": "THE TEMPLATE'S BLACK PROMPT LINE NEVER SHIPS. The Writers Template's overview cell carries «(leave blank if not applicable)» in black beside its [Overview] tag; the phrases below are read only on red lines, so the prompt printed as a paragraph in the overview menu (BLLR204 / 205 / 206, ENWJ110, SCBI202, WJFUN305; on no human page). A paragraph whose whole text folds to one of these phrases (brackets and stops ignored) is removed from the assembled page. Env BLACKPROMPT_OFF.",
+				"enabled": true,
+				"env": "BLACKPROMPT_OFF",
+				"phrases": ["leave blank if not applicable"]
+			},
 			"match": "prefix",
 			"phrases": [
 				"insert brief introductory text",
@@ -1693,7 +1699,13 @@
 			"start_pattern": "\\bstart(?:s|ing)?\\s+(?:at\\s+|from\\s+)?(\\d{1,2}):(\\d{1,2})\\b"
 		},
 		"cell_parts_repair": {
-			"_doc": "Repairs to a table cell's paragraph split (TablesAndGrids.cellParts: the extractor joins a cell's paragraphs with « / », and the split cannot tell that join from the writer's own slash). bold_slash: two neighbouring pieces that BOTH hold an unclosed «**» were one bold phrase holding the writer's slash — «**mēnā / mehemea**» (TRR301) — and are one piece again (apart, the unpaired markers show as text). unclosed_tag: a piece that opens with the writer's tag left unclosed — «[Body Tukua kia tekau hāora …» with no «]» anywhere in it (TRR108) — is the tag it names.",
+			"break_before_tag": {
+				"_doc": "A SOFT LINE BREAK BEFORE A WRITER TAG STARTS A NEW PIECE. A cell's lines joined by a soft break (Word's Shift+Enter) arrive in one piece: «[Overview] (leave blank if not applicable)» then «[tab] [H4] Learning Intentions» (BLLR204 / 205 / 206, ENWJ110, MXDB303, SCBI202, WJFUN305) read as one piece opening with [Overview], so «(leave blank if not applicable) [tab] [H4] Learning Intentions» printed as learner text. A break followed by a bracket tag (pattern) splits the piece there. Env CELLBREAKTAG_OFF.",
+				"enabled": true,
+				"env": "CELLBREAKTAG_OFF",
+				"pattern": "\\n(?=\\s*\\[[^\\]\\n]{1,40}\\])"
+			},
+			"_doc":"Repairs to a table cell's paragraph split (TablesAndGrids.cellParts: the extractor joins a cell's paragraphs with « / », and the split cannot tell that join from the writer's own slash). bold_slash: two neighbouring pieces that BOTH hold an unclosed «**» were one bold phrase holding the writer's slash — «**mēnā / mehemea**» (TRR301) — and are one piece again (apart, the unpaired markers show as text). unclosed_tag: a piece that opens with the writer's tag left unclosed — «[Body Tukua kia tekau hāora …» with no «]» anywhere in it (TRR108) — is the tag it names.",
 			"bold_slash": {
 				"enabled": true,
 				"env": "CELLBOLDSLASH_OFF"
@@ -2050,6 +2062,25 @@
 			"column": "<div class=\"col-4 paddingLR\">\n{map}\n{todo}\n</div>",
 			"markup": "<div class=\"imageLabel\" layout=\"map\">\n<img class=\"img-fluid imageCentral imgLabel\" src=\"New Zealand/iStock-1454804075.png\" alt=\"New zealand map\">\n<div class=\"label\" direction=\"horizontal\" top=\"20%\" left=\"20%\" pointTop=\"50%\" pointLeft=\"50%\"><p>{place}</p></div>\n</div>",
 			"todo": "position the star and road sign on the New Zealand map for {place} (the top / left / pointTop / pointLeft values are the knowledge base's reference example)"
+		},
+		"upload_label_echo": {
+			"_doc": "THE UPLOAD BUTTON'S LABEL IS NOT SHOWN AGAIN. The writer's «[dropbox button] [engagement trigger] Upload to dropbox.» builds the upload button, and the tag's own words were printed again as a paragraph after it (ANZHFUN05, CHWHA, GEWHA, CEDW501, ENGC201, ENGC401 — the same words twice). A paragraph whose whole text is the upload label (label_pattern, a closing stop allowed), separated from a built upload button by nothing but notes and box boundaries, is removed — with its row when it stands alone in one. Env UPLOADECHO_OFF.",
+			"enabled": true,
+			"env": "UPLOADECHO_OFF",
+			"label_pattern": "Upload to [Dd]ropbox",
+			"row_lead": {
+				"_doc": "The echo that OPENS the next row, which goes on with the page's own text (ENGC201 6.0: «Upload to dropbox» then «Ka pai for completing this module …» in the row after the box): just the echo paragraph is removed, the row stays. Env UPLOADECHOROW_OFF.",
+				"enabled": true,
+				"env": "UPLOADECHOROW_OFF"
+			}
+		},
+		"picture_filename_note": {
+			"_doc": "A PICTURE'S FILE NAME THE WRITER LINKED IS THE DEVELOPER'S NOTE, NOT LEARNER TEXT. The writer types [image] with the picture's file name as the link label («__Tukutuku.jpg__» linked to the school's SharePoint copy, «__Masons day in Percentages.png__», a carousel slide's «__Dear Diary Note, age 5.jpg__»); the picture element builds its placeholder from the address and the label was left on the page as a learner paragraph with its address lost. The human pages never show a linked file name (a bare file-name paragraph appears only where file names are the lesson's own subject, typed as plain text). A page post-pass turns a paragraph or list item whose whole text is a Writers Template link label naming a picture file (name_pattern, at most max_words words) into the Designer/Developer To Do naming the file and its address; hand-off boxes are left as they are. Env PICFILENOTE_OFF.",
+			"enabled": true,
+			"env": "PICFILENOTE_OFF",
+			"name_pattern": "\\.(?:jpe?g|png|gif|webp|svg)$",
+			"max_words": 12,
+			"note": "the picture file «{label}» the writer linked, not for the learner: {url}"
 		},
 		"production_doc_link": {
 			"_doc": "A PRODUCTION DOCUMENT IS THE DEVELOPER'S NOTE, NOT A LEARNER LINK. Writers link the documents the production team works from — the audiovisual request ('Audiovisual Request Template FUN06 Pronunciation.docx'), the audio or animation script ('Audio-Script template - Lesson 3 …', 'AI Animation Audio-Script template …'), the Creative Services audio list ('CS Audio - BLL144 Set 4 Mod 4.docx') — on the school's SharePoint or Google Drive. A paragraph (or list item) that is only such a link showed the learner a link to a sign-in page; the human pages never show these documents. A page post-pass turns it into the Designer/Developer To Do naming the document and its address. Hand-off boxes, the red notes and a link inside a sentence are left as they are. OFF = the learner link.",
@@ -2623,6 +2654,13 @@
 				"title_heading": "<h3>{title}</h3>",
 				"min_title_chars": 2,
 				"strip_trailing_note": true,
+				"sentence_tail": {
+					"_doc": "THE ACTIVITY TAG'S SENTENCE TAIL IS THE BOX'S PROSE. The same widget-typed activity tag with a tail that is the learner's instruction rather than a title — «[Activity 3C Wordfind] Can you find these compound words in this word find?» (ENGS101), «[Activity drag and drop sorting] Formal or informal texts …», «[activity - drag and drop] Complete the following drag-and-drop activity …» — is not taken by the title rule, so the tail rode into the hand-off box with the widget's data; the human shows it as the activity's paragraph above the widget (the rendered boxes' first lines with an activity tag: 24 outside the human widget, 1 inside). With this on, when the widget is not built, the hand-off box renderer releases the tail of the bundle's own activity tag that the title rule left (an embedded activity id with no separate owner; at least min_words words, no bracket, no address, the tag's brackets closed) as page text just before the box, ahead of the lead_body_release lines; only when the box keeps other content. A built widget keeps the tail: its builder reads it (blanked, a true / false list built as flip cards). Env TAGSENTENCE_OFF.",
+					"enabled": true,
+					"env": "TAGSENTENCE_OFF",
+					"tag_pattern": "\\[\\s*activity\\b",
+					"min_words": 5
+				},
 				"no_dash": {
 					"_doc": "THE SAME TITLE WHEN THE WRITER TYPED NO DASH. «[Activity 1E] [Drag and Drop] Right or wrong?» (BLL143), «[Activity 3A drag and drop] Is the R bossy?» (ENGR102), «[Activity 8E self-marking radio quiz] Which statements are true?» (MXFU301), «[H3] [Activity 4A] [Multi-choice – Auto-marked] Spot the structure» (WJFUN304): the span is the same embedded activity bundle the dash form makes (the widget tag carries the activity number), but tag_pattern wants the dash, so the title rode into the un-built capture as a <p> while the gold opens the box with <h3>Title</h3> (0.87). Any embedded activity tag (tag_pattern here) whose tail is TITLE-SHAPED takes the dash form's heading: at most max_words words, no address, not bracket-led, not a label (deny_pattern), and not a lead into what follows or a long sentence (a tail ending «:», or ending «.» / «?» past sentence_words).",
 					"enabled": true,
@@ -3201,6 +3239,12 @@
 			"keep_match": "journal",
 			"_doc": "A bracket the normaliser keys as `button` whose words are a writer INSTRUCTION ('[Please embed the video with a play button and image]', '[Check button] [Reset button]', '[Insert links/buttons to the 2 tiles as per the following]') gets no label and would fall to journal_label_default: a blank-href 'Go to your journal' button + a To Do to wire it — a journal button the writer never asked for (a journal button is never invented). Enabled: at the button seam — after the journal forms and the download rule, before the external-destination step — when the label is still journal_label_default, there is no URL, and the bracket's words (brackets and * removed) match neither bare_match (a bare button tag: '[Button]', '[Add button]', '[Button link]', '[Blue button]' — the writer asked for a button; the default stays, as AGH1003's human build ships 'Go to journal' there) nor keep_match (a journal request) — bare_match is a PREFIX: a bracket that OPENS as a button request ('[Button - click here - link to come]', '[Insert button to website]', '[Create check button]') keeps the button (as PHE1003's human build does), only a sentence that mentions a button further in is an instruction — the writer's words ship as their Writers Note (NotesAndComments.redFlag kind 'cs', the form every other instruction bracket takes) and no button is emitted. env JDEFGUARD_OFF."
 		},
+		"upload_lead_button": {
+			"_doc": "THE UPLOAD BUTTON IN THE ACTIVITY'S LEAD IS THE UPLOAD BUTTON (KB constraint 43 — the upload button inside its activity; the writer's [button] tag is the target). «[button] Upload to dropbox.» typed among an activity's lead lines (its title, instructions and the response sheet before a widget, CEDO502 1A) went through the lead loop, which renders every tag's words as prose: the page showed the plain paragraph «Upload to dropbox.» (47 pages / 42 modules / 20 series). A lead [button] item whose label matches label_match renders through the body path's button (#elementCore), as the journal button's lead_button branch does for its label. Env UPLOADLEAD_OFF.",
+			"enabled": true,
+			"env": "UPLOADLEAD_OFF",
+			"label_match": "^(?:upload|submit)\\s+(?:it\\s+|your\\s+work\\s+)?to\\s+(?:the\\s+|your\\s+)?dropbox\\b"
+		},
 		"go_journal": {
 			"enabled": true,
 			"label_match": "^go\\s*to\\s*(?:your\\s+|the\\s+)?journals?\\s*[.!]*$",
@@ -3338,6 +3382,24 @@
 			"directives": ["ELEMENT", "INLINE"],
 			"_note": "A tag member whose words ride its OWN bracket line ('[audio] while, whale, whirl, whole, whine', '[image] angry person', '[button] Go to journal') is CONTENT for the un-built hand-off box: the empty-bundle / empty-box guards count it and the member dump renders the raw bracket line, so such boxes are never suppressed with the words lost from the page (as in BLL150 / BLL166 audio word lists, ENGC101 4.0's five [image] faces). Only members whose primary directive is listed here (content ELEMENTs and INLINE links — never an INTERACTIVE invocation, whose bracket text is its own spec and lives in the .txt) and whose span is a TAG (an instruction-class member already surfaces as the note before the box). Env MEMBERTEXT_OFF turns off both guards and the dump."
 		},
+		"tail_body_release": {
+			"_doc": "THE WRITER'S TEXT AFTER THE WIDGET IS PAGE TEXT — the tail twin of lead_body_release. The writer finishes the widget's data, then resumes the page with a [Body] paragraph («[body] When you have finished writing all six sentences, read these back to your supervisor …», «[Body] In this activity, you explored …»). The member walk has no end for the widget there, so an un-built box took the paragraph — and any plain paragraphs after it — in with the data, and the learner lost it inside the collapsed box. Where the human page shows the same words, it keeps a box's last [Body] line outside its widget (the rendered boxes' tagged prose, read against the human pages: the box's last line 130 outside / 32 inside). The box renderer releases the trailing run — plain paragraphs and [Body] members back from the box's end to the widget's last table, tag or numbered / bulleted data line, opening at its first [Body] member — as page text just after the box, when every type of the bundle is listed, each paragraph is a whole one (no list block, no red span, no bracket token, no other captured item from its paragraph), the run is at most max_items long and the box keeps min_box_chars of its own. Container widgets (accordion, tabs, modal, carousel, shape hover) keep their panel bodies. The hand-off file keeps the whole capture. Env BOXTAILBODY_OFF (or enabled:false) keeps every captured line in the box.",
+			"enabled": true,
+			"env": "BOXTAILBODY_OFF",
+			"types": ["dragAndDrop", "multiChoiceQuiz", "typing", "reorder", "dropDown", "radioQuiz", "selfCheck", "memoryGame", "wordFind", "clickDrop", "flipCard", "sketcher", "speechBubble", "unclassified", "interactive"],
+			"body_tags": ["body"],
+			"min_words": 4,
+			"max_items": 6,
+			"min_box_chars": 60,
+			"panel_stop_tags": [],
+			"_panel_stop_tags": "What stands just before the run's first [Body] decides it: the widget's own invocation, a tag listed here, or a plain line naming a picture file or an address (media_line_pattern) makes the paragraph that panel's content (a click-drop's reveal after its picture line) and it stays in the box. Empty: a face, picture or answer tag before the paragraph does not hold it (the human pages show the paragraph after a quiz's closing picture or a sentence quiz's red answer outside the widget).",
+			"media_line_pattern": "\\.(?:jpe?g|png|gif|svg|webp)\\b|https?://|www\\.",
+			"data_line_pattern": "\\u2705|^\\s*(?:questions?|options?|answers?)\\s*:",
+			"_data_line_pattern": "A plain line the walk back from the box's end stops at, besides a numbered / lettered / bulleted one: a ticked answer (the parser's ✅) or a «Question: / Options: / Answer:» label is the quiz's own data (FRFUN06 2.0's second question typed as plain lines).",
+			"owned_after_box": true,
+			"owned_after_box_env": "BOXTAILAFTER_OFF",
+			"_owned_after_box": "true: when the box sits in an activity box that closes at the widget's end, the released text ships AFTER the activity box, in the page flow, as the human page has it (the activity holds the widget; the writer's next paragraph is the page's); when the activity box stays open (its upload box or its post-table prose follow) the text stays inside it. false (or env BOXTAILAFTER_OFF): the text sits just after the hand-off box, inside the activity box."
+		},
 		"bilingual_table_release": {
 			"_doc": "A BILINGUAL CONTENT TABLE IS NEVER A WIDGET MEMBER. In the Bilingual template the writer types the activity's own text — its instruction heading and sentence, a learning-journal note, the next lesson's heading — as an «English ║ Māori» content table whose cells open with [H#] / [Body] tags. When such a table sits next to an un-built widget's data table, the capture took it in as a member and the learner lost it inside the hand-off box. The finished pages show it free: before the widget when it leads (the instruction pair), after the widget when it trails (the next section). The box renderer releases the LEADING run of such tables before the box and the TRAILING run after it, each unfolded as reo / English pairs by the bilingual content-table builder, when the box keeps a table of its own; a table between two data tables stays. A table qualifies when its header row names English and Māori, it has at least one content row, every content row's every non-empty cell carries a tag the cell_tag_pattern matches, and the bilingual builder renders it (a widget named inside a cell gets that builder's own un-built marker after the pairs, as in free text; a table it declines stays in the box). The hand-off file keeps the whole capture. Env BOXREOTABLE_OFF (or enabled:false) keeps every table in the box.",
 			"enabled": true,
@@ -3350,6 +3412,14 @@
 			"_doc": "THE WIDGET'S LEAD INSTRUCTION IS PAGE TEXT. The writer opens a quiz, drag or typing activity with its tag, then a «[Body]» line telling the learner what to do («[drag and drop] / [Body] Drag the words into the right order. / <the table>»), then the widget's data. When the widget is not built, the hand-off box captured that line with the data and the learner saw only the collapsed box. The human build shows the lead line as the activity's text above the widget (the leading [Body] lines: 538 shown outside the widget against 61 inside it; about 0.95 in the types listed). The box renderer releases every [Body] member that stands before the bundle's first table and before a second non-body tag, as page text just before the box, when the box keeps other content; black lines (often the widget's own questions) stay in the box, and the hand-off file keeps the whole capture. Only bundles whose every type is listed (container widgets — accordion, tabs, modal, click-drop, carousel — keep their panel bodies). Env BOXLEADBODY_OFF (or enabled:false) keeps every captured line in the box.",
 			"enabled": true,
 			"env": "BOXLEADBODY_OFF",
+			"heading_lead": {
+				"_doc": "THE HEADING TYPED RIGHT AFTER THE WIDGET TAG LEADS THE WIDGET. «[Activity 2C] [crossword]» then «[H3] Writing to suit the audience», «[clickdrop]» then «[H3] What is a root word?»: the box's first member is a heading the human shows ahead of the widget — the activity box's <h3> title, or the section's heading before the widget (the rendered boxes' heading-first lines in the listed types: 17 outside the human widget, 1 inside). The heading also counted as the second tag, so the [Body] lead lines after it stayed in the box. With this on, a heading tag (tags) that is the box's first member after the invocation — one whole line, no other captured item from its paragraph — is released before the box as <h{boxed_level}> when the box is an activity's, at the tag's own level (default_level for [heading]) in the page flow, and the lead release carries on past it. Only for the parent list's types (container widgets keep their panel titles). Env BOXLEADHEAD_OFF.",
+				"enabled": true,
+				"env": "BOXLEADHEAD_OFF",
+				"tags": ["h2", "h3", "h4", "h5", "heading"],
+				"boxed_level": 3,
+				"default_level": 3
+			},
 			"types": [
 				"clickDrop",
 				"dragAndDrop",
@@ -10538,6 +10608,12 @@
 				"enabled": true,
 				"env": "CELLVIDEO_OFF",
 				"_doc": "THE VIDEO IN A LAYOUT-GRID CELL. A writer lays out a page as a one-row table whose cell opens with «[video] <address>» beside the prose of the other cell (a newspaper page: «**Barking Mad with Kea News** / [video] <YouTube address>» ║ «**DogTube Channel Unleashed!** / A new DogTube channel …»). The layout-grid renderer builds the finished pages’ two-column row for it, but its cell renderer had no video part, so the tag stayed literal, the MTK leak guard saw a resolved tag in the grid and shipped the whole table raw inside a hand-off box — the page’s learner words hidden on a starting page. A «[video]» part now renders as the body path’s own embed (the Shorts form in a listed series, the YouTube frame, the generic frame; the address is the part’s own, else the table block’s first hyperlink), the part’s other words stay as text and a pasted-picture token goes; a part with no address, or a login-walled one, stays text as before (the guard then decides as it did)."
+			},
+			"leading_marker_tags": {
+				"_doc": "A TAB MARKER BEFORE A CELL PART'S OWN TAG YIELDS TO IT. The overview typed as a layout table opens a cell part with the tab marker and the pane heading — «[tab] [H4] Learning Intentions» (BLLR204 / 205 / 206, ENWJ110, MXDB303, SCBI202, WJFUN305) — and the cell renderer read only the first bracket, so the part printed «[H4] Learning Intentions» as text where the human menu has <h4>Learning Intentions</h4>. A part whose first tag is one of these markers and whose next bracket parses as a tag takes that next tag as its kind. Env CELLTABMARK_OFF.",
+				"enabled": true,
+				"env": "CELLTABMARK_OFF",
+				"tags": ["tab n"]
 			},
 			"red_part_note": {
 				"enabled": true,

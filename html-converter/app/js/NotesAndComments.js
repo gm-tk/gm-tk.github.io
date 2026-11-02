@@ -530,9 +530,19 @@ class NotesAndComments {
 		const op = DataService.Data.EmitTemplates.red_flag?.omit_placeholders;
 		if (!op || op.enabled === false) return html;
 		if (typeof process !== "undefined" && process.env && process.env.PLACEHOLDER_OFF) return html;
-		return html
+		let out = html
 			.replace(/(?:<ul[^>]*>\s*<li[^>]*>\s*<\/li>\s*<\/ul>\s*)+(?=<p[^>]*cv2-omit)/gi, "")
 			.replace(/<p[^>]*class="cv2-omit"[^>]*>\s*<\/p>\s*/gi, "");
+		// the template's own BLACK prompt line typed in a cell («(leave blank if not applicable)») — a paragraph that is only the
+		// prompt is template text, never learner content (omit_placeholders.black_lines; env BLACKPROMPT_OFF)
+		const bl = op.black_lines;
+		if (bl && bl.enabled !== false && Array.isArray(bl.phrases) && bl.phrases.length
+			&& !(typeof process !== "undefined" && process.env && process.env[bl.env ?? "BLACKPROMPT_OFF"])) {
+			const fold = (t) => Utils.Fold(String(t ?? "").replace(/<[^>]+>/g, " ")).replace(/[()[\]*_.:]/g, " ").replace(/\s+/g, " ").trim();
+			const set = new Set(bl.phrases.map(fold));
+			out = out.replace(/\s*<p>([^<]{4,120})<\/p>/g, (all, words) => (set.has(fold(words)) ? "" : all));
+		}
+		return out;
 	}
 
 	/**

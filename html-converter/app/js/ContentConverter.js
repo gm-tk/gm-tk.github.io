@@ -3427,6 +3427,9 @@ class ContentConverter {
 						const _aliasSpan = !!_alCfg && _alCfg.enabled !== false && bundle.activityOwner?._aliasElementOwner
 							&& !(typeof process !== "undefined" && process.env && process.env[_alCfg.env || "ALIASLEAD_OFF"])
 							? (bundle.activityLeadItems ?? [])[0] ?? null : null;
+						const _ulbCfg = tpl.buttons?.upload_lead_button;
+						const _ulbOn = !!_ulbCfg && _ulbCfg.enabled !== false && !!_ulbCfg.label_match
+							&& !(typeof process !== "undefined" && process.env && process.env[_ulbCfg.env || "UPLOADLEAD_OFF"]);
 						const _gjCfgL = tpl.buttons?.go_journal;
 						const _gjLeadOn = !!_gjCfgL && _gjCfgL.enabled !== false && !!_gjCfgL.lead_button && _gjCfgL.lead_button.enabled !== false
 							&& !(typeof process !== "undefined" && process.env && (process.env.GOJOURNAL_OFF || process.env[_gjCfgL.lead_button.env || "GJLEAD_OFF"]));
@@ -3474,6 +3477,20 @@ class ContentConverter {
 								if (!_gjUrl && _gjLbl && new RegExp(_gjCfgL.label_match, "i").test(_gjLbl)) {
 									flushLead();
 									emit(Utils.FillTemplate(_gjCfgL.form, { label: Utils.EscapeHtml(_gjCfgL.label ?? "Go to your journal") }));
+									actProse = true;
+									continue;
+								}
+							}
+							// THE UPLOAD BUTTON IN THE LEAD IS THE UPLOAD BUTTON: «[button] Upload to dropbox.» typed among the activity's lead
+							// lines would join the lead as the plain words; it renders through the body path's button (KB constraint 43).
+							// Data buttons.upload_lead_button; env UPLOADLEAD_OFF.
+							if (lp && lp.tag === "button" && _ulbOn) {
+								const _ulbLbl = (String(lead.blackAfter ?? "").trim() || this.#norm.RenderText(lead.text) || "").replace(/\*/g, "").trim();
+								if (new RegExp(_ulbCfg.label_match, "i").test(_ulbLbl)) {
+									flushLead();
+									// the box's own upload widget builds this same button: the lead line is that request, shown once
+									if (!(bundle.type === "dropDown" && InteractiveBuilder.UploadBoxCandidate(bundle, tpl.interactive_builders?.dropDown)))
+										emit(...this.#elementCore(lead, [lead], 0, null, run));
 									actProse = true;
 									continue;
 								}
@@ -3576,7 +3593,7 @@ class ContentConverter {
 						// "widget" mode: the shell replaces the widget itself.
 						if (mtkMode === "lead") { emit(...this.#mtkQuizEmit(bundle.activityOwner, run)); markContent(); }
 						if (mtkMode === "widget") emit(...this.#mtkQuizShellPre(bundle, it, run, bodyItems, stack, renderedHeading));
-						else if (!this.#mtkQuizBundleThin(bundle)) emit(this.#interactivePlaceholder(bundle, run, { reo: reoMode }));
+						else if (!this.#mtkQuizBundleThin(bundle)) emit(this.#interactivePlaceholder(bundle, run, { reo: reoMode, tailOut: true }));
 						// [MTKquiz] markers riding this bundle (captured member or opener co-tag)
 						// ship their button + To Do note here, inside the still-open box
 						// (CL-0038; see #mtkQuizBundleTail).
@@ -3598,6 +3615,7 @@ class ContentConverter {
 						// prose|widget row split (pirKey) is excluded — its widget row is already closed here.
 						// Data activity_wrapper.owned_activity_keeps_trailing_dropbox; env ACTDBXINSIDE_OFF.
 						if (!pirKey && this.#dropboxTailHold(bodyItems, i, bundles, it.consumedBy, tpl, renderedHeading)) {
+							if (bundle._tailHtml) { emit(bundle._tailHtml); bundle._tailHtml = null; }   // the box stays open: the writer's text after the widget stays in it
 							markContent();
 							run.AddNote("info", "ContentConverter",
 								`Page ${page.lessonLabel}: activity box kept open for its trailing upload box.`);
@@ -3607,6 +3625,7 @@ class ContentConverter {
 							// the gold keeps that prose free INSIDE the box after the widget, so the frame
 							// stays open and the ordinary loop renders it here; autoClose, the next opener or
 							// the upload button closes the box.
+							if (bundle._tailHtml) { emit(bundle._tailHtml); bundle._tailHtml = null; }
 							markContent();
 							run.AddNote("info", "ContentConverter",
 								`Page ${page.lessonLabel}: activity box kept open for the prose after its data table.`);
@@ -3616,6 +3635,8 @@ class ContentConverter {
 							emit(stack.pop().close);
 							breakRow();
 							emit(...this.#uploadBoxAfterText(bundle));   // the writer's text after the dropbox marker ships AFTER the box
+							// the writer's text after the widget (interactive_placeholder.tail_body_release.owned_after_box) ships after the box too
+							if (bundle._tailHtml) { emit(bundle._tailHtml); bundle._tailHtml = null; markContent(); }
 						}
 					} else {
 						// An inline widget FLOWS into the current section row, per the row-grouping
@@ -14899,9 +14920,17 @@ class ContentConverter {
 		// non-body tag) render as page text just before the box, when the box keeps other content
 		// (interactive_placeholder.lead_body_release; env BOXLEADBODY_OFF)
 		const released = this.#leadBodyRelease(bundle, tpl);
+		// THE ACTIVITY TAG'S SENTENCE TAIL IS THE BOX'S PROSE: an un-built widget whose activity tag carries the learner's instruction
+		// rather than a title («[Activity 3C Wordfind] Can you find these compound words in this word find?») shows that sentence as
+		// page text before the box (activity_wrapper.embedded_interactive_activity.typed_tag_title.sentence_tail; env TAGSENTENCE_OFF)
+		const tagTail = this.#activityTagSentence(bundle);
+		if (tagTail && !released.keepInBox) { const rest = [...released]; released.clear(); released.add(tagTail); for (const r of rest) released.add(r); }
 		// A BILINGUAL CONTENT TABLE IS NEVER A WIDGET MEMBER: the leading run of «English ║ Māori» content tables renders as reo / eng
 		// pairs before the box, the trailing run after it (interactive_placeholder.bilingual_table_release; env BOXREOTABLE_OFF)
 		const reoTables = this.#bilingualTableRelease(bundle, tpl, run);
+		// THE WRITER'S TEXT AFTER THE WIDGET IS PAGE TEXT: the trailing [Body] paragraph and the plain paragraphs after it render
+		// as page text just after the box (interactive_placeholder.tail_body_release; env BOXTAILBODY_OFF)
+		const tailRel = reoTables.after.length ? new Set() : this.#tailBodyRelease(bundle, tpl, released);
 		// A writer instruction EMBEDDED inside the interactive is moved to JUST BEFORE the
 		// placeholder box: notesBefore prepends the bundle's instructions at the return point
 		// instead of nesting them inside the dashed placeholder box itself.
@@ -15040,6 +15069,7 @@ class ContentConverter {
 		let lastBlk = null;   // the source block of the last dumped line
 		for (const m of [...bundle.openerItems, ...bundle.memberItems]) {
 			if (released.has(m) && !released.keepInBox) continue;   // the lead instruction renders before the box (a whole-released box keeps its prose for the hand-off)
+			if (tailRel.has(m)) continue;   // the writer's text after the widget renders after the box
 			if (reoTables.before.includes(m) || reoTables.after.includes(m)) continue;   // a bilingual content table renders outside the box
 			if (m.type === "table") { flushText(); lastBlk = null; parts.push(TablesAndGrids.contentTable(ak ? this.#answerKeyTable(m.block, ak) : m.block, run, true, this.#norm)); continue; }
 			let text = m.type === "black" ? m.text : (String(m.blackAfter ?? "").trim() ? m.blackAfter : embeddedText(m));   // the bracket-line words of an element member
@@ -15064,10 +15094,19 @@ class ContentConverter {
 		const inlineHtml = (lead ? lead + "\n" : "") + parts.join("\n");
 		// a released member is a tagged lead (its words after the tag) or an untagged paragraph (its own text)
 		const reoHtml = (list) => list.map((m) => reoTables.html.get(m)).join("\n");
-		const releasedHtml = [reoHtml(reoTables.before),
-			[...released].map((m) => ListsAndRuns.renderBlackText(String(m.type === "black" ? (m.text ?? "") : (m.blackAfter ?? "")).trim(), run, m.block?.links ?? []).join("\n")).join("\n")]
+		const relHtml = (m) => m._leadHeadingLevel
+			? `<h${m._leadHeadingLevel}>${ListsAndRuns.inlineMarkup(String(m.blackAfter ?? "").replace(/\*+/g, "").trim(), m.block?.links ?? [], false)}</h${m._leadHeadingLevel}>`
+			: ListsAndRuns.renderBlackText(String(m.type === "black" ? (m.text ?? "") : (m.blackAfter ?? "")).trim(), run, m.block?.links ?? []).join("\n");
+		const releasedHtml = [reoHtml(reoTables.before), [...released].map(relHtml).join("\n")]
 			.filter(Boolean).join("\n");
-		const trailingHtml = reoHtml(reoTables.after);
+		// an activity-owned box hands the released tail to its caller, which ships it after the activity box closes
+		// (tail_body_release.owned_after_box; env BOXTAILAFTER_OFF)
+		const tailHtml = [...tailRel].map(relHtml).join("\n");
+		const tailCfg = tpl.tail_body_release;
+		const tailOut = !!opts?.tailOut && !!tailHtml && tailCfg?.owned_after_box === true
+			&& !(typeof process !== "undefined" && process.env && process.env[tailCfg.owned_after_box_env ?? "BOXTAILAFTER_OFF"]);
+		if (tailOut) bundle._tailHtml = tailHtml;
+		const trailingHtml = [reoHtml(reoTables.after), tailOut ? "" : tailHtml].filter(Boolean).join("\n");
 		// The default hand-off wrap: the inline rendering above (retained notes + the dashed box)
 		// goes INSIDE the loud reference-code marker box, collapsed by default behind the animated
 		// arrow toggle. The wrapper carries BOTH classes — cv2-interactive (so every tool that skips
@@ -15148,6 +15187,98 @@ class ContentConverter {
 	}
 
 	/**
+	 * The un-built bundle's own activity tag when its tail is the learner's instruction: the bundle opens its own activity box
+	 * (an embedded activity id, no separate owner), the invocation's raw text matches tag_pattern, the typed-title rule left the
+	 * tail, and the tail is a sentence of at least min_words words with no bracket or address — returned so the box renderer
+	 * releases it with the lead; null otherwise, or when the box would keep nothing else. Data
+	 * activity_wrapper.embedded_interactive_activity.typed_tag_title.sentence_tail; env TAGSENTENCE_OFF.
+	 * @param {Object} bundle - the un-built interactive bundle
+	 * @returns {Object|null} the invocation item to release
+	 */
+	static #activityTagSentence(bundle) {
+		const c = DataService.Data.EmitTemplates.activity_wrapper?.embedded_interactive_activity?.typed_tag_title?.sentence_tail;
+		if (!c || c.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[c.env || "TAGSENTENCE_OFF"]) return null;
+		if (bundle.activityOwner || bundle.activityId == null) return null;
+		const mi = bundle.memberItems ?? [];
+		const inv = mi[0];
+		if (!inv || inv.type !== "tag" || inv.parse?.primary?.directive !== "INTERACTIVE" || inv._typedTitle) return null;
+		const raw = String(inv.text ?? "");
+		if (!new RegExp(c.tag_pattern ?? "\\[\\s*activity\\b", "i").test(raw)) return null;
+		if ((raw.match(/\[/g) ?? []).length > (raw.match(/\]/g) ?? []).length) return null;
+		const tail = String(inv.blackAfter ?? "").replace(/\s+/g, " ").trim();
+		if (tail.split(" ").filter(Boolean).length < (c.min_words ?? 5) || /^[[(]/.test(tail) || /\[|https?:\/\/|www\./i.test(tail)) return null;
+		const keeps = mi.slice(1).some((m) => m && (m.type === "table" || (m.type === "black" && String(m.text ?? "").trim())
+			|| (m.type === "tag" && m.parse?.primary && String(m.blackAfter ?? "").trim())));
+		return keeps ? inv : null;
+	}
+
+	/**
+	 * The members of an un-built bundle that are the writer's text AFTER the widget: the trailing run of plain paragraphs that
+	 * opens with a [Body] member — after the widget's last table, tag or numbered / bulleted data line — released as page text
+	 * just after the box. Only when every type of the bundle is listed, each paragraph a whole one (no list block, no red span,
+	 * no other captured item from its paragraph), and the box keeps min_box_chars of its own. Data
+	 * interactive_placeholder.tail_body_release; env BOXTAILBODY_OFF.
+	 * @param {Object} bundle - the un-built interactive bundle
+	 * @param {Object} tpl - EmitTemplates.interactive_placeholder
+	 * @param {Set<Object>} lead - the members the lead release already took
+	 * @returns {Set<Object>} the released member items, in document order (empty when the rule does not apply)
+	 */
+	static #tailBodyRelease(bundle, tpl, lead) {
+		const none = new Set();
+		const cfg = tpl?.tail_body_release;
+		if (!cfg || cfg.enabled === false) return none;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "BOXTAILBODY_OFF"]) return none;
+		const types = new Set(cfg.types ?? []);
+		if (![bundle.type, ...(bundle.extraTypes ?? [])].every((t) => types.has(t))) return none;
+		const bodyTags = new Set(cfg.body_tags ?? ["body"]);
+		const all = [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])];
+		const mi = (bundle.memberItems ?? []).filter((m) => m && !(m.type === "black" && !String(m.text ?? "").trim()));
+		const minW = cfg.min_words ?? 4;
+		const words = (s) => String(s ?? "").trim().split(/\s+/).filter(Boolean).length;
+		// a whole paragraph: no list block, no other captured item from it (a red word inside the sentence is its own item), and for
+		// a plain paragraph no red span (the [Body] tag itself is red)
+		const whole = (m) => !m.block?.list && !(m.block && all.some((x) => x !== m && x?.block === m.block))
+			&& !(m.type === "black" && /\u{1f534}\[RED TEXT\]/u.test(String(m.block?.text ?? "")));
+		// the trailing run: plain paragraphs and [Body] members, back from the box's end to the first item that is anything else
+		let k = mi.length;
+		while (k > 0) {
+			const m = mi[k - 1];
+			if (lead.has(m)) break;
+			if (m.type === "black") {
+				const t = String(m.text ?? "");
+				// a numbered / lettered / bulleted line, a ticked answer or a «Question: / Options:» label is the widget's own data
+				if (/^\s*(?:\d+[.)]|[a-z][.)]|[•\-–*▪◦])\s/i.test(t) || !whole(m) || /\[[^\]]{1,80}\]/.test(t)
+					|| new RegExp(cfg.data_line_pattern ?? "\\u2705|^\\s*(?:questions?|options?|answers?)\\s*:", "iu").test(t)) break;
+			} else if (m.type === "tag" && m.parse?.primary && bodyTags.has(m.parse.primary.tag ?? "") && (m.parse?.tags ?? []).length === 1) {
+				if (words(m.blackAfter) < minW || !whole(m)) break;
+			} else break;
+			k--;
+		}
+		// the run opens at its first [Body] member: the writer's own paragraph tag marks where the page text resumes. What stands
+		// just before it decides: the widget's own invocation, a note, a face / panel / media tag (panel_stop_tags) or a picture's
+		// file name or address makes the paragraph that panel's content (a click-drop's reveal after its picture line) — it stays
+		let s = k;
+		while (s < mi.length && mi[s].type !== "tag") s++;
+		if (s >= mi.length || s === 0) return none;
+		const stop = mi[s - 1];
+		const stopTags = new Set(cfg.panel_stop_tags ?? []);
+		if (stop.type === "tag" && (stop.parse?.primary?.directive === "INTERACTIVE"
+			|| stopTags.has(String(stop.parse?.primary?.tag ?? "").toLowerCase()))) return none;
+		if (stop.type === "black" && new RegExp(cfg.media_line_pattern ?? "\\.(?:jpe?g|png|gif|svg|webp)\\b|https?://|www\\.", "i").test(String(stop.text ?? ""))) return none;
+		const run = mi.slice(s);
+		if (run.length > (cfg.max_items ?? 6)) return none;
+		const out = new Set(run);
+		// the box must keep content of its own (min_box_chars letters / digits in what stays: its text members and tables)
+		const letters = (x) => String(x ?? "").replace(/<[^>]+>/g, " ").replace(/[^\p{L}\p{N}]/gu, "").length;
+		const cellText = (c) => (typeof c === "string" ? c : (c?.text ?? ""));
+		const left = all.filter((it) => it && !out.has(it) && !lead.has(it)).reduce((n, it) => n + (it.type === "table"
+			? letters((it.block?.rows ?? []).flat().map(cellText).join(" "))
+			: letters(it.type === "black" ? it.text : (String(it.blackAfter ?? "").trim() ? it.blackAfter : ""))), 0);
+		return left >= (cfg.min_box_chars ?? 60) ? out : none;
+	}
+
+	/**
 	 * The [Body] members of an un-built bundle that are the widget's LEAD instruction: those standing before the bundle's
 	 * first table and before a second non-body tag, with at least min_words words — released as page text before the box.
 	 * Only when every type of the bundle is listed, and only when the box keeps other content (a table, or a text member
@@ -15207,12 +15338,23 @@ class ContentConverter {
 		const upMaxParas = nmHere ? (nm.max_paragraphs ?? 3) : (up.max_paragraphs ?? 3);
 		let upCount = 0;
 		let otherTags = 0;
+		// THE HEADING TYPED RIGHT AFTER THE WIDGET TAG LEADS THE WIDGET (lead_body_release.heading_lead; env BOXLEADHEAD_OFF): the box's
+		// first member, a heading tag, is released before the box — the box's <h3> title inside an activity box, its own level in the
+		// page flow — and is not counted as the second tag, so the [Body] lead lines after it release too
+		const hl = cfg.heading_lead;
+		const hlOn = inTypes && !!hl && hl.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[hl.env ?? "BOXLEADHEAD_OFF"]);
+		const headTags = new Set((hl?.tags ?? []).map((t) => String(t).toLowerCase()));
+		let sawContent = false;
+		let afterHeading = false;   // a line the heading lead opened the way to: one carrying a highlighted answer (block.marks) is the key, it stays
 		for (const m of bundle.memberItems ?? []) {
 			if (!m) continue;
 			if (m.type === "table") break;
 			if (upTagLed && m === firstMember) break;   // the tag-led form: nothing after the widget's first member leaves the box
 			if (m.type === "black") {
-				if (!upHere || !String(m.text ?? "").trim()) continue;
+				if (!String(m.text ?? "").trim()) continue;
+				sawContent = true;
+				if (!upHere) continue;
 				const words = String(m.text ?? "").trim().split(/\s+/).filter(Boolean).length;
 				// a numbered or bulleted line («1. Giraffes are …», «• …») is the widget's own data, never the instruction
 				const dataLine = /^\s*(?:\d+[.)]|[•\-–*▪◦])\s/.test(String(m.text ?? ""));
@@ -15232,8 +15374,19 @@ class ContentConverter {
 				const words = String(m.blackAfter ?? "").trim().split(/\s+/).filter(Boolean).length;
 				// only a whole paragraph: not a list paragraph (its numbering lives on the block) and no other captured item
 				// from the same paragraph (a red word inside the sentence is its own item)
-				if (words >= (cfg.min_words ?? 4) && !m.block?.list
+				if (words >= (cfg.min_words ?? 4) && !m.block?.list && !(afterHeading && (m.block?.marks ?? []).length)
 					&& !(m.block && all.some((x) => x !== m && x?.block === m.block))) out.add(m);
+				sawContent = true;
+				continue;
+			}
+			if (hlOn && !sawContent && otherTags <= 1 && prim && headTags.has(String(prim).toLowerCase())
+				&& String(m.blackAfter ?? "").trim() && (m.parse?.tags ?? []).length === 1 && !m.block?.list
+				&& !(m.block && all.some((x) => x !== m && x?.block === m.block))) {
+				const lv = String(prim).match(/^h([1-6])$/i);
+				m._leadHeadingLevel = (bundle.activityOwner || bundle.activityId != null) ? (hl.boxed_level ?? 3) : (lv ? +lv[1] : (hl.default_level ?? 3));
+				out.add(m);
+				sawContent = true;
+				afterHeading = true;
 				continue;
 			}
 			if (++otherTags > 1) break;

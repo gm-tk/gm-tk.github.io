@@ -717,6 +717,12 @@ class TablesAndGrids {
 			const re = new RegExp(`^\\[\\s*(${tags})\\s+(?=\\S)(?![^\\]]*\\])`, "i");
 			parts = parts.map((p) => p.replace(re, (m, t) => `[${t}] `));
 		}
+		// (c) a soft line break followed by the writer's next tag starts a new piece — «[Overview] (leave blank if not applicable)»
+		// ↵ «[tab] [H4] Learning Intentions» are two lines of one cell, not one piece opening with [Overview] (env CELLBREAKTAG_OFF)
+		if (on(rp.break_before_tag, "CELLBREAKTAG_OFF")) {
+			const re = new RegExp(rp.break_before_tag.pattern ?? "\\n(?=\\s*\\[[^\\]\\n]{1,40}\\])");
+			parts = parts.flatMap((p) => p.split(re).map((q) => q.trim()).filter(Boolean));
+		}
 		return parts;
 	};
 
@@ -791,6 +797,16 @@ class TablesAndGrids {
 			if (m) {
 				try { canon = norm.Parse(`[${m[1]}]`)?.primary?.tag ?? null; } catch { canon = null; }
 				rest = m[2];
+			}
+			// a tab marker before the part's own tag («[tab] [H4] Learning Intentions») marks the menu's tab, not the part's kind:
+			// the tag after it decides (layout_table_grid.leading_marker_tags; env CELLTABMARK_OFF)
+			const lmt = tpl.body_region.layout_table_grid.leading_marker_tags;
+			if (canon && lmt && lmt.enabled !== false && (lmt.tags ?? []).includes(canon)
+				&& !(typeof process !== "undefined" && process.env && process.env[lmt.env ?? "CELLTABMARK_OFF"])) {
+				const m2 = rest.match(/^\[([^\]]+)\]\s*([\s\S]*)$/);
+				let c2 = null;
+				if (m2) { try { c2 = norm.Parse(`[${m2[1]}]`)?.primary?.tag ?? null; } catch { c2 = null; } }
+				if (c2) { canon = c2; part = rest; rest = m2[2]; }
 			}
 			if (!canon && redOnly && redOnly[pi] && /\p{L}/u.test(part)) {
 				flush();
