@@ -42,7 +42,6 @@
 !/html-converter/data/Tag_Exceptions.json
 !/html-converter/data/Tag_Lexicon.json
 !/html-converter/data/Template_Modes.json
-!/html-converter/data/Template_Check_Questions.json
 
 # 4. Never tracked anywhere, even inside an allowed folder.
 *.local.md

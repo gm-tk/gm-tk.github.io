@@ -51,7 +51,7 @@
 			</div>
 			<input type="file" id="file-input" accept=".docx,.txt" multiple hidden>
 			<ul id="file-list" class="file-list"></ul>
-			<!-- Red: more than two Word files are listed (the check and Convert wait until one is removed). -->
+			<!-- Red: more than two Word files are listed (Convert waits until one is removed). -->
 			<p id="file-list-note" class="convert-gate-note" hidden></p>
 		</section>
 
@@ -181,20 +181,9 @@
 			</div>
 		</section>
 
-		<!-- ============ 4. TEMPLATE CHECK ============ -->
-		<!-- The plain-English questions about what PageForge was unsure of in
-		     this Writers Template. Hidden until Word files are listed. With the
-		     check before Convert (Template_Check_Questions.json
-		     run_before_convert), PageForge converts the module quietly in memory
-		     as soon as Convert could run and shows the questions here; it checks
-		     again by itself when the files or choices change. App.js draws the
-		     heading line (with the on-screen switch) and the status lines;
-		     TemplateCheckPanel.js renders the questions. -->
-		<section id="template-check-panel" class="panel template-check-panel" hidden></section>
-
-		<!-- ============ 5. CONVERT ============ -->
+		<!-- ============ 4. CONVERT ============ -->
 		<section class="panel">
-			<h2>5 · Convert</h2>
+			<h2>4 · Convert</h2>
 			<button id="convert-button" type="button" disabled>Convert module</button>
 			<!-- While Convert is deactivated by the reference gate,
 			     this red note says why (App.#updateConvertGate drives it). -->
@@ -209,9 +198,9 @@
 			<div id="progress-log" class="progress-log" aria-live="polite"></div>
 		</section>
 
-		<!-- ============ 6. RESULTS ============ -->
+		<!-- ============ 5. RESULTS ============ -->
 		<section class="panel">
-			<h2>6 · Output files</h2>
+			<h2>5 · Output files</h2>
 			<div id="output-metadata" class="output-metadata" hidden></div>
 			<ul id="output-list" class="output-list"></ul>
 			<button id="download-all" type="button" hidden>Download all as .zip</button>
@@ -262,13 +251,10 @@
 	<script src="js/ManifestBuilder.js"></script>
 	<script src="js/HtmlFormatter.js"></script>
 	<script src="js/PageAssembler.js"></script>
-	<!-- 5. the Template check (reads a finished run — the quiet one before Convert, or Convert's — and changes nothing) -->
-	<script src="js/TemplateCheck.js"></script>
-	<!-- 6. output + presentation -->
+	<!-- 5. output + presentation -->
 	<script src="js/ZipWriter.js"></script>
 	<script src="js/SummaryReporter.js"></script>
-	<script src="js/TemplateCheckPanel.js"></script>
-	<!-- 7. App.js LAST — it orchestrates everything above -->
+	<!-- 6. App.js LAST — it orchestrates everything above -->
 	<script src="js/App.js"></script>
 </body>
 </html>

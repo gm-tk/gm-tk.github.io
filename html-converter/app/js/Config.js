@@ -34,7 +34,7 @@ class Config {
 	// This is shown in the UI so a developer can tell which build produced a
 	// page. It is NOT written into the converted HTML, so changing it never
 	// changes any output — bump it with every release.
-	static AppVersion = "260626.15";
+	static AppVersion = "260626.16";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
@@ -83,18 +83,7 @@ class Config {
 		// human corpus. MenuBuilder uses it to decide when a one-line
 		// "**Title:** content" heading should be split (env MENUHEADINGLEX_OFF).
 		OverviewMenuHeadingLexicon: "../data/Overview_Menu_Heading_Lexicon.json",
-		// The Template check's question catalogue: which notes each question
-		// matches, its plain-English wording and its answer choices (read by
-		// TemplateCheck.js after a conversion; it changes no page).
-		TemplateCheckQuestions: "../data/Template_Check_Questions.json",
 	};
-
-	// The data files the app can START WITHOUT. DataService still loads them,
-	// but a missing or broken one is noted (DataService.Unavailable) instead
-	// of stopping startup: the Template check's questions are not a conversion
-	// rule, so without them the app converts as normal and the check says it
-	// is unavailable. Every conversion-rule file above stays load-or-die.
-	static OptionalDataFiles = ["TemplateCheckQuestions"];
 
 	// ---------------------------------------------------------------------
 	// DOM SELECTORS — the element ids used in app/index.html
@@ -149,9 +138,6 @@ class Config {
 		SummaryPanel:  "summary-panel",
 		DownloadAll:   "download-all",
 		OutputList:    "output-list",
-		// The Template check panel (between the Reference module and Convert; App.js
-		// draws its heading line, switch and status lines, TemplateCheckPanel.js the questions).
-		TemplateCheckPanel: "template-check-panel",
 	};
 
 	// ---------------------------------------------------------------------
@@ -175,8 +161,8 @@ class Config {
 		ConvertGateCustom: "Please select a subject, phase and template in Section 3 (all three are required)",
 		// The upload list. A Word file added with the same name as one already
 		// listed replaces it (the newest copy wins); more than two Word files
-		// hold the check and Convert until one is removed — PageForge never
-		// guesses which one to drop.
+		// hold Convert until one is removed — PageForge never guesses which
+		// one to drop.
 		FileReplaced: "↻ «{name}» replaced the copy with the same name that was already listed; the newest copy is used.",
 		TooManyWordFiles: "Three Word files are listed — remove the one you don't need (✕).",
 		TooManyWordFilesMany: "{count} Word files are listed — remove the ones you don't need (✕).",
@@ -184,13 +170,6 @@ class Config {
 		// The Reference-module panel, when the files change to another module.
 		ReferenceNewModule: "↻ A different module ({code}): your earlier reference choice was cleared and the suggested reference module, {suggestion}, is selected.",
 		ReferenceNewModuleNone: "↻ A different module ({code}): your earlier reference choice was cleared — please select a reference module in Section 3.",
-		// The same words wherever PageForge finds no Writers Template.
-		NoWritersTemplate: "No Writers Template found among the uploads (no [TITLE BAR]/[Fundamental content] opener).",
-		// The Template check panel when its data file could not be loaded (these
-		// two cannot live in that file), and when its zip files cannot be built.
-		TemplateCheckTitle: "4 · Template check",
-		TemplateCheckUnavailable: "The template check isn't available right now — converting works as normal.",
-		TemplateCheckZipFailed: "⚠ The template check's files could not be added to the zip ({reason}); the zip holds the module files only.",
 	};
 
 	// ---------------------------------------------------------------------
