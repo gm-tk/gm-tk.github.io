@@ -34,7 +34,7 @@ class Config {
 	// This is shown in the UI so a developer can tell which build produced a
 	// page. It is NOT written into the converted HTML, so changing it never
 	// changes any output — bump it with every release.
-	static AppVersion = "260626.16";
+	static AppVersion = "260626.19";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
@@ -83,6 +83,10 @@ class Config {
 		// human corpus. MenuBuilder uses it to decide when a one-line
 		// "**Title:** content" heading should be split (env MENUHEADINGLEX_OFF).
 		OverviewMenuHeadingLexicon: "../data/Overview_Menu_Heading_Lexicon.json",
+		// Every module code the Creative Services sprint sheets name (machine-built
+		// by the sprint-scan tools). ModuleResolver reads a code with no digits only
+		// when the template's own Module code line names it AND this list holds it.
+		SprintModuleCodes: "../data/Sprint_Module_Codes.json",
 	};
 
 	// ---------------------------------------------------------------------

@@ -12667,43 +12667,111 @@ class ContentConverter {
 	}
 
 	// =======================================================================
-	// A CENTRALISED IMAGE BY NAME (KB 14E, constraint 95, CL-0117)
+	// A CENTRALISED IMAGE BY NAME (KB 14E / 14F, constraints 95 and 99)
 	// =======================================================================
 
 	/**
 	 * An image-tagged span whose words are a centralised-image request naming a registry
-	 * asset ([Centralised image: Quinn 4], [Image centralised Hypi]) → that asset's <img>
-	 * (elements.central_image.form); a known name with a pose the server does not hold → the
-	 * pose_unknown To Do; any other span → null, so the ordinary image path runs unchanged.
-	 * Data flag elements.central_image.enabled; env CENTRALIMG_OFF.
+	 * asset ([Centralised image: Quinn 4], [Image centralised Hypi], [Centralised image: HP_Kai_3_phase_2])
+	 * → that asset's markup (elements.central_image.form, or the asset's own html); a known name
+	 * with a pose the store does not hold → the pose_unknown To Do; any other span → null, so the
+	 * ordinary image path runs unchanged. Data flag elements.central_image.enabled; env CENTRALIMG_OFF.
+	 *
+	 * The catalogue (elements.central_image.catalogue; env CENTRALIMGCAT_OFF) adds every image the
+	 * template's Centralised Images page lists, named by its own tag, and three reading rules: a
+	 * space, an underscore and a hyphen are one separator (catalogue.separators), so «Aroha-1» and
+	 * «maths_characters_ada» reach their characters; names that read the same once separators are
+	 * ignored are told apart by the writer's exact spelling, then by the page's phase (an asset's
+	 * `phases`); and a path may carry {phase}, filled from the page's template band
+	 * (catalogue.phase_by_template), with that phase's poses (phase_poses). An asset may give its own
+	 * `html` (an <object>, a template div) and a `todo` note key — that note is raised when the writer
+	 * named no pose; an asset with no src then builds only the note.
 	 */
 	static #centralImage(it, run) {
 		const c = DataService.Data.EmitTemplates.elements?.central_image;
 		if (!c || c.enabled === false) return null;
-		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "CENTRALIMG_OFF"]) return null;
+		const envOn = (k) => typeof process !== "undefined" && process.env && process.env[k];
+		if (envOn(c.env ?? "CENTRALIMG_OFF")) return null;
 		const f = Utils.Fold(String(it.text ?? "")).replace(/[\[\]]/g, " ").replace(/\s+/g, " ").trim();
 		if (!c.cue_pattern || !new RegExp(c.cue_pattern, "i").test(f)) return null;
-		// the words after the cue name the asset (+ an optional pose number)
-		const rest = f.replace(new RegExp(c.cue_pattern, "i"), " ").replace(/^[\s:;,\-–—]+/, "").trim();
-		const assets = c.assets ?? {};
-		const names = Object.keys(assets).sort((a, b) => b.length - a.length);
-		const name = names.find((n) => new RegExp("(^|\\s)" + n.replace(/\s+/g, "\\s+") + "(\\s|$)", "i").test(" " + rest + " "));
-		if (!name) return null;
-		const a = assets[name];
-		const nm = (" " + rest + " ").replace(new RegExp("(^|\\s)" + name.replace(/\s+/g, "\\s+") + "(\\s|$)", "i"), " ").match(/(?:^|\s)(\d{1,2})(?:\s|$)/);
-		const n = nm ? parseInt(nm[1], 10) : null;
-		let src;
-		if (n !== null) {
-			if (!(a.poses ?? []).includes(n)) {
-				return [NotesAndComments.redFlag(Utils.FillTemplate(c.notes?.pose_unknown ?? "Centralised image — no pose {n} for {name}.",
-					{ n: String(n), name: a.alt ?? name, poses: (a.poses ?? []).join(", ") || "none" }), run, "todo")];
-			}
-			src = Utils.FillTemplate(a.numbered_src ?? a.src, { n: String(n) });
-		} else {
-			src = Utils.FillTemplate(a.src, { n: String(a.default_pose ?? "") });
+		const cat = (c.catalogue && c.catalogue.enabled !== false && !envOn(c.catalogue.env ?? "CENTRALIMGCAT_OFF")) ? c.catalogue : null;
+		// with the catalogue, the asset and its pose are read from the bracket that carries the cue: the words a writer
+		// adds after the tag («CS: Create an image of Omar … a different colour for 0 (zero) …») name nothing; a tag
+		// missing its «]» reads on to the end of the span
+		let scope = f;
+		if (cat) {
+			const tagged = (Utils.Fold(String(it.text ?? "")).match(/\[[^\]]*\]/g) ?? []).find((b) => new RegExp(c.cue_pattern, "i").test(b));
+			if (tagged) scope = tagged.replace(/[\[\]]/g, " ").replace(/\s+/g, " ").trim();
 		}
-		run.AddNote("info", "ContentConverter", `Centralised image "${a.alt ?? name}"${n !== null ? ` pose ${n}` : ""} built from the central store (${src}).`);
-		return [Utils.FillTemplate(c.form, { src: Utils.EscapeHtml(src), alt: Utils.EscapeHtml(a.alt ?? name) })];
+		// the words after the cue name the asset (+ an optional pose number)
+		const rest = scope.replace(new RegExp(c.cue_pattern, "i"), " ").replace(/^[\s:;,\-–—]+/, "").trim();
+		const assets = cat ? Object.assign({}, c.assets ?? {}, cat.assets ?? {}) : (c.assets ?? {});
+		const sepRe = cat?.separators ? new RegExp(cat.separators, "g") : null;
+		const norm = (s) => (sepRe ? String(s).replace(sepRe, " ") : String(s)).replace(/\s+/g, " ").trim();
+		const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+		const keyOf = (n) => norm(Utils.Fold(n));
+		const nameRe = (n) => new RegExp("(^|\\s)" + esc(keyOf(n)).replace(/\s+/g, "\\s+") + "(\\s|$)", "i");
+		const hay = " " + norm(rest) + " ";
+		// the page's phase from its template band — read only when a row needs it
+		let phaseMemo;
+		const pagePhase = () => {
+			if (phaseMemo !== undefined) return phaseMemo;
+			const raw = SkeletonBuilder.ResolveTemplatePhase(run, { quiet: true });
+			const tpl = DataService.Data.EmitTemplates.skeleton?.template_attr_map?.[raw] ?? raw ?? "";
+			const map = cat?.phase_by_template ?? {};
+			phaseMemo = map[tpl] ?? map[String(tpl).toUpperCase()] ?? null;
+			return phaseMemo;
+		};
+		const names = Object.keys(assets).sort((a, b) => keyOf(b).length - keyOf(a).length);
+		const hits = names.filter((n) => nameRe(n).test(hay));
+		if (!hits.length) return null;
+		let name = hits[0];
+		if (cat) {
+			// two names that read the same once separators are ignored: the writer's spelling, then the page's phase
+			const twins = hits.filter((n) => keyOf(n) === keyOf(name));
+			if (twins.length > 1) {
+				name = twins.find((n) => scope.includes(Utils.Fold(n)))
+					?? twins.find((n) => (assets[n].phases ?? []).includes(pagePhase()))
+					?? twins[0];
+			}
+		}
+		const a = assets[name];
+		const nm = hay.replace(nameRe(name), " ").match(/(?:^|\s)(\d{1,2})(?:\s|$)/);
+		const n = nm ? parseInt(nm[1], 10) : null;
+		const label = a.alt || name;
+		const needsPhase = !!cat && /\{phase\}/.test(String(a.src ?? "") + String(a.numbered_src ?? ""));
+		const ph = needsPhase ? pagePhase() : null;
+		if (needsPhase && !ph) {
+			return [NotesAndComments.redFlag(Utils.FillTemplate(cat.notes?.phase_unknown ?? "Centralised image — no template phase for {name}.", { name: label }), run, "todo")];
+		}
+		const poses = (ph && a.phase_poses?.[ph]) ? a.phase_poses[ph] : (a.poses ?? []);
+		let src = null;
+		if (n !== null) {
+			if (!poses.includes(n)) {
+				return [NotesAndComments.redFlag(Utils.FillTemplate(c.notes?.pose_unknown ?? "Centralised image — no pose {n} for {name}.",
+					{ n: String(n), name: label, poses: poses.join(", ") || "none" }), run, "todo")];
+			}
+			src = Utils.FillTemplate(a.numbered_src ?? a.src, { n: String(n), phase: ph ?? "" });
+		} else if (a.src && !(cat && /\{n\}/.test(a.src) && a.default_pose === undefined)) {
+			src = Utils.FillTemplate(a.src, { n: String(a.default_pose ?? ""), phase: ph ?? "" });
+		}
+		const out = [];
+		// an attribute value as the template writes it: «health & PE characters/…» keeps its bare «&»
+		// (an ampersand before a space is plain text in HTML); with the catalogue OFF, the full escape
+		const attr = (s) => cat
+			? String(s).replace(/&(?=[A-Za-z0-9#])/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")
+			: Utils.EscapeHtml(s);
+		const alt = attr(a.alt ?? name);
+		if (cat && a.html) out.push(Utils.FillTemplate(a.html, { src: attr(src ?? ""), alt }));
+		else if (src) out.push(Utils.FillTemplate(c.form, { src: attr(src), alt }));
+		if (cat && a.todo && n === null) {
+			out.push(NotesAndComments.redFlag(Utils.FillTemplate(cat.notes?.[a.todo] ?? a.todo, { words: rest, name: label }), run, "todo"));
+		}
+		if (!out.length) return null;
+		if (src || (cat && a.html)) {
+			run.AddNote("info", "ContentConverter", `Centralised image "${label}"${n !== null ? ` pose ${n}` : ""} built from the central store (${src ?? "template markup"}).`);
+		}
+		return out;
 	}
 
 	static #elementCore(it, bodyItems, i, stack, run) {

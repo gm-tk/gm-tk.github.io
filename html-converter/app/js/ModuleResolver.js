@@ -53,11 +53,33 @@ class ModuleResolver {
 	 * Detects the module code from the available evidence.
 	 *
 	 * HOW IT WORKS (strongest evidence first):
-	 *  1. Filenames: "OSAH401 Writers Template.docx" → leading CODE token.
-	 *  2. Front-matter text: a "Module code: XYZ123" style line, or any
-	 *     registry-known code appearing in the first blocks.
-	 * Conflicting candidates → keep the filename one, surface a warning
+	 *  1. Filenames: "OSAH401 Writers Template.docx" → the first code-shaped token.
+	 *  1b. A filename's leading token the library index knows, whatever its shape.
+	 *  1c. The template's own "Module code:" front-matter line.
+	 *  2. Front-matter text: the first code-shaped token in the first blocks.
+	 * Conflicting candidates → keep the first one, surface a warning
 	 * (never silently pick).
+	 *
+	 * THE CODE SHAPE (Input_Doc_Rules.module_code_detection.code_shape, env
+	 * CODESHAPE_OFF): every form a module code takes — 2 to 8 letters before
+	 * 2–4 digits (ENGC101, ANZHFUN01, LGSOFUN01), a digit inside the letters
+	 * (TRM1FUN18), the inquiry families' hyphen codes (PRIINQ-05, SSSINQ-01)
+	 * and the WHA family, with or without digits (CHWHA, PWYWHA1) — bounded so
+	 * a code is never part of a longer run of letters or digits (a space,
+	 * underscore, hyphen or dot is a boundary, so "SMFUN02_WT.docx" reads as
+	 * SMFUN02). A token whose letters are one of the listed not-code words
+	 * (PHASE2, YEAR10, COVID19) is passed over. Switched off, the classic shape
+	 * stands — 2–6 letters + 2–4 digits (+RR) between word boundaries — and
+	 * step 1c is skipped.
+	 *
+	 * A CODE WITH NO DIGITS (a letters-only family no form describes) cannot be
+	 * told from an ordinary capitalised word on its own, so it is read only when
+	 * two independent sources agree: the template's own Module code line names
+	 * it, written in capitals, AND the sprint sheets' code list holds it
+	 * (data/Sprint_Module_Codes.json; code_shape.sprint_confirmed, env
+	 * SPRINTCODE_OFF). Neither source alone is enough — the sprint sheets also
+	 * name subject abbreviations (MTK, NCEA), and Module code lines carry made-up
+	 * labels (FUNTUHI) and placeholders.
 	 *
 	 * @param {Object} options
 	 * @param {string[]} options.filenames - uploaded file names
@@ -67,24 +89,28 @@ class ModuleResolver {
 	 * @returns {string|null} the module code (uppercased) or null
 	 */
 	static DetectModuleCode({ filenames = [], allBlocks = [], run }) {
-		// code shape: 2–6 letters + 2–4 digits, optionally a trailing
-		// letter pair (e.g. ANZH102RR). Matches the corpus naming.
+		const shape = this.CodeShape();
+		// the classic shape: 2–6 letters + 2–4 digits, optionally a trailing
+		// letter pair (e.g. ANZH102RR)
 		const codeRx = /\b([A-Z]{2,6}\d{2,4}(?:RR)?)\b/;
+		const find = shape
+			? (text) => this.FindCode(text, shape)
+			: (text) => String(text).toUpperCase().match(codeRx)?.[1] ?? null;
 
 		const candidates = [];
 
 		// 1) filenames — the strongest signal in practice
 		for (const name of filenames) {
-			const m = name.toUpperCase().match(codeRx);
-			if (m) candidates.push({ code: m[1], from: `filename "${name}"` });
+			const code = find(name);
+			if (code) candidates.push({ code, from: `filename "${name}"` });
 		}
 
 		// 1b) a filename's LEADING token that the structure index KNOWS is the module
-		// code, whatever its shape: the library carries codes the regex cannot name (CHWHA / GEWHA
-		// have no digits, ANZHFUN05 has seven letters, PWYWHA1 one digit — and its front matter
-		// mentions PWY1000, which must not become its code). Only when the regex found nothing
-		// in the filenames, so every module the regex already names keeps its path; the
-		// front-matter regex below stays the last resort. Data Input_Doc_Rules
+		// code, whatever its shape: a code no listed form describes still resolves when the
+		// library knows it (with the classic shape: CHWHA / GEWHA have no digits, ANZHFUN05 has
+		// seven letters, PWYWHA1 one digit — and its front matter mentions PWY1000, which must
+		// not become its code). Only when no filename carried a code-shaped token, so every
+		// module the shape already names keeps its path. Data Input_Doc_Rules
 		// .module_code_detection.registry_token; env CODEREG_OFF.
 		const regCfg = DataService.Data.InputDocRules?.module_code_detection?.registry_token;
 		const regOn = regCfg && regCfg.enabled !== false
@@ -100,11 +126,38 @@ class ModuleResolver {
 			}
 		}
 
+		// 1c) the template's own "Module code" line (a front_matter_metadata moduleCode label,
+		// with or without a colon — "Module Code GEO1006"), read with the code shape. The first
+		// labelled line holding a code counts (a later one is often the template's stale
+		// example), and a space typed between the letters and the digits ("TWHA 901") is closed
+		// up. Ahead of any other code the front matter mentions first (a PWYWHA1 template also
+		// names PWY1000). Only when no filename carried the code. Data code_shape.label_line.
+		// A line holding no code-shaped token may still name a code with no digits: the first
+		// capitalised word on it that the sprint sheets' code list holds (SprintCode).
+		if (shape && shape.labelLine && !candidates.length) {
+			const labels = (DataService.Data.InputDocRules?.front_matter_metadata?.fields?.moduleCode?.labels ?? [])
+				.map((l) => new RegExp("^\\s*" + l.trim().split(/\s+/).map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("\\s+")
+					+ "(?:\\s*[:\\-\u2013\u2014]\\s*|\\s+)(\\S.*)$", "is"));
+			for (const b of allBlocks.slice(0, 40)) {
+				if (b.kind !== "para") continue;
+				const text = b.text.replace(/\u{1f534}/gu, "").replace(/\[\/?RED TEXT\]/g, "").replace(/\*\*/g, "");
+				const value = labels.map((rx) => text.match(rx)?.[1]).find(Boolean);
+				if (!value) continue;
+				let code = find(value.replace(/([A-Za-z])\s+(?=\d)/g, "$1"));
+				let from = "the template's Module code line";
+				if (!code) {
+					code = this.SprintCode(value, shape);
+					from = "the template's Module code line, confirmed by the sprint sheets";
+				}
+				if (code) { candidates.push({ code, from }); break; }
+			}
+		}
+
 		// 2) front-matter "Module code:" line or early code mention
 		for (const b of allBlocks.slice(0, 40)) {
 			if (b.kind !== "para") continue;
-			const m = b.text.toUpperCase().match(codeRx);
-			if (m) { candidates.push({ code: m[1], from: "document front-matter" }); break; }
+			const code = find(b.text);
+			if (code) { candidates.push({ code, from: "document front-matter" }); break; }
 		}
 
 		if (!candidates.length) {
@@ -121,6 +174,79 @@ class ModuleResolver {
 		}
 		if (run) run.codeSource = candidates[0].from;
 		return candidates[0].code;
+	};
+
+	static #shape = null;      // the compiled code shape (CodeShape)
+	static #shapeCfg = null;   // the data block it was compiled from
+
+	/**
+	 * The module-code shape from Input_Doc_Rules.module_code_detection.code_shape,
+	 * compiled once: the listed forms as one pattern, bounded on both sides by
+	 * anything that is not a letter or a digit, plus the not-code words. Null when
+	 * the data flag is off or its env (CODESHAPE_OFF) is set — the callers then use
+	 * the classic shape.
+	 *
+	 * @returns {?{rx: RegExp, stop: Set<string>, labelLine: boolean}}
+	 */
+	static CodeShape() {
+		const cfg = DataService.Data.InputDocRules?.module_code_detection?.code_shape;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "CODESHAPE_OFF"]) return null;
+		if (this.#shapeCfg !== cfg) {
+			const forms = (cfg.forms ?? []).map((f) => `(?:${f})`).join("|");
+			this.#shape = {
+				rx: new RegExp(`(?<![A-Z0-9])(${forms})(?![A-Z0-9])`, "g"),
+				stop: new Set((cfg.not_code_stems ?? []).map((s) => String(s).toUpperCase())),
+				labelLine: cfg.label_line !== false,
+				sprint: cfg.sprint_confirmed ?? null,
+				sprintCodes: null,
+			};
+			this.#shapeCfg = cfg;
+		}
+		return this.#shape;
+	};
+
+	/**
+	 * A module code with NO digits, confirmed by the sprint sheets: the first
+	 * word on a Module code line written in capitals (sprint_confirmed's letter
+	 * range) that data/Sprint_Module_Codes.json lists. Null when nothing on the
+	 * line qualifies, or when sprint_confirmed is off (data flag, or its env
+	 * SPRINTCODE_OFF), or the list is not loaded.
+	 *
+	 * @param {string} value - the text after the Module code label
+	 * @param {{sprint: ?Object, sprintCodes: ?Set<string>}} shape - from CodeShape()
+	 * @returns {string|null} the code, or null
+	 */
+	static SprintCode(value, shape) {
+		const cfg = shape?.sprint;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "SPRINTCODE_OFF"]) return null;
+		if (!shape.sprintCodes) {
+			const list = DataService.Data.SprintModuleCodes?.codes;
+			if (!Array.isArray(list)) return null;
+			shape.sprintCodes = new Set(list.map((c) => String(c).toUpperCase()));
+		}
+		const word = new RegExp(`(?<![A-Za-z0-9])([A-Z]{${cfg.min_letters ?? 3},${cfg.max_letters ?? 8}})(?![A-Za-z0-9])`, "g");
+		for (const m of String(value ?? "").matchAll(word)) {
+			if (shape.sprintCodes.has(m[1])) return m[1];
+		}
+		return null;
+	};
+
+	/**
+	 * The first module code in a piece of text, read with CodeShape()'s pattern
+	 * (the text is upper-cased first). A token whose leading letters are one of
+	 * the not-code words is passed over and the search goes on.
+	 *
+	 * @param {string} text - a filename or a paragraph
+	 * @param {{rx: RegExp, stop: Set<string>}} shape - from CodeShape()
+	 * @returns {string|null} the code, or null when the text holds none
+	 */
+	static FindCode(text, shape) {
+		for (const m of String(text ?? "").toUpperCase().matchAll(shape.rx)) {
+			if (!shape.stop.has(m[1].match(/^[A-Z]+/)?.[0] ?? "")) return m[1];
+		}
+		return null;
 	};
 
 	/**

@@ -431,7 +431,7 @@
             "leila"
           ],
           "component_owner": "04 Overlays (speech bubble)",
-          "detail": "Set: Sura, Afi, Alex, Kai, Leila. Class imageCentral. ALL FIVE ARE DELIVERED for phases 1–4 (CL-0111; server list). Full body, poses 1 and 2, for every character in every phase: 'health & PE characters/phase #/HP_{Sura|Afi|Alex|Kai|Leila}_{1|2}_phase_#.png'. Head-only: 'health & PE characters/phase #/head_only/HP_{Name}_3_phase_#.png' (pose 3) and, for most characters, pose 4 ('HP_{Name}_4_phase_#.png') — the head-only set is not uniform, so copy the exact filename from the server list, never construct it: phase 4 Sura has pose 4 only ('head_only/HP_Sura_4_phase_4.png'), and phase 3 also holds 'HP_Afi_3_phase_3.png' in the full-body folder. Pairs: 'health & PE characters/phase 1/combination/Kai and Afi phase 1.png' and 'health & PE characters/phase 1/combination/Sura and Leila phase 1.png' (phase 1 only on the server today). Source: KB 14B §14.8.",
+          "detail": "Set: Sura, Afi, Alex, Kai, Leila. Class imageCentral. ALL FIVE ARE DELIVERED for phases 1–4 (CL-0111; server list). Full body, poses 1 and 2, for every character in every phase: 'health & PE characters/phase #/HP_{Sura|Afi|Alex|Kai|Leila}_{1|2}_phase_#.png'. Head-only, poses 3 and 4, for every character in every phase: 'health & PE characters/phase #/head_only/HP_{Name}_{3|4}_phase_#.png' — the template's Centralised Images page lists the full set; the writer names an image with [Centralised image: HP_<Name>_<pose>_phase_<N>], built from Emit_Templates.elements.central_image.catalogue. Pairs: 'health & PE characters/phase 1/combination/Kai and Afi phase 1.png' and 'health & PE characters/phase 1/combination/Sura and Leila phase 1.png' (phase 1 only on the server today). Source: KB 14B §14.8.",
           "red_note_cl0111": "CL-0111: every character is available, so no 'character not yet available' red note (and no 2nd-proof hold) is emitted."
         },
         {
@@ -1189,14 +1189,17 @@
           "detail": "Taonga modules use a unique overview (not the generic pattern)."
         },
         {
-          "name": "Tui Toi character deferred",
-          "kind": "deferred_asset",
+          "name": "Tui Toi character (art DELIVERED — a folder per phase, the pose named by the writer's tag)",
+          "kind": "asset",
           "keywords": [
             "tui toi",
-            "character"
+            "tui",
+            "character",
+            "centralised image"
           ],
-          "red_note": "Tui Toi character art being created by Livia — use a placeholder until delivered",
-          "detail": "Tui Toi features in each Taonga module and varies from phase to phase."
+          "cross_reference": "Emit_Templates.elements.central_image.catalogue (row 'tui')",
+          "html": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"tui_characters/phase 1/tui_1.jpg\" alt=\"Tui character\" >",
+          "detail": "Tui Toi features in each Taonga module and varies from phase to phase. A folder per phase, with a space: tui_characters/phase {N}/tui_{P}.jpg, N the module's phase; poses 1-6 in phases 1-3, 1-4 in phase 4. The writer names the pose with [Centralised image: tui_<P>]; with no pose named, tui_1 and a 'Tui pose is a designer choice' To Do. Source: KB 14A §14.3, 14F §14.16."
         }
       ]
     },
@@ -1279,7 +1282,7 @@
           "red_note": "bookworm audio / audiovisual still to be developed (emit ONLY where the Writers Template calls for the bookworm's audio)",
           "red_note_retired_cl0113": "bookworm character art still under development; confirm exact filename casing when assets are delivered — RETIRED by CL-0113: the art is delivered and the files are lower-case.",
           "html": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"bookworms/bookworm_1.jpg\" alt=\"Bookworm\" >",
-          "detail": "Cartoon bookworm, one per year suite: bookworm_1.jpg = BLLR201-BLLR210 (Year 4); bookworm_2.jpg = BLLR211-BLLR220 (Year 5); bookworm_3.jpg = BLLR221-BLLR230 (Year 6). Art DELIVERED (CL-0113, server list): bookworms/bookworm_1.jpg, bookworms/bookworm_1a.jpg, bookworms/bookworm_2.jpg, bookworms/bookworm_3.jpg — lower-case, so follow the lower-case <img> (no casing note). Emit the real <img> for the module's code range, no art To Do note (gold: BLLR201–203 carry bookworms/bookworm_1.jpg). The audio with audiovisual is still to be developed. bookworms/archive/ and bookworms/idk/ are the design team's working files — never reference them. Source: KB 14B2 §14.9."
+          "detail": "Cartoon bookworm, one per year suite: bookworm_1.jpg (yellow) = BLLR201-BLLR210 (Year 4); bookworm_3.jpg (red) = BLLR211-BLLR220 (Year 5); bookworm_2.jpg (green) = BLLR221-BLLR230 (Year 6). Art DELIVERED (CL-0113, server list): bookworms/bookworm_1.jpg, bookworms/bookworm_1a.jpg, bookworms/bookworm_2.jpg, bookworms/bookworm_3.jpg — lower-case, so follow the lower-case <img> (no casing note). Emit the real <img> for the module's code range, no art To Do note (gold: BLLR201–203 carry bookworms/bookworm_1.jpg). The audio with audiovisual is still to be developed. bookworms/archive/ and bookworms/idk/ are the design team's working files — never reference them. The yellow worm's other poses on the template page: bookworm_1a … bookworm_1e; the writer names any worm with [Centralised image: bookworm_<n>] (Emit_Templates.elements.central_image.catalogue). Source: KB 14B2 §14.9, 14F §14.16."
         },
         {
           "name": "'Secret shelf' — BUILT: the bookshelf component (CL-0113)",
@@ -1357,7 +1360,7 @@
           "detail": "Like other FUNs — intro page then clickable images to specific lessons, any order; side-nav tabs inside each lesson (Maths 1-10 FUNS pattern). Tile images consistent across each phase per FUN topic; all tiles in a FUN the same phase."
         },
         {
-          "name": "Kea character by phase (art DELIVERED — CL-0113; audio pending)",
+          "name": "Kea character — six poses (art DELIVERED; audio pending)",
           "kind": "asset",
           "keywords": [
             "kea",
@@ -1367,10 +1370,10 @@
           ],
           "red_note": "Kea audio still under development (the speech bubble's audio slot)",
           "red_note_retired_cl0113": "Kea character art and audio still under development — the ART half RETIRED by CL-0113 (delivered); the audio half stays in red_note.",
-          "red_flag_kea5": "the server lists Kea_5.jpg (capital K) while the built modules write kea_characters/kea_5.jpg — follow the built modules until the design team confirms",
+          "red_flag_kea5_retired": "kea_5.jpg is lower-case on the template's Centralised Images page, as in the built modules — no Red Flag is raised",
           "html": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"kea_characters/kea_1.jpg\" alt=\"Kea character\" >",
           "component_owner": "04 Segments/Overlays (speech bubble)",
-          "detail": "Kea features within each lesson, varying slightly by phase (medallion placement / wing colours). Art DELIVERED (CL-0113): kea_characters/kea_1.jpg, kea_2.jpg, kea_3.jpg, kea_4.jpg, Kea_5.jpg, kea_6.jpg, plus the custom pair kea_characters/customKea/kea_formal.jpg, kea_formal_text.jpg, kea_informal.jpg, kea_informal_text.jpg (gold: 21 WJFUN modules). UNRESOLVED filename mismatch: the server lists Kea_5.jpg with a capital K while the built modules write kea_characters/kea_5.jpg (WJFUN108 / 205 / 210 / 212) — record both; follow the built modules (kea_5.jpg) and raise a Red Flag naming the mismatch where kea 5 is used. The server does not say which image belongs to which phase — follow a same-phase sibling module. No art To Do note; the audio is still pending, so the speech bubble's audio slot keeps its note. When Kea appears he also has a speech bubble and audio (mechanics stay in 04). Source: KB 14B2 §14.10."
+          "detail": "Kea features within each lesson, varying slightly by phase (medallion placement / wing colours). Art DELIVERED (CL-0113): kea_characters/kea_1.jpg, kea_2.jpg, kea_3.jpg, kea_4.jpg, Kea_5.jpg, kea_6.jpg, plus the custom pair kea_characters/customKea/kea_formal.jpg, kea_formal_text.jpg, kea_informal.jpg, kea_informal_text.jpg (gold: 21 WJFUN modules). kea_5.jpg is lower-case — the template page agrees with the built modules (WJFUN108 / 205 / 210 / 212); no Red Flag. The six images are POSES, not phases: kea_1 default right, kea_4 default left, kea_2 walking right, kea_5 walking left, kea_3 pointing right, kea_6 pointing left; the writer names one with [Centralised image: kea_<n>], else follow a same-phase sibling module. No art To Do note; the audio is still pending, so the speech bubble's audio slot keeps its note. When Kea appears he also has a speech bubble and audio (mechanics stay in 04). Source: KB 14B2 §14.10."
         },
         {
           "name": "Writing process graphic — the writingProcess component (CL-0113)",

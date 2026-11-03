@@ -51,7 +51,7 @@
 
 class ReferenceMiner {
 
-	// the corpus module-code shape (mirrors ModuleResolver.DetectModuleCode)
+	// the classic module-code shape, used when ModuleResolver.CodeShape() is switched off
 	static #CODE_RX = /\b([A-Z]{2,6}\d{2,4}(?:RR)?)\b/;
 
 	/**
@@ -225,13 +225,17 @@ class ReferenceMiner {
 		}
 
 		// ---- reference code + page roles ------------------------------------
-		// NB: underscores are word characters, so a filename like
-		// "OSSC301_0_0.html" defeats a plain \b match — separators are folded
-		// to spaces before matching.
+		// The module-code shape (ModuleResolver.CodeShape) treats an underscore,
+		// hyphen or dot as a boundary itself, so "OSSC301_0_0.html" and
+		// "PRIINQ-05_0_0.html" read as written. The classic shape needs the
+		// separators folded to spaces first (underscores are word characters,
+		// which defeat a plain \b match).
 		let refCode = null;
+		const shape = ModuleResolver.CodeShape();
 		for (const p of pages) {
-			const m = p.name.toUpperCase().replace(/[_\-.]/g, " ").match(this.#CODE_RX);
-			if (m) { refCode = m[1]; break; }
+			const code = shape ? ModuleResolver.FindCode(p.name, shape)
+				: p.name.toUpperCase().replace(/[_\-.]/g, " ").match(this.#CODE_RX)?.[1];
+			if (code) { refCode = code; break; }
 		}
 		// role: overview = the 0/0.0 page by any known filename form
 		// ({code}_0_0.html · {code}-00.html · {code}-0.0.html); no numeric key

@@ -677,12 +677,55 @@
 		"rule": "Change Ledger CL-0051 (the first CL-0001/constraint-1 exception permitting deletion of writer characters). Emoji are stripped from rendered writer content: ListsAndRuns.EmojiStrip runs as a FULL-PAGE POST-PASS (after OmitPlaceholderResidue + TidyDeveloperNotes, before LinkTextDisplay/Indent, stopping at the acks block), so every emitter is covered uniformly and NO pre-render machinery can be disturbed: tag classification, the ✅-glued [TITLE BAR] fences (OSSC301), the ✅[Tile] delimiters, the title splits and the 🔴 red-run sentinels all operate on block text long before this pass — post-pass placement makes them untouchable BY CONSTRUCTION. SCOPE = Unicode Extended_Pictographic grapheme CLUSTERS (base + VS15/16, skin tones U+1F3FB-FF, ZWJ sequences, keycap marks; regional-indicator flag pairs; a keycap digit keeps its digit and loses only the dressing), matched cluster-whole so a VS16 is NEVER orphan-stripped off a kept tick. 'exempt' = the ledger's ticks & crosses VERBATIM (✓✗✘ are not Extended_Pictographic and could never match anyway — listed for fidelity). 'exempt_extensions.maths_operators' = the ONE extension (✖➗➕➖ — meaning-bearing operators in maths content; the gold keeps ✖; ✖ is a cross by form, and the ledger's own ☑ inclusion shows heavy/box variants count). 'arrow_map' = EP arrow emoji become PLAIN arrows instead of deletions (gold's own treatment — TEDC402 ships the writer's 'input🡪process🡪output' as 'input→process→output'; meaning kept, emoji removed). OUT OF SCOPE by the Unicode property: the checkbox/ballot family ☐☒□🗹 (bilingual checklists + printable tick-sheets; the checklist→bullet conversion stays with the reo-menu machinery), 🖵 phonics sound-boxes (BLL147), 🡪 (TEDC401 gold keeps it), plain →←, typographic ►●◦, private-use chars — none are emoji per Extended_Pictographic. CLAUSES: a run of 2+ consecutive PLAIN <p> lines each PREFIXED by a would-be-deleted cluster becomes ONE <ul> of <li> (the lead cluster dropped; as in CEDT104 '🎵Sing/🎵Do/🎵Feel', ARFUN02's instrument list; an exempt-led line like '✅ I did it.' never joins a run and stays a <p>); a LONE prefixed line stays a <p>; in-prose clusters are removed with spacing normalised (doubled spaces collapsed, space-before-punctuation healed — 'earn a star ⭐️.' → 'earn a star.'); a plain <p> the strip EMPTIED is dropped whole (drop_emptied — as in ARFUN02's <p><b>🤔</b></p>, which the gold never keeps; a PRE-EXISTING empty <p> is never touched). DISCLOSURE: ONE visible note per affected page at the first removal, ledger wording verbatim in 'disclosure', emitted through NotesAndComments.redFlag (kind diagnostic → 'Red Flag:' prefix, red+bold, class cv2-note; NOTESCHEME_OFF legacy form applies to it like any note); a first removal inside the header/menu relocates the note to the top of the body (the no-comments-in-menu rule). CONTAINMENTS: cv2-interactive placeholder subtrees (the developer's verbatim hand-off), cv2-note/cv2-comment payloads (writer quotes stay verbatim), the acks block (gold keeps oEmbed video titles verbatim + the converter's own ❗ ack-todo markers are functional chrome), <script>/<style>, tag ATTRIBUTES, the {CODE}_interactives.txt hand-off (not HTML, untouched by construction), self-reflection emoji IMAGES (<img> assets — a text-level pass cannot touch them). NAMED CHANGE-LEDGER OVERRIDE deltas (the gold keeps, the rule strips — captured in Subject_Global_Parameters._universal_conventions.cl0051_no_emoji): TEDC402's five feelings-scale faces in built tabs panes, OSBY301-class scattered keeps, TRR109/110+XGF9001+BLL120/252+XDLS908 singles; MXDI201/ENGS102's emoji-as-CONTENT vocab cards sit inside cv2 hand-off boxes (unaffected) and need care if those widgets are ever built. Env EMOJISTRIP_OFF (or enabled:false) turns off the whole pass: no strip, no list conversion, no disclosure note."
 	},
 	"module_code_detection": {
-		"_doc": "ModuleResolver.DetectModuleCode reads the module code with one regex — 2-6 letters + 2-4 digits (+RR) — over the filenames, then the first front-matter paragraphs. Some codes fall outside it: CHWHA / GEWHA (no digits), ANZHFUN05 (seven letters), PWYWHA1 (one digit — and its front matter mentions PWY1000, so it would convert AS PWY1000). Such builds would be named MODULE_0_0.html / PWY1000_0_0.html and their registry rows never reached (global defaults instead). registry_token: between the filename regex and the front-matter regex, each filename's LEADING token (split on `separators`, upper-cased) that is a key of Module_Structure_Index.module_meta is a candidate — a code the regex cannot shape still resolves when the corpus registry knows it. The regex keeps precedence (an unchanged path for every module it already names); the front-matter regex stays the last resort. Env CODEREG_OFF uses the regex-only detection.",
+		"_doc": "ModuleResolver.DetectModuleCode reads the module code, strongest evidence first: the first code-shaped token in the uploaded filenames; a filename's leading token that Module_Structure_Index.module_meta knows (registry_token); the template's own Module code front-matter line, with or without a colon — the first one holding a code, a space between its letters and digits closed up (code_shape.label_line); the first code-shaped token in the first front-matter paragraphs. code_shape: every form a module code takes, as regex sources joined into one pattern bounded on both sides by anything that is not a letter or digit (a space, underscore, hyphen or dot is a boundary, so SMFUN02_WT.docx reads as SMFUN02). Forms: 2-8 letters + 2-4 digits (+RR) — ENGC101, ANZHFUN01, LGSOFUN01, ANZH102RR; a digit inside the letters — TRM1FUN18; the inquiry families' hyphen codes — PRIINQ-05, SSSINQ-01; the WHA family, two or more letters before WHA, with or without digits — CHWHA, ANZHWHA, PWYWHA1 (a bare family name such as TWHA is not a code). A five-digit run (AS91288, US12348 — achievement and unit standards) is never a code. not_code_stems: a token whose leading letters are one of these words (PHASE2, YEAR10, COVID19) is passed over and the search goes on. sprint_confirmed: a code with NO digits (a letters-only family no form describes — it cannot be told from a capitalised word on its own) is read only when the template's own Module code line names it, written in capitals (min_letters-max_letters letters), AND data/Sprint_Module_Codes.json — every code the Creative Services sprint sheets name, machine-built — holds it; neither source alone is enough (the sheets also name MTK and NCEA; Module code lines carry made-up labels such as FUNTUHI); env SPRINTCODE_OFF. Env CODESHAPE_OFF (or enabled false) uses the classic shape — 2-6 letters + 2-4 digits (+RR) between word boundaries — and skips the Module code line; env CODEREG_OFF switches registry_token off.",
 		"registry_token": {
 			"enabled": true,
 			"env": "CODEREG_OFF",
 			"separators": "[\\s_.\\-]+",
 			"min_length": 3
+		},
+		"code_shape": {
+			"enabled": true,
+			"env": "CODESHAPE_OFF",
+			"forms": [
+				"[A-Z]{2,8}\\d{2,4}(?:RR)?",
+				"[A-Z]{2,6}\\d[A-Z]{2,6}\\d{1,4}",
+				"[A-Z]{2,6}INQ-\\d{1,4}",
+				"[A-Z]{2,6}WHA\\d{0,2}"
+			],
+			"not_code_stems": [
+				"PHASE",
+				"LEVEL",
+				"YEAR",
+				"TERM",
+				"WEEK",
+				"UNIT",
+				"LESSON",
+				"PART",
+				"PAGE",
+				"VERSION",
+				"DRAFT",
+				"COPY",
+				"FINAL",
+				"TEMPLATE",
+				"SPRINT",
+				"COVID",
+				"MODULE",
+				"SECTION",
+				"CHAPTER",
+				"TOPIC",
+				"STAGE",
+				"STEP",
+				"TASK",
+				"ROUND"
+			],
+			"label_line": true,
+			"sprint_confirmed": {
+				"enabled": true,
+				"env": "SPRINTCODE_OFF",
+				"min_letters": 3,
+				"max_letters": 8
+			}
 		}
 	},
 	"wt_page_tracking": {
