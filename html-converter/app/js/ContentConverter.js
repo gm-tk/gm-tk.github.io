@@ -3930,6 +3930,18 @@ class ContentConverter {
 					parts.push(BilingualBuilder.UnbuiltBox(TablesAndGrids.contentTable(it.block, run, true, this.#norm), it.block, run,
 						"a table whose cells keep a tag the page cannot show (the MTK leak guard) — kept raw"));
 				};
+				// a one-row layout table in an open activity (the scanner's unclassified_activity_lead.layout_row): its cells render in the
+				// activity, in order; a cell that would still show a tag keeps the hand-off form
+				if (it.block?._layoutRow && stack.length) {
+					const _lr = it.block.rows ?? [], _ri = _lr.findIndex((r) => (r ?? []).some((c) => String(c ?? "").trim()));
+					const _lrHtml = (_lr[_ri] ?? []).flatMap((c, ci) => (String(c ?? "").trim()
+						? TablesAndGrids.renderCellParts(c, run, this.#norm, it.block.links ?? null, TablesAndGrids.gridCellNumbered(it.block, _lr, _ri, ci)).filter(Boolean) : []));
+					if (this.#htmlLeaksResolvedTag(_lrHtml.join("\n"))) _lgFallback();
+					else { rowFor("block"); emit(..._lrHtml); }
+					markContent();
+					this.#closeSpanWrap(stack, emit, breakRow);
+					continue;
+				}
 				const grid = stack.length ? null : TablesAndGrids.layoutTableGrid(it.block.rows ?? [], run, false, this.#norm, it.block.links ?? null, it.block);
 				if (grid) {
 					if (_lgOn && this.#htmlLeaksResolvedTag(grid)) {
@@ -11230,7 +11242,11 @@ class ContentConverter {
 		const plain = (s) => String(s).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/&#39;|&rsquo;|&lsquo;/g, "'")
 			.replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
 		const classOf = (openTag) => (/\bclass="([^"]*)"/.exec(openTag) ?? [])[1] ?? "";
-		const BUTTON_A = /^<a\b[^>]*>\s*<div class="button">([\s\S]*?)<\/div>\s*<\/a>$/;
+		// the house's orange upload button is the same button (free_dropbox_box.house_button; env FREEDBXD_OFF)
+		const houseBtn = cfg.house_button;
+		const houseOn = !!houseBtn && houseBtn.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[houseBtn.env || "FREEDBXD_OFF"]);
+		const BUTTON_PLAIN = /^<a\b[^>]*>\s*<div class="button">([\s\S]*?)<\/div>\s*<\/a>$/;
+		const BUTTON_A = houseOn ? new RegExp(BUTTON_PLAIN.source.replace('class="button"', () => houseBtn.class_form)) : BUTTON_PLAIN;
 		const VOID = new Set(["img", "br", "hr", "input", "source", "meta", "link", "wbr"]);
 		const CONT = new Set(["div", "ul", "ol", "li", "table", "thead", "tbody", "tr", "td", "th", "blockquote", "section", "figure", "a", "p", "h1", "h2", "h3", "h4", "h5", "h6"]);
 		const divClose = (s, from) => {

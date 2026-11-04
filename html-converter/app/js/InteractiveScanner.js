@@ -365,7 +365,12 @@ class InteractiveScanner {
 					// words to read, not a widget's data — the box is declined and the activity renders as ordinary
 					// content, exactly as an activity with no table ahead. Data: unclassified_activity_lead.reading_table
 					// Env: READTABLE_OFF
-					if (this.#isReadingTable(bundle, items, _ualCfg?.reading_table)) {
+					// A ONE-ROW TABLE OF PROSE BESIDE A PICTURE IS THE ACTIVITY'S LAYOUT: the box is declined and the cells render in the
+					// activity. Data: unclassified_activity_lead.layout_row   Env: LAYOUTROW_OFF
+					if (this.#isLayoutRow(bundle, items, _ualCfg, normaliser)) {
+						run?.AddNote?.("info", "InteractiveScanner",
+							`[Activity ${bundle.activityId ?? ""}] holds a one-row layout table — its cells shown in the activity, not handed off.`);
+					} else if (this.#isReadingTable(bundle, items, _ualCfg?.reading_table)) {
 						// a word list's first row is a row of words, not column labels (first_row_data)
 						const _rtBlock = items[bundle.endIndex - 1].block;
 						if (_rtBlock && _ualCfg.reading_table.first_row_data !== false) _rtBlock.firstRowData = true;
@@ -4923,6 +4928,50 @@ class InteractiveScanner {
 	 * instructions (they are BOTH bundled and red-flagged — §4 of the
 	 * boundary rules: surface now, build later).
 	 */
+	/** The layout-row test (BoundaryBank._meta.opener_rule.unclassified_activity_lead.layout_row): the captured span holds one
+	 *  table with one filled row; every filled cell opens with a prose or side tag and carries only plain element tags; there is a
+	 *  prose cell of min_prose_words and a side cell; no member is an interactive tag; no word of the span names a widget or asks
+	 *  for a build. A passing table is marked for the page path (block._layoutRow). */
+	static #isLayoutRow(bundle, items, lead, normaliser) {
+		const cfg = lead?.layout_row, ut = lead?.untyped_table;
+		if (!cfg || cfg.enabled === false || !ut || !normaliser || bundle.type !== "unclassified") return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "LAYOUTROW_OFF"]) return false;
+		const span = items.slice(bundle.startIndex, bundle.endIndex);
+		const tables = span.filter((x) => x.type === "table");
+		if (tables.length !== 1) return false;
+		if (span.some((x) => x.type === "tag" && x.parse?.primary?.directive === "INTERACTIVE")) return false;
+		const filled = (tables[0].block?.rows ?? []).filter((r) => (r ?? []).some((c) => String(c ?? "").trim()));
+		if (filled.length !== 1) return false;
+		const cells = filled[0].map((c) => String(c ?? "")).filter((c) => c.trim());
+		if (cells.length < 2) return false;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const prose = new Set(cfg.prose_tags ?? []), side = new Set(cfg.side_tags ?? []), inner = new Set(cfg.inner_tags ?? []);
+		let hasProse = false, hasSide = false;
+		for (const c of cells) {
+			let first = null;
+			for (const m of c.matchAll(RED)) {
+				const t = normaliser.Parse(m[1])?.primary?.tag;
+				if (!t) continue;
+				if (!inner.has(t)) return false;
+				if (first === null) first = t;
+			}
+			if (first === null || !/^\s*\u{1f534}\[RED TEXT\]/u.test(c)) return false;
+			if (prose.has(first)) {
+				const w = c.replace(RED, " ").split(/[^\p{L}\p{N}’'-]+/u).filter(Boolean).length;
+				if (w >= (cfg.min_prose_words ?? 8)) hasProse = true;
+			} else if (side.has(first)) hasSide = true;
+			else return false;
+		}
+		if (!hasProse || !hasSide) return false;
+		const cellWords = cells.map((c) => c.replace(/\u{1f534}?\[\/?RED TEXT\]\u{1f534}?/gu, " ").replace(/https?:\S+/g, " ")).join(" ");
+		const words = (span.filter((x) => x.type !== "table")
+			.map((x) => (x.type === "black" ? (x.text ?? "") : `${x.text ?? ""} ${x.blackAfter ?? ""} ${(x.parse?.remainders ?? []).join(" ")}`))
+			.join(" ") + " " + cellWords).replace(new RegExp(cfg.ignore_pattern || "$^", "gi"), " ");
+		if (new RegExp(ut.widget_pattern, "i").test(words) || new RegExp(ut.request_pattern, "i").test(words)) return false;
+		tables[0].block._layoutRow = true;
+		return true;
+	}
+
 	/** The reading-table test (BoundaryBank._meta.opener_rule.unclassified_activity_lead.reading_table): the captured
 	 *  span holds exactly one table, as its last item; every cell is plain (cell_deny_pattern finds nothing); the
 	 *  title and lead words match read_pattern and not widget_pattern. */

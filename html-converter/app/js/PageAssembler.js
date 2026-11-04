@@ -1284,7 +1284,7 @@ class PageAssembler {
 		const footerEmpty = (DataService.Data.EmitTemplates.footer?.nav_links_empty?.enabled === true)
 			&& !(typeof process !== "undefined" && process.env && process.env.FOOTEREMPTY_OFF);
 		pageProducts.forEach(({ page, content }, i) => {
-			const html = SkeletonBuilder.BuildPage({
+			const html = MenuBuilder.ListItemCase(SkeletonBuilder.BuildPage({
 				page, content, run,
 				// first page carries the acks block (after #footer);
 				// historical last-page placement is superseded — never copy it
@@ -1293,7 +1293,7 @@ class PageAssembler {
 				// CL-0044: hrefs empty by default; FOOTEREMPTY_OFF restores chaining
 				prevHref: footerEmpty ? "" : (i > 0 ? filenames[i - 1] : ""),
 				nextHref: footerEmpty ? "" : (i < pageProducts.length - 1 ? filenames[i + 1] : ""),
-			});
+			}));
 			run.outputs.push({
 				filename: filenames[i],
 				// tab-indented for hand-editing/debugging, matching the human-developed

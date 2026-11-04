@@ -128,6 +128,22 @@
 			"label_pattern": "^\\s*(?:caption|reverse|front|back|important note)\\s*$",
 			"deny_after_pattern": "^\\s*(?:\\*{0,3}|_{0,2})\\s*(?:https?:\\/\\/|www\\.)"
 		},
+		"hover_black_close": {
+			"_doc": "A HOVER MARKER WHOSE DEFINITION AND CLOSING BRACKET ARE BLACK. The red run ends on the marker's opener and its colon; the black words up to the closing bracket are the definition. They join the red run, so the sentence stays whole and the bracket never reaches the learner.",
+			"enabled": true,
+			"env": "HOVERBLACKCLOSE_OFF",
+			"open_pattern": "\\[\\s*(?:insert\\s+)?(?:hover|roll\\s*-?\\s*over|mouse\\s*-?\\s*over)[^\\]\\[]*:\\s*$",
+			"max_chars": 300,
+			"any_bracket": {
+				"_doc": "A BRACKET OPENED IN RED AND CLOSED IN BLACK IS ONE MARKER. Whatever the marker asks for, the writer's bracket spans the black words, so they join the red run and read as that marker. A heading tag's own bracket closes in red, so the run it opens is never this form.",
+				"enabled": true,
+				"env": "HALFREDBRACKET_OFF",
+				"max_chars": 200,
+				"deny_pattern": "hover|roll\\s*-?\\s*over|sketcher|puzzle|modal|pop\\s*-?\\s*(?:up|out)|radio|accordion|carousel|flip|drag|drop|quiz|interactive|click|tabs?\\b|slider|reorder|memory|video|audio|\\bimage\\b|\\*\\*",
+				"_deny_doc": "A marker that names a widget or media element would open a capture and take the learner's prose with it, so it keeps its form."
+			},
+			"insert_lead_pattern": "\\[\\s*insert\\s+(?=(?:hover|roll\\s*-?\\s*over|mouse\\s*-?\\s*over)\\b)"
+		},
 		"punctuation_as_text": {
 			"_doc": "THE WRITER'S PUNCTUATION TYPED IN RED inside a black sentence (KB constraint 1: the writer's words are never lost). A writer who highlights the commas of a list or colours a full stop red («We packed a jacket🔴,🔴 a hat🔴,🔴 and sturdy shoes», «… these perspectives🔴.🔴») made each mark a red span, so the item stream read it as a tag: the sentence was cut into separate lines and the marks were lost. A red span of sentence marks alone (`pattern`), after black words in the same paragraph, is the sentence's own text and joins the black run.",
 			"enabled": true,

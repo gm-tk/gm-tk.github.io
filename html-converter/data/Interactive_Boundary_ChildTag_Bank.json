@@ -163,6 +163,16 @@
 					"first_row_data": true,
 					"_doc_first_row": "The kept table's first row renders as a DATA row (td), not the KB 05D column-label row: it is the first line of words to read (the human build: td on 42 of the 45 matched tables; th on 3). A first row the writer bolded whole stays th (the table builder's own header cue)."
 				},
+				"layout_row": {
+					"_doc": "A ONE-ROW TABLE OF PROSE BESIDE A PICTURE IS THE ACTIVITY'S LAYOUT. An `[Activity N]` whose only table is one row of plain element cells — a prose cell ([body] / [Activity Heading] with a [body]) beside a picture, video or alert cell — names no widget: the box is declined and the cells render in the activity, in order. The widget and request words are untyped_table's, read after ignore_pattern removes the words that name no widget (the dropbox).",
+					"enabled": true,
+					"env": "LAYOUTROW_OFF",
+					"prose_tags": ["body", "activity heading"],
+					"side_tags": ["image", "video", "alert", "important"],
+					"inner_tags": ["body", "activity heading", "image", "video", "alert", "important", "h3", "h4", "h5", "h6", "title", "button", "external link"],
+					"min_prose_words": 8,
+					"ignore_pattern": "\\bdropbox\\w*"
+				},
 				"untyped_table": {
 					"_doc": "AN UNTYPED CAPTURED TABLE IS PAGE CONTENT. Every numbered `[Activity N]` with a table ahead and no interactive tag is captured as an «unclassified» hand-off box (the design for the activities whose widget is described only in prose); most are not widgets at all — an information table, a worksheet grid, a table of examples — and the human build shows them as ordinary tables (the content collapsed in the box was invisible to the learner). The box is declined, and the activity renders as content with its red lines as the Writers Notes, when NO word of the captured span — black text, a tag's words, a red instruction, red text inside a cell — names a widget idea (widget_pattern) or asks the developer to build something (request_pattern), no cell carries an answer mark (cell_deny_pattern: «[correct]», «[Q1 correct]», ✅ — a quiz's key) and no member is an interactive tag. Env UNTYPEDTABLE_OFF.",
 					"enabled": true,

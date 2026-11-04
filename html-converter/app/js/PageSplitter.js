@@ -72,7 +72,7 @@ class PageSplitter {
 				continue;
 			}
 
-			const text = block.text;
+			const text = this.#hoverBlackClose(block.text);
 			let pos = 0;
 			let pendingTag = null;   // last tag item awaiting its blackAfter
 			let blackSeen = false;   // black text already met in this paragraph
@@ -147,6 +147,29 @@ class PageSplitter {
 	 * tab names after it is part of the same instruction — the paragraph becomes a red instruction carrying both (the Writers
 	 * Note) and the table leaves the stream. Returns the blocks unchanged when nothing matches.
 	 */
+	/**
+	 * A HOVER MARKER WHOSE DEFINITION AND CLOSING BRACKET ARE BLACK. The writer colours only the opener red: «term [insert rollover: »
+	 * then «A way of agreeing.] with others» in black. Read as written the sentence breaks at the marker and the stray bracket
+	 * reaches the learner. The definition and its bracket join the red run, which is the marker's whole form; a first letter the
+	 * writer left red in a run of its own joins too. Data
+	 * red_runs.hover_black_close; env HOVERBLACKCLOSE_OFF.
+	 */
+	static #hoverBlackClose(text) {
+		const cfg = DataService.Data.InputDocRules?.red_runs?.hover_black_close;
+		if (!cfg || cfg.enabled === false || typeof text !== "string" || !text.includes("[RED TEXT]")) return text;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "HOVERBLACKCLOSE_OFF"]) return text;
+		const open = new RegExp(cfg.open_pattern, "i");
+		const insertLead = cfg.insert_lead_pattern ? new RegExp(cfg.insert_lead_pattern, "i") : null;
+		// a bracket left open in the red run, whatever it asks for (hover_black_close.any_bracket; env HALFREDBRACKET_OFF)
+		const anyCfg = cfg.any_bracket;
+		const anyOn = !!anyCfg && anyCfg.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[anyCfg.env || "HALFREDBRACKET_OFF"]);
+		const anyDeny = anyOn && anyCfg.deny_pattern ? new RegExp(anyCfg.deny_pattern, "i") : null;
+		const leftOpen = (red, def) => anyOn && def.length <= (anyCfg.max_chars ?? 200) && red.lastIndexOf("[") > red.lastIndexOf("]")
+			&& !(anyDeny && anyDeny.test(red.slice(red.lastIndexOf("[")) + def));
+		return text.replace(/\u{1f534}\[RED TEXT\]((?:(?!\[\/RED TEXT\])[\s\S])*?)\[\/RED TEXT\]\u{1f534}(?:\u{1f534}\[RED TEXT\]\s*(\S{1,3})\s*\[\/RED TEXT\]\u{1f534})?([^\u{1f534}\[\]]+)\]/gu, (all, red, lead, def) => (
+			(def.length <= (cfg.max_chars ?? 300) && open.test(red)) || leftOpen(red, def) ? `\u{1f534}[RED TEXT]${insertLead ? red.replace(insertLead, () => "[") : red}${lead ?? ""}${def}] [/RED TEXT]\u{1f534}` : all));
+	}
+
 	static #layoutInstructionBlocks(blocks) {
 		const cfg = DataService.Data.InputDocRules?.red_runs?.layout_instruction_line;
 		if (!cfg || cfg.enabled === false || !Array.isArray(blocks)) return blocks;

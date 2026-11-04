@@ -1247,6 +1247,13 @@
 				"skip_def_pattern": "="
 			}
 		},
+		"menu_list_item_case": {
+			"_doc": "THE MENU'S LEARNING LISTS START LOWER CASE (KB constraint 24, 01B). The items under the learning labels continue the label's sentence. keep_pattern holds the first words that stay capitalised: names of people, places, peoples and languages.",
+			"enabled": true,
+			"env": "MENUITEMCASE_OFF",
+			"lead_pattern": "^(?:we are learning|what are we learning|i can\\b|you will show|how will i know)",
+			"keep_pattern": "^(?:I|Te|Kia|Dame|Ohms|Hononga|Ngā|Ngāti|Ngāi|Māori|Aotearoa(?:’s)?|Pākehā|Tangata|Tikanga|Treaty|Tiriti|English|French|German|Spanish|Japanese|Chinese|Samoan|Latin|Google|Microsoft|Excel|Word|New|Pacific|Polynesian|Europe|European|Australia|Christian|Pythagoras|Pythagorean|Shakespeare)$"
+		},
 		"hover_definition_inline": {
 			"enabled": true,
 			"named_anchor": {
@@ -2955,6 +2962,12 @@
 			"max_words": 150,
 			"title_level": 3,
 			"last_box_only": true,
+			"house_button": {
+				"_doc": "THE HOUSE'S ORANGE UPLOAD BUTTON IS THE SAME BUTTON. Some modules render the dropbox button as `buttonD`: the free button rule reads that class as well as `button`.",
+				"enabled": true,
+				"env": "FREEDBXD_OFF",
+				"class_form": "class=\"button(?:D)?\""
+			},
 			"box_open": "<div class=\"activity dropbox\" number=\"{id}\">\n<div class=\"row\">\n<div class=\"col-12\">",
 			"box_close": "</div>\n</div>\n</div>",
 			"trailing_buttons": {
