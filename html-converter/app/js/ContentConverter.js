@@ -14998,7 +14998,21 @@ class ContentConverter {
 		const reoTables = this.#bilingualTableRelease(bundle, tpl, run);
 		// THE WRITER'S TEXT AFTER THE WIDGET IS PAGE TEXT: the trailing [Body] paragraph and the plain paragraphs after it render
 		// as page text just after the box (interactive_placeholder.tail_body_release; env BOXTAILBODY_OFF)
-		const tailRel = reoTables.after.length ? new Set() : this.#tailBodyRelease(bundle, tpl, released);
+		const tailOnly = reoTables.after.length ? new Set() : this.#tailBodyRelease(bundle, tpl, released);
+		// THE WRITER'S [BODY] LINE IN THE MIDDLE OF A ONE-WIDGET BOX IS PAGE TEXT TOO: it renders with the tail, just after the box
+		// (interactive_placeholder.mid_body_release; env BOXMIDBODY_OFF)
+		// A line standing before the box's first table introduces the widget, so it renders before the box with the lead
+		// (mid_body_release.keep_order; env BOXMIDORDER_OFF)
+		const midRel = this.#midBodyRelease(bundle, tpl, released, tailOnly);
+		const midOrder = tpl?.mid_body_release?.keep_order;
+		if (midOrder && midOrder.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[midOrder.env ?? "BOXMIDORDER_OFF"])) {
+			const members = bundle.memberItems ?? [];
+			const firstTable = members.findIndex((m) => m?.type === "table");
+			for (const m of [...midRel]) {
+				if (firstTable >= 0 && members.indexOf(m) < firstTable) { midRel.delete(m); released.add(m); }
+			}
+		}
+		const tailRel = new Set([...midRel, ...tailOnly]);
 		// A writer instruction EMBEDDED inside the interactive is moved to JUST BEFORE the
 		// placeholder box: notesBefore prepends the bundle's instructions at the return point
 		// instead of nesting them inside the dashed placeholder box itself.
@@ -15292,6 +15306,48 @@ class ContentConverter {
 	 * @param {Set<Object>} lead - the members the lead release already took
 	 * @returns {Set<Object>} the released member items, in document order (empty when the rule does not apply)
 	 */
+	static #midBodyRelease(bundle, tpl, lead, tail) {
+		const none = new Set();
+		const cfg = tpl?.mid_body_release;
+		if (!cfg || cfg.enabled === false) return none;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "BOXMIDBODY_OFF"]) return none;
+		const types = new Set(cfg.types ?? []);
+		if (![bundle.type, ...(bundle.extraTypes ?? [])].every((t) => types.has(t))) return none;
+		const bodyTags = new Set(cfg.body_tags ?? ["body"]);
+		const followers = new Set(cfg.follower_types ?? []);
+		const all = [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])];
+		const mi = (bundle.memberItems ?? []).filter((m) => m && !(m.type === "black" && !String(m.text ?? "").trim()));
+		const words = (s) => String(s ?? "").trim().split(/\s+/).filter(Boolean).length;
+		const whole = (m) => !m.block?.list && !(m.block && all.some((x) => x !== m && x?.block === m.block))
+			&& !(m.type === "black" && /\u{1f534}\[RED TEXT\]/u.test(String(m.block?.text ?? "")));
+		const media = new RegExp(cfg.media_line_pattern ?? "\\.(?:jpe?g|png|gif|svg|webp)\\b|https?://|www\\.", "i");
+		const data = /^\s*(?:\d+[.)]|[a-z][.)]|[•\-–*▪◦])\s|\[[^\]]{1,80}\]/i;
+		const out = new Set();
+		for (let k = 1; k < mi.length; k++) {
+			const m = mi[k], prev = mi[k - 1];
+			if (lead.has(m) || tail.has(m) || m.type !== "tag" || !m.parse?.primary || !bodyTags.has(m.parse.primary.tag ?? "")
+				|| (m.parse?.tags ?? []).length !== 1 || words(m.blackAfter) < (cfg.min_words ?? 4) || !whole(m)) continue;
+			// the paragraph just after the widget's invocation, a panel tag or a picture line is that panel's content: it stays
+			if (prev.type === "tag" && (prev.parse?.primary?.directive === "INTERACTIVE" || !bodyTags.has(prev.parse?.primary?.tag ?? ""))) continue;
+			if (prev.type === "black" && media.test(String(prev.text ?? ""))) continue;
+			// a colon-ended line after the box's first table introduces the data below it: released after the box it would lose that data
+			const ko = cfg.keep_order;
+			if (ko && ko.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ko.env ?? "BOXMIDORDER_OFF"])
+				&& mi.slice(0, k).some((x) => x.type === "table") && new RegExp(ko.intro_pattern ?? ":\\s*$").test(String(m.blackAfter ?? "").trim())) continue;
+			out.add(m);
+			const nx = mi[k + 1];
+			if (nx && followers.has(bundle.type) && !lead.has(nx) && !tail.has(nx) && nx.type === "black" && whole(nx)
+				&& !data.test(String(nx.text ?? "")) && words(nx.text) >= (cfg.min_words ?? 4)) out.add(nx);
+		}
+		if (!out.size) return none;
+		const letters = (x) => String(x ?? "").replace(/<[^>]+>/g, " ").replace(/[^\p{L}\p{N}]/gu, "").length;
+		const cellText = (c) => (typeof c === "string" ? c : (c?.text ?? ""));
+		const left = all.filter((it) => it && !out.has(it) && !lead.has(it) && !tail.has(it)).reduce((n, it) => n + (it.type === "table"
+			? letters((it.block?.rows ?? []).flat().map(cellText).join(" "))
+			: letters(it.type === "black" ? it.text : (String(it.blackAfter ?? "").trim() ? it.blackAfter : ""))), 0);
+		return left >= (cfg.min_box_chars ?? 60) ? out : none;
+	}
+
 	static #tailBodyRelease(bundle, tpl, lead) {
 		const none = new Set();
 		const cfg = tpl?.tail_body_release;

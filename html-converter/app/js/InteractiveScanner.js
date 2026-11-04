@@ -1259,6 +1259,13 @@ class InteractiveScanner {
 	 * @returns {boolean}
 	 */
 	static #sectionOpenerRe = /\[\s*h1\s*\]\s*\d+\.\d+/i;
+	static #pairedHeadingTable(block, cellPattern) {
+		const row = (block?.rows ?? [])[0];
+		if (!Array.isArray(row) || row.length !== 2) return false;
+		const re = new RegExp(cellPattern ?? "^\\s*\\[\\s*h[1-6]\\s*\\]", "i");
+		return row.every((c) => re.test(String(c ?? "").replace(/🔴|\[\/?RED TEXT\]|\*/g, "")));
+	};
+
 	static #bilingualSectionOpener(block) {
 		const rows = block?.rows ?? [];
 		if (!rows.length || !Array.isArray(rows[0]) || rows[0].length < 2) return false;
@@ -2358,6 +2365,18 @@ class InteractiveScanner {
 				if (_scfg && _scfg.enabled !== false
 					&& !(typeof process !== "undefined" && process.env && process.env.REONEST_OFF)
 					&& InteractiveScanner.#reoModeFor(run) && InteractiveScanner.#bilingualSectionOpener(next.block)) break;
+				// A bilingual section also opens with a two-column table whose first row pairs a heading in each language
+				// («[H2] Lesson 1 ║ [H2] Hei Mahi 1»): the writer's next section, not this widget's data. Fenced on a table already
+				// captured. Data section_grouping.paired_heading_opener; env REOPAIRHEAD_OFF.
+				{
+					const pho = _scfg?.paired_heading_opener;
+					if (pho && pho.enabled !== false && _scfg.enabled !== false && bundle.tables.length > 0
+						&& !(typeof process !== "undefined" && process.env && (process.env.REONEST_OFF || process.env[pho.env ?? "REOPAIRHEAD_OFF"]))
+						&& InteractiveScanner.#reoModeFor(run) && InteractiveScanner.#pairedHeadingTable(next.block, pho.cell_pattern)) {
+						run?.AddNote?.("info", "InteractiveScanner", `${bundle.type}: a paired-heading table opens the next bilingual section — the capture ends before it.`);
+						break;
+					}
+				}
 				// A following TABLE whose cell carries a DIRECT DIFFERENT-type display-terminator
 				// invocation is a NEW section, not this widget's data. For example, a table-authored
 				// [speechbubble] could otherwise get trapped inside the current activity by the
@@ -2456,6 +2475,24 @@ class InteractiveScanner {
 							run.AddNote("info", "InteractiveScanner",
 								`${bundle.type}: nested [${ctN}] table absorbed as a sub-bundle; host continues.`);
 							continue;
+						}
+					}
+				}
+				// A ONE-CELL TABLE OPENING WITH ITS OWN WIDGET TAG. The writer boxes a whole activity in a single cell, its tag first
+				// («[Multichoice [autocheck]] 1B: Check your understanding / [Body] Choose the correct answer …»): that table is the next
+				// widget, never a member of the capture before it. The walk ends before it and the main loop's #interactiveInTable opens
+				// it. Fenced on captured content, so a bare opener keeps the table the writer put under it.
+				// Data member_rule.widget_table_terminates; env WIDGETTBL_OFF.
+				{
+					const wtt = mrT.widget_table_terminates;
+					if (wtt && wtt.enabled !== false && normaliser
+						&& !(typeof process !== "undefined" && process.env && process.env[wtt.env ?? "WIDGETTBL_OFF"])
+						&& (bundle.tables.length > 0 || bundle.memberItems.some((m) => m && ((m.type === "black" && String(m.text ?? "").trim() !== "")
+							|| (m.type === "tag" && String(m.blackAfter ?? "").trim() !== ""))))) {
+						const own = this.#oneCellWidgetTable(next.block, normaliser);
+						if (own && own !== bundle.type) {
+							run?.AddNote?.("info", "InteractiveScanner", `${bundle.type}: a one-cell table opens its own [${own}] — the capture ends before it.`);
+							break;
 						}
 					}
 				}
@@ -5195,6 +5232,21 @@ class InteractiveScanner {
 			}
 		}
 		return null;
+	};
+
+	/**
+	 * The widget a table IS when it holds one non-empty cell whose first red run invokes an interactive.
+	 *
+	 * @returns {string|null} widget type, or null
+	 */
+	static #oneCellWidgetTable(block, normaliser) {
+		const cells = (Array.isArray(block?.rows) ? block.rows : []).flatMap((row) => (Array.isArray(row) ? row : []))
+			.map((c) => String(c ?? "").trim()).filter(Boolean);
+		if (cells.length !== 1) return null;
+		const m = /^\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/u.exec(cells[0]);
+		if (!m) return null;
+		const parse = normaliser.Parse(m[1]);
+		return parse.primary?.directive === "INTERACTIVE" ? this.#widgetTypeFor(parse.primary.tag, parse.primary.alias, normaliser) : null;
 	};
 
 	/**

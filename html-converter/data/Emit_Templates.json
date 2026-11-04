@@ -776,6 +776,12 @@
 			},
 			"section_grouping": {
 				"enabled": true,
+				"paired_heading_opener": {
+					"_doc": "A two-column table whose first row holds a heading tag in both cells opens the next bilingual section: a capture with a table of its own ends before it, so the section is not swallowed into the widget's hand-off box.",
+					"enabled": true,
+					"env": "REOPAIRHEAD_OFF",
+					"cell_pattern": "^\\s*\\[\\s*h[1-6]\\s*\\]"
+				},
 				"bundle_handoff": {
 					"enabled": true,
 					"lead_prose": {
@@ -3575,7 +3581,7 @@
 			"body_tags": ["body"],
 			"min_words": 4,
 			"max_items": 6,
-			"min_box_chars": 60,
+			"min_box_chars": 40,
 			"panel_stop_tags": [],
 			"_panel_stop_tags": "What stands just before the run's first [Body] decides it: the widget's own invocation, a tag listed here, or a plain line naming a picture file or an address (media_line_pattern) makes the paragraph that panel's content (a click-drop's reveal after its picture line) and it stays in the box. Empty: a face, picture or answer tag before the paragraph does not hold it (the human pages show the paragraph after a quiz's closing picture or a sentence quiz's red answer outside the widget).",
 			"media_line_pattern": "\\.(?:jpe?g|png|gif|svg|webp)\\b|https?://|www\\.",
@@ -3584,6 +3590,23 @@
 			"owned_after_box": true,
 			"owned_after_box_env": "BOXTAILAFTER_OFF",
 			"_owned_after_box": "true: when the box sits in an activity box that closes at the widget's end, the released text ships AFTER the activity box, in the page flow, as the human page has it (the activity holds the widget; the writer's next paragraph is the page's); when the activity box stays open (its upload box or its post-table prose follow) the text stays inside it. false (or env BOXTAILAFTER_OFF): the text sits just after the hand-off box, inside the activity box."
+		},
+		"mid_body_release": {
+			"_doc": "THE WRITER'S [BODY] LINE IN THE MIDDLE OF A ONE-WIDGET BOX IS PAGE TEXT. In a box that stands for one widget's data, a whole [Body] paragraph between the data is the writer talking to the learner: it renders just after the box with the tail. The panel widgets keep theirs (a paragraph is panel content there), and so does a paragraph straight after a widget, panel or picture line.",
+			"enabled": true,
+			"env": "BOXMIDBODY_OFF",
+			"types": ["unclassified", "dragAndDrop", "dropDown", "selfCheck", "radioQuiz", "memoryGame", "speechBubble", "interactive"],
+			"follower_types": ["unclassified", "interactive", "selfCheck"],
+			"body_tags": ["body"],
+			"min_words": 4,
+			"min_box_chars": 60,
+			"media_line_pattern": "\\.(?:jpe?g|png|gif|svg|webp)\\b|https?://|www\\.",
+			"keep_order": {
+				"_doc": "A released line keeps its place against the widget: before the box's first table it introduces the widget, so it renders before the box; after a table, a line ending in a colon introduces the data below it, so it stays in the box.",
+				"enabled": true,
+				"env": "BOXMIDORDER_OFF",
+				"intro_pattern": ":[\\s*_]*$"
+			}
 		},
 		"bilingual_table_release": {
 			"_doc": "A BILINGUAL CONTENT TABLE IS NEVER A WIDGET MEMBER. In the Bilingual template the writer types the activity's own text — its instruction heading and sentence, a learning-journal note, the next lesson's heading — as an «English ║ Māori» content table whose cells open with [H#] / [Body] tags. When such a table sits next to an un-built widget's data table, the capture took it in as a member and the learner lost it inside the hand-off box. The finished pages show it free: before the widget when it leads (the instruction pair), after the widget when it trails (the next section). The box renderer releases the LEADING run of such tables before the box and the TRAILING run after it, each unfolded as reo / English pairs by the bilingual content-table builder, when the box keeps a table of its own; a table between two data tables stays. A table qualifies when its header row names English and Māori, it has at least one content row, every content row's every non-empty cell carries a tag the cell_tag_pattern matches, and the bilingual builder renders it (a widget named inside a cell gets that builder's own un-built marker after the pairs, as in free text; a table it declines stays in the box). The hand-off file keeps the whole capture. Env BOXREOTABLE_OFF (or enabled:false) keeps every table in the box.",
@@ -3628,7 +3651,7 @@
 				"body"
 			],
 			"min_words": 4,
-			"min_box_chars": 60,
+			"min_box_chars": 40,
 			"untagged_prose": {
 				"enabled": true,
 				"env": "BOXLEADPROSE_OFF",
