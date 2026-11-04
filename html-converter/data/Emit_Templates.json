@@ -673,6 +673,23 @@
 				"env": "REOCELLIMGLINK_OFF",
 				"_doc": "THE BILINGUAL TABLE PICTURE TAKES ITS LINK. A bilingual table cell's picture («[Item 22] [Image] __Bread and knife__» with the address on the words) was named from its words' slug, the table's hyperlinks never read, so an iStock picture lost its address from every output (the census's F-LINK media-source row) while the gold names it «iStock-<id>». BilingualBuilder.bilingualSplit hands the table's links to TablesAndGrids.cellImage, whose title-anchored match (body_region.cell_image_link_match) names an iStock picture by its id and title; any other address keeps the slug name. Env REOCELLIMGLINK_OFF."
 			},
+			"row_callout": {
+				"enabled": true,
+				"env": "REOROWALERT_OFF",
+				"tags": ["alert", "important"],
+				"title_max_words": 6,
+				"body_pattern": "^\\[\\s*body\\s*\\]",
+				"_doc": "An alert typed as a row of a bilingual content table: the tag row with its short title and the [Body] row under it are one alert box, not paragraphs."
+			},
+			"widget_data_table": {
+				"enabled": true,
+				"env": "REOWIDGETDATA_OFF",
+				"min_rows": 2,
+				"min_label_cells": 2,
+				"max_cell_words": 7,
+				"tag_lead_pattern": "^\\s*\\[\\s*(?:h\\d|body|title|alert|important|side|lesson)\\b",
+				"_doc": "A table whose header row is wholly the writer's red label words names a widget's fields, not two languages: it stays whole in its hand-off box and is never unfolded into reo / English lines."
+			},
 			"face_cards": {
 				"enabled": true,
 				"env": "REOFACECARD_OFF",
@@ -776,6 +793,14 @@
 			},
 			"section_grouping": {
 				"enabled": true,
+				"box_every_section": {
+					"enabled": true,
+					"env": "REOBOXALL_OFF",
+					"code_prefixes": ["TRR"],
+					"box_class": "activity",
+					"skip_heading_pattern": "\\b(?:finished|kua oti|what have i learn|he aha t[āa]ku)",
+					"_doc": "The series' numbered lesson sections are activities whether or not they hold a widget: a prose section takes the plain activity box. The closing sections stay bare."
+				},
 				"paired_heading_opener": {
 					"_doc": "A two-column table whose first row holds a heading tag in both cells opens the next bilingual section: a capture with a table of its own ends before it, so the section is not swallowed into the widget's hand-off box.",
 					"enabled": true,
@@ -792,6 +817,11 @@
 						"red_note_pattern": "🔴\\[RED TEXT\\]\\s*(?!\\[|\\s*\\[/RED TEXT\\])\\S",
 						"lead_text_pattern": "^\\s*\\[[^\\]]*\\]\\s*[\\p{L}\\p{N}“‘\"'(]",
 						"max_rows": 6,
+						"marker_row": {
+							"enabled": true,
+							"env": "BILLEADMARKER_OFF",
+							"_doc": "The table may open with the writer's one-cell [Activity: Embedded] marker row: the heading and instruction rows under it are the section's prose all the same."
+						},
 						"_doc": "THE SECTION PROSE BEFORE THE HAND-OFF BOX. A Pūriki-module activity is a writer's «[Activity: Embedded] <widget words>» line followed by ONE table that opens with the section's own paired prose rows («[H3] Find the ‘ao’ ║ [H3] Rapua ngā ‘ao’», «[Body] instructions ║ [Body] tohutohu») and continues with the widget's data rows; the scanner captures the whole table as the widget's member, so the heading and the instructions sat only inside the collapsed hand-off box. The finished page shows the heading and the instructions, then the widget. So the bundle's first member table's LEADING rows — each of whose two cells opens with a heading or body tag (row_pattern) followed by a word (lead_text_pattern — a tag followed by a stray colon is not prose), which carry no other tag (other_tag_pattern) and no untagged red span (red_note_pattern — a reviewer's note typed red inside the cell stays in the box), at most max_rows of them — render as bilingual prose before the box; the box keeps the whole table as the designer's reference. Env BILHANDOFFLEAD_OFF: the box alone, as before."
 					},
 					"_doc": "A widget bundle the bilingual section consumes gets the STANDARD hand-off box (#interactivePlaceholder, hand-off only — InteractiveBuilder.Build is NOT tried for a bilingual widget), the same box every bundle outside a section gets, with its data-cv2-index matching {CODE}_interactives.txt. Otherwise the section would render one bare `cv2-interactive bilingual-unbuilt` box holding only the bundle's FIRST member — an EMPTY <table> when that member is the writer's `[Activity: Embedded] …` tag line — and every later member (the reo/eng heading + instruction table, the data table) would render nothing. env BILHANDOFF_OFF."
@@ -1023,6 +1053,13 @@
 				"enabled": true,
 				"env": "CELLBR_OFF",
 				"joiner": " ",
+				"paragraph_form": {
+					"enabled": true,
+					"env": "CELLPARA_OFF",
+					"open": "<p>",
+					"close": "</p>",
+					"_doc": "Each of the cell's paragraphs is its own paragraph, so the writer's lines do not run together."
+				},
 				"_doc": "A TABLE CELL'S PARAGRAPHS ARE LINES, NOT SLASHES. The extractor joins a Word cell's paragraphs with the in-cell marker « / » and records the paragraphs themselves beside the rows (cellParas); a free-body data cell of two or more paragraphs renders them as lines joined by joiner, so the learner reads «Tīkina o tino pene…» and «Kautehia ia kara…» on two lines instead of one line broken by a slash. A writer's own « / » inside one paragraph («Whenu / Strand») is never split — the paragraphs come from the side-channel, not from the marker — and a cell a caller rewrote keeps its single-line form. The human build writes these lines with <br> more than any other form (CBI, CEDK, XGF, MXDB, CEDW almost always). Hand-off boxes keep the raw marker (a developer reference)."
 			},
 			"cell_image_reference": {
@@ -2159,12 +2196,27 @@
 			},
 			"_doc_guards": "The line's FIRST link stays the reading whenever its words are this item's own; a media item takes only a link of its own kind (kind_patterns — an image a picture host or file, a video a video host; a kind with no pattern is never re-read; a button takes any address). Without these, a garbled paste running two addresses together (HIS1002 10.0) and an image whose own words held another link (SSOG301 2.0) lost their right address."
 		},
+		"file_link_note": {
+			"enabled": true,
+			"env": "FILELINKNOTE_OFF",
+			"href_pattern": "sharepoint\\.com/:[wix]:",
+			"label_pattern": "\\.(?:docx?|xlsx?|png|jpe?g)\\s*$",
+			"todo_text": "Designer/Developer To Do: the writer's file «{label}». Link: {url}",
+			"_doc": "A paragraph that is wholly a link to a team Word, Excel or image file, labelled with its file name, is a pointer for the developer: learners cannot open it. It becomes the house To Do note."
+		},
 		"bare_stock_url_image": {
 			"_doc": "THE BARE STOCK-PHOTO URL IS AN IMAGE. A body paragraph whose whole content is one stock-photo URL (the writer's image reference typed on its own line — after a description, after an [image] whose own line already held one, under an unknown bracket) must not show as a visible link: MediaBuilder's standing contract is that the pasted iStock URL is the asset reference, never visible text, and the human build shows that image. Outside the un-built hand-off boxes (the developer's raw copy) the paragraph becomes the image in the run's mode (image.mode_P / mode_D + MediaBuilder.FinishImg's alt and loading=lazy); when the page already shows that image (its iStock-<id> label / filename) the paragraph is dropped. Env STOCKURLIMG_OFF.",
 			"enabled": true,
 			"env": "STOCKURLIMG_OFF",
 			"mode": "todo",
 			"todo_text": "Designer/Developer To Do: image goes here{label}. Link: {url}",
+			"whole_link": {
+				"enabled": true,
+				"env": "STOCKLINKPIC_OFF",
+				"pattern": "<(p|td)\\b[^>]*>\\s*(<a\\b[^>]*href=\"([^\"]*)\"[^>]*>((?:(?!</a>)[\\s\\S])*?)</a>)\\s*</\\1>",
+				"skip_url_pattern": "/video/",
+				"_doc": "The stock-photo link is the writer's picture in two more shapes: a paragraph that is wholly a link with a label, and a table cell holding the link, whose picture goes in place. A stock video is not a picture."
+			},
 			"escape_once": {
 				"enabled": true,
 				"env": "TODOESC_OFF",
@@ -2583,6 +2635,12 @@
 				"open": "<div class=\"row supervisor\">\n<div class=\"col-md-8 col-12 super-content-button\">\n<div class=\"super-content row\">\n<div class=\"col-12\">\n<h3>Supervisor note</h3>\n</div>\n<div class=\"col-12\">",
 				"close": "</div>\n</div>\n</div>\n</div>",
 				"own_row": true,
+				"following_text": {
+					"enabled": true,
+					"env": "SUPFOLLOW_OFF",
+					"max_paragraphs": 4,
+					"_doc": "A supervisor note whose tag stands alone on its line takes the untagged paragraphs after it, up to the next tag: those words are for the adult, not the learner."
+				},
 				"note": "The supervisor-note structure from the human gold standard (BLL146-0.0): a row-level super-content block. own_row = the template carries its OWN row/col wrappers, so the engine must NOT wrap it in the standard content row. The flat open/close above are the LEGACY form, used under SUPINROW_OFF; the live form is inner_row below.",
 				"inner_row": {
 					"enabled": true,
@@ -6804,6 +6862,12 @@
 			"body_class": "reoTranslate",
 			"repetition_tags": ["h1", "title bar"],
 			"harvest_heading_tags": ["h1"],
+			"cell_title": {
+				"enabled": true,
+				"env": "MTKCELLTITLE_OFF",
+				"leading_code_pattern": "^\\s*[A-Za-z]{2,8}\\d{2,5}(?!\\d)\\s*[:\\u2013\\u2014\\-]?\\s*",
+				"_doc": "The Module Code cell names the module; a repeated [H1] line may name a lesson. When the cell has a title and neither half of the line matches it, the cell is the title. A code at the head of the line is dropped."
+			},
 			"_note_title_source": "The MTK / Te Reo Rangatira title source; KB 07A 'Sections to EXTRACT' (the metadata table → module code + title; the [TITLE BAR] row; the per-page [H1] TRR1XX … | … repetition), 07C/07D rule 7 (titles Māori first, English second on every page; a lesson page carries its own title else the module titles), constraint 79. The TRR1xx docx leaves its [TITLE BAR] rows EMPTY and has no Module Name row: the module title rides in the Module Code cell ('TRR108: Ngā Orokati Tuarua – Final Consonants', 'TRR102 – Ngā Oropuare Aa') and the English half, where the writer gave one, in the per-page '[H1] TRR102 The vowels: Aa | Ngā Oropuare: Aa' repetition. Without this rule TRR overview pages would get no title, a stray body heading (Finished!, Karakia Whakakapi) would become a lesson title — the first-heading harvest has no [Activity] tag to stop at on an MTK page — and PNR102/104 lessons would get a single title where the human has the pair (the registry h1_count cap). THE RULE, scoped to modules whose resolved body class matches body_class: (A) DocxExtractor keeps the Module Code cell's remainder after the code token as metadata.moduleCodeTitle; (B) when the [TITLE BAR] and Module Name gave no title, PageAssembler takes the first repetition_tags item anywhere in the item stream whose text carries a pipe (code stripped, halves in payload order), else the cell remainder (pipe → pair; ONE spaced dash with a macron on exactly one side → pair; else one title); (C) the overview emits the Māori-looking title (macron, or the Māori alphabet) first; (D) a lesson page with no own title emits BOTH module titles, Māori first, exempt from the h1_count cap; (E) the page-title harvest accepts only harvest_heading_tags. The human build: every TRR overview carries the pair Māori-first; lessons repeat the module pair where the writer gave no lesson title. Env toggle MTKTITLES_OFF turns off all five."
 		},
 		"module_code_element": "<div id=\"module-code\">\n<h1>{rendered}</h1>\n</div>",
@@ -6903,6 +6967,12 @@
 				"_doc": "THE ENGLISH PRONOUN STAYS A CAPITAL. Sentence case lowercased every word after the first, so CEDT207's «ME, MY SELFIE AND I» headed every page «Me, my selfie and i» (the gold: «Me, my selfie and I»). A standalone «i» — or «i'm» / «i've» / «i'll» / «i'd» — is the pronoun and is restored to «I»; a title that reads as te reo (a macron, or only Māori-alphabet letters — SkeletonBuilder's lone-title test) keeps its lowercase particle «i» («Te whakamahi i ngā hātepe»). OFF = every word after the first lowercase."
 			},
 			"red_flag": "The writer's title is ALL CAPS (\"{original}\") — rendered in sentence case per the KB's title-casing rule; restore any proper-noun or acronym capitals the writer intended."
+		},
+		"title_trailing_stop": {
+			"enabled": true,
+			"env": "TITLESTOP_OFF",
+			"pattern": "(?<![.…])\\.\\s*$",
+			"_doc": "A page title never ends in a full stop; a run of dots is the writer's ellipsis and stays."
 		},
 		"title_h1": "<h1><span>{title}</span></h1>",
 		"title_h1_lowercase": "<h1><span style=\"text-transform:lowercase;\">{title}</span></h1>",
@@ -10543,6 +10613,18 @@
 			"note_prefix": "Writers Note: ",
 			"request_pattern": "\\[\\s*(?:un-?bold|end\\s+bold|un-?itali[cs]s?|end\\s+itali[cs]s?)\\s*\\]"
 		},
+		"one_cell_table_prose": {
+			"_doc": "A table of one row and one cell is the writer's layout box, not data: its words render as ordinary paragraphs.",
+			"enabled": true,
+			"env": "ONECELLPROSE_OFF"
+		},
+		"typed_bullets": {
+			"_doc": "A writer's typed bullet is a list mark, not a word: a run of plain paragraphs that open with one is a list, and one at the head of a list item is dropped. Dashes stay as typed: they lead dialogue and sums as often as lists.",
+			"enabled": true,
+			"env": "TYPEDBULLET_OFF",
+			"glyph_pattern": "[•●▪◦‣]",
+			"min_run": 2
+		},
 		"adjacent_list_merge": {
 			"_doc": "ONE BULLETED LIST STAYS ONE LIST. Bullets the writer typed as separate paragraphs inside a speech bubble, a modal or another container were rendered one <ul> per bullet — `</ul><ul>` back to back, each list with its own spacing — where the human builds one list (adjacent lists are almost never the human form). A page post-pass joins a plain `</ul>` directly followed (whitespace only) by a plain `<ul>`; a numbered list is never touched (its start attribute is the writer's continuation). Env ADJLISTMERGE_OFF leaves the lists as built.",
 			"enabled": true,
@@ -10552,6 +10634,12 @@
 			"enabled": true,
 			"level": 4,
 			"max_title_chars": 45,
+			"keep_language_pair": {
+				"_doc": "A paragraph tagged with its language is half of a reo / English pair: it stays a paragraph, its attribute kept.",
+				"enabled": true,
+				"env": "REOROWALERT_OFF",
+				"attr_pattern": "<p\\b[^>]*\\b(?:reo|eng)\\b"
+			},
 			"no_cross_p": {
 				"_doc": "The title paragraph may not CONTAIN a `</p>`: the lazy `<p>([\\s\\S]*?)</p>(\\s*<[^/])` runs past a paragraph closed by `</div>` (an alert whose only paragraph is its body, or an empty red-flag alert) into the NEXT alert, takes that alert's first paragraph, and leaves its short title a <p>. Promotion rules unchanged (max_title_chars, a following block tag). Env ALERTHCROSS_OFF = the lazy match.",
 				"enabled": true,

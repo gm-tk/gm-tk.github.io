@@ -3147,14 +3147,16 @@ class MenuBuilder {
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "MENUITEMCASE_OFF"]) return html;
 		const end = html.indexOf('<div id="body"');
 		if (end < 0) return html;
+		html = ContentConverter.TypedBullets(html.slice(0, end), true) + html.slice(end);
+		const bodyAt = html.indexOf('<div id="body"');
 		const lead = new RegExp(cfg.lead_pattern, "i"), keep = new RegExp(cfg.keep_pattern, "u");
-		const head = html.slice(0, end).replace(/(<(h[1-6]|p)\b[^>]*>)((?:(?!<\/\2>)[\s\S])*)(<\/\2>\s*<ul\b[^>]*>)([\s\S]*?)(<\/ul>)/gi, (all, open, tag, label, mid, items, close) => {
+		const head = html.slice(0, bodyAt).replace(/(<(h[1-6]|p)\b[^>]*>)((?:(?!<\/\2>)[\s\S])*)(<\/\2>\s*<ul\b[^>]*>)([\s\S]*?)(<\/ul>)/gi, (all, open, tag, label, mid, items, close) => {
 			if (!lead.test(label.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim())) return all;
 			const lowered = items.replace(/(<li\b[^>]*>\s*(?:<[^>]+>\s*)*)(\p{Lu})(\p{Ll}[^\s<]*)/gu, (m, pre, cap, rest) => (
 				keep.test(cap + rest) ? m : pre + cap.toLowerCase() + rest));
 			return open + label + mid + lowered + close;
 		});
-		return head + html.slice(end);
+		return head + html.slice(bodyAt);
 	}
 }
 

@@ -738,7 +738,8 @@ class DocxExtractor {
 				if (b.kind !== "table" || out[tic.field ?? "moduleCodeTitle"]) continue;
 				for (const row of (b.rows ?? [])) {
 					if (!Array.isArray(row) || row.length < 2 || !want.has(Utils.Fold(clean2(row[0])))) continue;
-					const m = /^\s*[A-Za-z]{2,8}\d{2,5}[A-Za-z]?\s*[:\u2013\u2014\-]?\s*(.+)$/.exec(clean2(row[1]));
+					const noSplit = !(typeof process !== "undefined" && process.env && process.env.MTKCELLTITLE_OFF);
+					const m = (noSplit ? /^\s*[A-Za-z]{2,8}\d{2,5}(?!\d)[A-Za-z]?\s*[:\u2013\u2014\-]?\s*(.+)$/ : /^\s*[A-Za-z]{2,8}\d{2,5}[A-Za-z]?\s*[:\u2013\u2014\-]?\s*(.+)$/).exec(clean2(row[1]));
 					if (m && m[1].trim()) { out[tic.field ?? "moduleCodeTitle"] = m[1].trim(); break; }
 				}
 			}

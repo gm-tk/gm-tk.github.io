@@ -867,7 +867,13 @@ class SkeletonBuilder {
 		let firstTitle = true;
 		// the writer's placeholder for the te reo title is cut from the titles (header.title_placeholder_tail; env TITLEPHTAIL_OFF)
 		const phTail = SkeletonBuilder.#titlePlaceholderTail(titles.filter(Boolean), tpl, pairCapsSet);
-		for (const t of phTail.titles) {
+		// a title never ends in a full stop; a run of dots stays (header.title_trailing_stop; env TITLESTOP_OFF)
+		const tts = tpl.header.title_trailing_stop;
+		const ttsOn = !!tts && tts.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[tts.env ?? "TITLESTOP_OFF"]);
+		for (const t0 of phTail.titles) {
+			const t = ttsOn ? String(t0).replace(new RegExp(tts.pattern), "") : t0;
+			if (pairCapsSet && t !== t0 && pairCapsSet.has(t0)) pairCapsSet.add(t);
 			if (firstTitle && pageType === "overview" && content.titleBar?.phonicsLead
 				&& tpl.header.title_h1_phonics) {
 				parts.push(Utils.FillTemplate(tpl.header.title_h1_phonics, {

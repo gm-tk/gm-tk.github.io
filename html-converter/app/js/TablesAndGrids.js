@@ -228,7 +228,7 @@ class TablesAndGrids {
 					const unred = (x) => x.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "");
 					const content = this.fillImageRefs(this.fillImageRefs(blHit ? ListsAndRuns.renderBlackText(this.cellNumberedParts(block, rows, r, ci, blParts).join("\n"), run, this.cellLinks(links).concat(rqLinks), true).join("")
 						: inline !== null ? inline
-						: paras ? paras.map((p) => ListsAndRuns.inlineMarkup(unred(p), this.cellLinks(links).concat(rqLinks), true)).join(t.cell_paragraphs.joiner)
+						: paras ? this.cellParagraphForm(paras.map((p) => ListsAndRuns.inlineMarkup(unred(p), this.cellLinks(links).concat(rqLinks), true)), t.cell_paragraphs)
 						// red spans inside table cells: keep their text visible,
 						// marked — they are usually interactive data labels
 						: ListsAndRuns.inlineMarkup(unred(cc),
@@ -238,7 +238,9 @@ class TablesAndGrids {
 					// A header cell whose rendered content is exactly ONE <b>/<strong> span
 					// (no other bold inside) drops the wrapper; <td> cells keep theirs. Free-body only.
 					// Data elements.table.header_cell_plain; env THPLAIN_OFF (keeps the bold wrapper).
-					let _cell = content;
+					// a note filled in after the cell's paragraphs were wrapped is already a paragraph (cell_paragraphs.paragraph_form)
+					let _cell = paras ? content.replace(/<p>\s*(<p\b[^>]*>(?:(?!<\/p>)[\s\S])*<\/p>)\s*((?:(?!<\/?p\b)[\s\S])*)<\/p>/g,
+						(m, note, rest) => (rest.trim() ? `${note}<p>${rest}</p>` : note)) : content;
 					const _thp = t.header_cell_plain;
 					if (isHdr && !insidePlaceholder && _thp && _thp.enabled !== false
 						&& !(typeof process !== "undefined" && process.env && process.env[_thp.env ?? "THPLAIN_OFF"])) {
@@ -514,6 +516,13 @@ class TablesAndGrids {
 	 * @param {string} c - the cell string being rendered
 	 * @returns {string[]|null} the cell's paragraphs, or null
 	 */
+	static cellParagraphForm(lines, cfg) {
+		const f = cfg.paragraph_form;
+		if (!f || f.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[f.env ?? "CELLPARA_OFF"])) return lines.join(cfg.joiner);
+		return lines.map((l) => `${f.open}${l}${f.close}`).join("");
+	};
+
 	static cellParagraphs(block, rows, r, ci, c) {
 		const cfg = DataService.Data.EmitTemplates.elements?.table?.cell_paragraphs;
 		if (!cfg || cfg.enabled === false || !cfg.joiner) return null;

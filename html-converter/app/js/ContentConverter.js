@@ -2717,6 +2717,26 @@ class ContentConverter {
 			return null;
 		};
 
+		// A supervisor note whose tag stands alone on its line: its words are the untagged paragraphs after it, up to the next
+		// tag. Data callouts.by_tag.'supervisor note'.following_text; env SUPFOLLOW_OFF.
+		const supFollow = tpl.callouts.by_tag["supervisor note"]?.following_text;
+		if (supFollow && supFollow.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[supFollow.env ?? "SUPFOLLOW_OFF"])) {
+			for (let k = 0; k < bodyItems.length; k++) {
+				const s = bodyItems[k];
+				if (s.type !== "tag" || s.parse?.primary?.tag !== "supervisor note" || String(s.blackAfter ?? "").trim()) continue;
+				const taken = [];
+				for (let n = k + 1; n < bodyItems.length && n <= k + (supFollow.max_paragraphs ?? 4); n++) {
+					const nx = bodyItems[n];
+					if (nx.type !== "black" || nx.consumedBy !== undefined) break;
+					if (String(nx.text ?? "").trim()) taken.push(nx);
+				}
+				if (!taken.length) continue;
+				s.blackAfter = taken.map((x) => x.text).join("\n");
+				for (const x of taken) x.text = "";
+			}
+		}
+
 		// BLL PAIRING PRE-PASS: different writers order their intro supervisor note differently
 		// relative to its section heading — sometimes BEFORE the heading (module BLL225 writes
 		// "[supervisor note][Introduction][body]") and sometimes AFTER it (module BLL111 writes
@@ -5716,7 +5736,7 @@ class ContentConverter {
 				// (fundamentals_panels.level_pages; env LEVELPAGE_OFF)
 				levelRow: lvInfo?.row, levelLabels: lvInfo?.labels })), run), run), run);   // "run" is passed through for the newTabNav registry lookup; #titleIdEcho runs outermost, after the numbering
 		// one bulleted list stays one list (body_region.adjacent_list_merge; env ADJLISTMERGE_OFF)
-		const bodyHtml = this.#devInstructionParen(this.#captionLabelWord(this.#spentFormatNote(this.#adjacentListMerge(bodyHtml0))));
+		const bodyHtml = this.#devInstructionParen(this.#captionLabelWord(this.#spentFormatNote(this.#adjacentListMerge(this.TypedBullets(this.#oneCellTableProse(bodyHtml0))))));
 		// INQUIRY-mode wrapping also runs OUTERMOST: it turns the assembled body into
 		// "div.crumbs" + "div.inquiryPanel" elements at each "[Tab N]" sentinel position.
 		// inquiryActive then tells SkeletonBuilder whether to emit the inquiry page's body
@@ -6119,6 +6139,61 @@ class ContentConverter {
 		return html.replace(re, "");
 	};
 
+	/**
+	 * THE WRITER'S TYPED BULLETS. A run of plain paragraphs that each open with a typed bullet glyph is a list, and a glyph
+	 * typed at the head of a list item is a second bullet. Built widgets are left alone.
+	 * Data body_region.typed_bullets (glyph_pattern, min_run); env TYPEDBULLET_OFF.
+	 * @param {string} html - the body HTML, or the page's header region
+	 * @param {boolean} menu - true for the header region, whose menu panes are not built widgets
+	 * @returns {string} the HTML with the typed glyphs resolved
+	 */
+	static TypedBullets(html, menu = false) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.typed_bullets;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "TYPEDBULLET_OFF"]) return html;
+		const glyph = cfg.glyph_pattern ?? "[•●▪]";
+		const skip = new Set(menu ? [] : DataService.Data.EmitTemplates.body_region?.heading_relevel?.skip_classes ?? []);
+		const widget = this.#widgetRanges(html, skip);
+		const inWidget = (pos) => widget.some(([a, b]) => pos >= a && pos < b);
+		const item = new RegExp(`<li>(\\s*)${glyph}\\s+`, "g");
+		let out = html.replace(item, (m, ws, off) => (inWidget(off) ? m : `<li>${ws}`));
+		const para = `[ \\t]*<p>\\s*${glyph}\\s+(?:(?!</p>)[\\s\\S])*?</p>`;
+		const run = new RegExp(`${para}(?:\\s*${para}){${Math.max(1, (cfg.min_run ?? 2) - 1)},}`, "g");
+		const widget2 = this.#widgetRanges(out, skip);
+		const lead = new RegExp(`^\\s*<p>\\s*${glyph}\\s+`);
+		return out.replace(run, (m, off) => {
+			if (widget2.some(([a, b]) => off >= a && off < b)) return m;
+			const items = m.split(/<\/p>/).map((s) => s.trim()).filter(Boolean).map((s) => `<li>${s.replace(lead, "")}</li>`);
+			return `<ul>\n${items.join("\n")}\n</ul>`;
+		});
+	};
+
+	/**
+	 * A ONE-ROW, ONE-CELL TABLE IS PROSE. A table of a single cell, outside a hand-off box, is the writer's layout box: its
+	 * words render as ordinary paragraphs. Data body_region.one_cell_table_prose; env ONECELLPROSE_OFF.
+	 * @param {string} html - the body HTML
+	 * @returns {string} the body HTML with single-cell tables unfolded
+	 */
+	static #oneCellTableProse(html) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.one_cell_table_prose;
+		if (!cfg || cfg.enabled === false || !html) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "ONECELLPROSE_OFF"]) return html;
+		const spans = [];
+		for (const h of html.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
+			const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
+		}
+		const widget = this.#widgetRanges(html, new Set(DataService.Data.EmitTemplates.body_region?.heading_relevel?.skip_classes ?? []));
+		const held = (pos) => spans.some(([a, z]) => pos >= a && pos < z) || widget.some(([a, z]) => pos >= a && pos < z);
+		const re = /(?:<div class="table-responsive">\s*)?<table\b[^>]*>\s*<tr>\s*<t[dh]\b[^>]*>((?:(?!<\/?t(?:able|r|d|h)\b)[\s\S])*)<\/t[dh]>\s*<\/tr>\s*<\/table>(?:\s*<\/div>)?/g;
+		return html.replace(re, (m, inner, off) => {
+			if (held(off) || !m.startsWith("<div") !== !m.endsWith("</div>")) return m;
+			const body = inner.trim();
+			if (!body) return m;
+			return /^<(?:p|ul|ol|h\d|div|img)\b/i.test(body) ? body : `<p>${body}</p>`;
+		});
+	};
+
 	static #adjacentListMerge(html) {
 		const cfg = DataService.Data.EmitTemplates.body_region?.adjacent_list_merge;
 		if (!cfg || cfg.enabled === false) return html;
@@ -6142,9 +6217,16 @@ class ContentConverter {
 		const re = noCross
 			? /(<div class="alert[^"]*">\s*(?:<div class="row">\s*<div class="col[^"]*">\s*)?)<p\b[^>]*>((?:(?!<\/p>)[\s\S])*?)<\/p>(\s*<[^/])/gi
 			: /(<div class="alert[^"]*">\s*(?:<div class="row">\s*<div class="col[^"]*">\s*)?)<p\b[^>]*>([\s\S]*?)<\/p>(\s*<[^/])/gi;
+		// a paragraph tagged with its language is half of a reo / English pair, never a title on its own
+		// (alert_title_heading.keep_language_pair; env REOROWALERT_OFF)
+		const klp = cfg.keep_language_pair;
+		const keepRe = klp && klp.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[klp.env ?? "REOROWALERT_OFF"])
+			? new RegExp(klp.attr_pattern, "i") : null;
 		return html.replace(re, (full, pre, inner, after) => {
 			const text = inner.replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/gi, " ").trim();
 			if (!text || text.length > maxLen) return full;
+			if (keepRe && keepRe.test(full.slice(pre.length, full.indexOf(">", pre.length) + 1))) return full;
 			return `${pre}<h${level}>${inner}</h${level}>${after}`;
 		});
 	};
@@ -10591,7 +10673,27 @@ class ContentConverter {
 	 *  un-built hand-off boxes the paragraph becomes the house To Do note, so the learner sees no URL and the developer keeps
 	 *  the link (to anchor, make a button, or credit). Data elements.bare_link_url_note {exclude_host_pattern, todo_text};
 	 *  env BARELINKNOTE_OFF. */
+	static #fileLinkNote(html, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.file_link_note;
+		if (!cfg || cfg.enabled === false || !html) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "FILELINKNOTE_OFF"]) return html;
+		const href = new RegExp(cfg.href_pattern, "i"), name = new RegExp(cfg.label_pattern, "i");
+		if (!href.test(html)) return html;
+		const spans = [];
+		for (const h of html.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
+			const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
+		}
+		return html.replace(/<p\b[^>]*>\s*<a\b[^>]*href="([^"]*)"[^>]*>((?:(?!<\/a>)[\s\S])*?)<\/a>\s*<\/p>/gi, (m, url, inner, off) => {
+			const label = inner.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+			if (!href.test(url) || !name.test(label) || spans.some(([a, z]) => off >= a && off < z)) return m;
+			return NotesAndComments.redFlag(Utils.FillTemplate(cfg.todo_text, { label, url }), run, "cs");
+		});
+	}
+
 	static #bareLinkUrlNote(html, run) {
+		// a writer's file named as a whole paragraph link is a pointer for the developer (elements.file_link_note)
+		html = this.#fileLinkNote(html, run);
 		// a bare video FILE address is the video, never the developer's note (elements.bare_file_video_embed)
 		html = this.#bareFileVideoEmbed(html, run);
 		const cfg = DataService.Data.EmitTemplates.elements?.bare_link_url_note;
@@ -10762,12 +10864,34 @@ class ContentConverter {
 			const id = (cfg.id_patterns ?? ["gm-?(\\d{6,10})", "/id/(\\d{6,10})"]).map((p) => url.match(new RegExp(p))?.[1]).find(Boolean) ?? null;
 			hits.push({ at: m.index, len: m[0].length, url, id });
 		}
+		// the same reference in two more shapes: a paragraph that is wholly a link with a label, and a table cell holding the
+		// link, whose picture goes in place (bare_stock_url_image.whole_link; env STOCKLINKPIC_OFF)
+		const wl = cfg.whole_link;
+		if (wl && wl.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[wl.env ?? "STOCKLINKPIC_OFF"])) {
+			const skipUrl = new RegExp(wl.skip_url_pattern, "i");
+			for (const m of html.matchAll(new RegExp(wl.pattern, "gi"))) {
+				if (spans.some(([a, z]) => m.index >= a && m.index < z) || hits.some((h) => h.at === m.index)) continue;
+				const url = m[3].replace(/&amp;/g, "&");
+				if (!hostRe.test(url) || skipUrl.test(url)) continue;
+				const id = (cfg.id_patterns ?? ["gm-?(\\d{6,10})", "/id/(\\d{6,10})"]).map((p) => url.match(new RegExp(p))?.[1]).find(Boolean) ?? null;
+				if (m[1].toLowerCase() === "td") {
+					if (id) hits.push({ at: m.index + m[0].indexOf(m[2]), len: m[2].length, url, id, inPlace: true });
+				} else hits.push({ at: m.index, len: m[0].length, url, id, words: m[4].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim() });
+			}
+			hits.sort((a, b) => a.at - b.at);
+		}
 		if (!hits.length) return html;
 		let out = html, nImg = 0, nDrop = 0;
 		for (const h of hits.slice().reverse()) {
 			const rest = out.slice(0, h.at) + out.slice(h.at + h.len);
 			let rep;
-			if ((h.id && rest.includes(`iStock-${h.id}`)) || cfg.mode === "drop") { rep = ""; nDrop++; }
+			if (h.inPlace) {
+				rep = run?.imageMode === "P"
+					? MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_P.visible, { label: `iStock-${h.id}` }), h.url, h.id, run) + "\n"
+						+ MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_P.comment, { filename: Utils.FillTemplate(tpl.filename_rules.istock, { id: h.id }) }), h.url, h.id, run)
+					: MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_D.visible, { filename: Utils.FillTemplate(tpl.filename_rules.istock, { id: h.id }) }), h.url, h.id, run);
+				nImg++;
+			} else if ((h.id && rest.includes(`iStock-${h.id}`)) || cfg.mode === "drop") { rep = ""; nDrop++; }
 			else if ((cfg.mode ?? "todo") === "todo") {
 				// the house To Do form (the Media List item note's wording): the image stays the developer's cue, the learner
 				// sees no URL, and the red note sits outside the skeleton — the in-place <img> scored 3× lower than the note
@@ -10779,7 +10903,7 @@ class ContentConverter {
 				const link = once ? String(h.url).replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, "\"")
 					.replace(/&#39;/g, "'").replace(/&amp;/g, "&") : Utils.EscapeHtml(h.url);
 				rep = NotesAndComments.redFlag(Utils.FillTemplate(cfg.todo_text ?? "Designer/Developer To Do: image goes here{label}. Link: {url}",
-					{ label: h.id ? ` (iStock-${h.id})` : "", url: link }), run, "cs");
+					{ label: (h.id ? ` (iStock-${h.id})` : "") + (h.words ? ` «${h.words}»` : ""), url: link }), run, "cs");
 				nImg++;
 			} else {
 				const label = h.id ? `iStock-${h.id}` : "image";

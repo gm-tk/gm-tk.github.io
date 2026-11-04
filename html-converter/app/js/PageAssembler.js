@@ -1178,6 +1178,16 @@ class PageAssembler {
 					}
 				}
 				const cell = tidy(run.metadata?.moduleCodeTitle);
+				// the [H1] line may be a LESSON's title: when the Module Code cell names the module and neither half of the line
+				// matches it, the cell wins; a stray code at the line's head goes (header.mtk_titles.cell_title; env MTKCELLTITLE_OFF)
+				const ct = mtk.cell_title;
+				if (parts && ct && ct.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[ct.env ?? "MTKCELLTITLE_OFF"])) {
+					const lead = new RegExp(ct.leading_code_pattern, "i");
+					parts = parts.map((h) => tidy(h.replace(lead, "")));
+					const letters = (s) => Utils.Fold(s).replace(/[^a-z0-9]/g, "");
+					if (cell && !parts.some((h) => letters(h) === letters(cell))) parts = null;
+				}
 				if (!parts && cell) {
 					const M = /[\u0101\u0113\u012b\u014d\u016b\u0100\u0112\u012a\u014c\u016a]/;
 					if (cell.includes("|")) parts = cell.split("|").map(tidy).filter(Boolean).slice(0, 2);

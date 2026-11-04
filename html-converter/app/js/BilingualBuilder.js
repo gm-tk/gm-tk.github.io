@@ -243,6 +243,8 @@ class BilingualBuilder {
 	static bilingualRows(block, run, fromRow, norm) {
 		const rows = block?.rows ?? [];
 		if (!rows.length || !Array.isArray(rows[0]) || rows[0].length < 2) return [];
+		// a widget's data table has no reo / English pairs to unfold: the caller keeps it whole in its hand-off box
+		if (fromRow === undefined && this.#isWidgetDataTable(block)) return [];
 		// A [H2] Lesson N opener passes fromRow explicitly to SKIP its own title row
 		// (that row is rendered separately, as a bare col-md-8 <h2>, by
 		// bilingualLessonTitleHtml below); every other caller just uses the default
@@ -278,6 +280,10 @@ class BilingualBuilder {
 				const box = this.#proverbBox(rows[r + 1], run, norm, pv);
 				if (box) { out.push(...box); r++; continue; }
 			}
+			// an alert typed as a row of the content table: the tag row and the [Body] row under it are one alert box
+			// (dual_language.row_callout; env REOROWALERT_OFF)
+			const rowAlert = this.#rowCallout(rows, r, run, norm, block);
+			if (rowAlert) { out.push(rowAlert); r++; continue; }
 			const reoCell = rows[r][1], engCell = rows[r][0];   // col-2 = Māori, col-1 = English
 			const R = this.bilingualSplit(reoCell, run, norm, block?.wtPage, block?.links);
 			const E = this.bilingualSplit(engCell, run, norm, block?.wtPage, block?.links);
@@ -652,8 +658,10 @@ class BilingualBuilder {
 						&& !(typeof process !== "undefined" && process.env && process.env[lp.env ?? "BILHANDOFFLEAD_OFF"])) {
 						const tb = (b.tables && b.tables[0])
 							|| ((b.memberItems || []).find((m) => m && m.type === "table" && m.block) || {}).block;
-						const k = tb ? this.#leadProseRows(tb, lp) : 0;
-						if (k > 0) inner.push(...this.bilingualRows({ ...tb, rows: tb.rows.slice(0, k) }, run, 0, norm));
+						// the writer's one-cell [Activity: Embedded] marker row may open the table: the prose rows follow it
+						const from = tb ? this.#leadMarkerRows(tb, lp) : 0;
+						const k = tb ? this.#leadProseRows(from ? { ...tb, rows: tb.rows.slice(from) } : tb, lp) : 0;
+						if (k > 0) inner.push(...this.bilingualRows({ ...tb, rows: tb.rows.slice(from, from + k) }, run, 0, norm));
 					}
 					inner.push(box || `<div class="cv2-interactive bilingual-unbuilt">\n${TablesAndGrids.contentTable(nx.block, run, true, norm)}\n</div>`);
 					hasWidget = true;
@@ -684,9 +692,20 @@ class BilingualBuilder {
 					continue;
 				}
 				// a non-bilingual DATA table (audio-item list, word bank) → a cv2 marker; on its own it does
-				// NOT box the section (it is a widget's data, normally captured with its bundle).
+				// NOT box the section (it is a widget's data, normally captured with its bundle) — a table with the writer's
+				// red field labels is the section's widget itself, and boxes it (dual_language.widget_data_table).
+				// A table the writer's [Activity: Embedded] marker row opens is an activity too: its heading and instruction
+				// rows render before the box (section_grouping.bundle_handoff.lead_prose.marker_row; env BILLEADMARKER_OFF).
+				const mlp = scfg?.bundle_handoff?.lead_prose;
+				const mFrom = mlp && mlp.enabled !== false ? this.#leadMarkerRows(nx.block, mlp) : 0;
+				if (mFrom) {
+					const mk = this.#leadProseRows({ ...nx.block, rows: nx.block.rows.slice(mFrom) }, mlp);
+					if (mk > 0) inner.push(...this.bilingualRows({ ...nx.block, rows: nx.block.rows.slice(mFrom, mFrom + mk) }, run, 0, norm));
+					hasWidget = true;
+				}
 				inner.push(this.UnbuiltBox(TablesAndGrids.contentTable(nx.block, run, true, norm), nx.block, run,
 					"a data table in a bilingual section (an audio-item list, a word bank) — kept raw"));
+				if (this.#isWidgetDataTable(nx.block)) hasWidget = true;
 				continue;
 			}
 			if (nx.type === "black") {
@@ -727,7 +746,14 @@ class BilingualBuilder {
 		// (dual_language.dropbox_button.box_section; env REODBXBOX_OFF)
 		const dbxCfg = this.#dropboxCfg();
 		const hasDbx = !!(dbxCfg && dbxCfg.box && dbxCfg.box.mode === "section") && inner.some((h) => this.#isDropbox(h, dbxCfg));
-		const boxed = hasWidget || hasDbx;
+		// a series whose every numbered lesson section is an activity boxes the prose sections too, the closing sections
+		// excepted (section_grouping.box_every_section; env REOBOXALL_OFF)
+		const bes = scfg?.box_every_section;
+		const proseBox = !hasWidget && !hasDbx && isH1 && !!bes && bes.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[bes.env ?? "REOBOXALL_OFF"])
+			&& (bes.code_prefixes ?? []).some((p) => String(run.moduleCode ?? "").startsWith(p))
+			&& !new RegExp(bes.skip_heading_pattern, "i").test(inner.slice(0, 4).join(" ").replace(/<[^>]+>/g, " "));
+		const boxed = hasWidget || hasDbx || proseBox;
 		if (openedByLesson && boxed) number = `${lessonNum}${this.reoLessonLetter(run, lessonNum)}`;
 		// KB 07B: a `[H1] N.M`-opened section that is boxed and carried no
 		// "Activity NX:" label takes the writer's own section id as its number= (decimal,
@@ -750,7 +776,8 @@ class BilingualBuilder {
 		// heading, so without this the box would keep the writer's h2. Data section_grouping.boxed_heading_level.
 		const boxedInner = boxed ? this.boxedHeadingRelevel(innerHtml, run) : innerHtml;
 		// the box's class: the widget box, the dropbox box, or both when the section holds both
-		const boxCls = hasDbx ? (hasWidget ? `activity interactive ${dbxCfg.box.cls.replace(/^activity\s+/, "")}` : dbxCfg.box.cls) : "activity interactive";
+		const boxCls = proseBox ? (bes.box_class ?? "activity")
+			: hasDbx ? (hasWidget ? `activity interactive ${dbxCfg.box.cls.replace(/^activity\s+/, "")}` : dbxCfg.box.cls) : "activity interactive";
 		// the side column of the section's side alerts, the right sibling of its main column (the `side alert` callout's own
 		// box and column classes)
 		const sDef = DataService.Data.EmitTemplates.callouts?.by_tag?.["side alert"] ?? {};
@@ -1676,6 +1703,77 @@ class BilingualBuilder {
 	};
 
 	/**
+	 * AN ALERT TYPED AS A TABLE ROW: both language cells open with the same callout tag and a short title, and both cells
+	 * of the next row open with [Body]. The pair renders as the catalogue's box, reo / English interleaved per element.
+	 * Data dual_language.row_callout (tags, title_max_words, body_pattern); env REOROWALERT_OFF.
+	 * @param {Array} rows - the table's rows
+	 * @param {number} r - the row to test
+	 * @param {ConversionRun} run - the run
+	 * @param {TagNormaliser} norm - the run's normaliser
+	 * @param {Object} block - the table block
+	 * @returns {string|null} the box's HTML, or null when the row is not this shape
+	 */
+	static #rowCallout(rows, r, run, norm, block) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.row_callout;
+		if (!c || c.enabled === false || !norm
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOROWALERT_OFF"])) return null;
+		const row = rows[r], next = rows[r + 1];
+		if (!Array.isArray(row) || row.length < 2 || !Array.isArray(next) || next.length < 2) return null;
+		const clean = (x) => String(x ?? "").replace(/\u{1f534}|\[\/?RED TEXT\]|\*/gu, "").trim();
+		const tagOf = (x) => {
+			const m = clean(x).match(/^\[([^\]]+)\]/);
+			if (!m) return null;
+			try { return norm.Parse(`[${m[1]}]`)?.primary?.tag ?? null; } catch { return null; }
+		};
+		const tag = tagOf(row[0]);
+		if (!tag || tag !== tagOf(row[1]) || !(c.tags ?? []).includes(tag)) return null;
+		const body = new RegExp(c.body_pattern, "i");
+		if (!body.test(clean(next[0])) || !body.test(clean(next[1]))) return null;
+		const words = (x) => clean(x).replace(/^\[[^\]]*\]/, "").replace(/\//g, " ").trim().split(/\s+/).filter(Boolean).length;
+		const max = c.title_max_words ?? 6;
+		if (words(row[0]) > max || words(row[1]) > max) return null;
+		const def = DataService.Data.EmitTemplates.callouts?.by_tag?.[tag];
+		if (!def?.open) return null;
+		const parts = [];
+		for (const x of [row, next]) {
+			const R = this.bilingualSplit(x[1], run, norm, block?.wtPage, block?.links);
+			const E = this.bilingualSplit(x[0], run, norm, block?.wtPage, block?.links);
+			for (let i = 0; i < Math.max(R.text.length, E.text.length); i++) {
+				if (i < R.text.length) parts.push(this.langAttr(R.text[i], "reo"));
+				if (i < E.text.length) parts.push(this.langAttr(E.text[i], "eng"));
+			}
+			parts.push(...(R.media.length ? R.media : E.media));
+		}
+		return `${Utils.FillTemplate(def.open, { modifiers: "" })}\n<div class="row">\n<div class="col-12">\n${parts.join("\n")}\n</div>\n</div>\n${def.close}`;
+	};
+
+	/**
+	 * A WIDGET'S DATA TABLE: every word of the header row is the writer's red label («Sentence ║ Audio Image ║ Picture»), with
+	 * data rows under it. The columns name a widget's fields, not two languages. A card table the face-card rule builds and
+	 * a row of structural lead tags are not this shape. Data dual_language.widget_data_table; env REOWIDGETDATA_OFF.
+	 * @param {Object} block - a table block
+	 * @returns {boolean} true when the table is widget data
+	 */
+	static #isWidgetDataTable(block) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.widget_data_table;
+		if (!c || c.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOWIDGETDATA_OFF"])) return false;
+		const rows = block?.rows ?? [];
+		if (rows.length < (c.min_rows ?? 2) || this.bilingualHeader(block)) return false;
+		const redRun = /\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu;
+		const plain = (x) => String(x ?? "").replace(/\u{1f534}|\[\/?RED TEXT\]/gu, "").replace(/\*/g, "").replace(/\s+/g, " ").trim();
+		const cells = rows[0].filter((x) => plain(x));
+		if (cells.length < (c.min_label_cells ?? 2)) return false;
+		if (cells.some((x) => String(x).replace(redRun, "").replace(/\*/g, "").trim())) return false;
+		const lead = new RegExp(c.tag_lead_pattern, "i");
+		const maxWords = c.max_cell_words ?? 7;
+		if (cells.some((x) => lead.test(plain(x)) || plain(x).split(" ").length > maxWords)) return false;
+		const fc = this.#faceCardCfg();
+		const head = rows[0].map(plain).join(" ");
+		return !(fc && new RegExp(fc.front_pattern, "i").test(head) && new RegExp(fc.back_pattern, "i").test(head));
+	};
+
+	/**
 	 * The data block dual_language.face_cards, or null when it is off (data flag / env REOFACECARD_OFF).
 	 * @returns {Object|null}
 	 */
@@ -2026,6 +2124,24 @@ class BilingualBuilder {
 		if (!plain || !/\p{L}/u.test(plain) || /https?:\/\/|www\./i.test(plain) || plain.split(" ").length > (c.max_words ?? 4)) return null;
 		return Utils.FillTemplate(c.form, { word: ListsAndRuns.inlineMarkup(lead) });
 	}
+
+	/**
+	 * How many rows at the head of a bundle's member table are the writer's one-cell [Activity: Embedded] marker: 1 or 0
+	 * (data section_grouping.bundle_handoff.lead_prose.marker_row; env BILLEADMARKER_OFF).
+	 *
+	 * @param {Object} block - the table block
+	 * @param {Object} cfg - the lead_prose data block
+	 * @returns {number} the marker rows to skip
+	 */
+	static #leadMarkerRows(block, cfg) {
+		const c = cfg?.marker_row;
+		if (!c || c.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "BILLEADMARKER_OFF"])) return 0;
+		const row = block?.rows?.[0];
+		if (!Array.isArray(row)) return 0;
+		const cells = row.map((x) => String(x ?? "").replace(/\u{1f534}|\[\/?RED TEXT\]|\*/gu, "").trim()).filter(Boolean);
+		return cells.length === 1 && this.activityMarkerRe.test(cells[0]) ? 1 : 0;
+	};
 
 	/**
 	 * How many LEADING rows of a bundle's member table are the section's own prose — each of the row's first two
