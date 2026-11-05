@@ -2111,6 +2111,12 @@
 				"before_pattern": "(?:[\\p{L}\\p{N},(]|[\\p{L}\\p{N}][*_]{1,3})\\s*$",
 				"after_pattern": "^\\s*(?:\\*{1,3}|_{1,2})?\\s*(?:\\p{Ll}|[,;:.!?)])",
 				"note_pattern": "^\\[[\\s\\S]*\\]$",
+				"paren_notes": {
+					"enabled": true,
+					"env": "REDPARENJOIN_OFF",
+					"pattern": "^\\([\\s\\S]*\\)\\.?$",
+					"_doc": "A red note the writer put in parentheses and the classifier already calls a note reads the same way: the words rejoin the sentence and the note follows the paragraph."
+				},
 				"_note_pattern_note": "Only a note the writer bracketed. Red words without brackets inside a sentence can be the writer's own text — «You can work towards [Agricultural and Horticultural Science] standards …» (the AGH series), which the human keeps in the sentence — and are never moved out of it.",
 				"_doc": "A WRITER'S NOTE TYPED INSIDE A SENTENCE IS NOT A PARAGRAPH BREAK. «Words that have the same sound [different colour font], but different spelling are called homophones.», «… while others thought of him as tipuna [Hover - Male ancestor.].  Watch these three different videos …»: the red note acts on no tag, so it renders as the red Writers Note, and the words after it started a new paragraph opening with the stray «,» / «.» / «:». For a bracketed red note that acts on no tag (note_pattern; the classifier calls it an instruction, or noise) between black text that has not ended its sentence (before_pattern) and black text that continues it (after_pattern: a lower-case word or the sentence's own punctuation), the words rejoin the sentence and the note follows the paragraph. Several notes in one sentence all follow it, in order."
 			}
@@ -2761,6 +2767,13 @@
 			"summary": " summary",
 			"_rule": "Two-tier positional rule (§5.6): a positional phrase that maps to a documented class here is ACTIONED into the class; one that doesn't is rendered as a red flag at the box."
 		},
+		"instruction_lead": {
+			"enabled": true,
+			"env": "ALERTINSTR_OFF",
+			"tags": [ "alert", "important" ],
+			"pattern": "^[\\s\\-–(]*(?:to (?:the )?right of\\b|to sit\\b|to go on\\b|on the side of\\b|place in\\b|please (?:place|put|include|make|insert|add|create|arrange)\\b|could this\\b|can (?:this|we)\\b|arrange\\b|create this\\b|set in\\b|middle of page\\b|or some other way\\b|rhs$|pop out\\b|in large bold\\b)",
+			"_doc": "KB constraint 5: the words typed on a box tag that ask for a placement or a build («Place in right hand column beside previous text», «Could this alert box please be to the right of the activity.») are the writer's note to the developer. They render as the Writers Note before the box, never as its title."
+		},
 		"positional_side_alert": {
 			"enabled": true,
 			"env": "ALERTRHS_OFF",
@@ -2988,6 +3001,14 @@
 			"env": "PHASENUM_OFF",
 			"writer_digit_over_dedupe": true,
 			"synthetic_unnumbered": false
+		},
+		"sentence_lead": {
+			"enabled": true,
+			"env": "SENTLEAD_OFF",
+			"min_words": 13,
+			"end_pattern": "[.?!:][\"”’')]*$",
+			"flag": "This activity has no title in the Writers Template: its first line is a sentence, so it stays a paragraph. Ask the writer for the title, or use the matching journal task's title.",
+			"_doc": "KB CL-0129 (05B, 02C): an activity opens with the writer's title, else the matching journal task's title, else no heading and a visible Red Flag, never an invented one. An untagged first lead line that is a whole sentence (min_words, end_pattern) is the box's first paragraph, not its title. A line the writer tagged as a heading is not read here."
 		},
 		"owner_body_lead": {
 			"_doc": "A WRITER'S [BODY] INSTRUCTION IS NOT THE BOX'S TITLE. An interactive-owned activity box takes the first line of its lead as the <h3> title (the human opens a box with a short title). When that first lead item was typed as a [Body] paragraph — `[Activity] 2A` then `[body] Answer some questions on fake news by choosing the correct option:` then the widget — the sentence is the instruction, not a title: the human keeps it a paragraph (the gold has the sentence as text on 29 of the 32 sites where it carries the words at all). It renders as the box's first paragraph and no title heading is made from it; a heading, a title in the opener or any other lead item still takes the title as before. Env OWNERBODYLEAD_OFF restores the promotion.",
@@ -6962,6 +6983,13 @@
 			],
 			"_doc": "A SERIES WHOSE LESSON CHIP IS ITS OWN. A module code matching a row's code_pattern shows that row's chip form on its lesson pages, whatever the subject group's form is."
 		},
+		"lesson_chip_canon": {
+			"enabled": true,
+			"env": "CHIPCANON_OFF",
+			"value": "padded-number",
+			"keep_code_patterns": [ "^TRR\\d" ],
+			"_doc": "KB constraint 16 (01A, 02C, 02D item 30): every lesson page's chip is the zero-padded lesson number, never decimal and never the module code, whatever the registry or a reference module gives. A sub-page shows its lesson's number. A form that maps to no element stays omitted. keep_code_patterns: a family whose KB skeleton gives its own form (TRR, 07C / 07D section 19: the decimal lesson number)."
+		},
 		"module_code_literal_guard": {
 			"enabled": true,
 			"label_pattern": "^(?:lesson|module)\\s+\\d+$",
@@ -9159,6 +9187,12 @@
 		},
 		"bilingual_heading_reduce": {
 			"enabled": true,
+			"kb_tabs": {
+				"enabled": true,
+				"env": "MENUTABREO_OFF",
+				"buckets": [ "tab2" ],
+				"_doc": "KB 01B: the Information and Standards tabs never take a bilingual heading. A heading routed to a bucket here shows its English half in every subject group; a reo module keeps its own form. The Standards tab is promoted with its English half already."
+			},
 			"_doc": "GENERAL BILINGUAL MENU-HEADING REDUCE. The writer types menu subsection headings bilingually — '[H2] Whakamaheretia tō wā | Planning your time' — and most human-built menus keep only the ENGLISH half rather than the pipe intact in the tab_map <h5>/<h4> emits and the simplified lesson-menu <h5>. The choice is a per-subject-group HOUSE STYLE — most groups reduce; a coherent KEEP family (the OSAH/OSOH/OSSC/OSSM/OSAI|1-3 'Online @ home' subjects + CEDW|NCEA, ENGR|7-8, MXDI|1-3, MXFU|7-8, ANZH|9-10, TWHK|7-8) keeps the full bilingual form. Registry rows = groups that consistently reduce (generated from the human build); lookup = series override -> subject|phase group, the extra_tabs/#tabsPane1Partition shape. Applied at RENDER only (tab_map heading fill + the simplified <h5>) — never to the ROUTING fold (the tab vocabulary carries both languages) and never inside a reo module. Known exceptions inside reduce rows (the human keeps the pipe): ANZH304, ENG1005, ENGJ302, HES1004, HIS1002, MXEX401, PHE1008, XDLS903, XDLS908, XMES201, XTAS102. No row / reo / MENUH5REO_OFF => the piped form. Env MENUH5REO_OFF.",
 			"registry": {
 				"groups": {

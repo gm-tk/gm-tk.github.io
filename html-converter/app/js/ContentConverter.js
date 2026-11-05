@@ -3371,6 +3371,17 @@ class ContentConverter {
 								const nl = text.search(/\n/);
 								const title = (nl >= 0 ? text.slice(0, nl) : text).replace(/\*/g, "").trim();
 								const rest = nl >= 0 ? text.slice(nl + 1).trim() : "";
+								// A WHOLE SENTENCE IS NOT THE BOX'S TITLE: it stays the box's first paragraph and the box carries
+								// the flag that asks for one. Data activity_wrapper.sentence_lead; env SENTLEAD_OFF.
+								const _slCfg = tpl.activity_wrapper?.sentence_lead;
+								if (title && _slCfg && _slCfg.enabled !== false
+									&& !(typeof process !== "undefined" && process.env && process.env[_slCfg.env ?? "SENTLEAD_OFF"])
+									&& title.split(/\s+/).length >= (_slCfg.min_words ?? 8) && new RegExp(_slCfg.end_pattern, "u").test(title)) {
+									emit(NotesAndComments.redFlag(_slCfg.flag, run));
+									titleDone = true; actProse = true;
+									leadBuf.push(text);
+									return;
+								}
 								if (title) { emit(`<h3>${ListsAndRuns.inlineMarkup(title)}</h3>`); titleDone = true; actProse = true; }
 								if (rest) leadBuf.push(rest);
 							} else {
@@ -4261,6 +4272,20 @@ class ContentConverter {
 				}
 
 				case "CONTAINER_OPEN": {
+					// THE BOX TAG'S WORDS THAT ASK FOR A PLACEMENT OR A BUILD ARE THE WRITER'S NOTE, never the
+					// box's title; the box then reads as one the writer left without its own words.
+					// Data callouts.instruction_lead; env ALERTINSTR_OFF.
+					{
+						const il = tpl.callouts.instruction_lead;
+						if (il && il.enabled !== false && (il.tags ?? []).includes(primary.tag)
+							&& !(typeof process !== "undefined" && process.env && process.env[il.env ?? "ALERTINSTR_OFF"])) {
+							const said = this.#norm.RenderText(it.text);
+							if (said && new RegExp(il.pattern, "iu").test(said)) {
+								emit(NotesAndComments.redFlag(said, run, "cs"));
+								it.text = "";
+							}
+						}
+					}
 					// NEVER HALF-BUILD THE PROMOTED SUMMARY BOX.
 					// The tag_promote rule turns "[summary box]" into an `alert`, and the
 					// callout machinery then gathers its content by the STRICT rule
@@ -9099,6 +9124,10 @@ class ContentConverter {
 		const nmOn = !!nm && nm.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[nm.env || "REDNOTEJOIN_OFF"]);
 		const nmBeforeRe = nmOn ? new RegExp(nm.before_pattern ?? "(?:[\\p{L}\\p{N},(]|[\\p{L}\\p{N}][*_]{1,3})\\s*$", "u") : null;
 		const nmAfterRe = nmOn ? new RegExp(nm.after_pattern ?? "^\\s*(?:\\*{1,3}|_{1,2})?\\s*(?:\\p{Ll}|[,;:.!?)])", "u") : null;
+		// the same for a note the writer put in parentheses (note_mid_sentence.paren_notes; env REDPARENJOIN_OFF)
+		const nmParen = nmOn ? nm.paren_notes : null;
+		const nmParenRe = nmParen && nmParen.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[nmParen.env ?? "REDPARENJOIN_OFF"])
+			? new RegExp(nmParen.pattern, "u") : null;
 		const spent = new Set();   // the notes already moved: the next one in the same paragraph looks past them to the sentence
 		let n = 0;
 		for (let i = 1; i < items.length; i++) {
@@ -9106,7 +9135,7 @@ class ContentConverter {
 			if (!free(it) || it.type !== "tag" || it.parse?.primary?.directive === "INTERACTIVE") continue;
 			// only a note the writer bracketed: red words without brackets inside a sentence may be the writer's own text
 			const note = nmOn && !it.parse?.primary && !it._redWordNote && (it.parse?.class === "instruction" || it.parse?.class === "noise")
-				&& new RegExp(nm.note_pattern ?? "^\\[[\\s\\S]*\\]$", "u").test(innerOf(it));
+				&& (new RegExp(nm.note_pattern ?? "^\\[[\\s\\S]*\\]$", "u").test(innerOf(it)) || (!!nmParenRe && nmParenRe.test(innerOf(it))));
 			if (!note && !reqRe.test(innerOf(it))) continue;
 			// a link tag that carries its own address builds a link / button labelled with the words after it — they stay its label
 			if (/https?:\/\/|www\./i.test(innerOf(it)) || (!note && (it.block?.links ?? []).length)) continue;

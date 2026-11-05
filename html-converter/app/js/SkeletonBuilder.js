@@ -639,8 +639,20 @@ class SkeletonBuilder {
 		const chipRow = pageType === "lesson" && chipSeries && chipSeries.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env[chipSeries.env ?? "CHIPSERIES_OFF"])
 			? (chipSeries.rows ?? []).find((r) => new RegExp(r.code_pattern).test(run.moduleCode ?? "")) : null;
-		const mcValue = chipRow?.value ?? rules.module_code?.[pageType];
 		const mcMap = tpl.header.module_code_value_map;
+		// THE LESSON CHIP'S CANON: a lesson page's chip is the zero-padded lesson number,
+		// whatever form the registry or a reference module gives. A form that maps to no
+		// element stays omitted, and a family the canon names keeps its own skeleton's form.
+		// Data flag: header.lesson_chip_canon. Env toggle: CHIPCANON_OFF.
+		const chipCanon = tpl.header.lesson_chip_canon;
+		const chipBase = chipRow?.value ?? rules.module_code?.[pageType];
+		const canonOn = pageType === "lesson" && chipCanon && chipCanon.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[chipCanon.env ?? "CHIPCANON_OFF"])
+			&& /\w/.test(chipBase ?? "") && mcMap[chipBase] !== null
+			&& !(chipCanon.keep_code_patterns ?? []).some((p) => new RegExp(p).test(run.moduleCode ?? ""));
+		const mcValue = canonOn ? chipCanon.value : chipBase;
+		const lessonWhole = String(page.lessonNumber ?? page.lessonLabel ?? "").match(/^\d+/)?.[0];
+		const lessonPadded = Utils.Pad2((canonOn && lessonWhole) || (page.lessonNumber ?? 0));
 		let rendered = null;
 		if (typeof mcValue === "string" && mcValue.startsWith("free-text")) {
 			// registry form: 'free-text:"Module' → the literal after the colon
@@ -693,7 +705,7 @@ class SkeletonBuilder {
 			rendered = Utils.FillTemplate(mcMap[mcValue], {
 				code: run.moduleCode ?? "MODULE",
 				lesson: page.lessonLabel ?? "0.0",
-				lessonPadded: Utils.Pad2(page.lessonNumber ?? 0),
+				lessonPadded,
 				lessonNumber: String(page.lessonNumber ?? ""),
 			});
 		} else if (mcValue && !(mcValue in mcMap)) {

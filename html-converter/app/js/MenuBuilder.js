@@ -601,6 +601,11 @@ class MenuBuilder {
 			&& !(typeof process !== "undefined" && process.env && process.env.MENUH5REO_OFF)
 			&& !this.isReoModule(run)
 			&& this.#extraTabRow(run, bhrRaw));
+		// A tab the KB bars from a bilingual heading reduces in every group but a reo module.
+		// Data menu.bilingual_heading_reduce.kb_tabs; env MENUTABREO_OFF.
+		const bhrTabs = bhrRaw && bhrRaw.enabled !== false && bhrRaw.kb_tabs && bhrRaw.kb_tabs.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[bhrRaw.kb_tabs.env ?? "MENUTABREO_OFF"])
+			&& !this.isReoModule(run) ? (bhrRaw.kb_tabs.buckets ?? []) : [];
 
 		// walk: heading tag → bucket decision; following content joins it
 		let famLastLabel = false;   // the item family — set once the LAST left label (Do) has opened; trailing prose then goes right
@@ -906,7 +911,7 @@ class MenuBuilder {
 							`Menu heading "${hText}" matched no tab rule (Emit_Templates menu.tab_map) — placed in tab 1.`, run));
 					}
 					const hEl = Utils.FillTemplate(tpl.tab_map[bucket].element,
-						{ heading: Utils.EscapeHtml(this.#reduceBilingualHeading(hText, bhr)) });
+						{ heading: Utils.EscapeHtml(this.#reduceBilingualHeading(hText, bhr || bhrTabs.includes(bucket))) });
 					if (t1cfg && bucket === "tab1") {
 						// start a kind-tagged run; the heading html is held OUT of pieces so
 						// #tabsPane1Partition can re-level/transform it at compose time. When the split
