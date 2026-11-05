@@ -90,7 +90,8 @@ class TagNormaliser {
 		// HEADINGHN_OFF (the heading level spelled out: «[Heading H4]» is «[H4]», so it also ends a widget's capture),
 		// TILELESSON_OFF (the lesson opener spelled «tile expansion for … Lesson N.M» — the lesson's own number and learning block),
 		// WHAKASPELL_OFF (the proverb tag's spellings: whakatauiki / whakatuaki / whaktaukī / whakaukī), CHECKIN_OFF (the
-		// template's «[Check in] Where ākonga can upload …» — the upload area; its group's free_pattern keeps a bare «[Check in]» out).
+		// template's «[Check in] Where ākonga can upload …» — the upload area; its group's free_pattern keeps a bare «[Check in]» out),
+		// COLOURBOX_OFF (the coloured box's closers, with its two rewrite rows: «[close coloured box]» ends the alert the box is).
 		for (const grp of lexicon._meta?.toggled_aliases ?? []) {
 			if (!grp || grp.enabled === false || !lexicon.tags[grp.tag]) continue;
 			if (typeof process !== "undefined" && process.env && process.env[grp.env || "SPELLALIAS_OFF"]) continue;

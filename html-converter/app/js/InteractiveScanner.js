@@ -370,6 +370,11 @@ class InteractiveScanner {
 					if (this.#isLayoutRow(bundle, items, _ualCfg, normaliser)) {
 						run?.AddNote?.("info", "InteractiveScanner",
 							`[Activity ${bundle.activityId ?? ""}] holds a one-row layout table — its cells shown in the activity, not handed off.`);
+					// A ROW OF PICTURES IS NOT A WIDGET'S DATA: the span's first table is one row of picture references, no member is an
+					// interactive tag and no word names a widget. Data: unclassified_activity_lead.picture_row   Env: PICTUREROW_OFF
+					} else if (this.#isPictureRow(bundle, items, _ualCfg)) {
+						run?.AddNote?.("info", "InteractiveScanner",
+							`[Activity ${bundle.activityId ?? ""}] holds a row of pictures — shown in the activity, not handed off.`);
 					} else if (this.#isReadingTable(bundle, items, _ualCfg?.reading_table)) {
 						// a word list's first row is a row of words, not column labels (first_row_data)
 						const _rtBlock = items[bundle.endIndex - 1].block;
@@ -4970,6 +4975,35 @@ class InteractiveScanner {
 		if (new RegExp(ut.widget_pattern, "i").test(words) || new RegExp(ut.request_pattern, "i").test(words)) return false;
 		tables[0].block._layoutRow = true;
 		return true;
+	}
+
+	/** The picture-row test (BoundaryBank._meta.opener_rule.unclassified_activity_lead.picture_row): the captured span's first table
+	 *  has one filled row, each filled cell opens with a red picture reference and holds at most max_cell_words other words;
+	 *  a later table carries no red text and no answer mark; no member is an interactive tag; no word of the span outside the tables names a widget or asks for a build. */
+	static #isPictureRow(bundle, items, lead) {
+		const cfg = lead?.picture_row, ut = lead?.untyped_table;
+		if (!cfg || cfg.enabled === false || !ut || bundle.type !== "unclassified") return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "PICTUREROW_OFF"]) return false;
+		const span = items.slice(bundle.startIndex, bundle.endIndex);
+		const tables = span.filter((x) => x.type === "table");
+		if (!tables.length || span.some((x) => x.type === "tag" && x.parse?.primary?.directive === "INTERACTIVE")) return false;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const pic = new RegExp(cfg.image_pattern, "i");
+		const filled = (tables[0].block?.rows ?? []).filter((r) => (r ?? []).some((c) => String(c ?? "").trim()));
+		if (filled.length !== 1) return false;
+		for (const c of filled[0].map((x) => String(x ?? "")).filter((x) => x.trim())) {
+			const first = [...c.matchAll(RED)][0];
+			if (!first || !/^\s*\u{1f534}\[RED TEXT\]/u.test(c) || !pic.test(first[1].trim())) return false;
+			const rest = c.replace(RED, " ").replace(/https?:\S+/g, " ").split(/[^\p{L}\p{N}’'-]+/u).filter(Boolean);
+			if (rest.length > (cfg.max_cell_words ?? 10)) return false;
+		}
+		// a later table is the activity's own content only when it carries no red text and no answer mark
+		const deny = new RegExp(ut.cell_deny_pattern, "iu");
+		for (const t of tables.slice(1)) for (const c of (t.block?.rows ?? []).flat().map((x) => String(x ?? "")))
+			if (/\[RED TEXT\]/.test(c) || deny.test(c)) return false;
+		const words = span.filter((x) => x.type !== "table")
+			.map((x) => (x.type === "black" ? (x.text ?? "") : `${x.text ?? ""} ${x.blackAfter ?? ""} ${(x.parse?.remainders ?? []).join(" ")}`)).join(" ");
+		return !new RegExp(cfg.widget_pattern || ut.widget_pattern, "i").test(words);
 	}
 
 	/** The reading-table test (BoundaryBank._meta.opener_rule.unclassified_activity_lead.reading_table): the captured

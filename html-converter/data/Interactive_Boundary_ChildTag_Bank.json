@@ -173,6 +173,14 @@
 					"min_prose_words": 8,
 					"ignore_pattern": "\\bdropbox\\w*"
 				},
+				"picture_row": {
+					"_doc": "A ROW OF PICTURES IS NOT A WIDGET'S DATA. An activity whose only tables are single rows of picture references (a red «Image: iStock: …» or «[image]» opening each cell) renders as ordinary content: the writer asks for pictures side by side, and the activity's paragraphs after them are the learner's.",
+					"enabled": true,
+					"env": "PICTUREROW_OFF",
+					"image_pattern": "^\\[?\\s*(?:images?|photo|picture)\\b",
+					"max_cell_words": 10,
+					"widget_pattern": "\\b(?:drag\\w*|drop\\s*(?:down|and)\\w*|flip\\w*|quiz\\w*|carousel|accordion|hotspot|click\\s+(?:on\\s+)?(?:the\\s+)?(?:correct|right|image|picture)|match\\s+(?:the|each)|sort\\s+(?:the|these|them|into))\\b"
+				},
 				"untyped_table": {
 					"_doc": "AN UNTYPED CAPTURED TABLE IS PAGE CONTENT. Every numbered `[Activity N]` with a table ahead and no interactive tag is captured as an «unclassified» hand-off box (the design for the activities whose widget is described only in prose); most are not widgets at all — an information table, a worksheet grid, a table of examples — and the human build shows them as ordinary tables (the content collapsed in the box was invisible to the learner). The box is declined, and the activity renders as content with its red lines as the Writers Notes, when NO word of the captured span — black text, a tag's words, a red instruction, red text inside a cell — names a widget idea (widget_pattern) or asks the developer to build something (request_pattern), no cell carries an answer mark (cell_deny_pattern: «[correct]», «[Q1 correct]», ✅ — a quiz's key) and no member is an interactive tag. Env UNTYPEDTABLE_OFF.",
 					"enabled": true,

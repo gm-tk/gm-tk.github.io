@@ -66,6 +66,14 @@
  */
 
 class ActivitiesBuilder {
+	/** The widget types whose activity box is interactive: the list, and the further task types behind their own toggle.
+	 *  Data activity_wrapper.interactive_widget_types, interactive_widget_types_more; env ACTINTMORE_OFF. */
+	static InteractiveTypes(tpl) {
+		const w = tpl.activity_wrapper ?? {};
+		const off = typeof process !== "undefined" && process.env && process.env.ACTINTMORE_OFF;
+		return new Set([...(w.interactive_widget_types ?? []), ...(off ? [] : w.interactive_widget_types_more ?? [])]);
+	}
+
 
 	/**
 	 * A DOCUMENT-LEVEL "catch the ones we missed" pass for the
@@ -222,7 +230,7 @@ class ActivitiesBuilder {
 		const cfg = tpl.body_region?.activity_interactive_postpass;
 		if (!cfg || cfg.enabled === false) return html;
 		if (typeof process !== "undefined" && process.env && process.env.ACTINT_OFF) return html;
-		const types = new Set(tpl.activity_wrapper?.interactive_widget_types ?? []);
+		const types = ActivitiesBuilder.InteractiveTypes(tpl);
 		if (!types.size) return html;
 		// The placeholder declares its widget type(s) as a fixed-format marker string; a
 		// SINGLE activity can own MULTIPLE widget types glued together as

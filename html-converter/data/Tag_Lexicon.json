@@ -24,6 +24,11 @@
 				"env": "TILELESSON_OFF"
 			},
 			{
+				"tag": "end alert",
+				"aliases": ["close coloured box", "end coloured box", "coloured box closes here", "purple coloured box ends here", "close colored box", "end colored box"],
+				"env": "COLOURBOX_OFF"
+			},
+			{
 				"_doc": "Writers' spellings of existing widget tags that the alias lists lack — red brackets that would otherwise resolve to NO tag — merged into the alias map by TagNormaliser's constructor unless SPELLALIAS_OFF is set (a toggled group, so it can be switched off as a unit; the extension rule above is unchanged for untoggled additions). `[type and check]` (MXEO201, MXEX302, MXFL203, MXFUN01–03, SSCI205 — the gold builds typing quizzes there); `[click drops]` / `[clickdrops]`; `[radioquiz]`; `[carrousel]`. `[checkboxes]` is NOT here: the gold builds multiChoiceQuiz or selectionBox for it, no single target.",
 				"tag": "typing quiz",
 				"aliases": ["type and check"],
@@ -172,6 +177,23 @@
 					"when_match": "\\[?\\s*right[\\s-]*hand[\\s-]*alert\\b",
 					"env": "RHSALERT_OFF",
 					"_doc": "(As in SCCH302-01.) The writer's [right-hand alert] is the side tip-box the human ships as an alertActivity col-md-4 RIGHT column paired with the preceding content column (the side-alert machinery), but the bracket would fall through to the generic 'alert' substring -> a full-width plain alert with the content as a lead paragraph + a stray empty row>col-12. Promoting the resolved 'alert' to 'side alert' ONLY when the folded span matches right[- ]hand alert routes it through the whole existing side-alert pipeline; the wider RHS-alert phrasing family ([rhs alert], [alert box right hand side] etc) is deliberately not rerouted here and renders as plain alerts. Env RHSALERT_OFF gives the plain-alert render."
+				},
+				{
+					"from": "end other",
+					"to": "end alert",
+					"to_directive": "CONTAINER_CLOSE",
+					"when_match": "^\\s*\\[\\s*colou?r(?:ed)?\\s+box\\s+ends",
+					"env": "COLOURBOX_OFF",
+					"_doc": "«[coloured box ends here]» closes the coloured box, which is an alert."
+				},
+				{
+					"from": "shape n",
+					"to": "alert",
+					"to_directive": "CONTAINER_OPEN",
+					"when_match": "^\\s*\\[\\s*(?:in\\s+a\\s+)?(?:[a-z]+\\s+){0,2}colou?red\\s+box\\s*(?:[-–:]?\\s*(?:the\\s+)?[a-z]+(?:\\s+one)?\\s*)?\\]",
+					"clear_remainder": true,
+					"env": "COLOURBOX_OFF",
+					"_doc": "THE WRITER'S COLOURED BOX IS THE ALERT BOX. «[coloured box]», «[purple coloured box]», «[in a pale red coloured box]»: the human builds an alert at 0.79 of the sites the words can be followed to; 'box' otherwise resolves to the widget sub-part shape n and the words ship plain under an orphan flag."
 				},
 				{
 					"from": "shape n",

@@ -773,10 +773,17 @@ class BilingualBuilder {
 		// a series whose every numbered lesson section is an activity boxes the prose sections too, the closing sections
 		// excepted (section_grouping.box_every_section; env REOBOXALL_OFF)
 		const bes = scfg?.box_every_section;
-		const proseBox = !hasWidget && !hasDbx && isH1 && !!bes && bes.enabled !== false
-			&& !(typeof process !== "undefined" && process.env && process.env[bes.env ?? "REOBOXALL_OFF"])
+		const beOn = !!bes && bes.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[bes.env ?? "REOBOXALL_OFF"]);
+		// a [H2] Lesson table whose rows carry the writer's «Activity 1A:» label is that activity, with no widget to say so; the
+		// line pair after the label is the box's title (section_grouping.box_every_section.labelled; env REOBOXLABEL_OFF)
+		const lblCfg = bes?.labelled;
+		const labelled = !hasWidget && !hasDbx && openedByLesson && beOn && !!lblCfg && lblCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[lblCfg.env ?? "REOBOXLABEL_OFF"])
+			&& (lblCfg.code_prefixes ?? []).some((p) => String(run.moduleCode ?? "").startsWith(p))
+			&& new RegExp(lblCfg.label_pattern, "i").test((it0.block?.rows ?? []).flat().map((c) => String(c ?? "")).join(" ").replace(/\*\*/g, ""));
+		const proseBox = labelled || (!hasWidget && !hasDbx && isH1 && beOn
 			&& (bes.code_prefixes ?? []).some((p) => String(run.moduleCode ?? "").startsWith(p))
-			&& !new RegExp(bes.skip_heading_pattern, "i").test(inner.slice(0, 4).join(" ").replace(/<[^>]+>/g, " "));
+			&& !new RegExp(bes.skip_heading_pattern, "i").test(inner.slice(0, 4).join(" ").replace(/<[^>]+>/g, " ")));
 		const boxed = hasWidget || hasDbx || proseBox;
 		if (openedByLesson && boxed) number = `${lessonNum}${this.reoLessonLetter(run, lessonNum)}`;
 		// KB 07B: a `[H1] N.M`-opened section that is boxed and carried no
@@ -798,9 +805,15 @@ class BilingualBuilder {
 		// KB 07B / 05B: inside the section BOX a writer [H2] heading renders at the
 		// KB's activity level h3 — the heading re-leveller never reaches an activity-anchored
 		// heading, so without this the box would keep the writer's h2. Data section_grouping.boxed_heading_level.
-		const boxedInner = boxed ? this.boxedHeadingRelevel(innerHtml, run) : innerHtml;
+		let boxedInner = boxed ? this.boxedHeadingRelevel(innerHtml, run) : innerHtml;
+		let boxTail = "";
+		if (labelled) {
+			boxedInner = boxedInner.replace(/^(\s*)<p reo>([^<]*)<\/p>(\s*)<p eng>([^<]*)<\/p>/, "$1<h3 reo>$2</h3>$3<h3 eng>$4</h3>");
+			const cut = boxedInner.search(new RegExp(lblCfg.close_pattern, "i"));
+			if (cut > 0) { boxTail = boxedInner.slice(cut); boxedInner = boxedInner.slice(0, cut); }
+		}
 		// the box's class: the widget box, the dropbox box, or both when the section holds both
-		const boxCls = proseBox ? (bes.box_class ?? "activity")
+		const boxCls = labelled ? (lblCfg.box_class ?? "activity") : proseBox ? (bes.box_class ?? "activity")
 			: hasDbx ? (hasWidget ? `activity interactive ${dbxCfg.box.cls.replace(/^activity\s+/, "")}` : dbxCfg.box.cls) : "activity interactive";
 		// the side column of the section's side alerts, the right sibling of its main column (the `side alert` callout's own
 		// box and column classes)
@@ -809,7 +822,7 @@ class BilingualBuilder {
 			? `\n<div class="${sDef.side_column ?? "col-md-4 offset-md-0 col-12"}">\n${sideBoxes.map((b) => `${sDef.open ?? "<div class=\"alertActivity\">"}\n${b}\n${sDef.close ?? "</div>"}`).join("\n")}\n</div>`
 			: "";
 		if (inner.length) body = boxed
-			? `<div class="row">\n<div class="col-md-8 col-12">\n<div class="${boxCls}"${number ? ` number="${number}"` : ""}>\n<div class="row">\n<div class="col-12">\n${boxedInner}\n</div>\n</div>\n</div>\n</div>${side}\n</div>`
+			? `<div class="row">\n<div class="col-md-8 col-12">\n<div class="${boxCls}"${number ? ` number="${number}"` : ""}>\n<div class="row">\n<div class="col-12">\n${boxedInner}\n</div>\n</div>\n</div>\n</div>${side}\n</div>${boxTail ? `\n<div class="row">\n<div class="col-md-8 col-12">\n${boxTail}\n</div>\n</div>` : ""}`
 			: `<div class="row">\n<div class="col-md-8 col-12">\n${innerHtml}\n</div>${side}\n</div>`;
 		else if (side) body = `<div class="row">${side}\n</div>`;
 		// A [H2] Lesson N opener prepends its bare-col <h2> title BEFORE the box (or

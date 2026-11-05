@@ -611,6 +611,13 @@
 			"_use_mtk_flag_doc": "false (default) = the 'MTK WRITERS TEMPLATE' house header does NOT put a module in reoMode (almost every WT carries it — it is the house template NAME, not a bilingual marker, and no genuine bilingual module relies on it alone). Genuine bilingual = reoTranslate body_class OR a code_prefixes match. true (or env MTKREO_OFF=1) = the flag is honoured and puts the module in reoMode.",
 			"mtk_leak_guard": {
 				"enabled": true,
+				"flow_cell_unfold": {
+					"enabled": true,
+					"env": "FLOWCELL_OFF",
+					"lead_tags": ["body"],
+					"activity_pattern": "^\\s*\\[\\s*activity\\s+\\d",
+					"_doc": "A table of two or more rows whose first cell opens with a tag of lead_tags and carries a numbered activity tag holds the page's flow in that cell: the cell's paragraphs become page items and the later rows stay a table."
+				},
 				"one_cell_unfold": {
 					"enabled": true,
 					"env": "ONECELLUNFOLD_OFF",
@@ -812,6 +819,15 @@
 					"code_prefixes": ["TRR"],
 					"box_class": "activity",
 					"skip_heading_pattern": "\\b(?:finished|kua oti|what have i learn|he aha t[āa]ku)",
+					"labelled": {
+						"enabled": true,
+						"env": "REOBOXLABEL_OFF",
+						"code_prefixes": ["TRR", "PMT"],
+						"box_class": "activity alertPadding",
+						"label_pattern": "\\b(?:activity|ngohe)\\s*[0-9]+\\s*[a-z]?\\s*:",
+						"close_pattern": "<(?:h[2-6]|p)\\b[^>]*>(?:<b>)?\\s*(?:kua oti|finished)\\b",
+						"_doc": "A lesson table whose rows carry an activity label is that activity: it takes the plain activity box, the line pair after the label as its title, and the box closes before the lesson's closing section."
+					},
 					"_doc": "The series' numbered lesson sections are activities whether or not they hold a widget: a prose section takes the plain activity box. The closing sections stay bare."
 				},
 				"paired_heading_opener": {
@@ -2222,12 +2238,64 @@
 			},
 			"_doc_guards": "The line's FIRST link stays the reading whenever its words are this item's own; a media item takes only a link of its own kind (kind_patterns — an image a picture host or file, a video a video host; a kind with no pattern is never re-read; a button takes any address). Without these, a garbled paste running two addresses together (HIS1002 10.0) and an image whose own words held another link (SSOG301 2.0) lost their right address."
 		},
+		"stray_bracket": {
+			"enabled": true,
+			"env": "STRAYBRACKET_OFF",
+			"fragment_max_words": 2,
+			"open_pattern": "^\\[\\s*(?:please|can\\s+we|could|insert|will\\s+need|multi\\s*choice|correct\\s+order|lesson|button\\s+link|visual)\\b",
+			"_doc": "A closing bracket with no opener is a split tag's tail: the words stay without it; a fragment of a word or two is the writer's note. A block opening with a request bracket that never closes is the writer's note."
+		},
+		"broken_sentence": {
+			"enabled": true,
+			"env": "BROKENLINE_OFF",
+			"min_words": 9,
+			"end_pattern": "\\b(?:the|a|an|of|to|and|or|in|on|at|for|with|by|from|that|which|is|are|was|were|be|as|if|but|your|my|our|their|this|these|those|will|can|into|about|than|has|have|had)\\*{0,3}\\s*$",
+			"open_pattern": "^[\\s*_]*(?![a-z][.)]\\s|https?:)[a-zāēīōū]",
+			"_doc": "A plain paragraph of min_words or more ending on a small word with no stop, then a plain paragraph opening lower case, are one sentence."
+		},
+		"coloured_box_in_widget": {
+			"enabled": true,
+			"env": "COLOURBOX_OFF",
+			"open_pattern": "\\[\\s*accordion\\b(?!\\s+ends?)",
+			"close_pattern": "\\[\\s*(?:accordion\\s+ends?|end\\s+accordion)",
+			"box_pattern": "colou?r(?:ed)?\\s+box",
+			"sub_tag": "shape n",
+			"sub_directive": "SUBTAG",
+			"end_tag": "end other",
+			"_doc": "Between an accordion tag and its closer a coloured box's tags stay the widget sub-part and the end tag the capture reads, so the accordion builds."
+		},
+		"inline_bold_pair": {
+			"enabled": true,
+			"lone_tag": {
+				"enabled": true,
+				"env": "INLINELONE_OFF",
+				"pattern": "^(.*?[\\p{L}\\p{N},])\\s*🔴\\[RED TEXT\\]\\s*\\[emphasi[sz]e\\s+or\\s+highlight\\s+text\\]\\s*\\[\\/RED TEXT\\]🔴\\s*(\\*\\*.*)$",
+				"_doc": "A lone emphasise or highlight tag inside a line, before words already bold, is spent: the line stays one line."
+			},
+			"env": "INLINEBOLD_OFF",
+			"pair_pattern": "^(.*?)🔴\\[RED TEXT\\]\\s*\\[bold\\]\\s*\\[\\/RED TEXT\\]🔴(.*?)🔴\\[RED TEXT\\]\\s*\\[end bold\\]\\s*\\[\\/RED TEXT\\]🔴",
+			"_doc": "A red [bold] … [end bold] pair inside a line, round words already bold, is spent: the line stays one line."
+		},
 		"file_link_note": {
 			"enabled": true,
 			"env": "FILELINKNOTE_OFF",
 			"href_pattern": "sharepoint\\.com/:[wix]:",
 			"label_pattern": "\\.(?:docx?|xlsx?|png|jpe?g)\\s*$",
 			"todo_text": "Designer/Developer To Do: the writer's file «{label}». Link: {url}",
+			"plain_name": {
+				"enabled": true,
+				"env": "FILENAMENOTE_OFF",
+				"label_pattern": "\\.(?:docx?|xlsx?|pptx?|pdf|png|jpe?g)\\s*$",
+				"download": {
+					"enabled": true,
+					"env": "SHEETBUTTON_OFF",
+					"name_pattern": "response\\s*sheet",
+					"label": "Download response sheet",
+					"form": "<a href=\"docs/{file}\" target=\"_blank\"><div class=\"button downloadButton\">{label}</div></a>\n<div class=\"hint\"></div>\n<div class=\"hintDropContent\" hintType=\"oneDrive\"></div>",
+					"_doc": "A linked file name of this kind is the sheet the learner downloads: the human's download button on docs/, with the developer's note beside it."
+				},
+				"_doc": "A plain paragraph equal to a link's words in the Writers Template, ending in a file extension: the weave dropped the address, so the words reach the page bare. It becomes the house To Do note."
+			},
 			"_doc": "A paragraph that is wholly a link to a team Word, Excel or image file, labelled with its file name, is a pointer for the developer: learners cannot open it. It becomes the house To Do note."
 		},
 		"bracket_tag_line": {
@@ -2244,6 +2312,13 @@
 			"env": "STOCKURLIMG_OFF",
 			"mode": "todo",
 			"todo_text": "Designer/Developer To Do: image goes here{label}. Link: {url}",
+			"title_line": {
+				"enabled": true,
+				"env": "STOCKTITLE_OFF",
+				"title_pattern": "Stock (?:Photo|Illustration|Vector|Image)\\b.{0,200}iStock\\s*(?:<|$)",
+				"lead_pattern": "^(?:front|back)\\s+image\\s*[–-]\\s*",
+				"_doc": "A stock site's page title typed as the link's words names the picture: the element becomes the picture the address gives."
+			},
 			"whole_link": {
 				"enabled": true,
 				"env": "STOCKLINKPIC_OFF",
@@ -3188,6 +3263,7 @@
 			"clickingOrder",
 			"crossword"
 		],
+		"interactive_widget_types_more": ["wordFind", "sketcher", "timeline"],
 		"interactive_widget_types_task_note": "The SELECTION/INPUT/ORDERING task types (typing, selectionBox, dropDown, clickingOrder, crossword) are listed because the human marks activities owning them .interactive (dropDown about as often as selfCheck). The marker scan splits 'A + B' banners so every type in a multi-type marker is read (ENGS401-04 4A dropDown, ENGS401-05 5A carousel + typing). A PROSE-authored selection with no task TAG (ENGS401-01 1A: 'select the emotion that best matches how you feel', whose [modal] tags are only video pop-ups) has no tag to key off, so it stays plain; that would need a prose-selection classifier, not a blanket rule. DELIBERATELY NOT listed (the human keeps them PLAIN): modal, carousel, accordion, flipCard, clickDrop, tabs, slider, rotateBanner, speechBubble — a blanket 'any interactive -> .interactive' rule would contradict the human on thousands of boxes. Reversal: env ACTINT_OFF (the whole post-pass) or remove these entries.",
 		"interactive_widget_types_note": "An activity that OWNS a widget of one of these types gets the .interactive class (the 'circle' task indicator; plain .activity is the 'triangle'). The widget TYPE is the WT signal: in the human build these types mostly carry .interactive when inside an activity (reorder, wordDrag, memoryGame, dropQuiz, radioQuiz, wordSelect, bingo, multiChoiceQuiz, dragAndDrop, selfCheck). DISPLAY widgets stay plain .activity (flipCard, carousel, accordion, clickDrop, speechBubble; typing and slider are borderline → excluded). A per-type rule, not a global 'force .interactive'.",
 		"strip_bold": {
@@ -3564,6 +3640,8 @@
 			"_doc": "THE UPLOAD BUTTON IN THE ACTIVITY'S LEAD IS THE UPLOAD BUTTON (KB constraint 43 — the upload button inside its activity; the writer's [button] tag is the target). «[button] Upload to dropbox.» typed among an activity's lead lines (its title, instructions and the response sheet before a widget, CEDO502 1A) went through the lead loop, which renders every tag's words as prose: the page showed the plain paragraph «Upload to dropbox.» (47 pages / 42 modules / 20 series). A lead [button] item whose label matches label_match renders through the body path's button (#elementCore), as the journal button's lead_button branch does for its label. Env UPLOADLEAD_OFF.",
 			"enabled": true,
 			"env": "UPLOADLEAD_OFF",
+			"also_env": "LEADBTNMORE_OFF",
+			"also_match": "^(?:(?:go\\s*to|add|open|download|complete|use|to)\\s+)?(?:(?:your|the|a|my)\\s+)?(?:(?:learning|online|digital)\\s+)?(?:journal|dropbox)\\b[^.!?]{0,30}[.!]*$",
 			"label_match": "^(?:upload|submit)\\s+(?:it\\s+|your\\s+work\\s+)?to\\s+(?:the\\s+|your\\s+)?dropbox\\b"
 		},
 		"go_journal": {

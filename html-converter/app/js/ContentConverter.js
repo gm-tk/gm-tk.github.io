@@ -3232,7 +3232,7 @@ class ContentConverter {
 						// .interactive is forced when the bundle's widget type(s) are
 						// in the "interactive task" set (data-driven; it sets the
 						// circle-vs-triangle indicator — ENGS301 1A dragAndDrop).
-						const interactiveTypes = new Set(tpl.activity_wrapper.interactive_widget_types ?? []);
+						const interactiveTypes = ActivitiesBuilder.InteractiveTypes(tpl);
 						// KB c65: a "widget"-mode [MTKquiz] SHELL holds no widget — the box is the
 						// plain `activity` form (the gold's usual box around "Go to quiz")
 						const mtkShellEarly = this.#mtkQuizShellBundle(bundle, it);
@@ -3517,7 +3517,8 @@ class ContentConverter {
 							// Data buttons.upload_lead_button; env UPLOADLEAD_OFF.
 							if (lp && lp.tag === "button" && _ulbOn) {
 								const _ulbLbl = (String(lead.blackAfter ?? "").trim() || this.#norm.RenderText(lead.text) || "").replace(/\*/g, "").trim();
-								if (new RegExp(_ulbCfg.label_match, "i").test(_ulbLbl)) {
+								const _ulbMore = _ulbCfg.also_match && !(typeof process !== "undefined" && process.env && process.env[_ulbCfg.also_env || "LEADBTNMORE_OFF"]) && new RegExp(_ulbCfg.also_match, "i").test(_ulbLbl);
+								if (new RegExp(_ulbCfg.label_match, "i").test(_ulbLbl) || _ulbMore) {
 									flushLead();
 									// the box's own upload widget builds this same button: the lead line is that request, shown once
 									if (!(bundle.type === "dropDown" && InteractiveBuilder.UploadBoxCandidate(bundle, tpl.interactive_builders?.dropDown)))
@@ -10735,9 +10736,147 @@ class ContentConverter {
 		});
 	}
 
+	/** A WRITER'S LINKED FILE NAME IS NEVER LEARNER TEXT. The weave never carries a developer-asset address, so a paragraph that is
+	 *  only a linked file name reached the page as bare words the learner cannot open («ENGS404 Response Sheet 2.1.docx»). Outside
+	 *  the hand-off boxes, a plain paragraph equal to a link's words in the Writers Template and ending in a file extension becomes
+	 *  the house To Do note; a name matching download.name_pattern first gets the download button the human ships.
+	 *  Data elements.file_link_note.plain_name; env FILENAMENOTE_OFF, download SHEETBUTTON_OFF. */
+	static #fileNameLine(html, run) {
+		const top = DataService.Data.EmitTemplates.elements?.file_link_note, cfg = top?.plain_name;
+		if (!cfg || cfg.enabled === false || !html) return html;
+		const env = (k) => typeof process !== "undefined" && process.env && process.env[k];
+		if (env(cfg.env || "FILENAMENOTE_OFF")) return html;
+		const name = new RegExp(cfg.label_pattern, "i");
+		const words = this.#linkWords(run);
+		const spans = [];
+		for (const h of html.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
+			const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
+		}
+		const dl = cfg.download, sheet = dl && dl.enabled !== false && !env(dl.env || "SHEETBUTTON_OFF") ? new RegExp(dl.name_pattern, "i") : null;
+		const plain = (t) => t.replace(/&amp;/g, "&").replace(/&#0?39;|&rsquo;/g, "'").replace(/&quot;/g, "\"");
+		return html.replace(/<p>([^<]{3,240})<\/p>/g, (m, inner, off) => {
+			const label = plain(inner).trim();
+			if (!name.test(label) || spans.some(([a, z]) => off >= a && off < z)) return m;
+			const url = words.get(label);
+			if (!url) return m;
+			const note = NotesAndComments.redFlag(Utils.FillTemplate(top.todo_text, { label, url }), run, "cs");
+			return sheet && sheet.test(label) ? Utils.FillTemplate(dl.form, { file: inner.trim(), label: dl.label }) + "\n" + note : note;
+		});
+	}
+
+	/** A WRITER'S STRAY BRACKET IS NOT LEARNER TEXT. A closing bracket left over from a split tag («Population distribution under
+	 *  apartheid]», «] to practise writing the letter é») reached the page. Outside the hand-off boxes and notes: a block whose text
+	 *  has a closing bracket with no opener loses that bracket and the words stay; a fragment of fragment_max_words or fewer is what is
+	 *  left of the tag, so it becomes the Writers Note; a block opening with a request bracket that never closes
+	 *  (open_pattern) is the writer's note. Data elements.stray_bracket; env STRAYBRACKET_OFF. */
+	static #strayBracketLine(html, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.stray_bracket;
+		if (!cfg || cfg.enabled === false || !html) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "STRAYBRACKET_OFF"]) return html;
+		if (!html.includes("]") && !html.includes("[")) return html;
+		const spans = [];
+		for (const h of html.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
+			const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
+		}
+		for (const h of html.matchAll(/<!--[\s\S]*?-->/g)) spans.push([h.index, h.index + h[0].length]);
+		const open = new RegExp(cfg.open_pattern, "i");
+		const lone = (t) => { let d = 0; for (const ch of t) { if (ch === "[") d++; else if (ch === "]") { if (d === 0) return true; d--; } } return false; };
+		let n = 0;
+		const out = html.replace(/<(p|li|h[1-6]|td)>((?:(?!<\/\1>)[\s\S]){1,600})<\/\1>/g, (m, tag, inner, off) => {
+			if (spans.some(([a2, z]) => off >= a2 && off < z) || /<(?:p|li|div|ul|ol|table|img|iframe)\b/i.test(inner)) return m;
+			const text = inner.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+			if (open.test(text) && !text.includes("]")) { n++; const note = NotesAndComments.redFlag(text, run, "cs"); return tag === "li" || tag === "td" ? `<${tag}>${note}</${tag}>` : note; }
+			if (!lone(text)) return m;
+			// the first closing bracket with no opener goes, with the space round it
+			let d = 0, at = -1;
+			for (let i = 0; i < inner.length && at < 0; i++) {
+				const ch = inner[i];
+				if (ch === "<") { i = inner.indexOf(">", i); if (i < 0) return m; continue; }
+				if (ch === "[") d++; else if (ch === "]") { if (d === 0) at = i; else d--; }
+			}
+			if (at < 0) return m;
+			const fixed = (inner.slice(0, at).replace(/\s+$/, "") + " " + inner.slice(at + 1).replace(/^[\s:;,]+/, "")).trim();
+			const words = fixed.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean);
+			if (!words.length) return tag === "td" ? `<td></td>` : "";
+			n++;
+			if (words.length <= (cfg.fragment_max_words ?? 2) && tag !== "td") {
+				const href = inner.match(/href="([^"]*)"/)?.[1];   // a fragment's address stays the developer's
+				return NotesAndComments.redFlag(fixed.replace(/<[^>]+>/g, "") + "]" + (href ? ` ${href}` : ""), run, "cs");
+			}
+			return `<${tag}>${fixed}</${tag}>`;
+		});
+		if (n) run.AddNote("info", "ContentConverter", `${n} stray bracket line(s) tidied (the words stay, a fragment or an open request is the writer's note).`);
+		return out;
+	}
+
+	/** The Writers Template's link words → address, for the page post-passes: each link's own words, and the words of a link Word
+	 *  split into runs joined per address. */
+	static #linkWords(run) {
+		if (run._linkWords) return run._linkWords;
+		const map = run._linkWords = new Map();
+		for (const b of run.wtBlocks ?? []) {
+			const byTarget = new Map();
+			for (const l of b?.links ?? []) {
+				const t = String(l?.target ?? "");
+				if (!t) continue;
+				byTarget.set(t, (byTarget.get(t) ?? "") + String(l?.text ?? ""));
+				map.set(String(l?.text ?? "").trim(), t);
+			}
+			for (const [t, w] of byTarget) map.set(w.trim(), t);
+		}
+		return map;
+	}
+
+	/** A STOCK SITE'S PAGE TITLE IS THE PICTURE, NOT LEARNER TEXT. A writer links a picture by pasting the stock page's own title
+	 *  («Kingston Flyer Stock Photo - Download Image Now - … - iStock»), and the weave never carries a stock address, so the title
+	 *  reached the learner as words and the picture was lost. A paragraph, heading or cell outside the hand-off boxes whose text is
+	 *  such a title (after an optional «Front image –» lead or a «label / » before it) and equals a link's words becomes the
+	 *  picture; a label before the slash stays a paragraph. Data elements.bare_stock_url_image.title_line; env STOCKTITLE_OFF. */
+	static #stockTitleLine(html, run) {
+		const top = DataService.Data.EmitTemplates.elements?.bare_stock_url_image, cfg = top?.title_line;
+		if (!cfg || cfg.enabled === false || !html) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "STOCKTITLE_OFF"]) return html;
+		const title = new RegExp(cfg.title_pattern, "i");
+		if (!title.test(html)) return html;
+		const lead = new RegExp(cfg.lead_pattern, "i"), host = new RegExp(top.host_pattern ?? "istockphoto|gettyimages|shutterstock", "i");
+		const tpl = DataService.Data.EmitTemplates.image, words = this.#linkWords(run);
+		const spans = [];
+		for (const h of html.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
+			const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
+		}
+		const plain = (t) => t.replace(/&amp;/g, "&").replace(/&#0?39;|&rsquo;/g, "'").replace(/&quot;/g, "\"");
+		let n = 0;
+		const out = html.replace(/<(p|td|h[2-6])>([^<]{12,300})<\/\1>/g, (m, tag, inner, off) => {
+			const text = plain(inner).trim();
+			if (!title.test(text) || spans.some(([a, z]) => off >= a && off < z)) return m;
+			const cut = text.split(" / ");
+			const name = (cut.length > 1 ? cut.slice(1).join(" / ") : text).replace(lead, "").trim();
+			const url = words.get(name);
+			if (!url || !host.test(url)) return m;
+			const id = (top.id_patterns ?? ["gm-?(\\d{6,10})", "/id/(\\d{6,10})"]).map((p) => url.match(new RegExp(p))?.[1]).find(Boolean);
+			if (!id) return m;
+			const filename = Utils.FillTemplate(tpl.filename_rules.istock, { id });
+			const pic = run?.imageMode === "P"
+				? MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_P.visible, { label: `iStock-${id}` }), url, id, run) + "\n"
+					+ MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_P.comment, { filename }), url, id, run)
+				: MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_D.visible, { filename }), url, id, run);
+			n++;
+			if (tag === "td") return `<td>${pic}</td>`;
+			return cut.length > 1 ? `<${tag}>${cut[0]}</${tag}>\n${pic}` : pic;
+		});
+		if (n) run.AddNote("info", "ContentConverter", `${n} stock page title(s) shown as the picture they name.`);
+		return out;
+	}
+
 	static #bareLinkUrlNote(html, run) {
 		// a writer's file named as a whole paragraph link is a pointer for the developer (elements.file_link_note)
 		html = this.#fileLinkNote(html, run);
+		html = this.#fileNameLine(html, run);
+		html = this.#stockTitleLine(html, run);
+		html = this.#strayBracketLine(html, run);
 		// a bare video FILE address is the video, never the developer's note (elements.bare_file_video_embed)
 		html = this.#bareFileVideoEmbed(html, run);
 		const cfg = DataService.Data.EmitTemplates.elements?.bare_link_url_note;

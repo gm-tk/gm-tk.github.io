@@ -194,6 +194,119 @@ class PageAssembler {
 	}
 
 	/**
+	 * A COLOURED BOX INSIDE AN ACCORDION IS THAT PANEL'S DATA. Elsewhere «[coloured box]» is the alert box, which ends a widget's capture,
+	 * so an accordion holding one in each panel stopped building. Between an accordion tag and its closer the box's tags go back to the
+	 * widget sub-part and the end tag the capture has always read. Data elements.coloured_box_in_widget; env COLOURBOX_OFF.
+	 */
+	static #colouredBoxInWidget(items) {
+		const cfg = DataService.Data.EmitTemplates.elements?.coloured_box_in_widget;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "COLOURBOX_OFF"]) return;
+		const open = new RegExp(cfg.open_pattern, "i"), close = new RegExp(cfg.close_pattern, "i"), box = new RegExp(cfg.box_pattern, "i");
+		let inside = false;
+		for (const it of items) {
+			if (it?.type !== "tag" || !it.parse?.primary) continue;
+			const said = String(it.text ?? "");
+			if (close.test(said)) { inside = false; continue; }
+			if (open.test(said)) { inside = true; continue; }
+			if (!inside || !box.test(said)) continue;
+			const pr = it.parse.primary;
+			if (pr.tag === "alert") it.parse.primary = { ...pr, tag: cfg.sub_tag, directive: cfg.sub_directive };
+			else if (pr.tag === "end alert") it.parse.primary = { ...pr, tag: cfg.end_tag, directive: "CONTAINER_CLOSE" };
+		}
+	}
+
+	/**
+	 * A SENTENCE A STRAY PARAGRAPH BREAK CUT IN TWO IS ONE PARAGRAPH. «… were written by hand by» / «the school's first teacher …»: a
+	 * plain paragraph of min_words or more ending on a small word with no stop, and a plain paragraph opening lower case after it, are
+	 * one sentence; the human joins them. Short lines stay as they are: a poem's line ends the same way.
+	 * Data elements.broken_sentence; env BROKENLINE_OFF.
+	 */
+	static #brokenSentence(run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.broken_sentence;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "BROKENLINE_OFF"]) return;
+		const end = new RegExp(cfg.end_pattern, "iu"), open = new RegExp(cfg.open_pattern, "u");
+		const blocks = run.wtBlocks ?? [];
+		const plain = (b) => b?.kind === "para" && typeof b.text === "string" && !b.text.includes("[RED TEXT]") && !b.list;
+		let n = 0;
+		for (let i = 0; i + 1 < blocks.length; i++) {
+			const x = blocks[i], y = blocks[i + 1];
+			if (!plain(x) || !plain(y) || !String(y.text).trim()) continue;
+			if (String(x.text).split(/\s+/).filter(Boolean).length < (cfg.min_words ?? 9)) continue;
+			if (!end.test(x.text) || !open.test(y.text)) continue;
+			x.text = String(x.text).replace(/\s+$/, "") + " " + String(y.text).replace(/^\s+/, "");
+			x.links = [...(x.links ?? []), ...(y.links ?? [])];
+			y.text = "";
+			n++;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} sentence(s) cut by a paragraph break joined.`);
+	}
+
+	/**
+	 * THE WRITER'S BOLD MARKERS INSIDE A LINE ARE NOT TAGS. «• use [bold] **I think**, **I feel** or **I prefer** [end bold] to begin my
+	 * opinion sentence»: the red pair sits inside the sentence round words Word already bolds, and the item stream cut the line at the
+	 * tag, so a module menu ended at «use» and its other lines fell into the page body. In a paragraph with words before the pair and
+	 * bold words inside it, the pair goes; the bold stays. Data elements.inline_bold_pair; env INLINEBOLD_OFF.
+	 */
+	static #inlineBoldPair(run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.inline_bold_pair;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "INLINEBOLD_OFF"]) return;
+		const re = new RegExp(cfg.pair_pattern, "giu");
+		const lo = cfg.lone_tag;   // a lone emphasise tag before bold words (elements.inline_bold_pair.lone_tag; env INLINELONE_OFF)
+		const lone = lo && lo.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[lo.env || "INLINELONE_OFF"]) ? new RegExp(lo.pattern, "iu") : null;
+		let n = 0;
+		for (const b of run.wtBlocks ?? []) {
+			if (b?.kind !== "para" || typeof b.text !== "string" || !/\[RED TEXT\]/.test(b.text)) continue;
+			for (let t = "", i = 0; i < 6 && t !== b.text; i++) {
+				t = b.text;
+				b.text = t.replace(re, (m, before, inner) => (/\S/.test(before) && /\*\*/.test(inner) ? (n++, before + inner) : m));
+				if (lone) b.text = b.text.replace(lone, (m, before, inner) => (n++, before + " " + inner));
+			}
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} red bold marker pair(s) inside a line spent (the bold stays).`);
+	}
+
+	/**
+	 * A TABLE'S FIRST CELL THAT HOLDS THE PAGE'S FLOW IS THE PAGE, NOT THE TABLE. A writer sometimes types the lesson's running
+	 * text, its activity tag and the activity's heading into the first cell of a table whose later rows are the activity's real
+	 * table, so the whole lesson shipped raw inside one hand-off box. On the MTK path, a free-body table of two or more rows whose
+	 * first cell opens with a tag of `lead_tags` and carries an activity tag is replaced, before the page split and the widget
+	 * scanner, by the items of that cell's paragraphs, followed by the table's later rows as a table of their own.
+	 * Data dual_language.mtk_leak_guard.flow_cell_unfold; env FLOWCELL_OFF.
+	 */
+	static #flowCellUnfold(items, run, normaliser) {
+		const dl = DataService.Data.EmitTemplates.elements?.dual_language;
+		const cfg = dl?.mtk_leak_guard?.flow_cell_unfold;
+		if (!cfg || cfg.enabled === false || !run.mtkFlag) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "FLOWCELL_OFF"]) return;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const actRe = new RegExp(cfg.activity_pattern, "i");
+		let n = 0;
+		for (let k = items.length - 1; k >= 0; k--) {
+			const it = items[k];
+			if (it?.type !== "table") continue;
+			const b = it.block, rows = b?.rows ?? [];
+			if (rows.length < 2) continue;
+			const cell = String(rows[0]?.[0] ?? "");
+			if (!/^\s*\u{1f534}\[RED TEXT\]/u.test(cell)) continue;
+			const reds = [...cell.matchAll(RED)];
+			if (!(cfg.lead_tags ?? []).includes(normaliser.Parse(reds[0][1])?.primary?.tag)) continue;
+			if (!reds.some((m) => actRe.test(m[1]))) continue;
+			const own = b.cellParas?.[0]?.[0];
+			const paras = (Array.isArray(own) && own.length ? own : [cell]).filter((t) => String(t ?? "").trim());
+			const paired = (t) => (String(t).match(/\u{1f534}\[RED TEXT\]/gu) ?? []).length === (String(t).match(/\[\/RED TEXT\]\u{1f534}/gu) ?? []).length;
+			if (!paras.length || !paras.every(paired)) continue;
+			const made = PageSplitter.BuildItemStream(paras.map((t) => ({ kind: "para", text: String(t), links: (b.links ?? []).slice(), wtPage: b.wtPage, list: "", listLevel: 0 })), normaliser);
+			const rest = { ...it, block: { ...b, rows: rows.slice(1), cellParas: b.cellParas?.slice(1) } };
+			items.splice(k, 1, ...made, rest);
+			n++;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} table(s) whose first cell held the page's flow unfolded into the page body.`);
+	}
+
+	/**
 	 * THE TEMPLATE'S FRONT-MATTER FIELDS ARE NEVER LEARNER TEXT. A writer's front-matter block typed after the content
 	 * start shipped its «Label: value» lines as body paragraphs («Module code: TEFUN02», «Key contacts: <name> <email>»,
 	 * «Date submitted: 2024», «Curriculum Level: …»); the human build shows none of them. A free black paragraph whose text
@@ -1112,6 +1225,8 @@ class PageAssembler {
 		ConventionResolver.Resolve(run);
 
 		// ---- [5] split into pages -----------------------------------------
+		PageAssembler.#inlineBoldPair(run);   // INLINEBOLD_OFF — before the stream splits the line at the tag
+		PageAssembler.#brokenSentence(run);   // BROKENLINE_OFF
 		const items = PageSplitter.BuildItemStream(run.wtBlocks, normaliser);
 		PageAssembler.#journalBracketSentence(items, run);   // before the split, the scanner and the converter all read the item
 		PageAssembler.#bareSummaryAlert(items, run, normaliser);   // SUMMARYALERT_OFF
@@ -1123,6 +1238,8 @@ class PageAssembler {
 		PageAssembler.#highlighterOverLines(items, run);   // HILITESTANDALONE_OFF
 		PageAssembler.#redTitleHeading(items, run);   // HEADREDTITLE_OFF — before the split and the scanner read the heading
 		PageAssembler.#blackAudioAnimation(items, run, normaliser);   // AUDIOANIMBLACK_OFF
+		PageAssembler.#colouredBoxInWidget(items);   // COLOURBOX_OFF — before the split and the scanner
+		PageAssembler.#flowCellUnfold(items, run, normaliser);   // FLOWCELL_OFF — before the split and the scanner
 		PageAssembler.#oneCellUnfold(items, run, normaliser);   // ONECELLUNFOLD_OFF — before the split and the scanner
 		PageAssembler.#frontMatterBody(items, run);   // FRONTMATTERBODY_OFF
 		PageAssembler.#templatePrompts(items, run);   // TEMPLATEPROMPT_OFF
