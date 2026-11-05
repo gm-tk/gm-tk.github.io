@@ -473,6 +473,19 @@
 		},
 		"dual_language": {
 			"enabled": true,
+			"intro_label_row": {
+				"enabled": true,
+				"env": "INTROLABEL_OFF",
+				"match": "^module introduction$",
+				"_doc": "THE INTRODUCTION TABLE'S LABEL ROW. «Module Introduction ║ Kōwae Ako Whakataki» opening a bilingual table names the table for the team; it is not learner text, so the unfold starts at the next row."
+			},
+			"third_column_note": {
+				"enabled": true,
+				"env": "THIRDCOLNOTE_OFF",
+				"note": "this table has more columns than the reo / English pair, and these words are not on the page: {cells}",
+				"joiner": " ¦ ",
+				"_doc": "THE WORDS BEYOND THE PAIR. The reo / English unfold reads a row's first two cells. Any later column's words would reach no page, so they are carried in a Writers Note beside the table for the developer; the pair itself renders as before."
+			},
 			"audio_word": {
 				"_doc": "THE WORD THAT PLAYS ITS AUDIO. A bilingual cell part that carries the writer's WORD before its '[Item N] [Audio]' marker ('**teo** [Item 58] [Audio] **wheo** [LINK: …]' under '[AudioHover]', '[H2]toa [Item 9] [Audio] toa') is the KB's inline audio trigger (01E / 04B COMP_08: <span class=\"audioTrigger\" audioName=\"AUDIO_FILENAME\">trigger word</span>): the word as typed, its audio on the word. Before, the whole part became an empty audio player and the word was lost. The name is the word itself with spaces as underscores (the KB: no spaces in an audio name), as the gold names TRR110's triggers; a leading heading tag is the writer's size cue and is not kept. A part with no word before its marker (only the marker, or the audio's own label after it) keeps the audio player.",
 				"enabled": true,
@@ -1058,6 +1071,13 @@
 					"env": "CELLPARA_OFF",
 					"open": "<p>",
 					"close": "</p>",
+					"soft_break": {
+						"enabled": true,
+						"env": "CELLSOFT_OFF",
+						"joiner": "<br />",
+						"series": ["CBI", "CEDK", "ENGI", "ENGS", "MXDB", "MXDI", "MXEO", "MXFU", "XGF"],
+						"_doc": "The series whose finished tables separate a cell's lines with a line break, not a paragraph."
+					},
 					"_doc": "Each of the cell's paragraphs is its own paragraph, so the writer's lines do not run together."
 				},
 				"_doc": "A TABLE CELL'S PARAGRAPHS ARE LINES, NOT SLASHES. The extractor joins a Word cell's paragraphs with the in-cell marker « / » and records the paragraphs themselves beside the rows (cellParas); a free-body data cell of two or more paragraphs renders them as lines joined by joiner, so the learner reads «Tīkina o tino pene…» and «Kautehia ia kara…» on two lines instead of one line broken by a slash. A writer's own « / » inside one paragraph («Whenu / Strand») is never split — the paragraphs come from the side-channel, not from the marker — and a cell a caller rewrote keeps its single-line form. The human build writes these lines with <br> more than any other form (CBI, CEDK, XGF, MXDB, CEDW almost always). Hand-off boxes keep the raw marker (a developer reference)."
@@ -2204,6 +2224,14 @@
 			"todo_text": "Designer/Developer To Do: the writer's file «{label}». Link: {url}",
 			"_doc": "A paragraph that is wholly a link to a team Word, Excel or image file, labelled with its file name, is a pointer for the developer: learners cannot open it. It becomes the house To Do note."
 		},
+		"bracket_tag_line": {
+			"enabled": true,
+			"env": "BRACKETLINE_OFF",
+			"line": "<p>\\s*(\\[[^\\]<]{1,90}\\])\\s*</p>",
+			"tags": "^\\[\\s*(?:flip\\s*cards?\\b.*|reflect button|dropbox\\b.*|self-?marked quiz|important note|correct answer)\\s*\\]$",
+			"note": "{text}",
+			"_doc": "KB constraint 5: a literal tag never reaches the learner. A paragraph that is only a bracketed widget or tag word the writer typed for the team becomes the Writers Note. The words are listed, so a bracketed prompt meant for the learner («[Your full name]») stays."
+		},
 		"bare_stock_url_image": {
 			"_doc": "THE BARE STOCK-PHOTO URL IS AN IMAGE. A body paragraph whose whole content is one stock-photo URL (the writer's image reference typed on its own line — after a description, after an [image] whose own line already held one, under an unknown bracket) must not show as a visible link: MediaBuilder's standing contract is that the pasted iStock URL is the asset reference, never visible text, and the human build shows that image. Outside the un-built hand-off boxes (the developer's raw copy) the paragraph becomes the image in the run's mode (image.mode_P / mode_D + MediaBuilder.FinishImg's alt and loading=lazy); when the page already shows that image (its iStock-<id> label / filename) the paragraph is dropped. Env STOCKURLIMG_OFF.",
 			"enabled": true,
@@ -2216,6 +2244,16 @@
 				"pattern": "<(p|td)\\b[^>]*>\\s*(<a\\b[^>]*href=\"([^\"]*)\"[^>]*>((?:(?!</a>)[\\s\\S])*?)</a>)\\s*</\\1>",
 				"skip_url_pattern": "/video/",
 				"_doc": "The stock-photo link is the writer's picture in two more shapes: a paragraph that is wholly a link with a label, and a table cell holding the link, whose picture goes in place. A stock video is not a picture."
+			},
+			"typed_address": {
+				"enabled": true,
+				"env": "STOCKTYPED_OFF",
+				"paragraph": "<p>((?:(?!</p>)[\\s\\S])*?)</p>",
+				"cell": "<(t[dh])\\b[^>]*>\\s*(<a\\b[^>]*href=\"([^\"]*)\"[^>]*>(?:(?!</a>)[\\s\\S])*?</a>|https?://[^\\s<]+)\\s*</\\1>",
+				"address": "https?://[^\\s<,;)]+",
+				"max_words": 8,
+				"note_match": "Designer/Developer To Do|Writers Note|Red Flag|Media List item",
+				"_doc": "THE STOCK ADDRESS TYPED AS TEXT. A paragraph holding a stock-photo address beside a short label («Image replaced: <address>», «Or; <address>», two addresses on a line) is the writer's picture reference, not learner text: it takes the house To Do note with the writer's words, so the learner sees no address. A table cell holding the address alone takes the picture in place. A longer sentence stays as it is."
 			},
 			"escape_once": {
 				"enabled": true,
@@ -3515,6 +3553,19 @@
 			"label": "Go to your journal",
 			"absorb_into_activity": true,
 			"absorb_suppresses_own_render": true,
+			"first_reference": {
+				"enabled": true,
+				"env": "JOURNALFIRST_OFF",
+				"reference_match": "<h4 class=\"goJournal\">[^<]*</h4>|<a\\b[^>]*?href=\"([^\"]*)\"[^>]*>\\s*<div class=\"button(?: [A-Za-z]+)?\">\\s*(?:(?:download|go\\s+to)\\s+)?(?:(?:your|the)\\s+)?(?:(?:learning|reflection)\\s+)?journal[.!]?\\s*</div>\\s*</a>(\\s*<div class=\"hint\"></div>\\s*<div class=\"hintDropContent\"[^>]*></div>)?(?:\\s*<p class=\"cv2-note\"[^>]*>Designer/Developer To Do: Wire this button[^<]*</p>)?",
+				"form": "<a href=\"{href}\" target=\"_blank\"><div class=\"button downloadButton\">Download journal</div></a>\n<div class=\"hint\"></div>\n<div class=\"hintDropContent\" hintType=\"{hintType}\"></div>",
+				"default_href": "docs/{code} Journal.docx",
+				"default_hint_type": "oneDrive",
+				"hint_type_rows": [
+					{ "match": "docs\\.google\\.com/[^\"]*/copy\\b", "hint_type": "googleDrive" }
+				],
+				"box_open": "<div class=\"cv2-int-raw\"",
+				"_doc": "THE MODULE'S FIRST JOURNAL BUTTON IS THE DOWNLOAD BLOCK (KB constraint 96). The first journal button the writer asked for, in page order, renders the download block with its hint; the writer's link replaces the docs/ address where one was given, and hintType follows that link. Every later reference stays the go-to-journal heading. A module whose writer typed no journal button gets none. A button inside a hand-off box is not read, and a wire-the-link note beside the first button goes with it, since the block has its address."
+			},
 			"lead_button": {
 				"_doc": "THE JOURNAL BUTTON IN AN ACTIVITY'S LEAD IS THE GO-TO-JOURNAL HEADING. A writer's '[button] Go to journal' typed between an activity's title and its widget falls into the activity's lead, whose loop renders a tag item's words as lead text — so the page showed the plain words 'Go to journal' where every other journal button ships the templated heading (the decided form). A no-address button whose label is the journal label (label_match) in the lead flushes the lead and emits the heading (form). OFF = the plain words.",
 				"enabled": true,
@@ -3691,6 +3742,12 @@
 			"_doc": "THE WIDGET'S LEAD INSTRUCTION IS PAGE TEXT. The writer opens a quiz, drag or typing activity with its tag, then a «[Body]» line telling the learner what to do («[drag and drop] / [Body] Drag the words into the right order. / <the table>»), then the widget's data. When the widget is not built, the hand-off box captured that line with the data and the learner saw only the collapsed box. The human build shows the lead line as the activity's text above the widget (the leading [Body] lines: 538 shown outside the widget against 61 inside it; about 0.95 in the types listed). The box renderer releases every [Body] member that stands before the bundle's first table and before a second non-body tag, as page text just before the box, when the box keeps other content; black lines (often the widget's own questions) stay in the box, and the hand-off file keeps the whole capture. Only bundles whose every type is listed (container widgets — accordion, tabs, modal, click-drop, carousel — keep their panel bodies). Env BOXLEADBODY_OFF (or enabled:false) keeps every captured line in the box.",
 			"enabled": true,
 			"env": "BOXLEADBODY_OFF",
+			"thin_box": {
+				"enabled": true,
+				"env": "BOXTHINLEAD_OFF",
+				"keep_match": "\\[[^\\]]{1,80}\\]|^\\s*question\\s*\\d+",
+				"_doc": "THE LEAD LINE OF A BOX THAT HOLDS LITTLE ELSE. A widget whose data is elsewhere leaves the writer's [Body] instruction as nearly all its capture, so min_box_chars keeps it in the box. The learner still needs the instruction: it shows on the page and stays in the box too, so the box is never left empty. A line carrying a bracket or opening with a numbered question is the widget's own: keep_match leaves it in the box."
+			},
 			"heading_lead": {
 				"_doc": "THE HEADING TYPED RIGHT AFTER THE WIDGET TAG LEADS THE WIDGET. «[Activity 2C] [crossword]» then «[H3] Writing to suit the audience», «[clickdrop]» then «[H3] What is a root word?»: the box's first member is a heading the human shows ahead of the widget — the activity box's <h3> title, or the section's heading before the widget (the rendered boxes' heading-first lines in the listed types: 17 outside the human widget, 1 inside). The heading also counted as the second tag, so the [Body] lead lines after it stayed in the box. With this on, a heading tag (tags) that is the box's first member after the invocation — one whole line, no other captured item from its paragraph — is released before the box as <h{boxed_level}> when the box is an activity's, at the tag's own level (default_level for [heading]) in the page flow, and the lead release carries on past it. Only for the parent list's types (container widgets keep their panel titles). Env BOXLEADHEAD_OFF.",
 				"enabled": true,
@@ -6836,6 +6893,21 @@
 			"stickyNav.js",
 			"embedded_css/inline style blocks"
 		],
+		"sticky_nav_glossary": {
+			"enabled": true,
+			"env": "GLOSSNAV_OFF",
+			"trigger": "\\b(?:floating|sticky)[ -]?nav\\b[^\\n]{0,60}\\bglossary\\b|\\bglossary\\b[^\\n]{0,60}\\b(?:floating|sticky)[ -]?nav\\b",
+			"head_html": "<script src=\"js/stickyNav.js\" type=\"text/javascript\" class=\"stickyNav\"></script>",
+			"page_file": "{code}_glossary.html",
+			"title": "{code} Glossary",
+			"page_header": "<div id=\"header\">\n<div id=\"module-code\">\n<h1>{code}</h1>\n</div>\n<h1><span>Glossary</span></h1>\n</div>\n",
+			"header_match": "<div id=\"header\">[\\s\\S]*?(?=<div id=\"body\">)",
+			"glossary_match": "class=\"glossary\"",
+			"note_match": "<p class=\"cv2-note\"[^>]*>[\\s\\S]*?</p>",
+			"page_drop_match": "<p class=\"cv2-note\"[^>]*>Designer/Developer To Do: Lesson menu:[\\s\\S]*?</p>\\s*",
+			"module_drop_match": "<p class=\"cv2-note\"[^>]*>Red Flag: Un-built \\[glossary\\] marker[\\s\\S]*?</p>\\s*",
+			"_doc": "THE GLOSSARY THE WRITER ASKS FOR IN A FLOATING NAV (KB 05A, the one exception to never_emit's stickyNav.js). When the document asks for a glossary in a floating or sticky nav, or tells the learner the floating nav holds one, every page of the module carries the stickyNav include, and a page holding only the glossary becomes its own glossary page with the Glossary heading. No Red Flag is raised about the request. A glossary given only as a Word link has its terms outside the document, so no page is made for it."
+		},
 		"title_patterns": {
 			"overview": "{code} {englishTitle}",
 			"lesson": "{code} {lesson}",
@@ -6880,6 +6952,15 @@
 			"absent": null,
 			"jsfilled/absent": null,
 			"_rule": "null = omit the #module-code element entirely. 'free-text:\"Module' style registry values put their literal after the colon into {freeText}. {lesson} is the decimal page id ('1.0', overview '0.0'); {lessonPadded} is zero-padded ('01')."
+		},
+		"lesson_chip_series": {
+			"enabled": true,
+			"env": "CHIPSERIES_OFF",
+			"rows": [
+				{ "code_pattern": "^XDLS90[1-5]$", "value": "padded-number" },
+				{ "code_pattern": "^TEDC\\d", "value": "padded-number" }
+			],
+			"_doc": "A SERIES WHOSE LESSON CHIP IS ITS OWN. A module code matching a row's code_pattern shows that row's chip form on its lesson pages, whatever the subject group's form is."
 		},
 		"module_code_literal_guard": {
 			"enabled": true,
@@ -7109,6 +7190,12 @@
 				"max_words": 20,
 				"pair_split": true,
 				"non_maori_letters": "[bcdfjlqsvxyz]",
+				"marker": {
+					"enabled": true,
+					"env": "TEREOMARK_OFF",
+					"match": "^\\[?\\s*te reo(?:\\s+m[āa]ori)?(?:\\s+(?:translation|title))?\\s*:?\\s*\\]?$",
+					"_doc": "THE TE REO TITLE AFTER THE WRITER'S MARKER. «[TITLE BAR] Exploring Reports [Te Reo] Te tūhura i ngā pūrongo»: the words after a marker span naming the Te Reo title are the module's second title, when they are Māori-lettered. An awaiting-translation note is not this marker."
+				},
 				"title_bar_pair": {
 					"enabled": true,
 					"env": "TBPAIR_OFF",

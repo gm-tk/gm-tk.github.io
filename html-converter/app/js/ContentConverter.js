@@ -5728,8 +5728,8 @@ class ContentConverter {
 		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
 		// modifier) has run, so the page's consecutive numbering is settled last.
 		const bodyHtml0 = this.#titleIdEcho(this.#boldMarkerResidue(this.#softBreakLead(this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
-			this.#journalPlaceholderFill(this.#pageNumberNormalise(this.#emptyActivityDrop(this.#freeDropboxBox(this.#bannerFullRow(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				ActivitiesBuilder.activityTitleLevelPostpass(this.#lessonLabelTitlePair(this.#relevelHeadings(body.filter(Boolean).join("\n"), run), run), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), run), page, run), page, run), page, run), page, run),   // #journalPlaceholderFill, #emptyActivityDrop, #freeDropboxBox, #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
+			this.#journalPlaceholderFill(this.#pageNumberNormalise(this.#emptyActivityDrop(this.#freeDropboxBox(this.#bannerFullRow(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#bracketTagLine(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#lessonLabelTitlePair(this.#relevelHeadings(body.filter(Boolean).join("\n"), run), run), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), run), run), page, run), page, run), page, run), page, run),   // #journalPlaceholderFill, #emptyActivityDrop, #freeDropboxBox, #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// the level-pages dialect's nav/tile labels + registry row
@@ -8376,6 +8376,21 @@ class ContentConverter {
 							tbConsumed.add(j);
 							break;
 						}
+						// the writer's marker span («[Te Reo] Te tūhura i ngā pūrongo») carries the title after it
+						// (te_reo_line.marker; env TEREOMARK_OFF)
+						const trMark = trlCfg.marker;
+						if (trMark && trMark.enabled !== false && nx.type === "tag" && !nx.parse?.primary
+							&& !(typeof process !== "undefined" && process.env && process.env[trMark.env ?? "TEREOMARK_OFF"])
+							&& new RegExp(trMark.match, "i").test(String(nx.text ?? "").trim())) {
+							const reo = String(nx.blackAfter ?? "").replace(/\*+/g, "").replace(/[.\s]+$/, "").trim();
+							const reoLetters = reo.replace(/[^A-Za-zĀĒĪŌŪāēīōū]/g, "");
+							if (reoLetters && !nonMaori.test(reoLetters) && reo.split(/\s+/).length <= (trlCfg.max_words ?? 20)) {
+								titleBar.teReo = this.#normaliseTitleCase(reo);
+								titleBar.single = false;
+								tbConsumed.add(j);
+							}
+							break;
+						}
 						if (nx.type === "black") {
 							const clean = String(nx.text).replace(/\*\*?/g, "").trim();
 							const letters = clean.replace(/[^A-Za-zĀĒĪŌŪāēīōū]/g, "");
@@ -10843,6 +10858,20 @@ class ContentConverter {
 	 *  paragraph becomes the image in the run's mode (MediaBuilder's Mode P / D markup + FinishImg's alt and lazy); when the
 	 *  page already shows that image (its iStock label / filename) the paragraph is dropped. Data elements.bare_stock_url_image
 	 *  {host_pattern, id_patterns}; env STOCKURLIMG_OFF. */
+	/**
+	 * A paragraph that is only a writer's bracketed widget or tag word is a note, never learner text
+	 * (elements.bracket_tag_line; env BRACKETLINE_OFF). The tag words are data, so a bracketed prompt the learner
+	 * is meant to read stays.
+	 */
+	static #bracketTagLine(html, run) {
+		const c = DataService.Data.EmitTemplates.elements?.bracket_tag_line;
+		if (!c || c.enabled === false || !html) return html;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "BRACKETLINE_OFF"]) return html;
+		const tag = new RegExp(c.tags, "i");
+		return html.replace(new RegExp(c.line, "g"), (whole, inner) => (tag.test(inner)
+			? NotesAndComments.redFlag(Utils.FillTemplate(c.note, { text: inner }), run, "cs") : whole));
+	}
+
 	static #bareStockUrlImage(html, run) {
 		const cfg = DataService.Data.EmitTemplates.elements?.bare_stock_url_image;
 		if (!cfg || cfg.enabled === false || !html) return html;
@@ -10877,6 +10906,33 @@ class ContentConverter {
 				if (m[1].toLowerCase() === "td") {
 					if (id) hits.push({ at: m.index + m[0].indexOf(m[2]), len: m[2].length, url, id, inPlace: true });
 				} else hits.push({ at: m.index, len: m[0].length, url, id, words: m[4].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim() });
+			}
+			hits.sort((a, b) => a.at - b.at);
+		}
+		// the address typed as text: beside a short label in a paragraph, or alone in a table cell
+		// (bare_stock_url_image.typed_address; env STOCKTYPED_OFF)
+		const ta = cfg.typed_address;
+		if (ta && ta.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ta.env ?? "STOCKTYPED_OFF"])) {
+			const skipUrl = new RegExp(wl?.skip_url_pattern ?? "/video/", "i");
+			const idOf = (u) => (cfg.id_patterns ?? ["gm-?(\\d{6,10})", "/id/(\\d{6,10})"]).map((p) => u.match(new RegExp(p))?.[1]).find(Boolean) ?? null;
+			const free = (at) => !spans.some(([a, z]) => at >= a && at < z) && !hits.some((h) => at >= h.at && at < h.at + h.len);
+			for (const m of html.matchAll(new RegExp(ta.paragraph, "g"))) {
+				if (!free(m.index) || !hostRe.test(m[1]) || /<(?:img|math)\b/i.test(m[1])) continue;
+				const hrefs = [...m[1].matchAll(/<a\b[^>]*href="([^"]*)"/g)].map((u) => u[1].replace(/&amp;/g, "&"));
+				if (hrefs.some((u) => !hostRe.test(u))) continue;   // a link to anywhere else keeps the paragraph learner text
+				const text = m[1].replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&");
+				if (ta.note_match && new RegExp(ta.note_match, "i").test(text)) continue;   // a note keeps its own form
+				const typed = [...text.matchAll(new RegExp(ta.address, "g"))].map((u) => u[0]);
+				const urls = [...new Set([...hrefs, ...typed])].filter((u) => hostRe.test(u) && !skipUrl.test(u));
+				if (!urls.length) continue;
+				const words = text.replace(new RegExp(ta.address, "g"), " ").replace(/\s+/g, " ").replace(/^[\s,;:.)]+|[\s,;:(]+$/g, "");
+				if (words.split(" ").filter(Boolean).length > (ta.max_words ?? 12)) continue;
+				hits.push({ at: m.index, len: m[0].length, url: urls.join(" "), id: idOf(urls[0]), words });
+			}
+			for (const m of html.matchAll(new RegExp(ta.cell, "gi"))) {
+				const url = (m[3] ?? m[2]).replace(/&amp;/g, "&"), at = m.index + m[0].indexOf(m[2]);
+				if (!free(at) || !hostRe.test(url) || skipUrl.test(url) || !idOf(url)) continue;
+				hits.push({ at, len: m[2].length, url, id: idOf(url), inPlace: true });
 			}
 			hits.sort((a, b) => a.at - b.at);
 		}
@@ -15665,7 +15721,16 @@ class ContentConverter {
 		const left = all.filter((it) => it && !out.has(it)).reduce((n, it) => n + (it.type === "table"
 			? letters((it.block?.rows ?? []).flat().map(cellText).join(" "))
 			: letters(it.type === "black" ? it.text : (String(it.blackAfter ?? "").trim() ? it.blackAfter : ""))), 0);
-		return left >= (cfg.min_box_chars ?? 60) ? out : new Set();
+		if (left >= (cfg.min_box_chars ?? 60)) return out;
+		// a box with little else keeps the line as well as showing it (lead_body_release.thin_box; env BOXTHINLEAD_OFF)
+		const thin = cfg.thin_box;
+		if (!inTypes || !thin || thin.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[thin.env ?? "BOXTHINLEAD_OFF"])) return new Set();
+		const keep = thin.keep_match ? new RegExp(thin.keep_match, "i") : null;
+		if (keep) for (const m of [...out]) if (keep.test(String(m.type === "black" ? (m.text ?? "") : (m.blackAfter ?? "")))) out.delete(m);
+		if (!out.size) return new Set();
+		out.keepInBox = true;
+		return out;
 	}
 
 	// =======================================================================

@@ -85,7 +85,7 @@ class AcksBuilder {
 		const groups = this.#groupByLesson(entries.filter(Boolean), run);
 
 		// ---- 3. assemble the block ----------------------------------------
-		const hasAi = entries.some((e) => e?.sourceClass === "ai");
+		const hasAi = entries.some((e) => e?.sourceClass === "ai" || e?.aiMedia);
 		const g = fmt.lesson_groups;
 		const html = [];
 
@@ -300,7 +300,9 @@ class AcksBuilder {
 		if (entry && entry.sourceClass !== "todo" && this.#isUnknownType(item)
 			&& fmt.ack_todo.flag_unknown_type
 			&& !(typeof process !== "undefined" && process.env && process.env.ACKUNKNOWN_OFF)) {
-			return this.#todoFromEntry(item, entry, run);
+			const flagged = this.#todoFromEntry(item, entry, run);
+			if (entry.sourceClass === "ai" && this.#aiRowsCfg()) flagged.aiMedia = true;   // a flagged line is still AI media
+			return flagged;
 		}
 		return entry;
 	};
@@ -987,6 +989,14 @@ class AcksBuilder {
 	 * @param {Object} item - a Media List row (see the shape note above)
 	 * @returns {string} the sourceClass key, e.g. "istock" | "skip" | "website"
 	 */
+	/** The AI-row rule's data (source_classification.ai_rows), or null when it is switched off. */
+	static #aiRowsCfg() {
+		const c = DataService.Data.AcksFormats.source_classification?.ai_rows;
+		if (!c || c.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "ACKSAITYPE_OFF"]) return null;
+		return c;
+	}
+
 	static #classify(item) {
 		const rules = DataService.Data.AcksFormats.source_classification;
 		const url = Utils.Fold(item.url ?? "");
@@ -995,6 +1005,8 @@ class AcksBuilder {
 
 		if (rules.skip_types.includes(type)) return "skip";
 		for (const r of rules.by_domain) if (url.includes(r.match)) return r.source;
+		const ai = this.#aiRowsCfg();
+		if (ai && ((ai.type_keywords ?? []).some((k) => type.includes(k)) || (ai.source_keywords ?? []).some((k) => source.includes(k)))) return "ai";
 		for (const r of rules.by_source_keyword) if (source.includes(r.match)) return r.source;
 		return rules.default;
 	};

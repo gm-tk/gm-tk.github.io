@@ -91,6 +91,13 @@
  },
 
  "source_classification": {
+  "ai_rows": {
+   "enabled": true,
+   "env": "ACKSAITYPE_OFF",
+   "type_keywords": ["copilot", "ai image", "ai generated", "ai-generated", "ai created", "ai poster", "ai audio", "ai animation"],
+   "source_keywords": ["ai created", "ai image", "canva ai", "chatgpt", "midjourney"],
+   "_doc": "KB constraints 53 / 72: a Media List row naming an AI tool in its type or source column is AI media, and the module's acknowledgements take the acksAI wrapper. A row flagged for an unfamiliar item type stays AI media."
+  },
   "rule": "Classify each media item by first matching the URL domain, then the Source column keywords, then type keywords. First hit wins.",
   "by_domain": [
    { "match": "istockphoto.com",        "source": "istock" },

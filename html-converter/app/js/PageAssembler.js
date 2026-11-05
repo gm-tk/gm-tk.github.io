@@ -969,6 +969,91 @@ class PageAssembler {
 		if (n) run.AddNote("info", "PageAssembler", `${n} bare [Summary] tag${n > 1 ? "s" : ""} read as an alert titled '${cfg.title}' (callouts.bare_summary_alert).`);
 	}
 
+	/** The data block for a glossary asked for in a floating nav, or null when it is switched off. */
+	static #stickyGlossaryCfg() {
+		const c = DataService.Data.EmitTemplates.skeleton?.sticky_nav_glossary;
+		if (!c || c.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "GLOSSNAV_OFF"]) return null;
+		return c;
+	}
+
+	/** True when any line of the document asks for a glossary in a floating or sticky nav, or says the nav holds one. */
+	static #stickyGlossaryAsked(items) {
+		const c = PageAssembler.#stickyGlossaryCfg();
+		if (!c) return false;
+		const re = new RegExp(c.trigger, "i");
+		return items.some((it) => re.test(`${it?.text ?? ""} ${it?.blackAfter ?? ""}`.replace(/\s+/g, " ")));
+	}
+
+	/**
+	 * A module whose glossary sits in a floating nav: the un-built glossary Red Flag goes (the request is a documented
+	 * pattern), and a page holding only the glossary is renamed as the module's glossary page.
+	 */
+	static #glossaryPage(pageProducts, filenames, run) {
+		const c = PageAssembler.#stickyGlossaryCfg();
+		if (!c || !run.stickyNavGlossary) return;
+		const drop = new RegExp(c.module_drop_match, "g");
+		pageProducts.forEach((product, i) => {
+			const body = String(product.content?.bodyHtml ?? "").replace(drop, "");
+			product.content.bodyHtml = body;
+			if (!body.includes(c.glossary_match) || product.page?.isOverview) return;
+			const start = body.lastIndexOf("<div", body.indexOf(c.glossary_match));
+			let depth = 0, end = -1;
+			for (const t of body.slice(start).matchAll(/<(\/?)div\b[^>]*>/g)) {
+				depth += t[1] ? -1 : 1;
+				if (depth === 0) { end = start + t.index + t[0].length; break; }
+			}
+			if (end < 0) return;
+			const rest = (body.slice(0, start) + body.slice(end)).replace(new RegExp(c.note_match, "g"), " ").replace(/<[^>]+>/g, " ");
+			if (rest.trim()) return;
+			product.page.isGlossaryPage = true;
+			product.content.bodyHtml = body.replace(new RegExp(c.page_drop_match, "g"), "");
+			filenames[i] = Utils.FillTemplate(c.page_file, { code: run.moduleCode ?? "" });
+		});
+	}
+
+	/** The glossary page's title and header, in place of the lesson page's. */
+	static #glossaryShell(page, run, html) {
+		if (!page?.isGlossaryPage) return html;
+		const c = DataService.Data.EmitTemplates.skeleton.sticky_nav_glossary, code = run.moduleCode ?? "";
+		return html.replace(/<title>[^<]*<\/title>/, `<title>${Utils.FillTemplate(c.title, { code })}</title>`)
+			.replace(new RegExp(c.header_match), Utils.FillTemplate(c.page_header, { code }));
+	}
+
+	/** True when a position in a page's body sits inside an un-built widget's hand-off box. */
+	static #inHandoffBox(html, index, open) {
+		for (let at = html.lastIndexOf(open, index); at >= 0; at = at > 0 ? html.lastIndexOf(open, at - 1) : -1) {
+			let depth = 0;
+			for (const t of html.slice(at, index).matchAll(/<(\/?)div\b/g)) depth += t[1] ? -1 : 1;
+			if (depth > 0) return true;
+		}
+		return false;
+	}
+
+	/**
+	 * The module's first journal button, in page order, becomes the download block
+	 * (data buttons.go_journal.first_reference; env JOURNALFIRST_OFF). Later references are left as they are.
+	 */
+	static #firstJournalDownload(pageProducts, run) {
+		const c = DataService.Data.EmitTemplates.buttons?.go_journal?.first_reference;
+		if (!c || c.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "JOURNALFIRST_OFF"]) return;
+		const re = new RegExp(c.reference_match, "gi");
+		for (const product of pageProducts) {
+			const html = String(product.content?.bodyHtml ?? "");
+			for (const m of html.matchAll(re)) {
+				if (PageAssembler.#inHandoffBox(html, m.index, c.box_open)) continue;
+				if (m[2] && /\bdownloadButton\b/.test(m[0])) return;   // already the block
+				const given = m[1] && !/^docs\//i.test(m[1]) ? m[1] : "";
+				const href = given || Utils.FillTemplate(c.default_href, { code: run.moduleCode ?? "" });
+				const row = (c.hint_type_rows ?? []).find((r) => new RegExp(r.match, "i").test(given));
+				const block = Utils.FillTemplate(c.form, { href, hintType: row?.hint_type ?? c.default_hint_type });
+				product.content.bodyHtml = html.slice(0, m.index) + block + html.slice(m.index + m[0].length);
+				return;
+			}
+		}
+	}
+
 	/**
 	 * Converts ONE module end-to-end: the single entry point that turns an
 	 * already-extracted Writers Template (run.wtBlocks, parsed by an earlier
@@ -1041,6 +1126,7 @@ class PageAssembler {
 		PageAssembler.#oneCellUnfold(items, run, normaliser);   // ONECELLUNFOLD_OFF — before the split and the scanner
 		PageAssembler.#frontMatterBody(items, run);   // FRONTMATTERBODY_OFF
 		PageAssembler.#templatePrompts(items, run);   // TEMPLATEPROMPT_OFF
+		run.stickyNavGlossary = PageAssembler.#stickyGlossaryAsked(items);   // GLOSSNAV_OFF
 		run.pages = PageSplitter.Split(items, run, normaliser);
 		if (!run.pages.length) {
 			run.AddNote("error", "PageAssembler",
@@ -1283,6 +1369,7 @@ class PageAssembler {
 		// Through the shared PageFileNames helper (the library
 		// {code}_{lesson}_{part}.html form; env PAGENAME_OFF = the dash form).
 		const filenames = PageAssembler.PageFileNames(run);
+		PageAssembler.#glossaryPage(pageProducts, filenames, run);   // GLOSSNAV_OFF
 		// Change Ledger CL-0044 (constraint 71): footer nav
 		// hrefs ship EMPTY — prev/next/home alike; D2L wires the real links at
 		// publish time. The gold library's hrefs are empty too (the populated
@@ -1293,8 +1380,9 @@ class PageAssembler {
 		// sibling chaining.
 		const footerEmpty = (DataService.Data.EmitTemplates.footer?.nav_links_empty?.enabled === true)
 			&& !(typeof process !== "undefined" && process.env && process.env.FOOTEREMPTY_OFF);
+		PageAssembler.#firstJournalDownload(pageProducts, run);   // JOURNALFIRST_OFF
 		pageProducts.forEach(({ page, content }, i) => {
-			const html = MenuBuilder.ListItemCase(SkeletonBuilder.BuildPage({
+			const html = PageAssembler.#glossaryShell(page, run, MenuBuilder.ListItemCase(SkeletonBuilder.BuildPage({
 				page, content, run,
 				// first page carries the acks block (after #footer);
 				// historical last-page placement is superseded — never copy it
@@ -1303,7 +1391,7 @@ class PageAssembler {
 				// CL-0044: hrefs empty by default; FOOTEREMPTY_OFF restores chaining
 				prevHref: footerEmpty ? "" : (i > 0 ? filenames[i - 1] : ""),
 				nextHref: footerEmpty ? "" : (i < pageProducts.length - 1 ? filenames[i + 1] : ""),
-			}));
+			})));
 			run.outputs.push({
 				filename: filenames[i],
 				// tab-indented for hand-editing/debugging, matching the human-developed

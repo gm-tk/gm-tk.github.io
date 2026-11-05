@@ -228,7 +228,7 @@ class TablesAndGrids {
 					const unred = (x) => x.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "");
 					const content = this.fillImageRefs(this.fillImageRefs(blHit ? ListsAndRuns.renderBlackText(this.cellNumberedParts(block, rows, r, ci, blParts).join("\n"), run, this.cellLinks(links).concat(rqLinks), true).join("")
 						: inline !== null ? inline
-						: paras ? this.cellParagraphForm(paras.map((p) => ListsAndRuns.inlineMarkup(unred(p), this.cellLinks(links).concat(rqLinks), true)), t.cell_paragraphs)
+						: paras ? this.cellParagraphForm(paras.map((p) => ListsAndRuns.inlineMarkup(unred(p), this.cellLinks(links).concat(rqLinks), true)), t.cell_paragraphs, run)
 						// red spans inside table cells: keep their text visible,
 						// marked — they are usually interactive data labels
 						: ListsAndRuns.inlineMarkup(unred(cc),
@@ -516,10 +516,13 @@ class TablesAndGrids {
 	 * @param {string} c - the cell string being rendered
 	 * @returns {string[]|null} the cell's paragraphs, or null
 	 */
-	static cellParagraphForm(lines, cfg) {
+	static cellParagraphForm(lines, cfg, run) {
 		const f = cfg.paragraph_form;
 		if (!f || f.enabled === false
 			|| (typeof process !== "undefined" && process.env && process.env[f.env ?? "CELLPARA_OFF"])) return lines.join(cfg.joiner);
+		const soft = f.soft_break;
+		if (soft && soft.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[soft.env ?? "CELLSOFT_OFF"])
+			&& (soft.series ?? []).includes(String(run?.moduleCode ?? "").match(/^[A-Za-z]+/)?.[0]?.toUpperCase())) return lines.join(soft.joiner);
 		return lines.map((l) => `${f.open}${l}${f.close}`).join("");
 	};
 

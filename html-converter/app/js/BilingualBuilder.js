@@ -241,6 +241,26 @@ class BilingualBuilder {
 	 * @returns {string[]} rendered, interleaved reo/eng element and media HTML fragments, in emission order
 	 */
 	static bilingualRows(block, run, fromRow, norm) {
+		const out = this.#pairRows(block, run, fromRow, norm);
+		const note = out.length ? this.#thirdColumnNote(block, run, fromRow) : "";
+		return note ? [...out, note] : out;
+	}
+
+	/**
+	 * The pair unfold reads a row's first two cells, so the words of any later column would reach no page: they are
+	 * carried in a Writers Note beside the table (elements.dual_language.third_column_note; env THIRDCOLNOTE_OFF).
+	 */
+	static #thirdColumnNote(block, run, fromRow) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.third_column_note;
+		if (!c || c.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "THIRDCOLNOTE_OFF"])) return "";
+		const clean = (x) => String(x ?? "").replace(/\u{1f534}|\[\/?RED TEXT\]/gu, " ").replace(/\*+/g, "").replace(/\s+/g, " ").trim();
+		const cells = (block?.rows ?? []).slice(fromRow ?? 0).flatMap((r) => (Array.isArray(r) ? r.slice(2) : []).map(clean)).filter((x) => /\p{L}{2}/u.test(x));
+		if (!cells.length) return "";
+		return NotesAndComments.redFlag(Utils.FillTemplate(c.note, { cells: cells.join(c.joiner ?? " ¦ ") }), run, "cs");
+	}
+
+	static #pairRows(block, run, fromRow, norm) {
 		const rows = block?.rows ?? [];
 		if (!rows.length || !Array.isArray(rows[0]) || rows[0].length < 2) return [];
 		// a widget's data table has no reo / English pairs to unfold: the caller keeps it whole in its hand-off box
@@ -250,7 +270,11 @@ class BilingualBuilder {
 		// bilingualLessonTitleHtml below); every other caller just uses the default
 		// header-skip rule — skip row 0 when it's the English|Māori header, else start
 		// from row 0.
-		const start = (fromRow !== undefined) ? fromRow : (this.bilingualHeader(block) ? 1 : 0);
+		// the introduction table's own label row is the writer's table name, not learner text (dual_language.intro_label_row; env INTROLABEL_OFF)
+		const ilr = DataService.Data.EmitTemplates.elements?.dual_language?.intro_label_row;
+		const ilrOn = !!ilr && ilr.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ilr.env ?? "INTROLABEL_OFF"]);
+		const labelRow = ilrOn && fromRow === undefined && new RegExp(ilr.match, "i").test(String(rows[0]?.[0] ?? "").replace(/\*/g, "").trim());
+		const start = (fromRow !== undefined) ? fromRow : (this.bilingualHeader(block) || labelRow ? 1 : 0);
 		// When section grouping (the "keystone" holistic-nesting feature — see
 		// bilingualSection below) is ON, INTERLEAVE reo/eng PER ELEMENT instead of per
 		// row (Māori then English for each parallel paragraph — reo, eng, reo, eng —

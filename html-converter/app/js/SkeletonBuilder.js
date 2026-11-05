@@ -286,7 +286,7 @@ class SkeletonBuilder {
 
 		const head = Utils.FillTemplate(tpl.skeleton.head, {
 			title: Utils.EscapeHtml(title),
-			idocScript,
+			idocScript: run.stickyNavGlossary ? `${tpl.skeleton.sticky_nav_glossary.head_html}\n${idocScript}` : idocScript,
 		});
 
 		// ---- header -----------------------------------------------------------
@@ -635,7 +635,11 @@ class SkeletonBuilder {
 		const parts = [tpl.header.open];
 
 		// ---- #module-code: how the page code renders (pattern field) ------
-		const mcValue = rules.module_code?.[pageType];
+		const chipSeries = tpl.header.lesson_chip_series;
+		const chipRow = pageType === "lesson" && chipSeries && chipSeries.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[chipSeries.env ?? "CHIPSERIES_OFF"])
+			? (chipSeries.rows ?? []).find((r) => new RegExp(r.code_pattern).test(run.moduleCode ?? "")) : null;
+		const mcValue = chipRow?.value ?? rules.module_code?.[pageType];
 		const mcMap = tpl.header.module_code_value_map;
 		let rendered = null;
 		if (typeof mcValue === "string" && mcValue.startsWith("free-text")) {
