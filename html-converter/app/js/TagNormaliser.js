@@ -881,7 +881,11 @@ class TagNormaliser {
 				&& !(typeof process !== "undefined" && process.env && process.env.MTKQUIZ_OFF)) {
 				const headRe = new RegExp(mqr.head_pattern, "i");
 				const exclRe = new RegExp(mqr.exclude_pattern, "i");
-				if (headRe.test(s) && !exclRe.test(s)
+				// the writer's other names for a D2L quiz: «[Quiz button]», «[Quiz] - triggers engagement»
+				const qf = mqr.quiz_forms;
+				const qfRe = qf && qf.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[qf.env || "QUIZFORM_OFF"])
+					? new RegExp(qf.head_pattern, "i") : null;
+				if ((headRe.test(s) || qfRe?.test(s)) && !exclRe.test(s)
 					&& (tags.length || brackets.length
 						|| s.trim().split(/\s+/).length <= (mqr.bracketless_max_words ?? 12))) {
 					const drop = new Set(mqr.drop_tags ?? []);
@@ -893,6 +897,8 @@ class TagNormaliser {
 						&& !(typeof process !== "undefined" && process.env && process.env[od.env ?? "MTKQUIZOMIT_OFF"])) {
 						for (const t of (od.tags ?? [])) drop.add(t);
 					}
+					// a «[Quiz button]» is the quiz's own button: the shell carries it, so the plain button tag goes
+					if (qfRe?.test(s)) for (const t of tags) if (/button/.test(t.tag)) drop.add(t.tag);
 					const oldPrimaryDropped = !!(primary && drop.has(primary.tag));
 					const kept = tags.filter((t) => !drop.has(t.tag));
 					tags.length = 0; tags.push(...kept);

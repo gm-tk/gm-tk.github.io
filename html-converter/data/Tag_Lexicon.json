@@ -255,6 +255,12 @@
 			"env": "MTKQUIZ_OFF",
 			"canonical": "mtk quiz",
 			"head_pattern": "mtk[\\s-]*quiz",
+			"quiz_forms": {
+				"_doc": "The writer's other names for a quiz built in D2L, KB constraint 65's family: a [Quiz button] tag, and a [Quiz] tag whose own red text says it triggers engagement. The human shows the Go to quiz button for them; a bare [Quiz] stays the in-page quiz its content describes.",
+				"enabled": true,
+				"env": "QUIZFORM_OFF",
+				"head_pattern": "^\\s*\\[\\s*quiz\\s+button\\s*\\]|^\\s*\\[\\s*quiz\\s*\\]\\s*[-–—]\\s*triggers?\\s+engagement|\\bmkt\\s+quiz\\b"
+			},
 			"exclude_pattern": "^\\s*\\[?\\s*end\\b",
 			"bracketless_max_words": 12,
 			"omit_quiz_content_drop": {

@@ -154,7 +154,7 @@ class PanelsBuilder {
 			// own tile templates. Data: fundamentals_panels.level_pages.
 			// Env LEVELPAGE_OFF (the caller never passes levelRow when set).
 			if (levelRow) {
-				({ nav, tilesRow } = this.#levelPagesNav(panelSegs, levelRow, pc, levelLabels));
+				({ nav, tilesRow } = this.#levelPagesNav(panelSegs, levelRow, pc, levelLabels, run));
 			} else if (accRow) {
 				({ nav, tilesRow } = this.#phaseTextDialect(panelSegs, intro, accRow, pc));
 			} else {
@@ -407,7 +407,7 @@ class PanelsBuilder {
 	 * Data: fundamentals_panels.level_pages. Env LEVELPAGE_OFF (the caller
 	 * never reaches this method when set).
 	 */
-	static #levelPagesNav(panelSegs, row, pc, labels) {
+	static #levelPagesNav(panelSegs, row, pc, labels, run) {
 		const n = panelSegs.length;
 		const lab = (i) => (labels && labels[i]) || `Phase ${i + 1}`;
 		let nav = (pc.phases_nav_open || "<div class=\"phases\">") + "\n";
@@ -427,7 +427,13 @@ class PanelsBuilder {
 		const tiles = [];
 		for (let i = 0; i < n; i++) {
 			const num = String(i + 1);
-			const m = /<img\b[^>]*>/i.exec(PanelsBuilder.#tileSeg(panelSegs[i])) ?? (fallback ? [fallback] : null);
+			// the picture the writer named for this tile outranks the panel's first picture
+			const own = run?.tileImages?.[num];
+			const img = DataService.Data.EmitTemplates.image;
+			const ownHtml = own ? MediaBuilder.FinishImg(run?.imageMode === "P"
+				? Utils.FillTemplate(img.mode_P.visible, { label: `iStock-${own.id}` })
+				: Utils.FillTemplate(img.mode_D.visible, { filename: Utils.FillTemplate(img.filename_rules.istock, { id: own.id }) }), own.url, own.id, run) : null;
+			const m = ownHtml ? [ownHtml] : /<img\b[^>]*>/i.exec(PanelsBuilder.#tileSeg(panelSegs[i])) ?? (fallback ? [fallback] : null);
 			const src = m ? (/\bsrc="([^"]*)"/i.exec(m[0])?.[1] ?? "") : "";
 			const alt = m ? (/\balt="([^"]*)"/i.exec(m[0])?.[1] || lab(i)) : lab(i);
 			let tile = Utils.FillTemplate(

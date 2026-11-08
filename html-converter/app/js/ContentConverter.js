@@ -737,6 +737,22 @@ class ContentConverter {
 				if (!cells.some((c) => tileTitleCellRe.test(c))) continue;
 				cells.forEach((c, k) => { const m = c.match(tileTitleCellRe); if (m && !tileNames[String(k + 1)]) tileNames[String(k + 1)] = stripMd(m[1]); });
 			}
+			// the writer's picture for each tile: the stock link in the [Image] cell of that column
+			// (data tile_image; env TILEIMG_OFF)
+			const ti = cfg.tile_image;
+			if (!ti || ti.enabled === false || (typeof process !== "undefined" && process.env && process.env[ti.env || "TILEIMG_OFF"])) return;
+			const cellRe = new RegExp(ti.cell_pattern, "i"), hostRe = new RegExp(ti.host_pattern, "i");
+			const links = (it.block.links ?? []).filter((l) => hostRe.test(String(l?.target ?? "")));
+			let nth = 0;
+			for (const r of it.block.rows) (r || []).map(cellText).forEach((c, k) => {
+				const inCell = (l) => String(l.text ?? "").trim() && c.includes(String(l.text).replace(/\*+/g, "").replace(/\s+/g, " ").trim());
+				if (!cellRe.test(c) && !links.some(inCell)) return;
+				// the table's links are in reading order: the Nth picture cell with no link words of its own takes the Nth link
+				const url = String(links.find(inCell)?.target ?? c.match(new RegExp(ti.url_pattern, "i"))?.[0] ?? links[nth]?.target ?? "");
+				nth++;
+				const id = (ti.id_patterns ?? []).map((p) => url.match(new RegExp(p))?.[1]).find(Boolean);
+				if (id) (run.tileImages ??= {})[String(k + 1)] = { url, id };
+			});
 		};
 		// ---- pre-scan: the tile NAMES first (the lists precede every tile), then the
 		// ---- boundary count over all three kinds (the min_markers gate)
@@ -2211,12 +2227,82 @@ class ContentConverter {
 		// positional side-alert routing below can look at the FIRST block of the row it is
 		// about to pair with (an activity box vs plain content). Set by the lazy row open only.
 		let lastRowOpenIdx = -1;
+		// KB constraint 65: a quiz is a numbered activity box. A «Go to quiz» button reaching the page outside any container
+		// opens that box: the heading and short lead just before it become the box's title and instructions, or the box takes
+		// the default title. Data interactive_builders.mtk_quiz.shell_box; env QUIZBOX_OFF.
+		const quizBoxTpl = tpl.interactive_builders?.mtk_quiz?.shell_box;
+		const quizBoxCfg = quizBoxTpl && quizBoxTpl.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[quizBoxTpl.env || "QUIZBOX_OFF"])
+			? { ...quizBoxTpl, buttonRe: new RegExp(quizBoxTpl.button_pattern), headRe: new RegExp(quizBoxTpl.title_heading_pattern, "s"),
+				noteRe: new RegExp(quizBoxTpl.note_pattern), paraRe: new RegExp(quizBoxTpl.lead_pattern), leadRe: new RegExp(quizBoxTpl.lead_words_pattern, "i"), boxAheadRe: new RegExp(quizBoxTpl.box_ahead_pattern, "i"), headAnyRe: new RegExp(quizBoxTpl.title_in_open_box?.heading_pattern ?? "<h[2-5][ >]", "i") }
+			: null;
+		let quizBoxing = false, quizLoopIdx = 0;
+		const boxQuizShell = (content) => {
+			const c = quizBoxCfg;
+			let start = parts.length, paras = 0, title = null, lastPara = -1;
+			for (let i = parts.length - 1; rowOpen && i > lastRowOpenIdx; i--) {
+				const x = String(parts[i]).trim();
+				if (c.noteRe.test(x)) continue;
+				const h = x.match(c.headRe);
+				if (h) { start = i; title = h[1]; break; }
+				if (!c.paraRe.test(x) || ++paras > c.lead_max_paragraphs) break;
+				if (lastPara < 0) lastPara = i;
+			}
+			if (title === null && lastPara >= 0 && c.leadRe.test(String(parts[lastPara]))) start = lastPara;
+			// a bare button right before the writer's own box is that box's quiz: it opens no box of its own
+			if (title === null && start === parts.length) {
+				for (let k = quizLoopIdx; k <= quizLoopIdx + c.box_ahead_window && k < bodyItems.length; k++) {
+					const ahead = bodyItems[k];
+					if (ahead?.type === "tag" && (c.boxAheadRe.test(String(ahead.text ?? "")) || (ahead.parse?.tags ?? []).some((t) => t.tag === "activity" && t.directive === "CONTAINER_OPEN"))) return false;
+				}
+			}
+			const lead = parts.splice(start);
+			if (title !== null) lead.shift();
+			if (rowOpen && parts.length !== lastRowOpenIdx + 1) breakRow();
+			const frames = [];
+			const owner = { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "" };
+			const open = ActivitiesBuilder.activityOpen(owner, frames, run, false, null, false, null, this.#pageLessonNumber, this.#lessonLetterMap, true);
+			// a page with no lesson number numbers the box after the page's last box, or as its first
+			if (!frames[0].id) {
+				const seen = parts.join(" ").match(new RegExp(c.number_pattern, "g"));
+				const last = seen ? seen[seen.length - 1].match(new RegExp(c.number_pattern)) : null;
+				const id = last ? last[1] + String.fromCharCode(last[2].charCodeAt(0) + 1) : c.first_number;
+				const k = open.findIndex((x) => String(x).includes(c.box_class_mark));
+				if (k >= 0) open[k] = String(open[k]).replace(c.box_class_mark, c.box_class_mark + Utils.FillTemplate(tpl.activity_wrapper.number_attr, { activityId: id }));
+			}
+			quizBoxing = true;
+			emit(...open, Utils.FillTemplate(c.title_html, { title: title ?? c.default_title }), ...lead, ...content, frames[0].close);
+			quizBoxing = false;
+			breakRow();
+			return true;
+		};
 		const emit = (...html) => {
 			// lazy row opening — a row only exists once REAL content arrives, so an
 			// emit() with nothing to push (e.g. a de-duped lesson-title heading that
 			// returns []) can never produce an empty, useless "row > col" pair.
 			const content = html.filter(Boolean);
 			if (!content.length) return;
+			// the writer's own button right after the shell's is the same button: it ships once, and its wiring note goes with it
+			// (data interactive_builders.mtk_quiz.shell_box.no_repeat; env QUIZREPEAT_OFF)
+			if (quizBoxCfg?.no_repeat?.enabled && content.some((x) => quizBoxCfg.buttonRe.test(String(x).trim()))
+				&& content.every((x) => quizBoxCfg.buttonRe.test(String(x).trim()) || quizBoxCfg.noteRe.test(String(x).trim()))
+				&& !(typeof process !== "undefined" && process.env && process.env[quizBoxCfg.no_repeat.env || "QUIZREPEAT_OFF"])) {
+				let i = parts.length - 1;
+				while (i >= 0 && quizBoxCfg.noteRe.test(String(parts[i]).trim())) i--;
+				if (i >= 0 && quizBoxCfg.buttonRe.test(String(parts[i]).trim())) return;
+			}
+			if (quizBoxCfg && !quizBoxing && !stack.length && ownSpanClose === null && content.some((x) => quizBoxCfg.buttonRe.test(String(x).trim())) && boxQuizShell(content)) return;
+			// the same quiz inside a box the writer opened: KB constraint 65's first child is the title, «Quiz» where the box has none
+			// (data interactive_builders.mtk_quiz.shell_box.title_in_open_box; env QUIZTITLE_OFF)
+			if (quizBoxCfg?.title_in_open_box?.enabled && stack.length && stack[stack.length - 1].mode === "activity"
+				&& !(typeof process !== "undefined" && process.env && process.env[quizBoxCfg.title_in_open_box.env || "QUIZTITLE_OFF"])
+				&& content.some((x) => quizBoxCfg.buttonRe.test(String(x).trim()))) {
+				for (let i = parts.length - 1; i >= 0; i--) {
+					const x = String(parts[i]);
+					if (quizBoxCfg.headAnyRe.test(x)) break;
+					if (x.includes(quizBoxCfg.box_open_mark)) { parts.splice(i + 1, 0, Utils.FillTemplate(quizBoxCfg.title_html, { title: quizBoxCfg.default_title })); break; }
+				}
+			}
 			if (ownSpanClose !== null && content.length === 1 && content[0] === ownSpanClose) {   // the own-row span's close — no content row around it
 				parts.push(content[0]); ownSpanClose = null; rowOpen = false; return;
 			}
@@ -2890,6 +2976,7 @@ class ContentConverter {
 
 			// [MTKquiz] instruction run / silence (see the mtk closures above):
 			// placed BEFORE the comment surfacing so an omitted question leaves no trace.
+			quizLoopIdx = i;
 			if (mtkGuard(it)) continue;
 
 			// An activity box held open for the learner's text after a link-only widget closes after the writer's
@@ -13231,6 +13318,14 @@ class ContentConverter {
 				&& Array.isArray(stack) && stack.some((s) => s && s.mode === "activity");
 			if (!this.#firstBodyHeadingSeen && tag !== "activity heading" && !_c47InAct) {
 				if (!_c47Slot) this.#firstBodyHeadingSeen = true;
+				// a bare «Lesson N» label as the page's first heading says what the chip says: it renders nothing, and the
+				// next heading is still the first. Data body_region.lesson_title_dedup.bare_label; env LESSONBARE_OFF.
+				const _bl = tpl.body_region?.lesson_title_dedup?.bare_label;
+				if (_bl && _bl.enabled !== false && this.#pageIsLesson && new RegExp(_bl.pattern, "i").test(text)
+					&& !(typeof process !== "undefined" && process.env && process.env[_bl.env || "LESSONBARE_OFF"])) {
+					if (embedded && it.blackAfter.trim()) out.push(...ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links));
+					return out;
+				}
 				// The body's lesson heading often arrives wrapped WHOLE in *italic* markers —
 				// for example "[H2] *Lesson 3: Be kind online*" (found on module OSBY201-03) —
 				// which means the leading "Lesson N:" strip earlier in this method (which is

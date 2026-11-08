@@ -256,6 +256,8 @@ class PageAssembler {
 		const re = new RegExp(cfg.pair_pattern, "giu");
 		const lo = cfg.lone_tag;   // a lone emphasise tag before bold words (elements.inline_bold_pair.lone_tag; env INLINELONE_OFF)
 		const lone = lo && lo.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[lo.env || "INLINELONE_OFF"]) ? new RegExp(lo.pattern, "iu") : null;
+		const wd = lo?.wide;   // the same tag's other spellings, before any words (elements.inline_bold_pair.lone_tag.wide; env INLINEHL_OFF)
+		const wide = wd && wd.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[wd.env || "INLINEHL_OFF"]) ? new RegExp(wd.pattern, "iu") : null;
 		let n = 0;
 		for (const b of run.wtBlocks ?? []) {
 			if (b?.kind !== "para" || typeof b.text !== "string" || !/\[RED TEXT\]/.test(b.text)) continue;
@@ -263,6 +265,7 @@ class PageAssembler {
 				t = b.text;
 				b.text = t.replace(re, (m, before, inner) => (/\S/.test(before) && /\*\*/.test(inner) ? (n++, before + inner) : m));
 				if (lone) b.text = b.text.replace(lone, (m, before, inner) => (n++, before + " " + inner));
+				if (wide) b.text = b.text.replace(wide, (m, before, inner) => (n++, before + " " + inner));
 			}
 		}
 		if (n) run.AddNote("info", "PageAssembler", `${n} red bold marker pair(s) inside a line spent (the bold stays).`);

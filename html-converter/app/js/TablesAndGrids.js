@@ -1288,7 +1288,12 @@ class TablesAndGrids {
 			if (/[[\]]/.test(inner)) continue;
 			if (llOn && leadLabel(m)) { hits.push({ start: m.index, end: m.index + m[0].length, note: NotesAndComments.redFlag(inner, run, "cs") }); continue; }
 			if (inner.split(" ").filter((w) => /[\p{L}\p{N}]/u.test(w)).length < minW) continue;
-			if (!norm.HasInstructionCue(inner)) continue;
+			// a request about the picture names no cue word («Image has been snipped», «Create an image like this»): its opening
+			// words are the cue (cell_red_request.picture_request; env CELLREDPIC_OFF)
+			const pr = cfg.picture_request;
+			const prHit = !!pr && pr.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[pr.env || "CELLREDPIC_OFF"])
+				&& new RegExp(pr.pattern, "i").test(inner);
+			if (!prHit && !norm.HasInstructionCue(inner)) continue;
 			hits.push({ start: m.index, end: m.index + m[0].length, note: NotesAndComments.redFlag(inner, run, "cs") });
 		}
 		if (!hits.length) return woven.length ? { text: s, notes: [], links: woven } : null;

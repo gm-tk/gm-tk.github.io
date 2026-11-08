@@ -1122,6 +1122,12 @@
 				"enabled": true,
 				"env": "CELLREDREQ_OFF",
 				"min_words": 3,
+				"picture_request": {
+					"_doc": "A wholly red line about the picture in a table cell is a request to the designers, never learner text.",
+					"enabled": true,
+					"env": "CELLREDPIC_OFF",
+					"pattern": "^(?:image\\s+(?:has\\s+been|like\\s+this|of\\s+person|for\\s+cs)|create\\s+an\\s+image|add\\s+image|link\\s+to\\s+the\\s+website)\\b"
+				},
 				"lead_label": {
 					"enabled": true,
 					"env": "CELLREDLEAD_OFF",
@@ -2269,6 +2275,12 @@
 			"lone_tag": {
 				"enabled": true,
 				"env": "INLINELONE_OFF",
+				"wide": {
+					"enabled": true,
+					"env": "INLINEHL_OFF",
+					"pattern": "^(.*?[\\p{L}\\p{N},’”])\\s*🔴\\[RED TEXT\\]\\s*\\[(?:emphasi[sz]e|highlight)[^\\]]*\\]\\s*\\[\\/RED TEXT\\]🔴\\s*(\\S.*)$",
+					"_doc": "A lone emphasise or highlight tag in any spelling inside a sentence is spent whatever follows it: the sentence stays one paragraph."
+				},
 				"pattern": "^(.*?[\\p{L}\\p{N},])\\s*🔴\\[RED TEXT\\]\\s*\\[emphasi[sz]e\\s+or\\s+highlight\\s+text\\]\\s*\\[\\/RED TEXT\\]🔴\\s*(\\*\\*.*)$",
 				"_doc": "A lone emphasise or highlight tag inside a line, before words already bold, is spent: the line stays one line."
 			},
@@ -4184,6 +4196,36 @@
 			"_doc": "Change Ledger CL-0038. Any [MTKquiz]-family marker (any modifiers; the span-level retag in Tag_Lexicon._meta.mtk_quiz_retag does the matching) ends in the canonical button `<a href=\"#\" target=\"_blank\"><div class=\"button\">Go to quiz</div></a>` — href intentionally BLANK, the developer wires the D2L quicklink at publish time (the human's populated quickLink hrefs ARE that publish-time wiring, the CL-0044 class; the href divergence from the gold is INTENTIONAL) — plus ONE Designer/Developer To Do note (kind 'todo', red_flag.todo_form, class cv2-note) carrying the writer's raw quiz spec so the modifier prose ('supports engagement, audio, video, file sharing', 'should go to teacher dropbox' — which does NOT attach a dropbox wrapper) is never silently stripped. The retag makes the marker an ELEMENT, so it never opens a capturing bundle. ADJACENT WRITER BUTTON ABSORB (the human ships ONE button per quiz): a writer-typed quiz button in the marker's window — a [button] item labelled per button_label_pattern ('Go to quiz.'/'Quiz' — ARFUN02/ARFUN04/TEFUN02/TEFUN06-08) or a standalone [Go to quiz]-span bundle per marker_span_pattern (HPRE301) — is UPGRADED to the canonical anchored form and the marker's own button suppressed (its To Do note still emits). The window walks window_back/window_forward non-blank items, stopping at another mtk item, an [Activity] opener, or a section/page/closer boundary, so it can never leak across activities; a [go to quiz] span OUTSIDE any mtk window is untouched. A marker-claimed thin bundle (no content members) emits the button INSTEAD of its placeholder box; a fat one keeps its box (content never lost). Where the human build has no button (SCFUN01, MXFUN02, SSOG103, SSOG301, EXPFUN07) the ledger rule outranks it (named CHANGE-LEDGER OVERRIDE deltas). See omit_quiz_content for what the box holds. Env MTKQUIZ_OFF turns off the family.",
 			"enabled": true,
 			"env": "MTKQUIZ_OFF",
+			"shell_box": {
+				"_doc": "KB constraint 65: a quiz is a numbered activity box holding its title, the writer's instructions, the To Do note and the button. A quiz button that reaches the page outside any container opens that box. The heading right before it, with at most lead_max_paragraphs paragraphs after that heading, becomes the box's h3 title and its instructions; with no such heading a paragraph right before the button that names the quiz goes in, and the box takes default_title. The box takes the next positional number and stands in its own row. A bare button with the writer's own activity tag within box_ahead_window items after it opens no box. A button inside a widget or an open box is left where it is.",
+				"enabled": true,
+				"env": "QUIZBOX_OFF",
+				"button_pattern": "^<a [^>]*><div class=\"button\">Go to quiz</div></a>$",
+				"title_heading_pattern": "^<h[234](?:\\s[^>]*)?>(.*)</h[234]>$",
+				"note_pattern": "^(?:<p class=\"cv2-note\"|<!--)",
+				"lead_pattern": "^<p[ >]",
+				"lead_words_pattern": "\\bquiz\\b",
+				"lead_max_paragraphs": 2,
+				"title_html": "<h3>{title}</h3>",
+				"default_title": "Quiz",
+				"number_pattern": "number=\"(\\d+)([A-Y])\"",
+				"first_number": "1A",
+				"box_ahead_pattern": "\\[\\s*activity\\b|\\bactivity\\s+\\d",
+				"box_ahead_window": 3,
+				"no_repeat": {
+					"_doc": "A quiz button that follows the same button, with only notes between them, is not shown a second time.",
+					"enabled": true,
+					"env": "QUIZREPEAT_OFF"
+				},
+				"box_open_mark": "<div class=\"activity",
+				"title_in_open_box": {
+					"_doc": "A quiz button inside a box the writer opened: where nothing before it in the box is a heading, the box takes default_title as its first child.",
+					"enabled": true,
+					"env": "QUIZTITLE_OFF",
+					"heading_pattern": "<h[2-5][ >]"
+				},
+				"box_class_mark": "<div class=\"activity\""
+			},
 			"button_html": "<a href=\"#\" target=\"_blank\"><div class=\"button\">Go to quiz</div></a>",
 			"todo_note": "Create this quiz in MTK and wire the button's D2L quicklink (the href is intentionally blank). Writer's quiz spec: {spec}",
 			"button_label_pattern": "^(go to (the )?quiz|quiz)[.!]?$",
@@ -9952,6 +9994,15 @@
 				"nav_tag_pattern": "side tab navigation",
 				"tab_line_pattern": "^tab\\s*(\\d+)\\b",
 				"tile_links_pattern": "^\\[insert links?\\s*/\\s*buttons? to the individual tile sections",
+				"tile_image": {
+					"_doc": "The tile-links table's [Image] cell names each tile's picture. The stock link in that column is the tile's picture, ahead of the first picture of its panel.",
+					"enabled": true,
+					"env": "TILEIMG_OFF",
+					"cell_pattern": "^\\[\\s*image\\s*\\]",
+					"host_pattern": "istockphoto\\.com",
+					"url_pattern": "https?://[^\\s\\]]*istockphoto\\.com[^\\s\\]]*",
+					"id_patterns": ["gm-?(\\d{6,10})", "/id/(\\d{6,10})"]
+				},
 				"li_tag_pattern": "^\\[learning intentions? for tile\\]$",
 				"sc_tag_pattern": "^\\[success criteria for tile\\]$",
 				"lesson_content_pattern": "^\\[(?:lesson|introduction) content\\]$",
@@ -9962,7 +10013,7 @@
 				"lesson_marker_pattern": "^\\[lesson\\s*(\\d+)\\]",
 				"named_heading_openers": true,
 				"tile_cell_pattern": "^\\[?tile\\s*(\\d+)\\]?$",
-				"tile_title_cell_pattern": "^\\[tile\\s*title\\]\\s*/\\s*(.+)$",
+				"tile_title_cell_pattern": "^\\[tile\\s*title\\]\\s*/?\\s*(.+)$",
 				"li_lead_pattern": "^(we are learning|learning intentions?)\\b",
 				"sc_lead_pattern": "^(i can\\b|success criteria|how will i know|you will show)",
 				"title_writer_level": 1,
@@ -10416,6 +10467,12 @@
 			}
 		},
 		"lesson_title_dedup": {
+			"bare_label": {
+				"_doc": "A lesson page's first heading that is only the label «Lesson N» renders nothing: the chip shows the number and the header the title.",
+				"enabled": true,
+				"env": "LESSONBARE_OFF",
+				"pattern": "^lesson\\s+#?\\d+(?:\\.\\d+)?\\s*[:.]?$"
+			},
 			"strip_lesson_prefix": true,
 			"label_title_pair": {
 				"enabled": true,
