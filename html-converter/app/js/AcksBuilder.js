@@ -1008,6 +1008,12 @@ class AcksBuilder {
 		const ai = this.#aiRowsCfg();
 		if (ai && ((ai.type_keywords ?? []).some((k) => type.includes(k)) || (ai.source_keywords ?? []).some((k) => source.includes(k)))) return "ai";
 		for (const r of rules.by_source_keyword) if (source.includes(r.match)) return r.source;
+		// Te Kura's own material on SharePoint, claimed by no class above, is covered by the standing catch-all line.
+		// Data source_classification.tekura_sharepoint; env ACKSSHAREPOINT_OFF.
+		const sp = rules.tekura_sharepoint;
+		if (sp && sp.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[sp.env ?? "ACKSSHAREPOINT_OFF"])
+			&& ((sp.domains ?? []).some((d) => url.includes(d)) || (sp.source_keywords ?? []).some((k) => source.includes(k)))
+			&& !(sp.external_source_pattern && new RegExp(sp.external_source_pattern, "i").test(source))) return "tekura";
 		return rules.default;
 	};
 

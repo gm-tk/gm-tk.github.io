@@ -126,6 +126,14 @@
    { "match": "te kura",     "source": "tekura" }
   ],
   "default": "website",
+  "tekura_sharepoint": {
+   "enabled": true,
+   "env": "ACKSSHAREPOINT_OFF",
+   "domains": ["sharepoint.com"],
+   "source_keywords": ["sharepoint"],
+   "external_source_pattern": "https?://|www\\.|\\.(?:com|org|net|nz|edu|gov|io|co)\\b",
+   "_doc": "KB 05C: the entries are built from the module's EXTERNAL media; the standing «All other images © Te Aho o Te Kura Pounamu» line covers Te Kura's own. A Media List row that no other class claims, whose address is on SharePoint or whose source names it (the Media List's «Sharepoint / <staff member>»), is Te Kura's own material: classified 'tekura', so it takes no entry — unless its source column names an outside address (external_source_pattern: an image Te Kura made from another site's material keeps its credit). Tested after every other class, so a SharePoint copy of a stock or video item keeps that item's class. OFF = such a row falls to the default and is listed with its address."
+  },
   "tekura_rule": "Items classified 'tekura' are covered by the standing catch-all line — no individual entry is emitted.",
   "non_media_skip": "Item types in skip_types are lesson links, not acknowledgeable media — skip the entry, record a summary note (scope rule §1: external links used in lessons do not receive acknowledgements).",
   "skip_types": ["link", "external link", "website link", "url", "weblink"]

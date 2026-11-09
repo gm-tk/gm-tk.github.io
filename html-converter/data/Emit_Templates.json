@@ -541,13 +541,14 @@
 				"env": "REOVIDEOMLROW_OFF"
 			},
 			"dropbox_button": {
-				"_doc": "THE DROPBOX REQUEST IN A BILINGUAL CELL IS THE UPLOAD BUTTON. The writer types the dropbox request as its own « / »-separated cell part — «[Button] [Dropbox]», «[Button] [Add dropbox]», «[Button] [Dropbox Checklist]», a bare «[Dropbox]» — in the English cell after the Kiwi picture; the cell reader stripped its tags and nothing remained, so no Bilingual page carried a button. The KB's universal constraint (an activity that ends in a dropbox button carries the dropbox modifier), the family label «Upload to Dropbox» and the MTK patterns' dropbox placeholder row all name the button; the human pages build it, paired reo / eng on some modules and English-only on others (`pair` chooses; the single English button is the form in use), with the D2L quicklink the per-module rcode supplies — a code no Writers Template carries, so the href ships blank under the standing To Do (the Standard path's upload box does the same). The part becomes ONE media element (the eng anchor — and the reo anchor when `pair` is on — then the To Do), emitted once from whichever cell carries it; the words after the tags are the writer's label and are dropped (the KB label stands). Env REODROPBOX_OFF restores the silent drop.",
+				"_doc": "THE DROPBOX REQUEST IN A BILINGUAL CELL IS THE UPLOAD BUTTON. The writer types the dropbox request as its own « / »-separated cell part — «[Button] [Dropbox]», «[Button] [Add dropbox]», «[Button] [Dropbox Checklist]», a bare «[Dropbox]» — in the English cell after the Kiwi picture; the cell reader stripped its tags and nothing remained, so no Bilingual page carried a button. The KB's universal constraint (an activity that ends in a dropbox button carries the dropbox modifier), the family label «Upload to Dropbox» and the MTK patterns' dropbox placeholder row all name the button; the human pages build it, paired reo / eng on 13 of the 18 Bilingual modules with an upload button and English-only on the other five (`pair`, on: KB 07B §11 «All buttons should have both reo and eng variants» — the five English-only modules are the KB's named override; env REODBXPAIR_OFF, read from `pair_env`, restores the single English button), with the D2L quicklink the per-module rcode supplies — a code no Writers Template carries, so the href ships blank under the standing To Do (the Standard path's upload box does the same). The part becomes ONE media element (the reo anchor when `pair` is on, then the eng anchor, then the To Do), emitted once from whichever cell carries it; the words after the tags are the writer's label and are dropped (the KB label stands). Env REODROPBOX_OFF restores the silent drop.",
 				"enabled": true,
 				"env": "REODROPBOX_OFF",
 				"part_pattern": "^\\s*(?:\\[\\s*(?:add\\s+)?button\\s*\\]\\s*)?\\[\\s*(?:add|insert|go\\s+to|voice\\s+recorder|please\\s+add)?[^\\]]*?drop\\s?box[^\\]]*\\]\\s*(?:\\[[^\\]]*\\]\\s*)*$",
 				"label_eng": "Upload to dropbox",
 				"label_reo": "Tukuatu ki te pouaka waihotanga",
-				"pair": false,
+				"pair": true,
+				"pair_env": "REODBXPAIR_OFF",
 				"button_html": "<a {lang}href=\"\" target=\"_blank\"><div class=\"button\">{label}</div></a>",
 				"todo_note": "Wire this button's D2L dropbox quicklink (the href is intentionally blank — the per-module rcode is in no Writers Template). Writer: {spec}",
 				"box_section": {
@@ -567,7 +568,16 @@
 				"label_strip_pattern": "\\(\\s*n\\s*/?\\s*a\\s*\\)|\\[[^\\]]*\\]",
 				"button_html": "<a href=\"{href}\" target=\"_blank\"><div class=\"button\">{label}</div></a>",
 				"todo_note": "Wire this button to the document «{label}»{link} (the href is intentionally blank — the learner's address is in no Writers Template).",
-				"in_place": true
+				"in_place": true,
+				"kiwi": {
+					"_doc": "THE KIWI LEARNING-GUIDE BUTTON IS THE KB's PAIR (KB 07C §16, the Kiwi Kaiārahi (learning guide) pattern; KB 07B §11: every bilingual button has its reo and eng variants). When the document the writer names after «[Button] [Go to PDF]» is the Kiwi learning guide («Ngā Kiwi Pages», «Ngā Kiwi Kaiārahi»), the button is the KB's pair — the reo anchor, then the eng anchor — with the KB's own labels instead of the document's name; the standing To Do still names the document and the writer's link. The KB template writes «kaiārahi» lower-case on its two buttons but «Ngā Kiwi Kaiārahi» on the same pattern's picture — the proper noun, as the gold writes it on 20 of 24 buttons; the capital ships.",
+					"enabled": true,
+					"env": "REOKIWIBTN_OFF",
+					"label_pattern": "^ng[aā]\\s+kiwi\\s+(?:pages|kai[aā]rahi)\\b",
+					"label_reo": "Haere ki Ngā Kiwi Kaiārahi",
+					"label_eng": "Go to Ngā Kiwi Kaiārahi",
+					"button_html": "<a {lang}href=\"{href}\" target=\"_blank\"><div class=\"button\">{label}</div></a>"
+				}
 			},
 			"red_prose_note": {
 				"enabled": true,
@@ -3718,6 +3728,11 @@
 			"_doc": "AN [embed] OF AN EXTERNAL WEB PAGE IS THE KB'S externalButton, NEVER A BARE IFRAME. The [embed link] / [link to PDF of: …] / [Embed audio] / [Please embed these slides …] route would wrap any non-video URL in `div.ratio.ratio-16x9 > iframe`, a form the human never uses for these: it either drops the URL (kindergartenworksheets / twinkl / tahurangi worksheet and PDF pages the developer re-sourced or dropped) or keeps it as a LINK (a button / externalButton or a plain <a>). KB 05D: an external destination is `<a href target=_blank><div class=externalButton>Go to website</div></a>` (constraint 75's default label) — the buttons.external_destination form, label and internal-host list, reused here; a URL on an internal host (Google Docs / Drive / SharePoint, whose embed genuinely frames) keeps the iframe; a video host never reaches this branch (it takes the videoSection above). OFF (env EMBEDBTN_OFF) = the bare iframe.",
 			"enabled": true,
 			"env": "EMBEDBTN_OFF"
+		},
+		"release_unaddressed": {
+			"_doc": "THE WRITER'S LINES AFTER AN ADDRESS-LESS [embed] STAY ON THE PAGE. An [embed] with no address of its own looks for one in the black lines that follow it, and that search marked every line it read as used — so when it found none, only the red missing-source flag shipped and the writer's lines were on no page, in no hand-off file and in no run record: «[Embed activity] A What do you already know about Alluvial Plains?» lost its five questions and «Your kaiako will be interested in your response» (GEO1005; GEO1006, CEDT301 the same form). When no address is found, the lines the search read are released and render in place after the flag; the flag, the search and every [embed] that finds its address are unchanged. Env EMBEDRELEASE_OFF.",
+			"enabled": true,
+			"env": "EMBEDRELEASE_OFF"
 		},
 		"source_link_note": {
 			"_doc": "AN [embed] WHOSE WORDS TELL THE DESIGNER WHERE TO GET THE CONTENT IS THE DESIGNER'S NOTE, LINK AND ALL. «[embed text 1] The text for ‘The Sleepover’ can be downloaded from: <address>», «[embed text] Please just embed the first two pages of the text. It can be downloaded at: <address>», «[Embed cover of the book and the audio only] The cover and audio can be downloaded from this website: <address>» — the address is where the designer fetches the story, the audio or the cover to build the page; it is never a destination for the learner, and the finished pages never link it. When the tag's red words carry a sourcing cue (cue_pattern: downloaded / sourced / found / accessed / located … from / at), the line ships as ONE Writers Note with the address written in the words where the writer put it (just after the last cue — «can be downloaded from: https://…»), so the designer reads the request and its source together; no button, frame or second note is made. An [embed] with no such cue keeps its own route (a video, the external button, the frame). Env EMBEDSOURCENOTE_OFF.",
@@ -10471,7 +10486,12 @@
 				"_doc": "A lesson page's first heading that is only the label «Lesson N» renders nothing: the chip shows the number and the header the title.",
 				"enabled": true,
 				"env": "LESSONBARE_OFF",
-				"pattern": "^lesson\\s+#?\\d+(?:\\.\\d+)?\\s*[:.]?$"
+				"pattern": "^lesson\\s+#?\\d+(?:\\.\\d+)?\\s*[:.]?$",
+				"title_remainder": {
+					"_doc": "KB CL-0095's label-and-title pair, where the label renders nothing: when the writer typed the label and the title on one line (the label red, the title black), the black words after the label render nothing either if they are the page's own title (letters and digits compared, case ignored) — the header already shows it, and label_title_pair would have dropped the two together. Any other words after the label still render. OFF = the title words as a paragraph.",
+					"enabled": true,
+					"env": "LESSONBARETITLE_OFF"
+				}
 			},
 			"strip_lesson_prefix": true,
 			"label_title_pair": {
@@ -10523,6 +10543,13 @@
 				"label_pattern": "^lesson\\s*#?\\s*(\\d+(?:\\.\\d+)?[a-z]?|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\\b\\s*(continued)?\\s*[:.\\-\u2013\u2014]?\\s*(.*)$",
 				"strip_existing_title": true,
 				"inherit_parent_on_subpage": true
+			},
+			"menu_block_titles": {
+				"_doc": "KB constraint 79, the lesson's own title is the h1. A writer who types the lesson's menu block — «Learning Intentions», «We are learning», «How will I know I have learned it?», «Success criteria», «I can» — before the lesson's «Lesson N: <title>» heading would otherwise give every lesson the header «Learning Intentions». The title harvest holds such a heading back (its first line is tested) and takes the «Lesson N: <title>» heading after it, its label stripped as ever; when the next heading the harvest would take is not of that form, the menu-block heading names the page as before. A title the lesson tag itself carries is never touched. A SERIES REGISTRY ROW: the shape is one series' template form, so it runs only for the codes series_patterns names. OFF = the first heading names the page whatever it says.",
+				"enabled": true,
+				"env": "MENUBLOCKTITLE_OFF",
+				"series_patterns": [ "^ENWJ\\d" ],
+				"pattern": "^(?:learning intentions?|we are learning|you will show|how will i know|i can\\b|success criteria|wh[aā]inga ako|paearu angitu)"
 			},
 			"lesson_name_from_heading": {
 				"enabled": true,

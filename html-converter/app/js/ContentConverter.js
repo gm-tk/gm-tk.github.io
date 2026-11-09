@@ -5891,8 +5891,10 @@ class ContentConverter {
 		// a Writers Note that is only the tag(s) the converter has already built beside it is dropped (#carriedTagNote).
 		// an ALL-CAPS multi-word body heading is set in sentence case (#bodyHeadingCase).
 		// the pictures the writer asked for side by side share one row (MediaBuilder.sideBySidePostpass — innermost).
-		const finalBody = ContentConverter.#levelOverview(ContentConverter.#bodyHeadingCase(ContentConverter.#carriedTagNote(ContentConverter.#dropEmptyListItems(ContentConverter.#liftVisibleTags(ContentConverter.#tagOnlyParagraphNote(ContentConverter.#redundantBold(ContentConverter.#unwrapLonePunct(ContentConverter.#mergeSplitRuns(ContentConverter.#familyRowPerBlock(ContentConverter.#familyQuoteParagraphs(
-			MediaBuilder.productionDocPostpass(MediaBuilder.stockButtonPostpass(MediaBuilder.videoTimePostpass(MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(MediaBuilder.sideBySidePostpass(finalBody0, run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), page, run);
+		// the element a request's bracketed link became is handed to the developer (#bracketLinkNote — outermost: it reads the
+		// finished body and swaps one element for one note, so no row, box or number moves).
+		const finalBody = ContentConverter.#bracketLinkNote(ContentConverter.#levelOverview(ContentConverter.#bodyHeadingCase(ContentConverter.#carriedTagNote(ContentConverter.#dropEmptyListItems(ContentConverter.#liftVisibleTags(ContentConverter.#tagOnlyParagraphNote(ContentConverter.#redundantBold(ContentConverter.#unwrapLonePunct(ContentConverter.#mergeSplitRuns(ContentConverter.#familyRowPerBlock(ContentConverter.#familyQuoteParagraphs(
+			MediaBuilder.productionDocPostpass(MediaBuilder.stockButtonPostpass(MediaBuilder.videoTimePostpass(MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(MediaBuilder.sideBySidePostpass(finalBody0, run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), page, run), page, run);
 		// a fallback-shell page that built its panels is an inquiry page too (the body class and
 		// the inquiry footer class follow, as for every other mode; its footer LINKS stay the registry's own).
 		const inquiryActive = (inquiryMode || cedInquiryMode || secInquiryMode || inqFallbackMode) && finalBody0 !== bodyHtml;
@@ -10852,6 +10854,48 @@ class ContentConverter {
 		});
 	}
 
+	/** THE LINK INSIDE THE WRITER'S BRACKET IS THE DEVELOPER'S (KB 01C / 01D: the writer's instruction is never learner content).
+	 *  PageSplitter marks a request whose bracket holds only a link («[keep this section from» «Lesson 1.0 – …» «]»): the link's
+	 *  words are where the developer finds the content, never the content. On the finished body, the element those words became
+	 *  — a paragraph, a heading, the picture's caption, a list item — whose whole text is the link's words becomes the red note
+	 *  naming the source and its address: one element per request, in page order, swapped one for one, so no row, box or number
+	 *  moves. Notes, comments, the un-built hand-off boxes and the acknowledgements are never read. Data
+	 *  Input_Doc_Rules.red_runs.bracket_link_object; env REDBRACKETLINK_OFF. */
+	static #bracketLinkNote(html, page, run) {
+		const cfg = DataService.Data.InputDocRules?.red_runs?.bracket_link_object;
+		if (!cfg || cfg.enabled === false || !html) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "REDBRACKETLINK_OFF"]) return html;
+		const links = (page?.items ?? []).flatMap((it) => it?._bracketLinks ?? []);
+		if (!links.length) return html;
+		const fold = (s) => Utils.Fold(String(s ?? "").replace(/<[^>]+>/g, " ").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&")
+			.replace(/&[a-z#0-9]+;/gi, " ")).replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+		const regions = (s) => {
+			const out = [];
+			for (const h of s.matchAll(/<div class="(?:cv2-interactive|acks)[^"]*"/g)) {
+				const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+				while ((x = re.exec(s)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { out.push([h.index, x.index + x[0].length]); break; } }
+			}
+			for (const h of s.matchAll(/<!--[\s\S]*?-->/g)) out.push([h.index, h.index + h[0].length]);
+			return out;
+		};
+		let out = html, n = 0;
+		for (const l of links) {
+			const want = fold(l.words);
+			if (!want) continue;
+			const spans = regions(out);
+			let done = false;
+			out = out.replace(/<(p|h[2-6]|li)>((?:(?!<\/?(?:p|h[1-6]|li)\b)[\s\S]){1,600})<\/\1>/g, (m, tag, inner, off) => {
+				if (done || spans.some(([a, z]) => off >= a && off < z)) return m;
+				if (/<(?:div|ul|ol|table|img|iframe)\b/i.test(inner) || fold(inner) !== want) return m;
+				done = true; n++;
+				const note = NotesAndComments.redFlag(l.note, run, "cs");
+				return tag === "li" ? `<li>${note}</li>` : note;
+			});
+		}
+		if (n) run.AddNote("info", "ContentConverter", `${n} link${n === 1 ? "" : "s"} inside a writer's request handed to the developer (bracket_link_object).`);
+		return out;
+	}
+
 	/** A WRITER'S STRAY BRACKET IS NOT LEARNER TEXT. A closing bracket left over from a split tag («Population distribution under
 	 *  apartheid]», «] to practise writing the letter é») reached the page. Outside the hand-off boxes and notes: a block whose text
 	 *  has a closing bracket with no opener loses that bracket and the words stay; a fragment of fragment_max_words or fewer is what is
@@ -13323,7 +13367,15 @@ class ContentConverter {
 				const _bl = tpl.body_region?.lesson_title_dedup?.bare_label;
 				if (_bl && _bl.enabled !== false && this.#pageIsLesson && new RegExp(_bl.pattern, "i").test(text)
 					&& !(typeof process !== "undefined" && process.env && process.env[_bl.env || "LESSONBARE_OFF"])) {
-					if (embedded && it.blackAfter.trim()) out.push(...ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links));
+					// the black words typed after the label on the same line render nothing either when they are the page's
+					// own title (KB CL-0095's label-and-title pair: the header shows it). Data bare_label.title_remainder;
+					// env LESSONBARETITLE_OFF.
+					const _blt = _bl.title_remainder;
+					const _bltKey = (s) => Utils.Fold(String(s).replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ")).replace(/[^\p{L}\p{N}]+/gu, "");
+					const _bltIsTitle = !!_blt && _blt.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_blt.env || "LESSONBARETITLE_OFF"])
+						&& !!_bltKey(this.#pageLessonTitle) && _bltKey(it.blackAfter) === _bltKey(this.#pageLessonTitle);
+					if (embedded && it.blackAfter.trim() && !_bltIsTitle) out.push(...ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links));
 					return out;
 				}
 				// The body's lesson heading often arrives wrapped WHOLE in *italic* markers —
@@ -13946,10 +13998,24 @@ class ContentConverter {
 			if (!probe && MediaBuilder.FollowingVideoLinkTag(bodyItems, i, tpl)) {
 				return out.concat(MediaBuilder.media(it, bodyItems, i, "video", run, this.#norm));
 			}
+			// THE WRITER'S LINES AFTER AN ADDRESS-LESS [embed] STAY ON THE PAGE: the address search reads the following black
+			// lines and marks each one used; when it finds no address the flag is all that ships, so the lines it read are
+			// released and render in place after the flag. Data embeds.release_unaddressed; env EMBEDRELEASE_OFF.
+			const _rel = tpl.embeds?.release_unaddressed;
+			const _held = [];
+			if (!probe && _rel && _rel.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_rel.env ?? "EMBEDRELEASE_OFF"])) {
+				for (let j = i + 1; j < bodyItems.length; j++) {
+					const nx = bodyItems[j];
+					if (nx.type !== "black" || nx.consumedBy !== undefined) break;
+					if (!nx._consumed) _held.push(nx);
+				}
+			}
 			const url = probe
 				|| (MediaBuilder.gatherFollowing(it, bodyItems, i).match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
 			if (!url) {
 				out.push(MediaBuilder.NoUrlFlag(it, "embed", run));
+				for (const nx of _held) delete nx._consumed;
 				return out;
 			}
 			// AN [embed] WHOSE WORDS TELL THE DESIGNER WHERE TO GET THE CONTENT («… can be downloaded from: <address>») is the

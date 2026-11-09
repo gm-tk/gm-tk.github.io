@@ -66,7 +66,7 @@ class PageSplitter {
 			&& !(typeof process !== "undefined" && process.env && process.env[_pt.env ?? "REDPUNCT_OFF"])) ? new RegExp(_pt.pattern, "u") : null;
 		const punctDenyRe = punctRe && _pt.deny_before_pattern ? new RegExp(_pt.deny_before_pattern, "iu") : null;
 
-		for (const block of this.#layoutInstructionBlocks(blocks)) {
+		for (const block of this.#blackPageTagBlocks(this.#blackInstructionBlocks(this.#layoutInstructionBlocks(blocks)))) {
 			if (block.kind === "table") {
 				items.push({ type: "table", block });
 				continue;
@@ -83,6 +83,15 @@ class PageSplitter {
 				// black text BEFORE this red span: belongs to the previous
 				// tag in this paragraph (its content), else a standalone black
 				const before = text.slice(pos, m.index);
+				// THE LINK INSIDE THE WRITER'S BRACKET: black words that are only the paragraph's own link, between a red request
+				// left open and this red span that closes it, are the request's object — never the learner's text. The stream is
+				// left as it is (every builder reads the request as before); the request carries the link, and the page's last
+				// pass hands the element those words became to the developer (ContentConverter #bracketLinkNote;
+				// red_runs.bracket_link_object; env REDBRACKETLINK_OFF)
+				if (pendingTag && before.trim() && /^\s*\]/.test(m[1])) {
+					const src = this.#bracketLinkSource(pendingTag.text, before, block);
+					if (src) (pendingTag._bracketLinks ??= []).push(src);
+				}
 				if (before.trim()) {
 					blackSeen = true;
 					if (pendingTag) pendingTag.blackAfter += before;
@@ -168,6 +177,112 @@ class PageSplitter {
 			&& !(anyDeny && anyDeny.test(red.slice(red.lastIndexOf("[")) + def));
 		return text.replace(/\u{1f534}\[RED TEXT\]((?:(?!\[\/RED TEXT\])[\s\S])*?)\[\/RED TEXT\]\u{1f534}(?:\u{1f534}\[RED TEXT\]\s*(\S{1,3})\s*\[\/RED TEXT\]\u{1f534})?([^\u{1f534}\[\]]+)\]/gu, (all, red, lead, def) => (
 			(def.length <= (cfg.max_chars ?? 300) && open.test(red)) || leftOpen(red, def) ? `\u{1f534}[RED TEXT]${insertLead ? red.replace(insertLead, () => "[") : red}${lead ?? ""}${def}] [/RED TEXT]\u{1f534}` : all));
+	}
+
+	/**
+	 * THE LINK INSIDE THE WRITER'S BRACKET IS THE INSTRUCTION'S OBJECT (KB 01C / 01D: the writer's instruction is never learner
+	 * content). A red request bracket left open, the paragraph's own hyperlink typed black inside it, then a red span that closes
+	 * the bracket: «[keep this section from» «Lesson 1.0 – What is a report? – English 000» «]». Read as written, the link's words
+	 * shipped as learner text and the request's note stopped at the bracket. Returns { words, note }: the link's words and the
+	 * developer's line for them (words and addresses), which the request carries — its tag reading and the item stream are left
+	 * as they were. Only a request that
+	 * names the link as its source (from, see, keep, copy …) takes them — a request that only names a build may be built from
+	 * its link; a request for the link itself, a hover definition, a media item's own reference and a media address keep their
+	 * forms (null). Data
+	 * Input_Doc_Rules.red_runs.bracket_link_object; env REDBRACKETLINK_OFF.
+	 */
+	static #bracketLinkSource(red, black, block) {
+		const cfg = DataService.Data.InputDocRules?.red_runs?.bracket_link_object;
+		if (!cfg || cfg.enabled === false || typeof red !== "string" || typeof black !== "string") return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "REDBRACKETLINK_OFF"]) return null;
+		if (/[\u{1f534}\[\]]/u.test(black)) return null;
+		const links = (block?.links ?? []).filter((l) => l && l.target && String(l.text ?? "").trim());
+		if (!links.length) return null;
+		const rx = (p) => (p ? new RegExp(p, "iu") : null);
+		const allow = rx(cfg.head_allow_pattern), deny = rx(cfg.head_deny_pattern), media = rx(cfg.media_host_pattern);
+		const sep = new RegExp(cfg.separator_pattern ?? "^[\\s–—\\-:,;.|/]*$", "u");
+		const marks = /\*\*|__|\*/g;
+		// the innermost bracket the red request leaves open
+		const st = [];
+		for (let i = 0; i < red.length; i++) { if (red[i] === "[") st.push(i); else if (red[i] === "]" && st.length) st.pop(); }
+		if (!st.length) return null;
+		const head = red.slice(st[st.length - 1]);
+		if (!/\p{L}/u.test(head.slice(1)) || (deny && deny.test(head))) return null;
+		// the black words must be the paragraph's own link words and nothing else
+		let rest = black.replace(marks, "");
+		const used = [];
+		for (const l of links) {
+			const t = String(l.text).replace(marks, "").trim();
+			const k = t ? rest.indexOf(t) : -1;
+			if (k < 0) continue;
+			rest = rest.slice(0, k) + " " + rest.slice(k + t.length);
+			used.push(l);
+		}
+		if (!used.length || !sep.test(rest)) return null;
+		const targets = [...new Set(used.map((l) => String(l.target).trim()))];
+		if (media && targets.some((u) => media.test(u))) return null;
+		if (!(allow && allow.test(head))) return null;
+		const words = black.replace(marks, "").replace(/\s+/g, " ").trim();
+		// a link typed as its own address is already the developer's (elements.bare_link_url_note)
+		if (/^(?:https?:\/\/|www\.)\S+$/i.test(words)) return null;
+		return { words, note: (cfg.note_template ?? "{words} ({urls})").replace("{words}", () => words).replace("{urls}", () => targets.join(" ")) };
+	}
+
+	/**
+	 * THE PAGE TAG TYPED IN BLACK IS THE TAG (KB 01D: the writer's square-bracket tag is the tag; the template's page tags are
+	 * red). A paragraph with no red text that opens with a bracket naming a page tag — «[LESSON 8] Classifying celestial
+	 * bodies», «[LESSON 2]», «[End page]» — reads as that red tag, its black remainder the tag's own text: the lesson opens its
+	 * page and names it, instead of shipping as a Writers Note inside the page before. Returns the blocks unchanged when none
+	 * matches. Data Input_Doc_Rules.red_runs.black_page_tag; env BLACKPAGETAG_OFF.
+	 */
+	static #blackPageTagBlocks(blocks) {
+		const cfg = DataService.Data.InputDocRules?.red_runs?.black_page_tag;
+		if (!cfg || cfg.enabled === false || !cfg.pattern || !Array.isArray(blocks)) return blocks;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "BLACKPAGETAG_OFF"]) return blocks;
+		const ro = DataService.Data.InputDocRules.red_runs;
+		const re = new RegExp(cfg.pattern, "iu");
+		let out = null;
+		for (let i = 0; i < blocks.length; i++) {
+			const b = blocks[i];
+			if (!b || b.kind !== "para" || typeof b.text !== "string" || /\u{1f534}\[RED TEXT\]/u.test(b.text)) continue;
+			const m = re.exec(b.text);
+			if (!m) continue;
+			// a bare black lesson tag stands where the template's own [Lesson Overview] opens the page (lesson_needs_title)
+			if (cfg.lesson_needs_title !== false && /^\[\s*lesson/i.test(m[2])
+				&& !b.text.slice(m[0].length).replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, "").replace(/[*_\s]+/g, "")) continue;
+			out ??= blocks.slice();
+			out[i] = { ...b, text: `${m[1]}${ro.marker_open}${m[2]}${ro.marker_close}${b.text.slice(m[0].length)}`, _blackPageTag: true };
+		}
+		return out ?? blocks;
+	}
+
+	/**
+	 * THE DEVELOPER'S INSTRUCTION TYPED IN BLACK, BY ITS CUE (KB constraint 37 / KB 01C: a writer's instruction to the developer
+	 * is a red Writers Note, never learner text). A paragraph with no red text whose words — emphasis marks and a leading bullet
+	 * or number aside — open with a cue no learner line opens with («BLUE BOX AROUND THE FOLLOWING», «Creative Services: …»,
+	 * «Check with writer …») becomes a red instruction: the Writers Note the developer sees. Returns the blocks unchanged when
+	 * none matches. Data Input_Doc_Rules.red_runs.black_instruction_line; env BLACKINSTR_OFF.
+	 */
+	static #blackInstructionBlocks(blocks) {
+		const cfg = DataService.Data.InputDocRules?.red_runs?.black_instruction_line;
+		if (!cfg || cfg.enabled === false || !cfg.pattern || !Array.isArray(blocks)) return blocks;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "BLACKINSTR_OFF"]) return blocks;
+		const ro = DataService.Data.InputDocRules.red_runs;
+		const re = new RegExp(cfg.pattern, "iu");
+		// a request the converter carries out itself (the phase panel a colour box names) leaves with no note (carried_pattern)
+		const carried = cfg.carried_pattern ? new RegExp(cfg.carried_pattern, "iu") : null;
+		let out = null;
+		for (let i = 0; i < blocks.length; i++) {
+			const b = blocks[i];
+			if (!b || b.kind !== "para" || typeof b.text !== "string" || /\u{1f534}\[RED TEXT\]/u.test(b.text)) continue;
+			const words = b.text.replace(/\*\*|__|\*|✅/gu, "").replace(/\s+/g, " ").trim();
+			const lead = words.replace(/^[\s•\d.)]+/u, "");
+			if (carried && carried.test(lead)) { out ??= blocks.slice(); out[i] = null; continue; }
+			if (!re.test(lead)) continue;
+			out ??= blocks.slice();
+			out[i] = { ...b, text: `${ro.marker_open}${words}${ro.marker_close}` };
+		}
+		return out ? out.filter(Boolean) : blocks;
 	}
 
 	static #layoutInstructionBlocks(blocks) {
@@ -1390,6 +1505,23 @@ class PageSplitter {
 						current = pages[pages.length - 1] ?? null;
 					}
 
+					// THE BLACK LESSON TAG KEEPS THE PAGE IT WAS READ ON: a lesson tag the writer typed in black (#blackPageTagBlocks)
+					// right after an implicit page — the text after an [end page], which the tag read as text continued — takes that
+					// page's items at its top instead of opening a page after it, so the pages stay where they were and the lesson
+					// gains its number and title. A red lesson tag keeps this splitter's own reading. Data
+					// Input_Doc_Rules.red_runs.black_page_tag; env BLACKPAGETAG_OFF.
+					let _blackCarry = null;
+					if (tag === "lesson" && it.block?._blackPageTag === true && current && !current.isOverview
+						&& current.openedBy === "implicit" && current.items.length) {
+						_blackCarry = current.items;
+						const _n0 = parseInt(current.lessonNumber, 10);
+						if (Number.isFinite(_n0)) lessonOrdinal = _n0 - 1;
+						pages.pop();
+						current = pages[pages.length - 1] ?? null;
+						run.AddNote("info", "PageSplitter",
+							`The black [LESSON ${(it.parse?.numbers ?? [])[0] ?? ""}] takes the implicit page before it (${_blackCarry.length} items) — no page opened after it (red_runs.black_page_tag).`);
+					}
+
 					if (tag === "lesson") {
 						// RR-2 happens implicitly: opening a lesson page closes
 						// the previous page whether or not [end page] appeared
@@ -1420,6 +1552,7 @@ class PageSplitter {
 								|| (normaliser ? normaliser.RenderText(it.text) : ""),
 							wtPageStart: it.block.wtPage,
 						});
+						if (_blackCarry) current.items.push(..._blackCarry);
 					} else if (current?.lessonNumber === null || current?.isOverview
 						|| current?.openedBy === "page-as-lesson") {
 						// [PAGE] straight after the overview — or after another
@@ -2006,6 +2139,16 @@ class PageSplitter {
 			const _llMatch = (s) => (_llRe ? _llRe.exec(String(s ?? "").replace(/\*/g, "").trim()) : null);
 			const _labelOnly = (s) => { const m = _llMatch(s); return !!m && !String(m[3] ?? "").trim(); };
 			const _stripLabel = (s) => { const m = _llMatch(s); const rest = m ? String(m[3] ?? "").trim() : ""; return rest || String(s ?? "").trim(); };
+			// KB c79: a heading that opens the lesson's menu block («Learning Intentions», «We are learning», «Success
+			// criteria» …) yields the page title to the «Lesson N: title» heading after it (the harvest below).
+			// Data body_region.lesson_title_dedup.menu_block_titles; env MENUBLOCKTITLE_OFF.
+			const _mbCfg = DataService?.Data?.EmitTemplates?.body_region?.lesson_title_dedup?.menu_block_titles;
+			const _mbRe = _mbCfg && _mbCfg.enabled !== false && _mbCfg.pattern
+				&& !(typeof process !== "undefined" && process.env && process.env[_mbCfg.env ?? "MENUBLOCKTITLE_OFF"])
+				&& (!Array.isArray(_mbCfg.series_patterns)
+					|| _mbCfg.series_patterns.some((sp) => new RegExp(sp).test(String(run?.moduleCode ?? ""))))
+				? new RegExp(_mbCfg.pattern, "i") : null;
+			const _menuBlock = (s) => !!_mbRe && _mbRe.test(String(s ?? "").replace(/\*/g, "").trim().split(/\n/)[0].trim());
 			let firstHeading = null;
 			// KB c79: a heading whose words are typed INSIDE its red span ("🔴[H2] Missionaries and Māori🔴", ANZH304)
 			// has no black text and no parse remainders, so the harvest would skip it and the module title stand in
@@ -2031,6 +2174,9 @@ class PageSplitter {
 			// the heading's own words: black text, else its remainders — unless they are bracket words and red words exist
 			const _remText = (x) => ((_bracketRem(x) && _embText(x)) ? "" : (x.parse?.remainders ?? []).join(" "));
 			let firstHeadingText = "";
+			// a heading the harvest would take that opens the lesson's menu block, held back for a «Lesson N: title» after it
+			let menuHeading = null;
+			const _titledLabel = (s) => { const m = _llMatch(s); return !!m && !!String(m[3] ?? "").trim(); };
 			for (const it2 of p.items) {
 				if (it2.type !== "tag") continue;
 				const pt2 = it2.parse.primary?.tag;
@@ -2047,11 +2193,20 @@ class PageSplitter {
 					&& !(typeof process !== "undefined" && process.env && process.env[_mtk.env ?? "MTKTITLES_OFF"])
 					&& new RegExp(_mtk.body_class ?? "reoTranslate", "i").test(String(run?.resolvedRules?.body_class || ""));
 				const _hTags = _mtkOn ? _mtk.harvest_heading_tags : ["h1", "h2", "h3", "h4", "h5", "heading"];
-				if (_hTags.includes(pt2)
-					&& (it2.blackAfter.trim() || (it2.parse.remainders.length && !(_bracketRem(it2) && _embText(it2))))) { firstHeading = it2; break; }
+				const _takes = _hTags.includes(pt2)
+					&& !!(it2.blackAfter.trim() || (it2.parse.remainders.length && !(_bracketRem(it2) && _embText(it2))));
 				// The heading's words inside its red span (also past a bracket-word remainder)
-				if (_hTags.includes(pt2) && _embText(it2)) { firstHeading = it2; firstHeadingText = _embText(it2); break; }
+				const _takesEmb = !_takes && _hTags.includes(pt2) && !!_embText(it2);
+				if (!_takes && !_takesEmb) continue;
+				// a heading that opens the lesson's menu block («Learning Intentions», «We are learning» …) yields to a
+				// «Lesson N: title» heading after it; with none, it names the page as before (menu_block_titles)
+				if (_menuBlock(ht2)) { if (!menuHeading) menuHeading = { it: it2, text: _takesEmb ? _embText(it2) : "" }; continue; }
+				if (menuHeading && !_titledLabel(ht2)) { firstHeading = menuHeading.it; firstHeadingText = menuHeading.text; break; }
+				firstHeading = it2;
+				if (_takesEmb) firstHeadingText = _embText(it2);
+				break;
 			}
+			if (!firstHeading && menuHeading) { firstHeading = menuHeading.it; firstHeadingText = menuHeading.text; }
 			if (!firstHeading) continue;
 			const text = (firstHeading.blackAfter || _remText(firstHeading) || firstHeadingText)
 				.replace(/\*/g, "").trim();

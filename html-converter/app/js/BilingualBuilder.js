@@ -1205,11 +1205,20 @@ class BilingualBuilder {
 			html: c.button_html || "<a href=\"{href}\" target=\"_blank\"><div class=\"button\">{label}</div></a>",
 			todo: c.todo_note || "",
 			inPlace: c.in_place !== false,
+			// the Kiwi learning guide's button is KB 07C §16's reo / eng pair (pdf_button.kiwi; env REOKIWIBTN_OFF)
+			kiwi: (() => {
+				const k = c.kiwi;
+				if (!k || k.enabled === false || !k.label_pattern || !k.label_reo || !k.label_eng
+					|| (typeof process !== "undefined" && process.env && process.env[k.env ?? "REOKIWIBTN_OFF"])) return null;
+				return { re: new RegExp(k.label_pattern, "iu"), reo: k.label_reo, eng: k.label_eng,
+					html: k.button_html || "<a {lang}href=\"{href}\" target=\"_blank\"><div class=\"button\">{label}</div></a>" };
+			})(),
 		};
 	};
 
 	/** The document's button for a «[Button] [Go to PDF]» part whose NEXT part names the document, or null (the part is not
-	 *  the request, or no document part follows). The label is the writer's document title; the writer's own link on those
+	 *  the request, or no document part follows). The label is the writer's document title — the Kiwi learning guide's is KB 07C
+	 *  §16's reo / eng pair instead (pdf_button.kiwi); the writer's own link on those
 	 *  words is the To Do's address (a staff folder, never the learner's href), the href left blank as the dropbox's is. */
 	static #pdfButton(part, next, c, links, run) {
 		if (!c.re.test(String(part ?? "")) || !next) return null;
@@ -1220,7 +1229,11 @@ class BilingualBuilder {
 		label = label.replace(/\s+/g, " ").trim();
 		if (!label) return null;
 		const lk = (links ?? []).find((l) => l && String(l.text ?? "").replace(/\s+/g, " ").trim() && label.includes(String(l.text).replace(/\s+/g, " ").trim()));
-		const out = [Utils.FillTemplate(c.html, { href: "", label: Utils.EscapeHtml(label) })];
+		const kw = c.kiwi && c.kiwi.re.test(label) ? c.kiwi : null;
+		const out = kw
+			? [Utils.FillTemplate(kw.html, { lang: "reo ", href: "", label: Utils.EscapeHtml(kw.reo) }),
+				Utils.FillTemplate(kw.html, { lang: "eng ", href: "", label: Utils.EscapeHtml(kw.eng) })]
+			: [Utils.FillTemplate(c.html, { href: "", label: Utils.EscapeHtml(label) })];
 		if (c.todo) {
 			const note = NotesAndComments.redFlag(Utils.FillTemplate(c.todo, { label, link: lk?.target ? ` (the writer's link: ${lk.target})` : "" }), run, "todo");
 			if (note) out.push(note);
@@ -1229,8 +1242,9 @@ class BilingualBuilder {
 	};
 
 	/** THE DROPBOX REQUEST IN A BILINGUAL CELL IS THE UPLOAD BUTTON (data dual_language.dropbox_button; env REODROPBOX_OFF):
-	 *  the compiled rule — the part pattern, the two labels, the anchor template, the To Do and the section-box half
-	 *  (box_section; env REODBXBOX_OFF) — or null when the rule is off. */
+	 *  the compiled rule — the part pattern, the two labels, the reo / eng pair (`pair`, KB 07B §11; env REODBXPAIR_OFF
+	 *  keeps the single English anchor), the anchor template, the To Do and the section-box half (box_section; env
+	 *  REODBXBOX_OFF) — or null when the rule is off. */
 	static #dropboxCfg() {
 		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.dropbox_button;
 		if (!c || c.enabled === false || !c.part_pattern
@@ -1243,7 +1257,8 @@ class BilingualBuilder {
 			re: new RegExp(c.part_pattern, "i"),
 			labelEng: c.label_eng || "Upload to dropbox",
 			labelReo: c.label_reo || "",
-			pair: c.pair !== false && !!c.label_reo,
+			pair: c.pair !== false && !!c.label_reo
+				&& !(typeof process !== "undefined" && process.env && process.env[c.pair_env ?? "REODBXPAIR_OFF"]),
 			html: c.button_html || "<a {lang}href=\"\" target=\"_blank\"><div class=\"button\">{label}</div></a>",
 			todo: c.todo_note || "",
 			box,
