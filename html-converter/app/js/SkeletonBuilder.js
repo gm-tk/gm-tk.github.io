@@ -1144,6 +1144,12 @@ class SkeletonBuilder {
 
 		const patternKey = isFinal && rules.footer_links?.final ? "final" : pageType;
 		let value = rules.footer_links?.[patternKey] ?? "none";
+		// the last page of a listed series whose registry row has no final pattern takes the KB's final form, never a «next» to
+		// nowhere (footer.final_default; env FOOTFINAL_OFF)
+		const fdf = tpl.footer?.final_default;
+		if (isFinal && patternKey !== "final" && fdf && fdf.enabled !== false && fdf.value
+			&& !(typeof process !== "undefined" && process.env && process.env[fdf.env ?? "FOOTFINAL_OFF"])
+			&& (fdf.series_prefixes ?? []).some((p) => String(run.moduleCode ?? "").startsWith(p))) value = fdf.value;
 		let linkKeys = tpl.footer.value_map[value];
 
 		if (linkKeys === undefined) {

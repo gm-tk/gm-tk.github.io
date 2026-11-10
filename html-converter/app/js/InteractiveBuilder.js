@@ -5799,6 +5799,17 @@ class InteractiveBuilder {
 			if (_dangleOn2) t = t.replace(/^[\]}]\s*/, "");
 			return t;
 		};
+		// a paragraph the writer soft-broke keeps its line breaks until the render, each line its own <p> there (the rich
+		// builder's rich.soft_break_paragraphs; env SBSOFTBR_OFF) — the paragraph cap below still counts the writer's paragraphs
+		const _sbp = tpl?.rich?.soft_break_paragraphs;
+		const _softOn = !!_sbp && _sbp.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_sbp.env ?? "SBSOFTBR_OFF"]);
+		const cleanP = (s) => {
+			if (!_softOn) return clean(s);
+			let t = String(s ?? "").replace(/[^\S\n]+/g, " ").replace(/ *\n\s*/g, "\n").trim();
+			if (_dangleOn2) t = t.replace(/^[\]}]\s*/, "");
+			return t;
+		};
 		const maxP = cfg.max_paragraphs ?? 4;
 		const thoughtRe = new RegExp(cfg.thought_re ?? "thought", "i");
 		const bubbles = [];
@@ -5808,7 +5819,7 @@ class InteractiveBuilder {
 			if (!m) continue;
 			if (m.type === "table" || m.type === "nested") return null;
 			if (m.type === "black") {
-				const t = clean(m.text);
+				const t = cleanP(m.text);
 				if (!t) continue;
 				if (!curB) return null;                 // stray text before any bubble → not this form
 				curB.push(t);
@@ -5820,7 +5831,7 @@ class InteractiveBuilder {
 				if (thoughtRe.test(String(m.text ?? ""))) thought = true;
 				curB = [];
 				bubbles.push(curB);
-				const t = clean(m.blackAfter);
+				const t = cleanP(m.blackAfter);
 				if (t) curB.push(t);
 				ownWords = !!t; hoverOpen = false;
 				continue;
@@ -5869,8 +5880,10 @@ class InteractiveBuilder {
 		const ph = this.#sbKea(bundle, tpl, run) ?? this.#sbPlaceholder(bundle, tpl, run);
 		const phOn = !!ph;
 		const rows = bubbles.map((b) => {
-			const ps = b.map((t) => `<p>${inline(t)}</p>`).join("\n");
-			const text = b.length > 1 ? `<div>\n${ps}\n</div>` : ps;   // the multi-<p> wrapper rule
+			// the writer's soft-broken lines render apart, each its own <p> (rich.soft_break_paragraphs)
+			const lines = _softOn ? b.flatMap((t) => String(t).split("\n").map((x) => x.trim()).filter((x) => /[\p{L}\p{N}]/u.test(x))) : b;
+			const ps = lines.map((t) => `<p>${inline(t)}</p>`).join("\n");
+			const text = lines.length > 1 ? `<div>\n${ps}\n</div>` : ps;   // the multi-<p> wrapper rule
 			return [
 				Utils.FillTemplate(cfg.open ?? tpl.open, { layout }),
 				...(phOn ? this.#phColumns(ph, tpl, text, cfg.col_close)
@@ -6081,8 +6094,14 @@ class InteractiveBuilder {
 	static #sbMemberParts(m, cfg, tpl) {
 		if (!m) return [];
 		if (m.type === "nested") return null;
+		// a paragraph the writer soft-broke keeps its line breaks for the bubble body (rich.soft_break_paragraphs; env
+		// SBSOFTBR_OFF); without it every whitespace run, a break included, is one space
+		const sbpCfg = cfg?.soft_break_paragraphs;
+		const soft = !!sbpCfg && sbpCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[sbpCfg.env ?? "SBSOFTBR_OFF"]);
+		const keepBreaks = (s) => String(s ?? "").replace(/[^\S\n]+/g, " ").replace(/ *\n\s*/g, "\n").trim();
 		if (m.type === "black") {
-			const t = String(m.text ?? "").replace(/\s+/g, " ").trim();
+			const t = soft ? keepBreaks(m.text) : String(m.text ?? "").replace(/\s+/g, " ").trim();
 			return t ? [{ role: "text", text: t }] : [];
 		}
 		if (m.type !== "tag") return [];
@@ -6139,7 +6158,13 @@ class InteractiveBuilder {
 			if (!roles.has("bubble") && rest && !this.#sbImageTrail(rest, cfg)) out.push({ role: "text", text: rest });
 		}
 		if (roles.has("bubble") || p.directive === "INTERACTIVE") {
-			out.push({ role: "bubble", text: rest, tagText: String(m.text ?? "") });
+			// the bubble's own words keep the writer's soft breaks when nothing else in them differs (soft_break_paragraphs;
+			// the rest-text cleanup folds every whitespace run, so each break rides through it as a private-use mark)
+			const softRest = soft && String(m.blackAfter ?? "").includes("\n")
+				? this.#sbRestText(keepBreaks(m.blackAfter).replace(/\n/g, "  ")).replace(/\s*\s*/g, "\n").trim()
+				: null;
+			const bubbleText = softRest && softRest.replace(/\s+/g, " ").trim() === rest ? softRest : rest;
+			out.push({ role: "bubble", text: bubbleText, tagText: String(m.text ?? "") });
 		} else if (roles.has("head")) {
 			if (rest) out.push({ role: "head", text: rest });
 		} else if (roles.has("text")) {
@@ -6449,6 +6474,8 @@ class InteractiveBuilder {
 		const inline = renderInline ?? ((s) => s);
 		const av = tpl.no_table_image ?? {};
 		const to = tpl.text_only ?? {};
+		const sbpCfg = cfg?.soft_break_paragraphs;
+		const sbp = !!sbpCfg && sbpCfg.enabled !== false && !env[sbpCfg.env ?? "SBSOFTBR_OFF"];
 		const body = (b) => {
 			const ps = [];
 			let open = null;
@@ -6466,7 +6493,10 @@ class InteractiveBuilder {
 					if (html) ps.push({ block: html, n: (html.match(/<(?:p|ul)>/g) || []).length });
 					continue;
 				}
-				if (open) open += `<br>${inline(t)}`; else ps.push(inline(t));
+				// a paragraph the writer soft-broke (Shift+Enter: song lines, short spoken sentences) keeps its lines apart, each its
+				// own paragraph, as the human bubbles do (rich.soft_break_paragraphs; env SBSOFTBR_OFF)
+				const parts = sbp && t.includes("\n") ? t.split(/\n+/).map((x) => x.trim()).filter((x) => /[\p{L}\p{N}]/u.test(x)) : [t];
+				for (const part of parts) { if (open) open += `<br>${inline(part)}`; else ps.push(inline(part)); }
 			}
 			if (open) ps.push(open);
 			const html = ps.map((p) => (p && p.block) ? p.block : `<p>${p}</p>`).join("\n");
@@ -15185,14 +15215,30 @@ class InteractiveBuilder {
 	 * when a bullet appears in the preamble.
 	 */
 	static #ddPreamble(all, tpl, inline, run, renderTable) {
-		const firstMark = all.findIndex((t) => t.kind === "mark");
+		let firstMark = all.findIndex((t) => t.kind === "mark");
+		// THE QUIZ KEEPS ITS LEAD LINE: a stream that opens with the writer's parenthesised request (read as an answer mark) or
+		// that carries no red mark at all ends its preamble where the question material starts — a numbered question or the
+		// question table — and every prose line before that is the lead (none is the first question's own text); the request
+		// is kept as it was. Data dropDown.quiz_lead; env DDLEAD_OFF.
+		let liftAll = false;
+		const ql = tpl.quiz_lead;
+		if (ql && ql.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ql.env ?? "DDLEAD_OFF"])) {
+			const reqRe = new RegExp(ql.request_pattern ?? "^\\s*\\([\\s\\S]*\\)\\s*$");
+			const numRe = new RegExp(ql.number_pattern ?? "^\\s*\\(?\\d{1,2}[.)]\\s");
+			let r = 0;
+			while (r < all.length && all[r].kind === "mark" && reqRe.test(String(all[r].text ?? ""))) r++;
+			const isQ = (t) => t.kind === "table" || (t.kind === "plain" && numRe.test(String(t.text ?? "")));
+			const qStart = all.findIndex((t, k) => k >= r && (t.kind === "mark" || isQ(t)));
+			if ((r > 0 || firstMark < 0) && qStart > r && isQ(all[qStart])
+				&& all.slice(r, qStart).some((t) => t.kind === "plain")) { firstMark = qStart; liftAll = true; }
+		}
 		if (firstMark < 0) return { pre: [], toks: all };
 		const head = all.slice(0, firstMark);
 		const bulletish = head.some((t) => t.kind === "plain" && /^\s*[•●▪‣]/.test(String(t.text ?? "")));
 		const pre = [];
 		const keep = [];
 		const plainIdx = head.map((t, i) => (t.kind === "plain" ? i : -1)).filter((i) => i >= 0);
-		const lastPlain = plainIdx.length ? plainIdx[plainIdx.length - 1] : -1;
+		const lastPlain = liftAll ? -1 : (plainIdx.length ? plainIdx[plainIdx.length - 1] : -1);
 		for (let i = 0; i < head.length; i++) {
 			const t = head[i];
 			if (t.kind === "table") {

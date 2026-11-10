@@ -9955,8 +9955,12 @@ class ContentConverter {
 	 *     gap letters (`9A, 9B, 9D`) stay.
 	 *  Never on a page carrying a decimal id (the KB 07B `1.1` family) or a bare-digit id
 	 *  (the single-page section form).
-	 *  Data activity_wrapper.page_number_normalise; env NUMNORM_OFF. */
+	 *  Data activity_wrapper.page_number_normalise; env NUMNORM_OFF. The out-of-order re-run (#pageNumberRuns) follows it. */
 	static #pageNumberNormalise(html, page, run) {
+		return this.#pageNumberRuns(this.#pageNumberNormaliseCore(html, page, run), page, run);
+	}
+
+	static #pageNumberNormaliseCore(html, page, run) {
 		const cfg = DataService.Data.EmitTemplates?.activity_wrapper?.page_number_normalise;
 		if (!cfg || cfg.enabled === false) return html;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "NUMNORM_OFF"]) return html;
@@ -10004,6 +10008,110 @@ class ContentConverter {
 		if (changes.length && run && typeof run.AddNote === "function") {
 			run.AddNote("info", "ContentConverter",
 				`Page ${page.lessonLabel}: activity number${changes.length > 1 ? "s" : ""} normalised (page_number_normalise): ${changes.join(", ")}.`);
+		}
+		return out.join("");
+	}
+
+	/** AN OUT-OF-ORDER PAGE'S ACTIVITY NUMBERS RUN CONSECUTIVELY. KB constraint 62 / 65 (the numbers consecutive). The
+	 *  normaliser above keeps a writer's unused letter where it stands and leaves alone the overview page, a page with a
+	 *  bare-digit id and a page of more than 26 boxes, so the writer's own slips ship as typed: a repeated tag (`1E 1E`), a
+	 *  stale or garbled one (`4` inside phase 2, `34C`, phase 1's `3E`–`3I`), a step back (`4B 4A 4E`). ONLY on a page whose
+	 *  order is broken (a repeat or step back within a digit, a step back to an earlier digit, a slip — a forward jump is a
+	 *  phase with no box, never a trigger), over its numbered boxes in document order: the longest non-decreasing run of the
+	 *  writer's digits keeps them; every other box takes the phase of the kept box before it; a repeated A right before the
+	 *  next phase opens that phase. The letters then run A, B, C … within each digit (a continuation page's first box keeps
+	 *  its own letter). Never on a page with a decimal id (KB 07B), nor when the ids that are not a digit and a letter pass
+	 *  slip_max / slip_max_share (the single-page section form), nor when the kept run covers less than keep_min_share of
+	 *  the boxes (several sections run together), nor when a digit would need more than 26 letters, nor when the result is
+	 *  still not one clean run. A box with no number keeps none. Data activity_wrapper.page_number_runs; env NUMRUN_OFF. */
+	static #pageNumberRuns(html, page, run) {
+		const cfg = DataService.Data.EmitTemplates?.activity_wrapper?.page_number_runs;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "NUMRUN_OFF"]) return html;
+		const re = /(<div class="(?:[^"]*\s)?activity(?:\s[^"]*)?"[^>]*? number=")([^"]*)(")/g;
+		const hits = [];
+		let m;
+		while ((m = re.exec(html)) !== null) {
+			if (m[2].trim()) hits.push({ start: m.index, pre: m[1], id: m[2], post: m[3], len: m[0].length });
+		}
+		if (hits.length < 2 || hits.some((h) => /^\s*\d+\.\d+\s*$/.test(h.id))) return html;
+		const ps = hits.map((h) => { const x = /^(\d+)([A-Za-z])$/.exec(h.id.trim()); return x ? { d: parseInt(x[1], 10), l: x[2].toUpperCase() } : null; });
+		const slips = ps.filter((p) => !p).length;
+		if (slips > Number(cfg.slip_max ?? 2) || slips > hits.length * Number(cfg.slip_max_share ?? 0.1)) return html;
+		// the trigger: a repeat or a step back within a digit, a step back to an earlier digit, or a slip — a forward jump
+		// is a phase with no box of its own, never a trigger
+		let broken = false;
+		for (let i = 0; i < ps.length && !broken; i++) {
+			const p = ps[i], q = i ? ps[i - 1] : null;
+			if (!p || (q && ((p.d === q.d && p.l <= q.l) || p.d < q.d))) broken = true;
+		}
+		if (!broken) return html;
+		// the digits: the longest non-decreasing run of the writer's digits keeps them (on a tie, the run that keeps more
+		// phases, then the one that leaves out a box whose two neighbours share a digit it lacks); a page where that run
+		// covers less than keep_min_share of the boxes is several sections run together — left as it is
+		const n = ps.length;
+		const w = ps.map((p, i) => {
+			if (!p) return 0;
+			const a = i ? ps[i - 1] : null, b = ps[i + 1];
+			const agree = (a && a.d === p.d ? 1 : 0) + (b && b.d === p.d ? 1 : 0);
+			const lone = a && b && a.d === b.d && a.d !== p.d ? 1 : 0;
+			return 1 + 0.001 * agree - 0.002 * lone;
+		});
+		const best = new Array(n).fill(-Infinity), prev = new Array(n).fill(-1);
+		for (let i = 0; i < n; i++) {
+			if (!ps[i]) continue;
+			best[i] = w[i];
+			for (let j = 0; j < i; j++) {
+				const v = ps[j] && ps[j].d <= ps[i].d ? best[j] + w[i] + (ps[j].d < ps[i].d ? 0.003 : 0) : -Infinity;
+				if (v > best[i]) { best[i] = v; prev[i] = j; }
+			}
+		}
+		let end = -1;
+		for (let i = 0; i < n; i++) if (ps[i] && (end < 0 || best[i] > best[end])) end = i;
+		if (end < 0) return html;
+		const keep = new Set();
+		for (let i = end; i >= 0; i = prev[i]) keep.add(i);
+		if (keep.size < n * Number(cfg.keep_min_share ?? 0.7)) return html;
+		const firstKept = ps[Math.min(...keep)].d;
+		const contM = /\.(\d+)$/.exec(String(page?.lessonLabel ?? ""));
+		const continuation = !!contM && parseInt(contM[1], 10) > 0;
+		const next = new Map();
+		const ids = [];
+		let cur = null;
+		for (let i = 0; i < n; i++) {
+			const p = ps[i], nx = ps[i + 1];
+			// a kept box keeps its digit; a stale digit or a slip takes the phase of the kept box before it
+			let d = keep.has(i) ? p.d : (cur ?? firstKept);
+			// a repeated A right before the next phase opens that phase
+			if (cur !== null && keep.has(i) && d === cur && p.l === "A" && next.has(cur) && nx && nx.d === cur + 1) d = cur + 1;
+			if (cur === null && continuation && p) next.set(d, p.l.charCodeAt(0) - 65);
+			cur = d;
+			const k = next.has(d) ? next.get(d) : 0;
+			if (k > 25) return html;
+			ids.push(String(d) + String.fromCharCode(65 + k));
+			next.set(d, k + 1);
+		}
+		// the safety net: a page whose re-run is still not one clean run (each box its digit's next letter, or a later
+		// digit opening) is left as it is
+		for (let i = 1; i < ids.length; i++) {
+			const a = /^(\d+)([A-Z])$/.exec(ids[i - 1]), b = /^(\d+)([A-Z])$/.exec(ids[i]);
+			const da = parseInt(a[1], 10), db = parseInt(b[1], 10);
+			if (!((db === da && b[2].charCodeAt(0) === a[2].charCodeAt(0) + 1) || db > da)) return html;
+		}
+		const out = [];
+		const changes = [];
+		let cursor = 0;
+		hits.forEach((h, i) => {
+			out.push(html.slice(cursor, h.start));
+			if (ids[i] !== h.id.trim()) { out.push(h.pre + ids[i] + h.post); changes.push(h.id.trim() + " → " + ids[i]); }
+			else out.push(html.slice(h.start, h.start + h.len));
+			cursor = h.start + h.len;
+		});
+		out.push(html.slice(cursor));
+		if (!changes.length) return html;
+		if (run && typeof run.AddNote === "function") {
+			run.AddNote("info", "ContentConverter",
+				`Page ${page?.lessonLabel ?? ""}: the activity numbers ran out of order and now run consecutively (page_number_runs): ${changes.join(", ")}.`);
 		}
 		return out.join("");
 	}
@@ -10828,8 +10936,10 @@ class ContentConverter {
 	/** A WRITER'S LINKED FILE NAME IS NEVER LEARNER TEXT. The weave never carries a developer-asset address, so a paragraph that is
 	 *  only a linked file name reached the page as bare words the learner cannot open («ENGS404 Response Sheet 2.1.docx»). Outside
 	 *  the hand-off boxes, a plain paragraph equal to a link's words in the Writers Template and ending in a file extension becomes
-	 *  the house To Do note; a name matching download.name_pattern first gets the download button the human ships.
-	 *  Data elements.file_link_note.plain_name; env FILENAMENOTE_OFF, download SHEETBUTTON_OFF. */
+	 *  the house To Do note; a name matching download.name_pattern first gets the download button the human ships. A heading
+	 *  (<h2>–<h6>) that is only such a name — the title a box built from the writer's request took from the document link after it
+	 *  — becomes the same note (headings); an accordion's tab title (keep_after_pattern) stays.
+	 *  Data elements.file_link_note.plain_name; env FILENAMENOTE_OFF, download SHEETBUTTON_OFF, headings FILENAMEHEAD_OFF. */
 	static #fileNameLine(html, run) {
 		const top = DataService.Data.EmitTemplates.elements?.file_link_note, cfg = top?.plain_name;
 		if (!cfg || cfg.enabled === false || !html) return html;
@@ -10837,14 +10947,18 @@ class ContentConverter {
 		if (env(cfg.env || "FILENAMENOTE_OFF")) return html;
 		const name = new RegExp(cfg.label_pattern, "i");
 		const words = this.#linkWords(run);
-		const spans = [];
-		for (const h of html.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
-			const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
-			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
-		}
+		const regions = (s) => {
+			const spans = [];
+			for (const h of s.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
+				const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+				while ((x = re.exec(s)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
+			}
+			return spans;
+		};
+		const spans = regions(html);
 		const dl = cfg.download, sheet = dl && dl.enabled !== false && !env(dl.env || "SHEETBUTTON_OFF") ? new RegExp(dl.name_pattern, "i") : null;
 		const plain = (t) => t.replace(/&amp;/g, "&").replace(/&#0?39;|&rsquo;/g, "'").replace(/&quot;/g, "\"");
-		return html.replace(/<p>([^<]{3,240})<\/p>/g, (m, inner, off) => {
+		const out = html.replace(/<p>([^<]{3,240})<\/p>/g, (m, inner, off) => {
 			const label = plain(inner).trim();
 			if (!name.test(label) || spans.some(([a, z]) => off >= a && off < z)) return m;
 			const url = words.get(label);
@@ -10852,6 +10966,40 @@ class ContentConverter {
 			const note = NotesAndComments.redFlag(Utils.FillTemplate(top.todo_text, { label, url }), run, "cs");
 			return sheet && sheet.test(label) ? Utils.FillTemplate(dl.form, { file: inner.trim(), label: dl.label }) + "\n" + note : note;
 		});
+		const hd = cfg.headings;
+		if (!hd || hd.enabled === false || env(hd.env || "FILENAMEHEAD_OFF")) return out;
+		const keep = hd.keep_after_pattern ? new RegExp(hd.keep_after_pattern) : null, spans2 = regions(out);
+		return out.replace(/<(h[2-6])>([^<]{3,240})<\/\1>/g, (m, tag, inner, off) => {
+			const label = plain(inner).trim();
+			if (!name.test(label) || spans2.some(([a, z]) => off >= a && off < z)) return m;
+			if (keep && keep.test(out.slice(Math.max(0, off - 80), off))) return m;
+			const url = words.get(label);
+			if (!url) return m;
+			return NotesAndComments.redFlag(Utils.FillTemplate(top.todo_text, { label, url }), run, "cs");
+		});
+	}
+
+	/** A HEADING PARAGRAPH'S SOFT-BROKEN TEXT IS BODY TEXT. The writer typed the heading, pressed Shift+Enter and went on typing
+	 *  the section's first sentence in the same paragraph («[H3] Discover warm and cool colours⏎Warm colours are like …»), and the
+	 *  whole run reached the page inside the heading element. The heading is the paragraph's first line; the lines after the soft
+	 *  break render after it as body paragraphs, one per line (the human pages show the heading alone). A bold or italic run the
+	 *  writer carried across the break is closed on the heading's line and reopened on the body's. Not for an embedded heading
+	 *  («[Insert H3: …]»), a tail shorter than min_tail_words words, or a template excluded by exclude_body_class. Returns
+	 *  { head, tail } or null. Data elements.heading.soft_break_body; env HEADSOFTBODY_OFF. */
+	static #headingSoftTail(raw, embedded, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.heading?.soft_break_body;
+		if (!cfg || cfg.enabled === false || embedded || !raw || !raw.includes("\n")) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "HEADSOFTBODY_OFF"]) return null;
+		if (cfg.exclude_body_class && new RegExp(cfg.exclude_body_class, "i").test(String(run?.resolvedRules?.body_class || ""))) return null;
+		const i = raw.indexOf("\n");
+		let head = raw.slice(0, i).trim(), tail = raw.slice(i + 1).trim();
+		if (!head.replace(/[*_\s]/g, "") || !tail) return null;
+		const words = tail.replace(/[*_]+/g, " ").split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+		if (words < (cfg.min_tail_words ?? 2)) return null;
+		// a bold («**») or italic («*») run carried across the break: closed on the heading's line, reopened on the body's
+		if ((head.match(/\*\*/g) || []).length % 2) { head += "**"; tail = "**" + tail; }
+		if ((head.replace(/\*\*/g, "").match(/\*/g) || []).length % 2) { head += "*"; tail = "*" + tail; }
+		return { head, tail };
 	}
 
 	/** THE LINK INSIDE THE WRITER'S BRACKET IS THE DEVELOPER'S (KB 01C / 01D: the writer's instruction is never learner content).
@@ -12075,6 +12223,19 @@ class ContentConverter {
 	}
 
 	/**
+	 * The lines of a merged black run after a button (buttons.absorb_following_url.black_first_line; env BTNURLRUN_OFF):
+	 * the item's own non-empty lines when it is a black item of two or more, else null. #followingButtonUrl reads such a
+	 * run by its bare-address line (none: the run gives no address), and the button branch keeps every other line on the page.
+	 */
+	static #followingRunLines(nxt, auRule) {
+		const bf = auRule?.black_first_line;
+		if (!bf || bf.enabled === false || !nxt || nxt.type !== "black") return null;
+		if (typeof process !== "undefined" && process.env && process.env[bf.env ?? "BTNURLRUN_OFF"]) return null;
+		const lines = String(nxt.text ?? "").split("\n").filter((l) => l.trim());
+		return lines.length >= 2 ? lines : null;
+	}
+
+	/**
 	 * The URL a plain [Button] takes from the IMMEDIATELY-FOLLOWING item (the
 	 * buttons.absorb_following_url rule — see the button branch): that item is not
 	 * consumed, not structural, and its whole content is one http(s) URL (a bare URL,
@@ -12091,7 +12252,12 @@ class ContentConverter {
 		const auOn = auRule && auRule.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.BTNURL_OFF);
 		if (!auOn || !nxt || nxt._consumed || nxt.consumedBy !== undefined) return "";
-		const nraw = String(nxt.blackAfter ?? "").replace(/\*/g, "").trim();
+		// a merged black run of two or more lines qualifies by its bare-address line alone (its own words are its text, not
+		// blackAfter); the caller keeps every other line (#followingRunLines; absorb_following_url.black_first_line;
+		// env BTNURLRUN_OFF)
+		const runLines = this.#followingRunLines(nxt, auRule);
+		const runUrl = runLines ? runLines.find((l) => /^https?:\/\/\S+$/.test(l.replace(/\*/g, "").trim())) : null;
+		const nraw = (runLines ? (runUrl ?? runLines[0]) : String(nxt.blackAfter ?? "")).replace(/\*/g, "").trim();
 		const nlink = nxt.block?.links?.[0];
 		const nDir = nxt.parse?.primary?.directive;
 		const nIsStruct = nDir && ["CONTAINER_OPEN", "CONTAINER_CLOSE",
@@ -13332,6 +13498,11 @@ class ContentConverter {
 			// the lesson-first "[H2] Lesson N: …" prefix strips — the number
 			// already lives in the header/module-code
 			raw = raw.replace(/^lesson\s+#?\d+(?:\.\d+)?[a-z]?\s*[:.\-–—]?\s*/i, "") || raw;
+			// A HEADING PARAGRAPH'S SOFT-BROKEN TEXT IS BODY TEXT: the paragraph's first line is the heading, the lines after the
+			// writer's soft break render after it as the body's own paragraphs (#headingSoftTail). Data
+			// elements.heading.soft_break_body; env HEADSOFTBODY_OFF.
+			let softTail = "";
+			{ const st = this.#headingSoftTail(raw, embedded, run); if (st) { raw = st.head; softTail = st.tail; } }
 			let text = raw.replace(/\*/g, "").trim();
 			if (!text.trim()) {
 				out.push(NotesAndComments.redFlag(`Empty [${tag.toUpperCase()}] — the writer left a heading placeholder with no text.`, run));
@@ -13376,6 +13547,7 @@ class ContentConverter {
 						&& !(typeof process !== "undefined" && process.env && process.env[_blt.env || "LESSONBARETITLE_OFF"])
 						&& !!_bltKey(this.#pageLessonTitle) && _bltKey(it.blackAfter) === _bltKey(this.#pageLessonTitle);
 					if (embedded && it.blackAfter.trim() && !_bltIsTitle) out.push(...ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links));
+					if (softTail) out.push(...ListsAndRuns.renderBlackText(softTail, run, it.block?.links));
 					return out;
 				}
 				// The body's lesson heading often arrives wrapped WHOLE in *italic* markers —
@@ -13416,6 +13588,7 @@ class ContentConverter {
 				if (this.#pageLessonTitle && _ddKey(text) === _ddKey(this.#pageLessonTitle)) {
 					// keep any genuinely-following body text (Part-3 "BOTH" case)
 					if (embedded && it.blackAfter.trim()) out.push(...ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links));
+					if (softTail) out.push(...ListsAndRuns.renderBlackText(softTail, run, it.block?.links));
 					return out;   // the heading itself is in the header already
 				}
 				if (_c47Slot) this.#firstBodyHeadingSeen = true;   // rendered → the slot is spent
@@ -13496,6 +13669,7 @@ class ContentConverter {
 			let _hHtml = this.#stripHeadingItalic(`<h${shifted}>${ListsAndRuns.inlineMarkup(headInline)}</h${shifted}>`, run);
 			if (_kwdOn) _hHtml = _hHtml.replace(/^<h(\d)>/, `<h$1 data-wd="${(!_kwdTpl && !_kwdPfx && _kwdFamLevel) ? _kwdFamLevel : digit}">`);
 			out.push(_hHtml);
+			if (softTail) out.push(...ListsAndRuns.renderBlackText(softTail, run, it.block?.links));
 			// Part-3 "BOTH" case: an embedded heading whose span is followed
 			// by body text — the following text is the NEXT element's body
 			if (embedded && it.blackAfter.trim()) {
@@ -13833,7 +14007,13 @@ class ContentConverter {
 				if (nurl) {
 					url = nurl;
 					form = tpl.buttons.button_linked.form;
+					// a merged black run gives the button its address line only: every other line stays on the page
+					// (absorb_following_url.black_first_line; env BTNURLRUN_OFF)
+					const _run = this.#followingRunLines(nxt, tpl.buttons.absorb_following_url);
+					const _ui = _run ? _run.findIndex((l) => l.replace(/\*/g, "").trim() === nurl) : -1;
+					const _rest = _run && _ui >= 0 ? { ...nxt, text: _run.filter((l, k) => k !== _ui).join("\n") } : null;
 					nxt._consumed = true;
+					if (_rest) bodyItems[i + 1] = _rest;
 				}
 			}
 			// EVERY journal-label variant on a writer's [Button] ships the go-to-journal heading:

@@ -1002,6 +1002,13 @@
 				"deny_pattern": "^\\s*(?:[•●▪◦*\\-–]|\\[)|https?://|[.?!:]\\s*$|^[^\\p{L}]*$",
 				"_doc": "A heading tag typed with no words of its own («[H3]» alone on its line) and a short line straight after it («1. Basic description») is the writer's heading: the line becomes the heading's text, where the finished page builds it, instead of the empty-heading flag and a plain line. Not a bullet, a tag, an address, a sentence (a line ending . ? ! :) or a line with no letter (an equation's «20»), and at most max_words words."
 			},
+			"soft_break_body": {
+				"enabled": true,
+				"env": "HEADSOFTBODY_OFF",
+				"min_tail_words": 2,
+				"exclude_body_class": "reoTranslate",
+				"_doc": "A HEADING PARAGRAPH'S SOFT-BROKEN TEXT IS BODY TEXT. The writer typed the heading, pressed Shift+Enter and went on typing the section's first sentence in the same paragraph («[H3] Discover warm and cool colours⏎Warm colours are like …»): the heading is the paragraph's first line, and the lines after the soft break are body paragraphs rendered after it, one per line — the human pages show the heading alone. A bold or italic run carried across the break is closed on the heading's line and reopened on the body's. Not for an embedded heading («[Insert H3: …]»), a tail of fewer than min_tail_words words, or the Bilingual template (exclude_body_class; KB 07B governs its paired lines)."
+			},
 			"logical_to_element": {
 				"rule": "The writer's H-digit is a LOGICAL level resolved in context, never a fixed element (§5.1). In body context the digit shifts DOWN one level; page-title headings are built by the skeleton, not here; overview menu headings are CONSUMED into the menu (menu.tab_map below).",
 				"body_shift": 1,
@@ -2316,6 +2323,12 @@
 					"form": "<a href=\"docs/{file}\" target=\"_blank\"><div class=\"button downloadButton\">{label}</div></a>\n<div class=\"hint\"></div>\n<div class=\"hintDropContent\" hintType=\"oneDrive\"></div>",
 					"_doc": "A linked file name of this kind is the sheet the learner downloads: the human's download button on docs/, with the developer's note beside it."
 				},
+				"headings": {
+					"enabled": true,
+					"env": "FILENAMEHEAD_OFF",
+					"keep_after_pattern": "<div class=\"accHead\">\\s*$",
+					"_doc": "A HEADING THAT IS ONLY THE WRITER'S LINKED FILE NAME IS THE DEVELOPER'S. An activity or box built from a request whose document link came next took the file name as its heading — «GRO101-workbook.docx», «GENO901 Audio-Script template Activity 4A -Te Ara Whakamua.docx», «GER1002_2A_comparative_sentences.docx»; the human pages show none. An <h2>–<h6> whose whole text is a link's words in the Writers Template ending in a file extension becomes the same To Do note as the paragraph form, and the box keeps its place. An accordion's tab title (keep_after_pattern) stays: a note there would leave the tab untitled."
+				},
 				"_doc": "A plain paragraph equal to a link's words in the Writers Template, ending in a file extension: the weave dropped the address, so the words reach the page bare. It becomes the house To Do note."
 			},
 			"_doc": "A paragraph that is wholly a link to a team Word, Excel or image file, labelled with its file name, is a pointer for the developer: learners cannot open it. It becomes the house To Do note."
@@ -3143,6 +3156,14 @@
 			"page_digit_on_tie_env": "NUMTIE_OFF",
 			"_doc_page_digit_on_tie": "KB c62 / c65, fully consecutive everywhere. majority_digit does nothing when no digit holds a strict majority, so a page would keep its writer's mixed digits — FRFUN06 2.0 `1A 3C 2C 4B 2E 2F` (human 2A–2E), 5.0 `1A 2A 5C 5D` (human 5A–5D), HIS1007 2.0 `2A 8B`. When the digits tie and the page's own lesson number ties for the most boxes, that number is the digit (the letter dedupe as before). XGF9001 2.0 is a known exception (its human build numbers 1A–1E on a 2.0 page). Env NUMTIE_OFF."
 		},
+		"page_number_runs": {
+			"_doc": "AN OUT-OF-ORDER PAGE'S ACTIVITY NUMBERS RUN CONSECUTIVELY. KB constraint 62 / 65: the activity numbers are consecutive. page_number_normalise keeps a writer's unused letter where it stands and leaves the overview page, a page carrying a bare-digit id and a page of more than 26 boxes alone, so the writer's own slips ship as typed: a repeated tag ([Activity 1E] twice), a stale or garbled one ([Activity 4] inside phase 2, [Activity 34C], phase 1's 3E–3I copied from another module), a step back (4B 4A 4E). The human build runs them consecutively. A post-pass right after page_number_normalise, ONLY on a page whose order is broken (a repeat or a step back within a digit, a step back to an earlier digit, an id that is not a digit and a letter; a forward jump is a phase with no box of its own and never a trigger): the longest non-decreasing run of the writer's digits keeps them (on a tie, the run that keeps more phases, then the one that leaves out a box whose two neighbours share a digit it lacks); every other box — a stale digit, a slip — takes the phase of the kept box before it; a repeated A right before the next phase opens that phase. The letters then run A, B, C … within each digit; on a continuation page (n.1, n.2 …) the first box keeps its own letter. Never on a page carrying a decimal id (KB 07B), nor where the ids that are not a digit and a letter pass slip_max or slip_max_share (the single-page section form), nor where the kept run covers less than keep_min_share of the boxes (several lessons run together on one page, whose numbers no re-run can place), nor where a digit would need more than 26 letters, nor where the result is still not one clean run. A box with no number keeps none. Every change is named in a run note. Env NUMRUN_OFF.",
+			"enabled": true,
+			"env": "NUMRUN_OFF",
+			"slip_max": 2,
+			"slip_max_share": 0.1,
+			"keep_min_share": 0.7
+		},
 		"journal_instruction_box": {
 			"_doc": "THE JOURNAL INSTRUCTION IS ITS OWN ACTIVITY BOX. A block telling the learner to go to the journal and complete a named activity ('Go to your learning journal and complete 3A.', 'Complete activity 4A in your journal.') sits, in the human build, inside its OWN activity box numbered with that id (AGH, HES, PES, GEO, COM, CBI …), not only where the writer's own [Activity] tag puts one. Two parts. (1) bracket_sentence — the writer's red-bracket form `[Go to your learning journal and complete activity 2B]` (AGH) parses as an [Activity] OPENER, which would strip its ids into a garbled Writers Note ('…complete and' — a KB constraint-1 breach) and leave the box EMPTY or swallow the next section (AGH1002 2.0 'Soil Structure'). Right after the item stream is built (PageAssembler), such a span — an activity parse whose bracket is a journal SENTENCE (journal_pattern + verb_pattern + id_pattern, min_words..max_words, no other tag) — becomes the writer's black sentence, brackets stripped, words verbatim. (2) the page post-pass (ContentConverter, before #pageNumberNormalise): a FREE <p> (its column's own child, outside any activity / widget / alert) that is a journal instruction naming an id is wrapped in `div.activity[number=<the first id>] > div.row > div.col-12`, together with an adjacent writer journal button (h4.goJournal or a.button — never invented); the row is split around it when the column holds other content; a row with a side column is left alone. The human's box heading is the developer's own (not in any Writers Template) — never invented. Env JOURNALINSTR_OFF turns off both (JOURNALBOX_OFF is the journal-SECTION box, a different rule).",
 			"enabled": true,
@@ -3573,6 +3594,11 @@
 		},
 		"absorb_following_url": {
 			"enabled": true,
+			"black_first_line": {
+				"enabled": true,
+				"env": "BTNURLRUN_OFF",
+				"_doc": "A BUTTON TAKES ONLY THE ADDRESS LINE OF THE BLACK RUN AFTER IT. A black item's own words are its text (it carries no words after a tag), so a merged run of the writer's black lines — «Source: …» / the address / the poem's title / the poem — read as empty words with one link and passed as a bare address: the button took the whole run and the learner lines after the address were on no page. A run of two or more lines now qualifies by its bare-address line alone: the button takes that line, and every other line stays on the page; a run with no bare-address line gives the button no address."
+			},
 			"media_tag_pattern": "^\\W*\\[\\s*(?:item[^\\]]*\\]\\s*\\[\\s*)?(?:image|images|photo|photograph|picture|img|graphic|diagram|illustration|audio)\\b",
 			"media_tag_env": "BTNURLMEDIA_OFF",
 			"media_tag_link_pattern": "\\blinks?\\b|\\bbuttons?\\b",
@@ -5036,6 +5062,11 @@
 			"rich": {
 				"enabled": true,
 				"plain_cell_bubbles": true,
+				"soft_break_paragraphs": {
+					"enabled": true,
+					"env": "SBSOFTBR_OFF",
+					"_doc": "A BUBBLE'S SOFT-BROKEN LINES STAY APART. A writer who types a bubble's words over several lines with Shift+Enter (song lines, short spoken sentences: «What has two thumbs that hold up the sky ⏎ When you were waddling yay high ⏎ This guy!», «Detectives, I woke up very early this morning. ⏎ It was still dark.») hands over ONE paragraph whose lines every bubble builder ran together into one line. Each line is now its own paragraph, so a bubble of several lines takes the multi-paragraph form (bubble-basic + its one <div> wrapper). Read by the rich builder (its member parts and body) and by the text-only builder, which splits the lines only when it renders, so its paragraph cap still counts the writer's paragraphs. The human bubbles keep the writer's breaks on most such lines (separate paragraphs, or a <br>); a line that is only punctuation is dropped as before. Env SBSOFTBR_OFF runs the lines together again."
+				},
 				"list_body_wrapper": {
 					"enabled": true,
 					"env": "SBRICHLISTWRAP_OFF",
@@ -6780,6 +6811,13 @@
 				"colours": ["yellow"],
 				"d2l_button_pattern": "\\bbutton\\b[^\\n]{0,60}?\\bquiz\\b",
 				"no_answers_pattern": "\\bno\\s+(?:correct|right|wrong|incorrect)\\s+(?:or\\s+(?:wrong|incorrect)\\s+)?answers?\\b|\\banswers\\s+will\\s+vary\\b"
+			},
+			"quiz_lead": {
+				"_doc": "THE QUIZ KEEPS ITS LEAD LINE. The writer's instruction before the first question («Select the correct answer from the options given.») renders above the quiz — the human pages keep it there. The preamble rule lifted it only when a red answer mark came after it, so two shapes lost it: a stream that OPENS with the writer's parenthesised request («(Please find an image of 5 red marbles …)», read as an answer mark) and a stream with no red mark at all (answers ticked ✅). When the question material starts with a numbered question (number_pattern) or the question table, every prose line between the request and it is the lead; the request itself is kept as it was.",
+				"enabled": true,
+				"env": "DDLEAD_OFF",
+				"request_pattern": "^\\s*\\([\\s\\S]*\\)\\s*$",
+				"number_pattern": "^\\s*\\(?\\d{1,2}[.)]\\s"
 			},
 			"opener_deny_pattern": "drop\\s*box|\\bcheck[ -]?in\\b",
 			"_note_opener_deny_pattern": "The family fence's dropbox words (the code's default «drop\\s*box») plus the template's «[Check in] Where ākonga can upload some of their work …» — the same upload request under another name, which reaches this widget type only through Tag_Lexicon's toggled «check in» alias (env CHECKIN_OFF): with the alias off no bundle opens on those words, so the wider pattern changes nothing.",
@@ -9677,6 +9715,13 @@
 		}
 	},
 	"footer": {
+		"final_default": {
+			"enabled": true,
+			"env": "FOOTFINAL_OFF",
+			"series_prefixes": ["BLLR", "SCBI", "SCES"],
+			"value": "prev+home",
+			"_doc": "THE LAST PAGE OFFERS NO «NEXT» (KB 01B, the classic footer rule: overview «next+home», lesson «prev+next+home», final «prev+home»). A series whose registry row carries no final pattern took the lesson pattern on the module's last page, a «next» link to nowhere; the human pages of these series drop it. On the last page of a module whose code starts with a listed prefix and whose registry row has no final, the footer is this value."
+		},
 		"open": "<div id=\"footer\">",
 		"close": "</div>",
 		"nav_open": "<ul class=\"{footerClass}\">",
