@@ -11787,6 +11787,20 @@
 			"_doc": "The 'Make your own template' choice: the person picks a subject + phase + template and ReferenceMiner.PickBySpec inherits the structure from the MOST TYPICAL library module of the narrowest matching pool. THE TEMPLATE IS NEVER RELAXED (each template is a separate format — Fundamentals/Inquiry are one-page formats — so it dictates the content/lesson layout); when no module matches all three choices the pool widens by dropping phase first, then subject, always keeping the template. 'Most typical' = the pool member agreeing with the per-field majority of the Style-Anchor tracked fields on the most fields (ties → most recently built). Rides the parent enabled flag + REFMOD_OFF.",
 			"enabled": true
 		},
+		"template_match": {
+			"_doc": "THE TEMPLATE IS AN ESSENTIAL FILTER on every reference-module choice. PrecedenceResolver.IdentifyTemplate names the template (Standard / Fundamentals / Inquiry / Bilingual) the module read from the Writers Template should be built in, and PrecedenceResolver.SuggestReference only ever suggests a library module carrying that template — so a standard module is never given a fundamentals reference. The HTML Generator's Reference-module panel and every automated conversion that takes the suggested reference both read SuggestReference. The Writers Template does not name its template, so it is identified from the module code: the library's own row when the module is already there; else the most common template among its library relatives (sibling_keys, nearest first; a tie goes to the relative built nearest to it); else the code_rules; else default_template. requires_code: a template only ever seen with a code shape (all 90 library Fundamentals modules carry FUN in their code) is never identified for a code without it. widen: when the series and same-subject-same-phase tiers hold no module of that template, the suggestion widens to the same code prefix at the nearest phase, then the same subject at the nearest phase — the template is never relaxed. Env REFTPL_OFF (or enabled:false) returns to the unfiltered two-tier walk.",
+			"enabled": true,
+			"env_toggle": "REFTPL_OFF",
+			"sibling_keys": ["series", "phase", "prefix"],
+			"code_rules": [
+				{ "rx": "FUN", "flags": "i", "template": "Fundamentals", "why": "a FUN module code with no library relative" }
+			],
+			"default_template": "Standard",
+			"requires_code": {
+				"Fundamentals": { "rx": "FUN", "flags": "i" }
+			},
+			"widen": true
+		},
 		"chip_padded_detect": true,
 		"tooltip_content_scan": true,
 		"_mining_doc": "Two miner rules (as used for SCCH301 → SCCH302), both data-flagged above and turned off with the whole feature by REFMOD_OFF. chip_padded_detect — a zero-padded two-digit lesson chip ('01'..'09', the SCCH301 human form) mines as 'padded-number' rather than 'decimal' (which would render '1.0'). tooltip_content_scan — the menu tooltip attribute is also read off the module-menu-content div (the human build carries it there on some pages and on the button on others — the converter emits the button form either way; this only affects the MINED yes/no)."

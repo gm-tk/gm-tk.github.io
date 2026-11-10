@@ -842,44 +842,114 @@ class PrecedenceResolver {
 	}
 
 	/**
+	 * THE MODULE'S OWN TEMPLATE (Standard / Fundamentals / Inquiry /
+	 * Bilingual) — the template a module read from its Writers Template
+	 * should be built in, and so the ESSENTIAL filter every reference-module
+	 * choice applies (SuggestReference below, and through it the HTML
+	 * Generator's Reference-module panel and every automated conversion
+	 * that takes the suggested reference). The Writers Template does not
+	 * name its template (one template form serves standard and
+	 * fundamentals modules alike), so the template is identified from the
+	 * module code the Writers Template carries plus the library modules
+	 * related to it, in this order:
+	 *   1. the library already holds the module → its own template_type
+	 *      (read from the human-built HTML);
+	 *   2. the most common template among its library relatives, nearest
+	 *      relatives first (template_match.sibling_keys: same series, then
+	 *      same phase, then same code prefix; a tie goes to the relative
+	 *      built nearest to this module);
+	 *   3. no relative at all → the code rules (template_match.code_rules,
+	 *      e.g. a FUN code → Fundamentals), else default_template.
+	 * Last, template_match.requires_code: a template that only ever comes
+	 * with a code shape (every Fundamentals module's code carries FUN) is
+	 * never identified for a code without it — default_template instead.
+	 * Data: Emit_Templates.reference_module.template_match · Env REFTPL_OFF
+	 * (off → null: no template filter, the plain two-tier walk).
+	 *
+	 * @param {string} code - the module being converted, e.g. "SCBI101"
+	 * @returns {?{template: string, how: string, why: string}} null when
+	 *   the rule is off or there is no code
+	 */
+	static IdentifyTemplate(code) {
+		this.#load();
+		const cfg = this.#D("EmitTemplates", {})?.reference_module?.template_match;
+		const env = (typeof process !== "undefined" && process.env) || {};
+		if (!code || !cfg || cfg.enabled === false || env[cfg.env_toggle || "REFTPL_OFF"]) return null;
+		const rx = (r) => new RegExp(r.rx, r.flags ?? "");
+		const guard = (t) => {
+			const need = (cfg.requires_code ?? {})[t];
+			return (need && !rx(need).test(code)) ? (cfg.default_template ?? "Standard") : t;
+		};
+		if (this.#meta[code]?.template_type) {
+			return { template: this.#meta[code].template_type, how: "library",
+				why: "the module's own template in PageForge's library" };
+		}
+		const me = this.#metaFor(code);
+		const mine = me.dev_order ?? 0;
+		for (const key of (cfg.sibling_keys ?? ["series", "phase", "prefix"])) {
+			if (!me[key]) continue;
+			const sib = Object.entries(this.#meta).filter(([c, m]) => c !== code && m[key] === me[key] && m.template_type);
+			if (!sib.length) continue;
+			const tally = new Map();
+			for (const [, m] of sib) {
+				const t = tally.get(m.template_type) ?? { n: 0, near: Infinity };
+				t.n += 1;
+				t.near = Math.min(t.near, Math.abs((m.dev_order ?? 0) - mine));
+				tally.set(m.template_type, t);
+			}
+			const [best] = [...tally.entries()].sort((a, b) => (b[1].n - a[1].n) || (a[1].near - b[1].near) || (a[0] < b[0] ? -1 : 1));
+			return { template: guard(best[0]), how: key,
+				why: `the template of its nearest library relatives (same ${key}, ${best[1].n} of ${sib.length})` };
+		}
+		for (const r of (cfg.code_rules ?? [])) {
+			if (rx(r).test(code)) return { template: guard(r.template), how: "code", why: r.why ?? "the module code's shape" };
+		}
+		const d = cfg.default_template ?? "Standard";
+		return { template: d, how: "default", why: "no library relative — the default template" };
+	}
+
+	/**
 	 * REFERENCE-MODULE SUGGESTION (the HTML Generator's
-	 * "Reference module" panel). Names the nearest already-built module a
+	 * "Reference module" panel, and every automated conversion that takes
+	 * the suggested reference). Names the nearest already-built module a
 	 * new conversion would most naturally inherit from — the same "ask the
 	 * nearest relative first, then widen" idea as the cascade above, but
 	 * answering the coarser, person-facing question "WHICH ONE module is
-	 * my reference?" rather than resolving one element key. Display-only:
-	 * nothing in the conversion reads this — the actual inheritance stays
-	 * with ModuleResolver.Resolve / this cascade, and only an EXPLICIT
-	 * user override (PrepareRun's referenceCode option) changes anything.
+	 * my reference?" rather than resolving one element key.
 	 *
-	 * HOW IT CHOOSES (a two-tier rule — deliberately NO
-	 * wider fallback):
+	 * THE TEMPLATE IS ESSENTIAL: every candidate must carry the module's
+	 * own template (IdentifyTemplate above) — a standard module is never
+	 * given a fundamentals reference, whatever else matches. Within that:
 	 *   1. SAME MODULE SERIES — same code prefix + same leading digit
 	 *      (OSAI502 → the OSAI5xx family → OSAI501 first and foremost);
 	 *   2. SAME SUBJECT AT THE SAME PHASE — a different prefix in the same
 	 *      subject whose leading digit matches (no OSAI5xx on record →
 	 *      an Online Safety 5xx sibling: OSOH501 / OSBY501 / …). For a
 	 *      code the index has never seen, the subject is borrowed from any
-	 *      indexed module sharing its prefix.
-	 * Inside a tier, prefer the nearest EARLIER-built module (dev_order
-	 * below this code's own — the "module this one continues from"),
-	 * falling back to the nearest later one when nothing earlier exists.
-	 * When NEITHER tier holds a module, return null — the UI then demands
-	 * an explicit choice ("Please select a reference module") or a
-	 * reference-HTML upload before converting.
+	 *      indexed module sharing its prefix;
+	 *   3. (template_match.widen) SAME CODE PREFIX at the nearest phase,
+	 *      then SAME SUBJECT at the nearest phase — the template kept, the
+	 *      phase relaxed (SCBI101 with no SCBI1xx on record → SCBI202).
+	 * Inside the first two tiers, prefer the nearest EARLIER-built module
+	 * (dev_order below this code's own — the "module this one continues
+	 * from"), falling back to the nearest later one when nothing earlier
+	 * exists; the widened tiers take the nearest phase first. When no tier
+	 * holds a module, return null — the UI then demands an explicit choice
+	 * ("Please select a reference module") or a reference-HTML upload.
 	 *
 	 * @param {string} code - the module being converted, e.g. "OSAI502"
-	 * @returns {?{code: string, group: string, why: string, meta: Object}}
-	 *   the suggested reference module, or null when neither tier holds
-	 *   a relative (a brand-new subject/series)
+	 * @returns {?{code: string, group: string, why: string, meta: Object,
+	 *   template: ?Object}} the suggested reference module (template = the
+	 *   IdentifyTemplate result it was filtered by), or null
 	 */
 	static SuggestReference(code) {
 		this.#load();
 		if (!code) return null;
+		const tpl = this.IdentifyTemplate(code);
 		// EXACT MATCH FIRST: when the module code itself
 		// already exists in the library index (a distilled template exactly
 		// matching the module — common while testing the tool), THAT module
-		// is the suggestion, ahead of the two-tier relative walk. It flows
+		// is the suggestion, ahead of the relative walk. It flows
 		// through the same UI path as any suggestion (same styling, same
 		// pinning, same pre-selects — no visible difference between a
 		// perfect match and the closest match).
@@ -887,7 +957,7 @@ class PrecedenceResolver {
 			return {
 				code, group: "exact",
 				why: "this module already exists in PageForge's distilled templates (an exact match)",
-				meta: this.#meta[code],
+				meta: this.#meta[code], template: tpl,
 			};
 		}
 		const me = this.#metaFor(code);
@@ -910,20 +980,37 @@ class PrecedenceResolver {
 				|| (a[0] < b[0] ? -1 : 1));
 			return pool[0][0];
 		};
+		// the widened tiers: nearest phase digit first, then nearest build
+		const nearestPhase = (list) => {
+			if (!list.length) return null;
+			const pd = (m) => (digit && /\d$/.test(m.phase || "")) ? Math.abs(Number((m.phase || "").slice(-1)) - Number(digit)) : 9;
+			list.sort((a, b) => (pd(a[1]) - pd(b[1]))
+				|| Math.abs((a[1].dev_order ?? 0) - (Number.isFinite(mine) ? mine : 0)) - Math.abs((b[1].dev_order ?? 0) - (Number.isFinite(mine) ? mine : 0))
+				|| (a[0] < b[0] ? -1 : 1));
+			return list[0][0];
+		};
 		const circles = [
-			["series", (m) => me.phase && m.phase === me.phase,
+			["series", (m) => me.phase && m.phase === me.phase, nearest,
 				"the nearest already-built module in the same module series"],
 			["subject_phase", (m) => subject && m.subject === subject
-				&& digit && (m.phase || "").slice(-1) === digit,
+				&& digit && (m.phase || "").slice(-1) === digit, nearest,
 				"the nearest already-built module in the same subject at the same phase"],
 		];
+		const widen = tpl && this.#D("EmitTemplates", {})?.reference_module?.template_match?.widen !== false;
+		if (widen) {
+			circles.push(
+				["prefix_template", (m) => me.prefix && m.prefix === me.prefix, nearestPhase,
+					`the nearest-phase already-built ${tpl.template} module with the same code prefix`],
+				["subject_template", (m) => subject && m.subject === subject, nearestPhase,
+					`the nearest-phase already-built ${tpl.template} module in the same subject`]);
+		}
 		const cands = [];
 		for (const c in this.#meta) {
-			if (c !== code) cands.push([c, this.#meta[c]]);
+			if (c !== code && (!tpl || this.#meta[c].template_type === tpl.template)) cands.push([c, this.#meta[c]]);
 		}
-		for (const [group, test, why] of circles) {
-			const hit = nearest(cands.filter(([, m]) => test(m)));
-			if (hit) return { code: hit, group, why, meta: this.#meta[hit] };
+		for (const [group, test, pick, why] of circles) {
+			const hit = pick(cands.filter(([, m]) => test(m)));
+			if (hit) return { code: hit, group, why, meta: this.#meta[hit], template: tpl };
 		}
 		return null;
 	}

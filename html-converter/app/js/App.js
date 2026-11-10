@@ -513,6 +513,14 @@ class App {
 			const suggRow = this.#refSuggestedCode
 				? this.#refCodeRows.find((r) => r.code === this.#refSuggestedCode) ?? null
 				: null;
+			if (!suggRow && preview.template?.template) {
+				// No suggestion: the list still opens on the module's own
+				// template (the essential filter), so only modules built in
+				// that template are offered.
+				this.#renderTemplateOptions();
+				const tplSel = document.getElementById(Config.Selectors.RefTemplateFilter);
+				if (tplSel && [...tplSel.options].some((o) => o.value === preview.template.template)) tplSel.value = preview.template.template;
+			}
 			if (suggRow) {
 				const subjSel = document.getElementById(Config.Selectors.RefSubjectFilter);
 				if (subjSel && suggRow.subjectLabel) subjSel.value = suggRow.subjectLabel;
@@ -576,18 +584,21 @@ class App {
 			el.textContent = "No module code found in the uploads yet — select a reference module below, or upload reference HTML.";
 			return;
 		}
-		// Two lines, no trailing why-phrase, the template named as "… Template".
+		// Two lines, no trailing why-phrase, the template named as "… Template";
+		// the module's own template (the essential filter) follows the code.
 		const s = preview.suggestion;
+		const own = preview.template?.template
+			? ` — ${Utils.EscapeHtml(preview.template.template)} Template` : "";
 		if (s) {
 			const meta = s.meta ?? {};
 			const detail = [meta.series, meta.template_type ? `${meta.template_type} Template` : null]
 				.filter(Boolean).join(" · ");
-			el.innerHTML = `Module detected: <strong>${Utils.EscapeHtml(preview.code)}</strong>.<br>`
+			el.innerHTML = `Module detected: <strong>${Utils.EscapeHtml(preview.code)}</strong>${own}.<br>`
 				+ `Suggested reference: <strong>${Utils.EscapeHtml(s.code)}</strong>`
 				+ `${detail ? ` (${Utils.EscapeHtml(detail)})` : ""}`;
 		} else {
-			el.innerHTML = `Module detected: <strong>${Utils.EscapeHtml(preview.code)}</strong>.<br>`
-				+ `No suggested module exists in PageForge's distilled templates — please select a `
+			el.innerHTML = `Module detected: <strong>${Utils.EscapeHtml(preview.code)}</strong>${own}.<br>`
+				+ `No suggested ${own ? `${Utils.EscapeHtml(preview.template.template)} ` : ""}module exists in PageForge's distilled templates — please select a `
 				+ `reference module below, or upload reference HTML.`;
 		}
 	};
@@ -1253,6 +1264,13 @@ class App {
 					referenceCode = v;
 					const suggested = this.#refPreview?.suggestion?.code;
 					this.#log(`Reference module: inheriting page structure from ${v}${v === suggested ? " (the suggested module)" : " (your choice)"}.`);
+					// The module's own template is the essential criterion: a
+					// hand-picked reference built in another template is flagged.
+					const ownTpl = this.#refPreview?.template?.template;
+					const refTpl = this.#refCodeRows.find((r) => r.code === v)?.template_type;
+					if (ownTpl && refTpl && refTpl !== ownTpl) {
+						this.#log(`⚠ ${v} is a ${refTpl} module, but ${this.#refPreview?.code ?? "this module"} is a ${ownTpl} module — its pages will follow the ${refTpl} layout. Choose a ${ownTpl} module unless that is intended.`);
+					}
 				} else {
 					this.#log("⚠ No reference module was selected — converting from the module's own registry home.");
 				}

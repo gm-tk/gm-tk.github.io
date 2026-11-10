@@ -64,10 +64,12 @@ class ReferenceMiner {
 	 * @param {Object[]} [options.allBlocks] - extracted blocks (optional —
 	 *                   lets the front-matter "Module code:" line decide
 	 *                   when the filenames carry no code)
-	 * @returns {{code: ?string, suggestion: ?Object, path: ?string}} the
-	 *   detected code, the SuggestReference result (see
-	 *   PrecedenceResolver.SuggestReference), and the registry resolution
-	 *   path ("defaults → subject … → level …") for display
+	 * @returns {{code: ?string, suggestion: ?Object, path: ?string,
+	 *   template: ?Object}} the detected code, the SuggestReference result
+	 *   (see PrecedenceResolver.SuggestReference), the registry resolution
+	 *   path ("defaults → subject … → level …") for display, and the
+	 *   module's own template (PrecedenceResolver.IdentifyTemplate — the
+	 *   filter the suggestion was chosen by)
 	 */
 	static PreviewSuggestion({ filenames = [], allBlocks = [] } = {}) {
 		const stub = { AddNote() { } };   // swallow advisory-time notes
@@ -75,7 +77,7 @@ class ReferenceMiner {
 		try {
 			code = ModuleResolver.DetectModuleCode({ filenames, allBlocks, run: stub });
 		} catch { /* detection is advisory — never let it break the UI */ }
-		if (!code) return { code: null, suggestion: null, path: null };
+		if (!code) return { code: null, suggestion: null, path: null, template: null };
 		const probe = { AddNote() { } };
 		try { ModuleResolver.Resolve(code, probe); } catch { /* registry unavailable */ }
 		let suggestion = null;
@@ -83,7 +85,14 @@ class ReferenceMiner {
 			suggestion = (typeof PrecedenceResolver !== "undefined")
 				? PrecedenceResolver.SuggestReference(code) : null;
 		} catch { /* advisory only */ }
-		return { code, suggestion, path: probe.resolutionPath ?? null };
+		let template = suggestion?.template ?? null;
+		if (!template) {
+			try {
+				template = (typeof PrecedenceResolver !== "undefined")
+					? PrecedenceResolver.IdentifyTemplate(code) : null;
+			} catch { /* advisory only */ }
+		}
+		return { code, suggestion, path: probe.resolutionPath ?? null, template };
 	};
 
 	/**
