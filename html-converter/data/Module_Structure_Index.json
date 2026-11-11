@@ -10,7 +10,7 @@
    "series",
    "dev_order"
   ],
-  "modules": 578,
+  "modules": 579,
   "subject_map": {
    "ARFUN": "1-10 Arts",
    "ARWHA": "1-10 Arts",
@@ -3673,6 +3673,14 @@
    "phase": "SAM1",
    "series": "SAM10",
    "dev_order": 1006
+  },
+  "SCBI101": {
+   "subject": "1-10 Science",
+   "template_type": "Standard",
+   "prefix": "SCBI",
+   "phase": "SCBI1",
+   "series": "SCBI10",
+   "dev_order": 101
   },
   "SCBI202": {
    "subject": "1-10 Science",
@@ -7871,9 +7879,53 @@
     "sig": "h2@w:introduction>row>col=col-md-8",
     "n": 1
    },
+   "header|title bar": {
+    "sig": "h1@plain",
+    "n": 1
+   },
+   "body|alert": {
+    "sig": "p@w:phases>w:div",
+    "n": 4
+   },
+   "body|h1": {
+    "sig": "h2@w:introduction>row>col=col-md-8",
+    "n": 1
+   },
+   "body|body": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 4
+   },
+   "body|activity": {
+    "sig": "li@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12>list",
+    "n": 2
+   },
    "body|@clickDrop": {
     "sig": "clickDrop@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12",
     "n": 3
+   },
+   "body|h3": {
+    "sig": "h3@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 1
+   },
+   "body|h2": {
+    "sig": "h3@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 4
+   },
+   "body|h4": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-11",
+    "n": 1
+   },
+   "body|click drop": {
+    "sig": "li@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12>w:clickDropContent>list",
+    "n": 10
+   },
+   "body|external link": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 1
+   },
+   "body|dropdown": {
+    "sig": "a@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 2
    }
   },
   "ANZHFUN05": {
@@ -19755,6 +19807,10 @@
     "sig": "h5@row>col=col-md-8",
     "n": 14
    },
+   "menu|title bar": {
+    "sig": "li@row>col=col-md-8>list",
+    "n": 1
+   },
    "menu|@li": {
     "sig": "li@row>col=col-md-8>list",
     "n": 61
@@ -19784,6 +19840,10 @@
    "acks|@accordion": {
     "sig": "accordion@plain",
     "n": 1
+   },
+   "body|title bar": {
+    "sig": "p@row>col=col-md-8",
+    "n": 2
    },
    "body|@h3": {
     "sig": "h3@row>col=col-md-8",
@@ -19857,6 +19917,10 @@
     "sig": "clickDrop@row>col=col-md-8",
     "n": 2
    },
+   "menu|title bar": {
+    "sig": "li@row>col=col-md-8>list",
+    "n": 1
+   },
    "menu|@li": {
     "sig": "li@row>col=col-md-8>list",
     "n": 55
@@ -19894,6 +19958,10 @@
    "acks|@accordion": {
     "sig": "accordion@plain",
     "n": 1
+   },
+   "body|title bar": {
+    "sig": "h3@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 4
    },
    "body|@h3": {
     "sig": "h3@row>col=col-md-8>box:activity>row>col=col-12",
@@ -30217,6 +30285,10 @@
     "sig": "accordion@plain",
     "n": 1
    },
+   "body|title bar": {
+    "sig": "h2@row>col=col-md-8",
+    "n": 1
+   },
    "body|@h3": {
     "sig": "h3@row>col=col-md-8",
     "n": 19
@@ -30261,6 +30333,10 @@
     "sig": "h2@row>col=col-md-8",
     "n": 13
    },
+   "header|title bar": {
+    "sig": "h1@plain",
+    "n": 1
+   },
    "body|@reorder": {
     "sig": "reorder@row>col=col-md-8>box:activity>row>col=col-12",
     "n": 1
@@ -30284,6 +30360,10 @@
    "menu|@h5": {
     "sig": "h5@row>col=col-md-8",
     "n": 18
+   },
+   "menu|title bar": {
+    "sig": "li@row>col=col-md-8>list",
+    "n": 1
    },
    "menu|@li": {
     "sig": "li@row>col=col-md-8>list",
@@ -36292,6 +36372,10 @@
    "body|@imageLabel": {
     "sig": "imageLabel@row>col=col-md-4",
     "n": 1
+   },
+   "body|audio": {
+    "sig": "a@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 1
    }
   },
   "ENWJ106": {
@@ -36313,6 +36397,10 @@
    },
    "acks|@accordion": {
     "sig": "accordion@plain",
+    "n": 1
+   },
+   "body|title bar": {
+    "sig": "p@row>col=col-md-8",
     "n": 1
    },
    "body|@h3": {
@@ -36565,6 +36653,10 @@
     "sig": "accordion@plain",
     "n": 1
    },
+   "body|title bar": {
+    "sig": "li@row>col=col-md-8>box:activity>row>col=col-12>list",
+    "n": 1
+   },
    "body|@h3": {
     "sig": "h3@row>col=col-md-8>box:activity>row>col=col-12",
     "n": 10
@@ -36715,6 +36807,10 @@
     "sig": "wordHighlighter@row>col=col-md-8>box:alert>row>col=col-12",
     "n": 1
    },
+   "body|image": {
+    "sig": "a@row>col=col-md-8",
+    "n": 1
+   },
    "body|@imageLabel": {
     "sig": "imageLabel@row>col=col-md-4",
     "n": 1
@@ -36743,6 +36839,10 @@
    },
    "acks|@accordion": {
     "sig": "accordion@plain",
+    "n": 1
+   },
+   "body|title bar": {
+    "sig": "p@row>col=col-md-8",
     "n": 1
    },
    "body|@h3": {
@@ -36805,6 +36905,10 @@
     "sig": "li@row>col=col-md-8>list",
     "n": 33
    },
+   "body|image": {
+    "sig": "carousel@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 1
+   },
    "body|@tabs": {
     "sig": "tabs@row>col=col-md-8>row",
     "n": 1
@@ -36833,6 +36937,10 @@
    },
    "acks|@accordion": {
     "sig": "accordion@plain",
+    "n": 1
+   },
+   "body|title bar": {
+    "sig": "infoTrigger@row>col=col-md-8>list",
     "n": 1
    },
    "body|@h3": {
@@ -36894,6 +37002,10 @@
    "menu|@li": {
     "sig": "li@row>col=col-md-8>list",
     "n": 36
+   },
+   "body|image": {
+    "sig": "infoTrigger@row>col=col-md-8",
+    "n": 1
    },
    "body|@tabs": {
     "sig": "tabs@row>col=col-md-8>row",
@@ -38422,6 +38534,10 @@
    "body|@typing": {
     "sig": "typing@w:fundamentalsPanel>row>col=col-md-8>box:activity",
     "n": 2
+   },
+   "body|image": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 1
    },
    "body|@hintSlider": {
     "sig": "hintSlider@w:fundamentalsPanel>row>col=col-md-8",
@@ -44433,6 +44549,10 @@
     "sig": "accordion@plain",
     "n": 1
    },
+   "body|title bar": {
+    "sig": "p@row>col=col-md-8",
+    "n": 1
+   },
    "body|@h3": {
     "sig": "h3@row>col=col-md-8>box:activity>row>col=col-12",
     "n": 18
@@ -44492,6 +44612,10 @@
    "menu|@h5": {
     "sig": "h5@row>col=col-md-8",
     "n": 10
+   },
+   "menu|title bar": {
+    "sig": "li@row>col=col-md-8>list",
+    "n": 1
    },
    "menu|@li": {
     "sig": "li@row>col=col-md-8>list",
@@ -45289,6 +45413,10 @@
     "sig": "accordion@plain",
     "n": 1
    },
+   "body|title bar": {
+    "sig": "p@row>col=col-md-8",
+    "n": 2
+   },
    "body|@h3": {
     "sig": "h3@row>col=col-md-8>box:activity>row>col=col-12",
     "n": 15
@@ -45333,6 +45461,10 @@
     "sig": "h5@row>col=col-md-8",
     "n": 10
    },
+   "menu|title bar": {
+    "sig": "li@row>col=col-md-8>list",
+    "n": 1
+   },
    "menu|@li": {
     "sig": "li@row>col=col-md-8>list",
     "n": 15
@@ -45340,6 +45472,10 @@
    "body|@hintSlider": {
     "sig": "hintSlider@row>col=col-md-8",
     "n": 2
+   },
+   "acks|title bar": {
+    "sig": "accordion@plain",
+    "n": 1
    },
    "body|@numberLine": {
     "sig": "numberLine@row>col=col-md-8",
@@ -46413,6 +46549,10 @@
     "sig": "accordion@plain",
     "n": 1
    },
+   "body|title bar": {
+    "sig": "p@row>col=col-md-2>w:captionImage>w:captionTrigger>w:caption",
+    "n": 2
+   },
    "body|@h3": {
     "sig": "h3@row>col=col-md-8>box:activity>row>col=col-12",
     "n": 24
@@ -46484,6 +46624,10 @@
    "body|@hintSlider": {
     "sig": "hintSlider@row>col=col-md-4>box:alert",
     "n": 2
+   },
+   "acks|title bar": {
+    "sig": "accordion@plain",
+    "n": 1
    }
   },
   "MXEX201": {
@@ -56524,6 +56668,96 @@
     "n": 17
    }
   },
+  "SCBI101": {
+   "header|@h1": {
+    "sig": "h1@w:div",
+    "n": 6
+   },
+   "menu|@tabs": {
+    "sig": "tabs@row",
+    "n": 1
+   },
+   "body|@p": {
+    "sig": "p@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 27
+   },
+   "body|@infoTrigger": {
+    "sig": "infoTrigger@row>col=col-md-8",
+    "n": 1
+   },
+   "acks|@accordion": {
+    "sig": "accordion@plain",
+    "n": 1
+   },
+   "body|@h3": {
+    "sig": "h3@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 16
+   },
+   "body|@carousel": {
+    "sig": "carousel@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 2
+   },
+   "body|@dragAndDrop": {
+    "sig": "dragAndDrop@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 1
+   },
+   "body|@accordion": {
+    "sig": "accordion@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 2
+   },
+   "body|@selectionBox": {
+    "sig": "selectionBox@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 2
+   },
+   "body|@a": {
+    "sig": "a@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 3
+   },
+   "body|@li": {
+    "sig": "li@row>col=col-md-8>box:activity>row>col=col-12>list",
+    "n": 5
+   },
+   "body|@multiChoiceQuiz": {
+    "sig": "multiChoiceQuiz@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 2
+   },
+   "body|@h4": {
+    "sig": "h4@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 5
+   },
+   "body|@speechBubble": {
+    "sig": "speechBubble@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 4
+   },
+   "body|@h5": {
+    "sig": "h5@row>col=col-md-8>row>col=col",
+    "n": 4
+   },
+   "body|@flipCard": {
+    "sig": "flipCard@row>col=col-md-8>row>col=col-md-6",
+    "n": 6
+   },
+   "body|@hint": {
+    "sig": "hint@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 1
+   },
+   "menu|@h5": {
+    "sig": "h5@row>col=col-md-8",
+    "n": 10
+   },
+   "menu|@li": {
+    "sig": "li@row>col=col-md-8>list",
+    "n": 22
+   },
+   "body|@hintSlider": {
+    "sig": "hintSlider@row>col=col-md-8",
+    "n": 2
+   },
+   "body|@imageZoom": {
+    "sig": "imageZoom@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 2
+   }
+  },
   "SCBI202": {
    "header|@h1": {
     "sig": "h1@w:div",
@@ -57009,6 +57243,10 @@
     "sig": "li@row>col=col-md-8>list",
     "n": 30
    },
+   "body|image": {
+    "sig": "p@row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 1
+   },
    "body|@imageLabel": {
     "sig": "imageLabel@row>col=col-md-8",
     "n": 1
@@ -57185,13 +57423,69 @@
     "sig": "h2@w:fundamentalsPanel>row>col=col-md-8",
     "n": 5
    },
+   "body|alert": {
+    "sig": "p@w:phases>w:div",
+    "n": 2
+   },
+   "body|body": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 28
+   },
+   "body|activity": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 3
+   },
    "body|@flipCard": {
     "sig": "flipCard@w:fundamentalsPanel>row>col=col-md-8>row>col=col-md-6",
     "n": 6
    },
+   "body|h3": {
+    "sig": "h3@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 3
+   },
+   "body|image": {
+    "sig": "flipCard@w:fundamentalsPanel>row>col=col-md-8>row>col=col-md-6",
+    "n": 4
+   },
+   "body|h5": {
+    "sig": "h3@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 1
+   },
+   "body|end other": {
+    "sig": "p@w:phases>w:div",
+    "n": 1
+   },
    "body|@selfCheck": {
     "sig": "selfCheck@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12",
     "n": 3
+   },
+   "body|h4": {
+    "sig": "li@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12>list",
+    "n": 9
+   },
+   "body|back": {
+    "sig": "infoTrigger@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 1
+   },
+   "header|h2": {
+    "sig": "h1@plain",
+    "n": 1
+   },
+   "body|hover trigger red text": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 1
+   },
+   "header|back": {
+    "sig": "h1@plain",
+    "n": 1
+   },
+   "body|auto marking response": {
+    "sig": "dropQuiz@w:fundamentalsPanel>row>col=col-md-8>box:activity",
+    "n": 1
+   },
+   "body|define red text": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 2
    }
   },
   "SCFUN09": {
@@ -57247,12 +57541,64 @@
     "sig": "h5@w:fundamentalsPanel>row>col=col-md-8>row>col=col-md-6>w:TKmodal",
     "n": 5
    },
+   "body|alert": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-3>box:alert>row>col=col-12",
+    "n": 1
+   },
+   "body|body": {
+    "sig": "li@w:fundamentalsPanel>row>col=col-md-8>list",
+    "n": 34
+   },
+   "body|activity": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 4
+   },
    "body|@flipCard": {
     "sig": "flipCard@w:fundamentalsPanel>row>col=col-md-6",
     "n": 4
    },
+   "body|h3": {
+    "sig": "h3@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 5
+   },
+   "body|image": {
+    "sig": "p@w:phases>w:div",
+    "n": 1
+   },
+   "body|flip card": {
+    "sig": "flipCard@w:fundamentalsPanel>row>col=col-md-6",
+    "n": 4
+   },
+   "body|button": {
+    "sig": "a@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 1
+   },
+   "body|end other": {
+    "sig": "p@w:phases>w:div",
+    "n": 2
+   },
    "body|@selfCheck": {
     "sig": "selfCheck@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 2
+   },
+   "body|h4": {
+    "sig": "h4@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 3
+   },
+   "body|data marker": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 4
+   },
+   "header|h3": {
+    "sig": "h1@plain",
+    "n": 1
+   },
+   "header|scfun09": {
+    "sig": "h1@plain",
+    "n": 1
+   },
+   "body|tick box": {
+    "sig": "li@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12>list",
     "n": 2
    }
   },
@@ -57272,6 +57618,10 @@
    "acks|@accordion": {
     "sig": "accordion@plain",
     "n": 1
+   },
+   "body|title bar": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 2
    },
    "body|@h3": {
     "sig": "h3@w:fundamentalsPanel>row>col=col-md-8",
@@ -57309,6 +57659,22 @@
     "sig": "h5@w:fundamentalsPanel>row>col=col-md-8>box:alert>row>col=col-12",
     "n": 5
    },
+   "header|title bar": {
+    "sig": "h1@plain",
+    "n": 1
+   },
+   "body|alert": {
+    "sig": "li@w:fundamentalsPanel>row>col=col-md-8>box:alert>row>col=col-12>list",
+    "n": 10
+   },
+   "body|body": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 37
+   },
+   "body|activity": {
+    "sig": "h3@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 5
+   },
    "body|@flipCard": {
     "sig": "flipCard@w:fundamentalsPanel>row>col=col-md-8>row>col=col-md-6",
     "n": 4
@@ -57317,8 +57683,56 @@
     "sig": "clickDrop@w:fundamentalsPanel>row>col=col-md-8>row",
     "n": 4
    },
+   "body|h3": {
+    "sig": "h3@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 9
+   },
    "body|@wordHighlighter": {
     "sig": "wordHighlighter@w:fundamentalsPanel>row>col=col-md-8>row>w:clickDropContent",
+    "n": 1
+   },
+   "body|image": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 1
+   },
+   "body|h5": {
+    "sig": "h5@w:fundamentalsPanel>row>col=col-md-8>box:alert>row>col=col-12",
+    "n": 5
+   },
+   "body|flip card": {
+    "sig": "flipCard@w:fundamentalsPanel>row>col=col-md-8>row>col=col-md-4",
+    "n": 3
+   },
+   "body|button": {
+    "sig": "a@w:fundamentalsPanel>row>col=col-md-8>row>w:clickDropContent>list",
+    "n": 1
+   },
+   "body|h4": {
+    "sig": "h4@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 5
+   },
+   "body|click drop": {
+    "sig": "clickDrop@w:fundamentalsPanel>row>col=col-md-8>row",
+    "n": 3
+   },
+   "body|data marker": {
+    "sig": "carousel@w:fundamentalsPanel>row>col=col-md-8",
+    "n": 1
+   },
+   "header|h3": {
+    "sig": "h1@plain",
+    "n": 1
+   },
+   "body|shape n": {
+    "sig": "p@w:phases>w:div",
+    "n": 4
+   },
+   "body|correct": {
+    "sig": "infoTrigger@w:fundamentalsPanel>row>col=col-md-8>row>w:clickDropContent>list",
+    "n": 1
+   },
+   "header|fundamental 10 code": {
+    "sig": "h1@w:div",
     "n": 1
    }
   },
@@ -57435,6 +57849,10 @@
    },
    "acks|@accordion": {
     "sig": "accordion@plain",
+    "n": 1
+   },
+   "body|title bar": {
+    "sig": "h3@w:fundamentalsPanel>row>col=col-md-12",
     "n": 1
    },
    "body|@h3": {
@@ -57639,6 +58057,10 @@
    },
    "acks|@accordion": {
     "sig": "accordion@plain",
+    "n": 1
+   },
+   "body|title bar": {
+    "sig": "audioTrigger@row>col=col-md-8>box:activity>row>col=col-12",
     "n": 1
    },
    "body|@h3": {
@@ -63951,6 +64373,10 @@
     "sig": "accordion@plain",
     "n": 1
    },
+   "body|title bar": {
+    "sig": "h3@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 1
+   },
    "body|@h3": {
     "sig": "h3@w:fundamentalsPanel>row>col=col-md-8",
     "n": 9
@@ -64435,6 +64861,10 @@
     "sig": "accordion@plain",
     "n": 1
    },
+   "body|title bar": {
+    "sig": "p@w:fundamentalsPanel>row>col=col-md-12>box:activity>row>col=col-md-4",
+    "n": 1
+   },
    "body|@h3": {
     "sig": "h3@w:fundamentalsPanel>row>col=col-md-8",
     "n": 5
@@ -64482,6 +64912,10 @@
    "body|@flipCard": {
     "sig": "flipCard@w:fundamentalsPanel>row>col=col-md-8>row>col=col-md-4",
     "n": 6
+   },
+   "body|image": {
+    "sig": "a@w:fundamentalsPanel>row>col=col-md-8>box:activity>row>col=col-12",
+    "n": 1
    },
    "body|@crossword": {
     "sig": "crossword@w:fundamentalsPanel>row>col=col-md-12>box:activity>row>col=col-md-8",
@@ -68667,13 +69101,13 @@
     "sig": "h3@row>col=col-md-6|col-sm-12>row>col=col-md-8>box:activity",
     "n": 2
    },
-   "menu|@dragAndDrop": {
-    "sig": "dragAndDrop@row>col=col-md-6|col-sm-12>row>col=col-md-8>box:activity",
-    "n": 1
-   },
    "menu|@a": {
     "sig": "a@row>col=col-md-6|col-sm-12>row>col=col-md-8>box:activity>row>col=col-12",
     "n": 2
+   },
+   "menu|@dragAndDrop": {
+    "sig": "dragAndDrop@row>col=col-md-6|col-sm-12>row>col=col-md-8>box:activity",
+    "n": 1
    }
   },
   "XOTPG03": {

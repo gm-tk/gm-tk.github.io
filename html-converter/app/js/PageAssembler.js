@@ -95,6 +95,47 @@ class PageAssembler {
 	 * then gives it its box. Data activity_wrapper.journal_instruction_box.bracket_sentence; env JOURNALINSTR_OFF.
 	 */
 	/**
+	 * THE OVERVIEW TYPED IN A ONE-CELL TABLE IS THE OVERVIEW MENU. A writer may put the whole overview — Learning Intentions,
+	 * How will I know, then each tab under a «[tab]» tag — in one 1 x 1 table whose cell opens with the red «[Overview]» tag.
+	 * Left as a table, the menu reads one flat run (one tab, every heading an h5). Before the page split the table is replaced
+	 * by the items of its cell's paragraphs, with the marker, its writer hint and the «[tab]» markers taken out of the red
+	 * spans; the run remembers the form so the menu lays pane 1 out as the form's own two columns.
+	 * Data menu.overview_cell (+ menu.tabs_pane1_two_col.overview_cell); env OVERVIEWCELL_OFF.
+	 */
+	static #overviewCellUnfold(items, run, normaliser) {
+		const cfg = DataService.Data.EmitTemplates.menu?.overview_cell;
+		if (!cfg || cfg.enabled === false || !cfg.lead_pattern) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "OVERVIEWCELL_OFF"]) return;
+		const lead = new RegExp(cfg.lead_pattern, "iu");
+		const strips = (cfg.strip ?? []).map((s) => new RegExp(s, "giu"));
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		for (let k = 0; k < items.length; k++) {
+			const it = items[k];
+			if (it?.type !== "table") continue;
+			const b = it.block, rows = b?.rows ?? [];
+			if (rows.length !== 1 || (rows[0] ?? []).length !== 1) continue;
+			const cell = String(rows[0][0] ?? "");
+			if (!lead.test(cell)) continue;
+			const own = b.cellParas?.[0]?.[0];
+			const paras = Array.isArray(own) && own.length ? own : [cell];
+			const clean = (t) => String(t).replace(RED, (m, inner) => {
+				let s = inner;
+				for (const re of strips) s = s.replace(re, " ");
+				return s.trim() ? `\u{1f534}[RED TEXT] ${s.trim()} [/RED TEXT]\u{1f534}` : "";
+			});
+			const blocks = paras.map(clean).filter((t) => t.trim())
+				.map((t) => ({ kind: "para", text: t, links: (b.links ?? []).slice(), wtPage: b.wtPage, list: "", listLevel: 0 }));
+			if (!blocks.length) continue;
+			const made = PageSplitter.BuildItemStream(blocks, normaliser);
+			for (const m of made) m._overviewCell = true;
+			items.splice(k, 1, ...made);
+			run.overviewCell = true;
+			run.AddNote("info", "PageAssembler", "The overview typed in a one-cell [Overview] table was read as the overview menu (its paragraphs, the [tab] markers as tabs).");
+			return;   // one overview per module
+		}
+	}
+
+	/**
 	 * THE ONE-CELL TABLE IS THE WRITER'S BOX, NOT A TABLE. A writer often puts one element in a one-row one-cell table —
 	 * «[video] [media item 7] <address> / [caption] Possessive Pronoun», «[alert] Did you know …», «[audio item 1] / …» —
 	 * and the table renderer cannot show such a cell's tags, so the whole table shipped raw inside a hand-off box (the MTK
@@ -1231,6 +1272,7 @@ class PageAssembler {
 		PageAssembler.#inlineBoldPair(run);   // INLINEBOLD_OFF — before the stream splits the line at the tag
 		PageAssembler.#brokenSentence(run);   // BROKENLINE_OFF
 		const items = PageSplitter.BuildItemStream(run.wtBlocks, normaliser);
+		PageAssembler.#overviewCellUnfold(items, run, normaliser);   // OVERVIEWCELL_OFF — first: every later pass reads the menu's own items
 		PageAssembler.#journalBracketSentence(items, run);   // before the split, the scanner and the converter all read the item
 		PageAssembler.#bareSummaryAlert(items, run, normaliser);   // SUMMARYALERT_OFF
 		PageAssembler.#cotagDuplicateId(items, run);   // ACTHDCOTAG_OFF — the co-tag rule's own guard

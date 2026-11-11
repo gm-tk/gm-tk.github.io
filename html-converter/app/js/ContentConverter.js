@@ -13354,13 +13354,22 @@ class ContentConverter {
 		const envOn = (k) => typeof process !== "undefined" && process.env && process.env[k];
 		if (envOn(c.env ?? "CENTRALIMG_OFF")) return null;
 		const f = Utils.Fold(String(it.text ?? "")).replace(/[\[\]]/g, " ").replace(/\s+/g, " ").trim();
-		if (!c.cue_pattern || !new RegExp(c.cue_pattern, "i").test(f)) return null;
+		// «<Name> as per global parameters» (elements.central_image.name_cue; env CENTRALIMGGP_OFF): the word before the
+		// phrase, with its optional pose number, is the whole name scope
+		let gpScope = null;
+		if (!c.cue_pattern || !new RegExp(c.cue_pattern, "i").test(f)) {
+			const gp = c.name_cue;
+			if (!gp || gp.enabled === false || !gp.pattern || envOn(gp.env ?? "CENTRALIMGGP_OFF")) return null;
+			const gm = f.match(new RegExp(gp.pattern, "i"));
+			if (!gm) return null;
+			gpScope = gm[1];
+		}
 		const cat = (c.catalogue && c.catalogue.enabled !== false && !envOn(c.catalogue.env ?? "CENTRALIMGCAT_OFF")) ? c.catalogue : null;
 		// with the catalogue, the asset and its pose are read from the bracket that carries the cue: the words a writer
 		// adds after the tag («CS: Create an image of Omar … a different colour for 0 (zero) …») name nothing; a tag
 		// missing its «]» reads on to the end of the span
-		let scope = f;
-		if (cat) {
+		let scope = gpScope ?? f;
+		if (cat && gpScope === null) {
 			const tagged = (Utils.Fold(String(it.text ?? "")).match(/\[[^\]]*\]/g) ?? []).find((b) => new RegExp(c.cue_pattern, "i").test(b));
 			if (tagged) scope = tagged.replace(/[\[\]]/g, " ").replace(/\s+/g, " ").trim();
 		}

@@ -258,6 +258,12 @@
 			"enabled": true,
 			"env": "CENTRALIMG_OFF",
 			"cue_pattern": "\\bcentrali[sz]ed\\s+images?\\b|\\bimages?\\s+centrali[sz]ed\\b|\\bcentral\\s+images?\\b|\\bimage\\s*central\\b",
+			"name_cue": {
+				"_doc": "THE CHARACTER NAMED «AS PER GLOBAL PARAMETERS». A writer may ask for a central-store character inside an ordinary image request — «[Image] RHS Aroha as per global parameters, crouching down …» — the subject's global parameters being its standard characters. The word just before the phrase (with an optional pose number) is read as the asset's name; a name the registry knows builds that asset (no number: its default pose, KB 14.13); any other word (Kea, image, map) leaves the span an ordinary image request.",
+				"enabled": true,
+				"env": "CENTRALIMGGP_OFF",
+				"pattern": "([a-z][a-z'’-]*(?:\\s+\\d{1,2})?)\\s+as\\s+per\\s+(?:the\\s+)?global\\s+param[a-z]*\\b"
+			},
 			"form": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"{src}\" alt=\"{alt}\">",
 			"assets": {
 				"aroha": { "src": "Science Characters/Aroha-{n}.jpg", "poses": [1, 2, 3, 4, 5], "default_pose": 1, "alt": "Aroha", "family": "Science" },
@@ -8301,9 +8307,29 @@
 				"min_words": 4
 			}
 		},
+		"overview_cell": {
+			"enabled": true,
+			"env": "OVERVIEWCELL_OFF",
+			"_doc": "THE OVERVIEW TYPED IN A ONE-CELL TABLE. Some writers put the whole overview (Learning Intentions, How will I know, then each tab under a [tab] tag) in one 1 x 1 table whose cell opens with the red [Overview] tag. The table renderer cannot read the tags inside a cell, so the menu saw one flat run: one Overview tab with every heading an h5. The human build shows the cell as the ordinary overview menu (Overview | Knowledge | Practices, pane 1 in two columns). Before the page split the table is replaced by the items of its cell's paragraphs, with the [Overview] marker, its writer hint and the [tab] markers taken out of the red spans (strip); the menu then lays pane 1 out with tabs_pane1_two_col.overview_cell.",
+			"lead_pattern": "^\\s*\\u{1f534}\\[RED TEXT\\]\\s*\\[\\s*overview\\s*\\]",
+			"strip": [
+				"\\[\\s*overview\\s*\\]\\s*(\\(\\s*leave blank[^)]*\\))?",
+				"\\[\\s*tab\\s*\\]"
+			]
+		},
 		"tabs_pane1_two_col": {
 			"move_li_two_col": true,
 			"enabled": true,
+			"overview_cell": {
+				"_doc": "Pane 1 of an overview typed in a one-cell [Overview] table (menu.overview_cell): Learning Intentions in the left column, How will I know in the right, h4 > span headings — the form's own layout in every human build that has it, so it is used before the subject|phase row when the pane holds no curriculum run.",
+				"cols": [
+					"col-md-6 col-12 paddingR",
+					"col-md-6 col-12 paddingL"
+				],
+				"split": "li_sc",
+				"li_level": "h4",
+				"li_sc_heading": "<h{level}><span>{heading}</span></h{level}>"
+			},
 			"_doc": "The OVERVIEW tabs-menu pane-1 TWO-COLUMN build (as in ENGJ402). The human renders tab 1 of most tabs overview menus as a curriculum/LI-SC column layout (the one-col families OS*/TRR/PNR/CED*501/MX*|1-3 are 'single'). pane1_col_by_phase records a single column width and serves as the TABTWOCOL_OFF path + the lesson-page/unregistered fallback. registry = generated from the human build (dominant pane-1 col-FORM + partition split per subject|phase; series rows only for ncols/split deviants). split kinds: curric_li (curriculum cols + LI/SC last col), curric_split (no LI in pane 1 — captured LI/SC heads move to TAB 2, the human's home for them, AGH1001/MXDI201), li_sc (LI col + SC col, no curriculum — CEDK501), single (the one-col path). Distribution: the LAST curric run anchors the LAST curric col (u,k|d, the 6+6 dominant); a col-md-12 BAND col takes the FIRST curric run only when exactly one other curric col remains (AGH1001 u|k,d) and stays EMPTY when two remain (ANZH304/404 |u,k|d — the human ships the empty spacer div). Any OTHER col ending empty = DECLINE, fall back to the single col. Guards: overview pages only; MenuBuilder.isReoModule (TRR bilingual keeps its one-col form); no registry row / 'single' row = the single-col path. Transforms (following the human tabs families): curric heading trailing-colon strip (the human almost always strips it) + the '**Label:** prose' glue split; LI/SC piped heading reduced to its English half (the human keeps eng-first strand labels like 'Measurement | Ine' — those are NOT in li/sc vocab, untouched); LI/SC level = li_level (h5 dominant; SSFUN05/08 h4 per group); curric level = curric_level (h4 dominant). Lead-in <p>s ('We are learning:'/'I can:') ride as captured content — never invented. Known differences: ART1002's empty col-md-8 band; MXDB301 strand sub-heads stay h4span (other-kind); pane-2 col token variance (AGH1001 col-md-6 paddingR vs the shell's col-md-8). env TABTWOCOL_OFF turns off the whole build (partition + registry + transforms).",
 			"curriculum_match_note": "curric vocab = two_col_li.left_match (reused, so the two menus share one vocabulary); li/sc below are the right_match refinement (li vs sc sub-split for the li_sc split kind).",
 			"li_match": [

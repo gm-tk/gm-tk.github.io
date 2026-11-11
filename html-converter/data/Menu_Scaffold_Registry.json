@@ -2549,6 +2549,24 @@
     }
    }
   },
+  "SCBI|1-3": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
+    }
+   }
+  },
   "SCBI|4-6": {
    "overview": "tabs",
    "lesson": "simplified",
@@ -4970,6 +4988,10 @@
    "lesson": "simplified"
   },
   "SAM1006": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "SCBI101": {
    "overview": "tabs",
    "lesson": "simplified"
   },

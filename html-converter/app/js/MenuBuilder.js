@@ -1769,6 +1769,12 @@ class MenuBuilder {
 			const hit = Object.keys(reg.groups).find((k) => k.toLowerCase() === lk);
 			if (hit) row = reg.groups[hit];
 		}
+		// THE OVERVIEW TYPED IN A ONE-CELL TABLE (menu.overview_cell; env OVERVIEWCELL_OFF): the form's own pane-1 row — LI | SC
+		// in two columns — before the subject|phase row, when the pane holds no curriculum run
+		const oc = cfg.overview_cell, ocMenu = DataService.Data.EmitTemplates.menu?.overview_cell;
+		if (run.overviewCell && oc && ocMenu && ocMenu.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ocMenu.env || "OVERVIEWCELL_OFF"])
+			&& !runs.some((r) => r.kind === "curric")) row = oc;
 		if (!row || row.split === "single" || !Array.isArray(row.cols) || row.cols.length < 2) return null;
 		// A row may carry its own env (the PWY|NCEA family row turns off with WTABMARK_OFF)
 		if (row.env && typeof process !== "undefined" && process.env && process.env[row.env]) return null;
