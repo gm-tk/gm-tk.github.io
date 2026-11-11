@@ -3748,6 +3748,14 @@ class ContentConverter {
 							markContent();
 							run.AddNote("info", "ContentConverter",
 								`Page ${page.lessonLabel}: activity box kept open for the prose after its data table.`);
+						} else if (!pirKey && this.#writerEndHold(bodyItems, i, bundles, it.consumedBy, tpl, renderedHeading)) {
+							// The writer typed more of this activity after the widget and closed it with their own [End activity]:
+							// the box stays open, the ordinary loop renders that content inside it, the [End activity] closes it.
+							emit(...this.#uploadBoxAfterText(bundle));
+							if (bundle._tailHtml) { emit(bundle._tailHtml); bundle._tailHtml = null; }
+							markContent();
+							run.AddNote("info", "ContentConverter",
+								`Page ${page.lessonLabel}: activity box kept open to the writer's [End activity].`);
 						} else {
 							// close the activity at the bundle's end (the
 							// terminator that ended the widget — e.g. the [H3])
@@ -3858,13 +3866,15 @@ class ContentConverter {
 					}
 					continue;   // realised as the tile grid at the end of the page
 				}
-				if (it._tabNavTable || it._stickyNavTable) {
+				// the writer's floating-nav box typed as a table (flagged by PageAssembler, skeleton.sticky_nav_glossary.floating_nav_table)
+				// is the same kind of set-up spec: one To Do note with its own wording
+				if (it._tabNavTable || it._stickyNavTable || it._floatingNavTable) {
 					const cpCfg = tpl.body_region.choice_page_tiles ?? {};
 					const rows = (it.block.rows ?? [])
 						.map((row) => (row ?? []).map(_navClean).filter(Boolean).join(" "))
 						.filter(Boolean);
 					emit(NotesAndComments.redFlag(Utils.FillTemplate(
-						(it._stickyNavTable ? cpCfg.sticky_todo : cpCfg.tabnav_todo) ?? "Navigation set-up table: {items}",
+						(it._floatingNavTable ? tpl.skeleton?.sticky_nav_glossary?.floating_nav_table?.todo : it._stickyNavTable ? cpCfg.sticky_todo : cpCfg.tabnav_todo) ?? "Navigation set-up table: {items}",
 						{ items: rows.join(" · "), labels: rows.join(", ") }), run, "todo"));
 					continue;
 				}
@@ -12439,6 +12449,65 @@ class ContentConverter {
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "DBXOWNBOX_OFF"]) return false;
 		if (this.#pageLessonNumber == null) return false;
 		return InteractiveBuilder.UploadBoxStandalone(bundle, tpl.interactive_builders?.dropDown);
+	}
+
+	/**
+	 * The owned activity box holds to the writer's own [End activity]. A widget that owns its activity box (a speech
+	 * bubble, a slideshow, a built carousel) normally closes the box at its own end; when the writer typed content
+	 * after the widget and then closed the activity with [End activity] — before any new activity, page boundary, section
+	 * marker or section heading — that content is the activity's (the human keeps it inside the box). True = leave the
+	 * frame open: the content renders through the ordinary loop inside the box and the writer's [End activity] closes it.
+	 * A container the writer opens inside (an [Alert]) and closes again is balanced; any other close tag walked over
+	 * (a widget's own end tag) is flagged _dbxStrayCloser so it never pops the activity frame.
+	 * Data activity_wrapper.owned_activity_holds_to_writer_end; env ACTENDHOLD_OFF.
+	 */
+	static #writerEndHold(bodyItems, i, bundles, ownerIdx, tpl, renderedHeading) {
+		const cfg = tpl.activity_wrapper?.owned_activity_holds_to_writer_end;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "ACTENDHOLD_OFF"]) return false;
+		const ownerBundle = bundles[ownerIdx];
+		if (!ownerBundle) return false;
+		const ccfg = tpl.container_auto_close?.activity_close_before ?? {};
+		const hMax = (typeof process !== "undefined" && process.env && process.env.ACTHEAD_OFF)
+			? (ccfg.rendered_heading_max_legacy ?? 3) : (ccfg.rendered_heading_max ?? 4);
+		const max = cfg.max_lookahead ?? 120;
+		const strays = [];
+		let depth = 0, content = false;
+		for (let j = i + 1; j < bodyItems.length && j <= i + max; j++) {
+			const c = bodyItems[j];
+			if (!c || c._consumed) continue;
+			if (c.consumedBy !== undefined && c.consumedBy !== null) {
+				if (c.consumedBy === ownerIdx || c.consumedBy === "activity-super-content") continue;
+				const b = bundles[c.consumedBy];
+				if (!b) return false;                                     // a merge sentinel = a new activity
+				if (b === ownerBundle) continue;
+				if (b.canonTag === "activity" || b.activityOwner !== undefined || (b.activityId !== null && b.activityId !== undefined)) return false;
+				if (cfg.foreign_widgets === false) return false;
+				content = true;
+				continue;
+			}
+			if (c.type !== "tag") { if (String(c.text ?? "").trim()) content = true; continue; }
+			const p = c.parse?.primary;
+			if (!p) { content = true; continue; }
+			if (p.directive === "CONTAINER_CLOSE") {
+				if (p.tag === "end activity") {
+					if (!content || depth) return false;
+					for (const s of strays) s._dbxStrayCloser = true;
+					return true;
+				}
+				if (/\bactivity\b/i.test(p.tag ?? "")) return false;
+				if (depth) depth--; else strays.push(c);
+				continue;
+			}
+			if (p.directive === "PAGE_BOUNDARY" || p.directive === "SECTION_MARKER") return false;
+			if ((ccfg.directives ?? []).includes(p.directive) || (ccfg.tags ?? []).includes(p.tag)) return false;
+			const isTitle = (ccfg.title_heading_tags ?? []).includes(p.tag);
+			const hh = isTitle ? null : renderedHeading(p);
+			if (hh !== null && hh <= (cfg.heading_max ?? hMax)) return false;   // a section heading closes the box
+			if (p.directive === "CONTAINER_OPEN") depth++;
+			content = true;
+		}
+		return false;
 	}
 
 	static #dropboxTailHold(bodyItems, i, bundles, ownerIdx, tpl, renderedHeading) {

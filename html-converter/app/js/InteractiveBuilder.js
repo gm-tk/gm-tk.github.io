@@ -2873,8 +2873,14 @@ class InteractiveBuilder {
 		const frontWords = (cfg.front_label_words ?? []).map((w) => String(w).toLowerCase());
 		// "Back", "Back:", "reveals 🡪" — a label word, optionally followed by punctuation
 		// or an arrow glyph, and nothing else. The REMAINDER (if any) is the back's text.
+		// A label word the writer put in brackets — «(Back)», «[Front]» — is the same label (labelled_pairs.bracketed_labels;
+		// env HINTPARENLABEL_OFF).
+		const bl = cfg.bracketed_labels;
+		const bracketed = !!bl && bl.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[bl.env ?? "HINTPARENLABEL_OFF"]);
 		const labelOnly = (s, words) => {
-			const t = this.#cellText(s).replace(/\*\*/g, "").replace(/[\u{1F000}-\u{1FAFF}\u{2190}-\u{27BF}\u{1F800}-\u{1F8FF}]/gu, " ").trim();
+			let t = this.#cellText(s).replace(/\*\*/g, "").replace(/[\u{1F000}-\u{1FAFF}\u{2190}-\u{27BF}\u{1F800}-\u{1F8FF}]/gu, " ").trim();
+			if (bracketed) t = t.replace(/^[([]\s*([A-Za-z]+)\s*[)\]]\s*([:.\-–—]?)\s*$/, "$1$2");
 			const m = /^([A-Za-z]+)\s*[:.\-–—]?\s*$/.exec(t);
 			return !!m && words.includes(m[1].toLowerCase());
 		};
@@ -7229,6 +7235,13 @@ class InteractiveBuilder {
 		if (tables.length !== 1) return null;
 		const allRows = tables[0].rows ?? [];
 		const width = Math.max(0, ...allRows.map((r) => (r ?? []).length));
+
+		// THE FACE-LABELLED CELLS: every cell opens with the writer's own face label, front and back alternating in
+		// reading order (one row or many). Data flipCard.face_labelled_cells; env FLIPFACECELL_OFF.
+		{
+			const fl = this.#flipFaceLabelledCells(allRows, tpl, run, renderInline ?? ((s) => s));
+			if (fl !== null) return fl;
+		}
 
 		// ALTERNATING multi-column "Flip card image" variant: a header row of
 		// Front|Back|Front|Back… labels over a SINGLE data row of 2N columns, each column-pair a
@@ -16829,6 +16842,67 @@ class InteractiveBuilder {
 			return Utils.FillTemplate(tpl.text, { text: t.split("<br>").map((x) => inline(x)).join("<br>") });
 		}
 		return Utils.FillTemplate(tpl.text, { text: inline(t) });
+	}
+
+	/**
+	 * THE FACE-LABELLED CELLS. Every non-empty cell, in reading order, opens with the writer's face label — «(front)»,
+	 * «(back)», «[Front]» — fronts and backs alternating, a front first (one row of 2N cells, or one card per row). Each
+	 * cell is split at the writer's « / »: the label and the writer's structural tags ([H4], [Body]) go; on the front a
+	 * picture part becomes the image and the text parts its title (the gold's front flipImage + img + h5); a front with no
+	 * picture keeps its text; the back's parts are its paragraphs. Any other red part (an instruction), a bullet, an
+	 * unpaired face or fewer than min_cards cards → null, so the other readings and the hand-off box stay as they were.
+	 * Data flipCard.face_labelled_cells; env FLIPFACECELL_OFF.
+	 */
+	static #flipFaceLabelledCells(allRows, tpl, run, inline) {
+		const cfg = tpl?.face_labelled_cells;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "FLIPFACECELL_OFF"]) return null;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const labelRe = new RegExp(cfg.label_pattern, "i"), tagRe = new RegExp(cfg.tag_strip_pattern, "i");
+		const imgRe = /istockphoto|\.(?:jpe?g|png|gif|webp|svg)\b|^\s*\[\s*image\b|\[IMAGE\b/i;
+		const cells = [];
+		for (const r of allRows) for (const c of (r ?? [])) if (String(c ?? "").replace(RED, "$1").trim()) cells.push(String(c));
+		if (cells.length < 2 * (cfg.min_cards ?? 2) || cells.length % 2) return null;
+		const faces = [];
+		for (let k = 0; k < cells.length; k++) {
+			const parts = cells[k].split(/\s\/\s/);
+			const first = parts.shift().replace(RED, "$1").trim();
+			const m = labelRe.exec(first);
+			if (!m || m[1].toLowerCase() !== (k % 2 ? "back" : "front")) return null;
+			const rest = first.slice(m[0].length).trim();
+			if (rest && !tagRe.test(rest)) parts.unshift(rest);            // «(Back) [body]»: a tag riding the label goes with it
+			let image = "", texts = [];
+			for (const p of parts) {
+				const reds = [...p.matchAll(RED)].map((x) => x[1].trim()).filter(Boolean);
+				const black = this.#cellText(p.replace(RED, " ")).trim();
+				const isImg = reds.some((x) => imgRe.test(x)) || imgRe.test(black);
+				if (isImg) { image += " " + p; continue; }
+				if (reds.some((x) => !tagRe.test(x))) return null;           // a red instruction the card cannot hold
+				if (!black) continue;
+				if (/[•·]|\n/.test(black)) return null;
+				texts.push(black);
+			}
+			faces.push({ image: image.trim(), texts });
+		}
+		const cards = [];
+		for (let k = 0; k < faces.length; k += 2) {
+			const f = faces[k], b = faces[k + 1];
+			if (!b.texts.length || b.image) return null;
+			const back = b.texts.map((t) => `<p>${inline(t)}</p>`).join("");
+			if (f.image) {
+				const id = (f.image.match(/gm-?(\d{6,10})/) || f.image.match(/\/id\/(\d{4,10})/) || [])[1] ?? null;
+				const url = (f.image.match(/https?:\/\/[^\s\]]+/) || [])[0] ?? null;
+				const named = id ? Utils.FillTemplate(tpl.filename_istock, { id }) : (url ? this.#accImageFilename(url, tpl, null) : null);
+				const img = this.#assetImage(named ?? tpl.filename_generic, tpl, run);
+				if (!img) return null;
+				const title = f.texts.map((t) => Utils.FillTemplate(cfg.title, { text: inline(t) })).join("");
+				cards.push(Utils.FillTemplate(cfg.card_image, { front: img + title, back }));
+			} else {
+				if (!f.texts.length) return null;
+				cards.push(Utils.FillTemplate(tpl.card, { front: f.texts.map((t) => `<p>${inline(t)}</p>`).join(""), back }));
+			}
+		}
+		return [tpl.container_open, ...this.#flipCardsByCount(tpl, cards, run), tpl.container_close].join("\n");
 	}
 
 	/**

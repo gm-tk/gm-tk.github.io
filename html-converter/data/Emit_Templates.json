@@ -3257,6 +3257,13 @@
 			"widget_row_open": "<div class=\"row\"><div class=\"{widgetCol}\">",
 			"_note_rows": "KB CL-0048/CL-0036 (constraint 63): inside an activity, prose sits in its OWN inner row and the interactive follows in a SEPARATE inner row at the wrapper width. The human build largely PREDATES the rule — prose+widget in ONE inner col is its dominant anatomy — so the rule is NOT applied universally (captured as overrides_gold in Subject_Global_Parameters._universal_conventions.cl0048_prose_interactive_rows; doc-14's Mode-B rule keeps gold/sibling structure authoritative for the built corpus). This registry holds the groups whose human build DOES consistently use the SEPARATED form, where the split matches the human; it is generated from the human build, never hand-typed. ENFUN|Fundamentals: the human form (ENFUN02 1D) is activity > row > col-12 [PROSE] /row + row > col-md-12 col-12 [WIDGET] /row. The prose col is NOT changed by this rule (the human's prose col for a DEFAULT-width col-md-8 wrapper is col-12, which the existing open already emits; the widened col-11/col-md-11 wrappers are not emitted — the CL-0007 widths are not applied). Fires ONLY when the activity-owned bundle emitted PROSE first (title/lead/table — the actProse flag): a widget-only box keeps the single-col form (the human's widget-only box is col-12). A box with prose AFTER the widget is rare — the split still applies and trailing prose lands in the widget row (the human sometimes uses a third row). Groups without a consistent separated form keep same_col BY CONSTRUCTION: ENGFUN|Inquiry (one module), PNR|Bilingual (the bilingual boundary rules), MXFL|Standard (its separated boxes ride wrapper widening, which is not emitted). ENFUN09 is the family's own deviant (mostly same_col in its human build); the family form is applied uniformly. Env toggle ACTROWS_OFF gives the single-col flow."
 		},
+		"owned_activity_holds_to_writer_end": {
+			"enabled": true,
+			"env": "ACTENDHOLD_OFF",
+			"max_lookahead": 120,
+			"foreign_widgets": true,
+			"_doc": "A widget that owns its activity box (a speech bubble, a slideshow, a carousel) closes the box at its own end. When the writer typed more of the activity after the widget and closed it with their own [End activity] — before any new activity, page boundary, section marker, container opener or section heading — that content belongs inside the box, as the human builds it (an activity's closing instruction, tick list, journal text and button). The frame is left open; the ordinary loop renders the content inside it; the writer's [End activity] closes it. A widget's own end tag walked over never pops the activity frame. foreign_widgets false = an un-owned widget between the two ends the walk. Env ACTENDHOLD_OFF."
+		},
 		"owned_activity_keeps_trailing_dropbox": {
 			"enabled": true,
 			"env": "ACTDBXINSIDE_OFF",
@@ -3717,6 +3724,11 @@
 					{ "match": "docs\\.google\\.com/[^\"]*/copy\\b", "hint_type": "googleDrive" }
 				],
 				"box_open": "<div class=\"cv2-int-raw\"",
+				"box_close_ends_test": {
+					"enabled": true,
+					"env": "JOURNALBOXEND_OFF",
+					"_doc": "A hand-off box contains a journal button only while the box is still open at the button: the depth is counted from the box's open and the test ends at the box's own close. Without it, a button inside a container opened after an earlier, already-closed box (an activity box further down the page) read as inside that box, and the module's first journal button was skipped. Env JOURNALBOXEND_OFF."
+				},
 				"_doc": "THE MODULE'S FIRST JOURNAL BUTTON IS THE DOWNLOAD BLOCK (KB constraint 96). The first journal button the writer asked for, in page order, renders the download block with its hint; the writer's link replaces the docs/ address where one was given, and hintType follows that link. Every later reference stays the go-to-journal heading. A module whose writer typed no journal button gets none. A button inside a hand-off box is not read, and a wire-the-link note beside the first button goes with it, since the block has its address."
 			},
 			"lead_button": {
@@ -4835,6 +4847,11 @@
 			"labelled_pairs": {
 				"enabled": true,
 				"min_rows": 1,
+				"bracketed_labels": {
+					"enabled": true,
+					"env": "HINTPARENLABEL_OFF",
+					"_doc": "A label word the writer put in brackets — «(Back)», «[Front]» — reads as the same label: the Science writers type «[Hintslider] (Front) <hint>» then «(Back) <reveal>», and the bare-word test declined the whole slider at the bracketed «(Back)». Env HINTPARENLABEL_OFF."
+				},
 				"trailing_body": true,
 				"front_label_words": ["front"],
 				"back_label_words": ["back"],
@@ -5180,6 +5197,13 @@
 			"filename_istock": "iStock-{id}.jpg",
 			"_filename_note": "Mirrors Emit_Templates.image.filename_rules.istock so the bubble image stays editable in one place; the id is the run of 6-10 digits after 'gm' in the iStock URL.",
 			"paragraph_min_words": 6,
+			"picture_before_bubble": {
+				"enabled": true,
+				"env": "SBPICPAIR_OFF",
+				"text_col": "<div class=\"col-md-8 col-6\"><div class=\"bubble-basic no-hover bubble-left\">{text}</div></div>",
+				"image_col": "<div class=\"col-md-4 offset-md-0 col-12 paddingL\">{image}</div>",
+				"_doc": "THE PICTURE LINE BEFORE A TEXT-ONLY BUBBLE IS THE BUBBLE'S PICTURE (KB COMP_09). A writer types the speaker's picture as its own [Image] line and the [Speech bubble] straight after it; PageForge built a lone picture and then a text-only bubble (col-12, bubble-top), where the human builds one speech-bubble row: the text on the left (col-md-8 col-6, bubble-left) and the picture on the right (col-md-4 offset-md-0 col-12 paddingL) — the standard bubble's fixed side. A body pass over each page: a picture followed only by its commented local line and the writer's notes, then a text-only bubble row, becomes the pair; the notes stay before the row. Env SBPICPAIR_OFF."
+			},
 			"no_table_image": {
 				"enabled": true,
 				"open": "<div class=\"row speechBubble\" layout=\"{layout}\">",
@@ -5276,6 +5300,16 @@
 			"_paragraph_note": "The writer's ' / ' inside a bubble is a PARAGRAPH break when every part is sentence/paragraph-like — at least paragraph_min_words words AND containing ending punctuation (.!?); then the parts render as multiple <p> (OSAI501-02 #7's GenAI bubble). A ' / ' list of SHORT labels (or any bulleted/numbered bubble — OSBY301's kaitiakitanga list) is left as the honest placeholder. Lower this only if a genuine multi-paragraph bubble has unusually short paragraphs."
 		},
 		"flipCard": {
+			"face_labelled_cells": {
+				"enabled": true,
+				"env": "FLIPFACECELL_OFF",
+				"min_cards": 2,
+				"label_pattern": "^[\\[(]\\s*(front|back)\\s*[\\])]",
+				"tag_strip_pattern": "^[\\[(]\\s*(?:front|back|h[1-6]|body|heading)\\s*[\\])]$",
+				"title": "<h5>{text}</h5>",
+				"card_image": "<div class=\"col-md-4 col-12 paddingLR\"><div class=\"flipCard\"><div class=\"front flipImage\">{front}</div><div class=\"back\">{back}</div></div></div>",
+				"_doc": "THE FACE-LABELLED CELLS (KB constraint 5). A flip-card table whose every cell opens with the writer's face label — «(front)» / «(back)» — fronts and backs alternating in reading order, all in one row or one card per row. Each cell's label and structural tags ([H4], [Body]) go; a front's picture and title build the gold's image front (front flipImage + img + h5), a back's parts its paragraphs. Without it the one-row form stayed a hand-off box and the one-card-per-row form showed «(front)» / «(Back)» as learner text and lost the picture. Env FLIPFACECELL_OFF."
+			},
 			"general_cards": {
 				"enabled": true,
 				"card_tags": ["flip card"],
@@ -7106,6 +7140,14 @@
 			"note_match": "<p class=\"cv2-note\"[^>]*>[\\s\\S]*?</p>",
 			"page_drop_match": "<p class=\"cv2-note\"[^>]*>Designer/Developer To Do: Lesson menu:[\\s\\S]*?</p>\\s*",
 			"module_drop_match": "<p class=\"cv2-note\"[^>]*>Red Flag: Un-built \\[glossary\\] marker[\\s\\S]*?</p>\\s*",
+			"floating_nav_table": {
+				"enabled": true,
+				"env": "FLOATNAVTABLE_OFF",
+				"lead_pattern": "^\\[\\s*floating[ -]?nav\\s*\\]",
+				"glossary_pattern": "\\bglossary\\b",
+				"todo": "The writer's [Floating Nav] box is the floating-nav include (js/stickyNav.js), not page content — set it up with these items: {items}.",
+				"_doc": "THE WRITER'S FLOATING-NAV BOX TYPED AS A TABLE (KB 05A). A table whose first cell is the [Floating Nav] tag is the floating navigation's set-up; the human ships the js/stickyNav.js include and nothing on the page. The table shows as one Designer/Developer To Do note listing its items (the converter's nav set-up branch), and a glossary named in it is the floating-nav glossary the writer asks for (the rule above: the script on every page). Env FLOATNAVTABLE_OFF."
+			},
 			"_doc": "THE GLOSSARY THE WRITER ASKS FOR IN A FLOATING NAV (KB 05A, the one exception to never_emit's stickyNav.js). When the document asks for a glossary in a floating or sticky nav, or tells the learner the floating nav holds one, every page of the module carries the stickyNav include, and a page holding only the glossary becomes its own glossary page with the Glossary heading. No Red Flag is raised about the request. A glossary given only as a Word link has its terms outside the document, so no page is made for it."
 		},
 		"title_patterns": {

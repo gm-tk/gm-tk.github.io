@@ -1134,6 +1134,32 @@ class PageAssembler {
 		return c;
 	}
 
+	/**
+	 * THE WRITER'S FLOATING-NAV BOX TYPED AS A TABLE. A table whose first cell is the [Floating Nav] tag is the set-up of the
+	 * floating navigation (the human ships it as the js/stickyNav.js include, never as page text): it is flagged so the
+	 * converter shows it as one Designer/Developer To Do note listing its items. Returns true when such a table names a
+	 * glossary — the floating-nav glossary the writer asks for. Data skeleton.sticky_nav_glossary.floating_nav_table;
+	 * env FLOATNAVTABLE_OFF.
+	 */
+	static #floatingNavTable(items, run) {
+		const c = DataService.Data.EmitTemplates.skeleton?.sticky_nav_glossary?.floating_nav_table;
+		if (!c || c.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "FLOATNAVTABLE_OFF"]) return false;
+		const clean = (s) => String(s ?? "").replace(/\u{1f534}/gu, "").replace(/\[\/?RED TEXT\]/g, "").replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+		const lead = new RegExp(c.lead_pattern, "i"), gloss = new RegExp(c.glossary_pattern, "i");
+		let asked = false, n = 0;
+		for (const it of items) {
+			if (it?.type !== "table") continue;
+			const cells = (it.block?.rows ?? []).flat().map(clean).filter(Boolean);
+			if (!cells.length || !lead.test(cells[0])) continue;
+			it._floatingNavTable = true;
+			n++;
+			if (gloss.test(cells.join(" "))) asked = true;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} floating-nav set-up table${n > 1 ? "s" : ""} read as the nav's set-up, not page text (floating_nav_table).`);
+		return asked;
+	}
+
 	/** True when any line of the document asks for a glossary in a floating or sticky nav, or says the nav holds one. */
 	static #stickyGlossaryAsked(items) {
 		const c = PageAssembler.#stickyGlossaryCfg();
@@ -1177,14 +1203,46 @@ class PageAssembler {
 			.replace(new RegExp(c.header_match), Utils.FillTemplate(c.page_header, { code }));
 	}
 
-	/** True when a position in a page's body sits inside an un-built widget's hand-off box. */
-	static #inHandoffBox(html, index, open) {
+	/** True when a position in a page's body sits inside an un-built widget's hand-off box. With closeEnds, a box whose
+	 *  own close comes before the position does not contain it, whatever containers open after it (data
+	 *  buttons.go_journal.first_reference.box_close_ends_test; env JOURNALBOXEND_OFF). */
+	static #inHandoffBox(html, index, open, closeEnds = false) {
 		for (let at = html.lastIndexOf(open, index); at >= 0; at = at > 0 ? html.lastIndexOf(open, at - 1) : -1) {
-			let depth = 0;
-			for (const t of html.slice(at, index).matchAll(/<(\/?)div\b/g)) depth += t[1] ? -1 : 1;
-			if (depth > 0) return true;
+			let depth = 0, closed = false;
+			for (const t of html.slice(at, index).matchAll(/<(\/?)div\b/g)) {
+				depth += t[1] ? -1 : 1;
+				if (closeEnds && depth <= 0) { closed = true; break; }
+			}
+			if (!closed && depth > 0) return true;
 		}
 		return false;
+	}
+
+	/**
+	 * The picture line the writer typed directly before a text-only speech bubble is that bubble's picture: the two
+	 * become one speech-bubble row, the text on the left and the picture on the right (the standard bubble's fixed
+	 * side). The writer's notes between the two stay before the row; the picture keeps its own markup (a central
+	 * character, a stock placeholder and its commented local line). Data interactive_builders.speechBubble.
+	 * picture_before_bubble {enabled, env, text_col, image_col}; env SBPICPAIR_OFF.
+	 */
+	static #pictureBesideBubble(pageProducts, run) {
+		const c = DataService.Data.EmitTemplates.interactive_builders?.speechBubble?.picture_before_bubble;
+		if (!c || c.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "SBPICPAIR_OFF"]) return;
+		const re = /(<img class="img-fluid(?: imageCentral)?"[^>]*>)(\s*<!--\s*<img[^>]*>\s*-->)?((?:\s*<p class="cv2-note"[^>]*>[^<]*<\/p>)*)\s*<div class="row speechBubble" layout="speech">\s*<div class="col-12">\s*<div class="bubble-basic no-hover bubble-top">((?:(?!<\/?div\b)[\s\S])*)<\/div>\s*<\/div>\s*<\/div>/g;
+		let n = 0;
+		for (const product of pageProducts) {
+			const html = String(product.content?.bodyHtml ?? "");
+			if (!html.includes("bubble-top")) continue;
+			const out = html.replace(re, (_m, img, comment, notes, text) => {
+				n++;
+				return `${notes ? notes.trim() + "\n" : ""}<div class="row speechBubble" layout="speech">\n`
+					+ Utils.FillTemplate(c.text_col, { text }) + "\n"
+					+ Utils.FillTemplate(c.image_col, { image: img + (comment ? "\n" + comment.trim() : "") }) + "\n</div>";
+			});
+			if (out !== html) product.content.bodyHtml = out;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} picture line(s) directly before a speech bubble placed beside it (picture_before_bubble).`);
 	}
 
 	/**
@@ -1196,10 +1254,13 @@ class PageAssembler {
 		if (!c || c.enabled === false) return;
 		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "JOURNALFIRST_OFF"]) return;
 		const re = new RegExp(c.reference_match, "gi");
+		const ce = c.box_close_ends_test;
+		const closeEnds = !!ce && ce.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ce.env ?? "JOURNALBOXEND_OFF"]);
 		for (const product of pageProducts) {
 			const html = String(product.content?.bodyHtml ?? "");
 			for (const m of html.matchAll(re)) {
-				if (PageAssembler.#inHandoffBox(html, m.index, c.box_open)) continue;
+				if (PageAssembler.#inHandoffBox(html, m.index, c.box_open, closeEnds)) continue;
 				if (m[2] && /\bdownloadButton\b/.test(m[0])) return;   // already the block
 				const given = m[1] && !/^docs\//i.test(m[1]) ? m[1] : "";
 				const href = given || Utils.FillTemplate(c.default_href, { code: run.moduleCode ?? "" });
@@ -1288,7 +1349,8 @@ class PageAssembler {
 		PageAssembler.#oneCellUnfold(items, run, normaliser);   // ONECELLUNFOLD_OFF — before the split and the scanner
 		PageAssembler.#frontMatterBody(items, run);   // FRONTMATTERBODY_OFF
 		PageAssembler.#templatePrompts(items, run);   // TEMPLATEPROMPT_OFF
-		run.stickyNavGlossary = PageAssembler.#stickyGlossaryAsked(items);   // GLOSSNAV_OFF
+		const floatingNavGlossary = PageAssembler.#floatingNavTable(items, run);   // FLOATNAVTABLE_OFF
+		run.stickyNavGlossary = PageAssembler.#stickyGlossaryAsked(items) || (floatingNavGlossary && !!PageAssembler.#stickyGlossaryCfg());   // GLOSSNAV_OFF
 		run.pages = PageSplitter.Split(items, run, normaliser);
 		if (!run.pages.length) {
 			run.AddNote("error", "PageAssembler",
@@ -1542,6 +1604,7 @@ class PageAssembler {
 		// sibling chaining.
 		const footerEmpty = (DataService.Data.EmitTemplates.footer?.nav_links_empty?.enabled === true)
 			&& !(typeof process !== "undefined" && process.env && process.env.FOOTEREMPTY_OFF);
+		PageAssembler.#pictureBesideBubble(pageProducts, run);   // SBPICPAIR_OFF
 		PageAssembler.#firstJournalDownload(pageProducts, run);   // JOURNALFIRST_OFF
 		pageProducts.forEach(({ page, content }, i) => {
 			const html = PageAssembler.#glossaryShell(page, run, MenuBuilder.ListItemCase(SkeletonBuilder.BuildPage({
