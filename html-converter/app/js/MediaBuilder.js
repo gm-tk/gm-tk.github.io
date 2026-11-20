@@ -610,6 +610,7 @@ class MediaBuilder {
 			?? "";
 
 		let builtVideoEmbed = false;
+		let audioNamedInText = false;   // the audio player took its file name from the writer's words after the tag
 		// THE AUDIO ANIMATION IS A VIDEO: an audio-resolved tag whose own words name an animation («[Audio animation]») is
 		// the audiovisual team's animation video — the video embed when a YouTube / Vimeo address is found, otherwise the
 		// video frame shell and a developer To Do (never an empty audio player). Data elements.audio_animation; env
@@ -633,7 +634,19 @@ class MediaBuilder {
 				out.push(aa.frame);
 			}
 		} else if (kind === "audio") {
-			const file = url.split("/").pop() || tpl.audio.default_filename;
+			let file = url.split("/").pop() || tpl.audio.default_filename;
+			// the address names no sound file (a share link) but the writer's own words after the tag are the file's name
+			// («Mara-audio (1).mp3»): the player takes that name — a download's « (1)» copy mark dropped — and the words are
+			// not repeated under it. Data audio.filename_from_text; env AUDIOFILETEXT_OFF.
+			const ft = tpl.audio.filename_from_text;
+			if (ft && ft.enabled !== false && !/\.\w{2,4}$/.test(file)
+				&& !(typeof process !== "undefined" && process.env && process.env[ft.env ?? "AUDIOFILETEXT_OFF"])) {
+				const named = String(it.blackAfter ?? "").replace(/[*_]+/g, "").trim().match(new RegExp(ft.pattern, "i"));
+				if (named) {
+					file = named[0].replace(new RegExp(ft.copy_mark_pattern ?? "\\s*\\(\\d+\\)(?=\\.\\w+$)"), "").trim();
+					audioNamedInText = true;
+				}
+			}
 			// the request that names no file is the compact audio button in the groups whose human build uses it
 			// (audio.request_button; env AUDIOREQBTN_OFF)
 			const rb = tpl.audio.request_button;
@@ -709,7 +722,7 @@ class MediaBuilder {
 			&& !(typeof process !== "undefined" && process.env && process.env.VIDTITLE_OFF);
 		const own = it.blackAfter ?? "";
 		const following = gathered.length > own.length ? gathered.slice(own.length) : "";
-		let keepRaw = (dropTitleOn && kind === "video" && builtVideoEmbed) ? following : gathered;
+		let keepRaw = ((dropTitleOn && kind === "video" && builtVideoEmbed) || audioNamedInText) ? following : gathered;
 		// THE HYPERLINKED LEAD. When the writer hyperlinked the WHOLE
 		// line "[audio] snail, paint, trail, stain, faint, train" to its sound file, the
 		// extractor counts the run as red so the tag is seen — but the words after the

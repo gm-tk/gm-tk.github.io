@@ -31,6 +31,7 @@
 !/html-converter/data/Input_Doc_Rules.json
 !/html-converter/data/Instruction_Cues.json
 !/html-converter/data/Interactive_Boundary_ChildTag_Bank.json
+!/html-converter/data/Interactive_Switches.json
 !/html-converter/data/Manifest_Patterns.json
 !/html-converter/data/Menu_Scaffold_Registry.json
 !/html-converter/data/Module_Structure_Index.json

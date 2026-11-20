@@ -71,7 +71,8 @@ class SkeletonBuilder {
 		// preserved (combo marks a combined-cohort template decision, not a
 		// level band). Data: skeleton.template_phase_presets.
 		// Env toggle: TPLPRESET_OFF (reverts to the pure sibling value).
-		let phaseForAttr = run.resolvedRules?.template_phase;
+		// under a chosen reference module the module's own year band stands (ModuleResolver sets run.ownYearBand)
+		let phaseForAttr = run.ownYearBand ?? run.resolvedRules?.template_phase;
 		const tppCfg = tpl.skeleton.template_phase_presets;
 		const tppOn = tppCfg && tppCfg.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.TPLPRESET_OFF);

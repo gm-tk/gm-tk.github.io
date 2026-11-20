@@ -1,0 +1,42 @@
+{
+	"_how_to_use": [
+		"This ONE file decides which interactive types PageForge builds itself.",
+		"master: \"all_off\" = every type is left as a placeholder. \"per_type\" = follow the types list below (PageForge's normal setting). \"all_on\" = every type is built: it is never used to write modules (the harness refuses it); a switched-off type's builder is tested in memory by the builder test instead.",
+		"To switch ONE type back on: set master to \"per_type\", then change that type from \"off\" to \"on\". Nothing else needs editing.",
+		"A type that is off keeps its builder untouched, and its raw content is still saved to the {CODE}_interactives hand-off file.",
+		"built_notes: \"drop\" = a type switched on here does not repeat the writer's requests as notes after the built interactive. \"keep\" shows them."
+	],
+	"master": "per_type",
+	"built_notes": "drop",
+	"version_labels": {
+		"all_off": "PageForge",
+		"all_on": "every type built (never written to the modules folder)",
+		"per_type": "PageForge"
+	},
+	"types": {
+		"accordion": "off",
+		"carousel": "off",
+		"clickDrop": "off",
+		"dragAndDrop": "off",
+		"dropDown": "off",
+		"flipCard": "off",
+		"glossary": "off",
+		"hint": "off",
+		"hintSlider": "off",
+		"memoryGame": "off",
+		"modal": "off",
+		"multiChoiceQuiz": "off",
+		"pathwaysPersona": "off",
+		"radioQuiz": "off",
+		"reorder": "off",
+		"selectionBox": "on",
+		"selfCheck": "off",
+		"shapeHover": "off",
+		"slider": "off",
+		"speechBubble": "on",
+		"tabs": "off",
+		"typing": "off",
+		"unclassified": "off",
+		"wordDrag": "off"
+	}
+}

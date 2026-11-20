@@ -70,6 +70,19 @@
 			"ff0000",
 			"ee0000"
 		],
+		"side_word_into_tag": {
+			"_doc": "A red span that is one callout tag followed only by a side word — «[Alert] RHS» — is read as «[Alert RHS]», the form the right-hand box rules already build. Env SIDEWORDTAG_OFF.",
+			"enabled": true,
+			"env": "SIDEWORDTAG_OFF",
+			"pattern": "^(\\s*\\[\\s*(?:alert|important|supervisor(?:'s)?\\s+(?:button|note))[^\\[\\]]*?)\\s*\\]\\s*(rhs|rhc)\\s*$",
+			"replace": "$1 $2]"
+		},
+		"midword_colour_slip": {
+			"_doc": "Red text that stops inside a word, the black run after it carrying the word on with no space («Think about these questions a» red + «s you watch:» black), is learner text left red by accident: the words after the red run's last tag bracket turn black. min_words keeps a one-word slip (a stray red letter) as it is. Env REDSLIP_OFF.",
+			"enabled": true,
+			"env": "REDSLIP_OFF",
+			"min_words": 2
+		},
 		"bracket_donation": {
 			"enabled": true,
 			"env": "BRACKETDONATE_OFF",

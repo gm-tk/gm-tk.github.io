@@ -167,6 +167,12 @@ class InteractiveScanner {
 				for (let j = i + 1; j < items.length; j++) {
 					const peek = items[j];
 					if (peek.consumedBy !== undefined) break;
+					// a table that is a box typed as a table — its first cell opens with a callout tag («[Supervisor button] RHS»,
+					// «[Alert RHS]») — is page layout, not widget data: it never makes the activity a build task
+					// (interactive_builders.unclassified.callout_table_is_layout; env CALLOUTTABLE_OFF)
+					if (peek.type === "table" && InteractiveScanner.#calloutTable(peek)) continue;
+					// a table whose first cell opens with a widget's own tag («[Accordion]») is that widget — the normal path owns it
+					if (peek.type === "table" && InteractiveScanner.#calloutTable(peek, "widget_lead_pattern")) break;
 					if (peek.type === "table") { tableAhead = true; break; }
 					if (peek.type !== "tag") continue;
 					const pp = peek.parse.primary;
@@ -5199,6 +5205,23 @@ class InteractiveScanner {
 	 * typed in black at the line's end (black_mark_pattern); blank lines between are skipped. Questions follow each other
 	 * into one run. Returns the run's end index (exclusive) — at least one complete question — or -1.
 	 */
+	/**
+	 * Is this table a box or a widget typed as a table — its first cell opening with a callout tag (lead_pattern) or a
+	 * widget's own tag (widget_lead_pattern)?
+	 * Data interactive_builders.unclassified.callout_table_is_layout {enabled, env, lead_pattern, widget_lead_pattern}.
+	 * @param {object} item - a table item
+	 * @param {string} [key] - which pattern to test
+	 * @returns {boolean}
+	 */
+	static #calloutTable(item, key = "lead_pattern") {
+		const cfg = DataService.Data.EmitTemplates?.interactive_builders?.unclassified?.callout_table_is_layout;
+		if (!cfg || cfg.enabled === false || !cfg[key]
+			|| (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "CALLOUTTABLE_OFF"])) return false;
+		const c = item?.block?.rows?.[0]?.[0];
+		const first = String(typeof c === "string" ? c : c?.text ?? "").replace(/\u{1f534}|\[\/?RED TEXT\]/gu, " ").replace(/\s+/g, " ").trim();
+		return new RegExp(cfg[key], "i").test(first);
+	}
+
 	static #freeQuestionRun(items, i, fr) {
 		const clean = (s) => String(s ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
 		const stemRe = new RegExp(fr.stem_pattern ?? "^\\s*(\\*\\*)?\\s*(?:(\\d{1,2})[.)]\\s*)?(\\S.*?)\\s*(?:\\*\\*)?\\s*$", "i");

@@ -115,6 +115,8 @@ class BilingualBuilder {
 		const hc = cfg.collapse, col = DataService.Data.EmitTemplates.interactive_placeholder?.extract?.collapse;
 		if (hc && hc.enabled !== false && col && col.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env[hc.env || "HANDOFFCOLLAPSE_OFF"])) {
+			const quiet = InteractiveBuilder.QuietMarker({ id: ref, ref, label: ref, type: "bilingualTable", file: ManifestBuilder.FileName(run) });
+			if (quiet) return quiet.replace('class="cv2-interactive cv2-int-ref"', 'class="cv2-interactive cv2-int-ref bilingual-unbuilt"').replace(' data-cv2-index=""', "");
 			const open = Utils.FillTemplate(col.wrapper_open, { index: "", id: ref, ref })
 				.replace('class="cv2-interactive cv2-int-ref"', 'class="cv2-interactive cv2-int-ref bilingual-unbuilt"')
 				.replace(' data-cv2-index=""', "");
@@ -1833,6 +1835,8 @@ class BilingualBuilder {
 		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.face_cards;
 		if (!c || c.enabled === false
 			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOFACECARD_OFF"])) return null;
+		// flip cards switched off in data/Interactive_Switches.json stay a placeholder here too
+		if (!InteractiveBuilder.TypeIsOn("flipCard")) return null;
 		return c;
 	};
 

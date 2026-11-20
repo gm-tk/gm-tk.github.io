@@ -34,7 +34,7 @@ class Config {
 	// This is shown in the UI so a developer can tell which build produced a
 	// page. It is NOT written into the converted HTML, so changing it never
 	// changes any output — bump it with every release.
-	static AppVersion = "260627.21";
+	static AppVersion = "260627.26";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
@@ -87,6 +87,9 @@ class Config {
 		// by the sprint-scan tools). ModuleResolver reads a code with no digits only
 		// when the template's own Module code line names it AND this list holds it.
 		SprintModuleCodes: "../data/Sprint_Module_Codes.json",
+		// Which interactive types the converter builds itself (one master setting plus a
+		// per-type list). Its own _how_to_use lines say how to switch a type on.
+		InteractiveSwitches: "../data/Interactive_Switches.json",
 	};
 
 	// ---------------------------------------------------------------------

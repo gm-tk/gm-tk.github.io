@@ -3028,6 +3028,28 @@ class DocxExtractor {
 			}
 		}
 
+		// THE COLOUR SLIP MID-WORD. Red text that stops inside a word — the black run after it carries the word on with no
+		// space («Think about these questions a» + «s you watch:») — is learner text the writer left red by accident, not an
+		// instruction: the words after the red run's last tag bracket turn black, in the following run's own formatting, so the
+		// sentence reads whole.
+		// Data Input_Doc_Rules.json red_runs.midword_colour_slip; env REDSLIP_OFF.
+		const _ms = rules.red_runs?.midword_colour_slip;
+		if (_ms && _ms.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_ms.env ?? "REDSLIP_OFF"])) {
+			for (let k = 0; k + 1 < pieces.length; k++) {
+				const p = pieces[k], q = pieces[k + 1];
+				if (!p.red || q.red || !/^\p{Ll}/u.test(String(q.text))) continue;
+				const cut = String(p.text).lastIndexOf("]") + 1;
+				const tail = String(p.text).slice(cut);
+				if (!/\p{L}$/u.test(tail) || /\[/.test(tail)) continue;
+				if (tail.trim().split(/\s+/).length < (_ms.min_words ?? 2)) continue;
+				const lead = /^\s*/.exec(tail)[0];
+				const parts = cut || lead ? [{ ...p, text: String(p.text).slice(0, cut) + lead }, { ...q, text: tail.slice(lead.length) }] : [{ ...q, text: String(p.text) }];
+				pieces.splice(k, 1, ...parts.filter((x) => x.text !== ""));
+				k += parts.length - 1;
+			}
+		}
+
 		// ---- serialise the pieces into the corpus marker-text form ------
 		let out = "";
 		let i = 0;
@@ -3134,6 +3156,13 @@ class DocxExtractor {
 				// marker and the paragraph fragments)
 				const collapseRedWs = rules.red_runs.collapse_whitespace_only
 					&& !(typeof process !== "undefined" && process.env && process.env.REDWS_OFF);
+				// THE SIDE WORD TYPED AFTER THE BRACKET. «[Alert] RHS» is the writer's «[Alert RHS]»: a red span that is one callout
+				// tag followed only by its side word reads with the word inside the bracket, so the right-hand box rules see it.
+				// Data Input_Doc_Rules.json red_runs.side_word_into_tag; env SIDEWORDTAG_OFF.
+				const _sw = rules.red_runs.side_word_into_tag;
+				if (_sw && _sw.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[_sw.env ?? "SIDEWORDTAG_OFF"])) {
+					redText = redText.replace(new RegExp(_sw.pattern, "i"), _sw.replace);
+				}
 				if (collapseRedWs && redText.trim() === "") out += " ";
 				else out += `${rules.red_runs.marker_open}${redText}${rules.red_runs.marker_close}`;
 			} else {

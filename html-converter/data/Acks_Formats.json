@@ -188,7 +188,7 @@
  "family_credit_flags": {
   "enabled": true,
   "env": "XOTPACKS_OFF",
-  "_doc": "Flagged placeholders for a missing family credit (KB 05C 'Sourcing the acknowledgement entries': where a credit is unavailable, raise a VISIBLE red flag for the developer to complete — not a hidden HTML comment). A family whose Writers Template never carries its credit line: every EMPTY per-lesson acks group (no entry built for it) gets a visible red Designer/Developer To Do after its constraint-73 lesson label, and the catch-all line takes the family's own form. Keyed by code prefix, one row per family. The XOTP reader books: the human builds credit the story ('Story: <title> by Anne Russell and Rosemary Emery, © Off The Page. Used with permission.') and close with 'All illustrations © Te Aho o Te Kura Pounamu…'; the WT only links the reader, so the credit cannot be derived. Env XOTPACKS_OFF turns the flags and the family catch-all off.",
+  "_doc": "Flagged placeholders for a missing family credit (KB 05C 'Sourcing the acknowledgement entries': where a credit is unavailable, raise a VISIBLE red flag for the developer to complete — not a hidden HTML comment). A family whose Writers Template never carries its credit line: every EMPTY per-lesson acks group (no entry built for it) gets a visible red Designer To Do after its constraint-73 lesson label, and the catch-all line takes the family's own form. Keyed by code prefix, one row per family. The XOTP reader books: the human builds credit the story ('Story: <title> by Anne Russell and Rosemary Emery, © Off The Page. Used with permission.') and close with 'All illustrations © Te Aho o Te Kura Pounamu…'; the WT only links the reader, so the credit cannot be derived. Env XOTPACKS_OFF turns the flags and the family catch-all off.",
   "rows": [
    {
     "code_prefixes": ["XOTP"],
@@ -204,7 +204,7 @@
   "marker": "❗ ",
   "todo_comment": "<!-- ACK-TODO[istock-unverified] id=\"{id}\" title-source=\"{source}\" -->",
   "note_class": "cv2-note",
-  "note_form": "<p class=\"{noteClass}\" style=\"color: red; font-weight: bold;\">Designer/Developer To Do: {text}</p>",
+  "note_form": "<p class=\"{noteClass}\" style=\"color: red; font-weight: bold;\">Designer To Do: {text}</p>",
   "note_no_file": "No iStock acknowledgements file (*istock-acks*.txt) was supplied with this module, so the {count} iStock title{plural} below could not be verified against the iStock API and {were} derived from the image URL. Each unverified line is marked ❗. Please supply the verified acknowledgements file, or confirm each title before publishing.",
   "note_partial": "The supplied iStock acknowledgements file did not cover {count} of the iStock asset{plural} used in this module, so {those} title{plural} were derived from the image URL rather than verified against the iStock API. Each unverified line is marked ❗. Unverified asset id{plural}: {ids}.",
   "note_ids_max": 12,

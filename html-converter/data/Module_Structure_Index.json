@@ -159,7 +159,38 @@
    "SMFUN": "1-10 Languages",
    "SPNO": "1-10 Languages",
    "PMT": "Te Marautanga o Aotearoa TMoA"
-  }
+  },
+  "provisional_intake": [
+   {
+    "codes": [
+     "MXDI104",
+     "TRM1FUN116",
+     "TRM1FUN117",
+     "TRM1FUN118"
+    ],
+    "note": "provisional module_meta rows written at the staging of a new module batch so the new gold modules appear in the Reference-module picker at once; the per-module ladders and every sibling registry are rebuilt by the next registry rebuild, which supersedes these rows and removes this list."
+   },
+   {
+    "codes": [
+     "BLLR207",
+     "CHNO901",
+     "ENGC402",
+     "ENWJ111",
+     "ENWJ303",
+     "GEFUN01",
+     "GEFUN06",
+     "MXDI210",
+     "PWY1004",
+     "PWY1006",
+     "PWY1011",
+     "SMFUN01",
+     "SMFUN02",
+     "WJFUN204",
+     "WJLP01"
+    ],
+    "note": "provisional module_meta rows written at the staging of a new module batch so the new gold modules appear in the Reference-module picker at once; the per-module ladders and every sibling registry are rebuilt by the next registry rebuild, which supersedes these rows and removes this list."
+   }
+  ]
  },
  "module_meta": {
   "AGH1001": {
@@ -4801,6 +4832,158 @@
    "phase": "XWHA0",
    "series": "XWHA02",
    "dev_order": 2
+  },
+  "MXDI104": {
+   "subject": "1-10 Mathematics",
+   "template_type": "Standard",
+   "prefix": "MXDI",
+   "phase": "MXDI1",
+   "series": "MXDI10",
+   "dev_order": 104
+  },
+  "TRM1FUN116": {
+   "subject": null,
+   "template_type": "Fundamentals",
+   "prefix": "TRM",
+   "phase": "TRM1",
+   "series": "TRM1",
+   "dev_order": 1
+  },
+  "TRM1FUN117": {
+   "subject": null,
+   "template_type": "Standard",
+   "prefix": "TRM",
+   "phase": "TRM1",
+   "series": "TRM1",
+   "dev_order": 1
+  },
+  "TRM1FUN118": {
+   "subject": null,
+   "template_type": "Standard",
+   "prefix": "TRM",
+   "phase": "TRM1",
+   "series": "TRM1",
+   "dev_order": 1
+  },
+  "BLLR207": {
+   "subject": "1-10 Blended Literacy",
+   "template_type": "Standard",
+   "prefix": "BLLR",
+   "phase": "BLLR2",
+   "series": "BLLR20",
+   "dev_order": 207
+  },
+  "CHNO901": {
+   "subject": null,
+   "template_type": "Standard",
+   "prefix": "CHNO",
+   "phase": "CHNO9",
+   "series": "CHNO90",
+   "dev_order": 901
+  },
+  "ENGC402": {
+   "subject": "1-10 English",
+   "template_type": "Standard",
+   "prefix": "ENGC",
+   "phase": "ENGC4",
+   "series": "ENGC40",
+   "dev_order": 402
+  },
+  "ENWJ111": {
+   "subject": "1-10 English",
+   "template_type": "Standard",
+   "prefix": "ENWJ",
+   "phase": "ENWJ1",
+   "series": "ENWJ11",
+   "dev_order": 111
+  },
+  "ENWJ303": {
+   "subject": "1-10 English",
+   "template_type": "Standard",
+   "prefix": "ENWJ",
+   "phase": "ENWJ3",
+   "series": "ENWJ30",
+   "dev_order": 303
+  },
+  "GEFUN01": {
+   "subject": "1-10 Languages",
+   "template_type": "Fundamentals",
+   "prefix": "GEFUN",
+   "phase": "GEFUN0",
+   "series": "GEFUN01",
+   "dev_order": 1
+  },
+  "GEFUN06": {
+   "subject": "1-10 Languages",
+   "template_type": "Fundamentals",
+   "prefix": "GEFUN",
+   "phase": "GEFUN0",
+   "series": "GEFUN06",
+   "dev_order": 6
+  },
+  "MXDI210": {
+   "subject": "1-10 Mathematics",
+   "template_type": "Standard",
+   "prefix": "MXDI",
+   "phase": "MXDI2",
+   "series": "MXDI21",
+   "dev_order": 210
+  },
+  "PWY1004": {
+   "subject": "NCEA1",
+   "template_type": "Standard",
+   "prefix": "PWY",
+   "phase": "PWY1",
+   "series": "PWY10",
+   "dev_order": 1004
+  },
+  "PWY1006": {
+   "subject": "NCEA1",
+   "template_type": "Standard",
+   "prefix": "PWY",
+   "phase": "PWY1",
+   "series": "PWY10",
+   "dev_order": 1006
+  },
+  "PWY1011": {
+   "subject": "NCEA1",
+   "template_type": "Standard",
+   "prefix": "PWY",
+   "phase": "PWY1",
+   "series": "PWY10",
+   "dev_order": 1011
+  },
+  "SMFUN01": {
+   "subject": "1-10 Languages",
+   "template_type": "Fundamentals",
+   "prefix": "SMFUN",
+   "phase": "SMFUN0",
+   "series": "SMFUN01",
+   "dev_order": 1
+  },
+  "SMFUN02": {
+   "subject": "1-10 Languages",
+   "template_type": "Fundamentals",
+   "prefix": "SMFUN",
+   "phase": "SMFUN0",
+   "series": "SMFUN02",
+   "dev_order": 2
+  },
+  "WJFUN204": {
+   "subject": "1-10 Writing (MiW)",
+   "template_type": "Fundamentals",
+   "prefix": "WJFUN",
+   "phase": "WJFUN2",
+   "series": "WJFUN20",
+   "dev_order": 204
+  },
+  "WJLP01": {
+   "subject": null,
+   "template_type": "Standard",
+   "prefix": "WJLP",
+   "phase": "WJLP0",
+   "series": "WJLP01",
+   "dev_order": 1
   }
  },
  "modules": {

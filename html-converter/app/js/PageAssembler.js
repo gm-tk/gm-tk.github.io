@@ -1729,8 +1729,8 @@ class PageAssembler {
 			b.targetFile = run.outputs[pageIndex]?.filename ?? run.outputs[0]?.filename;
 		});
 		run.outputs.push({
-			filename: Utils.FillTemplate(naming.manifest_file, { code }),
-			content: DocxExtractor.UnderReplace(DocxExtractor.VertReplace(DocxExtractor.MathReplace(ManifestBuilder.Build(run)), true), true),   // equation sentinels → MathML in the hand-off too; sup / sub and underline sentinels stripped to plain text
+			filename: ManifestBuilder.FileName(run),
+			content: ManifestBuilder.AsHtml(DocxExtractor.UnderReplace(DocxExtractor.VertReplace(DocxExtractor.MathReplace(ManifestBuilder.Build(run)), true), true), run),   // equation sentinels → MathML in the hand-off too; sup / sub and underline sentinels stripped to plain text
 			kind: "manifest",
 		});
 

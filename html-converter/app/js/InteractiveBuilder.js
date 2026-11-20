@@ -83,6 +83,61 @@ class InteractiveBuilder {
 	 * @param {function} args.renderInline  - (line:string) => safe inline HTML
 	 * @returns {string|null}  built widget HTML, or null to use the placeholder
 	 */
+	/**
+	 * Does the converter build this interactive type itself? data/Interactive_Switches.json
+	 * decides: master "all_off" → no type; "all_on" → every type; "per_type" → the type's own
+	 * row ("on" builds it; anything else, or no row, leaves the placeholder). A type that is off
+	 * keeps its builder and template untouched. Env INTSWITCH_OFF ignores the file (every type on).
+	 * @param {string} type - the widget type
+	 * @returns {boolean}
+	 */
+	static TypeIsOn(type) {
+		const sw = DataService.Data.InteractiveSwitches;
+		if (!sw || (typeof process !== "undefined" && process.env && process.env.INTSWITCH_OFF)) return true;
+		if (sw.master === "all_on") return true;
+		if (sw.master === "per_type") return sw.types?.[type] === "on";
+		return false;
+	}
+
+	/**
+	 * Does a BUILT interactive of this type leave out the writer's requests as notes after it? A type switched on in
+	 * data/Interactive_Switches.json (master "per_type", built_notes "drop") builds from those requests, so they are done.
+	 * Env BUILTNOTES_KEEP shows them; INTSWITCH_OFF ignores the switch file.
+	 * @param {string} type - the widget type
+	 * @returns {boolean}
+	 */
+	static BuiltNotesDropped(type) {
+		const sw = DataService.Data.InteractiveSwitches;
+		if (!sw || sw.built_notes !== "drop" || sw.master !== "per_type" || sw.types?.[type] !== "on") return false;
+		return !(typeof process !== "undefined" && process.env && (process.env.INTSWITCH_OFF || process.env.BUILTNOTES_KEEP));
+	}
+
+	/**
+	 * The quiet-placeholder settings, or null when the quiet form is off.
+	 * Data: Emit_Templates.interactive_placeholder.extract.quiet_marker. Env toggle: INTQUIET_OFF.
+	 * @returns {object|null}
+	 */
+	static QuietMarkerConfig() {
+		const q = DataService.Data.EmitTemplates.interactive_placeholder?.extract?.quiet_marker;
+		if (!q || q.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env.INTQUIET_OFF)) return null;
+		return q;
+	}
+
+	/**
+	 * The quiet placeholder for an un-built interactive: one slim box naming the interactive in
+	 * plain English, then its reference code. The raw writer content is not on the page — it is
+	 * in {CODE}_interactives.txt under the same code. The box keeps the classes and data-
+	 * attributes the Page Stitcher finds it by; the code links to its entry in the hand-off file (file).
+	 * @returns {string|null} the box, or null when the quiet form is off
+	 */
+	static QuietMarker({ index = "", id, ref, label, type, file = "" } = {}) {
+		const q = this.QuietMarkerConfig();
+		if (!q) return null;
+		const typeName = q.type_names?.[type] ?? q.type_names?._default ?? "Interactive";
+		return Utils.FillTemplate(q.template, { index, id, ref, label, typeName, file: encodeURI(file) });
+	}
+
 	static Build({ bundle, run, templates, renderInline, renderBlock, renderNested, renderTable, renderImage } = {}) {
 		// GUARD: builders not configured at all → nothing to build.
 		if (!templates || typeof templates !== "object") return null;
@@ -91,6 +146,8 @@ class InteractiveBuilder {
 		// an untagged activity whose table carries the writer's answer key under a «match / drag / sort» lead is built as the
 		// widget that lead describes (#answerKeyType); the bundle keeps its own type, so a decline leaves the box as captured
 		const type = (bundle.type === "unclassified" && this.#answerKeyType(bundle, templates)) || bundle.type;
+		// a type switched off in data/Interactive_Switches.json stays a placeholder
+		if (!this.TypeIsOn(type)) return null;
 
 		// Look up THIS widget's editable template. Missing = we don't build it
 		// yet (it stays a placeholder). enabled:false = a human switched it off.
@@ -6886,7 +6943,7 @@ class InteractiveBuilder {
 		}
 		if (shapes.length < (tpl.min_shapes ?? 2)) return null;
 
-		const colour = tpl.colour_var_by_phase?.[run?.resolvedRules?.template_phase]
+		const colour = tpl.colour_var_by_phase?.[run?.ownYearBand ?? run?.resolvedRules?.template_phase]
 			?? tpl.colour_var_by_phase?._default ?? "NCEA";
 		const layout = tpl.layout_default ?? "clockwise";
 		const outer = [], hover = [];
@@ -17173,6 +17230,18 @@ class InteractiveBuilder {
 				}
 				if (tag && media.includes(tag)) continue;                 // left to the members rule
 				return null;                                              // a red span or another widget's tag
+			}
+			// the list typed in a one-column table, one statement to a row, bulleted or not (list.table_rows; env SELBOXTABLE_OFF)
+			if (m.type === "table" && opened && !items.length && cfg.table_rows && cfg.table_rows.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[cfg.table_rows.env || "SELBOXTABLE_OFF"])
+				&& Array.isArray(m.block?.rows) && m.block.rows.length && m.block.rows.every((r) => Array.isArray(r) && r.length === 1)) {
+				for (const r of m.block.rows) {
+					for (const raw of String(r[0]?.text ?? r[0] ?? "").split("\n")) {
+						const line = this.#cellText(raw).trim();
+						if (line) items.push(line.replace(bullet, "").trim());
+					}
+				}
+				continue;
 			}
 			if (m.type !== "black" || !opened) return null;
 			for (const raw of String(m.text ?? "").split("\n")) {

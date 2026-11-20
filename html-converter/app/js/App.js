@@ -188,7 +188,10 @@ class App {
 			// stamp the build version on the page so a developer can see at
 			// a glance that new code is live (YYMMDD + iteration)
 			const vEl = document.getElementById("app-version");
-			if (vEl) vEl.textContent = `build ${Config.AppVersion}`;
+			// the label names which interactive setting is live (data/Interactive_Switches.json)
+			const sw = DataService.Data?.InteractiveSwitches;
+			const swLabel = sw?.version_labels?.[sw.master] ?? "";
+			if (vEl) vEl.textContent = `build ${Config.AppVersion}${swLabel ? ` · ${swLabel}` : ""}`;
 
 			this.#wireUi();
 			this.#log(Config.Strings.ReadyToConvert);
@@ -1426,7 +1429,7 @@ class App {
 		for (const out of run.outputs) {
 			const blob = new Blob([out.content],
 				{
-					type: out.kind === "manifest" ? "text/plain"
+					type: out.kind === "manifest" ? (/\.html$/i.test(out.filename) ? "text/html" : "text/plain")
 						: out.kind === "reference-template" ? "application/json"
 							: out.kind === "image" ? (out.mime ?? "application/octet-stream") : "text/html",
 				});

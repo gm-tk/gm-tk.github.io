@@ -544,9 +544,10 @@ PageStitcher.INTERACTIVES = {
  *     take separate drag-and-drop actions. Same filename twice = replaced in place.
  *   • VISIBLE + EDITABLE — every staged file is listed with a ✕ that removes just
  *     that file, so the set can be corrected before Stitch is pressed.
- *   • The `{CODE}_interactives.txt` worklist is silently discarded on arrival
- *     (see isIgnoredUpload) — it ships in the same zip as the pages and has no
- *     part to play once the interactives are built.
+ *   • The `{CODE}_interactives.html` (or `.txt`) worklist is silently discarded on
+ *     arrival (see isIgnoredUpload) — it ships in the same zip as the pages and has no
+ *     part to play once the interactives are built. A built-interactives file is
+ *     always kept, whatever it is named.
  */
 class PageStitcherMode {
     constructor(options) {
@@ -624,13 +625,16 @@ class PageStitcherMode {
 
     /**
      * Files the Page Stitcher never uses and takes in silently. The HTML
-     * Generator emits its pages and a `{CODE}_interactives.txt` worklist into one
+     * Generator emits its pages and a `{CODE}_interactives.html` (or `.txt`) worklist into one
      * zip, so "select all" easily sweeps the worklist in alongside the pages — by
      * stitch time the built interactives already exist, so the worklist has no
      * part to play. It is simply not staged: no warning, no summary line.
+     * Only that exact name is skipped (the module code, one underscore, then
+     * `interactives`): a built-interactives file named any other way, such as
+     * `{CODE}_built_interactives.html`, is always staged.
      */
     static isIgnoredUpload(name) {
-        return /_interactives\.txt$/i.test(String(name == null ? '' : name));
+        return /^[^_]+_interactives\.(?:txt|html?)$/i.test(String(name == null ? '' : name));
     }
 
     /** A FileList / array → a plain array, minus anything the stitcher never uses. */

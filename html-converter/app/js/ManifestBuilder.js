@@ -29,6 +29,88 @@ class ManifestBuilder {
 	 * @param {ConversionRun} run - interactives + outputs already assembled
 	 * @returns {string} plain text document
 	 */
+	/**
+	 * The hand-off file's name: the web-page form ({CODE}_interactives.html) unless that form is off.
+	 * Data output_naming.manifest_file / manifest_file_html and interactive_placeholder.extract.html_file; env INTHTML_OFF.
+	 * @param {ConversionRun} run
+	 * @returns {string}
+	 */
+	static FileName(run) {
+		const naming = DataService.Data.EmitTemplates.output_naming ?? {};
+		const code = run?.moduleCode ?? "MODULE";
+		return Utils.FillTemplate(ManifestBuilder.HtmlForm() ? (naming.manifest_file_html ?? "{code}_interactives.html")
+			: (naming.manifest_file ?? "{code}_interactives.txt"), { code });
+	}
+
+	/** The web-page form's settings, or null when it is off. */
+	static HtmlForm() {
+		const h = DataService.Data.EmitTemplates.interactive_placeholder?.extract?.html_file;
+		if (!h || h.enabled === false || !h.page
+			|| (typeof process !== "undefined" && process.env && process.env[h.env ?? "INTHTML_OFF"])) return null;
+		return h;
+	}
+
+	/**
+	 * The hand-off text as a web page: the same lines, HTML-escaped inside <pre> — nothing reworded or reordered. Each
+	 * «INTERACTIVE n of N» block is one <section> whose id is its reference code (the page placeholders link to it); any
+	 * other reference-code line gets an anchor of its own. Each section shows a preview first — the block's content drawn
+	 * as the writer typed it, for reading only — and keeps the raw text in a <pre> behind a toggle; the raw text is the
+	 * hand-off, the preview never is.
+	 * @param {string} text - the finished hand-off text
+	 * @param {ConversionRun} run
+	 * @returns {string} the page, or the text unchanged when the web-page form is off
+	 */
+	static AsHtml(text, run) {
+		const h = ManifestBuilder.HtmlForm();
+		if (!h) return text;
+		const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+		const refOf = (l) => /^REFERENCE CODE:\s+(\S+)/.exec(l)?.[1] ?? null;
+		const sections = [[]];
+		for (const line of String(text).split("\n")) {
+			if (/^INTERACTIVE \d+ of \d+\s*$/.test(line)) sections.push([]);
+			sections[sections.length - 1].push(line);
+		}
+		// the preview: the block's «Content:» lines drawn the way the writer typed them — red words red, bold bold, a table as
+		// a table — for READING only; the build reads the raw text in the <pre> under it, which is never altered
+		const attr = (v) => esc(v).replace(/"/g, "&quot;");
+		const inline = (v) => esc(v)
+			.replace(/\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu, '<span class="red">$1</span>')
+			.replace(/\[LINK: ([^\]\s]+)\]/g, (m, u) => `<a href="${u.replace(/"/g, "&quot;")}" target="_blank">[link]</a>`)
+			.replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")
+			.replace(/__([^_]+)__/g, "<u>$1</u>");
+		const preview = (lines) => {
+			const at = lines.findIndex((l) => /^Content:\s*$/.test(l));
+			if (at < 0) return "";
+			const out = [];
+			let rows = null;
+			for (const l of lines.slice(at + 1)) {
+				if (/^┌─── TABLE ───/.test(l)) { rows = []; continue; }
+				if (/^└─── END TABLE ───/.test(l)) {
+					if (rows) out.push("<table>\n" + rows.map((r) => "<tr>" + r.map((c) => `<td>${c.split(" / ").map(inline).join("<br>")}</td>`).join("") + "</tr>").join("\n") + "\n</table>");
+					rows = null; continue;
+				}
+				if (rows) { rows.push(l.replace(/^│ ?/, "").split(" ║ ")); continue; }
+				if (!l.trim() || /^-{5,}\s*$/.test(l)) continue;
+				out.push(`<p>${inline(l)}</p>`);
+			}
+			return out.join("\n");
+		};
+		const meta = (lines, key) => (lines.map((l) => new RegExp("^" + key + ":\\s*(.+)$").exec(l)?.[1]).find(Boolean) ?? "").trim();
+		const body = sections.map((lines, i) => {
+			const own = i === 0 ? null : lines.map(refOf).find(Boolean) ?? null;
+			const pre = lines.map((l) => { const r = refOf(l); return (r && r !== own ? `<a id="${esc(r)}"></a>` : "") + esc(l); }).join("\n");
+			if (i === 0) return `<pre>${pre}</pre>`;
+			const view = h.preview === false ? "" : preview(lines);
+			const facts = [meta(lines, "Type"), meta(lines, "Activity") && `Activity ${meta(lines, "Activity")}`, meta(lines, "File")].filter(Boolean).map(esc).join(" · ");
+			return `<section${own ? ` id="${attr(own)}"` : ""}>\n<h2>${esc(own ?? lines[0])}</h2>\n`
+				+ (facts ? `<p class="facts">${facts}</p>\n` : "")
+				+ (view ? `<div class="preview">\n${view}\n</div>\n` : "")
+				+ `<details${view ? "" : " open"}>\n<summary>${esc(h.raw_label ?? "Raw parsed content")}</summary>\n<pre>${pre}</pre>\n</details>\n</section>`;
+		}).join("\n");
+		const title = esc(Utils.FillTemplate(h.title ?? "{code} interactives", { code: run?.moduleCode ?? "MODULE" }));
+		return h.page.split("{title}").join(title).split("{body}").join(body);
+	}
+
 	static Build(run) {
 		const patterns = DataService.Data.ManifestPatterns;
 		const code = run.moduleCode ?? "MODULE";
@@ -107,7 +189,9 @@ class ManifestBuilder {
 			// extract (INTEXTRACT_ON + INTCOLLAPSE_OFF) keeps its own wording.
 			const collapseOn = ex.collapse && ex.collapse.enabled !== false
 				&& !(typeof process !== "undefined" && process.env && process.env.INTCOLLAPSE_OFF);
-			out.push(collapseOn && ex.collapse.manifest_banner ? ex.collapse.manifest_banner : ex.manifest_banner);
+			// the quiet placeholder shows no raw content on the page, and its banner says so
+			const quietBanner = InteractiveBuilder.QuietMarkerConfig()?.manifest_banner;
+			out.push(quietBanner || (collapseOn && ex.collapse.manifest_banner ? ex.collapse.manifest_banner : ex.manifest_banner));
 		}
 		out.push("");
 		out.push("=====================================");

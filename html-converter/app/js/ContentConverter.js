@@ -4901,6 +4901,20 @@ class ContentConverter {
 										&& String(bodyItems[i + 1].text || "").trim()));
 								// RHSTAGGED_OFF: no content of its own — the content typed under its own tags follows
 								if (!spansAhead && !hasContent && _rhsTaggedOn) _rhsTagged = rhsTaggedRun(i, null);
+								// the same box closed by the writer's own [End alert]: when its tagged run reaches that close, it is the side column
+								// too, the close tag spent (always_side.tagged_content.closed_run; env RHSCLOSED_OFF)
+								else if (spansAhead && !hasContent && _rhsTaggedOn && _rhsTc.closed_run && _rhsTc.closed_run.enabled !== false
+									&& !(typeof process !== "undefined" && process.env && process.env[_rhsTc.closed_run.env || "RHSCLOSED_OFF"])) {
+									const keep = bodyItems.map((x) => x.text);
+									const tr = rhsTaggedRun(i, null);
+									let c = tr ? tr.last + 1 : -1;
+									while (tr && c < bodyItems.length && bodyItems[c].type === "black" && !String(bodyItems[c].text || "").trim()) c++;
+									const fam = [`end ${primary.tag}`, "end alert", "end important"];
+									if (tr && bodyItems[c]?.type === "tag"
+										&& (bodyItems[c].parse?.tags || []).some((t) => t.directive === "CONTAINER_CLOSE" && fam.includes(t.tag))) {
+										tr.last = c; _rhsTagged = tr;
+									} else bodyItems.forEach((x, k) => { x.text = keep[k]; });   // not this form: every line stays where it was
+								}
 								if (_rhsTagged) { /* placed below, before the ordinary path */ }
 								else if (!spansAhead && hasContent && parts.length
 									&& parts[parts.length - 1] === tpl.body_region.content_row_close
@@ -5904,7 +5918,7 @@ class ContentConverter {
 		// the element a request's bracketed link became is handed to the developer (#bracketLinkNote — outermost: it reads the
 		// finished body and swaps one element for one note, so no row, box or number moves).
 		const finalBody = ContentConverter.#bracketLinkNote(ContentConverter.#levelOverview(ContentConverter.#bodyHeadingCase(ContentConverter.#carriedTagNote(ContentConverter.#dropEmptyListItems(ContentConverter.#liftVisibleTags(ContentConverter.#tagOnlyParagraphNote(ContentConverter.#redundantBold(ContentConverter.#unwrapLonePunct(ContentConverter.#mergeSplitRuns(ContentConverter.#familyRowPerBlock(ContentConverter.#familyQuoteParagraphs(
-			MediaBuilder.productionDocPostpass(MediaBuilder.stockButtonPostpass(MediaBuilder.videoTimePostpass(MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(MediaBuilder.sideBySidePostpass(finalBody0, run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), page, run), page, run);
+			ContentConverter.#builtPictureNote(ContentConverter.#calloutSidePicture(MediaBuilder.productionDocPostpass(MediaBuilder.stockButtonPostpass(MediaBuilder.videoTimePostpass(MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(MediaBuilder.sideBySidePostpass(finalBody0, run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), run)), page, run), page, run);
 		// a fallback-shell page that built its panels is an inquiry page too (the body class and
 		// the inquiry footer class follow, as for every other mode; its footer LINKS stay the registry's own).
 		const inquiryActive = (inquiryMode || cedInquiryMode || secInquiryMode || inqFallbackMode) && finalBody0 !== bodyHtml;
@@ -13492,7 +13506,11 @@ class ContentConverter {
 			}
 			src = Utils.FillTemplate(a.numbered_src ?? a.src, { n: String(n), phase: ph ?? "" });
 		} else if (a.src && !(cat && /\{n\}/.test(a.src) && a.default_pose === undefined)) {
-			src = Utils.FillTemplate(a.src, { n: String(a.default_pose ?? ""), phase: ph ?? "" });
+			// no pose number typed: the stance the writer describes names the pose (the asset's pose_cues — «crouching» → pose 2),
+			// else the default pose. Data elements.central_image.assets.<name>.pose_cues; env POSECUE_OFF.
+			const cue = envOn("POSECUE_OFF") ? null : (a.pose_cues ?? []).find((q) => new RegExp(q.pattern, "i").test(f));
+			const poseN = cue && poses.includes(cue.pose) ? cue.pose : a.default_pose;
+			src = Utils.FillTemplate(a.src, { n: String(poseN ?? ""), phase: ph ?? "" });
 		}
 		const out = [];
 		// an attribute value as the template writes it: «health & PE characters/…» keeps its bare «&»
@@ -15329,6 +15347,45 @@ class ContentConverter {
 	};
 
 	/**
+	 * A centralised picture built from the writer's request does not repeat the request as a Writers Note under it.
+	 * Data callouts.built_picture_note {enabled, env}; env PICNOTE_KEEP keeps the note.
+	 * @param {string} html - the page body
+	 * @returns {string}
+	 */
+	static #builtPictureNote(html) {
+		const cfg = DataService.Data.EmitTemplates.callouts?.built_picture_note;
+		if (!cfg || cfg.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "PICNOTE_KEEP"])) return html;
+		return String(html).replace(/(<img class="img-fluid imageCentral"[^>]*>)\s*<p class="cv2-note"[^>]*>Writers Note: \[Image\][^<]*<\/p>/g, "$1");
+	}
+
+	/**
+	 * THE PICTURE THE WRITER ASKS FOR BESIDE A CALLOUT'S TEXT. A callout box that opens with a centralised picture whose
+	 * request names its side («[Image] LHS of text, Aroha …») and then holds only paragraphs and lists is the picture in a
+	 * narrow column and the text beside it — the request's note stays under the picture.
+	 * Data callouts.side_picture {enabled, env, side_pattern, picture_col, text_col}; env CALLOUTPIC_OFF.
+	 * @param {string} html - the page body
+	 * @param {ConversionRun} run
+	 * @returns {string}
+	 */
+	static #calloutSidePicture(html, run) {
+		const cfg = DataService.Data.EmitTemplates.callouts?.side_picture;
+		if (!cfg || cfg.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "CALLOUTPIC_OFF"])) return html;
+		const side = new RegExp(cfg.side_pattern ?? "\\bLHS\\b", "i");
+		let n = 0;
+		const out = String(html).replace(
+			/(<div class="alert[^"]*">\s*<div class="row">\s*)<div class="col-12">\s*(<img class="img-fluid imageCentral"[^>]*>)\s*(<p class="cv2-note"[^>]*>[^<]*<\/p>)\s*([\s\S]*?)\s*<\/div>(\s*<\/div>\s*<\/div>)/g,
+			(m, open, img, note, rest, close) => {
+				if (!side.test(note) || /<div\b|<img\b/.test(rest) || !rest.trim()) return m;
+				n++;
+				return `${open}<div class="${cfg.picture_col ?? "col-3"}">\n${img}\n${note}\n</div>\n<div class="${cfg.text_col ?? "col-9"}">\n${rest}\n</div>${close}`;
+			});
+		if (n) run?.AddNote?.("info", "ContentConverter", `${n} callout picture(s) placed beside the box's text (callouts.side_picture).`);
+		return out;
+	}
+
+	/**
 	 * Does a matching explicit close lie ahead for this callout?
 	 * Scans forward until a section marker / page boundary / another
 	 * callout opening (whichever comes first) — within that window, a
@@ -15351,16 +15408,33 @@ class ContentConverter {
 			if (r && r.to === canonTag && r.from) family.add(`end ${r.from}`);
 		}
 
+		// THE CLOSING BOX THE WRITER NEVER CLOSED. A callout with no words of its own, followed only by its picture and
+		// text up to the end of the page (the page's closing «Ka pai!» box, its picture first), spans to the page end: the writer left the
+		// [End alert] out. Data callouts.page_end_close {enabled, env, tags, first_tags, max_items}; env ALERTPAGEEND_OFF.
+		const pe = DataService.Data.EmitTemplates.callouts?.page_end_close;
+		const peOn = !!pe && pe.enabled !== false && (pe.tags ?? []).includes(canonTag)
+			&& !(typeof process !== "undefined" && process.env && process.env[pe.env ?? "ALERTPAGEEND_OFF"])
+			&& !String(bodyItems[i]?.blackAfter || "").trim();
+		let plain = true, words = false, count = 0, first = null;
+		const toPageEnd = () => peOn && plain && words && count <= (pe.max_items ?? 6) && (pe.first_tags ?? ["image"]).includes(first);
 		for (let j = i + 1; j < bodyItems.length; j++) {
 			const it2 = bodyItems[j];
-			if (it2.type !== "tag") continue;
+			if (it2.type !== "tag") {
+				if (it2.type !== "black") plain = false;
+				else if (String(it2.text || "").trim()) { words = true; count++; first ??= "(text)"; }
+				continue;
+			}
 			const p = it2.parse.primary;
 			if (!p) continue;
-			if (p.directive === "PAGE_BOUNDARY" || p.directive === "SECTION_MARKER") return false;
+			if (p.directive === "PAGE_BOUNDARY") return toPageEnd();
+			if (p.directive === "SECTION_MARKER") return false;
 			if (p.directive === "CONTAINER_OPEN" && (stopAtActivity || p.tag !== "activity")) return false;   // an own-row span never swallows an activity
 			if (it2.parse.tags.some((t) => t.directive === "CONTAINER_CLOSE" && family.has(t.tag))) return true;
+			first ??= String(p.tag || "");
+			if (p.directive === "ELEMENT") { count++; if (String(it2.blackAfter || "").trim()) words = true; }
+			else plain = false;
 		}
-		return false;
+		return toPageEnd();
 	};
 
 	/**
@@ -15711,6 +15785,9 @@ class ContentConverter {
 			// widget the caller emits this return value BEFORE the activity close, so the
 			// notes land bottom-but-inside the activity container — exactly the house rule.
 			const notes = this.#bundleInstructions(bundle);
+			// a type switched on in data/Interactive_Switches.json builds from the writer's requests: they are not repeated as notes
+			const dropNotes = InteractiveBuilder.BuiltNotesDropped(bundle.type);
+			if (dropNotes) notes.length = 0;
 			// a sentence the upload box released as the learner's text is shown once, as that text — never again as a
 			// Writers Note beside it (interactive_builders.dropDown.upload_box.released_note_once; env DBXNOTEONCE_OFF)
 			const relOnce = DataService.Data.EmitTemplates.interactive_builders?.dropDown?.upload_box?.released_note_once;
@@ -15729,7 +15806,7 @@ class ContentConverter {
 				.map((t) => NotesAndComments.redFlag(t, run, "cs")).join("") + (after ? `\n${after}` : "");
 			// a NESTED render (a widget inside a built widget's pane) adds none: the note would sit inside the parent's
 			// pane, where a literal bracket makes the parent decline its build (as on HPRE301's accordion)
-			if (!capFree || !capFree.length || opts?.nested) return out;
+			if (!capFree || !capFree.length || opts?.nested || dropNotes) return out;
 			const shown = this.CaptureFold(out);
 			const extra = capFree.filter((t) => !this.#captureShown(shown, t));
 			return extra.length ? out + "\n" + extra.map((t) => NotesAndComments.redFlag(t, run, "cs")).join("\n") : out;
@@ -15762,7 +15839,7 @@ class ContentConverter {
 			bundle.built = false;
 			const label = [bundle.type, ...(bundle.extraTypes ?? [])].join(" + ");
 			return NotesAndComments.redFlag(
-				`Un-built [${label}] marker — no content captured (an inline marker, a stray end tag, or a writer instruction); see ${run.moduleCode ?? "MODULE"}_interactives.txt.`,
+				`Un-built [${label}] marker — no content captured (an inline marker, a stray end tag, or a writer instruction); see ${ManifestBuilder.FileName(run)}.`,
 				run);
 		}
 
@@ -15905,7 +15982,7 @@ class ContentConverter {
 			type: [bundle.type, ...(bundle.extraTypes ?? [])].join(" + "),
 			modifierLabel: bundle.modifier ? Utils.FillTemplate(tpl.modifier_label, { modifier: bundle.modifier }) : "",
 			activityId: bundle.activityId ?? tpl.no_activity_label,
-			manifestFile: `${run.moduleCode ?? "MODULE"}_interactives.txt`,
+			manifestFile: ManifestBuilder.FileName(run),
 		}));
 		parts.push(tpl.member_dump_open);
 
@@ -15979,6 +16056,9 @@ class ContentConverter {
 		// cv2-int-ref (the Page Stitcher's search-by-code contract: replacing the wrapper by
 		// data-cv2-ref swaps the hidden raw content out together with the marker).
 		if (extractWrap) {
+			// the quiet placeholder: the type in plain English and the reference code, no raw content on the page
+			const quiet = InteractiveBuilder.QuietMarker({ ...extractWrap, type: bundle.type, file: ManifestBuilder.FileName(run) });
+			if (quiet) return (releasedHtml ? releasedHtml + "\n" : "") + quiet + (trailingHtml ? "\n" + trailingHtml : "");
 			const c = extractWrap.col;
 			return (releasedHtml ? releasedHtml + "\n" : "") + [
 				Utils.FillTemplate(c.wrapper_open, { index: extractWrap.index, id: extractWrap.id, ref: extractWrap.ref }),

@@ -96,6 +96,9 @@ class ConversionRun {
 		// template}); when set, referenceCode above holds the library module
 		// PickBySpec chose to inherit from.
 		this.referenceSpec = null;
+		// the module's own year band ("1-3", "4-6", …) when a chosen reference module's band differs —
+		// the page keeps this one; null when no reference is chosen or the bands agree.
+		this.ownYearBand = null;
 		this.englishTitle = "";       // English title from the [TITLE BAR] line, e.g. "Staying safe online"
 		this.teReoTitle = "";         // te reo Māori title, if the module has one
 		// Some families (e.g. the "BLL" phonics modules) prefix their title bar

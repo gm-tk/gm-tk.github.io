@@ -591,6 +591,8 @@ class ModuleResolver {
 			run.lessonTitleRepeatsModule = atCfg.adapter.lesson_title_repeats_module === true;   // SkeletonBuilder: the second lesson h1
 		}
 		run.resolvedRules = this.Resolve(run.moduleCode, run);
+		// the module's own year band, read before a chosen reference module re-resolves the rules
+		const ownYearBand = this.#ownYearBand(run);
 
 		// ---- REFERENCE-MODULE override ----------------------------------------
 		// The upload UI's "Reference module" panel lets the person either PICK
@@ -643,6 +645,7 @@ class ModuleResolver {
 				`Reference module override: page structure resolved from ${referenceCode} `
 				+ `(chosen at upload) instead of ${run.moduleCode ?? "the module"}'s own registry home. `
 				+ `Env REFMOD_OFF reverts.`);
+			this.#keepOwnYearBand(run, ownYearBand);
 		}
 		if (rmOn && referenceHtmlFiles?.length) {
 			const distilled = ReferenceMiner.Distil(referenceHtmlFiles, run);
@@ -865,6 +868,57 @@ class ModuleResolver {
 	 * @param {Object|null} uf - _meta.universal_fields, or null to disable
 	 * @returns {number} how many fields were skipped as unknown literals
 	 */
+	/**
+	 * The year band the module's OWN code names ("1-3", "4-6", … or "combo"), read while the
+	 * rules are still resolved from the module itself. A module whose level is in the library
+	 * takes that level's band (with every template-attribute rule SkeletonBuilder applies); a
+	 * module resolved from a sibling of another level takes the band of its own level digit.
+	 * Data: Emit_Templates.reference_module.own_year_band. Env toggle: REFOWNBAND_OFF.
+	 * @param {ConversionRun} run
+	 * @returns {string|null} the band, or null when the rule is off or names none
+	 */
+	static #ownYearBand(run) {
+		const cfg = DataService.Data.EmitTemplates?.reference_module?.own_year_band;
+		if (!cfg || cfg.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env.REFOWNBAND_OFF)) return null;
+		let band = SkeletonBuilder.ResolveTemplatePhase(run, { quiet: true }) || null;
+		const tpp = DataService.Data.EmitTemplates?.skeleton?.template_phase_presets ?? {};
+		const code = String(run.moduleCode || "");
+		const own = code.match(new RegExp(tpp.code_pattern ?? "^([A-Z]+)([1-5])\\d{2}$"));
+		const home = /level ([A-Z]+)(\d)/.exec(run.resolutionPath || "");
+		const digitIsLevel = !(cfg.digit_is_not_level_prefixes ?? []).some((p) => code.startsWith(p));
+		if (own && home && home[1] === own[1] && home[2] !== own[2] && digitIsLevel
+			&& !(tpp.preserve_values ?? ["combo"]).includes(band)) {
+			band = (tpp.by_level_digit ?? {})[own[2]] ?? band;
+		}
+		return band;
+	}
+
+	/**
+	 * A chosen reference module hands down its page structure, never its year band: the
+	 * <html template="…"> attribute and every band-keyed value follow the module's own level
+	 * (a Years 1–3 module built from a Years 4–6 reference stays a Years 1–3 page). Where the
+	 * reference's subject has a convention group for the module's own band, the band-keyed
+	 * conventions follow that group too; otherwise they stay the reference's.
+	 * @param {ConversionRun} run - rules already re-resolved from the reference module
+	 * @param {string|null} ownBand - the value #ownYearBand read before the re-resolve
+	 */
+	static #keepOwnYearBand(run, ownBand) {
+		const rules = run.resolvedRules;
+		if (!ownBand || !rules || rules.template_phase === ownBand) return;
+		const refBand = rules.template_phase;
+		run.ownYearBand = ownBand;
+		const key = run.subjectName ? `${run.subjectName}|${ownBand}` : null;
+		const hasGroup = key && DataService.Data.ConventionRegistry?.groups?.[key];
+		if (hasGroup) {
+			rules.template_phase = ownBand;
+			run.groupKey = key;
+		}
+		run.AddNote("info", "ModuleResolver",
+			`Year band "${ownBand}" kept from ${run.moduleCode ?? "the module"}'s own level — the reference module's "${refBand}" is not handed down`
+			+ (hasGroup ? ` (band conventions from group ${key}).` : ` (no ${key ?? "own-band"} convention group — the reference's band conventions stand).`));
+	}
+
 	static #overlayRules(target, block, uf, tierName = "") {
 		const src = structuredClone(block ?? {});
 		// A PATTERN field listed in _meta.pattern_field_merge merges per key on the listed tiers: a level delta
