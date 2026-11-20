@@ -582,6 +582,12 @@
 				"max_words": 12,
 				"_note": "[Title] resolves to primary tag `title bar` / SECTION_MARKER, and `title bar` is in terminators_absolute — so a writer who puts a hint's title in its OWN paragraph would get a bundle with NO members at all, while a writer who puts it on the ADJACENT line keeps it (the two tags merge into one red span there). Such 'bare invocation' hints are a CAPTURE FAILURE, not empty widgets. Inside a HINT-family bundle that has captured nothing yet, a [title]-folded marker with a short non-empty blackAfter is swallowed as the hint's TITLE instead of ending the walk. SCOPING (all four required): the bundle type is in `types`, memberItems is still EMPTY, the folded form is exactly `[title]` (a real page bar folds to `[title bar]`), and the blackAfter is non-empty and <= max_words. The HINT-family [title] form appears in TEDC402 and SSEA203 (blackAfter '**Need help ?**'). Other widgets whose opener is followed by a title-bar marker (accordion / clickDrop / flipCard — CHFUN05 [title N], BLL266, OSBY401, SSFUN07) are untouched BY CONSTRUCTION through the `types` gate. Env toggle: HINTTITLE_OFF."
 			},
+			"journal_table_ends": {
+				"_doc": "A FOLLOWING TABLE LED BY THE WRITER'S JOURNAL TAG IS THE NEXT ACTIVITY. The Pathways writers type a journal activity as a one-cell table — «[Learning journal] 3D: Write a relevant question / [Body] Go to your journal. Read each scenario … / [Button] Go to your journal» (PWY1008) — straight after a flip-card or other widget's data table; the widget took it as more data, so the journal activity went into the widget's hand-off box. The human builds it as its own activity box with the journal button. With this on, a widget that already holds a table ends its capture before a following table whose first cell opens with the journal tag (cell_pattern, read with the red markers removed). Env JOURNALTABLEEND_OFF.",
+				"enabled": true,
+				"env": "JOURNALTABLEEND_OFF",
+				"cell_pattern": "^\\[\\s*(?:learning\\s+)?journal\\s*\\]"
+			},
 			"title_panel_member": {
 				"enabled": true,
 				"types": [

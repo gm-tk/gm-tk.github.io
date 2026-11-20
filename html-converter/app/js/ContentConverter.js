@@ -2561,7 +2561,13 @@ class ContentConverter {
 					// the side column is held and placed beside the box's row when the box closes
 					// (container_auto_close.activity_close_before.side_alert_resume; env SIDERESUME_OFF)
 					const sar = cfg.side_alert_resume;
-					if (hit && sar && sar.enabled !== false && top.hasContent && primary && (sar.tags ?? []).includes(primary.tag)
+					// … and an alert whose bracket puts it in the right-hand column («[Alert box RHC]», «[alert RHS]»)
+					// (side_alert_resume.right_hand; env RHSRESUME_OFF)
+					const _sarRh = sar?.right_hand;
+					const _sarRhHit = !!_sarRh && _sarRh.enabled !== false && !!primary && (_sarRh.tags ?? []).includes(primary.tag)
+						&& new RegExp(_sarRh.text_pattern, "i").test(String(it.text ?? ""))
+						&& !(typeof process !== "undefined" && process.env && process.env[_sarRh.env || "RHSRESUME_OFF"]);
+					if (hit && sar && sar.enabled !== false && top.hasContent && primary && ((sar.tags ?? []).includes(primary.tag) || _sarRhHit)
 						&& !pendingSideAlert && !(typeof process !== "undefined" && process.env && process.env[sar.env || "SIDERESUME_OFF"])) {
 						const k0 = bodyItems.indexOf(it);
 						let k = k0 + 1;
@@ -2570,7 +2576,8 @@ class ContentConverter {
 							&& bodyItems[k].consumedBy === undefined) k++;
 						const nx = k0 >= 0 ? bodyItems[k] : null;
 						const nt = nx && nx.type === "tag" ? nx.parse?.primary?.tag : null;
-						if (nt && (sar.resume_tags ?? []).includes(nt)) { hit = false; it._sideHold = true; }
+						const _rhOnly = _sarRhHit && !(sar.tags ?? []).includes(primary.tag);
+						if (nt && ((_rhOnly ? _sarRh.resume_tags : null) ?? sar.resume_tags ?? []).includes(nt)) { hit = false; it._sideHold = true; if (_rhOnly) it._rhHold = true; }
 					}
 				}
 				if (!hit) return;
@@ -3159,6 +3166,44 @@ class ContentConverter {
 					// Env toggle: EMBACT_OFF (reverts to a bare placeholder with no activity wrapper
 					// around it at all)
 					const eiaCfg = tpl.activity_wrapper.embedded_interactive_activity;
+					// THE ACTIVITY NUMBER TYPED IN THE WIDGET TAG'S TAIL («[Activity: flip cards] Activity 3A: Title»): for a
+					// switched-off type, the box takes the tail's number when it has none, and the words after the box's own number
+					// are its title (activity_wrapper.embedded_interactive_activity.tail_number; env EMBTAILNUM_OFF)
+					let _etnTitle = null;
+					{
+						const _etn = eiaCfg?.tail_number;
+						// any widget tag (no «activity» in the bracket) with a lettered number in its tail (tail_number.any_widget_tag;
+						// env TAILNUMTAG_OFF): «[Word Select autocheck] 4a – Title», «[dice roller] 4D Your turn!»
+						const _etnAny = _etn?.any_widget_tag;
+						const _etnAnyOn = !!_etnAny && _etnAny.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_etnAny.env || "TAILNUMTAG_OFF"])
+							&& it.type === "tag" && it.parse?.primary?.directive === "INTERACTIVE" && !it.parse?.tags?.some((t) => t.tag === "activity");
+						if (_etn && _etn.enabled !== false && !reoMode
+							&& !(typeof process !== "undefined" && process.env && (process.env[_etn.env || "EMBTAILNUM_OFF"] || process.env.EMBACT_OFF))
+							&& !bundle.activityOwner && it.type === "tag" && (it.parse?.tags?.some((t) => t.tag === "activity") || _etnAnyOn)
+							&& !InteractiveBuilder.TypeIsOn(bundle.type)) {
+							// the tail: a heading tag between the number and the title dropped; a later red note cut off
+							let _raw = String(it.blackAfter ?? "").replace(/\u{1f534}\[RED TEXT\]\s*\[\s*(?:heading|h[1-6])\s*\]\s*\[\/RED TEXT\]\u{1f534}/giu, " ");
+							// a red span that is only a dash or a colon stays the tail's punctuation (any_widget_tag)
+							if (_etnAnyOn) _raw = _raw.replace(/\u{1f534}\[RED TEXT\]\s*([:.–—-])\s*\[\/RED TEXT\]\u{1f534}/gu, " $1 ");
+							const _redAt = _raw.search(/\u{1f534}\[RED TEXT\]/u);
+							if (_redAt >= 0) _raw = _raw.slice(0, _redAt);
+							const _tl = _raw.replace(/\*+/g, "").replace(/\s+/g, " ").trim();
+							const _m = new RegExp(_etnAnyOn ? (_etnAny.pattern ?? _etn.pattern) : _etn.pattern, "iu").exec(_tl);
+							if (_m) {
+								// only a tail that carries a title acts: a bare «Activity 1A» leaves the box as it was
+								const _id = _m[1].toUpperCase();
+								const _t = String(_m[2] ?? "").replace(/^[:.–—\s-]+/u, "").trim();
+								if (_t.length >= 2 && _t.split(/\s+/).length <= (_etn.max_words ?? 16) && !/^[\[(]/.test(_t) && !/https?:\/\//i.test(_t)
+									&& (_etnAnyOn || bundle.activityId == null || String(bundle.activityId).toUpperCase() === _id)) {
+									// any_widget_tag: the title only — the box keeps the number PageForge gives it (the page's own run)
+									if (_etnAnyOn) bundle._tailNumberAny = true;
+									else if (bundle.activityId == null) { bundle.activityId = _id; bundle._tailNumberId = true; }
+									_etnTitle = _t;
+								}
+							}
+						}
+					}
 					const embeddedAct = !bundle.activityOwner && bundle.activityId != null
 						&& eiaCfg && eiaCfg.enabled !== false
 						&& !(typeof process !== "undefined" && process.env && process.env.EMBACT_OFF)
@@ -3335,6 +3380,8 @@ class ContentConverter {
 							|| (actOwner === saOwner && saCfg?.force_interactive !== false)
 							// … and so is a level-pages id-led box
 							|| (actOwner === lvOwner && lvCfgBox?.force_interactive !== false)
+							// … and so is a box numbered from its widget tag's tail (tail_number): it stood in for the synthetic box
+							|| (actOwner === it && !!bundle._tailNumberId)
 							// … and so is an id-heading-opened box that OWNS a widget bundle: it replaces the
 							// generic synthetic box for the same widget, and the gold ships those boxes
 							// `activity interactive` (MXFU202 9A–9E); the widget-less heading box (9F, gold
@@ -3400,6 +3447,16 @@ class ContentConverter {
 								&& (String(it.text ?? "").match(/\[/g) ?? []).length <= (String(it.text ?? "").match(/\]/g) ?? []).length
 								// a tail that is a hyperlink's own words is the link, not a title
 								&& !(it.block?.links ?? []).some((l) => { const lt = String(l?.text ?? "").replace(/[*_]/g, "").trim(); return lt.length > 3 && String(it.blackAfter ?? "").replace(/[*_]/g, "").includes(lt); });
+							// the tail's own number and title (tail_number, above): the title heading, the tail blanked
+							// (any_widget_tag: the title opens the box PageForge made for the widget — its own or the synthetic one)
+							if (_etnTitle && !it._typedTitle && ((embeddedAct && actOwner === it)
+								|| (bundle._tailNumberAny && !!actOwner && (actOwner === it || actOwner === saOwner || actOwner === lvOwner)))) {
+								emit(Utils.FillTemplate(eiaCfg.tail_number.title_heading ?? "<h3>{title}</h3>", { title: Utils.EscapeHtml(_etnTitle) }));
+								it._typedTitle = _etnTitle;
+								it.blackAfter = "";
+								run.AddNote("info", "ContentConverter",
+									`Page ${page.lessonLabel}: [${it.text}] — the tail's number ${bundle.activityId} and title "${_etnTitle}" open the box (tail_number).`);
+							}
 							if (embeddedAct && actOwner === it && _ttCfg && _ttCfg.enabled !== false && !reoMode
 								&& !(typeof process !== "undefined" && process.env && process.env[_ttCfg.env || "TYPEDTAG_OFF"])
 								&& (_ttDash || _ttNoDash)) {
@@ -3748,6 +3805,12 @@ class ContentConverter {
 							markContent();
 							run.AddNote("info", "ContentConverter",
 								`Page ${page.lessonLabel}: activity box kept open for the prose after its data table.`);
+						} else if (!pirKey && this.#widgetCloserHold(bodyItems, i, bundles, it.consumedBy, tpl, run)) {
+							// the BLL dialect: the widget's own closer, then the activity's next prose and widget — the box stays open
+							if (bundle._tailHtml) { emit(bundle._tailHtml); bundle._tailHtml = null; }
+							markContent();
+							run.AddNote("info", "ContentConverter",
+								`Page ${page.lessonLabel}: activity box kept open past its widget's own closer for the activity's next widget (widget_closer_keeps_box).`);
 						} else if (!pirKey && this.#writerEndHold(bodyItems, i, bundles, it.consumedBy, tpl, renderedHeading)) {
 							// The writer typed more of this activity after the widget and closed it with their own [End activity]:
 							// the box stays open, the ordinary loop renders that content inside it, the [End activity] closes it.
@@ -4944,10 +5007,12 @@ class ContentConverter {
 						&& !_sidePairOff
 						&& !(primary.tag === "side alert" && _sideAlertOff)
 						&& !stack.length;
-					if (it._sideHold && _sideDef && _sideDef.side_column) {
+					// a right-hand alert held inside the box takes the right-hand column form for an alert after an activity
+					const _holdDef = it._rhHold ? (tpl.callouts.positional_side_alert?.after_activity ?? null) : null;
+					if (it._sideHold && (_holdDef ?? _sideDef) && (_holdDef ?? _sideDef).side_column) {
 						// a side alert typed mid-activity: the box stays open and the side column waits for the box's row to close
 						// (container_auto_close.activity_close_before.side_alert_resume)
-						pendingSideAlert = this.#sideAlertCol(it, bodyItems, i, run, _sideDef, _rhsPre);
+						pendingSideAlert = this.#sideAlertCol(it, bodyItems, i, run, _holdDef ?? _sideDef, _rhsPre);
 						sideAlertSawMedia = true;
 						while (bodyItems[i + 1]?._consumed) i++;       // its strict text run was consumed
 						break;
@@ -6552,9 +6617,12 @@ class ContentConverter {
 		const xCls = new Set(kwdOn ? (kwd.exclude_classes ?? []) : []);
 		const actCls = new Set(cfg.activity_anchor_classes ?? []);
 		const WD = /\s+data-wd="(\d)"/i;
-		const hasWd = /\sdata-wd="\d"/i.test(html);
-		const stripWd = (attrs) => String(attrs ?? "").replace(WD, "");
+		// the in-box marker (keep_writer_digit.in_activity): pinned only inside an activity box, dropped elsewhere
+		const WDB = /\s+data-wdb="(\d)"/i;
+		const hasWd = /\sdata-wdb?="\d"/i.test(html);
+		const stripWd = (attrs) => String(attrs ?? "").replace(WD, "").replace(WDB, "");
 		const wdOf = (attrs) => { const m = String(attrs ?? "").match(WD); return m ? parseInt(m[1], 10) : null; };
+		const wdbOf = (attrs) => { const m = String(attrs ?? "").match(WDB); return m ? parseInt(m[1], 10) : null; };
 		// the level a pinned digit ships at — keep_writer_digit.pin_levels {"1": 2} (the gold ships a
 		// writer's [H1] as h2 in BLL / HIS / CEDR: the plain body shift, un-ranked; the body never carries an
 		// h1). A digit the map does not name pins at itself.
@@ -6590,7 +6658,9 @@ class ContentConverter {
 				}
 				const inside = wstack.length > 0;
 				const pinnable = kwdOn && !isClose && wdOf(m[3]) !== null && xstack.length === 0 && wkind.every((k) => k === "act");
-				if (onTag) onTag(m, pinnable, inside);
+				// the in-box marker pins only inside an activity box (no widget, no excluded callout between)
+				const boxPin = !isClose && wdbOf(m[3]) !== null && inside && xstack.length === 0 && wkind.every((k) => k === "act");
+				if (onTag) onTag(m, pinnable, inside, boxPin);
 				if (isClose || inside) continue;
 				if (fixedLevelHeading(m[3])) continue;   // a fixed-level heading never joins the pool
 				// a PINNED heading keeps its intermediate level IN the pool: the page's other headings
@@ -6617,12 +6687,14 @@ class ContentConverter {
 		const edits = [];
 		let fixedOpen = false;   // latch: the OPEN fixed-level heading's close tag must be left alone too
 		let pinClose = null;     // latch: the OPEN pinned heading's close tag takes the pinned digit
-		walk(() => {}, (m, pinnable, inside) => {
+		walk(() => {}, (m, pinnable, inside, boxPin) => {
 			const isClose = m[1] === "/";
 			const lv = parseInt(m[2].toLowerCase()[1], 10);
 			if (!isClose) {
-				const wd = wdOf(m[3]); const clean = stripWd(m[3]);
-				if (pinnable) { const pl = pinLevelOf(wd); pinClose = pl; edits.push([m.index, m[0].length, `<h${pl}${clean}>`]); return; }
+				const wd0 = wdOf(m[3]), wdb = wdbOf(m[3]); const clean = stripWd(m[3]);
+				const wd = wd0 !== null ? wd0 : (wdb !== null ? wdb : null);   // any marker must leave the tag
+				if (pinnable) { const pl = pinLevelOf(wd0); pinClose = pl; edits.push([m.index, m[0].length, `<h${pl}${clean}>`]); return; }
+				if (boxPin) { pinClose = wdb; edits.push([m.index, m[0].length, `<h${wdb}${clean}>`]); return; }
 				const put = (l) => edits.push([m.index, m[0].length, `<h${l}${clean}>`]);
 				if (fixedLevelHeading(m[3])) { fixedOpen = true; if (wd !== null) put(lv); return; }
 				if (inside) { if (wd !== null) put(lv); return; }                 // inside a widget — leave it
@@ -10850,11 +10922,17 @@ class ContentConverter {
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "TITLEIDECHO_OFF"]) return html;
 		const gap = Number(cfg.max_gap_chars ?? 400);
 		const esc = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+		// any lettered activity number the writer typed, not only the box's own (title_id_echo.any_id; env TITLEANYID_OFF):
+		// «2E Listening …» in box 4C, «Activity 4A: Iwi in my Rohe»
+		const anyCfg = cfg.any_id;
+		const anyRe = anyCfg && anyCfg.enabled !== false && anyCfg.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[anyCfg.env || "TITLEANYID_OFF"])
+			? new RegExp(anyCfg.pattern, "i") : null;
 		let n = 0;
 		const out = html.replace(/(<div class="[^"]*\bactivity\b[^"]*"[^>]*\bnumber="([^"]+)"[^>]*>)((?:\s*<div class="(?:row|col-[^"]*)[^"]*">)*\s*)(<h([2-5])\b[^>]*>)(\s*)([\s\S]*?)(<\/h\5>)/g,
 			(whole, open, num, wrap, hOpen, _lvl, lead, inner, hClose) => {
 				if (wrap.length > gap) return whole;
-				const m = inner.match(new RegExp("^" + esc(num) + "\\s+(?=[^\\s<])", "i"));
+				const m = inner.match(new RegExp("^" + esc(num) + "\\s+(?=[^\\s<])", "i")) ?? (anyRe ? inner.match(anyRe) : null);
 				if (!m || !inner.slice(m[0].length).replace(/<[^>]+>/g, "").trim()) return whole;
 				n++;
 				return open + wrap + hOpen + lead + inner.slice(m[0].length) + hClose;
@@ -11419,7 +11497,9 @@ class ContentConverter {
 					: MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_D.visible, { filename: Utils.FillTemplate(tpl.filename_rules.istock, { id: h.id }) }), h.url, h.id, run);
 				nImg++;
 			} else if ((h.id && rest.includes(`iStock-${h.id}`)) || cfg.mode === "drop") { rep = ""; nDrop++; }
-			else if ((cfg.mode ?? "todo") === "todo") {
+			// the address is the picture itself (bare_stock_url_image.as_image; env STOCKASIMG_OFF): the To Do form gives way
+			else if ((cfg.mode ?? "todo") === "todo" && !(cfg.as_image && cfg.as_image.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[cfg.as_image.env ?? "STOCKASIMG_OFF"]))) {
 				// the house To Do form (the Media List item note's wording): the image stays the developer's cue, the learner
 				// sees no URL, and the red note sits outside the skeleton — the in-place <img> scored 3× lower than the note
 				// (+0.0078 vs +0.0241pp): the gold places these pictures in side columns / widgets, not at the URL's line
@@ -12475,6 +12555,52 @@ class ContentConverter {
 	 * (a widget's own end tag) is flagged _dbxStrayCloser so it never pops the activity frame.
 	 * Data activity_wrapper.owned_activity_holds_to_writer_end; env ACTENDHOLD_OFF.
 	 */
+	/**
+	 * THE WIDGET'S OWN CLOSER DOES NOT END ITS ACTIVITY (a series dialect — BLL). «[Click drop] … [end of click drop] /
+	 * [body] Choose the correct homophone … / [drag and drop] …»: the next unconsumed item after the owned widget is the
+	 * widget's own closer (the lexicon's widget-closer tag, its bracket naming a widget and no activity, page or box), then
+	 * the activity's prose, then another widget that opens no activity of its own — before any activity tag, heading, page
+	 * boundary or section marker. True = leave the frame open (the closer is flagged so it never pops it); the prose and the
+	 * next widget render inside the box, which the next boundary closes. Data activity_wrapper.widget_closer_keeps_box;
+	 * env WIDGETCLOSEKEEP_OFF.
+	 */
+	static #widgetCloserHold(bodyItems, i, bundles, ownerIdx, tpl, run) {
+		const cfg = tpl.activity_wrapper?.widget_closer_keeps_box;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "WIDGETCLOSEKEEP_OFF"]) return false;
+		const ser = String(run?.moduleCode ?? "").match(/^[A-Za-z]+/)?.[0]?.toUpperCase() ?? "";
+		if (!(cfg.series ?? []).includes(ser)) return false;
+		const ownerBundle = bundles[ownerIdx];
+		if (!ownerBundle) return false;
+		const wordRe = new RegExp(cfg.widget_word_pattern, "i"), denyRe = new RegExp(cfg.deny_word_pattern, "i");
+		let closer = null, prose = false;
+		for (let j = i + 1; j < bodyItems.length && j <= i + (cfg.max_lookahead ?? 12); j++) {
+			const c = bodyItems[j];
+			if (!c || c._consumed) continue;
+			if (c.consumedBy !== undefined && c.consumedBy !== null) {
+				if (c.consumedBy === ownerIdx) continue;
+				const b = bundles[c.consumedBy];
+				if (!b || b === ownerBundle) continue;
+				// the activity's next widget: one that opens no activity of its own, after the closer and the prose
+				if (!closer || !prose) return false;
+				if (b.canonTag === "activity" || b.activityOwner !== undefined || (b.activityId !== null && b.activityId !== undefined)) return false;
+				closer._dbxStrayCloser = true;
+				return true;
+			}
+			if (c.type !== "tag") { if (String(c.text ?? "").trim()) { if (!closer) return false; prose = true; } continue; }
+			const p = c.parse?.primary;
+			if (!closer) {
+				const t = String(c.text ?? "");
+				if (p?.directive === "CONTAINER_CLOSE" && wordRe.test(t) && !denyRe.test(t)) { closer = c; continue; }
+				return false;
+			}
+			if (!p) { prose = true; continue; }
+			if (p.directive === "ELEMENT" && /^(?:body|text)$/i.test(String(p.tag ?? ""))) { prose = true; continue; }
+			return false;   // any other tag (a heading, an activity, a boundary, a callout) ends the dialect's shape
+		}
+		return false;
+	};
+
 	static #writerEndHold(bodyItems, i, bundles, ownerIdx, tpl, renderedHeading) {
 		const cfg = tpl.activity_wrapper?.owned_activity_holds_to_writer_end;
 		if (!cfg || cfg.enabled === false) return false;
@@ -13764,6 +13890,14 @@ class ContentConverter {
 			const _kwdOn = _kwdTpl || _kwdPfx || _kwdFamOn;
 			let _hHtml = this.#stripHeadingItalic(`<h${shifted}>${ListsAndRuns.inlineMarkup(headInline)}</h${shifted}>`, run);
 			if (_kwdOn) _hHtml = _hHtml.replace(/^<h(\d)>/, `<h$1 data-wd="${(!_kwdTpl && !_kwdPfx && _kwdFamLevel) ? _kwdFamLevel : digit}">`);
+			// INSIDE AN ACTIVITY BOX THE WRITER'S DIGIT HOLDS (keep_writer_digit.in_activity; env INBOXDIGIT_OFF): a transient
+			// data-wdb marker the re-leveller pins only when the heading sits inside an activity box, and drops elsewhere
+			else {
+				const _kia = _kwd?.in_activity;
+				if (reOn && _kia && _kia.enabled !== false && (_kia.digits ?? []).includes(digit) && shifted !== digit
+					&& !(typeof process !== "undefined" && process.env && process.env[_kia.env || "INBOXDIGIT_OFF"]))
+					_hHtml = _hHtml.replace(/^<h(\d)>/, `<h$1 data-wdb="${digit}">`);
+			}
 			out.push(_hHtml);
 			if (softTail) out.push(...ListsAndRuns.renderBlackText(softTail, run, it.block?.links));
 			// Part-3 "BOTH" case: an embedded heading whose span is followed

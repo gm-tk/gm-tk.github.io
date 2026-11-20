@@ -146,8 +146,19 @@ class InteractiveBuilder {
 		// an untagged activity whose table carries the writer's answer key under a «match / drag / sort» lead is built as the
 		// widget that lead describes (#answerKeyType); the bundle keeps its own type, so a decline leaves the box as captured
 		const type = (bundle.type === "unclassified" && this.#answerKeyType(bundle, templates)) || bundle.type;
-		// a type switched off in data/Interactive_Switches.json stays a placeholder
-		if (!this.TypeIsOn(type)) return null;
+		// a type switched off in data/Interactive_Switches.json stays a placeholder — except the UPLOAD BUTTON: a bundle the
+		// drop-down builder would build as its upload box (the writer's opener names a dropbox) is a button, not a widget, and
+		// still builds (interactive_builders.dropDown.upload_box.when_type_off; env DBXOFFBUILD_OFF)
+		if (!this.TypeIsOn(type)) {
+			const ddT = templates.dropDown, ubOff = ddT?.upload_box?.when_type_off;
+			if (type === "dropDown" && ddT && ddT.enabled !== false && ddT.upload_box?.enabled !== false
+				&& ubOff && ubOff.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && (process.env[ubOff.env || "DBXOFFBUILD_OFF"] || process.env.DROPDOWN_OFF))
+				&& !this.#ddIsDropdownFamily(bundle, ddT)) {
+				try { return this.#ddUploadBox({ bundle, tpl: ddT, run, renderBlock }); } catch { return null; }
+			}
+			return null;
+		}
 
 		// Look up THIS widget's editable template. Missing = we don't build it
 		// yet (it stays a placeholder). enabled:false = a human switched it off.
@@ -5755,6 +5766,28 @@ class InteractiveBuilder {
 	 * prefix). Returns { image_col, col_open, bubble, todo } or null.
 	 * Data flag: speechBubble.text_only.kea_character   Env toggle: SBKEA_OFF
 	 */
+	/**
+	 * THE SERIES CHARACTER NAMED ON THE LINE BEFORE THE BUBBLE. In a listed series the writer asks for the series'
+	 * character on its own red line just above a text-only bubble («[Kōwhai Avatar – right hand side of the page]»,
+	 * «[insert bookworm avatar on right side holding a magnifying glass]» — BLLR); the human ships that character's
+	 * series picture beside the bubble. The line the scanner recorded above the opener (bundle.prevItemText) must match the
+	 * row's prev_re. Returns the character form (the bubble left, the picture right — the fixed side) or null.
+	 * Data flag: speechBubble.text_only.prev_line_character   Env toggle: SBAVATAR_OFF
+	 */
+	static #sbPrevCharacter(bundle, tpl, run) {
+		const c = tpl?.text_only?.prev_line_character;
+		if (!c || c.enabled === false || !bundle) return null;
+		if (typeof process !== "undefined" && process.env && process.env[c.env || "SBAVATAR_OFF"]) return null;
+		const code = String(run?.moduleCode ?? "").toUpperCase();
+		const row = (c.series ?? []).filter((s) => code.startsWith(String(s.prefix).toUpperCase()))
+			.sort((a, b) => String(b.prefix).length - String(a.prefix).length)[0];
+		if (!row || !row.prev_re) return null;
+		const prev = String(bundle.prevItemText ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ");
+		if (!new RegExp(row.prev_re, "i").test(prev)) return null;
+		// bubble_left is the left-side bubble's own template (#phBubble / #phColumns read it so)
+		return { image_col: `${row.image_col}\n${row.img}\n</div>`, col_open: row.col_open, bubble: row.bubble, bubble_left: row.bubble, todo: null };
+	}
+
 	static #sbKea(bundle, tpl, run) {
 		const k = tpl?.text_only?.kea_character;
 		if (!k || k.enabled === false || !bundle) return null;
@@ -5940,7 +5973,8 @@ class InteractiveBuilder {
 		// its tag line takes the avatar form with the KB 04C placeholder image, and one red To Do follows the group.
 		// Data text_only.placeholder_character (code_prefixes, picture_named_re); env SBPLACEHOLDER_OFF.
 		// the WJ cohort's Kea bubble (text_only.kea_character; env SBKEA_OFF) takes the character form first
-		const ph = this.#sbKea(bundle, tpl, run) ?? this.#sbPlaceholder(bundle, tpl, run);
+		// a series character the writer asks for on the line before the bubble (text_only.prev_line_character; env SBAVATAR_OFF)
+		const ph = this.#sbKea(bundle, tpl, run) ?? this.#sbPrevCharacter(bundle, tpl, run) ?? this.#sbPlaceholder(bundle, tpl, run);
 		const phOn = !!ph;
 		const rows = bubbles.map((b) => {
 			// the writer's soft-broken lines render apart, each its own <p> (rich.soft_break_paragraphs)

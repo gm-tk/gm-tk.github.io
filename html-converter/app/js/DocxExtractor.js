@@ -2035,6 +2035,8 @@ class DocxExtractor {
 	static #admitPastedFiles(pp, block, blocks, state, isTable = false) {
 		if (!pp || pp.mode !== "files") return;
 		const pics = pp.pending.splice(0);
+		// a table before the content start keeps none of its cell picture lines (files_only.place_in_cells)
+		if (isTable && block.cellPics && !(state && state.seen)) delete block.cellPics;
 		if (!pics.length || !state) return;
 		const cfg = pp.cfg;
 		if (!state.seen) return;
@@ -2053,6 +2055,15 @@ class DocxExtractor {
 			rec.admitted = true;
 			if (!rec.where) { rec.w = p.w; rec.h = p.h; rec.order = pp.nextOrder = (pp.nextOrder ?? 0) + 1; rec.where = { page: state.lastPage ?? null, after: state.lastText ?? "" }; }
 		}
+	};
+
+	/** FILES-ONLY mode: is a picture pasted into a table cell placed in that cell (files_only.place_in_cells; env PASTEDCELLPIC_OFF)? */
+	static PlaceInCells(cfg) {
+		if (!cfg || cfg.enabled !== false) return false;
+		const fo = cfg.files_only, pc = fo?.place_in_cells;
+		if (!fo || fo.enabled === false || !pc || pc.enabled === false) return false;
+		const envOn = (name) => typeof process !== "undefined" && process.env && process.env[name];
+		return !(envOn(cfg.env ?? "PASTEDPIC_OFF") || envOn(fo.env ?? "PASTEDFILES_OFF") || envOn(pc.env ?? "PASTEDCELLPIC_OFF"));
 	};
 
 	/** Is the picture under the writer's note placed after that note on the page (files_only.include_after_red.place_on_page; env PASTEDAFTERREDPLACE_OFF)? */
@@ -2157,7 +2168,7 @@ class DocxExtractor {
 	 */
 	static StripPastedTokens(blocks) {
 		const cfg = DataService.Data.InputDocRules?.pasted_pictures;
-		if (!cfg || cfg.enabled === false || !Array.isArray(blocks)) return blocks;
+		if (!cfg || (cfg.enabled === false && !this.PlaceInCells(cfg)) || !Array.isArray(blocks)) return blocks;
 		const lineRe = this.#pastedLineRe(cfg);
 		const marker = DataService.Data.InputDocRules.table_markers?.in_cell_line_break ?? " / ";
 		for (let i = blocks.length - 1; i >= 0; i--) {
@@ -2176,7 +2187,7 @@ class DocxExtractor {
 	/** The same for one table row's cell strings (the cell's lines are joined by the in-cell marker). */
 	static StripPastedCells(cells, marker) {
 		const cfg = DataService.Data.InputDocRules?.pasted_pictures;
-		if (!cfg || cfg.enabled === false || !Array.isArray(cells)) return cells;
+		if (!cfg || (cfg.enabled === false && !this.PlaceInCells(cfg)) || !Array.isArray(cells)) return cells;
 		const lineRe = this.#pastedLineRe(cfg);
 		const sep = marker ?? (DataService.Data.InputDocRules.table_markers?.in_cell_line_break ?? " / ");
 		return cells.map((c) => typeof c === "string" && c.indexOf("pasted:") >= 0
@@ -3357,6 +3368,10 @@ class DocxExtractor {
 		// whose Word list is NUMBERED (its numId's level-0 format), or null. Kept only when a cell has one.
 		let anyNumbered = false;
 		const cellNumbered = [];
+		// files only, place_in_cells (Input_Doc_Rules.pasted_pictures; env PASTEDCELLPIC_OFF): a cell's pasted pictures ride beside the rows
+		const cellPicsOn = !!rels?.pictures && rels.pictures.mode === "files" && this.PlaceInCells(rels.pictures.cfg);
+		let anyCellPic = false;
+		const cellPics = [];   // rows-aligned: cellPics[r][c] = the names of the pictures pasted into that cell (never its text)
 		for (const rowMatch of xml.matchAll(/<w:tr\b[\s\S]*?<\/w:tr>/g)) {
 			const cells = [];
 			const thisRowLinks = [];
@@ -3364,6 +3379,7 @@ class DocxExtractor {
 			const thisRowSpans = [];
 			const thisRowParas = [];
 			const thisRowNumbered = [];
+			const thisRowPics = [];
 			const firstCell = rowMatch[0].search(/<w:tc\b/);
 			const trPr = rowMatch[0].match(/<w:trPr\b[\s\S]*?<\/w:trPr>/);
 			const before = trPr && (firstCell < 0 || trPr.index < firstCell) ? trPr[0].match(/<w:gridBefore\b[^>]*w:val="(\d+)"/) : null;
@@ -3384,13 +3400,20 @@ class DocxExtractor {
 				const paras = [];
 				const numbered = [];
 				const cm = [];
+				const pics = [];
 				for (const pm of cellMatch[0].matchAll(/<w:p[ >][\s\S]*?<\/w:p>/g)) {
+					const pend0 = cellPicsOn ? rels.pictures.pending.length : 0;
 					const block = this.#parseParagraph(pm[0], rels, new Map(), page, rules);
 					// A mark's nth counts the cell's EARLIER paragraphs too (the cell text
 					// is its paragraphs joined) — computed before this paragraph joins them
 					const before = paras.join(rules.table_markers.in_cell_line_break);
 					if (block.text.trim()) paras.push(block.text.trim());
 					if (block.pictures) { paras.push(...block.pictures); delete block.pictures; }   // the writer's pasted pictures: lines of the cell
+					// files only, place_in_cells: the pictures this paragraph put on the pending list are the cell's pictures (the
+					// registry admits them with the table; a table before the content start loses the side-channel)
+					if (cellPicsOn && rels.pictures.pending.length > pend0) {
+						for (const p of rels.pictures.pending.slice(pend0)) { pics.push(p.name); anyCellPic = true; }
+					}
 					const nid = numFormats ? pm[0].match(/<w:numId w:val="(\d+)"/)?.[1] : null;
 					const nlv = parseInt(pm[0].match(/<w:ilvl w:val="(\d+)"/)?.[1] ?? "0", 10);
 					const nkind = nid ? (this.#levelKind(numFormats, nid, nlv, rules) ?? numFormats.get(nid)) : null;
@@ -3407,6 +3430,7 @@ class DocxExtractor {
 				if (numbered.length) anyNumbered = true;
 				thisRowMarks.push(cm);
 				if (cm.length) anyCellMark = true;
+				thisRowPics.push(pics.length ? pics : null);
 			}
 			rows.push(cells);
 			rowLinks.push(thisRowLinks);
@@ -3414,6 +3438,7 @@ class DocxExtractor {
 			cellSpans.push(thisRowSpans);
 			cellParas.push(thisRowParas);
 			cellNumbered.push(thisRowNumbered);
+			cellPics.push(thisRowPics);
 		}
 
 		// the corpus text form — what the tag pipeline scans
@@ -3429,6 +3454,7 @@ class DocxExtractor {
 		if (anySpan) blk.cellSpans = cellSpans;       // the merged-cell side-channel
 		if (anyParas) blk.cellParas = cellParas;      // the cell-paragraph side-channel
 		if (anyNumbered) blk.cellNumbered = cellNumbered;   // the numbered-list side-channel
+		if (anyCellPic) blk.cellPics = cellPics;            // the cell-picture side-channel (files_only.place_in_cells)
 		return blk;
 	};
 

@@ -2353,6 +2353,11 @@
 			"enabled": true,
 			"env": "STOCKURLIMG_OFF",
 			"mode": "todo",
+			"as_image": {
+				"_doc": "THE BARE STOCK-PHOTO ADDRESS IS THE PICTURE, NOT A TO DO NOTE. The writer's stock address on its own line (or beside a short label) is the picture the human page shows: on the pool's pages the «Designer To Do: image goes here (iStock-<id>)» note stood where the human page shows that very picture at 160 of 197 notes with an id (63 of 75 modules). With this on, the To Do form (mode todo) gives way to the picture in the run's image mode (image.mode_P / mode_D, MediaBuilder.FinishImg's alt and loading=lazy), as a table cell's address already is; a paragraph whose picture the page already shows is still dropped. Env STOCKASIMG_OFF keeps the To Do note.",
+				"enabled": true,
+				"env": "STOCKASIMG_OFF"
+			},
 			"todo_text": "Designer To Do: image goes here{label}. Link: {url}",
 			"title_line": {
 				"enabled": true,
@@ -3034,7 +3039,13 @@
 			"_doc": "THE BOX'S TITLE DOES NOT REPEAT ITS NUMBER. A writer who types the id in front of the title («[activity box] 1A Ullis Email», «[Activity 1A Drag and Drop] 1A Greetings and farewells») gets a box numbered 1A whose title reads «1A Ullis Email» — the number shown twice. The gold drops the id from the title (35 of the 38 such headings it shows). A page post-pass, run after the page's numbering is settled: the box's FIRST heading, reached past only its row / column wrappers, loses a leading token equal to the box's own number= when a title follows it. A heading whose id differs from the box's number is left as typed.",
 			"enabled": true,
 			"env": "TITLEIDECHO_OFF",
-			"max_gap_chars": 400
+			"max_gap_chars": 400,
+			"any_id": {
+				"_doc": "ANY ACTIVITY NUMBER THE WRITER TYPED, NOT ONLY THE BOX'S OWN. The writer's number in front of the box's title is often not the box's number= once the page renumbers its boxes («2E Listening – using the format …» in GEFUN02's box, «Activity 4A: Iwi in my Rohe» in ANZH205), or carries the word «Activity» and a colon; the human drops it (28 of the 36 pool titles of this form the gold has, across 9 modules and 8 series). With this on, the box's first heading also loses a leading number WITH its letter (pattern: optionally after «Activity» / «Act», then a colon, full stop or dash), when a title follows it. A number without a letter is never taken (a count, a step). Env TITLEANYID_OFF.",
+				"enabled": true,
+				"env": "TITLEANYID_OFF",
+				"pattern": "^(?:(?:activity|act\\.?)\\s*)?\\d+\\s*[a-z]\\b\\s*[:.\\u2013\\u2014-]?\\s*(?=[^\\s<])"
+			}
 		},
 		"id_tail_before_heading": {
 			"_doc": "THE ID TYPED AFTER THE OPENER, AND THE WRITER'S HEADING ON THE NEXT LINE. «🔴[Activity]🔴 1B» then «🔴[H2]🔴 Why is poi good for us?»: the black tail is the box's NUMBER (the bracket carries none — number_from_tail reads only the red span's own words), so it is not also rendered as an <h3>1B</h3> title; the writer's heading then opens the still-empty box as its title instead of closing it, and the activity's content stays inside (the gold's box 1B in every such module). Taken only when the tail is nothing but the id (digits + one letter, optionally after the word Activity) and the next item, past blank lines and red notes, is a heading tag — an id typed above content, the form some golds keep as an id title, is left alone.",
@@ -3090,8 +3101,30 @@
 			"integer_prefix": true,
 			"_integer_prefix_doc": "The {lessonNumber}{letter} renumber uses the INTEGER lesson part of a DOTTED page lesson number ('1.0'→'1', '5.1'→'5') as both the id prefix AND the letter-map key — the human ships '1A'/'5D', never '1.0A'/'5.1A' (ENGJ403/CEDK501/CEDT501/MXDB301/MXEO301/MXFL302), and integer map keys let a lesson split over sub-pages (2.0→2.1) CONTINUE its lettering (2A then 2B/2C). The letter-LESS dotted-id convention (number='1.1') is writer-typed ids kept verbatim — it never enters this renumber. Env ACTLNINT_OFF uses the raw dotted prefix/key."
 		},
+		"widget_closer_keeps_box": {
+			"_doc": "A WIDGET'S OWN CLOSER LEAVES THE ACTIVITY BOX OPEN — the BLL series' dialect. «[Click drop] … [end of click drop] / [body] Choose the correct homophone so each sentence makes sense. / [drag and drop] …» (BLL247 1B): the closer named the click drop, but it popped the activity's frame, so the activity's next sentence fell outside and its drag and drop opened a new box (1C). In the BLL modules the human keeps that sentence and the second widget inside the same numbered box (BLL243, BLL247, BLL253, BLL260, BLL272; BLL263 and BLL264 already boxed); in the other series the gold leaves it outside (XDLS903, XDLS906 …), so the rule is scoped by series. With this on, in a listed series, when the owned widget is followed by a closer whose bracket names a widget (widget_word_pattern) and no activity, page or box (deny_word_pattern), then the activity's prose, then another widget opening no activity of its own — before any other tag — the box stays open and the closer ends only its widget; the next boundary closes the box. Env WIDGETCLOSEKEEP_OFF.",
+			"enabled": false,
+			"env": "WIDGETCLOSEKEEP_OFF",
+			"series": ["BLL"],
+			"widget_word_pattern": "\\b(?:click|drop|drag|quiz|reorder|sort|match|flip|memory|word select|typing)",
+			"deny_word_pattern": "activ|\\bpage\\b|\\blesson\\b|\\bbox\\b|alert|important"
+		},
 		"embedded_interactive_activity": {
 			"enabled": true,
+			"tail_number": {
+				"_doc": "THE ACTIVITY NUMBER TYPED IN THE WIDGET TAG'S TAIL. A writer may tag the widget on the activity's own title line and type the number in the black words after it — «[Activity: flip cards] Activity 3A: Te tiriti transport», «[Activity: Interactive Crossword] Activity 6A: After te tiriti» (ANZH205), «[Activity embedded] Activity 9A <title>» (JPN1004), «[activity choice – single multi] Activity 1A [heading] Spot the bullying» (OSBY101). The bracket carries no number, so the box opened with no number or none at all, and the title went into the un-built hand-off box; the human opens <div class=\"activity interactive\" number=\"3A\"> with <h3>Title</h3> (4 of 4). With this on, when the widget's type is switched off and the tag (an [activity] tag, no separate owner) has a tail matching pattern, the box takes the number when it has none, and — when the number is the box's own — the words after it (a heading tag between them dropped, a trailing red note left in the tail) are the box's title heading, at most max_words words; the tail is blanked so the hand-off box never repeats it. Env EMBTAILNUM_OFF.",
+				"enabled": true,
+				"env": "EMBTAILNUM_OFF",
+				"pattern": "^Activity\\s+(\\d+[a-z]?)\\b\\s*[:.\\u2013\\u2014-]?\\s*(.*)$",
+				"max_words": 16,
+				"title_heading": "<h3>{title}</h3>",
+				"any_widget_tag": {
+					"_doc": "THE SAME FOR A WIDGET TAG THAT DOES NOT SAY «ACTIVITY». «[Multi Choice Quiz autocheck] 1a – Can you spot the sound?», «[Word Select autocheck] 4a – Which final letters of the numbers wake up?» (FRFUN06), «[Answer Select] Activity 2A Choosing our colours» (ENGR202), «[Radio Interactive …] 2C Speaking practice» (GENO901): the writer's interactive tag, then the activity's number and its name. The human opens the activity box with the name as its <h3>, without the number; PageForge left «1a – Can you spot the sound?» inside the hand-off box or a bold paragraph. With this on, a switched-off widget tag with no [activity] tag whose tail matches pattern — a number WITH its letter («1a», «4D»), optionally after «Activity», so a tail that only starts with a count («5 things to do») never reads as one — takes the same box and title as the [activity] form above; a red span that is only a dash or a colon between the number and the name is the tail's punctuation. Env TAILNUMTAG_OFF.",
+					"enabled": true,
+					"env": "TAILNUMTAG_OFF",
+					"pattern": "^(?:Activity\\s+)?(\\d+[a-z])\\b\\s*[:.\\u2013\\u2014-]?\\s*(.*)$"
+				}
+			},
 			"typed_tag_title": {
 				"_doc": "THE WIDGET-TYPED ACTIVITY TAG'S TAIL IS THE BOX TITLE. The Mathematics MXFL / MXEO / MXFU / MXDB family (and ENGJ / ENGR) types the widget TYPE inside the activity tag — `[Activity 1B – self-marking type the answer] Fill in the blanks`, `[Activity 3A – self-marking drag and drop] Negatives on the number line`, `… – self-marking drop down quiz]`, `… – memory card game]`, `… – reorder]` — so the tag parses as the WIDGET (number 1B) and the embedded form makes it its own box's owner, with the title riding INTO the capture (or the built widget's Writers Note) as a <p>. The human opens `<div class=\"activity interactive\" number=\"1B\">` with `<h3>Title</h3>`. With this on, a tag whose raw text matches tag_pattern and whose tail is a title emits title_heading right after the box opens (as the level-pages rule does), records it._typedTitle and blanks the tail so the capture, the built widget's note and the .txt hand-off never repeat it; a trailing bracketed writer note (`(Currently in correct order – please jumble)`) is split off and stays the tail; a bracket-only tail is not a title; never on bilingual (reoMode) pages. KB 01F. OFF (env TYPEDTAG_OFF) turns it off.",
 				"enabled": true,
@@ -3389,6 +3422,26 @@
 			"host_pattern": "^https?:\\/\\/(?:www\\.)?istockphoto\\.com\\/",
 			"default_labels": ["Go to website"],
 			"_doc": "A STOCK PICTURE IS NEVER A WEBSITE BUTTON. Through several authoring forms ('[image] <address>' after a modal ENGI401, an activity table's picture cell ENGI400 / PWY1001, a tile's picture WJFUN211, '[image] [item #112] <address>' MXDI201, 'Image: iStock: stepping stone: <address>' CEDR501, a two-row picture / body table SSCI104) an iStock picture's address reached the external-destination rule and shipped as an externalButton 'Go to website', or as the address of the writer's own button ('Yes', 'Go to journal'); the human build shows the picture. MediaBuilder.stockButtonPostpass (the page's final-body chain): an external button whose address is an iStock picture with an id renders the picture placeholder (the image path's own form, FinishImg's title); a button with a default_labels label is replaced by it, a writer's labelled button keeps its label with an empty link and the picture follows."
+		},
+		"other_stock": {
+			"_doc": "ANOTHER STOCK LIBRARY'S ADDRESS NAMES ITS PICTURE. The BLL / BLLR writers often give a Shutterstock address with «[image]» («https://www.shutterstock.com/image-photo/bearded-cyclist-sport-clothing-protective-helmet-1668248602?…»); the image path, which reads an id only from an iStock address, built an anonymous placeholder — label «image», file image.jpg, no alt — so neither the developer nor the tracker could tell which picture it stood for (the acknowledgements line alone named it). With this on, an address matching a row's pattern gives the placeholder the row's label and file name with the picture's id, and the address's words before the id as its alt text, as an iStock address does. Env OTHERSTOCK_OFF.",
+			"enabled": true,
+			"env": "OTHERSTOCK_OFF",
+			"rows": [
+				{
+					"pattern": "shutterstock\\.com/(?:[a-z]{2}/)?image-(?:photo|vector|illustration|generated)/([a-z0-9-]+?)-(\\d{5,12})\\b",
+					"id_group": 2,
+					"words_group": 1,
+					"label": "Shutterstock-{id}",
+					"filename": "shutterstock-{id}.jpg"
+				},
+				{
+					"pattern": "shutterstock\\.com/(?:[a-z]{2}/)?shutterstock/photos/(\\d{5,12})\\b",
+					"id_group": 1,
+					"label": "Shutterstock-{id}",
+					"filename": "shutterstock-{id}.jpg"
+				}
+			]
 		},
 		"filename_rules": {
 			"istock": "iStock-{id}.jpg",
@@ -5310,6 +5363,21 @@
 				"max_paragraphs": 4,
 				"thought_re": "thought",
 				"layout_thought": "thought",
+				"prev_line_character": {
+					"_doc": "THE SERIES CHARACTER NAMED ON THE LINE BEFORE THE BUBBLE. The BLLR writers ask for the series' bookworm, Kōwhai Quill, on its own red line just above a speech bubble — «[Kōwhai Avatar – right hand side of the page]», «[insert bookworm avatar on right side holding a magnifying glass]», «[Insert bookworm avatar on the left hand side of the page with nothing in his hands.]» — and the human ships the series picture bookworms/bookworm_1.jpg beside the bubble (BLLR201–206: 131 of 133 bookworm pictures are bookworm_1.jpg; BLLR207 uses pose variants). PageForge built a text-only bubble and printed the request as a Writers Note. With this on, a text-only bubble in a listed series whose preceding line (the item the scanner records above the opener) matches the row's prev_re takes the row's character form: the bubble in its column, the picture beside it on the fixed side (text left, picture right). A per-series row, the Kea rows' sibling. Env SBAVATAR_OFF.",
+					"enabled": true,
+					"env": "SBAVATAR_OFF",
+					"series": [
+						{
+							"prefix": "BLLR",
+							"prev_re": "\\b(?:avatar|bookworm)\\b",
+							"img": "<img class=\"img-fluid imageCentral\" alt=\"Kōwhai Quill, a friendly bookworm character\" loading=\"lazy\" src=\"bookworms/bookworm_1.jpg\">",
+							"image_col": "<div class=\"col-4 paddingL\">",
+							"col_open": "<div class=\"col-8 paddingR\">",
+							"bubble": "<div class=\"bubble-basic no-hover bubble-left\">{text}</div>"
+						}
+					]
+				},
 				"kea_character": {
 					"_doc": "THE KEA SPEECH BUBBLE (KB 14B2 §14.10, the MiW / WJ cohort; CL-0113: the Kea art is DELIVERED, the audio pending). The writer's '[Insert Kea as per global parameters][kea speech bubble and audio] <text>' is a text-only bubble whose tag names the Kea; the gold (143 Kea bubbles / 21 WJFUN modules) ships the Kea picture column beside a bubble-right, by series. The KB: 'The server does not say which image belongs to which phase — follow a same-phase sibling module'; the series rows are the gold's majority form per series (1xx: kea_1, col-md-3 col-4 / col-md-9 col-10, tertiary — 75 / 75 tertiary; 2xx: kea_1, col-md-4 col-2 / col-md-8 col-8, secondary; 3xx: kea_3, col-md-4 col-2 / col-md-8 col-8, primary-1). The audio is still pending (the KB keeps the audio slot's note), so ONE To Do follows the bubble group. Only this convention of the inactive '14.10 MiW WJ' family is taken.",
 					"enabled": true,
@@ -6956,6 +7024,11 @@
 			"upload_box": {
 				"_doc": "THE UPLOAD BOX. A bundle the family fence refuses because the writer's opener names a DROPBOX (the student upload area) builds the human's own upload button instead of a red flag or a hand-off box: `<a href=\"\" target=\"_blank\"><div class=\"{cls}\">Upload to dropbox</div></a>` + ONE Designer To Do note carrying the writer's own bracket words. The human build uses this button widely — label 'Upload to dropbox', class `button` outside BLL and `buttonD` inside BLL (the dropbox house style, read from buttons.dropbox_orange_house_style so the two rules cannot drift) — and many of its own buttons carry the EMPTY href we ship (the unwired pre-publish form; the populated ones carry a per-module D2L rcode that is in NO Writers Template — the CL-0044 class, an INTENTIONAL divergence). FENCES: an 'alert dropbox' opener is a REVEAL box, not an upload area (opener_exclude_pattern — CEDT101, whose human build drops them); a MERGED capture (extraTypes) is the gathering class; a captured table, media, or another widget's member keeps the honest hand-off box. Captured black/[body] text is RELEASED around the button in the writer's own order (renderBlock — bullets become real lists; see release_split); a no-primary red span's own text joins the note spec, never learner content. Modules whose human build ships NO upload button (BLL155, BLL266, ENGI400, ENGJ302, ENGJ403, HPRE301, SSEA203, SSOG103, TEDC401, TEDC402, TRR304, XMES201) are forward-looking NAMED divergences. Env DBXBUTTON_OFF turns every upload-box bundle back into its red flag / hand-off box.",
 				"enabled": true,
+				"when_type_off": {
+					"_doc": "THE UPLOAD BUTTON BUILDS WHILE THE DROP-DOWN TYPE IS SWITCHED OFF. The drop-down type is off in data/Interactive_Switches.json, so every bundle the scanner reads as one — the writer's «[upload to dropbox]» tag on its own line included (ENGS401) — became a hand-off box, and the learner had no button. An upload area is a button, not a widget: with this on, a drop-down bundle the family fence refuses because its opener names a dropbox (the bundle this builder turns into its upload box) still builds that box — the «Upload to dropbox» button, its To Do note and the released text — while every real drop-down stays a placeholder. Env DBXOFFBUILD_OFF.",
+					"enabled": true,
+					"env": "DBXOFFBUILD_OFF"
+				},
 				"release_split": {
 					"enabled": true,
 					"env": "DBXORDER_OFF",
@@ -11199,6 +11272,12 @@
 				"goJournal"
 			],
 			"keep_writer_digit": {
+				"in_activity": {
+					"_doc": "INSIDE AN ACTIVITY BOX THE WRITER'S [H4] STAYS LEVEL 4. A free-body [H#] is built at the writer's digit + the body shift and the page's outline is then ranked, but activity boxes are left out of that ranking, so a writer's [H4] inside a box stayed h5 — one level below the human (BLL240's «Words making the 'ur' sound», ENWJ206, TWHA906). Across the pool's in-box [H4] headings that PageForge builds as h5, the human builds h4 at 11, h3 at 7 and h5 at 1. With this on, a listed digit is marked when it is built (a transient data-wdb marker) and the re-leveller pins it at the digit only when the heading sits inside an activity box, with no widget or excluded callout between; elsewhere the marker is dropped and the heading takes the standing treatment. Env INBOXDIGIT_OFF.",
+					"enabled": true,
+					"env": "INBOXDIGIT_OFF",
+					"digits": [4]
+				},
 				"enabled": true,
 				"env": "H3KEEP_OFF",
 				"digits": [
@@ -11651,7 +11730,15 @@
 				"enabled": true,
 				"env": "SIDERESUME_OFF",
 				"tags": ["side alert"],
-				"resume_tags": ["body", "button", "audio"]
+				"resume_tags": ["body", "button", "audio"],
+				"right_hand": {
+					"_doc": "THE SAME FOR AN ALERT THE WRITER PUTS IN THE RIGHT-HAND COLUMN. «[Activity 1B] … / 4. … / [Alert box RHC] Sensitivity: Only share what you are comfortable sharing … / 5. … / 6. … / [Add button] Download journal button» (ANZH404 1.0): the bracket reads as a plain alert, so the side-alert rule above did not see it, the activity box closed at it, and the activity's last questions and its button shipped outside; the human keeps them in the box with the alert in the right-hand column. With this on, an alert of a listed tag whose bracket text matches text_pattern counts as a side alert for the rule above (the same text-run and resume-tag test). Env RHSRESUME_OFF.",
+					"enabled": true,
+					"env": "RHSRESUME_OFF",
+					"tags": ["alert", "important"],
+					"resume_tags": ["button", "audio"],
+					"text_pattern": "\\b(?:rh[cs]|right[- ]hand(?:[- ](?:side|column))?)\\b"
+				}
 			},
 			"_doc_side_by_side_headings_stay": "A heading that shares its source paragraph with another heading — a side-by-side caption row ('[H3] Picture A     [H3] Picture B', XGF9003 5C) — labels the open activity's own two-column content and does not auto-close it (the human keeps the row and what follows inside the writer's box). Env SBSHEAD_OFF.",
 			"title_heading_tags": [

@@ -141,6 +141,27 @@ class MediaBuilder {
 		});
 	};
 
+	/**
+	 * ANOTHER STOCK LIBRARY'S ADDRESS NAMES ITS PICTURE (image.other_stock; env OTHERSTOCK_OFF). A writer's [image] whose address
+	 * is a Shutterstock (or another listed library's) page carries the picture's id and words in the address
+	 * («shutterstock.com/image-photo/bearded-cyclist-sport-clothing-protective-helmet-1668248602»); the image path built an
+	 * anonymous placeholder («image», image.jpg, no alt). Returns { label, filename, alt } from the first matching row, or null.
+	 */
+	static OtherStock(url, tpl) {
+		const cfg = tpl?.other_stock;
+		if (!cfg || cfg.enabled === false || !url) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "OTHERSTOCK_OFF"]) return null;
+		for (const row of cfg.rows ?? []) {
+			const m = String(url).match(new RegExp(row.pattern, "i"));
+			const id = m ? m[row.id_group ?? 1] : null;
+			if (!id) continue;
+			const words = String((row.words_group ? m[row.words_group] : "") ?? "").replace(/-+/g, " ").replace(/\s+/g, " ").trim();
+			const alt = words ? words.charAt(0).toUpperCase() + words.slice(1) : "";
+			return { label: Utils.FillTemplate(row.label, { id }), filename: Utils.FillTemplate(row.filename, { id }), alt };
+		}
+		return null;
+	};
+
 	static image(it, bodyItems, i, run) {
 		const tpl = DataService.Data.EmitTemplates.image;
 		const out = [];
@@ -170,10 +191,14 @@ class MediaBuilder {
 
 		// filename: iStock id when present (data rule), else a slug
 		const istockId = url.match(/gm-?(\d{6,10})/)?.[1] ?? null;
+		// another stock library's address names its picture too (image.other_stock; env OTHERSTOCK_OFF): its id in the label and
+		// the file name, its address's words as the alt — the placeholder says which picture it stands for
+		const os = istockId ? null : this.OtherStock(url, tpl);
 		const filename = istockId
 			? Utils.FillTemplate(tpl.filename_rules.istock, { id: istockId })
+			: os ? os.filename
 			: `${Utils.Slugify(it.parse.remainders.join(" ") || "image") || "image"}.jpg`;
-		const label = istockId ? `iStock-${istockId}` : "image";
+		const label = istockId ? `iStock-${istockId}` : os ? os.label : "image";
 
 		if (run.imageMode === "P") {
 			out.push(this.FinishImg(Utils.FillTemplate(tpl.mode_P.visible, { label }), url, istockId, run));
@@ -181,6 +206,8 @@ class MediaBuilder {
 		} else {
 			out.push(this.FinishImg(Utils.FillTemplate(tpl.mode_D.visible, { filename }), url, istockId, run));
 		}
+		if (os && os.alt) for (let k = Math.max(0, out.length - (run.imageMode === "P" ? 2 : 1)); k < out.length; k++)
+			out[k] = String(out[k]).replace(/alt=""/g, `alt="${Utils.EscapeHtml(os.alt)}"`);
 
 		// MEDIA-REFERENCE TITLE LINE DROP. When the
 		// writer authors an image BY TITLE (the docx hyperlink's anchor TEXT is the
@@ -303,7 +330,8 @@ class MediaBuilder {
 	 */
 	static PastedPicture(text, run) {
 		const cfg = DataService.Data.InputDocRules?.pasted_pictures;
-		if (!cfg || cfg.enabled === false || !run?.pastedPictures) return null;
+		// files only, the lines exist in table cells alone (files_only.place_in_cells; env PASTEDCELLPIC_OFF)
+		if (!cfg || (cfg.enabled === false && !DocxExtractor.PlaceInCells(cfg)) || !run?.pastedPictures) return null;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "PASTEDPIC_OFF"]) return null;
 		const m = new RegExp(cfg.token_pattern ?? "^pasted:(\\S+)$", "i").exec(String(text ?? "").trim());
 		if (!m) return null;
@@ -422,7 +450,7 @@ class MediaBuilder {
 		if (!cfg || cfg.enabled !== false || !fo || fo.enabled === false || !run?.pastedPictures) return [];
 		const envOn = (name) => typeof process !== "undefined" && process.env && process.env[name];
 		if (envOn(cfg.env ?? "PASTEDPIC_OFF") || envOn(fo.env ?? "PASTEDFILES_OFF")) return [];
-		return [...run.pastedPictures.values()].filter((r) => r.admitted && !r.placed).sort((x, y) => (x.order ?? 0) - (y.order ?? 0));   // a placed picture is on its page
+		return [...run.pastedPictures.values()].filter((r) => r.admitted && !r.placed && !r.inCell).sort((x, y) => (x.order ?? 0) - (y.order ?? 0));   // a placed picture is on its page
 	};
 
 	/**

@@ -188,6 +188,17 @@ class TablesAndGrids {
 						if (ir) { irImgs = ir.imgs; work = ir.text; changed = true; }
 						// THE WRITER'S PASTED PICTURE IN A KEPT CELL (Input_Doc_Rules.pasted_pictures): its token line renders as the
 						// picture in place through the same sentinels (cellPastedPictures); a hand-off box keeps the raw line.
+						// files only (pasted_pictures.files_only.place_in_cells; env PASTEDCELLPIC_OFF): the cell's own pictures, carried
+						// beside the rows (the extractor's cellPics side-channel, matched by the cell's text), join it as picture lines here
+						const cpx = block?.cellPics;
+						if (Array.isArray(cpx) && cpx.length === rows.length && Array.isArray(cpx[r]) && Array.isArray(cpx[r][ci])
+							&& block.rows?.[r]?.[ci] === c && DocxExtractor.PlaceInCells(DataService.Data.InputDocRules?.pasted_pictures)) {
+							const tokCfg = DataService.Data.InputDocRules.pasted_pictures.token ?? "[image] pasted:{name}";
+							const toks = cpx[r][ci].map((n) => Utils.FillTemplate(tokCfg, { name: n }));
+							// a one-paragraph cell takes the picture after a space (the in-cell « / » marker would print)
+							work = (String(work).trim() ? work + (P0 ? SEP : " ") : "") + toks.join(P0 ? SEP : " ");
+							changed = true;
+						}
 						const pz = this.cellPastedPictures(work, run, P0 ? SEP : null, irImgs ? irImgs.length : 0);
 						if (pz) { irImgs = (irImgs ?? []).concat(pz.imgs); work = pz.text; changed = true; }
 						// THE VIDEO IN A KEPT CELL (layout_table_grid.cell_video; env CELLVIDEO_OFF): a «[video] <address>» run becomes the embed in
@@ -1037,7 +1048,8 @@ class TablesAndGrids {
 		const s = String(cell ?? "");
 		if (s.indexOf("pasted:") < 0 || !run?.pastedPictures) return null;
 		const cfg = DataService.Data.InputDocRules?.pasted_pictures;
-		if (!cfg || cfg.enabled === false) return null;
+		const inCells = cfg && cfg.enabled === false && DocxExtractor.PlaceInCells(cfg);   // files only, files_only.place_in_cells
+		if (!cfg || (cfg.enabled === false && !inCells)) return null;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "PASTEDPIC_OFF"]) return null;
 		const bracket = (String(cfg.token ?? "[image] pasted:{name}").match(/^\[[^\]]*\]/)?.[0] ?? "[image]").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 		const re = new RegExp(`(?:\\u{1f534}\\[RED TEXT\\] ?)?${bracket}(?: ?\\[\\/RED TEXT\\]\\u{1f534})? ?(pasted:\\S+)`, "giu");
@@ -1045,7 +1057,12 @@ class TablesAndGrids {
 		for (const m of s.matchAll(re)) {
 			const rec = MediaBuilder.PastedPicture(m[1], run);
 			if (!rec) continue;
-			hits.push({ start: m.index, end: m.index + m[0].length, img: MediaBuilder.PastedImg(rec, run) });
+			if (inCells) rec.inCell = true;   // on its page (a cell): it leaves the interactives file's list; a note placement is still its own
+			// a cell picture's alt: Word's description with its encoded line breaks and its «Description automatically generated» tail gone
+			const img = inCells
+				? MediaBuilder.PastedImg({ ...rec, alt: String(rec.alt ?? "").replace(/&#x?[0-9a-f]+;/gi, " ").replace(/\s*Description automatically generated\.?\s*$/i, "").replace(/\s+/g, " ").trim() }, run)
+				: MediaBuilder.PastedImg(rec, run);
+			hits.push({ start: m.index, end: m.index + m[0].length, img });
 		}
 		if (!hits.length) return null;
 		let text = "", at = 0;

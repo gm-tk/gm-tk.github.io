@@ -566,6 +566,11 @@
 					"min_chars": 12
 				},
 				"manifest_line": "Follows the writer's red instruction: it may show what the writer is asking for rather than a picture for the page."
+			},
+			"place_in_cells": {
+				"_doc": "THE PICTURE THE WRITER PASTED INTO A TABLE CELL SITS IN THAT CELL. A picture pasted into a table cell from the module's content start on (the same filter as every pasted picture: inline, at least min_px on both sides, more than min_bytes, not a template graphic, not inside a mostly red paragraph) is the cell's own content — a labelled photo in a comparison table, a pictured step — and the human page shows it in the cell on most of the rows PageForge keeps as a table. The cell gains the picture's line («[image] pasted:<name>») where the writer pasted it, and the kept-cell path renders it as <img class=\"img-fluid\" loading=\"lazy\" src=\"images/<name>\"> with its file in images/; a picture that reaches a cell leaves the interactives file's list. A table before the content start keeps no line. Pictures outside tables stay files only. Env PASTEDCELLPIC_OFF keeps every cell picture a file only.",
+				"enabled": true,
+				"env": "PASTEDCELLPIC_OFF"
 			}
 		},
 		"token": "[image] pasted:{name}",

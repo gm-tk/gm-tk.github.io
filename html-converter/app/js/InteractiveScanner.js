@@ -2372,6 +2372,21 @@ class InteractiveScanner {
 				// the This/That in-panel videos) falls through to the normal capture below.
 				// See #titleSeriesDecision; env ACCTITLEMEM_OFF.
 				if (this.#titleSeriesDecision(bundle, items, j, next) === "break") break;
+				// A FOLLOWING TABLE LED BY THE WRITER'S JOURNAL TAG IS THE NEXT ACTIVITY: «[Learning journal] 3D: Write a relevant
+				// question / [Body] Go to your journal …» in a one-cell table after a flip-card table (the Pathways dialect) is its
+				// own journal activity; a widget that already holds its table ends before it (member_rule.journal_table_ends;
+				// env JOURNALTABLEEND_OFF).
+				{
+					const jte = DataService.Data.BoundaryBank?._meta?.member_rule?.journal_table_ends;
+					if (jte && jte.enabled !== false && bundle.tables.length > 0
+						&& !(typeof process !== "undefined" && process.env && process.env[jte.env || "JOURNALTABLEEND_OFF"])) {
+						const first = String(next.block?.rows?.[0]?.[0] ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim();
+						if (new RegExp(jte.cell_pattern, "i").test(first)) {
+							run?.AddNote?.("info", "InteractiveScanner", `${bundle.type}: a following table opens with the writer's journal tag — the capture ends before it (journal_table_ends).`);
+							break;
+						}
+					}
+				}
 				// reoMode SECTION boundary: a `[H1] N.M` decimal section-opener table starts a NEW
 				// section box (BilingualBuilder.bilingualSection), so a widget bundle must STOP here
 				// and never swallow the next section's heading/prose into itself (which would produce
