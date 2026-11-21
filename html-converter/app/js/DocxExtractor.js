@@ -1816,8 +1816,15 @@ class DocxExtractor {
 			 * and TEDC402's "Activity] 1D" cleanly and for a structural reason, not a
 			 * per-module one. */
 			const scOpener = scCfg?.require_explicit_activity_opener === false || hasPlainAct;
+			// …and the same one-row table whose second cell holds only the writer's picture tag (the activity's icon): the activity's
+			// own cell is the box (single_cell.image_cell; env SCIMGCELL_OFF)
+			const icCfg = scCfg?.image_cell;
+			const imgCellOnly = !!icCfg && icCfg.enabled !== false && b.rows.length === 1 && (b.rows[0]?.length ?? 0) === 2
+				&& !(typeof process !== "undefined" && process.env && process.env[icCfg.env ?? "SCIMGCELL_OFF"])
+				&& /\[\s*image\b/i.test(String(b.rows[0][1] ?? ""))
+				&& !/\p{L}/u.test(String(b.rows[0][1] ?? "").replace(RED, " "));
 			const singleCell = scOn && scOpener
-				&& b.rows.length === 1 && (b.rows[0]?.length ?? 0) === 1;
+				&& ((b.rows.length === 1 && (b.rows[0]?.length ?? 0) === 1) || imgCellOnly);
 			if (!hasAct || hasBoundary || !(hasBubble || singleCell)) { out.push(b); continue; }
 			let made = 0;
 			for (let r = 0; r < b.rows.length; r++) {

@@ -259,6 +259,13 @@ class ActivitiesBuilder {
 			markerRe.lastIndex = 0;
 			let owns = false, mk;
 			while ((mk = markerRe.exec(seg))) { if (mk[1].split(/\s*\+\s*/).some((t) => types.has(t.trim()))) { owns = true; break; } }
+			// the quiet placeholder names its widget type in its hand-off link («…#BLL247-INT-01-02-dragAndDrop»): a box that holds
+			// such a placeholder is an interactive task too (activity_interactive_postpass.read_link_types; env ACTINTLINK_OFF)
+			if (!owns && cfg.read_link_types !== false && !(typeof process !== "undefined" && process.env && process.env.ACTINTLINK_OFF)) {
+				const linkRe = /_interactives\.html#[A-Za-z0-9]+-INT-[\d-]+-([A-Za-z]+)"/g;
+				let lk;
+				while ((lk = linkRe.exec(seg))) { if (types.has(lk[1])) { owns = true; break; } }
+			}
 			// insert right after the literal `activity` word so the class reads
 			// "activity interactive{mods}" (the human's order): `<div class="`=12 + `activity`=8
 			if (owns) inserts.push(m.index + 20);

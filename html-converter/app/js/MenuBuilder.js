@@ -659,9 +659,18 @@ class MenuBuilder {
 		const linksOn = MenuBuilder.#menuLinksOn();
 		let linkBuf = [];
 		const bufLinks = (it) => { if (linksOn) for (const l of (it?.block?.links ?? [])) if (l?.text && l?.target) linkBuf.push(l); };
+		// THE PLAIN LINES UNDER A CURRICULUM LABEL ARE ITS LIST (menu.two_col_li.curriculum_plain_list; env CURRICLIST_OFF): the
+		// writer types each Understand / Know / Do statement as a plain line; the human builds them as list items
+		let curricList = false;
 		const flushText = () => {
 			if (!textBuf.length) return;
-			for (const piece of ListsAndRuns.renderBlackText(textBuf.join("\n"), run, linksOn ? linkBuf : [])) push(piece);
+			let _txt = textBuf.join("\n");
+			const _clCfg = tpl.two_col_li?.curriculum_plain_list;
+			if (curricList && _clCfg && _clCfg.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[_clCfg.env ?? "CURRICLIST_OFF"])
+				&& (_clCfg.code_prefixes ?? []).some((p) => String(run?.moduleCode ?? "").toUpperCase().startsWith(String(p).toUpperCase()))) {
+				_txt = _txt.split("\n").map((l) => (l.trim() && !/^\s*(?:[•·▪◦*-]|\d+[.)])\s/.test(l) ? `• ${l.trim()}` : l)).join("\n");
+			}
+			for (const piece of ListsAndRuns.renderBlackText(_txt, run, linksOn ? linkBuf : [])) push(piece);
 			textBuf = [];
 			linkBuf = [];
 		};
@@ -910,6 +919,7 @@ class MenuBuilder {
 						push(NotesAndComments.redFlag(
 							`Menu heading "${hText}" matched no tab rule (Emit_Templates menu.tab_map) — placed in tab 1.`, run));
 					}
+					curricList = ovbCurric.includes(String(hFold ?? "").replace(/[:\s]+$/, ""));
 					const hEl = Utils.FillTemplate(tpl.tab_map[bucket].element,
 						{ heading: Utils.EscapeHtml(this.#reduceBilingualHeading(hText, bhr || bhrTabs.includes(bucket))) });
 					if (t1cfg && bucket === "tab1") {
@@ -937,6 +947,7 @@ class MenuBuilder {
 					// Understand/Know/Do LEFT (h5+span), module LI/SC RIGHT
 					// (h5 plain) — routing lists in Emit_Templates two_col_li
 					const cfg = tpl.two_col_li;
+					curricList = false;
 					if (engFamily) {
 						// Curriculum content goes LEFT (and gets split, see below);
 						// everything else (LI/WALT/WILF/SC/I-can) goes RIGHT — this matches
@@ -963,6 +974,7 @@ class MenuBuilder {
 							}
 							push(Utils.FillTemplate(engCfg.curriculum_heading,
 								{ level: this.curriculumLevel(run, engCfg), heading: Utils.EscapeHtml(label) }));
+							curricList = true;
 							if (rest && rest.replace(/[*\s]/g, "")) {
 								for (const piece of ListsAndRuns.renderBlackText(rest.trim(), run)) push(piece);
 							}
@@ -1005,6 +1017,7 @@ class MenuBuilder {
 							}
 							if (keepColon && typed && label) label += ":";
 							push(Utils.FillTemplate((inqFamily ? inqCfg.left_heading : cfg.left_heading), { heading: Utils.EscapeHtml(label) }));   // the Inquiry family's h4>span
+							curricList = true;
 							if (rest && rest.replace(/[*\s]/g, "")) {
 								for (const piece of ListsAndRuns.renderBlackText(rest.trim(), run)) push(piece);
 							}

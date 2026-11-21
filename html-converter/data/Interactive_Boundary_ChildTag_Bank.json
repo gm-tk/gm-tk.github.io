@@ -12,6 +12,12 @@
 			}
 		},
 		"opener_rule": {
+			"button_ends_lead": {
+				"_doc": "AN ACTIVITY THAT ENDS AT ITS OWN BUTTON DOES NOT OWN THE WIDGET BEHIND A LATER HEADING. The writer opens an activity, types its title, instruction and its journal or upload button, then a section heading, more prose and the next widget; the lookback from that widget crossed the heading and the button and made the first activity its owner, so the box ran on over the heading and its prose (the human closes the box at the button and sets the heading and prose in the page body). With this on, when a button item lies between the opener and a heading that comes after it, the lookback owns nothing: the opener stays a plain activity box that the heading closes, and the widget takes its own box. Env BTNENDLEAD_OFF.",
+				"enabled": true,
+				"env": "BTNENDLEAD_OFF",
+				"button_tags": ["button"]
+			},
 			"page_boundary_stop": {
 				"enabled": true,
 				"env": "OPENERPAGE_OFF",
@@ -186,6 +192,12 @@
 					"enabled": true,
 					"env": "UNTYPEDTABLE_OFF",
 					"code_pattern": "^(?:MXDB|MXFU\\d|ENGC|ENGI|ENGR|ENGS|CEDT)",
+					"extra_families": {
+						"_doc": "THE FAMILIES MEASURED SINCE: further module families whose human build shows an untyped activity's table as plain content (a Spanish internal-assessment practice table, SPA1004 12A: «You will interact in spoken Spanish …» typed as a one-cell table). Env UNTYPEDEXTRA_OFF.",
+						"enabled": true,
+						"env": "UNTYPEDEXTRA_OFF",
+						"code_pattern": "^(?:SPA|HPFUN)"
+					},
 					"_code_pattern_doc": "The module families whose human build shows such an activity's table as plain content at 0.60 or more, measured activity by activity against the same-numbered gold activity (MXDB 9 of 12, MXFU 5 / 8, ENGC 6 / 7, CEDT 4 / 4, ENGS 4 / 5, ENGI 3 / 4, ENGR 2 / 3). Elsewhere the human mostly built a widget from the untyped table (AGH 6 of 7, BLL 6 / 8, CEDO 8 / 8, MXDI 8 / 12, MXFL 5 / 9 interactive) and the box stays.",
 					"widget_pattern": "\\b(?:drag\\w*|drop\\w*|match(?:ing|es)?|sort(?:ing|ed)?\\s+(?:the|these|them|into|each|your)|sorting|quiz\\w*|click\\w*|flip\\w*|select(?:ion)?\\s+(?:the|all|one|a|an|each)|tick|choose\\s+(?:the|one|a|an|which)\\b|order\\s+(?:the|these|them)|highlight\\w*|tap|reveal\\w*|hover\\w*|interactive|games?|self[\\s-]?(?:check|mark)\\w*|auto[\\s-]?(?:check|mark)\\w*|check\\s+(?:your|my|the)\\s+answers?|carousel|slider|accordion|tabs?|pop[\\s-]?(?:up|out)s?|modal|memory|bingo|crossword|word\\s*(?:find|search)|reorder\\w*|true\\s+or\\s+false|multi(?:ple)?[\\s-]?choice|radio|drop[\\s-]?down|type\\s+(?:the|your|in|and)|typing|fill\\s+in\\s+the\\s+(?:blank|gap)s?|(?:flash\\s*)?cards|widget|animation|animated)\\b",
 					"request_pattern": "\\b(?:can\\s+(?:we|you|this)\\s+(?:be\\s+)?(?:make|made|create|created|have|build|built|turn|turned|recreate|recreated)|please\\s+(?:make|create|build|turn|recreate)|like\\s+this|something\\s+like|developer\\s+to\\s+(?:make|create|build)|make\\s+(?:this|these|it)\\s+(?:an?|into))\\b",

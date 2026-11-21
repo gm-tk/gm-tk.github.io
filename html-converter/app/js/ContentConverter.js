@@ -3197,7 +3197,14 @@ class ContentConverter {
 								if (_t.length >= 2 && _t.split(/\s+/).length <= (_etn.max_words ?? 16) && !/^[\[(]/.test(_t) && !/https?:\/\//i.test(_t)
 									&& (_etnAnyOn || bundle.activityId == null || String(bundle.activityId).toUpperCase() === _id)) {
 									// any_widget_tag: the title only — the box keeps the number PageForge gives it (the page's own run)
-									if (_etnAnyOn) bundle._tailNumberAny = true;
+									if (_etnAnyOn) {
+										bundle._tailNumberAny = true;
+										// a widget the scanner gave no number: the tail's number opens the box (any_widget_tag.new_box; env TAILNUMNEW_OFF)
+										if (bundle.activityId == null && _etnAny.new_box !== false
+											&& !(typeof process !== "undefined" && process.env && process.env.TAILNUMNEW_OFF)) {
+											bundle.activityId = _id; bundle._tailNumberId = true; bundle._tailNumberNew = true;
+										}
+									}
 									else if (bundle.activityId == null) { bundle.activityId = _id; bundle._tailNumberId = true; }
 									_etnTitle = _t;
 								}
@@ -3207,7 +3214,7 @@ class ContentConverter {
 					const embeddedAct = !bundle.activityOwner && bundle.activityId != null
 						&& eiaCfg && eiaCfg.enabled !== false
 						&& !(typeof process !== "undefined" && process.env && process.env.EMBACT_OFF)
-						&& it.type === "tag" && it.parse?.tags?.some((t) => t.tag === "activity");
+						&& it.type === "tag" && (it.parse?.tags?.some((t) => t.tag === "activity") || !!bundle._tailNumberNew);
 					// BILINGUAL bundle activity (module TRR102): in bilingual (reoMode) modules, the
 					// scanner pass that reads the English|Māori tables tags this bundle with the
 					// "Activity NX:"/"Ngohe NX:" row number it found (bundle.reoActivity) — but there
@@ -3790,12 +3797,12 @@ class ContentConverter {
 						// the next boundary, and the dropbox postpass adds the `dropbox` class. The ENFUN
 						// prose|widget row split (pirKey) is excluded — its widget row is already closed here.
 						// Data activity_wrapper.owned_activity_keeps_trailing_dropbox; env ACTDBXINSIDE_OFF.
-						if (!pirKey && this.#dropboxTailHold(bodyItems, i, bundles, it.consumedBy, tpl, renderedHeading)) {
+						if (!pirKey && !bundle._tailNumberNew && this.#dropboxTailHold(bodyItems, i, bundles, it.consumedBy, tpl, renderedHeading)) {
 							if (bundle._tailHtml) { emit(bundle._tailHtml); bundle._tailHtml = null; }   // the box stays open: the writer's text after the widget stays in it
 							markContent();
 							run.AddNote("info", "ContentConverter",
 								`Page ${page.lessonLabel}: activity box kept open for its trailing upload box.`);
-						} else if (!pirKey && bundle._postTableResume) {
+						} else if (!pirKey && !bundle._tailNumberNew && bundle._postTableResume) {
 							// The unclassified activity's walk ended at the writer's post-table
 							// [Body] (InteractiveScanner, opener_rule.unclassified_activity_lead.post_table_resume):
 							// the gold keeps that prose free INSIDE the box after the widget, so the frame
@@ -3805,13 +3812,13 @@ class ContentConverter {
 							markContent();
 							run.AddNote("info", "ContentConverter",
 								`Page ${page.lessonLabel}: activity box kept open for the prose after its data table.`);
-						} else if (!pirKey && this.#widgetCloserHold(bodyItems, i, bundles, it.consumedBy, tpl, run)) {
+						} else if (!pirKey && !bundle._tailNumberNew && this.#widgetCloserHold(bodyItems, i, bundles, it.consumedBy, tpl, run)) {
 							// the BLL dialect: the widget's own closer, then the activity's next prose and widget — the box stays open
 							if (bundle._tailHtml) { emit(bundle._tailHtml); bundle._tailHtml = null; }
 							markContent();
 							run.AddNote("info", "ContentConverter",
 								`Page ${page.lessonLabel}: activity box kept open past its widget's own closer for the activity's next widget (widget_closer_keeps_box).`);
-						} else if (!pirKey && this.#writerEndHold(bodyItems, i, bundles, it.consumedBy, tpl, renderedHeading)) {
+						} else if (!pirKey && !bundle._tailNumberNew && this.#writerEndHold(bodyItems, i, bundles, it.consumedBy, tpl, renderedHeading)) {
 							// The writer typed more of this activity after the widget and closed it with their own [End activity]:
 							// the box stays open, the ordinary loop renders that content inside it, the [End activity] closes it.
 							emit(...this.#uploadBoxAfterText(bundle));
@@ -5074,7 +5081,19 @@ class ContentConverter {
 					// hold walked over must not pop the activity frame it deliberately left
 					// open (without the hold this closer meets an EMPTY stack and is ignored —
 					// the same outcome, the same info note). See #dropboxTailHold.
-					if (stack.length && !it._dbxStrayCloser) {
+					// THE WRITER'S «[END SUPERVISOR NOTE]» ENDS THE NOTE, NOT THE ACTIVITY BOX THE NOTE SITS IN
+					// (activity_wrapper.super_content.end_note_keeps_activity; env SUPENDKEEP_OFF): the activity's own supervisor note is part
+					// of the box (the super-content-button form), so the closer finds the activity box on top of the stack; the activity goes
+					// on after it and the human keeps its next lines inside the box
+					const _senCfg = tpl.activity_wrapper?.super_content?.end_note_keeps_activity;
+					const _senKeep = !!_senCfg && _senCfg.enabled !== false && stack.length > 0 && stack[stack.length - 1].tag === "activity"
+						&& new RegExp(_senCfg.closer_pattern ?? "supervisor", "i").test(String(it.text ?? ""))
+						&& !(_senCfg.exclude_code_prefixes ?? []).some((p) => String(run?.moduleCode ?? "").toUpperCase().startsWith(String(p).toUpperCase()))
+						&& !(typeof process !== "undefined" && process.env && process.env[_senCfg.env ?? "SUPENDKEEP_OFF"]);
+					if (_senKeep) {
+						run.AddNote("info", "ContentConverter",
+							`Page ${page.lessonLabel}: [${primary.tag}] ended the note, not the activity box — the box stays open (end_note_keeps_activity).`);
+					} else if (stack.length && !it._dbxStrayCloser) {
 						const top = stack.pop();
 						// EMPTY SPAN-WRAP KILL. A
 						// span-mode callout opens its inner row>col-12 wrapper EAGERLY (the
@@ -12573,12 +12592,20 @@ class ContentConverter {
 		const ownerBundle = bundles[ownerIdx];
 		if (!ownerBundle) return false;
 		const wordRe = new RegExp(cfg.widget_word_pattern, "i"), denyRe = new RegExp(cfg.deny_word_pattern, "i");
-		let closer = null, prose = false;
-		for (let j = i + 1; j < bodyItems.length && j <= i + (cfg.max_lookahead ?? 12); j++) {
+		let closer = null, prose = false, steps = 0;
+		for (let j = i + 1; j < bodyItems.length && steps <= (cfg.max_lookahead ?? 12); j++) {
 			const c = bodyItems[j];
 			if (!c || c._consumed) continue;
 			if (c.consumedBy !== undefined && c.consumedBy !== null) {
-				if (c.consumedBy === ownerIdx) continue;
+				if (c.consumedBy === ownerIdx) {
+					// the widget's own closer, swallowed into its capture, is the closer the dialect leaves the box open past
+					// (widget_closer_keeps_box.consumed_closer; env WIDGETCLOSECAP_OFF); the lookahead counts the items past the capture
+					if (cfg.consumed_closer !== false && !(typeof process !== "undefined" && process.env && process.env.WIDGETCLOSECAP_OFF)
+						&& c.type === "tag" && c.parse?.primary?.directive === "CONTAINER_CLOSE"
+						&& wordRe.test(String(c.text ?? "")) && !denyRe.test(String(c.text ?? ""))) { closer = c; prose = false; }
+					continue;
+				}
+				steps++;
 				const b = bundles[c.consumedBy];
 				if (!b || b === ownerBundle) continue;
 				// the activity's next widget: one that opens no activity of its own, after the closer and the prose
@@ -12587,6 +12614,7 @@ class ContentConverter {
 				closer._dbxStrayCloser = true;
 				return true;
 			}
+			steps++;
 			if (c.type !== "tag") { if (String(c.text ?? "").trim()) { if (!closer) return false; prose = true; } continue; }
 			const p = c.parse?.primary;
 			if (!closer) {
@@ -16363,6 +16391,13 @@ class ContentConverter {
 			&& !(m.type === "black" && /\u{1f534}\[RED TEXT\]/u.test(String(m.block?.text ?? "")));
 		// the trailing run: plain paragraphs and [Body] members, back from the box's end to the first item that is anything else
 		let k = mi.length;
+		// the writer's journal / upload button at the end of the data stays where it is: the run is read back from before it
+		// (tail_body_release.untagged_tail; env BOXTAILPROSE_OFF)
+		const _utB = cfg.untagged_tail;
+		if (_utB && _utB.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[_utB.env ?? "BOXTAILPROSE_OFF"])) {
+			while (k > 0 && mi[k - 1].type === "tag" && (_utB.end_button_tags ?? ["button"]).includes(mi[k - 1].parse?.primary?.tag ?? "")) k--;
+		}
+		const _kEnd = k;
 		while (k > 0) {
 			const m = mi[k - 1];
 			if (lead.has(m)) break;
@@ -16380,14 +16415,27 @@ class ContentConverter {
 		// just before it decides: the widget's own invocation, a note, a face / panel / media tag (panel_stop_tags) or a picture's
 		// file name or address makes the paragraph that panel's content (a click-drop's reveal after its picture line) — it stays
 		let s = k;
-		while (s < mi.length && mi[s].type !== "tag") s++;
-		if (s >= mi.length || s === 0) return none;
+		while (s < _kEnd && mi[s].type !== "tag") s++;
+		// a [Body] run found before a trailing button is the old reading's: not released (the button ended the old walk at once)
+		if (s < _kEnd && _kEnd < mi.length) return none;
+		// THE UNTAGGED PARAGRAPHS AFTER THE WIDGET'S DATA ARE PAGE TEXT TOO (tail_body_release.untagged_tail; env BOXTAILPROSE_OFF): a
+		// trailing run of whole plain paragraphs (no [Body] tag among them) standing right after the data table or the red answer
+		// line is released like the tagged run
+		if (s >= _kEnd) {
+			const ut = cfg.untagged_tail;
+			const prev = k > 0 ? mi[k - 1] : null;
+			if (ut && ut.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ut.env ?? "BOXTAILPROSE_OFF"])
+				&& k < _kEnd && prev && ((prev.type === "table" && ut.after_table !== false) || (prev.type === "tag" && !prev.parse?.primary))
+				&& mi.slice(k, _kEnd).every((m) => m.type === "black" && words(m.text) >= (ut.min_words ?? minW))) s = k;
+			else return none;
+		}
+		if (s === 0) return none;
 		const stop = mi[s - 1];
 		const stopTags = new Set(cfg.panel_stop_tags ?? []);
 		if (stop.type === "tag" && (stop.parse?.primary?.directive === "INTERACTIVE"
 			|| stopTags.has(String(stop.parse?.primary?.tag ?? "").toLowerCase()))) return none;
 		if (stop.type === "black" && new RegExp(cfg.media_line_pattern ?? "\\.(?:jpe?g|png|gif|svg|webp)\\b|https?://|www\\.", "i").test(String(stop.text ?? ""))) return none;
-		const run = mi.slice(s);
+		const run = mi.slice(s, _kEnd);
 		if (run.length > (cfg.max_items ?? 6)) return none;
 		const out = new Set(run);
 		// the box must keep content of its own (min_box_chars letters / digits in what stays: its text members and tables)

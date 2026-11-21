@@ -3006,6 +3006,14 @@
 			"panel_close": "</div>\n</div>\n</div>",
 			"_panel_note": "The human's super-content panel wraps its two col-12s in an INNER <div class=\"row\"> (super-content row > row > col-12,col-12); without it the idoc_scripts reveal JS leaves the note VISIBLE inline instead of the hidden icon-triggered modal (BLL241-2 2A/2C). Matching the human structure byte-for-byte gives the modal (the overview note uses the same super-content structure).",
 			"content_open": "<div class=\"row\"><div class=\"col-12\">",
+			"end_note_keeps_activity": {
+				"_doc": "THE WRITER'S [END SUPERVISOR NOTE] ENDS THE NOTE, NOT THE ACTIVITY BOX THE NOTE SITS IN. «[Activity 2D] Decodable text / [Supervisor's note] … / [end supervisor note] / [body] Let's read the story … / [embed text] …» (BLL245 2.0): the activity's own supervisor note is part of its box, so the closer met the activity box on top of the stack and shut it; the activity's next lines shipped loose under an empty box, where the human keeps them inside the box after the note. A closer whose text names the supervisor note, met with an activity box on top, leaves the box open. Env SUPENDKEEP_OFF.",
+				"enabled": true,
+				"env": "SUPENDKEEP_OFF",
+				"closer_pattern": "supervisor",
+				"exclude_code_prefixes": ["OSGM"],
+				"exclude_code_prefixes_note": "The one series whose human pages close the box at the note's closer and set the next paragraph and its widget free (measured over the 23 pool modules that type the closer: the other seven series that change gain)."
+			},
 			"scan_within_activity": {
 				"enabled": true,
 				"_note": "The writer also places the note MID-activity ([Activity][body][supervisor note][video][end activity]); the human STILL hoists it into the box panel as the FIRST child (as in BLL225-2.0 2E). Some human super-content boxes have no WT note at all (human-added/duplicated notes) — editorial, not generated. The opener lookahead scans forward to the activity's natural boundary (mirroring container_auto_close.activity_close_before semantics: section heading after content / next activity / any auto-close directive or tag / closer / section marker), skipping bundle-consumed members (a note after an embedded interactive still belongs to the box). The found note is consumed IN PLACE (loop index unchanged — the content between opener and note must render); the main loop skips it on arrival via its consumedBy mark. Env SUPSCAN_OFF uses the immediate-only lookahead; SUPNOTE_OFF turns off the whole super-content mechanism."
@@ -3103,7 +3111,7 @@
 		},
 		"widget_closer_keeps_box": {
 			"_doc": "A WIDGET'S OWN CLOSER LEAVES THE ACTIVITY BOX OPEN — the BLL series' dialect. «[Click drop] … [end of click drop] / [body] Choose the correct homophone so each sentence makes sense. / [drag and drop] …» (BLL247 1B): the closer named the click drop, but it popped the activity's frame, so the activity's next sentence fell outside and its drag and drop opened a new box (1C). In the BLL modules the human keeps that sentence and the second widget inside the same numbered box (BLL243, BLL247, BLL253, BLL260, BLL272; BLL263 and BLL264 already boxed); in the other series the gold leaves it outside (XDLS903, XDLS906 …), so the rule is scoped by series. With this on, in a listed series, when the owned widget is followed by a closer whose bracket names a widget (widget_word_pattern) and no activity, page or box (deny_word_pattern), then the activity's prose, then another widget opening no activity of its own — before any other tag — the box stays open and the closer ends only its widget; the next boundary closes the box. Env WIDGETCLOSEKEEP_OFF.",
-			"enabled": false,
+			"enabled": true,
 			"env": "WIDGETCLOSEKEEP_OFF",
 			"series": ["BLL"],
 			"widget_word_pattern": "\\b(?:click|drop|drag|quiz|reorder|sort|match|flip|memory|word select|typing)",
@@ -3122,6 +3130,7 @@
 					"_doc": "THE SAME FOR A WIDGET TAG THAT DOES NOT SAY «ACTIVITY». «[Multi Choice Quiz autocheck] 1a – Can you spot the sound?», «[Word Select autocheck] 4a – Which final letters of the numbers wake up?» (FRFUN06), «[Answer Select] Activity 2A Choosing our colours» (ENGR202), «[Radio Interactive …] 2C Speaking practice» (GENO901): the writer's interactive tag, then the activity's number and its name. The human opens the activity box with the name as its <h3>, without the number; PageForge left «1a – Can you spot the sound?» inside the hand-off box or a bold paragraph. With this on, a switched-off widget tag with no [activity] tag whose tail matches pattern — a number WITH its letter («1a», «4D»), optionally after «Activity», so a tail that only starts with a count («5 things to do») never reads as one — takes the same box and title as the [activity] form above; a red span that is only a dash or a colon between the number and the name is the tail's punctuation. Env TAILNUMTAG_OFF.",
 					"enabled": true,
 					"env": "TAILNUMTAG_OFF",
+					"new_box": true,
 					"pattern": "^(?:Activity\\s+)?(\\d+[a-z])\\b\\s*[:.\\u2013\\u2014-]?\\s*(.*)$"
 				}
 			},
@@ -3957,6 +3966,13 @@
 			"min_words": 4,
 			"max_items": 6,
 			"min_box_chars": 40,
+			"untagged_tail": {
+				"_doc": "THE UNTAGGED PARAGRAPHS AFTER THE WIDGET'S DATA ARE PAGE TEXT. A writer finishes the widget's table (and the red answer line) and goes on with plain paragraphs, no [Body] tag («[interactive: drag and drop] / table / Answers: A = Healthy … / It's not always easy to identify plant nutrient deficiencies …»); the member walk took them into the hand-off box, and the human page keeps them as page text. A trailing run of whole plain paragraphs of at least min_words words, standing right after a data table or a red line with no tag, is released like the tagged run (same types, same max_items and box-content tests). Env BOXTAILPROSE_OFF.",
+				"enabled": true,
+				"env": "BOXTAILPROSE_OFF",
+				"after_table": false,
+				"min_words": 14
+			},
 			"panel_stop_tags": [],
 			"_panel_stop_tags": "What stands just before the run's first [Body] decides it: the widget's own invocation, a tag listed here, or a plain line naming a picture file or an address (media_line_pattern) makes the paragraph that panel's content (a click-drop's reveal after its picture line) and it stays in the box. Empty: a face, picture or answer tag before the paragraph does not hold it (the human pages show the paragraph after a quiz's closing picture or a sentence quiz's red answer outside the widget).",
 			"media_line_pattern": "\\.(?:jpe?g|png|gif|svg|webp)\\b|https?://|www\\.",
@@ -8380,6 +8396,13 @@
 			"right_heading": "<h5>{heading}</h5>",
 			"curriculum_split_all": true,
 			"_curriculum_split_all_doc": "The curriculum SPLIT (the '**Label:** prose' Understand/Know/Do form → a label heading + the prose as a separate <p>) for EVERY two_col_li family, not just eng_family (as in CEDO102-00). Outside eng_family the curriculum would otherwise be pushed as a heading with the prose ABSORBED into the heading text (no separate content node), so the content-less headings would be removed by #dropEmptyHeadings and the LEFT column would be EMPTY. The split makes each label heading carry a following <p> so it survives. Uses the family's OWN left_heading template (the banner family's h5+span; eng_family keeps its curriculum_heading+#curriculumLevel path). Italics are stripped from the recovered LEFT pane to match the human's plain curriculum prose. The exact heading LEVEL (h3/h4/h5) and the banner's presence VARY editorially WITHIN families (e.g. BLL mostly h5, some h4; mostly with a banner) and are NOT cleanly derivable per-module — left at the family template default (a recovered node with a level near-miss is far better than a missing column). Env CURRICSPLIT_OFF limits the split to eng_family.",
+			"curriculum_plain_list": {
+				"_doc": "THE PLAIN LINES UNDER AN UNDERSTAND / KNOW / DO LABEL ARE ITS LIST. A writer types each statement of the overview's curriculum block as a plain line under the label (GER1002: «Learning languages is an empowering process…»); the human builds the statements as list items (<ul><li>), where PageForge built paragraphs. A plain line that follows a curriculum label in the two-column menu takes the bullet form the writer's own bulleted lines already do. Env CURRICLIST_OFF.",
+				"enabled": true,
+				"env": "CURRICLIST_OFF",
+				"code_prefixes": ["GER", "CBI", "XGF", "DTC", "GEO", "MUS"],
+				"code_prefixes_note": "The series whose human overviews list the statements (measured over the 130 pool modules with a curriculum block: the series above gain on the text and the skeleton; ENG / BLL / CEDR / XTAS / XMES / XDLS keep paragraphs, and stay out)."
+			},
 			"label_colon": {
 				"enabled": true,
 				"env": "LABELCOLON_OFF",
@@ -10984,6 +11007,8 @@
 		},
 		"activity_interactive_postpass": {
 			"enabled": true,
+			"read_link_types": true,
+			"read_link_types_note": "A box that holds a quiet placeholder is read for its widget type from the placeholder's hand-off link («#CODE-INT-01-02-dragAndDrop») as well as from the type marker, so a box that a held-open activity or a closer hold made the widget's home is classed interactive as the human's is. Env ACTINTLINK_OFF.",
 			"_note": "Post-pass that adds .interactive to a free-body activity div whose depth-balanced span contains a cv2-interactive placeholder declaring an interactive-task widget type (the set in activity_wrapper.interactive_widget_types). It covers activities whose interactive widget is a SEPARATE inner bundle (not the activity-owner bundle's own type), which the emit-time forceInt at #activityOpen misses — e.g. BLL135-01/BLL216 dragAndDrop, BLL145/BLL155 selfCheck, CEDK102/CEDO105 multiChoiceQuiz. Same human convention as the emit rule (the human usually marks such activities .interactive, e.g. CEDO102/CEDK101/CEDW101's overview class=\"activity interactive\"). Env ACTINT_OFF turns it off.",
 			"marker_format_note": "the placeholder type marker 'INTERACTIVE (un-built) #N: TYPE' is a structural constant of interactive_placeholder; the DECISION CONTENT (which types count) is data here via interactive_widget_types."
 		},

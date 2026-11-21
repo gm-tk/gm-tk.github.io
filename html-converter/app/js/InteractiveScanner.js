@@ -966,6 +966,23 @@ class InteractiveScanner {
 					`${type}: the opener walk stopped at the page boundary before «${String((_pbsStopped.blackAfter || _pbsStopped.text || "")).replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim().slice(0, 60)}» — the widget opens its own box on its page (opener_rule.page_boundary_stop).`);
 			}
 
+			// AN ACTIVITY THAT ENDS AT ITS OWN BUTTON DOES NOT OWN THE WIDGET BEHIND A LATER HEADING
+			// (opener_rule.button_ends_lead; env BTNENDLEAD_OFF): «[Activity 3C] / [body] / [button] Go to journal / [H3] Applying
+			// our knowledge / [body] … / [Clickdrop 1]» — the writer's journal or upload button is the last thing of the activity;
+			// the heading starts the next section, and the widget after it is that section's own.
+			if (activityIdx >= 0) {
+				const _belCfg = bank._meta.opener_rule.button_ends_lead;
+				if (_belCfg && _belCfg.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[_belCfg.env || "BTNENDLEAD_OFF"])) {
+					let _btnAt = -1;
+					for (let q = activityIdx + 1; q < i; q++) {
+						const x = items[q];
+						if (x.type !== "tag") continue;
+						const xp = x.parse?.primary;
+						if (_btnAt < 0) { if (xp && (_belCfg.button_tags ?? ["button"]).includes(xp.tag)) _btnAt = q; continue; }
+						if (xp && /^(?:h[2-5]|heading)$/i.test(String(xp.tag || ""))) { activityIdx = -1; break; }
+					}
+				}
+			}
 			if (activityIdx >= 0) {
 				// the bundle is OWNED by an activity: the converter renders
 				// the activity wrapper + everything between it and the widget
@@ -5057,7 +5074,12 @@ class InteractiveScanner {
 		if (!cfg || cfg.enabled === false || bundle.type !== "unclassified") return false;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "UNTYPEDTABLE_OFF"]) return false;
 		// only the module families whose human builds show such a table as content (code_pattern; the others build a widget)
-		if (cfg.code_pattern && !new RegExp(cfg.code_pattern, "i").test(String(run?.moduleCode ?? ""))) return false;
+		if (cfg.code_pattern && !new RegExp(cfg.code_pattern, "i").test(String(run?.moduleCode ?? ""))) {
+			// …plus the families measured since (untyped_table.extra_families; env UNTYPEDEXTRA_OFF)
+			const xf = cfg.extra_families;
+			if (!(xf && xf.enabled !== false && xf.code_pattern && !(typeof process !== "undefined" && process.env && process.env[xf.env || "UNTYPEDEXTRA_OFF"])
+				&& new RegExp(xf.code_pattern, "i").test(String(run?.moduleCode ?? "")))) return false;
+		}
 		const span = items.slice(bundle.startIndex, bundle.endIndex);
 		const tables = span.filter((x) => x.type === "table");
 		if (!tables.length) return false;
