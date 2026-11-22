@@ -652,7 +652,33 @@ class InteractiveScanner {
 			// Data: member_rule.table_qualifier_tags.
 			const _tableQual = (_mr.table_qualifier_tags ?? ["table"]);
 			const _hasTableQualifier = it.parse.tags.some((t) => _tableQual.includes(t.tag));
-			if ((_isWordSelect || _isStandalone) && !_hasTableQualifier) {
+			// A WORD SELECT TAG THAT CARRIES THE ACTIVITY'S NUMBER AND NAME IN ITS TAIL is the activity's own widget, not an
+			// inline highlight: «[Word Select autocheck] **4a – Which final letters of the numbers wake up?**» followed by the
+			// instruction and the writer's marked lines (FRFUN06, CHFUN05 / 06, FRFUN08). The human opens a numbered activity
+			// box whose h3 is the name and whose widget holds the marked lines. Dissolved as an inline marker the tag leaves
+			// the name a bold paragraph with the lines loose; kept as a bundle it takes the box and the title through the
+			// tail-number rule (embedded_interactive_activity.tail_number.any_widget_tag) and its lines go to the hand-off page.
+			// Data any_widget_tag.inline_marker_bundle; env WSTAILBUNDLE_OFF.
+			let _tailBundle = false;
+			if (_isWordSelect && !_hasTableQualifier && !reoMode && it.type === "tag" && it.parse?.primary?.directive === "INTERACTIVE"
+				&& !it.parse.tags.some((t) => t.tag === "activity")) {
+				const _tbCfg = DataService.Data.EmitTemplates?.activity_wrapper?.embedded_interactive_activity?.tail_number?.any_widget_tag;
+				const _tb = _tbCfg?.inline_marker_bundle;
+				if (_tb && _tb.enabled !== false && _tbCfg.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[_tb.env || "WSTAILBUNDLE_OFF"])
+					&& (_tb.types ?? []).includes(type)) {
+					let _raw = String(it.blackAfter ?? "").replace(/\u{1f534}\[RED TEXT\]\s*\[\s*(?:heading|h[1-6])\s*\]\s*\[\/RED TEXT\]\u{1f534}/giu, " ");
+					_raw = _raw.replace(/\u{1f534}\[RED TEXT\]\s*([:.–—-])\s*\[\/RED TEXT\]\u{1f534}/gu, " $1 ");
+					const _redAt = _raw.search(/\u{1f534}\[RED TEXT\]/u);
+					if (_redAt >= 0) _raw = _raw.slice(0, _redAt);
+					const _tl = _raw.replace(/\*+/g, "").replace(/\s+/g, " ").trim();
+					const _m = new RegExp(_tbCfg.pattern, "iu").exec(_tl);
+					const _t = _m ? String(_m[2] ?? "").replace(/^[:.–—\s-]+/u, "").trim() : "";
+					_tailBundle = !!_m && _t.length >= 2 && _t.split(/\s+/).length <= (_tb.max_words ?? 16)
+						&& !/^[\[(]/.test(_t) && !/https?:\/\//i.test(_t);
+				}
+			}
+			if ((_isWordSelect || _isStandalone) && !_hasTableQualifier && !_tailBundle) {
 				// INFO-TRIGGER (a standalone hover/rollover DEFINITION) authored INLINE as
 				// "anchor [hovertrigger: DEFINITION] continuation". The parser splits that into the
 				// PRECEDING anchor item, THIS marker (its blackAfter = the DEFINITION), and a "]"

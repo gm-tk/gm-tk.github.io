@@ -3131,7 +3131,14 @@
 					"enabled": true,
 					"env": "TAILNUMTAG_OFF",
 					"new_box": true,
-					"pattern": "^(?:Activity\\s+)?(\\d+[a-z])\\b\\s*[:.\\u2013\\u2014-]?\\s*(.*)$"
+					"pattern": "^(?:Activity\\s+)?(\\d+[a-z])\\b\\s*[:.\\u2013\\u2014-]?\\s*(.*)$",
+					"inline_marker_bundle": {
+						"_doc": "A WORD SELECT TAG THAT CARRIES THE ACTIVITY'S NUMBER AND NAME IN ITS TAIL IS THE ACTIVITY'S OWN WIDGET. «[Word Select autocheck] **4a – Which final letters of the numbers wake up?**» then the instruction and the writer's marked lines (FRFUN06, CHFUN05 / 06, FRFUN08): the human opens a numbered activity box with the name as its h3 and the widget inside it. Read as an inline highlight marker the tag was dissolved, so the name shipped as a bold paragraph and the lines loose. With this on, a tag of one of these types with no [activity] tag and no table qualifier, whose tail matches the pattern above (a number with its letter, then a name of at most max_words words), is kept as a widget bundle: the tail-number rule above then opens the box with the name as its heading, and the marked lines go to the hand-off page. Env WSTAILBUNDLE_OFF.",
+						"enabled": true,
+						"env": "WSTAILBUNDLE_OFF",
+						"types": ["wordSelect"],
+						"max_words": 16
+					}
 				}
 			},
 			"typed_tag_title": {
