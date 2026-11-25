@@ -1342,6 +1342,9 @@ class DocxExtractor {
 		// answer). Runs BEFORE the bracket repair below, so a dissolved cell's
 		// "Activity]" typo is repaired like any other paragraph's.
 		result = this.DissolveBubbleLayoutTables(result, normaliser, run);
+		// …and a widget's table whose first cell opens with the activity and its own heading and lead-in lines gives those lines
+		// back to the page, ahead of the table (PeelActivityLead).
+		result = this.PeelActivityLead(result, normaliser, run);
 
 		// A tag the writer typed in BLACK at the head of a paragraph is re-marked red (see PromoteBlackLeadTags).
 		result = this.PromoteBlackLeadTags(result, normaliser, run);
@@ -1774,6 +1777,93 @@ class DocxExtractor {
 	 * @param {ConversionRun|null} run - note surfacing
 	 * @returns {Object[]} a new block list with qualifying tables dissolved
 	 */
+	/**
+	 * THE ACTIVITY'S OWN LINES TYPED IN ITS WIDGET'S TABLE. A writer types the activity in the first cell of the widget's table —
+	 * «[Activity] 1A / [H3] What went wrong? / [Body] Something has gone wrong. What's the issue? / Match the example to the issue: /
+	 * [drag and drop …]» with the widget's data in the cells and rows after it (TEDC401 1.0, ENGC402 3.0, ENGC302 3.0, ENGI400 1.0).
+	 * The whole table went to the widget's hand-off box, so the page lost the activity's heading and lead-in; the human builds the
+	 * box with them and the widget after. When the first cell opens with an explicit activity opener the writer typed («[Activity …]»)
+	 * and has at least one line of the activity's own before the first widget tag, those lines (the opener included) become ordinary
+	 * blocks ahead of the table, one a line, and the table keeps the first cell from the widget tag on. The cell's side-channels stay
+	 * aligned: its paragraph list is cut at the same line (a cell whose paragraphs do not line up one for one with its lines is left
+	 * whole), its numbered lines and answer marks keep only the remainder's (a mark's place re-counted), its pictures stay with the
+	 * table. A page boundary or section marker among the lines, a reo module (excluded prefixes) and a cell with no widget tag are
+	 * left as they were.
+	 * Data: Input_Doc_Rules.tables.activity_lead_peel. Env: ACTLEADPEEL_OFF.
+	 * @param {Object[]} blocks - content blocks
+	 * @param {TagNormaliser|null} normaliser - resolves the cell spans (required)
+	 * @param {ConversionRun|null} run - note surfacing
+	 * @returns {Object[]} a new block list
+	 */
+	static PeelActivityLead(blocks, normaliser, run = null) {
+		const cfg = DataService?.Data?.InputDocRules?.tables?.activity_lead_peel;
+		if (!normaliser || !cfg || cfg.enabled === false) return blocks;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "ACTLEADPEEL_OFF"]) return blocks;
+		if ((cfg.exclude_code_prefixes ?? []).some((p) => String(run?.moduleCode ?? "").startsWith(p))) return blocks;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const rules = DataService.Data.InputDocRules;
+		const tm = rules?.table_markers ?? {};
+		const brk = tm.in_cell_line_break ?? " / ";
+		const prims = (s) => [...String(s ?? "").matchAll(RED)].map((m) => {
+			let p = null; try { p = normaliser.Parse(m[1])?.primary ?? null; } catch { p = null; }
+			return { raw: m[1], p };
+		});
+		const out = [];
+		let n = 0;
+		// the writer drew the activity as the table: when the next block opens with a heading, the activity ends with the table
+		// (the writer's own closer is placed after it — end_before_heading)
+		const headAt = (k) => {
+			for (let j = k + 1; j < blocks.length; j++) {
+				const x = blocks[j];
+				if (!x || !String(x.text ?? "").trim()) continue;
+				if (x.kind !== "para") return false;
+				const p = prims(String(x.text).split("\n")[0])[0]?.p;
+				return !!p && /^h[1-6]$/.test(String(p.tag ?? ""));
+			}
+			return false;
+		};
+		for (let bi = 0; bi < blocks.length; bi++) {
+			const b = blocks[bi];
+			if (!b || b.kind !== "table" || !Array.isArray(b.rows) || !Array.isArray(b.rows[0]) || !b.rows[0].length) { out.push(b); continue; }
+			const cell = String(b.rows[0][0] ?? "");
+			const segs = cell.split(brk);
+			const p0 = prims(segs[0]);
+			const opener = p0.length && p0[0].p?.tag === "activity" && p0[0].p?.directive === "CONTAINER_OPEN"
+				&& /^\s*\[?\s*activity\b/i.test(String(p0[0].raw ?? ""));
+			if (!opener) { out.push(b); continue; }
+			const w = segs.findIndex((s, i) => i > 0 && prims(s).some((x) => x.p?.directive === "INTERACTIVE"));
+			const lead = w > 0 ? segs.slice(1, w) : [];
+			const words = (s) => /\p{L}/u.test(String(s).replace(RED, " "));
+			const boundary = segs.slice(0, Math.max(w, 1)).some((s) => prims(s).some((x) => x.p?.directive === "PAGE_BOUNDARY" || x.p?.directive === "SECTION_MARKER"));
+			if (w < 2 || lead.length < (cfg.min_lead_lines ?? 1) || !lead.some(words) || boundary
+				|| prims(segs[0]).some((x) => x.p?.directive === "INTERACTIVE")) { out.push(b); continue; }
+			const paras0 = b.cellParas?.[0]?.[0];
+			if (Array.isArray(paras0) && paras0.length !== segs.length) { out.push(b); continue; }
+			const peeled = segs.slice(0, w), rest = segs.slice(w);
+			const linksFor = (t) => (b.rowLinks?.[0] ?? []).filter((l) => l && l.text && String(t).includes(String(l.text)));
+			for (const t of peeled) {
+				if (!String(t).trim()) continue;
+				out.push({ kind: "para", text: String(t).trim(), links: linksFor(t), wtPage: b.wtPage, list: "", listLevel: 0 });
+			}
+			const nb = { ...b, rows: b.rows.map((r) => r.slice()) };
+			nb.rows[0][0] = rest.join(brk);
+			nb.text = [tm.open, ...nb.rows.map((cells) => `${tm.row_prefix}${cells.join(tm.column_separator)}`), tm.close].join("\n");
+			const cut = (side, f) => { if (!Array.isArray(b[side])) return; nb[side] = b[side].map((r) => (Array.isArray(r) ? r.slice() : r)); if (Array.isArray(nb[side][0])) nb[side][0][0] = f(nb[side][0][0]); };
+			cut("cellParas", (x) => (Array.isArray(x) ? (x.slice(w).length > 1 ? x.slice(w) : null) : x));
+			const restText = rest.join(brk);
+			cut("cellNumbered", (x) => (Array.isArray(x) ? (x.filter((t) => restText.includes(t)).length ? x.filter((t) => restText.includes(t)) : null) : x));
+			const prefix = peeled.join(brk) + brk;
+			cut("cellMarks", (x) => (Array.isArray(x) ? x.filter((mk) => !mk || typeof mk.nth !== "number" || Utils.CountOccurrences(restText, mk.text) > 0)
+				.map((mk) => (mk && typeof mk.nth === "number" ? { ...mk, nth: Math.max(0, mk.nth - Utils.CountOccurrences(prefix, mk.text)) } : mk)) : x));
+			out.push(nb);
+			if (cfg.end_before_heading !== false && headAt(bi))
+				out.push({ kind: "para", text: cfg.closer_text ?? "\u{1f534}[RED TEXT] [End activity] [/RED TEXT]\u{1f534}", links: [], wtPage: b.wtPage, list: "", listLevel: 0 });
+			n++;
+		}
+		if (n) run?.AddNote("info", "DocxExtractor", `${n} widget table${n === 1 ? "" : "s"} whose first cell opened with the activity and its own lines: those lines shown on the page ahead of the table (tables.activity_lead_peel).`);
+		return out;
+	};
+
 	static DissolveBubbleLayoutTables(blocks, normaliser, run = null) {
 		const cfg = DataService?.Data?.InputDocRules?.tables?.bubble_layout_dissolve;
 		if (!normaliser || !cfg || cfg.enabled === false) return blocks;
@@ -1911,6 +2001,7 @@ class DocxExtractor {
 				if (typeof b.text === "string" && b.text.indexOf("]") >= 0) b.text = fix(b.text);
 				continue;
 			}
+			if (b.kind === "para" && b.text) b.text = this.#bracketlessRequest(b.text, normaliser, cfg.bracketless_request);
 			if (b.kind !== "para" || !b.text || b.text.indexOf("]") < 0) continue;
 			b.text = b.text.replace(RED, (whole, inner) => {
 				const fixed = this.#repairLeadingBracket(inner, normaliser, cleanHows, excludeTags);
@@ -1918,6 +2009,38 @@ class DocxExtractor {
 			});
 		}
 		return blocks;
+	};
+
+	/**
+	 * A WIDGET REQUEST TYPED WITH NO BRACKETS AT ALL. A writer may type the request in red but forget both brackets — «Embed
+	 * interactive true/False quiz» (GEO1005 3.0), «Insert video» —, so no reader sees a tag: the request ships as a red note and
+	 * the widget's own lines (a true/false quiz's questions and their answer letters) print as page text. A paragraph that OPENS
+	 * with a red span holding no bracket, of at most max_words words, which reads as a request of one of the listed directives,
+	 * gets its brackets back; every reader then sees the writer's tag.
+	 * Data: Input_Doc_Rules.red_runs.repair_missing_bracket.bracketless_request. Env: BRACKETLESSREQ_OFF.
+	 * @param {string} text - a paragraph's text (red markers included)
+	 * @param {TagNormaliser} normaliser
+	 * @param {Object|undefined} c - the bracketless_request block
+	 * @returns {string} the text, its opening span bracketed when the rule applies
+	 */
+	static #bracketlessRequest(text, normaliser, c) {
+		if (!c || c.enabled === false || (typeof process !== "undefined" && process.env && process.env[c.env ?? "BRACKETLESSREQ_OFF"])) return text;
+		const m = /^(\s*)\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/u.exec(String(text));
+		if (!m) return text;
+		const inner = m[2], token = inner.trim();
+		if (!token || /[[\]]/.test(token) || token.split(/\s+/).length > (c.max_words ?? 5)) return text;
+		// a span that ends like a sentence is the writer's note about the widget («Quiz to be self-marked teacher assessed.»), not the request
+		if (c.skip_sentence !== false && /[.!?]\s*$/.test(token)) return text;
+		// a span typed wholly in capitals is a template label («SUBMISSION CHECKLIST», the back matter), not the writer's request
+		if (c.skip_all_caps !== false && /\p{Lu}/u.test(token) && !/\p{Ll}/u.test(token)) return text;
+		// a media note («Image; iStock; speech bubbles;») names a picture, not a widget
+		if (c.skip_pattern && new RegExp(c.skip_pattern, "iu").test(token)) return text;
+		let prim = null; try { prim = normaliser.Parse("[" + token + "]")?.primary ?? null; } catch { prim = null; }
+		if (!prim || !(c.directives ?? ["INTERACTIVE"]).includes(prim.directive)) return text;
+		if (c.hows && !c.hows.includes(prim.how)) return text;
+		const lead = inner.length - inner.trimStart().length;
+		const fixed = inner.slice(0, lead) + "[" + inner.slice(lead).replace(/\s*$/, "") + "] ";
+		return m[1] + "\u{1f534}[RED TEXT]" + fixed + "[/RED TEXT]\u{1f534}" + String(text).slice(m[0].length);
 	};
 
 	/**

@@ -1322,6 +1322,330 @@
 			"closer_host_skip_empty": true,
 			"_closer_host_skip_empty_doc": "THE BACK-TO-BACK SPLIT TRIGGER. The split-bracket form (`[HInfo trigger: ] def ]`, the def in black between a red opener and a red `]` closer) anchors on the preceding item; when two triggers follow each other (`…such as who [HInfo trigger: ] asks about a character ] , what [HInfo trigger: ] asks about a thing or idea ] , where …`, BLL243) that item is the closer the first trigger emptied, so the second one's sentinel would start a bare line — its definition dropped and the sentence broken into `<p> , where</p>` paragraphs. The host is therefore the nearest preceding item of the same paragraph that still carries text — the self-closed branch's and the hover weave's own rule. Env TRIGHOST_OFF."
 		},
+		"info_trigger_text_case": {
+			"_doc": "AN INFO TRIGGER'S HOVER TEXT IS CASED AND STOPPED BY ITS LENGTH (KB 04B → Info Trigger, constraint 102, CL-0159). Every element whose class holds infoTrigger — the inline span, an infoImage hotspot, an imageLabel's label — has its info value set: ONE word (a hyphenated word is one) → a capital first letter and no full stop («Dog»); MORE than one word → a capital first letter and a closing full stop («Parts of the body.»). Only the first letter is raised (macrons kept), after any leading space, tag or opening quote / bracket; a value whose first character is a digit or another symbol is not re-cased. A closing mark in keep_end stays; a closing run of swap_end gives way to the full stop; a value with no letter or digit is left as it is. Runs over the finished page, after every other text pass and before the widget alts (PageAssembler → ListsAndRuns.InfoTextCase). The visible trigger word is never touched. A named override of the human pages, about a third of whose info values do not follow it.",
+			"enabled": true,
+			"env": "INFOCASE_OFF",
+			"class_pattern": "\\bclass=\"[^\"]*\\binfoTrigger\\b",
+			"open_punct": "[\"'“‘(\\[«]",
+			"close_punct": "[\"'”’)\\]»]",
+			"keep_end": "[.!?…]",
+			"swap_end": "[,;:]+",
+			"stop": "."
+		},
+		"maths_asset_library": {
+			"_doc": "THE MATHS TEMPLATES' SHAPES AND ANGLES LIBRARY (KB 14E §14.14, constraint 103, CL-0160). The Refresh Template's Module assets/Maths/Math templates/guidelines/Math assets/ folder holds reusable Maths images: 2D coloured shapes and 2D shapes with arrows (SVG, iStock 1388076960), 3D shapes (PNG, iStock 1251354077) and angles (SVG, Phase 3 only). In a Maths module (code_prefixes), an image tag whose request carries a set's cue (or library_cue) and names an item of that set builds each named item as `form` with src images/<library file name> — the file name verbatim, its misspellings kept, the alt the shape's correct name — plus one To Do naming the files and their library folder (notes.copy + the set's own note). 3D items take their outline / grey file when the request says so (variant_cues). The arrows set takes the page's phase from its template band (phase_by_template; the file is the set's file_form); a phase the set does not hold builds no picture, only notes.arrows_phase. The angles set holds only only_phase: a page in another phase still references the file and adds notes.angle_phase. Each set with acks registers its acknowledgement line on the run (run.mathsLibraryAcks); AcksBuilder puts it in the lesson group of each page that used it (once per group). A request naming nothing the set holds, or carrying its own picture's web address (skip_with_address), stays an ordinary image request. ContentConverter.#mathsLibraryImage.",
+			"enabled": true,
+			"env": "MATHSLIB_OFF",
+			"code_prefixes": [
+				"MX"
+			],
+			"skip_with_address": true,
+			"library_cue": "\\bmaths?\\s+(?:templates?|assets?)\\b",
+			"library_path": "Module assets/Maths/Math templates/guidelines/Math assets/",
+			"form": "<img class=\"img-fluid\" loading=\"lazy\" src=\"images/{file}\" alt=\"{alt}\">",
+			"phase_by_template": {
+				"1-3": "1",
+				"4-6": "2",
+				"7-8": "3",
+				"9-10": "4",
+				"NCEA": "5"
+			},
+			"variant_cues": {
+				"outline": "\\boutlined?\\b",
+				"grey": "\\bgr[ae]y\\b"
+			},
+			"notes": {
+				"copy": "Maths template library — copy {files} from {path}{folder}/ into this module's images folder.",
+				"arrows_phase": "Maths template library — the shapes with arrows exist for phases 1–4 only and this page's phase ({phase}) does not match one: choose {name} from {path}{folder}/ and add it here.",
+				"angle_phase": "The angle template is Phase 3 only: adapt {files} to this module's phase ({phase}) from the Phase 3 template, and save the adapted copy in {path}angles/Phase {phase}/ for others to use."
+			},
+			"sets": {
+				"2d_arrows": {
+					"cue": "\\bwith\\s+arrows?\\b|\\barrows?\\s+(?:and|&)\\s+corners?\\b",
+					"folder": "shapes/2D Shapes with arrows_iStock-1388076960",
+					"file_form": "Phase {phase}_{name}.svg",
+					"phases": [
+						"1",
+						"2",
+						"3",
+						"4"
+					],
+					"acks": "<p>Illustrations: Basic shapes geometric form collection for primary school or preschool. Colored kids geometry figures for learning, children education, educational set on white background, iStock 1388076960, Getty Images. Adapted. Used with permission.</p>",
+					"note": "The colour can be changed in the SVG's own style block.",
+					"items": {
+						"square with arrows and corners": {
+							"name": "Square with arrows and corners",
+							"alt": "Square with arrows and corners"
+						},
+						"triangle with arrows and corners": {
+							"name": "Triangle with arrows and corners",
+							"alt": "Triangle with arrows and corners"
+						},
+						"square with arrows": {
+							"name": "Square with arrows",
+							"alt": "Square with arrows"
+						},
+						"triangle with arrows": {
+							"name": "Triangle with arrows",
+							"alt": "Triangle with arrows"
+						}
+					}
+				},
+				"2d": {
+					"cue": "\\b2\\s*-?\\s*d\\b",
+					"folder": "shapes/2D Coloured shapes_iStock-1388076960",
+					"acks": "<p>Illustrations: Basic shapes geometric form collection for primary school or preschool. Colored kids geometry figures for learning, children education, educational set on white background, iStock 1388076960, Getty Images. Adapted. Used with permission.</p>",
+					"note": "The colour can be changed in the SVG's own style block.",
+					"items": {
+						"arrow": {
+							"file": "Arrow.svg",
+							"alt": "Arrow"
+						},
+						"circle": {
+							"file": "Circle.svg",
+							"alt": "Circle"
+						},
+						"crescent": {
+							"file": "Creasant.svg",
+							"alt": "Crescent"
+						},
+						"cross": {
+							"file": "Cross.svg",
+							"alt": "Cross"
+						},
+						"decagon": {
+							"file": "Decagon.svg",
+							"alt": "Decagon"
+						},
+						"ellipse": {
+							"file": "Ellipce.svg",
+							"alt": "Ellipse"
+						},
+						"heart": {
+							"file": "Heart.svg",
+							"alt": "Heart"
+						},
+						"heptagon": {
+							"file": "Heptagon.svg",
+							"alt": "Heptagon"
+						},
+						"hexagon": {
+							"file": "Hexagon.svg",
+							"alt": "Hexagon"
+						},
+						"kite": {
+							"file": "Kite.svg",
+							"alt": "Kite"
+						},
+						"minus": {
+							"file": "Minus.svg",
+							"alt": "Minus"
+						},
+						"nonagon": {
+							"file": "Nonagon.svg",
+							"alt": "Nonagon"
+						},
+						"octagon": {
+							"file": "Octagon.svg",
+							"alt": "Octagon"
+						},
+						"parallelogram": {
+							"file": "Parallelogramn.svg",
+							"alt": "Parallelogram"
+						},
+						"pentagon": {
+							"file": "Pentagon.svg",
+							"alt": "Pentagon"
+						},
+						"pie": {
+							"file": "Pic.svg",
+							"alt": "Pie"
+						},
+						"rectangle": {
+							"file": "Rectangle.svg",
+							"alt": "Rectangle"
+						},
+						"rhombus": {
+							"file": "Rhombus.svg",
+							"alt": "Rhombus"
+						},
+						"right triangle": {
+							"file": "Right Triangle.svg",
+							"alt": "Right Triangle"
+						},
+						"ring": {
+							"file": "Ring.svg",
+							"alt": "Ring"
+						},
+						"semicircle": {
+							"file": "Semicircle.svg",
+							"alt": "Semicircle"
+						},
+						"square": {
+							"file": "Square.svg",
+							"alt": "Square"
+						},
+						"star": {
+							"file": "Star.svg",
+							"alt": "Star"
+						},
+						"trapezium": {
+							"file": "Trapezium.svg",
+							"alt": "Trapezium"
+						},
+						"triangle": {
+							"file": "Triangle.svg",
+							"alt": "Triangle"
+						}
+					}
+				},
+				"3d": {
+					"cue": "\\b3\\s*-?\\s*d\\b",
+					"folder": "shapes/3D shapes_iStock-1251354077",
+					"acks": "<p>Illustrations: Realistic 3d geometric shapes. Basic geometry prism, cube, cylinder figures, geometric polygon and hexagon shapes vector illustration icons set stock illustration, iStock 1251354077, Getty Images. Adapted. Used with permission.</p>",
+					"note": "The 3D shapes' colours cannot be changed: use the coloured, outline or grey version.",
+					"items": {
+						"buckyball": {
+							"file": "Buckyball.png",
+							"alt": "Buckyball",
+							"outline": "Buckyball outline.png"
+						},
+						"cone": {
+							"file": "Cone.png",
+							"alt": "Cone",
+							"outline": "Cone outline.png",
+							"grey": "Cone grey.png"
+						},
+						"cube": {
+							"file": "Cube.png",
+							"alt": "Cube",
+							"outline": "Cube outline.png",
+							"grey": "Cube grey.png"
+						},
+						"cylinder": {
+							"file": "Cylinder.png",
+							"alt": "Cylinder",
+							"outline": "Cylinder outline.png",
+							"grey": "Cylinder grey.png"
+						},
+						"dodecahedron": {
+							"file": "Dodecahedron.png",
+							"alt": "Dodecahedron",
+							"outline": "Dodecahedron outline.png"
+						},
+						"ellipsoid": {
+							"file": "Elipsoid.png",
+							"alt": "Ellipsoid",
+							"outline": "Elipsoid outline.png"
+						},
+						"hexagonal pyramid": {
+							"file": "Hexagonal Pyramid.png",
+							"alt": "Hexagonal pyramid",
+							"outline": "Hexagonal Pyramid outline.png"
+						},
+						"icosahedron": {
+							"file": "Icosahedron.png",
+							"alt": "Icosahedron",
+							"outline": "Icosahedron outline.png"
+						},
+						"octahedron": {
+							"file": "Octahedron.png",
+							"alt": "Octahedron",
+							"outline": "Octahedron outline.png"
+						},
+						"octagonal prism": {
+							"file": "Octahonal Prism.png",
+							"alt": "Octagonal prism",
+							"outline": "Octahonal Prism outline.png"
+						},
+						"pentagonal prism": {
+							"file": "Pentagonal Prism.png",
+							"alt": "Pentagonal prism",
+							"outline": "Pentagonal Prism outline.png"
+						},
+						"pentagrammic prism": {
+							"file": "Pentagrammic prism.png",
+							"alt": "Pentagrammic prism",
+							"outline": "Pentagrammic prism outline.png"
+						},
+						"rectangular prism": {
+							"file": "Rectangular Prism.png",
+							"alt": "Rectangular prism",
+							"outline": "Rectangular Prism outline.png",
+							"grey": "Rectangular prism grey.png"
+						},
+						"sphere": {
+							"file": "Sphere.png",
+							"alt": "Sphere",
+							"outline": "Sphere outline.png",
+							"grey": "Sphere grey.png"
+						},
+						"square frustum": {
+							"file": "Square Frustum.png",
+							"alt": "Square frustum",
+							"outline": "Square Frustum outline.png"
+						},
+						"square pyramid": {
+							"file": "Square pyramid.png",
+							"alt": "Square pyramid",
+							"outline": "Square pyramid outline.png"
+						},
+						"tetrahedron": {
+							"file": "Tetrahedron.png",
+							"alt": "Tetrahedron",
+							"outline": "Tetrahedron outline.png"
+						},
+						"torus": {
+							"file": "Torus.png",
+							"alt": "Torus",
+							"outline": "Torus outline.png"
+						},
+						"triangular prism": {
+							"file": "Triangular Prism.png",
+							"alt": "Triangular prism",
+							"outline": "Triangular Prism outline.png"
+						},
+						"tube": {
+							"file": "Tube.png",
+							"alt": "Tube",
+							"outline": "Tube outline.png",
+							"grey": "Tube grey.png"
+						}
+					}
+				},
+				"angle": {
+					"cue": "\\bangles?\\b|°|\\bdegrees?\\b",
+					"folder": "angles/Phase 3/SVGs",
+					"degree_pattern": "(?:^|[^\\d])(\\d{2,3})\\s*(?:°|o\\b|degrees?\\b|deg\\b)",
+					"degrees": [
+						10,
+						20,
+						30,
+						40,
+						45,
+						50,
+						60,
+						70,
+						80,
+						90,
+						100,
+						110,
+						120,
+						130,
+						135,
+						140,
+						150,
+						160,
+						170,
+						180
+					],
+					"file_form": "{d}°.svg",
+					"alt_form": "{d}° angle",
+					"only_phase": "3"
+				}
+			}
+		},
 		"info_trigger_anchor": {
 			"highlight_phrase": {
 				"_doc": "THE HOVER'S ANCHOR IS THE WRITER'S HIGHLIGHTED PHRASE. The writer highlights the words a hover trigger annotates («Kia kaha, kia māia [HInfo trigger: be strong, be confident]» with «Kia kaha, kia māia» highlighted) and the human's infoTrigger span covers that whole phrase; the anchor rule took only the last word («māia»). The extractor records each highlighted phrase of a paragraph (block.marks, kind hl); when the hover's anchor text ENDS with one such phrase of two to max_words words, typed plain, the whole phrase is the span's anchor (a phrase the writer also bolded or italicised is the bold-run rule's anchor already). A one-word highlight is already the last word, so it is left alone.",
@@ -1868,6 +2192,22 @@
 			"skip_when_url": true,
 			"_skip_when_url_note": "A tag-only line that carries a URL (`[Video https://…]` XDLS902, `[Image https://unsplash…]` DTC1005) is a MEDIA REQUEST with a usable link the human builds as the embed / image, so it is skipped here rather than turned into a note.",
 			"tag_pattern": "\\[\\s*(?:H[1-6]|Body|Image|front|back|drop|answer|Activity\\b|carousel|slide\\b|accordion|tab\\b|tabs|click ?drop|speech ?bubble|hint ?slider|flip ?card|word ?select|word ?highlight|hover ?trigger|roll ?over|memory ?game|drag ?and ?drop|sub ?head|H\\d)\\b|\\[\\s*(?:(?:insert|embed)\\b|items?\\s*:?\\s*\\d|media\\s+items?\\b|merged\\s+(?:item|source)\\b|audio\\s*visual\\s+item\\b|audio|video\\b|videos\\b|photo\\b|picture\\b|gif\\b|animation\\b|slide\\s*show\\b|lesson\\s*\\d|end\\s+page\\b|new\\s+(?:page|tab)\\b|title\\s*bar\\b|hover\\b|on\\s+(?:hover|click)\\b|hover\\s*bubble|click\\s+information\\b|highlight|/\\s*highlight|phrase\\s+highlighter\\b|options\\s+for\\s+drop|drop\\s*-?\\s*down\\b|dropdown\\b|text\\s*box\\b|learning\\s+journal\\b|journal\\b|button\\b|link\\b|caption\\b|dev\\b|\\?\\s*\\])"
+		},
+		"instruction_note_address": {
+			"_doc": "THE WRITER'S REQUEST KEEPS ITS ADDRESS. A tag whose red span carries the writer's request («[Image] Can this PDF please be used as an image») with only a web address after it in black ships the request as the red Writers Note; the note names the address too, so the designer knows which file or page the request is about. A video host the page embeds from (skip_host_pattern) and a note that already holds the address are left as they were. Env INSTRNOTEADDR_OFF.",
+			"enabled": true,
+			"env": "INSTRNOTEADDR_OFF",
+			"address_only_pattern": "^[(\\[]?\\s*(https?:\\/\\/\\S+?)\\s*[)\\]]?$",
+			"skip_host_pattern": "youtu\\.?be|youtube\\.com|vimeo\\.com",
+			"template": "{note} — {url}",
+			"linked_name": true,
+			"_linked_name_note": "A black tail that is one linked file name («amulet intro.png», linked to its SharePoint address) names the file and its address in the note (named_template).",
+			"named_template": "{note} — {name}: {url}"
+		},
+		"repeated_video": {
+			"_doc": "THE SAME VIDEO IS EMBEDDED ONCE. A writer's [video] tag gathers its address from the lines after it, and a table row there that names the same video as a media item builds the embed again: two identical players back to back (9 pool modules, CHFUN06 0.0 the example). The human's pages never repeat one. A video wrapper whose embed address equals the one straight before it, with only white space between, is dropped. Env REPEATVIDEO_OFF.",
+			"enabled": true,
+			"env": "REPEATVIDEO_OFF"
 		},
 		"carried_tag_note": {
 			"_doc": "THE CARRIED-OUT TAG IS NO LONGER A DESIGNER'S NOTE. A red Writers Note whose text is only bracket tags stays on the page while the request is the developer's to do (KB c4 / c37: a designer's note is never hidden) — but where the element right before or right after it is the tag's BUILT form (forms: the tag, then what its built form looks like in the page markup), the converter has carried the request out and the note only repeats the tag; it is dropped. A note holding any word that is not a tag, a tag with no built form beside it, and anything inside a hand-off box are untouched. Env CARRIEDNOTE_OFF.",
@@ -7658,6 +7998,18 @@
 		"rule": "A preconfigured menu/section heading with NO content before the next heading (or the menu end) is OMITTED — human developers almost never render an empty scaffolding heading ('What do I need to get started?' is nearly always filled when kept; Connections/Assessment/Planning your time are never empty). Applies to ALL menu archetypes."
 	},
 	"menu": {
+		"heading_soft_break": {
+			"_doc": "A MENU HEADING'S SOFT-BROKEN TEXT IS THE MENU'S OWN LINES. The writer typed a menu label, pressed Shift+Enter and went on typing the block in the same paragraph («[H4] How will I know I have learned it?⏎I can:⏎• …», ENWJ206's lesson menus, GEO1004's overview): the whole run shipped inside one <h5>; the body's own rule (elements.heading.soft_break_body) never reached the menu. A menu heading item whose text runs on past a soft break (at least min_tail_words words after it) becomes the heading (its first line) and one plain line item per following line. Env MENUHEADSOFT_OFF.",
+			"enabled": true,
+			"env": "MENUHEADSOFT_OFF",
+			"min_tail_words": 2
+		},
+		"level_overview_from_menu": {
+			"_doc": "THE OVERVIEW PANE FROM THE MENU'S OWN LABELLED BLOCKS. The tile-page dialect fills its Overview pane from the module overview's Learning-Intentions and success-criteria blocks, looked for in the page body. An overview typed in a one-cell [Overview] table (WJFUN307) has them read as menu items, so the pane shipped two labels over nothing. When the module's buckets are empty, each labelled block of the menu items fills its bucket (Learning Intentions the LI, «How will I know» the SC, any other label — Knowledge, Practices — an extra block), lead line and bullets read the pre-pass's way; with kp_column the extra blocks fill the Overview pane's second column under the LI and SC's first, as the human builds the form. Env LEVELOVMENU_OFF.",
+			"enabled": true,
+			"env": "LEVELOVMENU_OFF",
+			"kp_column": true
+		},
 		"module_overrides": {
 			"_doc": "A MODULE'S OWN MENU RULE. Keyed by module code — the one place in this file that is — because the human build of that one module departs from its family in a way no template or subject rule carries, and the departure was ruled worth keeping: an empty module menu is a failure a learner sees. Each row is its own data flag with its own env toggle; a module without a row is untouched.",
 			"TEFUN07": {
@@ -8099,6 +8451,7 @@
 			"two_col_li": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n{banner}<div class=\"col-md-6 col-12 paddingR\">\n{leftContent}\n</div>\n<div class=\"col-md-6 col-12 paddingR\">\n{rightContent}\n</div>\n</div>\n</div>",
 			"two_col_offset": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"col-md-6 offset-md-0 col-12\">\n{leftContent}\n</div>\n<div class=\"col-md-6 offset-md-0 col-12\">\n{rightContent}\n</div>\n</div>\n</div>",
 			"two_col_inquiry": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"col-md-6 col-12 paddingR\">\n{leftContent}\n</div>\n<div class=\"col-md-6 col-12 paddingL\">\n{rightContent}\n</div>\n</div>\n</div>",
+			"two_col_series": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"col-md-6 col-12\">\n{leftContent}\n</div>\n<div class=\"col-md-6 col-12 paddingL\">\n{rightContent}\n</div>\n</div>\n</div>",
 			"two_col_item": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"col-md-6 col-sm-12\">\n<div class=\"item\">\n{leftContent}\n</div>\n</div>\n<div class=\"col-md-6 col-sm-12\">\n<div class=\"item\">\n{rightContent}\n</div>\n</div>\n</div>\n</div>",
 			"_two_col_item_note": "The ITEM two-column menu (the XOTP activity-table family): NO banner, `col-md-6 col-sm-12 > div.item` left + right, as on every human XOTP page. Selected by SkeletonBuilder when content.menu.familyShell names it (menu.two_col_li.item_family.shell).",
 			"_two_col_inquiry_note": "The INQUIRY two-column overview menu (KB 06 §3.4): NO banner, `col-md-6 col-12 paddingR` left + `col-md-6 col-12 paddingL` right. Selected by SkeletonBuilder when content.menu.inquiryFamily is true (menu.two_col_li.inquiry_family). The BLL `two_col_li` shell (banner + paddingR ×2) and the ENG `two_col_offset` shell are separate.",
@@ -8435,6 +8788,15 @@
 				"trailing_prose_right": true,
 				"trailing_prose_min_words": 16,
 				"_doc": "The XOTP activity-table adapter's menu. The XOTP reader modules have NO overview page; every lesson page carries the same two-column menu in the human build: `col-md-6 col-sm-12 > div.item` left + right, the left pane `<h3><span>Overview</span></h3>` + its paragraph then Understand / Know / Do as `h3><span` (mostly all-h3, some h3 + h4) with the `I can:` items, the right pane the Overview row's closing paragraphs (the kaiako / reading instructions, the bold assessment-quiz reminder). The family is matched by module-code prefix on EVERY page (MenuBuilder.#familyFor — the Inquiry family's sibling; the composer treats both alike): its own left_match lets the row's `**Overview**` label (the adapter emits the Overview row's left-cell label first, `overview_label_from_cell`) open the left column instead of being consumed as a section label, and a long (≥ trailing_prose_min_words) unlabelled paragraph after the labels moves to the right column (the short `I can` items stay left). The `<h5>I can:</h5>` label (lesson_label_form) stands (the human's `<p>` is a named override); the human's `<ul>` for the I-can items is editorial bullets (plain paragraphs in the docx) — not followed. OFF (ITEMMENU_OFF, or ACTTABLEADAPT_OFF which refuses the module) = the BLL banner two_col_li form."
+			},
+			"series_family": {
+				"_doc": "THE SERIES FAMILY: a series whose human overview menu is the two-column form of the Inquiry family (Understand / Know / Do as <h4><span> on the left, Learning Intentions / Success Criteria as <h5> on the right, no banner) without being an Inquiry-template module. The XGF gifted-education series (XGF9002, XGF9003, XGF9004 in the pool; all three human overviews build it — the left column `col-md-6 col-12`, the right `col-md-6 col-12 paddingL`) took the banner layout instead: a «Learning Intentions» banner across the top and every heading an h5. Overview pages only. Env SERIESMENU_OFF.",
+				"enabled": true,
+				"env": "SERIESMENU_OFF",
+				"code_prefixes": ["XGF"],
+				"shell": "two_col_series",
+				"left_heading": "<h4><span>{heading}</span></h4>",
+				"right_heading": "<h5>{heading}</h5>"
 			},
 			"inquiry_family": {
 				"enabled": true,

@@ -1871,6 +1871,77 @@ class ListsAndRuns {
 	};
 
 	/**
+	 * AN INFO TRIGGER'S HOVER TEXT IS CASED AND STOPPED BY ITS LENGTH (KB 04B → Info Trigger, constraint 102). Every start
+	 * tag whose class holds infoTrigger has its info value set: one word → a capital first letter, no full stop; more
+	 * than one word → a capital first letter and a closing full stop. Data elements.info_trigger_text_case; env INFOCASE_OFF.
+	 * @param {string} html - the finished page
+	 * @param {ConversionRun} run - the current run
+	 * @returns {string} the page with every info value cased and stopped
+	 */
+	static InfoTextCase(html, run) {
+		const c = DataService.Data.EmitTemplates.elements?.info_trigger_text_case;
+		if (!c || c.enabled === false || !String(html).includes("infoTrigger")) return html;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "INFOCASE_OFF"]) return html;
+		const cls = new RegExp(c.class_pattern ?? '\\bclass="[^"]*\\binfoTrigger\\b');
+		const tagRe = /<[a-zA-Z][a-zA-Z0-9]*(?:\s+[^\s=>"'\/]+(?:\s*=\s*"[^"]*")?)*\s*\/?>/g;
+		return String(html).replace(tagRe, (t) => cls.test(t)
+			? t.replace(/(\sinfo=")([^"]*)(")/, (m, a, v, b) => a + ListsAndRuns.InfoTextValue(v, c) + b) : t);
+	}
+
+	/**
+	 * One info value, as InfoTextCase sets it (the value is attribute text: entities and any kept tag are read past).
+	 * @param {string} v - the raw attribute value
+	 * @param {Object} c - elements.info_trigger_text_case
+	 * @returns {string} the value cased and stopped
+	 */
+	static InfoTextValue(v, c = {}) {
+		const s = String(v ?? "");
+		const lead = s.match(/^\s*/)[0], trail = s.match(/\s*$/)[0];
+		let core = s.slice(lead.length, s.length - trail.length);
+		if (!core) return s;
+		const visible = core.replace(/<[^>]*>/g, " ").replace(/&(?:[a-zA-Z]+|#\d+|#x[0-9a-fA-F]+);/g, (e) => (/^&(?:quot|#34|#x22|apos|#39|#x27);$/i.test(e) ? "'" : (/^&nbsp;$/i.test(e) ? " " : "x")));
+		const words = visible.trim().split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+		if (!words) return s;
+		const open = new RegExp("^" + (c.open_punct ?? "[\"'“‘(\\[«]"), "u");
+		const close = new RegExp((c.close_punct ?? "[\"'”’)\\]»]") + "$", "u");
+		// the first letter: past leading tags, entities that are quotes, and opening punctuation
+		let i = 0;
+		for (;;) {
+			const rest = core.slice(i);
+			const tg = rest.match(/^<[^>]*>/) ?? rest.match(/^&(?:quot|#34|#x22|apos|#39|#x27|nbsp);/i) ?? rest.match(/^\s+/);
+			if (tg) { i += tg[0].length; continue; }
+			if (rest && open.test(rest[0])) { i += 1; continue; }
+			break;
+		}
+		const ch = core.slice(i).match(/^./su)?.[0] ?? "";
+		if (/\p{Ll}/u.test(ch)) {
+			const up = ch.toLocaleUpperCase();
+			if ([...up].length === 1) core = core.slice(0, i) + up + core.slice(i + ch.length);
+		}
+		// the end: past closing tags, quote entities and closing punctuation
+		let j = core.length;
+		for (;;) {
+			const head = core.slice(0, j);
+			const tg = head.match(/<[^>]*>$/) ?? head.match(/&(?:quot|#34|#x22|apos|#39|#x27|nbsp);$/i) ?? head.match(/\s+$/);
+			if (tg) { j -= tg[0].length; continue; }
+			if (head && close.test(head.slice(-1))) { j -= 1; continue; }
+			break;
+		}
+		const body = core.slice(0, j), tail = core.slice(j);
+		const stop = c.stop ?? ".";
+		const keep = new RegExp((c.keep_end ?? "[.!?…]") + "$", "u");
+		let nb = body + tail;
+		if (words === 1) {
+			if (/[^.]\.$/.test(body)) nb = body.replace(/\.$/, "") + tail;
+		} else if (!keep.test(body)) {
+			// the full stop closes the value — after a closing quote or bracket, never inside it
+			const sw = new RegExp((c.swap_end ?? "[,;:]+") + "$", "u");
+			nb = sw.test(body) ? body.replace(sw, stop) + tail : body + tail + stop;
+		}
+		return lead + nb + trail;
+	}
+
+	/**
 	 * THE WRITER'S TYPED FRACTION IN A LEVEL 3–4
 	 * MATHS MODULE SHIPS AS MathML. In a module whose run.groupKey is listed in
 	 * Input_Doc_Rules.math.typed_fractions.groups, every typed `a/b` (slash_pattern) and every vulgar

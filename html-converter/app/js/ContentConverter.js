@@ -5998,11 +5998,12 @@ class ContentConverter {
 		// the multi-file levels overview (#levelOverview — the overview page only, outermost: it wraps the finished body).
 		// a Writers Note that is only the tag(s) the converter has already built beside it is dropped (#carriedTagNote).
 		// an ALL-CAPS multi-word body heading is set in sentence case (#bodyHeadingCase).
-		// the pictures the writer asked for side by side share one row (MediaBuilder.sideBySidePostpass — innermost).
+		// the same video embedded twice in a row ships once (#repeatedVideo — innermost, before the side-by-side rows).
+		// the pictures the writer asked for side by side share one row (MediaBuilder.sideBySidePostpass — after it).
 		// the element a request's bracketed link became is handed to the developer (#bracketLinkNote — outermost: it reads the
 		// finished body and swaps one element for one note, so no row, box or number moves).
 		const finalBody = ContentConverter.#bracketLinkNote(ContentConverter.#levelOverview(ContentConverter.#bodyHeadingCase(ContentConverter.#carriedTagNote(ContentConverter.#dropEmptyListItems(ContentConverter.#liftVisibleTags(ContentConverter.#tagOnlyParagraphNote(ContentConverter.#redundantBold(ContentConverter.#unwrapLonePunct(ContentConverter.#mergeSplitRuns(ContentConverter.#familyRowPerBlock(ContentConverter.#familyQuoteParagraphs(
-			ContentConverter.#builtPictureNote(ContentConverter.#calloutSidePicture(MediaBuilder.productionDocPostpass(MediaBuilder.stockButtonPostpass(MediaBuilder.videoTimePostpass(MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(MediaBuilder.sideBySidePostpass(finalBody0, run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), run)), page, run), page, run);
+			ContentConverter.#builtPictureNote(ContentConverter.#calloutSidePicture(MediaBuilder.productionDocPostpass(MediaBuilder.stockButtonPostpass(MediaBuilder.videoTimePostpass(MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(MediaBuilder.sideBySidePostpass(ContentConverter.#repeatedVideo(finalBody0, run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), run), run)), page, run), page, run);
 		// a fallback-shell page that built its panels is an inquiry page too (the body class and
 		// the inquiry footer class follow, as for every other mode; its footer LINKS stay the registry's own).
 		const inquiryActive = (inquiryMode || cedInquiryMode || secInquiryMode || inqFallbackMode) && finalBody0 !== bodyHtml;
@@ -6021,6 +6022,28 @@ class ContentConverter {
 		return { bodyHtml: this.#phaseOverviewNote(finalBody, run), menu: menuOut, titleBar, inquiryActive, inquiryFlavour,
 			cedInquiry: cedInquiryMode && finalBody0 !== bodyHtml };
 	};
+
+	/**
+	 * THE SAME VIDEO IS EMBEDDED ONCE. A writer's [video] tag gathers its address from the lines after it — a table's
+	 * «[media item N] <address>» row among them — and that row builds the same embed again, so the page showed two identical
+	 * players back to back (CHFUN06 0.0, ENGC402 1.0, COM1002 5.0); the human's page never repeats one. A video wrapper whose
+	 * embed address equals the one straight before it, with only white space between, is dropped.
+	 * Data elements.repeated_video; env REPEATVIDEO_OFF.
+	 * @param {string} html - the page body
+	 * @param {ConversionRun} run - the current run
+	 * @returns {string} the body with each repeat dropped
+	 */
+	static #repeatedVideo(html, run) {
+		const c = DataService.Data.EmitTemplates.elements?.repeated_video;
+		if (!c || c.enabled === false || !html || !String(html).includes("videoSection")
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REPEATVIDEO_OFF"])) return html;
+		const one = '<div class="videoSection[^"]*">\\s*<iframe [^>]*\\bsrc="([^"]+)"[^>]*>\\s*<\\/iframe>\\s*<\\/div>';
+		const re = new RegExp("(" + one + ")\\s*" + one, "g");
+		let n = 0, prev;
+		do { prev = html; html = html.replace(re, (all, first, a, b) => (a === b ? (n++, first) : all)); } while (html !== prev);
+		if (n) run?.AddNote?.("info", "ContentConverter", `${n} video embed${n === 1 ? "" : "s"} repeating the one straight before ${n === 1 ? "it" : "them"} dropped (repeated_video).`);
+		return html;
+	}
 
 	/**
 	 * THE PHASE PANEL'S OWN OVERVIEW (a family dialect). The writer's per-phase [Overview] block
@@ -13442,7 +13465,7 @@ class ContentConverter {
 		const w = free.split(" ").filter(Boolean);
 		if (w.length < (c.min_words ?? 3)) return out;
 		if (fold(out.join(" ")).includes(w.slice(0, 8).join(" "))) return out;
-		return [...out, NotesAndComments.redFlag(String(it.text ?? "").trim(), run, "cs")];
+		return [...out, NotesAndComments.redFlag(this.#instructionNoteText(it).trim(), run, "cs")];
 	}
 
 	// =======================================================================
@@ -13685,6 +13708,137 @@ class ContentConverter {
 		return out;
 	}
 
+	/**
+	 * THE MATHS TEMPLATES' SHAPES AND ANGLES LIBRARY (KB 14E §14.14, constraint 103). In a Maths module
+	 * (code_prefixes), an image tag whose request carries a set's cue — «2D shape», «with arrows», «3D shape»,
+	 * «angle» / «°» / «degrees» — or the library's own name (library_cue), and names items that set holds, builds
+	 * each item as `form` with src images/<library file name> (verbatim) and the shape's correct name as its alt,
+	 * then one To Do naming the files and their library folder. 3D items take their outline / grey file when the
+	 * request says so; the arrows set takes the page's phase (phase_by_template), a phase it does not hold giving
+	 * only a note; the angles set holds only_phase, and a page in another phase adds the adapt-and-save note. A
+	 * set with an acknowledgement line registers it on run.mathsLibraryAcks for AcksBuilder. Any other request →
+	 * null (the ordinary image path). Data elements.maths_asset_library; env MATHSLIB_OFF.
+	 * @param {Object} it - the image tag item
+	 * @param {ConversionRun} run - the current run
+	 * @returns {string[]|null} the built pictures and notes, or null
+	 */
+	static #mathsLibraryImage(it, run) {
+		const c = DataService.Data.EmitTemplates.elements?.maths_asset_library;
+		if (!c || c.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "MATHSLIB_OFF"]) return null;
+		const code = String(run?.moduleCode ?? "").toUpperCase();
+		if (!(c.code_prefixes ?? []).some((pfx) => code.startsWith(String(pfx).toUpperCase()))) return null;
+		const raw = String(it.text ?? "");
+		// a request that carries its own picture's address names that picture, not the library (skip_with_address)
+		if (c.skip_with_address !== false && [raw, String(it.blackAfter ?? ""), ...(it.block?.links ?? []).map((l) => String(l?.target ?? ""))]
+			.some((t) => /https?:\/\//i.test(t))) return null;
+		const f = " " + Utils.Fold(raw).replace(/[\[\]]/g, " ").replace(/[_]+/g, " ").replace(/\s+/g, " ").trim() + " ";
+		const libCue = !!c.library_cue && new RegExp(c.library_cue, "i").test(f);
+		const esc = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+		let phaseMemo;
+		const pagePhase = () => {
+			if (phaseMemo !== undefined) return phaseMemo;
+			const t = SkeletonBuilder.ResolveTemplatePhase(run, { quiet: true });
+			const tpl = DataService.Data.EmitTemplates.skeleton?.template_attr_map?.[t] ?? t ?? "";
+			const map = c.phase_by_template ?? {};
+			phaseMemo = map[tpl] ?? map[String(tpl).toUpperCase()] ?? null;
+			return phaseMemo;
+		};
+		const attr = (x) => String(x).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+		for (const [setKey, set] of Object.entries(c.sets ?? {})) {
+			if (!libCue && !(set.cue && new RegExp(set.cue, "i").test(f))) continue;
+			const picks = [];   // { at, file, alt }
+			if (set.degree_pattern) {
+				for (const m of f.matchAll(new RegExp(set.degree_pattern, "gi"))) {
+					const d = parseInt(m[1], 10);
+					if (!(set.degrees ?? []).includes(d) || picks.some((q) => q.d === d)) continue;
+					picks.push({ at: m.index, d, file: Utils.FillTemplate(set.file_form, { d: String(d) }), alt: Utils.FillTemplate(set.alt_form, { d: String(d) }) });
+				}
+			} else {
+				let hay = f;
+				const keys = Object.keys(set.items ?? {}).sort((a, b) => b.length - a.length);
+				for (const k of keys) {
+					const re = new RegExp("(^|[^\\p{L}\\p{N}])" + esc(k).replace(/\s+/g, "\\s+") + "s?(?=[^\\p{L}\\p{N}]|$)", "iu");
+					const m = hay.match(re);
+					if (!m) continue;
+					hay = hay.slice(0, m.index) + " ".repeat(m[0].length) + hay.slice(m.index + m[0].length);
+					picks.push({ at: m.index, key: k, item: set.items[k] });
+				}
+			}
+			if (!picks.length) continue;
+			picks.sort((a, b) => a.at - b.at);
+			const out = [];
+			const files = [];
+			const path = c.library_path ?? "";
+			const ph = set.file_form && set.phases ? pagePhase() : null;
+			if (set.phases && !set.phases.includes(ph)) {
+				for (const q of picks) {
+					out.push(NotesAndComments.redFlag(Utils.FillTemplate(c.notes?.arrows_phase ?? "", {
+						phase: ph ?? "unknown", name: q.item.name, path, folder: set.folder }), run, "todo"));
+				}
+				return out;
+			}
+			const variant = Object.entries(c.variant_cues ?? {}).find(([, re]) => new RegExp(re, "i").test(f))?.[0] ?? null;
+			for (const q of picks) {
+				let file = q.file, alt = q.alt;
+				if (!file) {
+					const itm = q.item;
+					file = set.file_form ? Utils.FillTemplate(set.file_form, { phase: ph, name: itm.name }) : ((variant && itm[variant]) || itm.file);
+					alt = itm.alt + (variant && itm[variant] ? " " + variant : "");
+				}
+				files.push(file);
+				out.push(Utils.FillTemplate(c.form, { file: attr(file), alt: attr(alt) }));
+			}
+			const list = files.map((x) => "«" + x + "»").join(", ");
+			let note = Utils.FillTemplate(c.notes?.copy ?? "", { files: list, path, folder: set.folder });
+			if (set.note) note += " " + set.note;
+			out.push(NotesAndComments.redFlag(note, run, "todo"));
+			if (set.only_phase) {
+				const pp = pagePhase();
+				if (pp !== set.only_phase) {
+					out.push(NotesAndComments.redFlag(Utils.FillTemplate(c.notes?.angle_phase ?? "", { files: list, phase: pp ?? "unknown", path }), run, "todo"));
+				}
+			}
+			if (set.acks) {
+				if (!run.mathsLibraryAcks) run.mathsLibraryAcks = [];
+				run.mathsLibraryAcks.push({ page: run.handoffPage ?? null, item: it, html: set.acks });
+			}
+			run.AddNote("info", "ContentConverter", `Maths template library (${setKey}): ${files.join(", ")} built from the request.`);
+			return out;
+		}
+		return null;
+	}
+
+	/**
+	 * THE WRITER'S REQUEST KEEPS ITS ADDRESS. A tag carrying the writer's request in its red span («[Image] Can this PDF please be
+	 * used as an image») with only a web address after it in black ships its request as the red Writers Note — and the note now
+	 * names that address, so the designer can find the file the request is about; a black tail that is one linked file name names
+	 * the file and its address. Used by the instruction-fragment note and by the media tag's own words (media_free_note). A host the
+	 * page already builds from (a video embed: skip_host_pattern) and a note already holding the address are left as they were.
+	 * Data elements.instruction_note_address; env INSTRNOTEADDR_OFF.
+	 * @param {Object} it - the tag item
+	 * @returns {string} the note's text
+	 */
+	static #instructionNoteText(it) {
+		const text = String(it?.text ?? "");
+		const c = DataService.Data.EmitTemplates.elements?.instruction_note_address;
+		if (!c || c.enabled === false || (typeof process !== "undefined" && process.env && process.env[c.env ?? "INSTRNOTEADDR_OFF"])) return text;
+		const black = String(it?.blackAfter ?? "").replace(/\*+/g, "").replace(/__/g, "").trim();
+		const m = black.match(new RegExp(c.address_only_pattern ?? "^[(\\[]?\\s*(https?:\\/\\/\\S+?)\\s*[)\\]]?$", "i"));
+		let url = m ? m[1] : null, name = null;
+		// the black tail is one linked file name («amulet intro.png» → its address): the note names the file and its address
+		if (!url && c.linked_name !== false && black) {
+			const ln = (it?.block?.links ?? []).find((l) => String(l?.text ?? "").replace(/__/g, "").trim() === black && /^https?:\/\//i.test(String(l?.target ?? "")));
+			if (ln) { url = String(ln.target).trim(); name = black; }
+		}
+		if (!url) return text;
+		if (c.skip_host_pattern && new RegExp(c.skip_host_pattern, "i").test(url)) return text;
+		if (text.includes(url)) return text;
+		return name
+			? Utils.FillTemplate(c.named_template ?? "{note} — {name}: {url}", { note: text.trim(), name, url })
+			: Utils.FillTemplate(c.template ?? "{note} — {url}", { note: text.trim(), url });
+	}
+
 	static #elementCore(it, bodyItems, i, stack, run) {
 		const tpl = DataService.Data.EmitTemplates;
 		const tag = it.parse.primary.tag;
@@ -13697,7 +13851,7 @@ class ContentConverter {
 
 		// instruction fragments riding in the same span flag first, in place
 		if (it.parse.instructionFragment) {
-			out.push(NotesAndComments.redFlag(it.text, run, "cs"));
+			out.push(NotesAndComments.redFlag(this.#instructionNoteText(it), run, "cs"));
 		}
 
 		// ---- [MTKquiz] → the canonical "Go to quiz" button + To Do note ----
@@ -13967,6 +14121,10 @@ class ContentConverter {
 			// CENTRALIMG_OFF); a name the registry does not know leaves the span an ordinary image request
 			const _ci = this.#centralImage(it, run);
 			if (_ci) { out.push(..._ci); return out; }
+			// a Maths module's request for a shape or an angle the Maths templates' library holds builds that file
+			// (KB constraint 103; data elements.maths_asset_library; env MATHSLIB_OFF)
+			const _ml = this.#mathsLibraryImage(it, run);
+			if (_ml) { out.push(..._ml); return out; }
 			// a generic media-item reference whose own URL is a video is that video (see #mediaItemVideoUrl)
 			const _miv = this.#mediaItemVideoUrl(it);
 			if (_miv) { it._mediaUrl = _miv; return out.concat(MediaBuilder.media(it, bodyItems, i, "video", run, this.#norm)); }

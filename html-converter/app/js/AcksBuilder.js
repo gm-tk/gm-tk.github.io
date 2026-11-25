@@ -83,6 +83,14 @@ class AcksBuilder {
 
 		// ---- 2. map items to lesson groups --------------------------------
 		const groups = this.#groupByLesson(entries.filter(Boolean), run);
+		// the Maths templates' library lines (ContentConverter.#mathsLibraryImage; KB constraint 103): each goes in the
+		// group of the page that used the set — the group's de-duplication keeps one per lesson. Env MATHSLIB_OFF.
+		for (const u of (run.mathsLibraryAcks ?? [])) {
+			let pi = u.page ? run.pages.indexOf(u.page) : -1;
+			if (pi < 0) pi = run.pages.findIndex((p) => (p.items ?? []).includes(u.item));
+			const g0 = groups[pi >= 0 && pi < groups.length ? pi : 0];
+			if (g0) g0.entries.push({ html: u.html, todoComment: null, sourceClass: "maths_library", item: {} });
+		}
 
 		// ---- 3. assemble the block ----------------------------------------
 		const hasAi = entries.some((e) => e?.sourceClass === "ai" || e?.aiMedia);

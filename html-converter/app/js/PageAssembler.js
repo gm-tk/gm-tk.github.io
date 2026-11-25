@@ -1716,7 +1716,9 @@ class PageAssembler {
 						withMath = DocxExtractor.UnderReplace(withMath, false, DataService.Data.InputDocRules?.formatting_markers?.underline);
 						// KB c52: every derivable iStock image alt, LAST (MediaBuilder.FillWidgetAlts;
 						// data elements.image_attrs.widget_alt_postpass; env WIDGETALT_OFF).
-						return MediaBuilder.FillWidgetAlts(withMath, run);
+						// KB constraint 102: every infoTrigger's hover text cased and stopped by its length (ListsAndRuns.InfoTextCase;
+						// data elements.info_trigger_text_case; env INFOCASE_OFF) — after every text pass, before the widget alts.
+						return MediaBuilder.FillWidgetAlts(ListsAndRuns.InfoTextCase(withMath, run), run);
 					})()),
 				kind: "page",
 			});

@@ -143,6 +143,14 @@ class MenuBuilder {
 	static #familyFor(run, page) {
 		const inq = this.#inquiryFamilyFor(run, page);
 		if (inq) return inq;
+		// THE SERIES FAMILY: a series whose human overview is the same two-column form (Understand / Know / Do as h4>span on
+		// the left, the LI / SC on the right, no banner) without being an Inquiry module — the XGF gifted-education series,
+		// whose overview otherwise took the banner layout with every heading an h5. Overview pages only.
+		// Data menu.two_col_li.series_family; env SERIESMENU_OFF.
+		const sf = DataService.Data.EmitTemplates?.menu?.two_col_li?.series_family;
+		if (sf && sf.enabled !== false && page?.isOverview
+			&& !(typeof process !== "undefined" && process.env && process.env[sf.env ?? "SERIESMENU_OFF"])
+			&& (sf.code_prefixes ?? []).some((p) => String(run?.moduleCode || "").toUpperCase().startsWith(String(p).toUpperCase()))) return sf;
 		const cfg = DataService.Data.EmitTemplates?.menu?.two_col_li?.item_family;
 		if (!cfg || cfg.enabled === false) return null;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "ITEMMENU_OFF"]) return null;
@@ -249,6 +257,7 @@ class MenuBuilder {
 	 *   #fundamentalsOverviewLi) instead of, or alongside, the plain strings.
 	 */
 	static buildMenu(menuItems, menuType, run, page, norm) {
+		menuItems = this.#softBrokenHeadings(menuItems, run);
 		// THE TILE-PAGE DIALECT: the level / tile menu is composed from
 		// run._levelMenu, which the BODY pre-pass fills — a WJFUN overview's whole
 		// LI/SC block sits in the body ([Introduction content] is not a menu
@@ -332,6 +341,7 @@ class MenuBuilder {
 		// Env toggle: LEVELPAGE_OFF (the upstream pre-pass never sets
 		// run._levelMenu when it is off, so this branch is never reached).
 		if (run._levelMenu) {
+			if (page?.isOverview) this.#levelOverviewFromMenu(run._levelMenu, menuItems, run);
 			const lm = this.#levelTabs(run._levelMenu);
 			if (lm) {
 				run.AddNote("info", "MenuBuilder",
@@ -2569,6 +2579,96 @@ class MenuBuilder {
 	 * its `menu` block; pane columns from the matched registry row).
 	 * Env toggle: LEVELPAGE_OFF (upstream — this method is never reached).
 	 */
+	/**
+	 * A MENU HEADING'S SOFT-BROKEN TEXT IS THE MENU'S OWN LINES. The writer typed a menu label, pressed Shift+Enter and went on
+	 * typing the block in the same paragraph («[H4] How will I know I have learned it?⏎I can:⏎• plan my explanation clearly …»,
+	 * ENWJ206 lesson menus; GEO1004's overview): the whole run shipped inside one <h5>. The body's own rule for this
+	 * (elements.heading.soft_break_body) never reached the menu. A menu heading item whose text runs on past a soft break (at
+	 * least min_tail_words words after it) is the heading (its first line) and one plain line item per following line — the
+	 * form the menu builds as its label, lead and list everywhere else.
+	 * Data menu.heading_soft_break; env MENUHEADSOFT_OFF.
+	 * @param {Array} items - the menu items
+	 * @param {ConversionRun} run - the current run
+	 * @returns {Array} the items, each soft-broken heading split (a new array; the items themselves are not changed)
+	 */
+	static #softBrokenHeadings(items, run) {
+		const c = DataService.Data.EmitTemplates.menu?.heading_soft_break;
+		if (!c || c.enabled === false || !Array.isArray(items) || !items.length
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "MENUHEADSOFT_OFF"])) return items;
+		const min = c.min_tail_words ?? 2;
+		let n = 0;
+		const out = [];
+		for (const it of items) {
+			const tag = String(it?.parse?.primary?.tag ?? "");
+			const txt = String(it?.blackAfter ?? "");
+			if (it?.type !== "tag" || !/^h[1-6]$/.test(tag) || !txt.includes("\n")) { out.push(it); continue; }
+			const lines = txt.split("\n").map((s) => s.trim()).filter(Boolean);
+			const tail = lines.slice(1);
+			if (lines.length < 2 || tail.join(" ").split(/\s+/).filter(Boolean).length < min) { out.push(it); continue; }
+			out.push({ ...it, blackAfter: lines[0] });
+			for (const t of tail) out.push({ type: "black", text: t, block: it.block });
+			n++;
+		}
+		if (n) run?.AddNote?.("info", "MenuBuilder", `${n} menu heading${n === 1 ? "" : "s"} whose soft-broken text ran on: the heading kept to its first line, the lines after it the menu's own (menu.heading_soft_break).`);
+		return n ? out : items;
+	};
+
+	/**
+	 * THE OVERVIEW PANE FROM THE MENU'S OWN LABELLED BLOCKS. The tile-page dialect fills the Overview pane from the module
+	 * overview's Learning-Intentions and success-criteria blocks, which its body pre-pass looks for in the page BODY. A writer who
+	 * types the whole overview in a one-cell «[Overview]» table (WJFUN307: «[tab] [H4] Learning Intentions / [Body] We are
+	 * learning: / … / [H4] How will I know I have learned it? / [Body] I can: / • … / [tab] [H4] Knowledge / … / [tab] [H4]
+	 * Practices / …») has those blocks read as MENU items, so the pre-pass found none and the pane shipped its two labels over
+	 * nothing. When the module's buckets are empty, each labelled block of the menu items fills its bucket — the Learning
+	 * Intentions block the LI, the «How will I know» block the SC, every other labelled block (Knowledge, Practices) an extra one
+	 * — its lead line and its bullets read the pre-pass's way. The extra blocks go in the Overview pane's second column, the LI and
+	 * SC stacked in its first, as the human builds this form (kp_column); without kp_column they stay tabs of their own.
+	 * Data menu.level_overview_from_menu; env LEVELOVMENU_OFF.
+	 * @param {Object} data - run._levelMenu (its module buckets are filled in place)
+	 * @param {Array} menuItems - the overview page's menu items
+	 * @param {ConversionRun} run - the current run
+	 */
+	static #levelOverviewFromMenu(data, menuItems, run) {
+		const c = DataService.Data.EmitTemplates.menu?.level_overview_from_menu;
+		if (!c || c.enabled === false || !data?.module || !Array.isArray(menuItems) || !menuItems.length
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "LEVELOVMENU_OFF"])) return;
+		const mod = data.module, has = (b) => b && ((b.bullets ?? []).length || b.lead);
+		if (has(mod.li) || has(mod.sc)) return;
+		const cfg = data.cfg || {};
+		const liRe = new RegExp(cfg.li_label_pattern || c.li_label_pattern || "^(?:year\\s+\\d+\\s+)?learning\\s+intentions?\\s*[:.]?$", "i");
+		const scRe = new RegExp(cfg.sc_label_pattern || c.sc_label_pattern || "^(?:success\\s+criteria|how\\s+will\\s+i\\s+know.*)$", "i");
+		const md = (t) => String(t ?? "").replace(/\*+/g, "").replace(/\s+/g, " ").trim();
+		const head = (it) => it?.type === "tag" && /^h[1-6]$/.test(String(it.parse?.primary?.tag ?? "")) && md(it.blackAfter) ? md(it.blackAfter) : null;
+		const blocks = [];
+		for (const it of menuItems) {
+			const h = head(it);
+			if (h) { blocks.push({ label: h, lines: [] }); continue; }
+			const cur = blocks[blocks.length - 1];
+			if (!cur) continue;
+			const t = it.type === "tag" ? (it.parse?.primary?.tag === "body" ? String(it.blackAfter ?? "") : "") : it.type === "black" ? String(it.text ?? "") : "";
+			for (const ln of t.split("\n")) if (md(ln)) cur.lines.push(md(ln));
+		}
+		const bucketOf = (b) => {
+			const bk = { label: b.label, lead: "", bullets: [], tail: [] };
+			let seen = false;
+			for (const t of b.lines) {
+				const bare = t.replace(/^[•◦▪●]\s*/, "");
+				if (bare !== t) { seen = true; bk.bullets.push(bare); }
+				else if (seen) bk.tail.push(bare);
+				else if (!bk.lead) bk.lead = bare;
+				else bk.bullets.push(bare);
+			}
+			return bk;
+		};
+		const li = blocks.find((b) => liRe.test(b.label)), sc = blocks.find((b) => scRe.test(b.label));
+		if (!li && !sc) return;
+		mod.li = li ? bucketOf(li) : mod.li;
+		mod.sc = sc ? bucketOf(sc) : mod.sc;
+		const extra = blocks.filter((b) => b !== li && b !== sc && b.lines.length).map((b) => ({ label: b.label, bucket: bucketOf(b) }));
+		if (extra.length) { mod.extra = extra; if (c.kp_column !== false) mod._kpColumn = true; }
+		run?.AddNote?.("info", "MenuBuilder", `The Overview pane filled from the menu's own labelled blocks (${[li, sc].filter(Boolean).map((b) => b.label).concat(extra.map((e) => e.label)).join(", ")}; menu.level_overview_from_menu).`);
+	};
+
 	static #levelTabs(data) {
 		const { module: mod, levels, row, cfg } = data;
 		const mc = cfg.menu || {};
@@ -2645,10 +2745,15 @@ class MenuBuilder {
 			? (mc.pane_open || "\n<div class=\"tab-pane\">\n<div class=\"row\">") + "\n"
 				+ Utils.FillTemplate(colT, { cls: row.overview_prose_col || "col-12", content: mod.prose.map((t) => `<p>${Utils.EscapeHtml(t)}</p>`).join("\n") })
 				+ (mc.pane_close || "\n</div>\n</div>")
-			: pane(mod.li, mod.sc, ovCols);
+			: mod._kpColumn
+				? (mc.pane_open || "\n<div class=\"tab-pane\">\n<div class=\"row\">") + "\n"
+					+ Utils.FillTemplate(colT, { cls: ovCols[0], content: [colHtml(mod.li, liLabel), colHtml(mod.sc, scLabel)].join("\n") }) + "\n"
+					+ Utils.FillTemplate(colT, { cls: ovCols[1] ?? ovCols[0], content: (mod.extra ?? []).filter((ex) => hasContent(ex.bucket)).map((ex) => colHtml(ex.bucket, ex.label)).join("\n") })
+					+ (mc.pane_close || "\n</div>\n</div>")
+				: pane(mod.li, mod.sc, ovCols);
 		// the module overview's own Knowledge / Practices blocks, each a one-column tab after Overview
 		// (tile_pages.untagged_overview_labels; the pre-pass fills mod.extra only when that rule is on)
-		for (const ex of (mod.extra ?? [])) {
+		for (const ex of (mod._kpColumn ? [] : (mod.extra ?? []))) {
 			if (!hasContent(ex.bucket)) continue;
 			const exCls = (cfg.untagged_overview_labels && cfg.untagged_overview_labels.extra_col) || "col-md-8 col-12";
 			nav += navItem(ex.label);
